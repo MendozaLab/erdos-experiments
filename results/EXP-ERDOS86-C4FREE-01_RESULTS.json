@@ -1,0 +1,173 @@
+{
+  "experiment_id": "EXP-ERDOS86-C4FREE-01",
+  "problem": "Erd\u0151s Problem #86",
+  "description": "Maximum edges in C4-free subgraph of hypercube Q_n",
+  "conjecture": "ex(Q_n, C4) <= (1/2 + o(1)) * n * 2^(n-1)",
+  "status": "OPEN",
+  "prize": "$100",
+  "difficulty": "5/10",
+  "date": "2026-03-03",
+  "results": {
+    "2": {
+      "n": 2,
+      "num_vertices": 4,
+      "num_edges_Qn": 4,
+      "ex_Qn_C4": 3,
+      "is_exact": true,
+      "ratio": 0.75,
+      "chung_lower_bound": 3,
+      "chung_ratio": 0.75,
+      "method": "exact_ilp_scipy",
+      "time_seconds": 0.85
+    },
+    "3": {
+      "n": 3,
+      "num_vertices": 8,
+      "num_edges_Qn": 12,
+      "ex_Qn_C4": 9,
+      "is_exact": true,
+      "ratio": 0.75,
+      "chung_lower_bound": 8,
+      "chung_ratio": 0.666667,
+      "method": "exact_ilp_scipy",
+      "time_seconds": 0.0
+    },
+    "4": {
+      "n": 4,
+      "num_vertices": 16,
+      "num_edges_Qn": 32,
+      "ex_Qn_C4": 24,
+      "is_exact": true,
+      "ratio": 0.75,
+      "chung_lower_bound": 20,
+      "chung_ratio": 0.625,
+      "method": "exact_ilp_scipy",
+      "time_seconds": 0.0
+    },
+    "5": {
+      "n": 5,
+      "num_vertices": 32,
+      "num_edges_Qn": 80,
+      "ex_Qn_C4": 56,
+      "is_exact": true,
+      "ratio": 0.7,
+      "chung_lower_bound": 48,
+      "chung_ratio": 0.6,
+      "method": "exact_ilp_scipy",
+      "time_seconds": 2.12
+    },
+    "6": {
+      "n": 6,
+      "num_vertices": 64,
+      "num_edges_Qn": 192,
+      "ex_Qn_C4": 127,
+      "is_exact": false,
+      "ratio": 0.661458,
+      "chung_lower_bound": 112,
+      "chung_ratio": 0.583333,
+      "method": "greedy_local_search",
+      "time_seconds": 600.08
+    },
+    "7": {
+      "n": 7,
+      "num_vertices": 128,
+      "num_edges_Qn": 448,
+      "ex_Qn_C4": 286,
+      "is_exact": false,
+      "ratio": 0.638393,
+      "chung_lower_bound": 256,
+      "chung_ratio": 0.571429,
+      "method": "greedy_local_search",
+      "time_seconds": 600.2
+    },
+    "8": {
+      "n": 8,
+      "num_vertices": 256,
+      "num_edges_Qn": 1024,
+      "ex_Qn_C4": 634,
+      "is_exact": false,
+      "ratio": 0.619141,
+      "chung_lower_bound": 576,
+      "chung_ratio": 0.5625,
+      "method": "greedy_local_search",
+      "time_seconds": 3.21
+    },
+    "9": {
+      "n": 9,
+      "num_vertices": 512,
+      "num_edges_Qn": 2304,
+      "ex_Qn_C4": 1382,
+      "is_exact": false,
+      "ratio": 0.599826,
+      "chung_lower_bound": 1280,
+      "chung_ratio": 0.555556,
+      "method": "greedy_local_search",
+      "time_seconds": 5.86
+    },
+    "10": {
+      "n": 10,
+      "num_vertices": 1024,
+      "num_edges_Qn": 5120,
+      "ex_Qn_C4": 2987,
+      "is_exact": false,
+      "ratio": 0.583398,
+      "chung_lower_bound": 2816,
+      "chung_ratio": 0.55,
+      "method": "greedy_local_search",
+      "time_seconds": 16.02
+    }
+  },
+  "literature_known_values": {
+    "2": {
+      "value": 2,
+      "source": "trivial"
+    },
+    "3": {
+      "value": 6,
+      "source": "Brass-Harborth-Nienborg 1995"
+    },
+    "4": {
+      "value": 16,
+      "source": "Brass-Harborth-Nienborg 1995"
+    },
+    "5": {
+      "value": 32,
+      "source": "Brass-Harborth-Nienborg 1995"
+    },
+    "6": {
+      "value": 80,
+      "source": "Brass-Harborth-Nienborg 1995"
+    },
+    "7": {
+      "value": 160,
+      "source": "Brass-Harborth-Nienborg 1995"
+    },
+    "8": {
+      "value": 384,
+      "source": "Brass-Harborth-Nienborg 1995"
+    }
+  },
+  "best_upper_bound": {
+    "value": 0.60318,
+    "source": "Baber 2012",
+    "note": "Balogh-Hu-Lidicky-Liu 2014 give 0.6068"
+  },
+  "best_lower_bound": {
+    "construction": "Brass-Harborth-Nienborg 1995",
+    "formula": "1/2(n + sqrt(n)) * 2^(n-1) for n=4^r",
+    "asymptotic_ratio": "1/2 + Theta(1/sqrt(n))"
+  },
+  "gap": {
+    "upper": 0.60318,
+    "lower_asymptotic": 0.5,
+    "current_gap": 0.10318
+  },
+  "oeis": "No dedicated OEIS sequence found. Sequence for small n: see results.",
+  "new_results_found": true,
+  "new_result_details": [
+    2,
+    3,
+    4,
+    5
+  ]
+}
