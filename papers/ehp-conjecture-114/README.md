@@ -1,6 +1,6 @@
 # Computational Verification of the Erdos-Herzog-Piranian Conjecture for Degrees 3 <= n <= 10
 
-**Author:** Kenneth A. Mendoza (ORCID [0009-0003-2562-4883](https://orcid.org/0009-0003-2562-4883))
+**Author:** Kenneth A. Mendoza (ORCID [0009-0000-9475-5938](https://orcid.org/0009-0000-9475-5938))
 
 **Status:** Draft for Review -- Not for Distribution
 
