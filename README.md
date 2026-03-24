@@ -13,6 +13,7 @@ Computational solvers and experimental results for open Erdős problems.
 
 | Problem | Script | Prize | Key Finding |
 |---------|--------|-------|-------------|
+| #114 EHP Conj Bounds | `scripts/erdos-114/` | $1,000 | Computationally verified n=3 through n=8 bounds |
 | #86 C4-free hypercube | `scripts/erdos-86/` | $100 | Ratio ex(Q_n,C4)/e(Q_n) trends toward 1/2 |
 | #123 d-completeness | `scripts/erdos-123/` | $250 | All coprime triples with 2 are d-complete to N=10000 |
 | #161 Discrepancy jumps | `scripts/erdos-161/` | $500 | F^(2)(n,α) is a step function with universal jump at α=1/3 |
