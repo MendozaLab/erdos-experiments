@@ -4,6 +4,11 @@ Computational solvers and experimental results for open Erdős problems.
 
 **Author**: Kenneth A. Mendoza ([ORCID 0009-0000-9475-5938](https://orcid.org/0009-0000-9475-5938))
 
+## Preprints / Manuscripts
+
+- **[Draft Paper] Computational Verification of the EHP Conjecture for 3 ≤ n ≤ 8** 
+  [Read PDF Draft Here](papers/EHP_Bounds_Computational_Draft.pdf)
+
 ## Experiments
 
 | Problem | Script | Prize | Key Finding |
