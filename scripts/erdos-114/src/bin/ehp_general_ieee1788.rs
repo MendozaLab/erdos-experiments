@@ -387,13 +387,18 @@ fn l_star_interval(degree: usize) -> Interval {
         9 => interval!(20.89911180166708, 20.899111801667082).unwrap(),
         10 => interval!(22.88606032816543, 22.886060328165435).unwrap(),
         11 => interval!(24.87544868514786, 24.875448685147862).unwrap(),
+        12 => interval!(26.866651413612804, 26.866651413612818).unwrap(),
+        13 => interval!(28.85923995588822, 28.859239955888235).unwrap(),
+        14 => interval!(30.852910841548532, 30.852910841548546).unwrap(),
+        15 => interval!(32.84744316159256, 32.84744316159259).unwrap(),
+        16 => interval!(34.84267228433201, 34.84267228433204).unwrap(),
         _ => panic!("L* not pre-computed for degree {}", degree),
     }
 }
 
 /// Highest degree with a pre-computed L* interval. Bump this when adding
 /// new entries to l_star_interval().
-const MAX_PRECOMPUTED: usize = 11;
+const MAX_PRECOMPUTED: usize = 16;
 
 // ══════════════════════════════════════════════════════════════════
 // N-DIMENSIONAL BOX
