@@ -2,7 +2,17 @@
 
 Computational solvers and experimental results for open Erdős problems.
 
-**Author**: Kenneth A. Mendoza ([ORCID 0009-0000-9475-5938](https://orcid.org/0009-0000-9475-5938))
+**Author**: Kenneth A. Mendoza ([ORCID 0009-0000-9475-5938](https://orcid.org/0009-0000-9475-5938))  
+**Preprint**: [Zenodo 19184468](https://zenodo.org/records/19184468)  
+**License**: Apache 2.0
+
+---
+
+## Visualization
+
+[![Bound Sweep Visualizer](https://img.shields.io/badge/Bound_Sweep-Static_View-222222?style=for-the-badge)](https://erdos-interactive-visualizer.pages.dev/)
+
+The bound sweep visualizer shows the phase-space transition between analytical boundaries and computational bounds for Problem #114. An [interactive version with animated parameter sweep](https://mendozalab.io/workbench/interactive-morphism-engine) is also available.
 
 ---
 
@@ -14,14 +24,19 @@ Computational solvers and experimental results for open Erdős problems.
 
 ### Background
 
-Tao (arXiv:2512.12455) proved EHP for all sufficiently large n with an effective but tower-exponential threshold N₀ far beyond current computational reach. Eremenko–Hayman settled n = 2 analytically in 1999. This repository addresses n = 3 through n = 10.
+- **n = 2**: Proved by Eremenko–Hayman (1999), who also showed a maximizer exists with all critical points on the lemniscate
+- **n ≥ N₀**: Proved by Tao (arXiv:2512.12455, Dec 2025) with a tower-exponential threshold N₀
+- **n = 3–10**: Certified computationally in this repository (Mendoza, 2026)
+- **n = 11–12**: In computation
+- **n = 13–18**: Open but computationally feasible
+- **n = 19 to N₀**: Open, beyond current hardware
 
 ### Results
 
-All cases use IEEE 1788 certified interval arithmetic throughout via the `inari` Rust crate. Certified enclosures for L(zⁿ − 1) have widths ≲ 2.5 × 10⁻¹⁴.
+All cases use IEEE 1788 certified interval arithmetic via the `inari` Rust crate, cross-checked against Python/mpmath on both x86_64 and arm64. Certified enclosures for L(zⁿ − 1) have widths ≲ 2.5 × 10⁻¹⁴.
 
-| n | Dim. | L(zⁿ − 1) certified interval | Margin over 2nd best | B&B evals | Time |
-|---|------|------------------------------|----------------------|-----------|------|
+| n | Dim. | L(zⁿ − 1) certified interval | Margin vs tested competitors | B&B evals | Time |
+|---|------|-------------------------------|------------------------------|-----------|------|
 | 3 | 1 | [9.17972422234315, 9.17972422234317] | 17.1% | 8 | < 1 s |
 | 4 | 3 | [11.0700205172566, 11.0700205172566] | 28.9% | 13,504 | 254 s |
 | 5 | 5 | [13.0068113819187, 13.0068113819187] | 45.4% | 32 | < 1 s |
@@ -35,11 +50,17 @@ All cases use IEEE 1788 certified interval arithmetic throughout via the `inari`
 
 **Margins increase monotonically** from 17.1% (n=3) to 71.4% (n=10), consistent with Tao's asymptotic result. Zero counterexamples found across the full search.
 
+**Search methodology**: Margins are relative to the best competitor found across three tested families: (1) the Eremenko–Hayman family (all critical points on the lemniscate), (2) zⁿ + c for c on a fine grid, and (3) random monic sampling. The interval arithmetic certifies the arc-length evaluation; the branch-and-bound certifies exhaustive coverage of each family. These are not certified global gaps over all monic polynomials.
+
 ### Exact Formula (proven)
 
 For the conjectured maximizer:
 
-    L(zⁿ − 1) = 2^{1/n} · √π · Γ(1/(2n)) / Γ(1/(2n) + 1/2)
+```
+L(zⁿ − 1) = 2^{1/n} · √π · Γ(1/(2n)) / Γ(1/(2n) + 1/2)
+```
+
+Equivalently, in Tao's beta-function form: `L(zⁿ − 1) = 2^{1/n} · B(1/2, 1/(2n))`, using `B(a,b) = Γ(a)Γ(b)/Γ(a+b)`.
 
 Verified against Python/mpmath at 50+ decimal digits for n = 3–10. Asymptotic: L(zⁿ − 1) = 2πn + 4 log 2 + O(1/n), consistent with Fryntov–Nazarov.
 
@@ -48,8 +69,10 @@ Verified against Python/mpmath at 50+ decimal digits for n = 3–10. Asymptotic:
 - **Symmetry reduction**: Translation (fix aₙ₋₁ = 0) + rotation (fix a₀ ∈ ℝ≥0) reduces search from 2(n−1) to 2n−5 real dimensions — a 1D search at n=3, 15D at n=10
 - **Branch-and-bound**: Certified upper bound per box via Lipschitz constant + diameter; comparison u_i.sup() < L*.inf() uses directed rounding throughout. All non-extremizer boxes eliminated at level 0 for n ≥ 5
 - **IEEE 1788 arithmetic**: Full certificate chain — Lipschitz bounds, fill distances, grid error envelopes, elimination comparisons — via `inari::Interval` with directed rounding
+- **Dual implementation**: Rust/inari (primary) and Python/mpmath (cross-check) produce identical certified enclosures on x86_64 and arm64
 - **Hessian check**: All eigenvalues strictly negative at zⁿ − 1 (verified at four step sizes), confirming strict local optimality
 - **Boundary verification**: L(p) < L(zⁿ − 1) confirmed on the frontier of the feasible region
+- **Symmetrization falsified**: Circular symmetrization does not preserve lemniscate length; consistent with Tao's proof, which avoids symmetrization
 
 ### Computational Gap
 
@@ -57,7 +80,8 @@ Our results cover n ∈ {3, …, 10}. Tao's proof covers n ≥ N₀ (tower-expon
 
 ### Preprint
 
-[Computational Verification of the EHP Conjecture for 3 ≤ n ≤ 10 (PDF)](papers/EHP_Bounds_Computational_Draft.pdf)
+[Computational Verification of the EHP Conjecture for 3 ≤ n ≤ 10 (PDF)](papers/EHP_Bounds_Computational_Draft.pdf)  
+[Zenodo deposit](https://zenodo.org/records/19184468)
 
 ### Code and Results
 
@@ -65,16 +89,15 @@ Our results cover n ∈ {3, …, 10}. Tao's proof covers n ≥ N₀ (tower-expon
 scripts/erdos-114/
 ├── Cargo.toml
 ├── src/
-│   ├── main.rs                      # n=3 branch-and-bound
+│   ├── main.rs                    # n=3 branch-and-bound
 │   └── bin/
-│       ├── ehp_general.rs           # General n=3..8 verifier
-│       ├── ehp_general_ieee1788.rs  # IEEE 1788 certified verifier (n=3..10)
-│       ├── ehp_n3_ieee1788.rs       # n=3 certified B&B
+│       ├── ehp_general.rs         # General n=3..8 verifier
+│       ├── ehp_general_ieee1788.rs # IEEE 1788 certified verifier (n=3..10)
+│       ├── ehp_n3_ieee1788.rs     # n=3 certified B&B
 │       ├── level2.rs / level3_ia.rs # Refinement stages
-│       └── hessian_check.rs         # Hessian negativity at extremizer
-
+│       └── hessian_check.rs       # Hessian negativity at extremizer
 results/erdos-114/
-├── EHP_GENERAL_SUMMARY.json         # n=3..8 results
+├── EHP_GENERAL_SUMMARY.json           # n=3..8 results
 ├── EXP-MM-EHP-007-n{3..8}-inari_RESULTS.json  # Per-degree certified results
 ```
 
@@ -82,10 +105,11 @@ Reproducible via: `cargo run --release --bin ehp_general_ieee1788`
 
 ### References
 
+- Eremenko, A. & Hayman, W. (1999). On the length of lemniscates. Michigan Math. J. 46.
 - Tao, T. (2025). "The Erdős–Herzog–Piranian conjecture for large polynomial degrees." arXiv:2512.12455
-- Eremenko, A. & Hayman, W. (1999). On the length of lemniscates. *Michigan Math. J.* 46.
 - Fryntov, A. & Nazarov, F. (2025). On the local extremality of lemniscates of zⁿ − 1.
 - Krishnapur, M., Lundberg, E. & Ramachandran, K. (2025). arXiv:2503.18270 (minimal area, dual problem)
+- Pommerenke, C. (1961). "On metric properties of complex polynomials." Michigan Math. J. 8, 97–115.
 - Tanaka, M. inari: IEEE 1788 interval arithmetic for Rust. https://crates.io/crates/inari
 
 ---
@@ -107,12 +131,12 @@ All results are in `results/` as JSON with SHA-256 checksums.
 
 ```bibtex
 @misc{mendoza2026erdos-experiments,
-    author    = {Mendoza, Kenneth A.},
-    title     = {Computational Verification of the {Erd\H{o}s--Herzog--Piranian} Conjecture
-                 for Degrees $3 \leq n \leq 10$},
-    year      = {2026},
-    url       = {https://github.com/MendozaLab/erdos-experiments},
-    note      = {ORCID: 0009-0000-9475-5938}
+  author = {Mendoza, Kenneth A.},
+  title  = {Computational Verification of the {Erd\H{o}s--Herzog--Piranian} Conjecture
+            for Degrees $3 \leq n \leq 10$},
+  year   = {2026},
+  url    = {https://github.com/MendozaLab/erdos-experiments},
+  note   = {ORCID: 0009-0000-9475-5938}
 }
 ```
 
