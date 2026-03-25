@@ -15,7 +15,7 @@
 
 use inari::{interval, Interval};
 use rayon::prelude::*;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::time::Instant;
 
@@ -398,7 +398,7 @@ fn upper_bound_box(
 // RESULT STRUCTURES
 // ══════════════════════════════════════════════════════════════════
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize, Clone)]
 struct ProofResult {
     experiment: String,
     degree: usize,
@@ -415,7 +415,7 @@ struct ProofResult {
     total_time_secs: f64,
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize, Clone)]
 struct LevelInfo {
     level: usize,
     boxes: usize,
@@ -721,6 +721,71 @@ fn create_initial_boxes_recursive(
 // MAIN
 // ══════════════════════════════════════════════════════════════════
 
+/// Load an existing result JSON from disk (for previously computed degrees).
+fn load_result_from_disk(degree: usize) -> Option<ProofResult> {
+    let filename = format!("EXP-MM-EHP-007-n{}-inari_RESULTS.json", degree);
+    let json = std::fs::read_to_string(&filename).ok()?;
+    serde_json::from_str(&json).ok()
+}
+
+/// Print the cumulative verification table for all results collected so far.
+/// Shows n=3 through the highest degree proven, loading existing files for
+/// any degree not in `session_results`.
+fn print_cumulative_proof(session_results: &[ProofResult], highest_completed: usize) {
+    // Build a map of all results: load from disk for n=3..highest_completed
+    let mut all: Vec<ProofResult> = Vec::new();
+    for n in 3..=highest_completed {
+        // Prefer session result (just computed), fall back to disk
+        if let Some(r) = session_results.iter().find(|r| r.degree == n) {
+            all.push(r.clone());
+        } else if let Some(r) = load_result_from_disk(n) {
+            all.push(r);
+        }
+        // If neither exists, we skip that degree (gap in coverage)
+    }
+
+    if all.is_empty() { return; }
+
+    let all_proven = all.iter().all(|r| r.verdict.contains("PROVEN"));
+    let covered: Vec<usize> = all.iter().map(|r| r.degree).collect();
+    let min_n = *covered.iter().min().unwrap_or(&3);
+    let max_n = *covered.iter().max().unwrap_or(&3);
+
+    println!("\n╔══════════════════════════════════════════════════════════════════════════╗");
+    println!("║  CUMULATIVE PROOF STATUS  n={} through n={}                             ║", min_n, max_n);
+    println!("║  IEEE 1788 Interval Arithmetic · inari (MPFR directed rounding)        ║");
+    println!("╠══════════════════════════════════════════════════════════════════════════╣");
+    println!("║  n │ dim │ L*(z^n-1) certified bounds              │ BB  │ Out │ Hess │ t(s)  ║");
+    println!("╠══════════════════════════════════════════════════════════════════════════╣");
+    for r in &all {
+        let bb  = if r.bb_proof_complete  { "✓" } else { "✗" };
+        let out = if r.outer_domain_safe  { "✓" } else { "✗" };
+        let hes = if r.hessian_negative   { "✓" } else { "✗" };
+        let tag = if r.verdict.contains("PROVEN") { "PROVEN ✓" } else { "INCOMPLETE ✗" };
+        println!("║ {:2} │ {:3} │ [{:.10}, {:.10}] │  {}  │  {}  │  {}   │ {:6.1} ║",
+            r.degree, r.reduced_dim,
+            r.l_star_lower, r.l_star_upper,
+            bb, out, hes, r.total_time_secs);
+        println!("║    │     │ {}                               ║",
+            format!("{:<44}", tag));
+    }
+    println!("╠══════════════════════════════════════════════════════════════════════════╣");
+    if all_proven && covered.len() == (max_n - min_n + 1) {
+        println!("║  RESULT: EHP CONJECTURE CERTIFIED FOR ALL n = {} THROUGH {}             ║", min_n, max_n);
+        println!("║  All three proof pillars satisfied for each n:                         ║");
+        println!("║    (1) Branch-and-bound: only extremizer boxes survive                 ║");
+        println!("║    (2) Outer domain: no polynomial outside D_R exceeds L*              ║");
+        println!("║    (3) Strict concavity: Hessian negative-definite at z^n-1            ║");
+        println!("║  Together with Tao (arXiv:2512.12455) for large n:                    ║");
+        println!("║  EHP is proven for n ∈ {{2 (Eremenko-Hayman 1999), {}-{}}} ∪ [N₀,∞)   ║", min_n, max_n);
+    } else {
+        let proven: Vec<usize> = all.iter().filter(|r| r.verdict.contains("PROVEN")).map(|r| r.degree).collect();
+        println!("║  PROVEN degrees: {:?}", proven);
+        println!("║  Incomplete or missing degrees present — proof chain has gaps.         ║");
+    }
+    println!("╚══════════════════════════════════════════════════════════════════════════╝");
+}
+
 fn main() {
     println!("╔══════════════════════════════════════════════════════════════╗");
     println!("║  EHP CONJECTURE: ALL SMALL N — IEEE 1788 PROOF ENGINE      ║");
@@ -736,22 +801,17 @@ fn main() {
     };
 
     let t_global = Instant::now();
-    let mut all_results = Vec::new();
+    let mut session_results: Vec<ProofResult> = Vec::new();
 
     for &n in &degrees {
         let result = prove_degree(n);
-        all_results.push(result);
+        session_results.push(result);
+
+        // After each n, print cumulative verification of n=3 through this n
+        let highest = session_results.iter().map(|r| r.degree).max().unwrap_or(n).max(n);
+        print_cumulative_proof(&session_results, highest);
     }
 
-    // Grand summary
     let total_time = t_global.elapsed().as_secs_f64();
-    println!("\n╔══════════════════════════════════════════════════════════════╗");
-    println!("║  GRAND SUMMARY                                             ║");
-    println!("╚══════════════════════════════════════════════════════════════╝");
-    for r in &all_results {
-        let tag = if r.verdict.contains("PROVEN") { "✓" } else { "✗" };
-        println!("  n={}: {:30} time={:8.1}s  {}",
-            r.degree, r.verdict, r.total_time_secs, tag);
-    }
-    println!("\n  Total time: {:.1}s", total_time);
+    println!("\n  Session total time: {:.1}s", total_time);
 }
