@@ -276,6 +276,10 @@ fn l_star_interval(degree: usize) -> Interval {
     }
 }
 
+/// Highest degree with a pre-computed L* interval. Bump this when adding
+/// new entries to l_star_interval().
+const MAX_PRECOMPUTED: usize = 11;
+
 // ══════════════════════════════════════════════════════════════════
 // N-DIMENSIONAL BOX
 // ══════════════════════════════════════════════════════════════════
@@ -795,8 +799,14 @@ fn main() {
 
     let args: Vec<String> = std::env::args().skip(1).collect();
     let degrees: Vec<usize> = if args.is_empty() {
-        vec![3, 4, 5, 6, 7, 8]
+        // No args: run everything we have L* for
+        (3..=MAX_PRECOMPUTED).collect()
+    } else if args.len() == 1 {
+        // Single arg: treat as starting n, run through MAX_PRECOMPUTED
+        let start: usize = args[0].parse().expect("degree must be a positive integer");
+        (start..=MAX_PRECOMPUTED).collect()
     } else {
+        // Multiple explicit args: run exactly those degrees
         args.iter().filter_map(|s| s.parse().ok()).collect()
     };
 
