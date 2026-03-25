@@ -967,7 +967,7 @@ fn main() {
     println!("╔══════════════════════════════════════════════════════════════╗");
     println!("║  EHP CONJECTURE: ALL SMALL N — IEEE 1788 PROOF ENGINE      ║");
     println!("║  Rust + inari (MPFR directed rounding)                     ║");
-    println!("║  Kenneth A. Mendoza · Oregon Coast AI · March 2026         ║");
+    println!("║  Kenneth A. Mendoza · MendozaLab.org · March 2026         ║");
     println!("╚══════════════════════════════════════════════════════════════╝");
 
     let args: Vec<String> = std::env::args().skip(1).collect();
