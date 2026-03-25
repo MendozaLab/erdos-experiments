@@ -269,6 +269,9 @@ fn l_star_interval(degree: usize) -> Interval {
         6 => interval!(14.965732189658617, 14.965732189658640).unwrap(),
         7 => interval!(16.936900648250898, 16.936900648250923).unwrap(),
         8 => interval!(18.915553136286245, 18.915553136286267).unwrap(),
+        9 => interval!(20.89911180166708, 20.899111801667082).unwrap(),
+        10 => interval!(22.88606032816543, 22.886060328165435).unwrap(),
+        11 => interval!(24.87544868514786, 24.875448685147862).unwrap(),
         _ => panic!("L* not pre-computed for degree {}", degree),
     }
 }
