@@ -39,7 +39,7 @@ All cases use IEEE 1788 certified interval arithmetic throughout via the `inari`
 
 For the conjectured maximizer:
 
-    L(zⁿ − 1) = 2^{1+1/n} · √π · Γ(1/(2n)) / Γ(1/(2n) + 1/2)
+    L(zⁿ − 1) = 2^{1/n} · √π · Γ(1/(2n)) / Γ(1/(2n) + 1/2)
 
 Verified against Python/mpmath at 50+ decimal digits for n = 3–10. Asymptotic: L(zⁿ − 1) = 2πn + 4 log 2 + O(1/n), consistent with Fryntov–Nazarov.
 
