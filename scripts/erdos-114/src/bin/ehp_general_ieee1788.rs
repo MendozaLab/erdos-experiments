@@ -40,13 +40,16 @@
 //!
 //! ## Usage
 //! ```text
-//! ehp_general_ieee1788              # run n = 3 through MAX_PRECOMPUTED
-//! ehp_general_ieee1788 9            # run n = 9 through MAX_PRECOMPUTED
-//! ehp_general_ieee1788 9 10 11      # run exactly n = 9, 10, 11
+//! ehp_general_ieee1788                                         # n = 3..MAX_PRECOMPUTED, results in ./
+//! ehp_general_ieee1788 9                                       # n = 9..MAX_PRECOMPUTED
+//! ehp_general_ieee1788 9 10 11                                 # exactly n = 9, 10, 11
+//! ehp_general_ieee1788 --outdir ../../results/erdos-114        # canonical results path
+//! ehp_general_ieee1788 --outdir /abs/path 11                   # outdir + start degree
 //! ```
 //!
 //! Results are written to `EXP-MM-EHP-007-n{n}-inari_RESULTS.json` and a
-//! matching `.sha256` checksum file in the current working directory.
+//! matching `.sha256` checksum file. Default output directory is `.` (cwd).
+//! Use `--outdir` to redirect to the canonical `results/erdos-114/` location.
 //!
 //! **Author:** Kenneth A. Mendoza · March 2026
 //! **Experiment ID:** EXP-MM-EHP-007 (general-n series, Rust/inari)
@@ -600,7 +603,7 @@ struct LevelInfo {
 /// The result is also written immediately to disk so that partial runs survive
 /// interruption and future sessions can load prior results for the cumulative
 /// summary table.
-fn prove_degree(degree: usize) -> ProofResult {
+fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
     let d = reduced_dim(degree);
     let cfg = config_for(degree);
     let t_total = Instant::now();
@@ -852,13 +855,13 @@ fn prove_degree(degree: usize) -> ProofResult {
 
     // Save to disk immediately
     let json = serde_json::to_string_pretty(&result).unwrap();
-    let filename = format!("EXP-MM-EHP-007-n{}-inari_RESULTS.json", degree);
+    let filename = format!("{}/EXP-MM-EHP-007-n{}-inari_RESULTS.json", outdir, degree);
     std::fs::write(&filename, &json).unwrap_or_else(|e| {
         eprintln!("WARNING: could not write {}: {}", filename, e);
     });
     // SHA-256
     let hash = sha256::digest(json.as_bytes());
-    let sha_file = format!("EXP-MM-EHP-007-n{}-inari_RESULTS.sha256", degree);
+    let sha_file = format!("{}/EXP-MM-EHP-007-n{}-inari_RESULTS.sha256", outdir, degree);
     std::fs::write(&sha_file, &hash).unwrap_or_else(|_| {});
     println!("  💾 SAVED: {}", filename);
 
@@ -904,8 +907,8 @@ fn create_initial_boxes_recursive(
 // ══════════════════════════════════════════════════════════════════
 
 /// Load an existing result JSON from disk (for previously computed degrees).
-fn load_result_from_disk(degree: usize) -> Option<ProofResult> {
-    let filename = format!("EXP-MM-EHP-007-n{}-inari_RESULTS.json", degree);
+fn load_result_from_disk(degree: usize, outdir: &str) -> Option<ProofResult> {
+    let filename = format!("{}/EXP-MM-EHP-007-n{}-inari_RESULTS.json", outdir, degree);
     let json = std::fs::read_to_string(&filename).ok()?;
     serde_json::from_str(&json).ok()
 }
@@ -913,14 +916,14 @@ fn load_result_from_disk(degree: usize) -> Option<ProofResult> {
 /// Print the cumulative verification table for all results collected so far.
 /// Shows n=3 through the highest degree proven, loading existing files for
 /// any degree not in `session_results`.
-fn print_cumulative_proof(session_results: &[ProofResult], highest_completed: usize) {
+fn print_cumulative_proof(session_results: &[ProofResult], highest_completed: usize, outdir: &str) {
     // Build a map of all results: load from disk for n=3..highest_completed
     let mut all: Vec<ProofResult> = Vec::new();
     for n in 3..=highest_completed {
         // Prefer session result (just computed), fall back to disk
         if let Some(r) = session_results.iter().find(|r| r.degree == n) {
             all.push(r.clone());
-        } else if let Some(r) = load_result_from_disk(n) {
+        } else if let Some(r) = load_result_from_disk(n, outdir) {
             all.push(r);
         }
         // If neither exists, we skip that degree (gap in coverage)
@@ -975,9 +978,24 @@ fn main() {
     println!("║  Kenneth A. Mendoza · MendozaLab.org · March 2026         ║");
     println!("╚══════════════════════════════════════════════════════════════╝");
 
-    let args: Vec<String> = std::env::args().skip(1).collect();
+    // Parse args: optional --outdir <path> followed by optional degree list.
+    // Supported forms:
+    //   (no args)                     → outdir=".", n=3..MAX_PRECOMPUTED
+    //   --outdir <path>               → outdir=path, n=3..MAX_PRECOMPUTED
+    //   --outdir <path> <start>       → outdir=path, n=start..MAX_PRECOMPUTED
+    //   --outdir <path> <n1> <n2> … → outdir=path, explicit list
+    //   <start>                       → outdir=".", n=start..MAX_PRECOMPUTED
+    //   <n1> <n2> …                  → outdir=".", explicit list
+    let raw_args: Vec<String> = std::env::args().skip(1).collect();
+    let (outdir, args): (String, Vec<String>) = if raw_args.first().map(|s| s.as_str()) == Some("--outdir") {
+        let dir = raw_args.get(1).cloned().unwrap_or_else(|| ".".to_string());
+        (dir, raw_args.into_iter().skip(2).collect())
+    } else {
+        (".".to_string(), raw_args)
+    };
+
     let degrees: Vec<usize> = if args.is_empty() {
-        // No args: run everything we have L* for
+        // No degree args: run everything we have L* for
         (3..=MAX_PRECOMPUTED).collect()
     } else if args.len() == 1 {
         // Single arg: treat as starting n, run through MAX_PRECOMPUTED
@@ -988,16 +1006,18 @@ fn main() {
         args.iter().filter_map(|s| s.parse().ok()).collect()
     };
 
+    println!("  Output directory: {}", outdir);
+
     let t_global = Instant::now();
     let mut session_results: Vec<ProofResult> = Vec::new();
 
     for &n in &degrees {
-        let result = prove_degree(n);
+        let result = prove_degree(n, &outdir);
         session_results.push(result);
 
         // After each n, print cumulative verification of n=3 through this n
         let highest = session_results.iter().map(|r| r.degree).max().unwrap_or(n).max(n);
-        print_cumulative_proof(&session_results, highest);
+        print_cumulative_proof(&session_results, highest, &outdir);
     }
 
     let total_time = t_global.elapsed().as_secs_f64();
