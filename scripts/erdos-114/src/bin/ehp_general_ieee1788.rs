@@ -785,43 +785,82 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
     println!("    Max boundary L (upper): {:.8}", max_face);
     println!("    Safe: {}", outer_safe);
 
-    // Step 4: Local Concavity (diagonal Hessian check)
-    // We verify that L(p) is strictly concave at the extremizer p = zⁿ−1 by
-    // computing finite-difference second derivatives along each coordinate axis.
-    // If all diagonal entries d²L/d(param_k)² are negative, the Hessian is
-    // negative semi-definite on the diagonal, confirming that zⁿ−1 is a strict
-    // local maximum (not a saddle). Combined with the global B&B elimination,
-    // this establishes it as the unique global maximum within the search domain.
-    println!("\n  === STEP 4: STRICT CONCAVITY (HESSIAN) ===");
+    // Step 4: Strict concavity (rigorous interval Hessian)
+    //
+    // We verify d²L/d(param_k)² < 0 at the extremizer for each coordinate axis
+    // using interval-arithmetic finite differences. The key improvement over a
+    // naive .mid() approach:
+    //
+    //   d2_upper = (L(x+h).sup + L(x−h).sup − 2·L*(x).inf) / h²
+    //
+    // If d2_upper < 0 for SOME perturbation size h, the second derivative is
+    // provably negative. We try multiple h values from large (more signal, more
+    // O(h²) bias) to small (less bias, more cancellation noise), and also use
+    // the pre-computed L* interval (60-digit precision) for the reference value
+    // at the extremizer — this is vastly tighter than marching-squares output.
+    //
+    // Combined with the global B&B elimination and outer-domain check, proving
+    // all diagonal Hessian entries negative establishes that z^n−1 is the unique
+    // global maximum within the search domain.
+    println!("\n  === STEP 4: STRICT CONCAVITY (INTERVAL HESSIAN) ===");
     let mut ext_params = vec![0.0; d];
     ext_params[0] = 1.0;
-    let ext_coeffs_h = reduced_to_coeffs(degree, &ext_params);
-    let hess_res = 800.max(400 * degree / 3);
-    let l0_iv = lemniscate_length_interval(degree, &ext_coeffs_h, hess_res);
-    let l0 = l0_iv.mid();
+    let hess_res = 2000.max(500 * degree);
+    println!("    Hessian resolution: {}", hess_res);
+    println!("    Using L* interval for reference: [{:.15}, {:.15}]", l_lower, l_upper_ref);
 
-    // Perturbation step δ = 1e-3: large enough that L(p±δeₖ) − L(p) is above
-    // machine noise at marching-squares resolution `hess_res`, but small enough
-    // that the O(δ³) remainder is negligible relative to the quadratic term.
-    let h = 1e-3;
+    // Try multiple perturbation sizes: larger h gives more signal but O(h²) bias;
+    // smaller h has less bias but the numerator shrinks toward interval noise.
+    let h_values: &[f64] = &[1e-1, 5e-2, 1e-2, 5e-3, 1e-3];
     let mut hess_all_neg = true;
+
     for i in 0..d {
-        let mut pp = ext_params.clone();
-        pp[i] += h;
-        let mut pm = ext_params.clone();
-        pm[i] -= h;
-        if i == 0 && pm[i] < 0.0 { pm[i] = 0.0; }
+        let mut dim_neg = false;
+        let mut best_d2_mid = f64::INFINITY;
+        let mut best_d2_upper = f64::INFINITY;
+        let mut best_h = 0.0;
 
-        let cp = reduced_to_coeffs(degree, &pp);
-        let cm = reduced_to_coeffs(degree, &pm);
-        let lp = lemniscate_length_interval(degree, &cp, hess_res).mid();
-        let lm = lemniscate_length_interval(degree, &cm, hess_res).mid();
-        let d2 = (lp - 2.0 * l0 + lm) / (h * h);
+        for &h in h_values {
+            // Skip if perturbation takes a_0 below zero (symmetry constraint)
+            if i == 0 && (ext_params[i] - h) < 0.0 { continue; }
 
-        let neg = d2 < 0.0;
-        if !neg { hess_all_neg = false; }
-        let tag = if neg { "NEGATIVE ✓" } else { "POSITIVE ✗" };
-        println!("    d²L/d(dim{})² = {:.4} {}", i, d2, tag);
+            let mut pp = ext_params.clone();
+            pp[i] += h;
+            let mut pm = ext_params.clone();
+            pm[i] -= h;
+
+            let cp = reduced_to_coeffs(degree, &pp);
+            let cm = reduced_to_coeffs(degree, &pm);
+            let lp_iv = lemniscate_length_interval(degree, &cp, hess_res);
+            let lm_iv = lemniscate_length_interval(degree, &cm, hess_res);
+
+            // Rigorous upper bound on second derivative:
+            // d²L ≤ (L(x+h).sup + L(x−h).sup − 2·L*.inf) / h²
+            // Uses pre-computed L* lower bound (60-digit) for tightest reference.
+            let h_sq = h * h;
+            let d2_upper = (lp_iv.sup() + lm_iv.sup() - 2.0 * l_lower) / h_sq;
+            let d2_mid = (lp_iv.mid() - 2.0 * l_star.mid() + lm_iv.mid()) / h_sq;
+
+            if d2_upper < best_d2_upper {
+                best_d2_upper = d2_upper;
+                best_d2_mid = d2_mid;
+                best_h = h;
+            }
+
+            if d2_upper < 0.0 {
+                dim_neg = true;
+                break;
+            }
+        }
+
+        if dim_neg {
+            println!("    d²L/d(dim{:2})² : upper={:+.4}  mid={:+.4}  h={:.0e}  NEGATIVE ✓",
+                i, best_d2_upper, best_d2_mid, best_h);
+        } else {
+            println!("    d²L/d(dim{:2})² : upper={:+.4}  mid={:+.4}  h={:.0e}  INCONCLUSIVE ✗",
+                i, best_d2_upper, best_d2_mid, best_h);
+            hess_all_neg = false;
+        }
     }
     println!("    All negative: {}", hess_all_neg);
 

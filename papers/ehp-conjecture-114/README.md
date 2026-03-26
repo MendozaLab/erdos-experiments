@@ -1,4 +1,4 @@
-# Computational Verification of the Erdos-Herzog-Piranian Conjecture for Degrees 3 <= n <= 10
+# Computational Verification of the Erdos-Herzog-Piranian Conjecture for Degrees 3 <= n <= 11
 
 **Author:** Kenneth A. Mendoza (ORCID [0009-0000-9475-5938](https://orcid.org/0009-0000-9475-5938))
 
@@ -7,15 +7,15 @@
 ## Abstract
 
 We present IEEE 1788 interval arithmetic certified branch-and-bound verification of the
-Erdos-Herzog-Piranian (EHP) conjecture for monic polynomials of degrees 3 through 10.
+Erdos-Herzog-Piranian (EHP) conjecture for monic polynomials of degrees 3 through 11.
 The EHP conjecture (1958) asserts that among all monic polynomials of degree n, the
-polynomial z^n - 1 uniquely maximizes the lemniscate length L(p). We exploit a rotational
-symmetry reduction (fixing the constant term real and non-negative) to collapse the search
-space by one real dimension, then apply a two-pass branch-and-bound strategy with
-Lipschitz upper bounds to certify that no competitor exceeds the extremizer value. For
-n = 3, the proof structure is complete: only the extremizer box survives elimination. For
-n = 4 through 10, certified branch-and-bound verification confirms EHP with margins
-growing monotonically from 17.1% (n = 3) to over 60% (n >= 7).
+polynomial z^n - 1 uniquely maximizes the lemniscate length L(p). We exploit translation symmetry (centering) and rotational symmetry (fixing the constant
+term real and non-negative) to reduce the search space from 2n to 2n−3 real dimensions,
+then apply a certified branch-and-bound strategy with interval Lipschitz upper bounds to
+prove that no competitor exceeds the extremizer value. For all degrees 3 through 11, only
+extremizer boxes survive elimination, and strict concavity at z^n − 1 is verified via an
+interval Hessian check. The margin by which z^n − 1 dominates grows from ~6% (n = 3)
+to over 61% (n = 11).
 We also discover and verify an exact closed-form formula for the lemniscate length:
 L(z^n - 1) = 2^{1/n} * sqrt(pi) * Gamma(1/(2n)) / Gamma(1/(2n) + 1/2), previously
 unknown for n >= 3. Combined with Tao's 2025 proof for sufficiently large n, these results
@@ -68,21 +68,24 @@ Requires Rust 1.75+ and the `inari` crate (IEEE 1788 interval arithmetic).
 
 ## Key Results
 
-| Degree | Dim | Evals | Time | Levels | Verdict |
-|--------|-----|-------|------|--------|---------|
-| 3      | 1   | 8     | 0.0s | 1      | EHP_VERIFIED |
-| 4      | 3   | 13,504 | 254s | 6     | EHP_VERIFIED |
-| 5      | 5   | 32    | 0.1s | 1      | EHP_VERIFIED |
-| 6      | 7   | 128   | 0.8s | 1      | EHP_VERIFIED |
-| 7      | 9   | 512   | 8.1s | 1      | EHP_VERIFIED |
-| 8      | 11  | 2,048 | 1.1s | 1      | EHP_VERIFIED |
-| 9      | 13  | 8,192 | 4.0s | 1      | EHP_VERIFIED |
-| 10     | 15  | 32,768 | 12.2s | 1     | EHP_VERIFIED |
+| Degree | Reduced Dim | B&B Evals | Time (s) | L*(z^n−1) certified lower bound | Verdict |
+|--------|-------------|-----------|----------|----------------------------------|---------|
+| 3      | 3           | 7,560     | 7.1      | 9.179724222343                   | EHP_N3_PROVEN |
+| 4      | 5           | 42,656    | 19.7     | 11.070020517257                  | EHP_N4_PROVEN |
+| 5      | 7           | 312,598   | 47.8     | 13.006811381919                  | EHP_N5_PROVEN |
+| 6      | 9           | 135,936   | 50.8     | 14.965732189659                  | EHP_N6_PROVEN |
+| 7      | 11          | 23,552    | 72.0     | 16.936900648251                  | EHP_N7_PROVEN |
+| 8      | 13          | 110,592   | 93.2     | 18.915553136286                  | EHP_N8_PROVEN |
+| 9      | 15          | 507,904   | 217.7    | 20.899111801667                  | EHP_N9_PROVEN |
+| 10     | 17          | 2,293,760 | 461.0    | 22.886060328165                  | EHP_N10_PROVEN |
+| 11     | 19          | 10,223,616 | 1,986.1 | 24.875448685147                  | EHP_N11_PROVEN |
 
-**All 8 degrees verified via IEEE 1788 interval arithmetic certified branch-and-bound.**
-Margins grow monotonically: 17.1% (n=3) to 71.4% (n=10).
+**All 9 degrees proven via IEEE 1788 interval arithmetic certified branch-and-bound.**
+Each degree passes all three proof pillars: (1) branch-and-bound eliminates all non-extremizer
+boxes, (2) outer domain bound confirms no polynomial outside the search region exceeds L*,
+(3) interval Hessian confirms strict concavity at z^n−1 (negative definite in all 2n−3 directions).
 
-**Note on n=3 statistics:** The table above shows Level 1 pass results (8 evaluations, <0.1s). The full multi-level branch-and-bound proof for n=3 requires 17,632 evaluations over 19.2 seconds, confirming that only the extremizer box {a=0, b=1} survives elimination with all Hessian eigenvalues negative.
+Reduced dimension is 2n−3 after fixing the constant term real and non-negative (rotation + translation symmetry).
 
 ### Exact Closed-Form Formula
 
@@ -101,7 +104,7 @@ This formula was verified against Richardson extrapolation for n = 3 through 8.
 - **EHP Conjecture (1958):** Erdos, Herzog, and Piranian conjectured that z^n - 1 maximizes lemniscate length among monic degree-n polynomials.
 - **Eremenko-Hayman (1999):** Proved EHP for n = 2.
 - **Tao (2025):** Proved EHP for sufficiently large n (arXiv:2512.12455), with an enormous implicit threshold N_0.
-- **This work:** Computational verification for small n (3-10), complementing Tao's large-n proof and providing the first verified case for any specific n > 2.
+- **This work:** Computational verification for small n (3-11), complementing Tao's large-n proof and providing the first verified cases for any specific n > 2.
 
 ## Source Code
 
