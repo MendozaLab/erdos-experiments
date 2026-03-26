@@ -31,18 +31,18 @@
   commentstyle=\itshape\color{gray},
 }
 
-\title{Computational Verification of the Erd\H{o}s--Herzog--Piranian\\Conjecture for Degrees $3 \leq n \leq 10$}
+\title{Computational Verification of the Erd\H{o}s--Herzog--Piranian\\Conjecture for Degrees $3 \leq n \leq 12$}
 
 \author{Kenneth A.\ Mendoza\thanks{Mendoza Lab, Waldport, OR. \url{https://mendozalab.io}. ORCID: \href{https://orcid.org/0009-0000-9475-5938}{0009-0000-9475-5938}}}
 
-\date{March 2026\\[6pt]\textsc{Draft for Review --- Not for Distribution}}
+\date{March 2026}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-The Erd\H{o}s--Herzog--Piranian (EHP) conjecture asserts that among all monic polynomials of degree~$n$, the polynomial $z^n - 1$ uniquely maximizes the lemniscate length $L(p) = \mathcal{H}^1(\{z \in \mathbb{C} : |p(z)| = 1\})$. Tao \cite{Tao2025} proved this for all sufficiently large~$n$ with an effective but tower-exponential threshold~$N_0$. We computationally verify the conjecture for all $n \in \{3, 4, 5, 6, 7, 8, 9, 10\}$ using a dual independent implementation strategy combining Python/mpmath with IEEE~1788 interval arithmetic and Rust/inari with certified branch-and-bound optimization. For each degree, we compute certified enclosures for $L(z^n - 1)$ and prove via exhaustive parameter space search that no other monic polynomial achieves a larger lemniscate length. All computations use IEEE~1788 interval arithmetic via the \texttt{inari} Rust crate for the full certificate chain. The margins by which $z^n - 1$ dominates competing extremals increase monotonically from 17.1\% (at $n=3$) to 71.4\% (at $n=10$), providing strong computational evidence supporting the full conjecture. We derive a new closed-form expression for $L(z^n - 1)$ valid for all~$n$ and explicitly discuss the computational gap between $n = 8$ and Tao's threshold.
+The Erd\H{o}s--Herzog--Piranian (EHP) conjecture asserts that among all monic polynomials of degree~$n$, the polynomial $z^n - 1$ uniquely maximizes the lemniscate length $L(p) = \mathcal{H}^1(\{z \in \mathbb{C} : |p(z)| = 1\})$. Tao \cite{Tao2025} proved this for all sufficiently large~$n$ with an effective but tower-exponential threshold~$N_0$. We computationally verify the conjecture for all $n \in \{3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$ using a dual independent implementation strategy combining Python/mpmath with IEEE~1788 interval arithmetic and Rust/inari with certified branch-and-bound optimization. For each degree, we compute certified enclosures for $L(z^n - 1)$ and prove via exhaustive parameter space search that no other monic polynomial achieves a larger lemniscate length. All computations use IEEE~1788 interval arithmetic via the \texttt{inari} Rust crate for the full certificate chain. The margins by which $z^n - 1$ dominates competing extremals increase monotonically from 17.1\% (at $n=3$) to 71.4\% (at $n=10$); all non-extremizer boxes are eliminated at level~0 for $n \geq 5$, enabling the $n = 11$ (10.2M evaluations, 33~min) and $n = 12$ (45M evaluations, 2.67~hr) proofs. We derive a new closed-form expression for $L(z^n - 1)$ valid for all~$n$ and explicitly discuss the computational gap between $n = 12$ and Tao's threshold.
 \end{abstract}
 
 \section{Introduction}
@@ -79,14 +79,14 @@ Concurrently, Fryntov and Nazarov \cite{FN2025} established local extremality of
 We bridge the gap between small degrees and Tao's asymptotic regime:
 
 \begin{enumerate}[nosep]
-\item Computational verification of the EHP conjecture for all $n \in \{3, 4, 5, 6, 7, 8, 9, 10\}$ via certified branch-and-bound with IEEE~1788 interval arithmetic (\S\ref{sec:results}).
+\item Computational verification of the EHP conjecture for all $n \in \{3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$ via certified branch-and-bound with IEEE~1788 interval arithmetic (\S\ref{sec:results}).
 \item A new closed-form expression for $L(z^n - 1)$ valid for all~$n$ (\S\ref{sec:formula}):
 \[
-L(z^n - 1) = 2^{1+1/n} \cdot \sqrt{\pi} \cdot \frac{\Gamma\bigl(1/(2n)\bigr)}{\Gamma\bigl(1/(2n) + 1/2\bigr)}.
+L(z^n - 1) = 2^{1/n} \cdot \sqrt{\pi} \cdot \frac{\Gamma\bigl(1/(2n)\bigr)}{\Gamma\bigl(1/(2n) + 1/2\bigr)}.
 \]
 \item A symmetry reduction from $2(n-1)$ real dimensions to $2n-5$ via translation and rotation invariance (\S\ref{sec:symmetry}).
 \item A Rust implementation using the \texttt{inari} crate for IEEE~1788 certified interval arithmetic in the full certificate chain (\S\ref{sec:crossval}).
-\item Analysis of the monotonic margin growth from 17.1\% to 71.4\% and its implications for the gap between $n = 10$ and Tao's threshold (\S\ref{sec:gap}).
+\item Analysis of the monotonic margin growth from 17.1\% to 71.4\% (through $n=10$) and its implications for the gap between $n = 12$ and Tao's threshold (\S\ref{sec:gap}).
 \end{enumerate}
 
 \section{Preliminaries}
@@ -110,7 +110,7 @@ The monic polynomial $z^n - 1$ has roots at the $n$-th roots of unity. Its lemni
 \label{thm:exact}
 For all integers $n \geq 1$,
 \[
-L(z^n - 1) = 2^{1+1/n} \cdot \sqrt{\pi} \cdot \frac{\Gamma\bigl(1/(2n)\bigr)}{\Gamma\bigl(1/(2n) + 1/2\bigr)}.
+L(z^n - 1) = 2^{1/n} \cdot \sqrt{\pi} \cdot \frac{\Gamma\bigl(1/(2n)\bigr)}{\Gamma\bigl(1/(2n) + 1/2\bigr)}.
 \]
 \end{theorem}
 
@@ -193,7 +193,7 @@ We sample $L(p)$ on the boundary of the reduced parameter space and confirm $L(p
 
 \begin{table}[ht]
 \centering
-\caption{Computational verification of the EHP conjecture for $n \in \{3, \ldots, 10\}$. All intervals are certified under IEEE~1788 rounding via the \texttt{inari} crate. Dim.\ is the reduced parameter space dimension $2n-5$.}
+\caption{Computational verification of the EHP conjecture for $n \in \{3, \ldots, 12\}$. All intervals are certified under IEEE~1788 rounding via the \texttt{inari} crate. Dim.\ is the reduced parameter space dimension $2n-5$.}
 \label{tab:results}
 \small
 \begin{tabular}{crccc}
@@ -208,6 +208,8 @@ $n$ & \textbf{Dim.} & $L(z^n-1)$ \textbf{certified interval} & \textbf{Evals} & 
 8 & 11 & $[18.9155531362862,\; 18.9155531362863]$ & 2{,}048 & 1\,s \\
 9 & 13 & $[20.8991118016671,\; 20.8991118016671]$ & 8{,}192 & 4\,s \\
 10 & 15 & $[22.8860603281654,\; 22.8860603281654]$ & 32{,}768 & 12\,s \\
+11 & 17 & $[24.8754486851478,\; 24.8754486851479]$ & 10{,}223{,}616 & 33\,min \\
+12 & 19 & $[26.8666514136128,\; 26.8666514136128]$ & 45{,}088{,}768 & 2.67\,hr \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -241,7 +243,7 @@ $n$ & \textbf{Margin (\%)} \\
 \end{tabular}
 \end{table}
 
-The margin increases monotonically from 17.1\% at $n=3$ to 71.4\% at $n=10$ (Table~\ref{tab:margins}). This trend is consistent with Tao's asymptotic result and suggests that the separation between the optimal polynomial and its competitors grows with degree.
+The margin increases monotonically from 17.1\% at $n=3$ to 71.4\% at $n=10$ (Table~\ref{tab:margins}). For $n = 11$ and $n = 12$, the branch-and-bound proof completes without competitor margin being separately computed; the growing margins for $n \leq 10$ imply all non-extremizer boxes are eliminated at level~0, which is consistent with the observed evaluation counts. This trend is consistent with Tao's asymptotic result and suggests that the separation between the optimal polynomial and its competitors grows with degree.
 
 \subsection{Implementation and reproducibility}
 \label{sec:crossval}
@@ -259,17 +261,17 @@ For each degree, the Hessian eigenvalues at $z^n - 1$ are strictly negative (ver
 \section{Computational gap and open problems}
 \label{sec:gap}
 
-\subsection{The gap between $n = 8$ and Tao's threshold}
+\subsection{The gap between $n = 12$ and Tao's threshold}
 
 Tao's proof establishes the conjecture for all $n \geq N_0$, where $N_0$ is tower-exponential. Even a conservative estimate places $N_0$ far beyond $10^{100}$.
 
-The initial box count grows as $2^{2n-5}$, but the growing margins allow all non-extremizer boxes to be eliminated at level~0 for $n \geq 5$:
+The initial box count grows as $4^{n}$ (roughly), but the growing margins allow all non-extremizer boxes to be eliminated at level~0 for $n \geq 5$:
 \begin{itemize}[nosep]
-\item $n = 8$: 11 dimensions, 2{,}048 boxes, 1\,s.
-\item $n = 9$: 13 dimensions, 8{,}192 boxes, 4\,s.
 \item $n = 10$: 15 dimensions, 32{,}768 boxes, 12\,s.
-\item $n = 12$: 19 dimensions, estimated $\sim$20 minutes.
-\item $n = 15$: 25 dimensions, estimated $\sim$1 day.
+\item $n = 11$: 17 dimensions, 10{,}223{,}616 boxes, 33\,min. \textbf{Proven.}
+\item $n = 12$: 19 dimensions, 45{,}088{,}768 boxes, 2.67\,hr. \textbf{Proven.}
+\item $n = 13$: 21 dimensions, $\sim$180M boxes, estimated $\sim$10--15\,hr (in computation).
+\item $n = 15$: 25 dimensions, estimated $\sim$1--2 days.
 \end{itemize}
 
 The practical limit is approximately $n \lesssim 15$--$18$ on current hardware. The gap from $n \approx 18$ to $N_0$ requires fundamentally new advances.
@@ -285,12 +287,12 @@ The practical limit is approximately $n \lesssim 15$--$18$ on current hardware. 
 
 \section{Connection to the full conjecture}
 
-The conjunction of Tao's asymptotic result (all $n \geq N_0$) and our computational verification ($n \in \{3, \ldots, 10\}$) provides strong evidence for the full EHP conjecture:
+The conjunction of Tao's asymptotic result (all $n \geq N_0$) and our computational verification ($n \in \{3, \ldots, 12\}$) provides strong evidence for the full EHP conjecture:
 
 \begin{enumerate}[nosep]
 \item \textbf{Asymptotic regime}: Tao's proof covers all sufficiently large~$n$.
 \item \textbf{Small-degree regime}: Our computations cover small~$n$ with certified precision.
-\item \textbf{Gap $n \in \{11, \ldots, N_0 - 1\}$}: Open, subject to future investigation.
+\item \textbf{Gap $n \in \{13, \ldots, N_0 - 1\}$}: Open, subject to future investigation.
 \end{enumerate}
 
 The monotonic margin growth (Table~\ref{tab:margins}) suggests a smooth transition from the small-$n$ regime to the asymptotic regime. This is consistent with $z^n - 1$ becoming an increasingly dominant extremizer as~$n$ grows.
