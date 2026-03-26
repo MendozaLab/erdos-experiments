@@ -8,7 +8,7 @@
 
 ## Our Contribution
 
-Computational verification of EHP for small degrees n = 3 through n = 8, complementing Tao's asymptotic proof:
+Computational verification of EHP for small degrees n = 3 through n = 12, complementing Tao's asymptotic proof:
 
 | n | Verdict | Method | Margin over nearest competitor |
 |---|---------|--------|-------------------------------|
