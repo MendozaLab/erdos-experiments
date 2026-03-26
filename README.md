@@ -3,7 +3,7 @@
 Computational solvers and experimental results for open Erdős problems.
 
 **Author**: Kenneth A. Mendoza ([ORCID 0009-0000-9475-5938](https://orcid.org/0009-0000-9475-5938))  
-**Preprint**: [Zenodo 19184468](https://zenodo.org/records/19184468)  
+**Preprint**: [Zenodo 19229245](https://zenodo.org/records/19229245)
 **License**: Apache 2.0
 
 ---
