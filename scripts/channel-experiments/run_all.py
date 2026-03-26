@@ -164,17 +164,39 @@ def run_experiment_d():
     }
 
 # ---------------------------------------------------------------------------
-# Experiment E: Koopman-von Neumann channel lens
+# Experiment E: Koopman-von Neumann channel lens (v2 — proper implementation)
 # ---------------------------------------------------------------------------
 def run_experiment_e():
-    import sys
     import importlib.util
-    # Load exp_e_kvn from same directory
     here = Path(__file__).parent
-    spec = importlib.util.spec_from_file_location("exp_e_kvn", here / "exp_e_kvn.py")
+    spec = importlib.util.spec_from_file_location("exp_kvn_v2", here / "exp_kvn_v2.py")
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    return mod.run_experiment_e()
+    raw = mod.run()  # returns {by_n: {n: {extremizer: {...}, competitors: {...}}}, verdict, ...}
+
+    # Derive max_duality_gap: largest (log_n − entropy_gap) across all tested n.
+    # For z^n±1 this equals S_vN (finite-sample noise); v2 target is < 0.05 nats.
+    by_n = raw.get("by_n", {})
+    max_gap = max(
+        (v["extremizer"]["log_n"] - v["extremizer"]["entropy_gap"])
+        for v in by_n.values()
+    ) if by_n else float("inf")
+
+    return {
+        "experiment": "E",
+        "name": "Koopman-von Neumann channel lens (v2.1 — Hilbert-Shannon straddle)",
+        "verdict": raw["verdict"],
+        "max_duality_gap": max_gap,  # nats; < 0.05 = PASS; was 2.10 in v1
+        "by_n_summary": {
+            n: {
+                "norm_entropy_gap": v["extremizer"]["normalized_entropy_gap"],
+                "von_neumann_entropy": v["extremizer"]["von_neumann_entropy"],
+                "channel_shannon_entropy": v["extremizer"]["channel_shannon_entropy"],
+                "koopman_spectral_gap": v["extremizer"]["koopman_spectral_gap"],
+            }
+            for n, v in by_n.items()
+        },
+    }
 
 # ---------------------------------------------------------------------------
 # Summary helpers -- merge so multiple CI steps accumulate verdicts
@@ -260,7 +282,11 @@ def main():
         print("=== Experiment E: Koopman-von Neumann channel lens ===")
         r = run_experiment_e()
         new_results["E"] = r
-        print(f"  Verdict: {r['verdict']}  max_duality_gap={r['max_duality_gap']:.6f}")
+        print(f"  Verdict: {r['verdict']}  max_duality_gap={r['max_duality_gap']:.4f} nats")
+        for n_str, s in r.get("by_n_summary", {}).items():
+            print(f"    n={n_str}: norm_ΔS={s['norm_entropy_gap']:.4f}  "
+                  f"S_vN={s['von_neumann_entropy']:.4f}  "
+                  f"H_ch={s['channel_shannon_entropy']:.4f}")
         (RESULTS_DIR / "exp_e_kvn_results.json").write_text(json.dumps(r, indent=2))
 
     elapsed = time.time() - t0
