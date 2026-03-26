@@ -8,9 +8,10 @@ Experiments:
   B: Capacity saturation grid search (slow, CI uses reduced grid)
   C: Quantum channel analogy (fast, skips quantum sim if Qiskit absent)
   D: Cross-problem transfer test (fast, analytic)
+  E: Koopman-von Neumann channel lens (fast, requires numpy/scipy)
 
 Usage:
-  python run_all.py               # run all
+  python run_all.py                # run all
   python run_all.py --skip b      # skip experiment B
   python run_all.py --only b      # run only experiment B
 
@@ -18,7 +19,6 @@ Note on summary merging:
   When called multiple times (e.g. --skip b then --only b in CI),
   run_summary.json is merged so all verdicts are preserved.
 """
-
 import argparse
 import json
 import math
@@ -28,11 +28,9 @@ from pathlib import Path
 
 RESULTS_DIR = Path("../../results/channel-experiments")
 
-
 # ---------------------------------------------------------------------------
 # Experiment A: Entropy-Hausdorff monotonicity
 # ---------------------------------------------------------------------------
-
 def run_experiment_a():
     # Certified l_star bounds from EXP-MM-EHP-007 results (lower bounds)
     l_star = {
@@ -50,7 +48,6 @@ def run_experiment_a():
     results = []
     monotone = True
     prev_h = None
-
     for n, l in sorted(l_star.items()):
         h = math.log(l)
         c = math.log(n)
@@ -68,27 +65,21 @@ def run_experiment_a():
         "data": results,
     }
 
-
 # ---------------------------------------------------------------------------
 # Experiment B: Capacity saturation grid search
 # ---------------------------------------------------------------------------
-
 def run_experiment_b(grid_size=None):
     if grid_size is None:
         grid_size = int(os.environ.get("EXP_B_GRID_SIZE", "10000"))
-
     N = min(grid_size, 500)
-
     ratios = []
     for n in range(3, N + 1):
         l_approx = n * math.pi / 2.0
         h = math.log(l_approx)
         c = math.log(n)
         ratios.append(h / c)
-
     saturates = abs(ratios[-1] - ratios[-2]) < 1e-6 if len(ratios) >= 2 else False
     asymptotic_ratio = ratios[-1] if ratios else None
-
     return {
         "experiment": "B",
         "name": "Capacity saturation grid search",
@@ -99,31 +90,25 @@ def run_experiment_b(grid_size=None):
         "note": "Ratio H/C -> 1 + log(pi/2)/log(n) -> 1 as n->inf",
     }
 
-
 # ---------------------------------------------------------------------------
 # Experiment C: Quantum channel analogy
 # ---------------------------------------------------------------------------
-
 def run_experiment_c():
     import numpy as np
-
     n_values = list(range(3, 12))
     classical = []
     quantum_sim = []
     qiskit_available = False
-
     try:
         from qiskit import QuantumCircuit
         from qiskit_aer import AerSimulator
         qiskit_available = True
     except ImportError:
         pass
-
     for n in n_values:
         l_approx = n * math.pi / 2.0
         h_classical = math.log(l_approx)
         classical.append(h_classical)
-
         if qiskit_available:
             qc = QuantumCircuit(min(n, 8))
             qc.h(0)
@@ -139,9 +124,7 @@ def run_experiment_c():
             quantum_sim.append(h_q)
         else:
             quantum_sim.append(math.log(2))
-
     correlation = float(np.corrcoef(classical, quantum_sim)[0, 1])
-
     return {
         "experiment": "C",
         "name": "Quantum channel analogy",
@@ -153,30 +136,24 @@ def run_experiment_c():
         "note": "GHZ entropy constant; correlation reflects classical scaling only",
     }
 
-
 # ---------------------------------------------------------------------------
 # Experiment D: Cross-problem transfer
 # ---------------------------------------------------------------------------
-
 def run_experiment_d():
     results = []
     for n in range(3, 12):
         l_114 = n * math.pi / 2.0
         h_114 = math.log(l_114)
         ratio_114 = h_114 / math.log(n)
-
         h_509 = (n / 2.0) * math.log(2)
         ratio_509 = h_509 / math.log(n)
-
         results.append({
             "n": n,
             "ratio_114": ratio_114,
             "ratio_509": ratio_509,
             "delta": abs(ratio_114 - ratio_509),
         })
-
     avg_delta = sum(r["delta"] for r in results) / len(results)
-
     return {
         "experiment": "D",
         "name": "Cross-problem transfer",
@@ -186,11 +163,22 @@ def run_experiment_d():
         "data": results,
     }
 
+# ---------------------------------------------------------------------------
+# Experiment E: Koopman-von Neumann channel lens
+# ---------------------------------------------------------------------------
+def run_experiment_e():
+    import sys
+    import importlib.util
+    # Load exp_e_kvn from same directory
+    here = Path(__file__).parent
+    spec = importlib.util.spec_from_file_location("exp_e_kvn", here / "exp_e_kvn.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.run_experiment_e()
 
 # ---------------------------------------------------------------------------
 # Summary helpers -- merge so multiple CI steps accumulate verdicts
 # ---------------------------------------------------------------------------
-
 def load_existing_summary():
     summary_path = RESULTS_DIR / "run_summary.json"
     if summary_path.exists():
@@ -200,17 +188,14 @@ def load_existing_summary():
             pass
     return {"experiments_run": [], "verdicts": {}, "total_time_secs": 0.0}
 
-
 def save_summary(existing, new_results, elapsed):
     merged_run = existing.get("experiments_run", [])
     merged_verdicts = existing.get("verdicts", {})
     prev_time = existing.get("total_time_secs", 0.0)
-
     for k, v in new_results.items():
         if k not in merged_run:
             merged_run.append(k)
         merged_verdicts[k] = v["verdict"]
-
     summary = {
         "experiments_run": sorted(merged_run),
         "verdicts": merged_verdicts,
@@ -219,24 +204,20 @@ def save_summary(existing, new_results, elapsed):
     (RESULTS_DIR / "run_summary.json").write_text(json.dumps(summary, indent=2))
     return summary
 
-
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
-
 def main():
     parser = argparse.ArgumentParser(description="Run channel experiments")
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("--skip", metavar="EXP", help="Skip experiment (a/b/c/d)")
-    group.add_argument("--only", metavar="EXP", help="Run only experiment (a/b/c/d)")
+    group.add_argument("--skip", metavar="EXP", help="Skip experiment (a/b/c/d/e)")
+    group.add_argument("--only", metavar="EXP", help="Run only experiment (a/b/c/d/e)")
     args = parser.parse_args()
-
     skip = args.skip.lower() if args.skip else None
     only = args.only.lower() if args.only else None
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     existing_summary = load_existing_summary()
-
     new_results = {}
     t0 = time.time()
 
@@ -275,12 +256,17 @@ def main():
         print(f"  Verdict: {r['verdict']}  avg_delta={r['avg_ratio_delta']:.4f}")
         (RESULTS_DIR / "exp_d_results.json").write_text(json.dumps(r, indent=2))
 
+    if should_run("e"):
+        print("=== Experiment E: Koopman-von Neumann channel lens ===")
+        r = run_experiment_e()
+        new_results["E"] = r
+        print(f"  Verdict: {r['verdict']}  max_duality_gap={r['max_duality_gap']:.6f}")
+        (RESULTS_DIR / "exp_e_kvn_results.json").write_text(json.dumps(r, indent=2))
+
     elapsed = time.time() - t0
     summary = save_summary(existing_summary, new_results, elapsed)
-
     print(f"\nDone in {elapsed:.1f}s")
     print(json.dumps(summary, indent=2))
-
 
 if __name__ == "__main__":
     main()
