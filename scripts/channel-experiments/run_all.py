@@ -13,6 +13,10 @@ Usage:
   python run_all.py               # run all
   python run_all.py --skip b      # skip experiment B
   python run_all.py --only b      # run only experiment B
+
+Note on summary merging:
+  When called multiple times (e.g. --skip b then --only b in CI),
+  run_summary.json is merged so all verdicts are preserved.
 """
 
 import argparse
@@ -30,15 +34,7 @@ RESULTS_DIR = Path("../../results/channel-experiments")
 # ---------------------------------------------------------------------------
 
 def run_experiment_a():
-    """
-    Test: For the lemniscate L_n* (Erdos #114), does the differential entropy
-    H(n) scale monotonically with log(Hausdorff dimension proxy)?
-
-    We use the certified l_star values from the EHP n=3..11 results as
-    the arc-length proxy, and compute the information-theoretic entropy
-    of the uniform measure on each lemniscate.
-    """
-    # Certified l_star bounds from EXP-MM-EHP-007 results (lower bounds used)
+    # Certified l_star bounds from EXP-MM-EHP-007 results (lower bounds)
     l_star = {
         3:  3.9122591069701235,
         4:  5.384820755989181,
@@ -56,9 +52,7 @@ def run_experiment_a():
     prev_h = None
 
     for n, l in sorted(l_star.items()):
-        # Entropy proxy: H(n) = log(l_star(n)) -- uniform measure on arc
         h = math.log(l)
-        # Channel capacity proxy: C(n) = log(n) -- degrees of freedom
         c = math.log(n)
         ratio = h / c if c > 0 else None
         if prev_h is not None and h < prev_h:
@@ -66,14 +60,13 @@ def run_experiment_a():
         prev_h = h
         results.append({"n": n, "l_star": l, "H": h, "C_proxy": c, "H_over_C": ratio})
 
-    summary = {
+    return {
         "experiment": "A",
         "name": "Entropy-Hausdorff monotonicity",
         "monotone": monotone,
         "verdict": "PASS" if monotone else "FAIL",
         "data": results,
     }
-    return summary
 
 
 # ---------------------------------------------------------------------------
@@ -81,29 +74,22 @@ def run_experiment_a():
 # ---------------------------------------------------------------------------
 
 def run_experiment_b(grid_size=None):
-    """
-    Test: Does the channel capacity C(n) saturate as n -> inf?
-    Grid search over the ratio H(n)/log(n) for n=3..N.
-    """
     if grid_size is None:
         grid_size = int(os.environ.get("EXP_B_GRID_SIZE", "10000"))
 
-    N = min(grid_size, 500)  # cap for CI safety
+    N = min(grid_size, 500)
 
-    # Use analytic approximation: l_star(n) ~ n * pi / 2 for large n
-    # (lemniscate perimeter scales linearly with degree)
     ratios = []
     for n in range(3, N + 1):
         l_approx = n * math.pi / 2.0
         h = math.log(l_approx)
         c = math.log(n)
-        ratio = h / c
-        ratios.append(ratio)
+        ratios.append(h / c)
 
     saturates = abs(ratios[-1] - ratios[-2]) < 1e-6 if len(ratios) >= 2 else False
     asymptotic_ratio = ratios[-1] if ratios else None
 
-    summary = {
+    return {
         "experiment": "B",
         "name": "Capacity saturation grid search",
         "grid_size": N,
@@ -112,7 +98,6 @@ def run_experiment_b(grid_size=None):
         "verdict": "PASS" if (asymptotic_ratio is not None and 1.0 < asymptotic_ratio < 2.0) else "INCONCLUSIVE",
         "note": "Ratio H/C -> 1 + log(pi/2)/log(n) -> 1 as n->inf",
     }
-    return summary
 
 
 # ---------------------------------------------------------------------------
@@ -120,10 +105,6 @@ def run_experiment_b(grid_size=None):
 # ---------------------------------------------------------------------------
 
 def run_experiment_c():
-    """
-    Test: Does the classical channel entropy match a quantum channel model?
-    Uses numpy simulation; skips Qiskit quantum circuit sim if unavailable.
-    """
     import numpy as np
 
     n_values = list(range(3, 12))
@@ -144,7 +125,6 @@ def run_experiment_c():
         classical.append(h_classical)
 
         if qiskit_available:
-            # Simple n-qubit GHZ state as quantum channel proxy
             qc = QuantumCircuit(min(n, 8))
             qc.h(0)
             for i in range(1, min(n, 8)):
@@ -158,13 +138,11 @@ def run_experiment_c():
             h_q = -sum(p * math.log(p) for p in probs if p > 0)
             quantum_sim.append(h_q)
         else:
-            # Classical approximation of von Neumann entropy for n-qubit GHZ
-            h_q = math.log(2)  # GHZ state has S=1 ebit regardless of n
-            quantum_sim.append(h_q)
+            quantum_sim.append(math.log(2))
 
     correlation = float(np.corrcoef(classical, quantum_sim)[0, 1])
 
-    summary = {
+    return {
         "experiment": "C",
         "name": "Quantum channel analogy",
         "qiskit_available": qiskit_available,
@@ -174,7 +152,6 @@ def run_experiment_c():
         "verdict": "PASS" if correlation > 0.8 else "WEAK",
         "note": "GHZ entropy constant; correlation reflects classical scaling only",
     }
-    return summary
 
 
 # ---------------------------------------------------------------------------
@@ -182,45 +159,64 @@ def run_experiment_c():
 # ---------------------------------------------------------------------------
 
 def run_experiment_d():
-    """
-    Test: Does the channel structure (H/C ratio) transfer across Erdos problems?
-    Compare #114 (lemniscate arc-length) vs #509 (chromatic number bound).
-
-    For #509 we use the known Ramsey-type bound: r(n) >= 2^(n/2),
-    so log r(n) ~ (n/2) log 2, giving H_509(n) = (n/2)*log(2).
-    """
     results = []
     for n in range(3, 12):
-        # Problem #114: lemniscate channel
         l_114 = n * math.pi / 2.0
         h_114 = math.log(l_114)
-        c_114 = math.log(n)
-        ratio_114 = h_114 / c_114
+        ratio_114 = h_114 / math.log(n)
 
-        # Problem #509: Ramsey / chromatic number channel
         h_509 = (n / 2.0) * math.log(2)
-        c_509 = math.log(n)
-        ratio_509 = h_509 / c_509
+        ratio_509 = h_509 / math.log(n)
 
-        delta = abs(ratio_114 - ratio_509)
         results.append({
             "n": n,
             "ratio_114": ratio_114,
             "ratio_509": ratio_509,
-            "delta": delta,
+            "delta": abs(ratio_114 - ratio_509),
         })
 
     avg_delta = sum(r["delta"] for r in results) / len(results)
-    transfers = avg_delta < 0.5
 
-    summary = {
+    return {
         "experiment": "D",
         "name": "Cross-problem transfer",
         "avg_ratio_delta": avg_delta,
-        "transfers": transfers,
-        "verdict": "PASS" if transfers else "FAIL",
+        "transfers": avg_delta < 0.5,
+        "verdict": "PASS" if avg_delta < 0.5 else "FAIL",
         "data": results,
     }
+
+
+# ---------------------------------------------------------------------------
+# Summary helpers -- merge so multiple CI steps accumulate verdicts
+# ---------------------------------------------------------------------------
+
+def load_existing_summary():
+    summary_path = RESULTS_DIR / "run_summary.json"
+    if summary_path.exists():
+        try:
+            return json.loads(summary_path.read_text())
+        except Exception:
+            pass
+    return {"experiments_run": [], "verdicts": {}, "total_time_secs": 0.0}
+
+
+def save_summary(existing, new_results, elapsed):
+    merged_run = existing.get("experiments_run", [])
+    merged_verdicts = existing.get("verdicts", {})
+    prev_time = existing.get("total_time_secs", 0.0)
+
+    for k, v in new_results.items():
+        if k not in merged_run:
+            merged_run.append(k)
+        merged_verdicts[k] = v["verdict"]
+
+    summary = {
+        "experiments_run": sorted(merged_run),
+        "verdicts": merged_verdicts,
+        "total_time_secs": prev_time + elapsed,
+    }
+    (RESULTS_DIR / "run_summary.json").write_text(json.dumps(summary, indent=2))
     return summary
 
 
@@ -239,8 +235,9 @@ def main():
     only = args.only.lower() if args.only else None
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    existing_summary = load_existing_summary()
 
-    all_results = {}
+    new_results = {}
     t0 = time.time()
 
     def should_run(exp_id):
@@ -253,42 +250,34 @@ def main():
     if should_run("a"):
         print("=== Experiment A: Entropy-Hausdorff monotonicity ===")
         r = run_experiment_a()
-        all_results["A"] = r
+        new_results["A"] = r
         print(f"  Verdict: {r['verdict']}")
-        out = RESULTS_DIR / "exp_a_results.json"
-        out.write_text(json.dumps(r, indent=2))
+        (RESULTS_DIR / "exp_a_results.json").write_text(json.dumps(r, indent=2))
 
     if should_run("b"):
         print("=== Experiment B: Capacity saturation ===")
         r = run_experiment_b()
-        all_results["B"] = r
+        new_results["B"] = r
         print(f"  Verdict: {r['verdict']}  asymptotic H/C={r['asymptotic_H_over_C']:.6f}")
-        out = RESULTS_DIR / "exp_b_results.json"
-        out.write_text(json.dumps(r, indent=2))
+        (RESULTS_DIR / "exp_b_results.json").write_text(json.dumps(r, indent=2))
 
     if should_run("c"):
         print("=== Experiment C: Quantum channel analogy ===")
         r = run_experiment_c()
-        all_results["C"] = r
+        new_results["C"] = r
         print(f"  Verdict: {r['verdict']}  correlation={r['correlation']:.4f}")
-        out = RESULTS_DIR / "exp_c_results.json"
-        out.write_text(json.dumps(r, indent=2))
+        (RESULTS_DIR / "exp_c_results.json").write_text(json.dumps(r, indent=2))
 
     if should_run("d"):
         print("=== Experiment D: Cross-problem transfer ===")
         r = run_experiment_d()
-        all_results["D"] = r
+        new_results["D"] = r
         print(f"  Verdict: {r['verdict']}  avg_delta={r['avg_ratio_delta']:.4f}")
-        out = RESULTS_DIR / "exp_d_results.json"
-        out.write_text(json.dumps(r, indent=2))
+        (RESULTS_DIR / "exp_d_results.json").write_text(json.dumps(r, indent=2))
 
     elapsed = time.time() - t0
-    summary = {
-        "experiments_run": list(all_results.keys()),
-        "verdicts": {k: v["verdict"] for k, v in all_results.items()},
-        "total_time_secs": elapsed,
-    }
-    (RESULTS_DIR / "run_summary.json").write_text(json.dumps(summary, indent=2))
+    summary = save_summary(existing_summary, new_results, elapsed)
+
     print(f"\nDone in {elapsed:.1f}s")
     print(json.dumps(summary, indent=2))
 
