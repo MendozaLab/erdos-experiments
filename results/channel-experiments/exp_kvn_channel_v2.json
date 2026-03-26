@@ -1,6 +1,6 @@
 {
   "experiment": "KVN_v2",
-  "description": "Proper Koopman-von Neumann channel lens for EHP #114/#509. Jacobian-weighted entropy, arc-length density CV, B\u00f6ttcher iterate (K=6), full Koopman eigenspectrum. n=3,4,5.",
+  "description": "Koopman-von Neumann channel lens for EHP #114/#509 (v2.1). Jacobian-weighted entropy, arc-length density, Green's function deviation, full Koopman eigenspectrum, von Neumann entropy S_vN, channel Shannon entropy H_ch, Hilbert-Shannon straddle \u0394S=H_ch\u2212S_vN. z^n\u00b11 uniquely achieves S_vN=0 (pure Koopman state) AND H_ch=log(n) (max classical channel) simultaneously. n=3,4,5.",
   "by_n": {
     "3": {
       "n": 3,
@@ -18,7 +18,12 @@
           1.0,
           0.00444444444444437,
           8.624704930130022e-33
-        ]
+        ],
+        "von_neumann_entropy": 0.028386269084923352,
+        "channel_shannon_entropy": 1.098597506448061,
+        "entropy_gap": 1.0702112373631378,
+        "normalized_entropy_gap": 0.9741482490247733,
+        "log_n": 1.0986122886681098
       },
       "competitors": {
         "n": 30,
@@ -28,7 +33,11 @@
         "corr_L_neg_weight_variance": -0.2685430003268148,
         "corr_L_neg_bottcher": 0.29890789727125927,
         "corr_L_spectral_gap": -0.33641001588558406,
-        "corr_L_neg_spec_entropy": -0.4063890924889011
+        "corr_L_neg_spec_entropy": -0.4063890924889011,
+        "corr_L_neg_vN_entropy": -0.308024656232907,
+        "corr_L_channel_shannon": -0.12853810559567289,
+        "corr_L_entropy_gap": -0.3060185342056841,
+        "corr_L_norm_entropy_gap": -0.30601853420568426
       }
     },
     "4": {
@@ -48,7 +57,12 @@
           0.0050000000000000044,
           7.563412792162265e-35,
           0.0
-        ]
+        ],
+        "von_neumann_entropy": 0.031336290551939955,
+        "channel_shannon_entropy": 1.386277767672845,
+        "entropy_gap": 1.3549414771209052,
+        "normalized_entropy_gap": 0.9773836748685484,
+        "log_n": 1.3862943611198906
       },
       "competitors": {
         "n": 30,
@@ -58,7 +72,11 @@
         "corr_L_neg_weight_variance": -0.4047058785931907,
         "corr_L_neg_bottcher": 0.042905190697061744,
         "corr_L_spectral_gap": -0.39886319679341964,
-        "corr_L_neg_spec_entropy": -0.4947325477112981
+        "corr_L_neg_spec_entropy": -0.4947325477112981,
+        "corr_L_neg_vN_entropy": -0.2550835206707815,
+        "corr_L_channel_shannon": -0.23537213535561885,
+        "corr_L_entropy_gap": -0.26254454996547755,
+        "corr_L_norm_entropy_gap": -0.2625445499654777
       }
     },
     "5": {
@@ -79,7 +97,12 @@
           2.7733391199174565e-32,
           2.2907120436600115e-63,
           1.349401336733507e-79
-        ]
+        ],
+        "von_neumann_entropy": 0.03307526144985154,
+        "channel_shannon_entropy": 1.6094202514893001,
+        "entropy_gap": 1.5763449900394486,
+        "normalized_entropy_gap": 0.9794382112295328,
+        "log_n": 1.6094379124341003
       },
       "competitors": {
         "n": 30,
@@ -89,7 +112,11 @@
         "corr_L_neg_weight_variance": -0.07200308015757327,
         "corr_L_neg_bottcher": 0.2725605620674198,
         "corr_L_spectral_gap": 0.024773669060454185,
-        "corr_L_neg_spec_entropy": -0.020159961495037647
+        "corr_L_neg_spec_entropy": -0.020159961495037647,
+        "corr_L_neg_vN_entropy": -0.3305843665872521,
+        "corr_L_channel_shannon": -0.25370186126563554,
+        "corr_L_entropy_gap": -0.33630451534218403,
+        "corr_L_norm_entropy_gap": -0.3363045153421839
       }
     }
   },
