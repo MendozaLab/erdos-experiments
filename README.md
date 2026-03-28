@@ -3,7 +3,7 @@
 Computational solvers and experimental results for open Erdős problems.
 
 **Author**: Kenneth A. Mendoza ([ORCID 0009-0000-9475-5938](https://orcid.org/0009-0000-9475-5938))  
-**Preprint**: [Zenodo 19184468](https://zenodo.org/records/19184468)  
+**Preprint**: [Zenodo 19229245](https://zenodo.org/records/19229245)
 **License**: Apache 2.0
 
 ---
@@ -26,9 +26,9 @@ The bound sweep visualizer shows the phase-space transition between analytical b
 
 - **n = 2**: Proved by Eremenko–Hayman (1999), who also showed a maximizer exists with all critical points on the lemniscate
 - **n ≥ N₀**: Proved by Tao (arXiv:2512.12455, Dec 2025) with a tower-exponential threshold N₀
-- **n = 3–10**: Certified computationally in this repository (Mendoza, 2026)
-- **n = 11–12**: In computation
-- **n = 13–18**: Open but computationally feasible
+- **n = 3–12**: Certified computationally in this repository (Mendoza, 2026)
+- **n = 13**: In computation
+- **n = 14–18**: Open but computationally feasible
 - **n = 19 to N₀**: Open, beyond current hardware
 
 ### Results
@@ -45,10 +45,13 @@ All cases use IEEE 1788 certified interval arithmetic via the `inari` Rust crate
 | 8 | 11 | [18.9155531362862, 18.9155531362863] | 67.3% | 2,048 | 1 s |
 | 9 | 13 | [20.8991118016671, 20.8991118016671] | 69.6% | 8,192 | 4 s |
 | 10 | 15 | [22.8860603281654, 22.8860603281654] | 71.4% | 32,768 | 12 s |
+| 11 | 17 | [24.8754486851478, 24.8754486851479] | — | 10,223,616 | 33 min |
+| 12 | 19 | [26.8666514136128, 26.8666514136128] | — | 45,088,768 | 2.67 hr |
 
 **Dim.** is the reduced parameter space dimension 2n − 5 (symmetry-reduced from 2(n−1)).
 
 **Margins increase monotonically** from 17.1% (n=3) to 71.4% (n=10), consistent with Tao's asymptotic result. Zero counterexamples found across the full search.
+n=11 and n=12 use the full IEEE 1788 certified B&B (branch-and-bound) proof; competitor margin not separately computed for these degrees.
 
 **Search methodology**: Margins are relative to the best competitor found across three tested families: (1) the Eremenko–Hayman family (all critical points on the lemniscate), (2) zⁿ + c for c on a fine grid, and (3) random monic sampling. The interval arithmetic certifies the arc-length evaluation; the branch-and-bound certifies exhaustive coverage of each family. These are not certified global gaps over all monic polynomials.
 
@@ -76,11 +79,11 @@ Verified against Python/mpmath at 50+ decimal digits for n = 3–10. Asymptotic:
 
 ### Computational Gap
 
-Our results cover n ∈ {3, …, 10}. Tao's proof covers n ≥ N₀ (tower-exponential, N₀ ≫ 10¹⁰⁰). The gap n ∈ {11, …, N₀ − 1} remains open. Practical limit on current hardware: n ≲ 15–18.
+Our results cover n ∈ {3, …, 12}. Tao's proof covers n ≥ N₀ (tower-exponential, N₀ ≫ 10¹⁰⁰). The gap n ∈ {13, …, N₀ − 1} remains open. Practical limit on current hardware: n ≲ 15–18.
 
 ### Preprint
 
-[Computational Verification of the EHP Conjecture for 3 ≤ n ≤ 10 (PDF)](papers/EHP_Bounds_Computational_Draft.pdf)  
+[Computational Verification of the EHP Conjecture for 3 ≤ n ≤ 12 (PDF)](papers/EHP_Bounds_Computational_Draft.pdf)
 [Zenodo deposit](https://zenodo.org/records/19184468)
 
 ### Code and Results
@@ -133,7 +136,7 @@ All results are in `results/` as JSON with SHA-256 checksums.
 @misc{mendoza2026erdos-experiments,
   author = {Mendoza, Kenneth A.},
   title  = {Computational Verification of the {Erd\H{o}s--Herzog--Piranian} Conjecture
-            for Degrees $3 \leq n \leq 10$},
+            for Degrees $3 \leq n \leq 12$},
   year   = {2026},
   url    = {https://github.com/MendozaLab/erdos-experiments},
   note   = {ORCID: 0009-0000-9475-5938}
