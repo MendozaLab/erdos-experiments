@@ -800,7 +800,11 @@ fn prove_degree(degree: usize) -> ProofResult {
     // Perturbation step δ = 1e-3: large enough that L(p±δeₖ) − L(p) is above
     // machine noise at marching-squares resolution `hess_res`, but small enough
     // that the O(δ³) remainder is negligible relative to the quadratic term.
-    let h = 1e-3;
+    let h = match degree {
+        3..=6 => 1e-3,
+        7..=9 => 1e-2,
+        _ => 5e-2,
+    };
     let mut hess_all_neg = true;
     for i in 0..d {
         let mut pp = ext_params.clone();
