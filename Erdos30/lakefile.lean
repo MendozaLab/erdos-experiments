@@ -32,17 +32,17 @@ lean_lib Erdos30_Complete where
   roots := #[`Erdos30_Complete]
 
 -- ══════════════════════════════════════════════════════════════
--- Supplementary files (not discussed in paper)
+-- Scratch / supplementary files (not discussed in paper,
+-- not imported by core files — kept for reference only)
 -- ══════════════════════════════════════════════════════════════
 
 lean_lib Erdos30_difference_counting where
-  srcDir := "lean"
+  srcDir := "scratch"
   roots := #[`Erdos30_difference_counting]
 
 lean_lib Sidon_SumCount_Fix where
-  srcDir := "lean"
+  srcDir := "scratch"
   roots := #[`Sidon_SumCount_Fix]
 
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
-
