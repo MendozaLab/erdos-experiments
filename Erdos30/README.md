@@ -57,6 +57,17 @@ lake build Erdos30_Singer       # should produce 0 errors, 0 sorry
 | `lindstrom_bound` | k <= floor(sqrt(N)) + floor(N^{1/4}) + 1 | Requires R->N Nat.sqrt bounding |
 | `bfr_core_bound` | 1000(k-1) <= 1000*floor(sqrt(N)) + 998*floor(N^{1/4}) | Full BFR Sections 2-4 (~15 lemmas) |
 
+
+## Scratch / supplementary files
+
+The `scratch/` directory contains exploratory files not part of the main package and not imported by any core file:
+
+| File | Notes |
+|------|-------|
+| `Erdos30_difference_counting.lean` | TIER 3 — textbook k(k−1) ≤ 2N bound via difference counting. Duplicate of `Erdos30_Complete.lean`, kept for reference. |
+| `Sidon_SumCount_Fix.lean` | Sum-counting helper generated during development. Referenced only in comments in BFR and Singer; not imported. |
+
+These files compile independently but are excluded from the core package boundary.
 ## References
 
 - Balogh, Furedi, Roy (2023). "An upper bound on the size of Sidon sets." Amer. Math. Monthly 130(5). arXiv: 2103.15850
