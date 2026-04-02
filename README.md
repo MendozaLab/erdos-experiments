@@ -26,9 +26,9 @@ The bound sweep visualizer shows the phase-space transition between analytical b
 
 - **n = 2**: Proved by Eremenko–Hayman (1999), who also showed a maximizer exists with all critical points on the lemniscate
 - **n ≥ N₀**: Proved by Tao (arXiv:2512.12455, Dec 2025) with a tower-exponential threshold N₀
-- **n = 3–12**: Certified computationally in this repository (Mendoza, 2026)
-- **n = 13**: In computation
-- **n = 14–18**: Open but computationally feasible
+- **n = 3–14**: Certified computationally in this repository (Mendoza, 2026)
+- **n = 15**: In computation (Modal clusters proposed)
+- **n = 16–18**: Open but computationally feasible via distributed architectures
 - **n = 19 to N₀**: Open, beyond current hardware
 
 ### Results
@@ -47,11 +47,13 @@ All cases use IEEE 1788 certified interval arithmetic via the `inari` Rust crate
 | 10 | 15 | [22.8860603281654, 22.8860603281654] | 71.4% | 32,768 | 12 s |
 | 11 | 17 | [24.8754486851478, 24.8754486851479] | — | 10,223,616 | 33 min |
 | 12 | 19 | [26.8666514136128, 26.8666514136128] | — | 45,088,768 | 2.67 hr |
+| 13 | 23 | [28.8592399558882, 28.8592399558882] | — | 197,132,288 | 15.5 hr |
+| 14 | 25 | [30.8529108415485, 30.8529108415485] | — | 855,638,016 | 74.8 hr |
 
 **Dim.** is the reduced parameter space dimension 2n − 5 (symmetry-reduced from 2(n−1)).
 
 **Margins increase monotonically** from 17.1% (n=3) to 71.4% (n=10), consistent with Tao's asymptotic result. Zero counterexamples found across the full search.
-n=11 and n=12 use the full IEEE 1788 certified B&B (branch-and-bound) proof; competitor margin not separately computed for these degrees.
+n=11 through n=14 use the full IEEE 1788 certified B&B (branch-and-bound) proof; competitor margin not separately computed for these degrees.
 
 **Search methodology**: Margins are relative to the best competitor found across three tested families: (1) the Eremenko–Hayman family (all critical points on the lemniscate), (2) zⁿ + c for c on a fine grid, and (3) random monic sampling. The interval arithmetic certifies the arc-length evaluation; the branch-and-bound certifies exhaustive coverage of each family. These are not certified global gaps over all monic polynomials.
 
@@ -79,11 +81,11 @@ Verified against Python/mpmath at 50+ decimal digits for n = 3–10. Asymptotic:
 
 ### Computational Gap
 
-Our results cover n ∈ {3, …, 12}. Tao's proof covers n ≥ N₀ (tower-exponential, N₀ ≫ 10¹⁰⁰). The gap n ∈ {13, …, N₀ − 1} remains open. Practical limit on current hardware: n ≲ 15–18.
+Our results cover n ∈ {3, …, 14}. Tao's proof covers n ≥ N₀ (tower-exponential, N₀ ≫ 10¹⁰⁰). The gap n ∈ {15, …, N₀ − 1} remains open. Practical limit on current hardware: n ≲ 15–18.
 
 ### Preprint
 
-[Computational Verification of the EHP Conjecture for 3 ≤ n ≤ 12 (PDF)](papers/EHP_Bounds_Computational_Draft.pdf)
+[Computational Verification of the EHP Conjecture for 3 ≤ n ≤ 14 (PDF)](papers/EHP_Bounds_Computational_Draft.pdf)
 [Zenodo deposit](https://zenodo.org/records/19184468)
 
 ### Code and Results
@@ -136,7 +138,7 @@ All results are in `results/` as JSON with SHA-256 checksums.
 @misc{mendoza2026erdos-experiments,
   author = {Mendoza, Kenneth A.},
   title  = {Computational Verification of the {Erd\H{o}s--Herzog--Piranian} Conjecture
-            for Degrees $3 \leq n \leq 12$},
+            for Degrees $3 \leq n \leq 14$},
   year   = {2026},
   url    = {https://github.com/MendozaLab/erdos-experiments},
   note   = {ORCID: 0009-0000-9475-5938}
