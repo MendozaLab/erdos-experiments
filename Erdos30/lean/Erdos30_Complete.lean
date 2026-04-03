@@ -85,8 +85,8 @@ theorem sidon_difference_count (A : Finset ℕ) (N : ℕ)
   -- Step 1: Difference map is injective
   have h_inj : Set.InjOn diff_map (↑pairs) := by
     intro ⟨a₁, b₁⟩ h₁ ⟨a₂, b₂⟩ h₂ heq
-    simp [Finset.mem_coe, Finset.mem_filter, Finset.mem_product] at h₁ h₂
-    have := sidon_diff_injective A hS a₁ b₁ a₂ b₂ h₁.1 h₁.2 h₂.1 h₂.2 h₁.3 h₂.3 heq
+    rw [Finset.mem_coe, Finset.mem_filter, Finset.mem_product] at h₁ h₂
+    have := sidon_diff_injective A hS a₁ b₁ a₂ b₂ h₁.1.1 h₁.1.2 h₂.1.1 h₂.1.2 h₁.2 h₂.2 heq
     exact Prod.ext this.1 this.2
 
   -- Step 2: Image is bounded by {1,...,N}
@@ -161,7 +161,14 @@ theorem sidon_difference_count (A : Finset ℕ) (N : ℕ)
     rw [this, Finset.card_powersetCard, Nat.choose_two_right]
 
   -- Step 6: Combine
-  have : A.card * (A.card - 1) / 2 ≤ N := by rw [← h_pairs, ← this]; exact h_card_img
+  have h_div : A.card * (A.card - 1) / 2 ≤ N := by rw [← h_pairs, ← this]; exact h_card_img
+  have h_even : Even (A.card * (A.card - 1)) := by
+    rcases Nat.even_or_odd A.card with ⟨m, hm⟩ | ⟨m, hm⟩
+    · exact ⟨m * (A.card - 1), by rw [hm]; ring⟩
+    · exact ⟨A.card * m, by rw [hm]; omega⟩
+  obtain ⟨k, hk⟩ := h_even
+  rw [hk] at h_div
+  rw [hk]
   omega
 
 end Erdos.Sidon
