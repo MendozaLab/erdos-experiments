@@ -1,0 +1,101 @@
+========================================================================
+STAGE 2a REALISM REPORT — Three Formalisms for the Sidon Counting Problem
+========================================================================
+
+Paper stable ID:    h2:three_formalisms_sidon_mendoza_2026_v20260416
+Paper PDF sha256:   2e4f172bcaa4765b81c07e6e25cdc41c4f0159a0207a61a8033fec305e1cfa47
+Verified at (UTC):  2026-04-17T02:01:52Z
+Verifier:           realism_checker@publisher-stage-2a-v1
+
+Total claims examined: 26
+  verified:             21
+  derived (from verified): 2
+  needs-source:         3
+  likely-fabricated:    0
+  physically-implausible: 0
+
+Sealed claims (cryptographically bound):  23
+Evidence Root (Merkle rollup):            57366ac12d6343f56d991f66bfc0aa0e0a080c5fd2e0e3b3b4cd56aba0557b60
+
+------------------------------------------------------------------------
+PER-CLAIM VERDICTS
+------------------------------------------------------------------------
+[V]  C01_W47_states              seal=910562ab1bba
+         Transfer matrix at W=47 has 4,873,975 states
+[V]  C02_alpha_040               seal=5eeeac2d10ff
+         Canonical scaling exponent alpha = 0.40 from f(W) power-law fit over W up to 47
+[V]  C03_scaling_cv_0013         seal=8a97be62cfdc
+         Scaling collapse f(W) * W^1.40 has CV = 0.0013 over last 10 data points
+[D]  C04_correction_exp_125      seal=08858a5ae274
+         Thermal correction exponent 1/(2*alpha) = 1.25 at alpha = 0.40
+[D]  C05_multiplier_5            seal=1c24f2087321
+         Algebraic coherence multiplier 1.25 / 0.25 = 5.0
+[V]  C06_gap_B_W14               seal=6a38f29c66cb
+         Gap B (Holevo - thermal) = 0.77 nats at W = 14
+[V]  C07_gap_B_scaling_035       seal=7bd8eee27e85
+         Gap B scales as W^0.35 (fitted exponent 0.3494)
+[V]  C08_20_singer_pds           seal=021376aa77b8
+         All 20 Singer PDS tested are dispersion-free (V = 0)
+[V]  C09_maxV_468e27             seal=e2aec4e74826
+         max|V| = 4.68e-27 (numerical floor) across all 20 Singer PDS
+[V]  C10_44370_total_q5          seal=4489ae360630
+         Exhaustive enumeration finds 44,370 Sidon sets of size k=6 at q=5 (N=31)
+[V]  C11_310_flat_q5             seal=8e6d5cf4a037
+         Exactly 310 of the 44,370 Sidon sets at q=5 saturate lambda_max = k-1
+[V]  C12_310_all_PDS             seal=5a343f9aa8ae
+         All 310 spectrally flat sets at q=5 are Singer perfect difference sets
+[V]  C13_q2_enum                 seal=9e00ba7e7017
+         q=2 exhaustive: 26 total Sidon size-3 sets, 14 flat (k-1=2)
+[V]  C14_q3_enum                 seal=3e8fe18a6b1c
+         q=3 exhaustive: 304 total Sidon size-4 sets, 52 flat (k-1=3)
+[V]  C15_q4_enum                 seal=b04e7d30d7f7
+         q=4 exhaustive: 3,734 total Sidon size-5 sets, 42 flat (k-1=4)
+[V]  C16_beta_q2                 seal=4674a53b01bf
+         Bernstein variance ratio beta = 1.296 at Singer PDS q=2
+[V]  C17_beta_q3                 seal=d2d0bbbfb265
+         Bernstein variance ratio beta = 1.213 at Singer PDS q=3
+[V]  C18_beta_q5                 seal=11aea7761236
+         Bernstein variance ratio beta = 0.975 at Singer PDS q=5 (only case below 1)
+[V]  C19_beta_q7                 seal=13ad4fe1acf9
+         Bernstein variance ratio beta = 1.164 at Singer PDS q=7
+[V]  C20_beta_q11                seal=4d372ab5bfe0
+         Bernstein variance ratio beta = 1.084 at Singer PDS q=11
+[V]  C21_beta_q13                seal=1bdbbd66f958
+         Bernstein variance ratio beta = 1.096 at Singer PDS q=13
+[V]  C22_W10_states              seal=abddfa91e2a9
+         Transfer matrix at W=10 has 216 states, lambda_max = 1.6078
+[?]  C23_greedy_10e5             seal=NO SEAL
+         Greedy Sidon set at N=10^5 has lambda_max/k ≈ 27.1
+         PRODUCING SCRIPT: paper/lambda_max_large.py (exists, output not captured for seal)
+[?]  C24_random_q7               seal=NO SEAL
+         Random Sidon lambda_max/k ≈ 2.26 at q=7
+         PRODUCING SCRIPT: paper/lambda_max_large.py (exists, output not captured for seal)
+[?]  C25_random_q13              seal=NO SEAL
+         Random Sidon lambda_max/k ≈ 2.91 at q=13
+         PRODUCING SCRIPT: paper/lambda_max_large.py (exists, output not captured for seal)
+[V]  C26_class_decomp_31x10      seal=c64c8d4e56d9
+         310 = 31 translates x 10 multiplier classes (Singer multiplier group structure)
+
+------------------------------------------------------------------------
+UNSEALED CLAIMS (needs-source — do not block submission but should be re-run)
+------------------------------------------------------------------------
+  C23_greedy_10e5: Greedy Sidon set at N=10^5 has lambda_max/k ≈ 27.1
+    recommended action: run paper/lambda_max_large.py, capture output, re-seal
+  C24_random_q7: Random Sidon lambda_max/k ≈ 2.26 at q=7
+    recommended action: run paper/lambda_max_large.py, capture output, re-seal
+  C25_random_q13: Random Sidon lambda_max/k ≈ 2.91 at q=13
+    recommended action: run paper/lambda_max_large.py, capture output, re-seal
+
+------------------------------------------------------------------------
+VERDICT
+------------------------------------------------------------------------
+No likely-fabricated or physically-implausible claims.
+All high-stakes load-bearing numeric claims (the 44,370/310/dispersion-free,
+W=47 transfer matrix size, alpha/CV, Gap B/W^0.35, and Singer beta values) are
+VERIFIED against their producing scripts with SHA-256 seals recorded.
+
+The 3 needs-source claims are descriptive asides (random/greedy comparisons)
+and can be re-verified by running paper/lambda_max_large.py before submission.
+They do not block submission but should be re-sealed before Stage 6/7.
+
+========================================================================

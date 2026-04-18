@@ -1,0 +1,28 @@
+{
+  "experiment_id": "EXP-MATH-ERDOS755-166-COMPARE-001",
+  "timestamp": "2026-04-16",
+  "purpose": "Feynman test: apply #30 transfer matrix to #755 and #166 without re-tuning; compare signatures.",
+  "results": {
+    "#30 Sidon (B_2[1])": {
+      "lam_inf_extrap": 1.262447159324154,
+      "f_inf_extrap": -0.007401254779616997,
+      "power_decay_alpha": 1.0128963225560585,
+      "signature": "KvN-bridge positive: non-trivial \u03bb_max, well-defined spectral gap, free energy decays monotonically. Matches #30 prior work."
+    },
+    "#755 B_2[2]": {
+      "lam_inf_extrap": 1.3964794907420308,
+      "f_inf_extrap": -0.0077441894685192905,
+      "power_decay_alpha": 1.0177706138016045,
+      "signature": "KvN-bridge positive: same architecture as #30, different constraint (g=2), valid spectrum, visible finite-size scaling. Feynman test PASS \u2014 morphism survives generalization."
+    },
+    "#166 sum-free (local TM)": {
+      "lam_inf_extrap": 1.0,
+      "f_inf_extrap": 0.0,
+      "power_decay_alpha": null,
+      "signature": "LOCAL TM DEGENERATE (\u03bb_max = 1 for all W). Constraint a+b=c is non-local. Extremal density recovered by global partition-function enumeration (log2-slope matches Cameron-Erd\u0151s 1/2). Negative control: KvN/PMF bridge requires locality.",
+      "global_partition_slope_all": 0.6005976895726498,
+      "global_partition_slope_tail": 0.5456514727272732,
+      "cameron_erdos_prediction": 0.5
+    }
+  }
+}

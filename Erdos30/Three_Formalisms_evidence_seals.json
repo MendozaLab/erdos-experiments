@@ -1,0 +1,463 @@
+{
+  "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+  "paper_title": "Three Formalisms for the Sidon Counting Problem",
+  "paper_pdf_path": "erdos-experiments/Erdos30/Three_Formalisms_Sidon_Mendoza_2026.pdf",
+  "paper_pdf_sha256": "2e4f172bcaa4765b81c07e6e25cdc41c4f0159a0207a61a8033fec305e1cfa47",
+  "verifier": "realism_checker@publisher-stage-2a-v1",
+  "verified_at_utc": "2026-04-17T02:01:52Z",
+  "total_claims": 26,
+  "verified_count": 21,
+  "derived_count": 2,
+  "needs_source_count": 3,
+  "sealed_count": 23,
+  "evidence_root_sha256": "57366ac12d6343f56d991f66bfc0aa0e0a080c5fd2e0e3b3b4cd56aba0557b60",
+  "seals": [
+    {
+      "claim_id": "C01_W47_states",
+      "verdict": "verified",
+      "claim_text_normalized": "Transfer matrix at W=47 has 4,873,975 states",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 2.1/Table 1",
+        "paragraph": 1,
+        "sentence": "4,873,975 states at W = 47"
+      },
+      "producing_script_path": "sidon_transfer_matrix.cpp",
+      "producing_script_sha256": "12317e040022fe37d901bd02f91971dc838d4ee15cfab29a836e6a12489662bd",
+      "output_artifact_path": "EXP-MATH-ERDOS30-SIDON-007C_RESULTS.json",
+      "output_artifact_sha256": "1068e4ad2b877eb8e839028f33bc028000331e109374c4c864b233a0f3cf2686",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "910562ab1bbaf6221ba8e97669ef5671b8bf63d1bfb89b8c9b35e69376941fe5"
+    },
+    {
+      "claim_id": "C02_alpha_040",
+      "verdict": "verified",
+      "claim_text_normalized": "Canonical scaling exponent alpha = 0.40 from f(W) power-law fit over W up to 47",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 2.1/Sec 4/Sec 8/Sec 9",
+        "paragraph": 1,
+        "sentence": "alpha \u2248 0.40 (EXP-007C, W up to 47)"
+      },
+      "producing_script_path": "exp_012_holevo_bernstein.py",
+      "producing_script_sha256": "41bcfb8290f8684272467ee1b7c611ccea7ad2d68ed3991e80ec74f285050712",
+      "output_artifact_path": "EXP-MATH-ERDOS30-SIDON-007C_RESULTS.json",
+      "output_artifact_sha256": "1068e4ad2b877eb8e839028f33bc028000331e109374c4c864b233a0f3cf2686",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "5eeeac2d10ff4daa20acb74d3850f3a73565261b4b6cb33e281a0cef91187de9"
+    },
+    {
+      "claim_id": "C03_scaling_cv_0013",
+      "verdict": "verified",
+      "claim_text_normalized": "Scaling collapse f(W) * W^1.40 has CV = 0.0013 over last 10 data points",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Sec 2.1",
+        "paragraph": 2,
+        "sentence": "coefficient of variation CV = 0.0013"
+      },
+      "producing_script_path": "exp_012_holevo_bernstein.py",
+      "producing_script_sha256": "41bcfb8290f8684272467ee1b7c611ccea7ad2d68ed3991e80ec74f285050712",
+      "output_artifact_path": "EXP-MATH-ERDOS30-SIDON-007C_RESULTS.json",
+      "output_artifact_sha256": "1068e4ad2b877eb8e839028f33bc028000331e109374c4c864b233a0f3cf2686",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "8a97be62cfdc3cec9eb19f302bc7b927de65d61ae13186a89806e3e00bb27d6f"
+    },
+    {
+      "claim_id": "C04_correction_exp_125",
+      "verdict": "derived",
+      "claim_text_normalized": "Thermal correction exponent 1/(2*alpha) = 1.25 at alpha = 0.40",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 2.1/Sec 4/Sec 9",
+        "paragraph": "n/a",
+        "sentence": "1/(2\u03b1) \u2248 1.25"
+      },
+      "producing_script_path": "paper_three_formalisms.py",
+      "producing_script_sha256": "765bdaf858f55f5282f522667029d18a91cc643fd375074c6530747bca761a2b",
+      "output_artifact_path": "n/a (derived from C02)",
+      "output_artifact_sha256": "derived",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "08858a5ae274e9992c8645ddc7e9962ec7da3cb01add54dd0abfd4fd95039cc4"
+    },
+    {
+      "claim_id": "C05_multiplier_5",
+      "verdict": "derived",
+      "claim_text_normalized": "Algebraic coherence multiplier 1.25 / 0.25 = 5.0",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 4/Sec 8/Sec 9",
+        "paragraph": "n/a",
+        "sentence": "ratio 1.25/0.25 = 5.0"
+      },
+      "producing_script_path": "paper_three_formalisms.py",
+      "producing_script_sha256": "765bdaf858f55f5282f522667029d18a91cc643fd375074c6530747bca761a2b",
+      "output_artifact_path": "n/a (derived from C04)",
+      "output_artifact_sha256": "derived",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "1c24f20873213d96a05a6e1cf799ad8dfc6f2c806cc777d6d8802141ba79567f"
+    },
+    {
+      "claim_id": "C06_gap_B_W14",
+      "verdict": "verified",
+      "claim_text_normalized": "Gap B (Holevo - thermal) = 0.77 nats at W = 14",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 2.3/Sec 4",
+        "paragraph": 1,
+        "sentence": "Gap B \u2248 0.77 nats at W = 14"
+      },
+      "producing_script_path": "exp_012_holevo_bernstein.py",
+      "producing_script_sha256": "41bcfb8290f8684272467ee1b7c611ccea7ad2d68ed3991e80ec74f285050712",
+      "output_artifact_path": "EXP-012_HOLEVO_BERNSTEIN_RESULTS.json",
+      "output_artifact_sha256": "123a0f29baabc83a1330892aebf626ae0350a70eea29c7a721f5fcaf110387c4",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "6a38f29c66cb9e6f1d8077fb75feebf8281783b6a28327feff80050746539eb1"
+    },
+    {
+      "claim_id": "C07_gap_B_scaling_035",
+      "verdict": "verified",
+      "claim_text_normalized": "Gap B scales as W^0.35 (fitted exponent 0.3494)",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 2.3",
+        "paragraph": 1,
+        "sentence": "scaling as W^0.35"
+      },
+      "producing_script_path": "exp_012_holevo_bernstein.py",
+      "producing_script_sha256": "41bcfb8290f8684272467ee1b7c611ccea7ad2d68ed3991e80ec74f285050712",
+      "output_artifact_path": "EXP-012_HOLEVO_BERNSTEIN_RESULTS.json",
+      "output_artifact_sha256": "123a0f29baabc83a1330892aebf626ae0350a70eea29c7a721f5fcaf110387c4",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "7bd8eee27e8514de47f4b3e17b3caf1c8008b4130b886c7cda75b8bde97b146b"
+    },
+    {
+      "claim_id": "C08_20_singer_pds",
+      "verdict": "verified",
+      "claim_text_normalized": "All 20 Singer PDS tested are dispersion-free (V = 0)",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 5(iv)/Table 3",
+        "paragraph": 1,
+        "sentence": "20 parameter choices, q in {2,3,4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41}"
+      },
+      "producing_script_path": "singer_dispersion.py",
+      "producing_script_sha256": "5849b9e1087a5abec48846ba31d4c162adffc33563fb2b44110092aaf6007f38",
+      "output_artifact_path": "singer_dispersion.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "021376aa77b88ccba7ca7155ca6ae9febb9b40398145e271b9c9c5d9c62fa287"
+    },
+    {
+      "claim_id": "C09_maxV_468e27",
+      "verdict": "verified",
+      "claim_text_normalized": "max|V| = 4.68e-27 (numerical floor) across all 20 Singer PDS",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 5(iv)",
+        "paragraph": 1,
+        "sentence": "max|V| = 4.68 \u00d7 10^-27"
+      },
+      "producing_script_path": "singer_dispersion.py",
+      "producing_script_sha256": "5849b9e1087a5abec48846ba31d4c162adffc33563fb2b44110092aaf6007f38",
+      "output_artifact_path": "singer_dispersion.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "e2aec4e748268aef23e8f3cebfd70193ba06d3de0662eacb62beef04507cf2ba"
+    },
+    {
+      "claim_id": "C10_44370_total_q5",
+      "verdict": "verified",
+      "claim_text_normalized": "Exhaustive enumeration finds 44,370 Sidon sets of size k=6 at q=5 (N=31)",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 5/Table 6",
+        "paragraph": 1,
+        "sentence": "all 44,370 Sidon sets of size k = 6"
+      },
+      "producing_script_path": "paper/attack_a_test.py",
+      "producing_script_sha256": "f33514c52ea81a3f73c8696e612a355edd013cb0c2b3ee0318a811a8af249dfc",
+      "output_artifact_path": "paper/attack_a_test.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "4489ae360630ae166fb9b31abc72bfa579d6d8b77688aa0113bd9435459096ab"
+    },
+    {
+      "claim_id": "C11_310_flat_q5",
+      "verdict": "verified",
+      "claim_text_normalized": "Exactly 310 of the 44,370 Sidon sets at q=5 saturate lambda_max = k-1",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 5/Table 6",
+        "paragraph": 1,
+        "sentence": "exactly 310 sets saturating the pigeonhole bound"
+      },
+      "producing_script_path": "paper/attack_a_test.py",
+      "producing_script_sha256": "f33514c52ea81a3f73c8696e612a355edd013cb0c2b3ee0318a811a8af249dfc",
+      "output_artifact_path": "paper/attack_a_test.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "8e6d5cf4a0371c92a844de5bfe0465a7c9e40ee61091ae4b3de7f62654581fe3"
+    },
+    {
+      "claim_id": "C12_310_all_PDS",
+      "verdict": "verified",
+      "claim_text_normalized": "All 310 spectrally flat sets at q=5 are Singer perfect difference sets",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 5",
+        "paragraph": 1,
+        "sentence": "all 310 are Singer PDS"
+      },
+      "producing_script_path": "paper/attack_a_test.py",
+      "producing_script_sha256": "f33514c52ea81a3f73c8696e612a355edd013cb0c2b3ee0318a811a8af249dfc",
+      "output_artifact_path": "paper/attack_a_test.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "5a343f9aa8ae4199483f9d52bfd0d90d9535f2aa7646e18353e33e7f267cbbae"
+    },
+    {
+      "claim_id": "C13_q2_enum",
+      "verdict": "verified",
+      "claim_text_normalized": "q=2 exhaustive: 26 total Sidon size-3 sets, 14 flat (k-1=2)",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Table 6",
+        "paragraph": 1,
+        "sentence": "q=2, 26 total, 14 flat"
+      },
+      "producing_script_path": "paper/attack_a_test.py",
+      "producing_script_sha256": "f33514c52ea81a3f73c8696e612a355edd013cb0c2b3ee0318a811a8af249dfc",
+      "output_artifact_path": "paper/attack_a_test.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "9e00ba7e7017eb39ef47633027b99827efd579a6e4c0c6add78457f63efff0cd"
+    },
+    {
+      "claim_id": "C14_q3_enum",
+      "verdict": "verified",
+      "claim_text_normalized": "q=3 exhaustive: 304 total Sidon size-4 sets, 52 flat (k-1=3)",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Table 6",
+        "paragraph": 1,
+        "sentence": "q=3, 304 total, 52 flat"
+      },
+      "producing_script_path": "paper/attack_a_test.py",
+      "producing_script_sha256": "f33514c52ea81a3f73c8696e612a355edd013cb0c2b3ee0318a811a8af249dfc",
+      "output_artifact_path": "paper/attack_a_test.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "3e8fe18a6b1c7b45751dc4ce5bfafa4ca144ce3e22f0f184082d4b609ff8ef2e"
+    },
+    {
+      "claim_id": "C15_q4_enum",
+      "verdict": "verified",
+      "claim_text_normalized": "q=4 exhaustive: 3,734 total Sidon size-5 sets, 42 flat (k-1=4)",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Table 6",
+        "paragraph": 1,
+        "sentence": "q=4, 3,734 total, 42 flat"
+      },
+      "producing_script_path": "paper/attack_a_test.py",
+      "producing_script_sha256": "f33514c52ea81a3f73c8696e612a355edd013cb0c2b3ee0318a811a8af249dfc",
+      "output_artifact_path": "paper/attack_a_test.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "b04e7d30d7f76b8010485f5874b6535397d3fa4358b1c4ad7f06e159d12a9be6"
+    },
+    {
+      "claim_id": "C16_beta_q2",
+      "verdict": "verified",
+      "claim_text_normalized": "Bernstein variance ratio beta = 1.296 at Singer PDS q=2",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Table 5",
+        "paragraph": 1,
+        "sentence": "q=2 beta=1.296"
+      },
+      "producing_script_path": "exp_012_holevo_bernstein.py",
+      "producing_script_sha256": "41bcfb8290f8684272467ee1b7c611ccea7ad2d68ed3991e80ec74f285050712",
+      "output_artifact_path": "exp_012_holevo_bernstein.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "4674a53b01bffa5713288532af6af45d5bc235021e0971f47ac0dde9a5f6f3b5"
+    },
+    {
+      "claim_id": "C17_beta_q3",
+      "verdict": "verified",
+      "claim_text_normalized": "Bernstein variance ratio beta = 1.213 at Singer PDS q=3",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Table 5",
+        "paragraph": 1,
+        "sentence": "q=3 beta=1.213"
+      },
+      "producing_script_path": "exp_012_holevo_bernstein.py",
+      "producing_script_sha256": "41bcfb8290f8684272467ee1b7c611ccea7ad2d68ed3991e80ec74f285050712",
+      "output_artifact_path": "exp_012_holevo_bernstein.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "d2d0bbbfb265a5d172ccf469e00b17a77c3305d3bac979b99192f73e6f3441b5"
+    },
+    {
+      "claim_id": "C18_beta_q5",
+      "verdict": "verified",
+      "claim_text_normalized": "Bernstein variance ratio beta = 0.975 at Singer PDS q=5 (only case below 1)",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Sec 2.2/Table 5",
+        "paragraph": 1,
+        "sentence": "q=5 beta=0.975"
+      },
+      "producing_script_path": "exp_012_holevo_bernstein.py",
+      "producing_script_sha256": "41bcfb8290f8684272467ee1b7c611ccea7ad2d68ed3991e80ec74f285050712",
+      "output_artifact_path": "exp_012_holevo_bernstein.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "11aea77612369df59c2ebb42c1943e325cb2647df64a58c9dc34358f6d3c82d9"
+    },
+    {
+      "claim_id": "C19_beta_q7",
+      "verdict": "verified",
+      "claim_text_normalized": "Bernstein variance ratio beta = 1.164 at Singer PDS q=7",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Table 5",
+        "paragraph": 1,
+        "sentence": "q=7 beta=1.164"
+      },
+      "producing_script_path": "exp_012_holevo_bernstein.py",
+      "producing_script_sha256": "41bcfb8290f8684272467ee1b7c611ccea7ad2d68ed3991e80ec74f285050712",
+      "output_artifact_path": "exp_012_holevo_bernstein.py (self-verifying stdout)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "13ad4fe1acf96546dca810dcf947c16ce3c320c3e92de63e4d3fb249e844ea81"
+    },
+    {
+      "claim_id": "C20_beta_q11",
+      "verdict": "verified",
+      "claim_text_normalized": "Bernstein variance ratio beta = 1.084 at Singer PDS q=11",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Table 5",
+        "paragraph": 1,
+        "sentence": "q=11 beta=1.084"
+      },
+      "producing_script_path": "exp_002_diffraction_spectrum.py",
+      "producing_script_sha256": "8e3176ddf14823aa32c2738515daf89c0ff318e48b84f2d4a052a7431f94dbb8",
+      "output_artifact_path": "exp_002 + singer_bernstein fresh compute",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "4d372ab5bfe047f2af3fcaafabcdeaa8e329a4a14e007a946a97ecf79a2b45f9"
+    },
+    {
+      "claim_id": "C21_beta_q13",
+      "verdict": "verified",
+      "claim_text_normalized": "Bernstein variance ratio beta = 1.096 at Singer PDS q=13",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Table 5",
+        "paragraph": 1,
+        "sentence": "q=13 beta=1.096"
+      },
+      "producing_script_path": "exp_002_diffraction_spectrum.py",
+      "producing_script_sha256": "8e3176ddf14823aa32c2738515daf89c0ff318e48b84f2d4a052a7431f94dbb8",
+      "output_artifact_path": "exp_002 + singer_bernstein fresh compute",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "1bdbbd66f9586010611aec4d297131fd654c6407e0e78c3796a117916e42761a"
+    },
+    {
+      "claim_id": "C22_W10_states",
+      "verdict": "verified",
+      "claim_text_normalized": "Transfer matrix at W=10 has 216 states, lambda_max = 1.6078",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Table 1",
+        "paragraph": 1,
+        "sentence": "W=10: 216 states, lambda_max=1.6078"
+      },
+      "producing_script_path": "sidon_transfer_matrix.cpp",
+      "producing_script_sha256": "12317e040022fe37d901bd02f91971dc838d4ee15cfab29a836e6a12489662bd",
+      "output_artifact_path": "EXP-MATH-ERDOS30-SIDON-007C_RESULTS.json",
+      "output_artifact_sha256": "1068e4ad2b877eb8e839028f33bc028000331e109374c4c864b233a0f3cf2686",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "abddfa91e2a99bbd9d8d39112a3217d63ba5432632f02b1c0e58b15eb6c476b0"
+    },
+    {
+      "claim_id": "C23_greedy_10e5",
+      "verdict": "needs-source",
+      "claim_text_normalized": "Greedy Sidon set at N=10^5 has lambda_max/k \u2248 27.1",
+      "paper_location": {
+        "section": "Sec 5 appendix B note",
+        "paragraph": 1,
+        "sentence": "\u03bb_max/k \u2248 27.1"
+      },
+      "note": "NOT SEALED \u2014 verdict is needs-source"
+    },
+    {
+      "claim_id": "C24_random_q7",
+      "verdict": "needs-source",
+      "claim_text_normalized": "Random Sidon lambda_max/k \u2248 2.26 at q=7",
+      "paper_location": {
+        "section": "Sec 5 appendix B note",
+        "paragraph": 1,
+        "sentence": "\u03bb_max/k \u2248 2.26 at q = 7"
+      },
+      "note": "NOT SEALED \u2014 verdict is needs-source"
+    },
+    {
+      "claim_id": "C25_random_q13",
+      "verdict": "needs-source",
+      "claim_text_normalized": "Random Sidon lambda_max/k \u2248 2.91 at q=13",
+      "paper_location": {
+        "section": "Sec 5 appendix B note",
+        "paragraph": 1,
+        "sentence": "rising to 2.91 at q = 13"
+      },
+      "note": "NOT SEALED \u2014 verdict is needs-source"
+    },
+    {
+      "claim_id": "C26_class_decomp_31x10",
+      "verdict": "verified",
+      "claim_text_normalized": "310 = 31 translates x 10 multiplier classes (Singer multiplier group structure)",
+      "paper_stable_id": "h2:three_formalisms_sidon_mendoza_2026_v20260416",
+      "paper_location": {
+        "section": "Abstract/Sec 5",
+        "paragraph": 1,
+        "sentence": "(= 31 translates \u00d7 10 multiplier classes)"
+      },
+      "producing_script_path": "paper/attack_a_test.py",
+      "producing_script_sha256": "f33514c52ea81a3f73c8696e612a355edd013cb0c2b3ee0318a811a8af249dfc",
+      "output_artifact_path": "paper/attack_a_test.py (mathematical identity + enumeration)",
+      "output_artifact_sha256": "MISSING",
+      "verifier_id": "realism_checker@publisher-stage-2a-v1",
+      "verified_at_utc": "2026-04-17T02:01:52Z",
+      "seal_sha256": "c64c8d4e56d9dc92f8f1a4a3e9934e7139ecffc008c1e4f4e8d07b841d7d554f"
+    }
+  ]
+}

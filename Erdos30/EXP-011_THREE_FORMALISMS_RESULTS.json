@@ -1,0 +1,941 @@
+{
+  "experiment_id": "EXP-011",
+  "title": "Three Formalisms for Sidon Counting",
+  "subtitle": "Lattice Gas \u00d7 Tao Entropy \u00d7 Shannon=vN",
+  "max_W": 14,
+  "thermal_alpha": 0.2572149360353011,
+  "thermal_correction": 1.9438995561726564,
+  "lindstrom_correction": 0.25,
+  "displacement_factor": 7.775598224690626,
+  "shannon_vn_gap_at_max_W": -0.7704906783922842,
+  "per_W": [
+    {
+      "W": 3,
+      "lattice_gas": {
+        "lambda_max": 1.8392867552141638,
+        "free_energy_per_site": 0.20312595447866924,
+        "capacity_bits": 0.29304880720221343,
+        "H_eigenvalue_shannon": 0.9955298310073234,
+        "H_max": 1.9459101490553132,
+        "H_normalized": 0.5116011299343015,
+        "n_eigenvalues": 7,
+        "eigenvalues_top5": [
+          1.8392867552141638,
+          0.7373527057603275,
+          0.7373527057603275,
+          2.067979614467636e-08,
+          2.067979614467636e-08
+        ]
+      },
+      "tao_entropy": {
+        "W": 3,
+        "max_sidon_size": 2,
+        "n_sidon_sets": 7,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 3,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 2.449489742783178,
+            "actual_max": 2
+          },
+          {
+            "k": 2,
+            "n_sets": 3,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 2.8284271247461903,
+            "actual_max": 2
+          }
+        ],
+        "delta_at_max": 0.2876820724517808,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 0.9955298310073234,
+        "S_von_neumann": 1.2852930241200995,
+        "S_singular_value": 1.2852930241200995,
+        "gap_shannon_minus_vN": -0.2897631931127761,
+        "gap_normalized": -0.2910642997202607,
+        "coherence_l1": 0.9230769230769231,
+        "coherence_normalized": 0.02197802197802198,
+        "purity": 0.28994082840236696,
+        "n_significant_sv": 4
+      }
+    },
+    {
+      "W": 4,
+      "lattice_gas": {
+        "lambda_max": 1.8392867552141625,
+        "free_energy_per_site": 0.15234446585900174,
+        "capacity_bits": 0.2197866054016598,
+        "H_eigenvalue_shannon": 0.9956230407219882,
+        "H_max": 2.5649493574615367,
+        "H_normalized": 0.38816479468714743,
+        "n_eigenvalues": 13,
+        "eigenvalues_top5": [
+          1.8392867552141625,
+          0.737352705760328,
+          0.737352705760328,
+          7.943812540629107e-06,
+          7.943812540629107e-06
+        ]
+      },
+      "tao_entropy": {
+        "W": 4,
+        "max_sidon_size": 3,
+        "n_sidon_sets": 13,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 4,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 2.8284271247461903,
+            "actual_max": 3
+          },
+          {
+            "k": 2,
+            "n_sets": 6,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 3.265986323710904,
+            "actual_max": 3
+          },
+          {
+            "k": 3,
+            "n_sets": 2,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 3.4641016151377553,
+            "actual_max": 3
+          }
+        ],
+        "delta_at_max": 0.4054651081081646,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 0.9956230407219882,
+        "S_von_neumann": 1.9072839993213788,
+        "S_singular_value": 1.9072839993213788,
+        "gap_shannon_minus_vN": -0.9116609585993907,
+        "gap_normalized": -0.915668803665179,
+        "coherence_l1": 0.9166666666666665,
+        "coherence_normalized": 0.005876068376068375,
+        "purity": 0.1527777777777778,
+        "n_significant_sv": 7
+      }
+    },
+    {
+      "W": 5,
+      "lattice_gas": {
+        "lambda_max": 1.7548776662466916,
+        "free_energy_per_site": 0.1124798297291846,
+        "capacity_bits": 0.16227409255032962,
+        "H_eigenvalue_shannon": 2.043973784589885,
+        "H_max": 3.091042453358316,
+        "H_normalized": 0.6612571051456038,
+        "n_eigenvalues": 22,
+        "eigenvalues_top5": [
+          1.7548776662466916,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "tao_entropy": {
+        "W": 5,
+        "max_sidon_size": 3,
+        "n_sidon_sets": 22,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 5,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 3.1622776601683795,
+            "actual_max": 3
+          },
+          {
+            "k": 2,
+            "n_sets": 10,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 3.651483716701107,
+            "actual_max": 3
+          },
+          {
+            "k": 3,
+            "n_sets": 6,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 3.8729833462074175,
+            "actual_max": 3
+          }
+        ],
+        "delta_at_max": 0.4054651081081646,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 2.043973784589885,
+        "S_von_neumann": 2.470180381941215,
+        "S_singular_value": 2.4701803819412147,
+        "gap_shannon_minus_vN": -0.42620659735133026,
+        "gap_normalized": -0.20851862218812503,
+        "coherence_l1": 0.8421052631578947,
+        "coherence_normalized": 0.001822738664843928,
+        "purity": 0.09002770083102493,
+        "n_significant_sv": 13
+      }
+    },
+    {
+      "W": 6,
+      "lattice_gas": {
+        "lambda_max": 1.7315636998300004,
+        "free_energy_per_site": 0.0915041454994693,
+        "capacity_bits": 0.13201257693286653,
+        "H_eigenvalue_shannon": 2.4625398884273833,
+        "H_max": 3.58351893845611,
+        "H_normalized": 0.6871848400188227,
+        "n_eigenvalues": 36,
+        "eigenvalues_top5": [
+          1.7315636998300004,
+          1.0612241317043363,
+          1.0612241317043363,
+          1.0000000000000004,
+          1.0000000000000004
+        ]
+      },
+      "tao_entropy": {
+        "W": 6,
+        "max_sidon_size": 3,
+        "n_sidon_sets": 36,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 6,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 3.4641016151377544,
+            "actual_max": 3
+          },
+          {
+            "k": 2,
+            "n_sets": 15,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 4.0,
+            "actual_max": 3
+          },
+          {
+            "k": 3,
+            "n_sets": 14,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 4.242640687119286,
+            "actual_max": 3
+          }
+        ],
+        "delta_at_max": 0.4054651081081646,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 2.462539888427383,
+        "S_von_neumann": 2.9548824168601975,
+        "S_singular_value": 2.9548824168601993,
+        "gap_shannon_minus_vN": -0.4923425284328147,
+        "gap_normalized": -0.19993281357453765,
+        "coherence_l1": 0.8571428571428571,
+        "coherence_normalized": 0.0006802721088435374,
+        "purity": 0.05618543713781808,
+        "n_significant_sv": 22
+      }
+    },
+    {
+      "W": 7,
+      "lattice_gas": {
+        "lambda_max": 1.671664307330782,
+        "free_energy_per_site": 0.07340281733962352,
+        "capacity_bits": 0.10589788056315327,
+        "H_eigenvalue_shannon": 3.120451679507424,
+        "H_max": 4.04305126783455,
+        "H_normalized": 0.7718061119662061,
+        "n_eigenvalues": 57,
+        "eigenvalues_top5": [
+          1.671664307330782,
+          1.1890234248344933,
+          1.1890234248344933,
+          1.1408973744208755,
+          1.1408973744208755
+        ]
+      },
+      "tao_entropy": {
+        "W": 7,
+        "max_sidon_size": 4,
+        "n_sidon_sets": 57,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 7,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 3.7416573867739413,
+            "actual_max": 4
+          },
+          {
+            "k": 2,
+            "n_sets": 21,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 4.320493798938573,
+            "actual_max": 4
+          },
+          {
+            "k": 3,
+            "n_sets": 26,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 4.582575694955841,
+            "actual_max": 4
+          },
+          {
+            "k": 4,
+            "n_sets": 2,
+            "H_X": 1.3862943611198906,
+            "H_XX": 2.302585092994046,
+            "delta": 0.47000362924573524,
+            "delta_fraction": 0.16951797627815932,
+            "tao_bound": 4.732863826479692,
+            "actual_max": 4
+          }
+        ],
+        "delta_at_max": 0.47000362924573524,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 3.1204516795074246,
+        "S_von_neumann": 3.4519566681968987,
+        "S_singular_value": 3.4519566681968987,
+        "gap_shannon_minus_vN": -0.3315049886894741,
+        "gap_normalized": -0.10623621921996992,
+        "coherence_l1": 0.7872340425531914,
+        "coherence_normalized": 0.00024662720631365645,
+        "purity": 0.0346310547759167,
+        "n_significant_sv": 36
+      }
+    },
+    {
+      "W": 8,
+      "lattice_gas": {
+        "lambda_max": 1.6577055332386863,
+        "free_energy_per_site": 0.06317930466802904,
+        "capacity_bits": 0.09114846953137844,
+        "H_eigenvalue_shannon": 3.083213646967709,
+        "H_max": 4.51085950651685,
+        "H_normalized": 0.6835091278088761,
+        "n_eigenvalues": 91,
+        "eigenvalues_top5": [
+          1.6577055332386863,
+          1.1869935119926334,
+          1.1869935119926334,
+          1.0792937178250266,
+          1.0792937178250266
+        ]
+      },
+      "tao_entropy": {
+        "W": 8,
+        "max_sidon_size": 4,
+        "n_sidon_sets": 91,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 8,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 4.0,
+            "actual_max": 4
+          },
+          {
+            "k": 2,
+            "n_sets": 28,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 4.618802153517006,
+            "actual_max": 4
+          },
+          {
+            "k": 3,
+            "n_sets": 44,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 4.898979485566357,
+            "actual_max": 4
+          },
+          {
+            "k": 4,
+            "n_sets": 10,
+            "H_X": 1.3862943611198906,
+            "H_XX": 2.302585092994046,
+            "delta": 0.47000362924573524,
+            "delta_fraction": 0.16951797627815932,
+            "tao_bound": 5.059644256269406,
+            "actual_max": 4
+          }
+        ],
+        "delta_at_max": 0.47000362924573524,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 3.0832136469677094,
+        "S_von_neumann": 3.920083730015275,
+        "S_singular_value": 3.920083730015275,
+        "gap_shannon_minus_vN": -0.8368700830475655,
+        "gap_normalized": -0.27142786030108995,
+        "coherence_l1": 0.7866666666666666,
+        "coherence_normalized": 9.605209605209604e-05,
+        "purity": 0.021600000000000005,
+        "n_significant_sv": 57
+      }
+    },
+    {
+      "W": 9,
+      "lattice_gas": {
+        "lambda_max": 1.6198465304906413,
+        "free_energy_per_site": 0.053592378943520286,
+        "capacity_bits": 0.07731745933125882,
+        "H_eigenvalue_shannon": 3.923394421227005,
+        "H_max": 4.941642422609304,
+        "H_normalized": 0.7939454306277709,
+        "n_eigenvalues": 140,
+        "eigenvalues_top5": [
+          1.6198465304906413,
+          1.2174125010508394,
+          1.2174125010508394,
+          1.1867164825574403,
+          1.1867164825574403
+        ]
+      },
+      "tao_entropy": {
+        "W": 9,
+        "max_sidon_size": 4,
+        "n_sidon_sets": 140,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 9,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 4.242640687119285,
+            "actual_max": 4
+          },
+          {
+            "k": 2,
+            "n_sets": 36,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 4.898979485566356,
+            "actual_max": 4
+          },
+          {
+            "k": 3,
+            "n_sets": 68,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 5.196152422706633,
+            "actual_max": 4
+          },
+          {
+            "k": 4,
+            "n_sets": 26,
+            "H_X": 1.3862943611198906,
+            "H_XX": 2.302585092994046,
+            "delta": 0.47000362924573524,
+            "delta_fraction": 0.16951797627815932,
+            "tao_bound": 5.3665631459994945,
+            "actual_max": 4
+          }
+        ],
+        "delta_at_max": 0.47000362924573524,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 3.9233944212270053,
+        "S_von_neumann": 4.375221708922442,
+        "S_singular_value": 4.375221708922441,
+        "gap_shannon_minus_vN": -0.451827287695437,
+        "gap_normalized": -0.11516234137737602,
+        "coherence_l1": 0.7443946188340809,
+        "coherence_normalized": 3.825254978592399e-05,
+        "purity": 0.01389531259426089,
+        "n_significant_sv": 91
+      }
+    },
+    {
+      "W": 10,
+      "lattice_gas": {
+        "lambda_max": 1.6078047681645633,
+        "free_energy_per_site": 0.047486975055265696,
+        "capacity_bits": 0.06850922341904973,
+        "H_eigenvalue_shannon": 3.960412792598184,
+        "H_max": 5.375278407684165,
+        "H_normalized": 0.736782821692849,
+        "n_eigenvalues": 216,
+        "eigenvalues_top5": [
+          1.6078047681645633,
+          1.2431135684849468,
+          1.2431135684849468,
+          1.1950904606851291,
+          1.1950904606851291
+        ]
+      },
+      "tao_entropy": {
+        "W": 10,
+        "max_sidon_size": 4,
+        "n_sidon_sets": 216,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 10,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 4.47213595499958,
+            "actual_max": 4
+          },
+          {
+            "k": 2,
+            "n_sets": 45,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 5.163977794943222,
+            "actual_max": 4
+          },
+          {
+            "k": 3,
+            "n_sets": 100,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 5.477225575051662,
+            "actual_max": 4
+          },
+          {
+            "k": 4,
+            "n_sets": 60,
+            "H_X": 1.3862943611198906,
+            "H_XX": 2.302585092994046,
+            "delta": 0.47000362924573524,
+            "delta_fraction": 0.16951797627815932,
+            "tao_bound": 5.65685424949238,
+            "actual_max": 4
+          }
+        ],
+        "delta_at_max": 0.47000362924573524,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 3.9604127925981842,
+        "S_von_neumann": 4.804714688667055,
+        "S_singular_value": 4.804714688667054,
+        "gap_shannon_minus_vN": -0.8443018960688704,
+        "gap_normalized": -0.21318532695552062,
+        "coherence_l1": 0.7514450867052023,
+        "coherence_normalized": 1.6180988085814003e-05,
+        "purity": 0.009038056734271108,
+        "n_significant_sv": 140
+      }
+    },
+    {
+      "W": 11,
+      "lattice_gas": {
+        "lambda_max": 1.5732577851539908,
+        "free_energy_per_site": 0.04119531744235077,
+        "capacity_bits": 0.059432280181926075,
+        "H_eigenvalue_shannon": 4.6730608180359114,
+        "H_max": 5.75890177387728,
+        "H_normalized": 0.8114499954198199,
+        "n_eigenvalues": 317,
+        "eigenvalues_top5": [
+          1.5732577851539908,
+          1.290975505326001,
+          1.290975505326001,
+          1.2291562467432147,
+          1.2291562467432147
+        ]
+      },
+      "tao_entropy": {
+        "W": 11,
+        "max_sidon_size": 4,
+        "n_sidon_sets": 317,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 11,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 4.69041575982343,
+            "actual_max": 4
+          },
+          {
+            "k": 2,
+            "n_sets": 55,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 5.41602560309064,
+            "actual_max": 4
+          },
+          {
+            "k": 3,
+            "n_sets": 140,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 5.7445626465380295,
+            "actual_max": 4
+          },
+          {
+            "k": 4,
+            "n_sets": 110,
+            "H_X": 1.3862943611198906,
+            "H_XX": 2.302585092994046,
+            "delta": 0.47000362924573524,
+            "delta_fraction": 0.16951797627815932,
+            "tao_bound": 5.93295878967653,
+            "actual_max": 4
+          }
+        ],
+        "delta_at_max": 0.47000362924573524,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 4.673060818035911,
+        "S_von_neumann": 5.225427227761996,
+        "S_singular_value": 5.2254272277619975,
+        "gap_shannon_minus_vN": -0.5523664097260852,
+        "gap_normalized": -0.11820227282174449,
+        "coherence_l1": 0.6900826446280991,
+        "coherence_normalized": 6.888977405144143e-06,
+        "purity": 0.006044669079980877,
+        "n_significant_sv": 216
+      }
+    },
+    {
+      "W": 12,
+      "lattice_gas": {
+        "lambda_max": 1.5612540974697753,
+        "free_energy_per_site": 0.037124117244537236,
+        "capacity_bits": 0.05355877984607432,
+        "H_eigenvalue_shannon": 4.91998816086806,
+        "H_max": 6.137727054086234,
+        "H_normalized": 0.8015977441669623,
+        "n_eigenvalues": 463,
+        "eigenvalues_top5": [
+          1.5612540974697753,
+          1.2972375586015896,
+          1.2972375586015896,
+          1.235094320180033,
+          1.235094320180033
+        ]
+      },
+      "tao_entropy": {
+        "W": 12,
+        "max_sidon_size": 5,
+        "n_sidon_sets": 463,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 12,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 4.898979485566356,
+            "actual_max": 5
+          },
+          {
+            "k": 2,
+            "n_sets": 66,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 5.656854249492381,
+            "actual_max": 5
+          },
+          {
+            "k": 3,
+            "n_sets": 190,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 6.000000000000001,
+            "actual_max": 5
+          },
+          {
+            "k": 4,
+            "n_sets": 190,
+            "H_X": 1.3862943611198906,
+            "H_XX": 2.302585092994046,
+            "delta": 0.47000362924573524,
+            "delta_fraction": 0.16951797627815932,
+            "tao_bound": 6.1967733539318655,
+            "actual_max": 5
+          },
+          {
+            "k": 5,
+            "n_sets": 4,
+            "H_X": 1.6094379124341003,
+            "H_XX": 2.70805020110221,
+            "delta": 0.5108256237659905,
+            "delta_fraction": 0.1586969027570073,
+            "tao_bound": 6.324555320336758,
+            "actual_max": 5
+          }
+        ],
+        "delta_at_max": 0.5108256237659905,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 4.919988160868061,
+        "S_von_neumann": 5.599581004886973,
+        "S_singular_value": 5.599581004886974,
+        "gap_shannon_minus_vN": -0.6795928440189121,
+        "gap_normalized": -0.13812895921664325,
+        "coherence_l1": 0.6976090014064701,
+        "coherence_normalized": 3.2612876749902764e-06,
+        "purity": 0.004175889824557239,
+        "n_significant_sv": 317
+      }
+    },
+    {
+      "W": 13,
+      "lattice_gas": {
+        "lambda_max": 1.5379292707450236,
+        "free_energy_per_site": 0.03311052940106939,
+        "capacity_bits": 0.04776839656813103,
+        "H_eigenvalue_shannon": 5.365859279949421,
+        "H_max": 6.504288173536645,
+        "H_normalized": 0.8249725622214839,
+        "n_eigenvalues": 668,
+        "eigenvalues_top5": [
+          1.5379292707450236,
+          1.2958235321562803,
+          1.2958235321562803,
+          1.240207637643878,
+          1.240207637643878
+        ]
+      },
+      "tao_entropy": {
+        "W": 13,
+        "max_sidon_size": 5,
+        "n_sidon_sets": 668,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 13,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 5.0990195135927845,
+            "actual_max": 5
+          },
+          {
+            "k": 2,
+            "n_sets": 78,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 5.887840577551898,
+            "actual_max": 5
+          },
+          {
+            "k": 3,
+            "n_sets": 250,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 6.244997998398399,
+            "actual_max": 5
+          },
+          {
+            "k": 4,
+            "n_sets": 304,
+            "H_X": 1.3862943611198906,
+            "H_XX": 2.302585092994046,
+            "delta": 0.47000362924573524,
+            "delta_fraction": 0.16951797627815932,
+            "tao_bound": 6.449806198638838,
+            "actual_max": 5
+          },
+          {
+            "k": 5,
+            "n_sets": 22,
+            "H_X": 1.6094379124341003,
+            "H_XX": 2.70805020110221,
+            "delta": 0.5108256237659905,
+            "delta_fraction": 0.1586969027570073,
+            "tao_bound": 6.5828058860438325,
+            "actual_max": 5
+          }
+        ],
+        "delta_at_max": 0.5108256237659905,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 5.365859279949421,
+        "S_von_neumann": 5.987255823198528,
+        "S_singular_value": 5.98725582319853,
+        "gap_shannon_minus_vN": -0.6213965432491069,
+        "gap_normalized": -0.11580559810263309,
+        "coherence_l1": 0.6640000000000004,
+        "coherence_normalized": 1.490272827658028e-06,
+        "purity": 0.002836,
+        "n_significant_sv": 463
+      }
+    },
+    {
+      "W": 14,
+      "lattice_gas": {
+        "lambda_max": 1.5275908679587475,
+        "free_energy_per_site": 0.030263707022831255,
+        "capacity_bits": 0.04366130004075515,
+        "H_eigenvalue_shannon": 5.578034644406609,
+        "H_max": 6.8690144506657065,
+        "H_normalized": 0.8120574915759592,
+        "n_eigenvalues": 962,
+        "eigenvalues_top5": [
+          1.5275908679587475,
+          1.303983870660154,
+          1.303983870660154,
+          1.2609661063897284,
+          1.2609661063897284
+        ]
+      },
+      "tao_entropy": {
+        "W": 14,
+        "max_sidon_size": 5,
+        "n_sidon_sets": 962,
+        "entropy_by_size": [
+          {
+            "k": 1,
+            "n_sets": 14,
+            "H_X": 0.0,
+            "H_XX": 0.0,
+            "delta": 0.0,
+            "delta_fraction": 0,
+            "tao_bound": 5.291502622129181,
+            "actual_max": 5
+          },
+          {
+            "k": 2,
+            "n_sets": 91,
+            "H_X": 0.6931471805599453,
+            "H_XX": 1.0986122886681098,
+            "delta": 0.2876820724517808,
+            "delta_fraction": 0.20751874963942182,
+            "tao_bound": 6.110100926607786,
+            "actual_max": 5
+          },
+          {
+            "k": 3,
+            "n_sets": 322,
+            "H_X": 1.0986122886681098,
+            "H_XX": 1.791759469228055,
+            "delta": 0.4054651081081646,
+            "delta_fraction": 0.18453512321427137,
+            "tao_bound": 6.480740698407861,
+            "actual_max": 5
+          },
+          {
+            "k": 4,
+            "n_sets": 466,
+            "H_X": 1.3862943611198906,
+            "H_XX": 2.302585092994046,
+            "delta": 0.47000362924573524,
+            "delta_fraction": 0.16951797627815932,
+            "tao_bound": 6.693280212272603,
+            "actual_max": 5
+          },
+          {
+            "k": 5,
+            "n_sets": 68,
+            "H_X": 1.6094379124341003,
+            "H_XX": 2.70805020110221,
+            "delta": 0.5108256237659905,
+            "delta_fraction": 0.1586969027570073,
+            "tao_bound": 6.831300510639732,
+            "actual_max": 5
+          }
+        ],
+        "delta_at_max": 0.5108256237659905,
+        "sidon_bit": 0.6931471805599453
+      },
+      "quantum_channel": {
+        "H_shannon": 5.57803464440661,
+        "S_von_neumann": 6.348525322798894,
+        "S_singular_value": 6.348525322798894,
+        "gap_shannon_minus_vN": -0.7704906783922842,
+        "gap_normalized": -0.13812941788823346,
+        "coherence_l1": 0.6694329183955732,
+        "coherence_normalized": 7.241167685207209e-07,
+        "purity": 0.0019809499759913837,
+        "n_significant_sv": 668
+      }
+    }
+  ]
+}

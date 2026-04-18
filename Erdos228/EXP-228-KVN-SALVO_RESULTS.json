@@ -1,0 +1,54 @@
+{
+  "experiment_id": "EXP-228-KVN-SALVO",
+  "date": "2026-04-16",
+  "problem": "Erdos 228 - Flat Littlewood Polynomials (Rudin-Shapiro)",
+  "experiments": [
+    {
+      "experiment": "EXP-228-KVN-001",
+      "is_unitary": true,
+      "finding": "R-S recursion matrix M/sqrt(2) is unitary (Hadamard gate with phase twist)",
+      "eigenvalue_modulus_std": 3.93e-16
+    },
+    {
+      "experiment": "EXP-228-KVN-002",
+      "purity_limit": 1.333333,
+      "flatness_limit": 0.75,
+      "purity_sequence": [
+        1.5,
+        1.25,
+        1.375,
+        1.3125,
+        1.34375,
+        1.328125,
+        1.335938,
+        1.332031,
+        1.333984,
+        1.333008,
+        1.333496
+      ],
+      "rs_vs_random_ratio": [
+        0.744,
+        0.7,
+        0.678,
+        0.663
+      ],
+      "finding": "L4/L2^2 purity converges to 4/3; R-S is 30% flatter than random",
+      "analytic": "int|R_n|^4 dtheta/2pi = (4/3)N^2 - N/3, so purity = 4/3 - 1/(3N) -> 4/3"
+    },
+    {
+      "experiment": "EXP-228-KVN-003",
+      "on_unit_circle": true,
+      "finding": "Koopman propagator eigenvalues ALL on unit circle (|lambda|=1.000000, std=0)"
+    }
+  ],
+  "verdict": "PASS",
+  "morphism": {
+    "type": "isomorphism",
+    "confidence": "conjectured",
+    "math_invariant": "L4/L2^2 purity ratio = 4/3",
+    "physics_invariant": "Quantum purity under iterated Hadamard = 4/3",
+    "transfer_operator": "R-S recursion M_k/sqrt(2) = phase-twisted Hadamard gate",
+    "breakdown_boundary": "Non-pm1 coefficients break qubit analogy",
+    "information_cost": "1/3 (irreducible decoherence = distance from perfect flatness)"
+  }
+}

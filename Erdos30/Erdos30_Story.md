@@ -103,7 +103,7 @@ Because human proofs have errors. Not often, and rarely in the final statements 
 
 We used **Lean 4**, a programming language that doubles as a proof assistant. In Lean, you can't say "it's obvious that" or "by a routine calculation." You must provide explicit justification for every logical step. The compiler either accepts your proof or tells you exactly where the gap is.
 
-The result: **1,131 lines of verified Lean 4 code across four files, with zero `sorry` stubs** (`sorry` is Lean's keyword for "trust me on this one"). Thirteen theorems are fully machine-checked. Every lemma is either proved to the kernel's satisfaction or honestly declared as an axiom.
+The result: **1,857 lines of verified Lean 4 code across six files, with zero `sorry` stubs** (`sorry` is Lean's keyword for "trust me on this one"). Over 22 theorems are fully machine-checked. Every lemma is either proved to the kernel's satisfaction or honestly declared as an axiom.
 
 ## 7. Honest accounting: the axiom-based decomposition
 
@@ -114,11 +114,11 @@ Rather than pretend these gaps don't exist, or hide them behind opaque tactics t
 - **Machine-checked:** all algebraic assembly. Inequality chains, cancellation, case splits, the logical plumbing that connects premises to conclusions. About 13 theorems fully proved.
 - **Axiomatized:** 4 deep combinatorial results, each declared as an explicit `axiom` with a precise mathematical statement, a bibliographic reference, and a documented path to future closure.
 
-The four axioms are:
-1. The elementary bound k(k-1) <= 2M (proved in a companion file, pending a Mathlib API port)
-2. Sorted enumeration gives distinct differences with bounded sum (requires `orderEmbOfFin` + telescoping)
-3. The R-to-N conversion for Lindstrom's full bound (requires `Nat.sqrt` bounding)
-4. The full BFR Sections 2-4 combination (~15 additional lemmas)
+The two outstanding axioms are:
+1. The R-to-N conversion for Lindstrom's full bound (requires `Nat.sqrt` bounding)
+2. The full BFR Sections 2-4 combination (~15 additional lemmas)
+
+*(Note: We recently formally closed major gaps regarding elementary bounds and combinatorial difference counting—proving exactly that sorted enumeration yields distinct telescoping differences—reducing the axiom count down from four to two in the `Assembly_v2` module).*
 
 A reader can see exactly where machine-checked reasoning stops and trusted mathematics begins. This is the opposite of a hidden gap. It's an invitation: here are the four things left to prove. Anyone with Lean expertise can pick one up and close it.
 

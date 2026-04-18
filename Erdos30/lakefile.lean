@@ -31,6 +31,18 @@ lean_lib Erdos30_Complete where
   srcDir := "lean"
   roots := #[`Erdos30_Complete]
 
+lean_lib Erdos30_Assembly_v2 where
+  srcDir := "lean"
+  roots := #[`Erdos30_Assembly_v2]
+
+lean_lib Erdos30_Dispersion where
+  srcDir := "lean"
+  roots := #[`Erdos30_Dispersion]
+
+lean_lib Erdos30_AdditiveEnergy where
+  srcDir := "lean"
+  roots := #[`Erdos30_AdditiveEnergy]
+
 -- ══════════════════════════════════════════════════════════════
 -- Scratch / supplementary files (not discussed in paper,
 -- not imported by core files — kept for reference only)

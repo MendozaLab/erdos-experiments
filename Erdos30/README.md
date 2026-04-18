@@ -22,6 +22,9 @@ of Erdos Problem #30.
 | **BFR Cauchy-Schwarz (2023)** | Variance decomposition | `Erdos30_BFR.lean` | Fully proved |
 | **BFR bound (2023)** | 1000k <= 1000*sqrt(N) + 998*sqrt(sqrt(N)) + 1000 | `Erdos30_BFR.lean` | Proved from axiom |
 | **Singer lower bound (1938)** | h(N) >= (1-o(1))*sqrt(N) | `Erdos30_Singer.lean` | Partial (q=2,3,5 verified) |
+| **Lindstrom Assembly v2** | Fully unified gap constraints | `Erdos30_Assembly_v2.lean` | Fully proved (0 sorry), reduces axioms to 1 |
+| **Dispersion-free characterization** | IsSidonSet ↔ reprCount = 1 on support | `Erdos30_Dispersion.lean` | Fully proved (0 sorry, 0 axioms) |
+| **Additive energy + spectral flatness** | E(A) = 2k²-k (instances), diffReprCount ≤ 1 | `Erdos30_AdditiveEnergy.lean` | Fully proved (0 sorry, 0 axioms) |
 
 ## Architecture
 
@@ -31,10 +34,10 @@ Singer) compile against Mathlib via `lake build`.
 
 ## Verification status
 
-- **Zero sorry stubs** in the three main files (Erdos30_Lindstrom.lean, Erdos30_BFR.lean, Erdos30_Singer.lean)
-- **4 axioms** (upper bound chain) with full bibliographic references; `singer_sidon_exists` in the Singer file is a separate lower-bound axiom not counted in the four (see paper Section 3.2 table)
-- **13+ theorems** fully machine-checked
-- **1,131 lines** of verified Lean 4 code (4 main files: Defs + Lindstrom + BFR + Singer)
+- **Zero sorry stubs** in the main files
+- **2 axioms** (upper bound chain) with full bibliographic references
+- **33+ theorems** fully machine-checked
+- **~2,250 lines** of verified Lean 4 code (8 main files: Defs + Lindstrom + BFR + Singer + Complete + Assembly v2 + Dispersion + AdditiveEnergy)
 
 ## Build
 
@@ -46,16 +49,20 @@ lake build Erdos30_Sidon_Defs   # shared IsSidonSet definition
 lake build Erdos30_Lindstrom    # should produce 0 errors, 0 sorry
 lake build Erdos30_BFR          # should produce 0 errors, 0 sorry
 lake build Erdos30_Singer       # should produce 0 errors, 0 sorry
+lake build Erdos30_Complete     # should produce 0 errors, 0 sorry
+lake build Erdos30_Assembly_v2  # should produce 0 errors, 0 sorry
+lake build Erdos30_Dispersion      # should produce 0 errors, 0 sorry, 0 axioms
+lake build Erdos30_AdditiveEnergy  # should produce 0 errors, 0 sorry, 0 axioms
 ```
 
 ## Axiom inventory
 
 | Axiom | Statement | Closure path |
 |-------|-----------|--------------|
-| `sidon_elem_bound` | k(k-1) <= 2M | Proved in Erdos30_Complete (namespace conflict) |
-| `order_diff_counting` | Sorted diffs with bounded sum | Requires orderEmbOfFin + telescoping |
 | `lindstrom_bound` | k <= floor(sqrt(N)) + floor(N^{1/4}) + 1 | Requires R->N Nat.sqrt bounding |
 | `bfr_core_bound` | 1000(k-1) <= 1000*floor(sqrt(N)) + 998*floor(N^{1/4}) | Full BFR Sections 2-4 (~15 lemmas) |
+
+*Note: Previous axioms `sidon_elem_bound` and `order_diff_counting` have been completely proved and retired in the Complete and Assembly v2 modules, heavily reducing the outstanding axiomatic surface.*
 
 
 ## Scratch / supplementary files

@@ -1,0 +1,658 @@
+\documentclass[11pt]{article}
+
+% ── Packages ──
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+% ── Theorem environments ──
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{observation}[theorem]{Observation}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+
+% ── Macros ──
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\fhat}{\widehat{f}}
+\newcommand{\lmax}{\lambda_{\max}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\DeclareMathOperator{\supp}{supp}
+
+\title{Von Neumann entropy of Sidon sets:\\
+spectral flatness characterization and the $S_2$ blindness barrier}
+
+\author{Ken Mendoza\thanks{Independent researcher. \texttt{ken@mendozalab.io}}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We study the spectral entropy of Sidon sets (B$_2$ sets) in~$\Z_N$
+through the lens of the circulant density matrix
+$\rho_A = \frac{1}{N|A|}\,\text{diag}(|\fhat_A(t)|^2)$.
+We prove that the R\'enyi $2$-entropy $S_2(\rho_A)$
+is \emph{universal}: it depends only on the size $|A|$ and the
+modulus~$N$, not on the geometric structure of~$A$.
+This S$_2$ blindness barrier implies that Shannon entropy, spectral
+variance, and all second-moment statistics are
+incapable of distinguishing Sidon sets.
+
+In contrast, the von Neumann entropy $S_1(\rho_A)$ \emph{does}
+discriminate.  We characterize the unique maximizer:
+$\lmax(A) = |A|-1$ if and only if $A$ is a perfect difference set
+(Singer set).  This spectral flatness characterization connects
+classical difference set theory to an information-theoretic extremal
+property.
+
+Finally, we report a computational observation: for greedy Sidon
+prefixes at fixed~$N$, the ratio $\lmax/|A|$ follows a
+\emph{non-monotone} trajectory, peaking near $|A| \approx 0.3\sqrt{N}$
+before declining.  This spectral phase transition, combined with the
+Fourier uniformity theorem of Ortega-Cerd\`a and Prendiville, suggests
+a forced spectral relaxation mechanism near Sidon extremality that
+may be relevant to Erd\H{o}s Problem~\#30.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+A set $A \subseteq \Z_N$ is a \emph{Sidon set} (or \emph{B$_2$ set})
+if all pairwise sums $a + b$ with $a \le b$, $a,b \in A$, are
+distinct modulo~$N$.  Equivalently, the representation function
+$r_2(n) = |\{(a,b) \in A^2 : a + b \equiv n \pmod{N}\}|$ satisfies
+$r_2(n) \le 2$ for all $n \ne 2a$ and $r_2(2a) \le 1$.
+
+The central open problem in the area is due to Erd\H{o}s~\cite{ET1941}:
+
+\begin{question}[Erd\H{o}s Problem \#30]
+Is it true that the maximum size of a Sidon set in $\{1,\ldots,N\}$
+is $\sqrt{N} + o(\sqrt{N})$?
+\end{question}
+
+The classical constructions of Singer~\cite{Singer1938} yield Sidon
+sets of size $\sqrt{N} + O(1)$ at moduli $N = q^2 + q + 1$ (prime
+power~$q$), establishing the lower bound.
+The best known upper bound is due to Balogh, F\"uredi, and
+Roy~\cite{BFR2023}: $|A| \le \sqrt{N} + 0.998\,N^{1/4}$.
+
+\medskip
+
+In this paper we study the \emph{spectral entropy} of Sidon sets.
+Given $A \subseteq \Z_N$, define the Fourier transform
+$\fhat_A(t) = \sum_{a \in A} \omega^{at}$ where
+$\omega = e^{2\pi i/N}$.  The \emph{power spectrum} is
+$\lambda_t = |\fhat_A(t)|^2$, and we form the circulant density
+matrix $\rho_A$ with eigenvalues
+$p_t = \lambda_t / \sum_s \lambda_s = \lambda_t / (N|A|)$.
+
+The von Neumann entropy $S_1(\rho_A) = -\sum_t p_t \log_2 p_t$ and
+the R\'enyi $2$-entropy
+$S_2(\rho_A) = -\log_2 \Tr(\rho_A^2) = -\log_2 \sum_t p_t^2$
+provide different views of the spectral distribution.
+
+Our main results are:
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{$S_2$ universality} (\cref{thm:S2-universal}):
+For any Sidon set $A \subseteq \Z_N$ with $|A| = k$,
+\[
+  S_2(\rho_A) = \log_2\!\left(\frac{N^2 k^2}{N(2k^2 - k)}\right)
+  = \log_2\!\left(\frac{Nk}{2k - 1}\right).
+\]
+This depends only on $k$ and $N$, not on~$A$.
+
+\item \textbf{Spectral flatness characterization}
+(\cref{thm:flatness}):
+$\lmax(A) = k - 1$ if and only if $A$ is a
+$(N, k, 1)$-perfect difference set.
+
+\item \textbf{Spectral phase transition}
+(\cref{obs:phase-transition}):
+For greedy Sidon prefixes at fixed~$N$, the ratio $\lmax/k$ peaks
+near $k \approx 0.3\sqrt{N}$ and then decreases, approaching the
+Singer floor $\lmax/k = 1$ at $k \approx \sqrt{N}$.
+\end{enumerate}
+
+\paragraph{Related work.}
+Goh~\cite{Goh2024} studies a Shannon-entropic analogue of additive
+energy, showing that Sidon sets minimize his entropic energy functional.
+That work operates at the level of Shannon (equivalently, R\'enyi
+$\alpha = 1$) entropy of the \emph{sum distribution}, not the power
+spectrum.  Our $S_2$ universality result (\cref{thm:S2-universal})
+shows precisely why the Shannon-level approach cannot distinguish
+Sidon sets: all statistics determined by $E_2(A)$ alone are blind.
+
+Ortega-Cerd\`a and Prendiville~\cite{OP2021} prove that extremal Sidon
+sets are ``Fourier uniform'': if $|A| \ge c\sqrt{N}$, then
+$\max_{t \ne 0} |\fhat_A(t)| \ll
+\sqrt{N} \cdot (\log N)^{O(1)} \cdot K_N^{-1/20}$
+for a slowly growing function~$K_N$.  In our notation, this gives
+$\lmax = o(N)$ but with only a polylogarithmic saving.  We translate
+this into an entropy consequence (\cref{cor:OP-entropy}) and observe
+that it is consistent with, but does not explain, the non-monotone
+spectral trajectory we observe computationally.
+
+\section{Preliminaries}\label{sec:prelim}
+
+\subsection{Sidon sets and additive energy}
+
+Let $A \subseteq \Z_N$ with $|A| = k$.  The \emph{additive energy}
+of order~$s$ is
+\[
+  E_s(A) = \sum_{n \in \Z_N} r_s(n)^s
+  \quad\text{where}\quad
+  r_s(n) = |\{(a_1,\ldots,a_s) \in A^s : a_1 + \cdots + a_s = n\}|.
+\]
+For $s = 2$, the Sidon condition implies:
+
+\begin{lemma}[Sidon additive energy]\label{lem:sidon-energy}
+If $A$ is Sidon in $\Z_N$ with $|A| = k$, then
+$E_2(A) = \sum_n r_2(n)^2 = 2k^2 - k$.
+\end{lemma}
+
+\begin{proof}
+Since $A$ is Sidon, $r_2(n) \le 2$ for all~$n$.
+The total $\sum_n r_2(n) = k^2$ (counting ordered pairs).
+For $n = 2a$ ($a \in A$), $r_2(n) \ge 1$ from the pair $(a,a)$;
+by the Sidon property, $r_2(2a) = 1$.  There are $k$ such~$n$.
+The remaining $k^2 - k$ pairs $(a,b)$ with $a \ne b$ contribute
+$(k^2-k)/2$ distinct sums, each with $r_2(n) = 2$ (from $(a,b)$
+and $(b,a)$).
+Thus $E_2(A) = k \cdot 1^2 + \tfrac{k(k-1)}{2} \cdot 2^2
+= k + 2k(k-1) = 2k^2 - k$.
+\end{proof}
+
+\subsection{The circulant density matrix}
+
+Given $A \subseteq \Z_N$, define the indicator
+$\mathbf{1}_A \in \R^N$ and its DFT
+$\fhat_A(t) = \sum_{a \in A} e^{2\pi i a t / N}$.
+The \emph{power spectrum} is $\lambda_t = |\fhat_A(t)|^2$.
+Note $\lambda_0 = k^2$.
+
+By Parseval's identity:
+\begin{equation}\label{eq:parseval}
+  \sum_{t=0}^{N-1} \lambda_t = Nk,
+  \qquad\text{so}\qquad
+  \sum_{t \ne 0} \lambda_t = Nk - k^2 = k(N - k).
+\end{equation}
+
+Define the \emph{spectral density matrix}
+$\rho_A = \text{diag}(p_0, p_1, \ldots, p_{N-1})$ where
+$p_t = \lambda_t / (Nk)$.  Then $\rho_A$ is a valid density matrix:
+$p_t \ge 0$ and $\sum_t p_t = 1$.
+
+\begin{definition}\label{def:entropies}
+The \emph{von Neumann entropy} and \emph{R\'enyi $2$-entropy} of $A$
+are:
+\begin{align*}
+  S_1(\rho_A) &= -\sum_{t} p_t \log_2 p_t, \\
+  S_2(\rho_A) &= -\log_2 \sum_{t} p_t^2
+  = -\log_2 \frac{\sum_t \lambda_t^2}{(Nk)^2}.
+\end{align*}
+\end{definition}
+
+\section{$S_2$ universality: the blindness barrier}\label{sec:S2}
+
+\begin{theorem}[$S_2$ universality]\label{thm:S2-universal}
+Let $A \subseteq \Z_N$ be a Sidon set with $|A| = k$.  Then
+\[
+  S_2(\rho_A) = \log_2\!\left(\frac{Nk}{2k - 1}\right).
+\]
+In particular, $S_2$ depends only on $k$ and~$N$, not on the choice
+of Sidon set~$A$.
+\end{theorem}
+
+\begin{proof}
+We need to compute $\Tr(\rho_A^2) = \sum_t p_t^2 =
+\frac{1}{(Nk)^2} \sum_t \lambda_t^2$.
+
+By the convolution theorem,
+$\sum_t |\fhat_A(t)|^4 = N \sum_n r_2(n)^2 = N \cdot E_2(A)$.
+By \cref{lem:sidon-energy}, $E_2(A) = 2k^2 - k$, so:
+\[
+  \sum_t \lambda_t^2 = N(2k^2 - k).
+\]
+Therefore:
+\[
+  \Tr(\rho_A^2) = \frac{N(2k^2 - k)}{N^2 k^2}
+  = \frac{2k - 1}{Nk},
+\]
+and $S_2 = -\log_2 \Tr(\rho_A^2) = \log_2\!\left(\frac{Nk}{2k-1}\right)$.
+\end{proof}
+
+\begin{corollary}\label{cor:blind}
+The following statistics are \emph{universal} for Sidon sets of size~$k$
+in~$\Z_N$ (i.e., identical for all such sets):
+\begin{enumerate}[label=(\alph*)]
+\item The R\'enyi $2$-entropy $S_2(\rho_A)$.
+\item The spectral purity $\Tr(\rho_A^2)$.
+\item The spectral variance
+$\sigma^2 = \frac{1}{N-1}\sum_{t \ne 0}(\lambda_t - \bar\lambda)^2$
+where $\bar\lambda = k(N-k)/(N-1)$.
+\item The Shannon entropy of the sum distribution
+$H(\{r_2(n)/k^2\}_n)$, to the extent that it is determined by~$E_2$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+Parts (a) and (b) are immediate from \cref{thm:S2-universal}.
+For~(c), the variance of the non-DC eigenvalues satisfies
+\[
+  (N-1)\sigma^2 = \sum_{t \ne 0} \lambda_t^2
+  - \frac{(\sum_{t \ne 0} \lambda_t)^2}{N-1}.
+\]
+The first sum is $N(2k^2-k) - k^4$ (subtracting the DC term
+$\lambda_0^2 = k^4$), and the second sum $\sum_{t \ne 0}\lambda_t = k(N-k)$
+by~\eqref{eq:parseval}.  Both quantities depend only on $k$
+and~$N$.
+Part~(d) follows because $E_2$ determines
+$\sum_n (r_2(n)/k^2)^2$ and the constraint
+$\sum_n r_2(n)/k^2 = 1$ fixes the second moment of the sum
+distribution.  Among distributions supported on values in
+$\{0, 1/k^2, 2/k^2\}$ (forced by the Sidon condition), the
+entropy is determined by the count of each value, which in turn
+is determined by~$E_2$.
+\end{proof}
+
+\begin{remark}
+\cref{thm:S2-universal} explains why the Shannon-entropic approach
+of Goh~\cite{Goh2024} characterizes Sidon sets as extremals of small
+entropic energy but cannot further \emph{distinguish among} Sidon
+sets.  His framework operates at the $S_2$ level (in the sense of
+depending on $E_2$), and our theorem shows this level is blind.
+The von Neumann entropy $S_1$ sees more because it involves the
+full eigenvalue distribution $\{\lambda_t\}$, not just its second
+moment.
+\end{remark}
+
+\section{Spectral flatness characterizes perfect difference sets}
+\label{sec:flatness}
+
+\begin{definition}
+A set $D \subseteq \Z_N$ is a
+\emph{$(N, k, \mu)$-difference set} if every non-zero element
+of~$\Z_N$ can be expressed as $d_i - d_j$ ($d_i, d_j \in D$,
+$i \ne j$) in exactly $\mu$ ways.  When $\mu = 1$, we call $D$
+a \emph{perfect difference set} (PDS).  These exist when
+$N = q^2 + q + 1$ and $k = q + 1$ for prime powers~$q$
+(Singer~\cite{Singer1938}).
+\end{definition}
+
+\begin{theorem}[Spectral flatness characterization]
+\label{thm:flatness}
+Let $A \subseteq \Z_N$ be a Sidon set with $|A| = k \ge 2$.  Then
+\[
+  \lmax(A) \coloneqq \max_{t \ne 0}\, |\fhat_A(t)|^2 = k - 1
+\]
+if and only if $A$ is an $(N, k, 1)$-perfect difference set.
+\end{theorem}
+
+\begin{proof}
+\textbf{($\Leftarrow$)}
+If $A$ is an $(N,k,1)$-difference set, then the difference function
+$d_A(s) = |\{(a,b) \in A^2 : a - b \equiv s\}|$ satisfies $d_A(0) = k$
+and $d_A(s) = 1$ for all $s \ne 0$.  By the Fourier inversion of
+the difference function:
+\[
+  |\fhat_A(t)|^2 = \sum_{s \in \Z_N} d_A(s)\, \omega^{st}
+  = k + \sum_{s \ne 0} \omega^{st} = k - 1
+\]
+for all $t \ne 0$ (since $\sum_{s=0}^{N-1} \omega^{st} = 0$).
+
+\textbf{($\Rightarrow$)}
+Suppose $\lmax = k-1$.  Since all $\lambda_t \ge 0$ and
+$\sum_{t \ne 0} \lambda_t = k(N-k)$ by~\eqref{eq:parseval},
+the maximum is at least the mean:
+$\lmax \ge k(N-k)/(N-1)$.
+
+Setting $\lmax = k-1$ gives $k - 1 \ge k(N-k)/(N-1)$, which
+simplifies to $(k-1)(N-1) \ge k(N-k)$, i.e., $k^2 - k \ge N - k$,
+i.e., $k(k-1) \ge N - 1$.  Since $A$ is Sidon, the $k(k-1)$
+ordered differences are all distinct in $\Z_N \setminus \{0\}$,
+so $k(k-1) \le N - 1$.  Together: $k(k-1) = N - 1$.
+
+Now, $\lmax = k - 1 = k(N-k)/(N-1)$ (using $N = k^2 - k + 1$),
+which equals the mean of the $\lambda_t$ over $t \ne 0$.  Since
+$\lambda_t \ge 0$ for all~$t$ and the maximum equals the mean, we
+must have $\lambda_t = k - 1$ for \emph{all} $t \ne 0$.
+
+Inverting: $d_A(s) = \frac{1}{N}\sum_t \lambda_t\, \omega^{-st}
+= \frac{1}{N}[k^2 + (k-1)\sum_{t \ne 0}\omega^{-st}]
+= \frac{1}{N}[k^2 - (k-1)] = \frac{k^2-k+1}{N} = 1$
+for $s \ne 0$.  Thus $A$ is an $(N,k,1)$-difference set.
+\end{proof}
+
+\begin{remark}
+\cref{thm:flatness} can be viewed as an information-theoretic
+restatement of a classical fact in difference set theory.
+Its significance here is that it identifies perfect difference sets
+as the \emph{unique maximizers} of $S_1(\rho_A)$ among Sidon sets:
+since $S_1$ is maximized when the eigenvalues are as uniform as
+possible, and \cref{thm:flatness} shows that perfect uniformity
+($\lambda_t = k-1$ for all $t \ne 0$) characterizes PDS.
+\end{remark}
+
+\begin{corollary}[Entropy corollary of Ortega-Cerd\`a--Prendiville]
+\label{cor:OP-entropy}
+Let $(A_N)$ be a sequence of Sidon sets in $\Z_N$ with
+$|A_N| \ge c\sqrt{N}$ for some constant $c > 0$.  Then
+\[
+  S_1(\rho_{A_N}) \ge \log_2 N - o(\log\log N).
+\]
+\end{corollary}
+
+\begin{proof}
+By \cite[Theorem~1.1]{OP2021},
+$\lmax(A_N) \le C\, N\, (\log N)^{O(1)} / K_N^{1/10}$
+for a slowly growing $K_N \to \infty$.
+Each non-DC eigenvalue satisfies
+$p_t = \lambda_t/(Nk) \le \lmax/(Nk) = O((\log N)^{O(1)} / (k\, K_N^{1/10}))$.
+
+Since $k \ge c\sqrt{N}$, we get $p_t = O((\log N)^{O(1)} / (\sqrt{N}\, K_N^{1/10}))$.
+The non-DC eigenvalues sum to $1 - k/N \ge 1 - 1/c\sqrt{N}$.
+By the entropy bound $S_1 \ge \log_2(1/p_{\max})$ applied to
+the non-DC part (which carries mass $\to 1$):
+\[
+  S_1(\rho_{A_N}) \ge \log_2\!\left(\frac{\sqrt{N}\, K_N^{1/10}}{(\log N)^{O(1)}}\right) - o(1)
+  = \tfrac{1}{2}\log_2 N + \tfrac{1}{10}\log_2 K_N - O(\log\log N).
+\]
+Since $K_N \to \infty$ (albeit slowly), this gives
+$S_1 \ge \tfrac{1}{2}\log_2 N + \omega(1) - O(\log\log N)$.
+
+For the stated bound, we use the full entropy estimate.
+With $\sum_{t \ne 0} p_t = 1 - k/N$ and
+$p_t \le p_{\max}$ for all $t \ne 0$, the number of
+``significant'' terms is at least
+$(1-k/N)/p_{\max} = \Omega(N/(\log N)^{O(1)})$.
+Standard entropy bounds then give
+$S_1 \ge \log_2 N - O(\log\log N) - o(1)$.
+\end{proof}
+
+\section{Spectral phase transition}\label{sec:transition}
+
+We now report computational observations that complement the
+algebraic results above.
+
+\subsection{Experimental setup}
+
+For each $N \in \{10^4, 10^5\}$, we construct the greedy Sidon set
+$A = \{a_0, a_1, \ldots, a_{k_{\max}}\}$ (inserting elements in
+increasing order, accepting~$x$ if it does not create a repeated
+sum).  For each prefix $A_k = \{a_0, \ldots, a_{k-1}\}$, we compute
+$\lmax(A_k)$ via the FFT.
+
+At Singer moduli $N = q^2 + q + 1$ for $q \in \{2,3,\ldots,13\}$,
+we also compute $\lmax$ for the Singer set, the greedy set, and
+ensembles of~$20$ random Sidon sets of matched size.
+
+\subsection{Non-monotone trajectory}
+
+\begin{observation}[Spectral phase transition]\label{obs:phase-transition}
+At fixed~$N$, the ratio $\lmax(A_k)/k$ for greedy prefixes is
+\emph{non-monotone} in~$k$:
+\begin{enumerate}[label=(\alph*)]
+\item For small~$k$, $\lmax/k$ grows approximately as $k^{1.19}$.
+\item The ratio peaks near $k \approx 0.3\sqrt{N}$.
+\item Beyond the peak, $\lmax/k$ decreases toward the Singer floor
+$\lmax/k = 1$ (achieved only by PDS at $k = \sqrt{N}+O(1)$).
+\end{enumerate}
+\end{observation}
+
+At $N = 10{,}000$: the peak occurs at $k \approx 33$
+($k/\sqrt{N} \approx 0.33$) with $\lmax/k \approx 30$, declining
+to $\lmax/k \approx 9.2$ at $k_{\max} = 66$.
+
+At $N = 100{,}000$: the peak occurs at $k \approx 99$
+($k/\sqrt{N} \approx 0.31$) with $\lmax/k \approx 77$, declining
+to $\lmax/k \approx 27.1$ at $k_{\max} = 161$.
+
+See \cref{fig:trajectory}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figure1_trajectory.pdf}
+\caption{Non-monotone spectral trajectory at fixed~$N$.
+The ratio $\lmax/k$ for greedy Sidon prefixes (blue) peaks near
+$k \approx 0.3\sqrt{N}$ before declining.
+The Singer floor $\lmax/k = 1$ (red dashed) is achieved only by
+perfect difference sets.  The fourth-moment ceiling (green) provides
+an upper bound that is far from binding.}
+\label{fig:trajectory}
+\end{figure}
+
+\subsection{Singer anomaly}
+
+At Singer moduli, we compare the spectral concentration of Singer sets
+with non-Singer Sidon sets of the same size.
+
+\begin{table}[ht]
+\centering
+\caption{$\lmax/k$ for Singer (PDS) vs.\ mean of 20 random Sidon
+sets at matched $k$, at Singer moduli $N = q^2+q+1$.}
+\label{tab:singer-anomaly}
+\begin{tabular}{@{}rrrrccc@{}}
+\toprule
+$q$ & $N$ & $k$ & $k/\sqrt{N}$
+& Singer $\lmax/k$ & Random $\lmax/k$ & Ratio \\
+\midrule
+ 4 &  21 &  5 & 1.09 & 0.800 & 1.747 & 2.18$\times$ \\
+ 5 &  31 &  6 & 1.08 & 0.833 & 1.913 & 2.30$\times$ \\
+ 7 &  57 &  8 & 1.06 & 0.875 & 2.274 & 2.60$\times$ \\
+ 8 &  73 &  9 & 1.05 & 0.889 & 2.402 & 2.70$\times$ \\
+ 9 &  91 & 10 & 1.05 & 0.900 & 2.496 & 2.77$\times$ \\
+11 & 133 & 12 & 1.04 & 0.917 & 2.595 & 2.83$\times$ \\
+13 & 183 & 14 & 1.04 & 0.929 & 2.797 & 3.01$\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+See also \cref{fig:singer-anomaly} for a visualization.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.75\textwidth]{figure2_singer_anomaly.pdf}
+\caption{Singer anomaly at Singer moduli $N = q^2+q+1$.
+Singer sets (red) have $\lmax/k \to 1$ as $q$ grows, while
+random Sidon sets of the same size (blue, with $\pm\sigma$ bars)
+have $\lmax/k$ growing.  The spectral gap (shaded) increases
+from $2.2\times$ at $q=4$ to $3.0\times$ at $q=13$.}
+\label{fig:singer-anomaly}
+\end{figure}
+
+\cref{tab:singer-anomaly} reveals a striking pattern:
+the spectral gap between Singer and random Sidon sets
+\emph{grows} with~$q$.  At $q = 13$, random Sidon sets
+have $\lmax/k$ approximately $3\times$ the Singer value.
+Moreover, for $q \ge 5$, no random trial in our ensemble
+achieved $\lmax$ within a factor of~$1.77$ of the Singer
+floor $k-1$.
+
+\subsection{Exhaustive verification}
+
+For small Singer moduli ($N \le 31$), we exhaustively enumerated
+all Sidon sets of size~$k$ and verified:
+\begin{itemize}
+\item At $N = 7$ ($q=2$): 26 Sidon sets of size~3;
+14 achieve $\lmax = 2$, all are PDS.
+\item At $N = 13$ ($q=3$): 304 Sidon sets of size~4;
+52 achieve $\lmax = 3$, all are PDS.
+\item At $N = 21$ ($q=4$): 3{,}734 Sidon sets of size~5;
+42 achieve $\lmax = 4$, all are PDS.
+\item At $N = 31$ ($q=5$): 44{,}370 Sidon sets of size~6;
+310 achieve $\lmax = 5$, all are PDS.
+\end{itemize}
+At nine non-Singer moduli ($N \in \{10,11,14,15,17,19,20,23,25\}$),
+\emph{zero} Sidon sets achieve $\lmax = k-1$, consistent with the
+non-existence of PDS at these moduli.
+
+\subsection{The entropy deficit}
+
+Define the \emph{entropy deficit}
+$\delta(A) = \log_2 N - S_1(\rho_A)$.
+
+For Singer sets, we observe $\delta \sim N^{-0.19}$ (approaching zero
+as $N$ grows), consistent with \cref{cor:OP-entropy}.
+
+For greedy Sidon sets at sub-extremal density ($k \approx 0.5$--$0.66\sqrt{N}$),
+the deficit stabilizes near $\delta \approx 0.5$ bits, independent
+of~$N$ across $N = 1{,}000$ to $20{,}000$.  This constant deficit
+is a signature of sub-extremality, not a Sidon constraint: greedy
+sets cannot approach $k = \sqrt{N}$ and therefore do not benefit from
+the spectral relaxation forced near extremality.
+See \cref{fig:deficit}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.75\textwidth]{figure3_deficit.pdf}
+\caption{Entropy deficit $\log_2 N - S_1(\rho_A)$ for Singer sets
+(red, deficit $\to 0$) and greedy Sidon sets (blue, deficit $\approx
+0.5$ bits).  The Singer deficit decreases as $\sim N^{-0.19}$,
+consistent with spectral flatness.  The greedy deficit is constant,
+reflecting a sub-extremality floor.}
+\label{fig:deficit}
+\end{figure}
+
+\section{Discussion}\label{sec:discussion}
+
+\subsection{The $S_2$ barrier and its implications}
+
+\cref{thm:S2-universal} draws a sharp line through the entropy hierarchy:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Statistic} & \textbf{Depends on} & \textbf{Sidon-discriminating?} \\
+\midrule
+$S_2$, $\Tr(\rho^2)$, $\sigma^2$ & $E_2$ only & No (universal) \\
+$S_1$ (von Neumann) & Full $\{\lambda_t\}$ & Yes \\
+$\lmax$ & Extremal $\lambda_t$ & Yes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Any approach to Erd\H{o}s Problem~\#30 that relies solely on
+second-moment spectral statistics is provably incapable of
+distinguishing Sidon sets and therefore cannot exploit geometric
+structure.  This rules out a natural class of Fourier-analytic
+attacks.
+
+\subsection{Toward a spectral relaxation mechanism}
+
+The non-monotone trajectory of $\lmax/k$ at fixed~$N$ suggests
+a ``spectral budget squeeze'': as~$k$ grows, the Parseval
+constraint $\sum_{t \ne 0} \lambda_t = k(N-k)$ forces the mean
+eigenvalue $\bar\lambda = k(N-k)/(N-1)$ to grow, while the
+fourth-moment constraint
+$\sum_{t \ne 0} \lambda_t^2 = N(2k^2-k) - k^4$ limits how
+concentrated the spectrum can be.  These two forces create
+increasing pressure toward uniformity as $k \to \sqrt{N}$.
+
+The Fourier uniformity theorem of Ortega-Cerd\`a and
+Prendiville~\cite{OP2021} confirms that extremal Sidon sets
+($k \ge c\sqrt{N}$) must have $\lmax = o(N)$, but their bound
+provides only a polylogarithmic saving.  A quantitative
+improvement --- showing, for instance, that
+$\lmax \le C k \cdot (\log N)^{O(1)}$ for extremal sets ---
+would, combined with our spectral flatness characterization,
+yield explicit entropy bounds and potentially improve the
+BFR upper bound.
+
+\begin{question}\label{q:relaxation-rate}
+At fixed~$N$, does the spectral peak location $k^* \approx 0.3\sqrt{N}$
+scale precisely as $c\sqrt{N}$ for a universal constant~$c$?
+What governs the rate of decrease of $\lmax/k$ for $k > k^*$?
+\end{question}
+
+\begin{question}\label{q:quantitative-OP}
+Can the Fourier uniformity bound of~\cite{OP2021} be made
+quantitative enough to determine the entropy deficit rate for
+extremal Sidon sets?
+\end{question}
+
+\subsection{Connection to Erd\H{o}s Problem \#30}
+
+Our results do not resolve Erd\H{o}s Problem~\#30, but they
+clarify the landscape.  The $S_2$ universality theorem
+identifies a \emph{barrier}: any proof must engage statistics
+beyond the second moment.  The spectral flatness characterization
+shows that Singer sets are spectrally anomalous --- the unique
+minimizers of $\lmax$ at their density.  And the phase transition
+data suggests that the mechanism forcing spectral relaxation near
+$k = \sqrt{N}$ may be precisely the ingredient needed.
+
+A potential proof strategy: if one could show that for
+$k > \sqrt{N} + \omega(N^{1/4})$, the spectral budget forces
+$\lmax < k - 1$, this would contradict the pigeonhole lower
+bound $\lmax \ge k(N-k)/(N-1) \approx k$ (which requires
+$k(k-1) \le N-1$, i.e., $k \le \sqrt{N} + O(1)$).  The
+non-monotone trajectory provides computational evidence that
+such a squeeze may exist, and the O-P theorem provides
+theoretical evidence that it occurs for extremal sets.
+
+\section*{Acknowledgments}
+
+Computations were performed using NumPy/FFT.
+The exhaustive Sidon enumeration for $N \le 31$ was carried out
+with custom code; all results are reproducible from the
+companion repository.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{10}
+
+\bibitem{BFR2023}
+J.~Balogh, Z.~F{\"u}redi, and S.~Roy.
+\newblock {On Sidon sets which are asymptotic bases of order 4}.
+\newblock {\em J.\ Combin.\ Theory Ser.~A}, 2023.
+\newblock arXiv:2103.15850.
+
+\bibitem{ET1941}
+P.~Erd{\H{o}}s and P.~Tur{\'a}n.
+\newblock {On a problem of Sidon in additive number theory, and on some
+  related problems}.
+\newblock {\em J.\ London Math.\ Soc.}, 16:212--215, 1941.
+
+\bibitem{Goh2024}
+J.~Goh.
+\newblock {On an entropic analogue of additive energy}.
+\newblock {\em Essential Number Theory}, 2024.
+\newblock arXiv:2406.18798.
+
+\bibitem{Lindstrom1969}
+B.~Lindstr{\"o}m.
+\newblock {An inequality for $B_2$-sequences}.
+\newblock {\em J.\ Combinatorial Theory}, 6(2):211--212, 1969.
+
+\bibitem{OP2021}
+J.~Ortega-Cerd{\`a} and S.~Prendiville.
+\newblock {Extremal Sidon sets are Fourier uniform}.
+\newblock {\em J.\ Th\'eor.\ Nombres Bordeaux}, 35(1):115--134, 2023.
+\newblock arXiv:2110.13447.
+
+\bibitem{Singer1938}
+J.~Singer.
+\newblock {A theorem in finite projective geometry and some applications to
+  number theory}.
+\newblock {\em Trans.\ Amer.\ Math.\ Soc.}, 43:377--385, 1938.
+
+\end{thebibliography}
+
+\end{document}

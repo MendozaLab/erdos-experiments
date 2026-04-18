@@ -1,0 +1,41 @@
+{
+  "problem_id": "30",
+  "operator_type": "transfer",
+  "operator_class": "sidon_circulant_convolution",
+  "mdl_complexity": 14.801102057146291,
+  "mdl_rank": 1,
+  "eigenvalue_count": 183,
+  "spectral_gap": 10.25834261322606,
+  "spectral_radius": 14.0,
+  "eigenvalues_json": "[14.0, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413, 3.7416573867739413]",
+  "eigenvector_entropy": 7.507794640198696,
+  "phase_transition_type": "none_detected",
+  "transition_threshold": 3.6780088714505137,
+  "transition_sharpness": 0.75,
+  "level_spacing_distribution": "poisson",
+  "solvability_prediction": 0.35,
+  "mdl_signature_15d": "[1.0, 0.7327387580875756, 0.9989481753854673, 14.801102057146291, 0.75, 0.422, 0.702, 0.633, 1.0, 2.0, 0.821, 0.6446, 85.0, 1000.0, 3.0]",
+  "mdl_entropy": 1.111236346936768,
+  "operator_equivalence_class": "sidon_extremal",
+  "equivalence_class_size": 1,
+  "feynman_layer_a": {
+    "description": "Circulant convolution operator T on Z_n",
+    "eigenstructure": "For Singer PDS: all non-DC eigenvalues equal (sqrt(k))",
+    "spectral_type": "pure-point (finite analog)",
+    "fourier_cv": 0.0
+  },
+  "feynman_layer_b": {
+    "description": "Quasicrystal/model-set correspondence",
+    "key_result": "Singer PDS are cut-and-project sets; CV=0 confirms pure-point diffraction",
+    "chowla_trend": "Normalized ratio monotonically decreasing: 0.561 -> 0.422 (q=2..13)",
+    "entropy_trend": "Normalized entropy decreasing: 1.000 -> 0.702 (q=2..13)"
+  },
+  "feynman_layer_c": {
+    "description": "Inverse theorem pathway",
+    "conjecture": "Near-extremal Sidon sets are asymptotically model sets",
+    "implication": "If true, O_eps(N^eps) follows from model-set diffraction theory",
+    "falsification": "Find a Sidon set with |A| > sqrt(N) + N^delta that has Fourier CV bounded away from 0"
+  },
+  "compute_method": "EXP-002/003/004 experimental + analytical (q=13 Singer PDS)",
+  "version": 1
+}
