@@ -100,5 +100,13 @@ lean_lib Erdos166_SumFree where
   srcDir := "lean"
   roots := #[`Erdos166_SumFree]
 
+-- ══════════════════════════════════════════════════════════════
+-- Erdős #30 — Sharp Sidon Difference Bound (PMF salvo 2026-04-19)
+-- ══════════════════════════════════════════════════════════════
+
+lean_lib Erdos30_SharpDiff where
+  srcDir := "lean"
+  roots := #[`Erdos30_SharpDiff]
+
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
