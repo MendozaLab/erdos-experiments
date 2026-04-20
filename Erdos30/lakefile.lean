@@ -84,5 +84,21 @@ lean_lib Erdos1_DistinctSubsetSums where
   srcDir := "lean"
   roots := #[`Erdos1_DistinctSubsetSums]
 
+-- ══════════════════════════════════════════════════════════════
+-- Erdős #755 — Higher-order specializations (h=4,5,6)
+-- ══════════════════════════════════════════════════════════════
+
+lean_lib Erdos755_HigherOrder where
+  srcDir := "lean"
+  roots := #[`Erdos755_HigherOrder]
+
+-- ══════════════════════════════════════════════════════════════
+-- Erdős #166 — Sum-Free Sets (salvo attack 2026-04-19)
+-- ══════════════════════════════════════════════════════════════
+
+lean_lib Erdos166_SumFree where
+  srcDir := "lean"
+  roots := #[`Erdos166_SumFree]
+
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
