@@ -68,5 +68,13 @@ lean_lib Erdos755_Complete where
   srcDir := "lean"
   roots := #[`Erdos755_Complete]
 
+lean_lib Erdos755_B3G where
+  srcDir := "lean"
+  roots := #[`Erdos755_B3G]
+
+lean_lib Erdos755_BhG_General where
+  srcDir := "lean"
+  roots := #[`Erdos755_BhG_General]
+
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
