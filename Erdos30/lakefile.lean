@@ -44,5 +44,29 @@ lean_lib Sidon_SumCount_Fix where
   srcDir := "scratch"
   roots := #[`Sidon_SumCount_Fix]
 
+-- ══════════════════════════════════════════════════════════════
+-- Erdős #755 — B_h[g] Sequences (salvo attack 2026-04-19)
+-- ══════════════════════════════════════════════════════════════
+
+lean_lib Erdos755_BhG where
+  srcDir := "lean"
+  roots := #[`Erdos755_BhG]
+
+lean_lib Erdos755_DifferenceCount where
+  srcDir := "lean"
+  roots := #[`Erdos755_DifferenceCount]
+
+lean_lib Erdos755_Lindstrom where
+  srcDir := "lean"
+  roots := #[`Erdos755_Lindstrom]
+
+lean_lib Erdos755_Singer_BhG where
+  srcDir := "lean"
+  roots := #[`Erdos755_Singer_BhG]
+
+lean_lib Erdos755_Complete where
+  srcDir := "lean"
+  roots := #[`Erdos755_Complete]
+
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
