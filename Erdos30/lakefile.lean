@@ -76,5 +76,13 @@ lean_lib Erdos755_BhG_General where
   srcDir := "lean"
   roots := #[`Erdos755_BhG_General]
 
+-- ══════════════════════════════════════════════════════════════
+-- Erdős #1 — Distinct Subset Sums (salvo attack 2026-04-19)
+-- ══════════════════════════════════════════════════════════════
+
+lean_lib Erdos1_DistinctSubsetSums where
+  srcDir := "lean"
+  roots := #[`Erdos1_DistinctSubsetSums]
+
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
