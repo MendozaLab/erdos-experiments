@@ -31,6 +31,10 @@ lean_lib Erdos30_Complete where
   srcDir := "lean"
   roots := #[`Erdos30_Complete]
 
+lean_lib Erdos30_OrderedElements where
+  srcDir := "lean"
+  roots := #[`Erdos30_OrderedElements]
+
 -- ══════════════════════════════════════════════════════════════
 -- Scratch / supplementary files (not discussed in paper,
 -- not imported by core files — kept for reference only)

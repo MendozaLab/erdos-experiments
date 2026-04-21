@@ -28,6 +28,7 @@
 
 import Mathlib
 import Erdos30_Sidon_Defs
+import Erdos30_Lindstrom
 
 open Finset Nat
 
@@ -170,6 +171,91 @@ theorem card_distinctSums_sidon (A : Finset ℕ) (hS : IsSidonSet A) :
   rw [h_kk1, show 2 * A.card = A.card * 2 from by ring,
       Nat.add_mul_div_right _ _ (by omega : (0:ℕ) < 2)]
 
+/-- If `A ⊆ {0, ..., N}`, then every ordered Sidon sum lies in `{0, ..., 2N}`. -/
+theorem distinctSums_subset_range (A : Finset ℕ) (N : ℕ)
+    (hA : A ⊆ Finset.range (N + 1)) :
+    distinctSums A ⊆ Finset.range (2 * N + 1) := by
+  intro s hs
+  simp only [distinctSums, Finset.mem_image, Finset.mem_filter, Finset.mem_product] at hs
+  obtain ⟨⟨a, b⟩, ⟨⟨ha, hb⟩, _⟩, rfl⟩ := hs
+  have haN : a ≤ N := by
+    have := Finset.mem_range.mp (hA ha)
+    omega
+  have hbN : b ≤ N := by
+    have := Finset.mem_range.mp (hA hb)
+    omega
+  exact Finset.mem_range.mpr (by omega)
+
+/-- The Erdős-Turán counting bound recovered from `distinctSums`. -/
+theorem erdos_turan_counting_bound (A : Finset ℕ) (N : ℕ)
+    (hS : IsSidonSet A) (hA : A ⊆ Finset.range (N + 1)) :
+    A.card * (A.card + 1) / 2 ≤ 2 * N + 1 := by
+  rw [← card_distinctSums_sidon A hS]
+  simpa using Finset.card_le_card (distinctSums_subset_range A N hA)
+
+/-! ## Section 3: Sidon translate families
+
+  The Ruzsa/Johnson proof studies the shifted family `A, A+1, ..., A+(m-1)`.
+  The key Sidon-specific input is that two distinct shifts intersect in at most
+  one point.
+-/
+
+/-- Translate `A` by `i`. -/
+def shifted (A : Finset ℕ) (i : ℕ) : Finset ℕ :=
+  A.image (fun a => a + i)
+
+/-- Translation preserves cardinality. -/
+theorem card_shifted (A : Finset ℕ) (i : ℕ) :
+    (shifted A i).card = A.card := by
+  unfold shifted
+  have h_inj : Function.Injective (fun a : ℕ => a + i) := by
+    intro a b h
+    exact Nat.add_right_cancel h
+  exact Finset.card_image_of_injective A h_inj
+
+/-- If `A ⊆ {0, ..., N}` and `i < m`, then `A + i ⊆ {0, ..., N + m}`. -/
+theorem shifted_subset_range (A : Finset ℕ) (N i m : ℕ)
+    (hA : A ⊆ Finset.range (N + 1)) (hi : i < m) :
+    shifted A i ⊆ Finset.range (N + m + 1) := by
+  intro x hx
+  simp only [shifted, Finset.mem_image] at hx
+  obtain ⟨a, ha, rfl⟩ := hx
+  have haN : a ≤ N := by
+    have := Finset.mem_range.mp (hA ha)
+    omega
+  exact Finset.mem_range.mpr (by omega)
+
+/-- Distinct translates of a Sidon set intersect in at most one point. -/
+theorem shifted_inter_card_le_one (A : Finset ℕ)
+    (hS : IsSidonSet A) {i j : ℕ} (hij : i ≠ j) :
+    ((shifted A i) ∩ (shifted A j)).card ≤ 1 := by
+  refine Finset.card_le_one.mpr ?_
+  intro x hx y hy
+  simp only [Finset.mem_inter, shifted, Finset.mem_image] at hx hy
+  obtain ⟨a, ha, hax⟩ := hx.1
+  obtain ⟨b, hb, hbx⟩ := hx.2
+  obtain ⟨c, hc, hcy⟩ := hy.1
+  obtain ⟨d, hd, hdy⟩ := hy.2
+  rcases lt_or_gt_of_ne hij with hij_lt | hij_gt
+  · have hab_lt : b < a := by
+      omega
+    have hdc_lt : d < c := by
+      omega
+    have hdiff : a - b = c - d := by
+      omega
+    obtain ⟨hbd, hac⟩ :=
+      sidon_distinct_differences A hS b hb a ha d hd c hc hab_lt hdc_lt hdiff
+    omega
+  · have hba_lt : a < b := by
+      omega
+    have hcd_lt : c < d := by
+      omega
+    have hdiff : b - a = d - c := by
+      omega
+    obtain ⟨hac, hbd⟩ :=
+      sidon_distinct_differences A hS a ha b hb c hc d hd hba_lt hcd_lt hdiff
+    omega
+
 /-! ## Section 4: Cauchy-Schwarz Combination
 
   **Lemma 4.1 (Cauchy-Schwarz):**
@@ -306,4 +392,3 @@ theorem bfr_bound (A : Finset ℕ) (N : ℕ) (hS : IsSidonSet A)
 -/
 
 end Erdos.Sidon
-
