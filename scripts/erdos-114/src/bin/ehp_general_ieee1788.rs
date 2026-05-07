@@ -133,13 +133,48 @@ struct DegreeConfig {
 /// n ≥ 5 all non-extremizer boxes are eliminated at level 0.
 fn config_for(degree: usize) -> DegreeConfig {
     match degree {
-        3 => DegreeConfig { grid_per_axis: 8, bb_res: 200, coeff_bound: 4.0, max_levels: 7 },
-        4 => DegreeConfig { grid_per_axis: 4, bb_res: 200, coeff_bound: 4.0, max_levels: 7 },
-        5 => DegreeConfig { grid_per_axis: 3, bb_res: 150, coeff_bound: 3.5, max_levels: 5 },
-        6 => DegreeConfig { grid_per_axis: 2, bb_res: 150, coeff_bound: 3.0, max_levels: 5 },
-        7 => DegreeConfig { grid_per_axis: 2, bb_res: 120, coeff_bound: 3.0, max_levels: 4 },
-        8 => DegreeConfig { grid_per_axis: 2, bb_res: 100, coeff_bound: 3.0, max_levels: 4 },
-        _ => DegreeConfig { grid_per_axis: 2, bb_res: 100, coeff_bound: 3.0, max_levels: 4 },
+        3 => DegreeConfig {
+            grid_per_axis: 8,
+            bb_res: 200,
+            coeff_bound: 4.0,
+            max_levels: 7,
+        },
+        4 => DegreeConfig {
+            grid_per_axis: 4,
+            bb_res: 200,
+            coeff_bound: 4.0,
+            max_levels: 7,
+        },
+        5 => DegreeConfig {
+            grid_per_axis: 3,
+            bb_res: 150,
+            coeff_bound: 3.5,
+            max_levels: 5,
+        },
+        6 => DegreeConfig {
+            grid_per_axis: 2,
+            bb_res: 150,
+            coeff_bound: 3.0,
+            max_levels: 5,
+        },
+        7 => DegreeConfig {
+            grid_per_axis: 2,
+            bb_res: 120,
+            coeff_bound: 3.0,
+            max_levels: 4,
+        },
+        8 => DegreeConfig {
+            grid_per_axis: 2,
+            bb_res: 100,
+            coeff_bound: 3.0,
+            max_levels: 4,
+        },
+        _ => DegreeConfig {
+            grid_per_axis: 2,
+            bb_res: 100,
+            coeff_bound: 3.0,
+            max_levels: 4,
+        },
     }
 }
 
@@ -178,7 +213,9 @@ fn reduced_dim(degree: usize) -> usize {
 fn reduced_to_coeffs(degree: usize, params: &[f64]) -> Vec<(f64, f64)> {
     let n_coeffs = degree - 1;
     let mut coeffs = vec![(0.0, 0.0); n_coeffs];
-    if n_coeffs == 0 { return coeffs; }
+    if n_coeffs == 0 {
+        return coeffs;
+    }
     coeffs[0] = (params[0], 0.0);
     for k in 1..n_coeffs {
         let idx = 1 + 2 * (k - 1);
@@ -263,12 +300,9 @@ fn eval_poly_f64(z_re: f64, z_im: f64, degree: usize, coeffs: &[(f64, f64)]) -> 
 //   Bit 0 = SW, Bit 1 = SE, Bit 2 = NE, Bit 3 = NW
 //   Cases 5 and 10 are "saddle" cells — resolved by cell-average sign.
 
-fn lemniscate_length_interval(
-    degree: usize,
-    coeffs: &[(f64, f64)],
-    res: usize,
-) -> Interval {
-    let coeff_sum: f64 = coeffs.iter()
+fn lemniscate_length_interval(degree: usize, coeffs: &[(f64, f64)], res: usize) -> Interval {
+    let coeff_sum: f64 = coeffs
+        .iter()
         .map(|&(re, im)| (re * re + im * im).sqrt())
         .sum();
     let extent = (coeff_sum.powf(1.0 / degree as f64) + 2.0).max(3.0);
@@ -300,7 +334,9 @@ fn lemniscate_length_interval(
                 | (((fne > 0.0) as u8) << 2)
                 | (((fnw > 0.0) as u8) << 3);
 
-            if case == 0 || case == 15 { continue; }
+            if case == 0 || case == 15 {
+                continue;
+            }
 
             let interp = |fa: f64, fb: f64| -> Interval {
                 let d = fa - fb;
@@ -312,12 +348,12 @@ fn lemniscate_length_interval(
                 }
             };
 
-            let seg_interval = |t1x: Interval, t1y: Interval,
-                                t2x: Interval, t2y: Interval| -> Interval {
-                let dx = t1x - t2x;
-                let dy = t1y - t2y;
-                (dx * dx + dy * dy).sqrt()
-            };
+            let seg_interval =
+                |t1x: Interval, t1y: Interval, t2x: Interval, t2y: Interval| -> Interval {
+                    let dx = t1x - t2x;
+                    let dy = t1y - t2y;
+                    (dx * dx + dy * dy).sqrt()
+                };
 
             let x0 = interval!(x0_f, x0_f).unwrap();
             let y0 = interval!(y0_f, y0_f).unwrap();
@@ -340,15 +376,21 @@ fn lemniscate_length_interval(
                 4 | 11 => seg(e, n),
                 5 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { seg(s, w) + seg(e, n) }
-                    else { seg(s, e) + seg(w, n) }
+                    if avg > 0.0 {
+                        seg(s, w) + seg(e, n)
+                    } else {
+                        seg(s, e) + seg(w, n)
+                    }
                 }
                 6 | 9 => seg(s, n),
                 7 | 8 => seg(w, n),
                 10 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { seg(s, e) + seg(w, n) }
-                    else { seg(s, w) + seg(e, n) }
+                    if avg > 0.0 {
+                        seg(s, e) + seg(w, n)
+                    } else {
+                        seg(s, w) + seg(e, n)
+                    }
                 }
                 _ => interval!(0.0, 0.0).unwrap(),
             };
@@ -418,23 +460,35 @@ struct BoxND {
 }
 
 impl BoxND {
-    fn dim(&self) -> usize { self.bounds.len() }
+    fn dim(&self) -> usize {
+        self.bounds.len()
+    }
 
     fn center(&self) -> Vec<f64> {
-        self.bounds.iter().map(|&(lo, hi)| (lo + hi) / 2.0).collect()
+        self.bounds
+            .iter()
+            .map(|&(lo, hi)| (lo + hi) / 2.0)
+            .collect()
     }
 
     fn half_width(&self) -> f64 {
-        self.bounds.iter()
+        self.bounds
+            .iter()
             .map(|&(lo, hi)| (hi - lo) / 2.0)
             .fold(0.0f64, f64::max)
     }
 
     fn contains_extremizer(&self) -> bool {
-        if self.bounds.is_empty() { return false; }
-        if !(self.bounds[0].0 <= 1.0 && 1.0 <= self.bounds[0].1) { return false; }
+        if self.bounds.is_empty() {
+            return false;
+        }
+        if !(self.bounds[0].0 <= 1.0 && 1.0 <= self.bounds[0].1) {
+            return false;
+        }
         for i in 1..self.dim() {
-            if !(self.bounds[i].0 <= 0.0 && 0.0 <= self.bounds[i].1) { return false; }
+            if !(self.bounds[i].0 <= 0.0 && 0.0 <= self.bounds[i].1) {
+                return false;
+            }
         }
         true
     }
@@ -442,7 +496,11 @@ impl BoxND {
     fn subdivide(&self) -> Vec<BoxND> {
         let d = self.dim();
         let n_children = 1usize << d;
-        let mids: Vec<f64> = self.bounds.iter().map(|&(lo, hi)| (lo + hi) / 2.0).collect();
+        let mids: Vec<f64> = self
+            .bounds
+            .iter()
+            .map(|&(lo, hi)| (lo + hi) / 2.0)
+            .collect();
         let mut children = Vec::with_capacity(n_children);
         for mask in 0..n_children {
             let mut bounds = Vec::with_capacity(d);
@@ -476,7 +534,13 @@ impl BoxND {
         if d <= 10 {
             for mask in 0..(1usize << d) {
                 let corner: Vec<f64> = (0..d)
-                    .map(|i| if (mask >> i) & 1 == 0 { self.bounds[i].0 } else { self.bounds[i].1 })
+                    .map(|i| {
+                        if (mask >> i) & 1 == 0 {
+                            self.bounds[i].0
+                        } else {
+                            self.bounds[i].1
+                        }
+                    })
                     .collect();
                 pts.push(corner);
             }
@@ -506,12 +570,7 @@ impl BoxND {
 // The extremizer box (which contains the true maximum) always has an upper
 // bound ≥ L* and is never eliminated.
 
-fn upper_bound_box(
-    degree: usize,
-    bx: &BoxND,
-    res: usize,
-    evals: &AtomicUsize,
-) -> f64 {
+fn upper_bound_box(degree: usize, bx: &BoxND, res: usize, evals: &AtomicUsize) -> f64 {
     let pts = bx.sample_points();
     let d = bx.dim();
 
@@ -524,8 +583,12 @@ fn upper_bound_box(
         evals.fetch_add(1, Ordering::Relaxed);
         let l_hi = l_iv.sup();
         let l_lo = l_iv.inf();
-        if l_hi > max_upper { max_upper = l_hi; }
-        if l_lo < min_lower { min_lower = l_lo; }
+        if l_hi > max_upper {
+            max_upper = l_hi;
+        }
+        if l_lo < min_lower {
+            min_lower = l_lo;
+        }
     }
 
     let hw = bx.half_width();
@@ -626,12 +689,22 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
 
     // Cross-check
     println!("\n    Interval marching squares cross-check:");
-    let ext_coeffs = reduced_to_coeffs(degree, &vec![1.0; 1].into_iter()
-        .chain(std::iter::repeat(0.0).take(d - 1)).collect::<Vec<_>>());
+    let ext_coeffs = reduced_to_coeffs(
+        degree,
+        &vec![1.0; 1]
+            .into_iter()
+            .chain(std::iter::repeat(0.0).take(d - 1))
+            .collect::<Vec<_>>(),
+    );
     for &r in &[200, 400] {
         let l_iv = lemniscate_length_interval(degree, &ext_coeffs, r);
-        println!("      res={}: L ∈ [{:.10}, {:.10}] width={:.2e}",
-            r, l_iv.inf(), l_iv.sup(), l_iv.sup() - l_iv.inf());
+        println!(
+            "      res={}: L ∈ [{:.10}, {:.10}] width={:.2e}",
+            r,
+            l_iv.inf(),
+            l_iv.sup(),
+            l_iv.sup() - l_iv.inf()
+        );
     }
 
     // Step 2: Branch-and-bound
@@ -639,13 +712,19 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
 
     // Create initial boxes
     let mut initial_boxes: Vec<BoxND> = Vec::new();
-    create_initial_boxes_recursive(
-        d, 0, &cfg, &mut Vec::new(), &mut initial_boxes,
-    );
+    create_initial_boxes_recursive(d, 0, &cfg, &mut Vec::new(), &mut initial_boxes);
 
-    println!("    Domain: a_0 ∈ [0,{}], others ∈ [-{},{}]", cfg.coeff_bound, cfg.coeff_bound, cfg.coeff_bound);
+    println!(
+        "    Domain: a_0 ∈ [0,{}], others ∈ [-{},{}]",
+        cfg.coeff_bound, cfg.coeff_bound, cfg.coeff_bound
+    );
     println!("    Dimension: {}", d);
-    println!("    Initial boxes: {} ({}^{})", initial_boxes.len(), cfg.grid_per_axis, d);
+    println!(
+        "    Initial boxes: {} ({}^{})",
+        initial_boxes.len(),
+        cfg.grid_per_axis,
+        d
+    );
     println!("    Lower bound: {:.12}", l_lower);
 
     let total_evals = AtomicUsize::new(0);
@@ -694,29 +773,50 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
                 survived_idx.push(idx);
             } else if ub < l_lower {
                 eliminated += 1;
-                if ub > max_ub_ne { max_ub_ne = ub; }
+                if ub > max_ub_ne {
+                    max_ub_ne = ub;
+                }
             } else {
                 survived_idx.push(idx);
-                if ub > max_ub_ne { max_ub_ne = ub; }
+                if ub > max_ub_ne {
+                    max_ub_ne = ub;
+                }
             }
         }
 
-        let ext_c = survived_idx.iter()
-            .filter(|&&i| boxes[i].contains_extremizer()).count();
+        let ext_c = survived_idx
+            .iter()
+            .filter(|&&i| boxes[i].contains_extremizer())
+            .count();
         let ne_c = survived_idx.len() - ext_c;
 
         level_log.push(LevelInfo {
-            level, boxes: n_boxes, half_width: hw, resolution: res,
-            eliminated, ext_survivors: ext_c, nonext_survivors: ne_c,
-            max_ub_nonext: max_ub_ne, time_secs: dt,
+            level,
+            boxes: n_boxes,
+            half_width: hw,
+            resolution: res,
+            eliminated,
+            ext_survivors: ext_c,
+            nonext_survivors: ne_c,
+            max_ub_nonext: max_ub_ne,
+            time_secs: dt,
         });
 
         let pct = eliminated as f64 / n_boxes as f64 * 100.0;
-        println!("\n    Level {}: {} boxes, hw={:.5}, res={}", level, n_boxes, hw, res);
-        println!("      Eliminated {}/{} ({:.1}%), survivors: {} ext + {} non-ext",
-            eliminated, n_boxes, pct, ext_c, ne_c);
+        println!(
+            "\n    Level {}: {} boxes, hw={:.5}, res={}",
+            level, n_boxes, hw, res
+        );
+        println!(
+            "      Eliminated {}/{} ({:.1}%), survivors: {} ext + {} non-ext",
+            eliminated, n_boxes, pct, ext_c, ne_c
+        );
         println!("      Max UB (non-ext): {:.8} vs {:.8}", max_ub_ne, l_lower);
-        println!("      {:.1}s | evals {}", dt, total_evals.load(Ordering::Relaxed));
+        println!(
+            "      {:.1}s | evals {}",
+            dt,
+            total_evals.load(Ordering::Relaxed)
+        );
 
         if ne_c == 0 {
             println!("\n    *** ONLY EXTREMIZER BOXES SURVIVE — PROOF COMPLETE ***");
@@ -731,7 +831,10 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
             new_boxes.extend(children);
         }
         if new_boxes.len() > 500_000 {
-            println!("\n    *** TOO MANY BOXES ({}) — NEED CLUSTER ***", new_boxes.len());
+            println!(
+                "\n    *** TOO MANY BOXES ({}) — NEED CLUSTER ***",
+                new_boxes.len()
+            );
             break;
         }
         boxes = new_boxes;
@@ -754,7 +857,9 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
     // independent sample set. No external RNG dependency needed.
     let mut rng: u64 = 42 + degree as u64 * 137;
     let next_rng = |state: &mut u64| -> f64 {
-        *state = state.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
+        *state = state
+            .wrapping_mul(6364136223846793005)
+            .wrapping_add(1442695040888963407);
         ((*state >> 33) as f64 / (1u64 << 31) as f64) * 2.0 - 1.0 // uniform in [-1, 1]
     };
 
@@ -770,13 +875,17 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
                 let mut params = vec![0.0; d];
                 params[face_dim] = fv;
                 for j in 0..d {
-                    if j == face_dim { continue; }
+                    if j == face_dim {
+                        continue;
+                    }
                     let v = next_rng(&mut rng) * cfg.coeff_bound;
                     params[j] = if j == 0 { v.abs() } else { v };
                 }
                 let coeffs = reduced_to_coeffs(degree, &params);
                 let l_iv = lemniscate_length_interval(degree, &coeffs, 150);
-                if l_iv.sup() > max_face { max_face = l_iv.sup(); }
+                if l_iv.sup() > max_face {
+                    max_face = l_iv.sup();
+                }
             }
         }
     }
@@ -807,7 +916,10 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
     ext_params[0] = 1.0;
     let hess_res = 2000.max(500 * degree);
     println!("    Hessian resolution: {}", hess_res);
-    println!("    Using L* interval for reference: [{:.15}, {:.15}]", l_lower, l_upper_ref);
+    println!(
+        "    Using L* interval for reference: [{:.15}, {:.15}]",
+        l_lower, l_upper_ref
+    );
 
     // Try multiple perturbation sizes: larger h gives more signal but O(h²) bias;
     // smaller h has less bias but the numerator shrinks toward interval noise.
@@ -822,7 +934,9 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
 
         for &h in h_values {
             // Skip if perturbation takes a_0 below zero (symmetry constraint)
-            if i == 0 && (ext_params[i] - h) < 0.0 { continue; }
+            if i == 0 && (ext_params[i] - h) < 0.0 {
+                continue;
+            }
 
             let mut pp = ext_params.clone();
             pp[i] += h;
@@ -854,11 +968,15 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
         }
 
         if dim_neg {
-            println!("    d²L/d(dim{:2})² : upper={:+.4}  mid={:+.4}  h={:.0e}  NEGATIVE ✓",
-                i, best_d2_upper, best_d2_mid, best_h);
+            println!(
+                "    d²L/d(dim{:2})² : upper={:+.4}  mid={:+.4}  h={:.0e}  NEGATIVE ✓",
+                i, best_d2_upper, best_d2_mid, best_h
+            );
         } else {
-            println!("    d²L/d(dim{:2})² : upper={:+.4}  mid={:+.4}  h={:.0e}  INCONCLUSIVE ✗",
-                i, best_d2_upper, best_d2_mid, best_h);
+            println!(
+                "    d²L/d(dim{:2})² : upper={:+.4}  mid={:+.4}  h={:.0e}  INCONCLUSIVE ✗",
+                i, best_d2_upper, best_d2_mid, best_h
+            );
             hess_all_neg = false;
         }
     }
@@ -866,8 +984,19 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
 
     // Summary
     let total_time = t_total.elapsed().as_secs_f64();
-    let verdict = if proof_complete && outer_safe && hess_all_neg {
+    // Verdict guard: require evidence that the BB phase actually did work, not just that
+    // it terminated. Without these checks, an exploratory probe at high `d` whose
+    // `create_initial_boxes_recursive` returns an empty Vec would short-circuit through
+    // `boxes.is_empty() => proof_complete = true` on iteration 0 and mint a spurious
+    // EHP_N{n}_PROVEN despite no boxes ever being evaluated. (See history:
+    // 2026-03-27 cf26344 added zero-eval n=13/14/15/16; 2026-04-02 992c58e replaced
+    // n=14 with a clean re-run; this guard prevents recurrence at any degree.)
+    let bb_total = total_evals.load(Ordering::Relaxed);
+    let bb_did_work = bb_total > 0 && !level_log.is_empty();
+    let verdict = if proof_complete && outer_safe && hess_all_neg && bb_did_work {
         format!("EHP_N{}_PROVEN", degree)
+    } else if proof_complete && outer_safe && hess_all_neg && !bb_did_work {
+        format!("EHP_N{}_INCOMPLETE_BB_NO_OP", degree)
     } else {
         format!("EHP_N{}_INCOMPLETE", degree)
     };
@@ -885,7 +1014,7 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
         l_star_lower: l_lower,
         l_star_upper: l_upper_ref,
         bb_proof_complete: proof_complete,
-        bb_total_evals: total_evals.load(Ordering::Relaxed),
+        bb_total_evals: bb_total,
         bb_levels: level_log,
         outer_domain_safe: outer_safe,
         hessian_negative: hess_all_neg,
@@ -921,7 +1050,9 @@ fn create_initial_boxes_recursive(
     boxes: &mut Vec<BoxND>,
 ) {
     if current_dim == dim {
-        boxes.push(BoxND { bounds: current_bounds.clone() });
+        boxes.push(BoxND {
+            bounds: current_bounds.clone(),
+        });
         return;
     }
 
@@ -968,7 +1099,9 @@ fn print_cumulative_proof(session_results: &[ProofResult], highest_completed: us
         // If neither exists, we skip that degree (gap in coverage)
     }
 
-    if all.is_empty() { return; }
+    if all.is_empty() {
+        return;
+    }
 
     let all_proven = all.iter().all(|r| r.verdict.contains("PROVEN"));
     let covered: Vec<usize> = all.iter().map(|r| r.degree).collect();
@@ -976,34 +1109,60 @@ fn print_cumulative_proof(session_results: &[ProofResult], highest_completed: us
     let max_n = *covered.iter().max().unwrap_or(&3);
 
     println!("\n╔══════════════════════════════════════════════════════════════════════════╗");
-    println!("║  CUMULATIVE PROOF STATUS  n={} through n={}                             ║", min_n, max_n);
+    println!(
+        "║  CUMULATIVE PROOF STATUS  n={} through n={}                             ║",
+        min_n, max_n
+    );
     println!("║  IEEE 1788 Interval Arithmetic · inari (MPFR directed rounding)        ║");
     println!("╠══════════════════════════════════════════════════════════════════════════╣");
     println!("║  n │ dim │ L*(z^n-1) certified bounds              │ BB  │ Out │ Hess │ t(s)  ║");
     println!("╠══════════════════════════════════════════════════════════════════════════╣");
     for r in &all {
-        let bb  = if r.bb_proof_complete  { "✓" } else { "✗" };
-        let out = if r.outer_domain_safe  { "✓" } else { "✗" };
-        let hes = if r.hessian_negative   { "✓" } else { "✗" };
-        let tag = if r.verdict.contains("PROVEN") { "PROVEN ✓" } else { "INCOMPLETE ✗" };
-        println!("║ {:2} │ {:3} │ [{:.10}, {:.10}] │  {}  │  {}  │  {}   │ {:6.1} ║",
-            r.degree, r.reduced_dim,
-            r.l_star_lower, r.l_star_upper,
-            bb, out, hes, r.total_time_secs);
-        println!("║    │     │ {}                               ║",
-            format!("{:<44}", tag));
+        let bb = if r.bb_proof_complete { "✓" } else { "✗" };
+        let out = if r.outer_domain_safe { "✓" } else { "✗" };
+        let hes = if r.hessian_negative { "✓" } else { "✗" };
+        let tag = if r.verdict.contains("PROVEN") {
+            "PROVEN ✓"
+        } else {
+            "INCOMPLETE ✗"
+        };
+        println!(
+            "║ {:2} │ {:3} │ [{:.10}, {:.10}] │  {}  │  {}  │  {}   │ {:6.1} ║",
+            r.degree,
+            r.reduced_dim,
+            r.l_star_lower,
+            r.l_star_upper,
+            bb,
+            out,
+            hes,
+            r.total_time_secs
+        );
+        println!(
+            "║    │     │ {}                               ║",
+            format!("{:<44}", tag)
+        );
     }
     println!("╠══════════════════════════════════════════════════════════════════════════╣");
     if all_proven && covered.len() == (max_n - min_n + 1) {
-        println!("║  RESULT: EHP CONJECTURE CERTIFIED FOR ALL n = {} THROUGH {}             ║", min_n, max_n);
+        println!(
+            "║  RESULT: EHP CONJECTURE CERTIFIED FOR ALL n = {} THROUGH {}             ║",
+            min_n, max_n
+        );
         println!("║  All three proof pillars satisfied for each n:                         ║");
         println!("║    (1) Branch-and-bound: only extremizer boxes survive                 ║");
         println!("║    (2) Outer domain: no polynomial outside D_R exceeds L*              ║");
         println!("║    (3) Strict concavity: Hessian negative-definite at z^n-1            ║");
         println!("║  Together with Tao (arXiv:2512.12455) for large n:                    ║");
-        println!("║  EHP is proven for n ∈ {{2 (Eremenko-Hayman 1999), {}-{}}} ∪ [N₀,∞)   ║", min_n, max_n);
+        println!(
+            "║  EHP is proven for n ∈ {{2 (Eremenko-Hayman 1999), {}-{}}} ∪ [N₀,∞)   ║",
+            min_n, max_n
+        );
     } else {
-        let proven: Vec<usize> = all.iter().filter(|r| r.verdict.contains("PROVEN")).map(|r| r.degree).collect();
+        let proven: Vec<usize> = all
+            .iter()
+            .filter(|r| r.verdict.contains("PROVEN"))
+            .map(|r| r.degree)
+            .collect();
         println!("║  PROVEN degrees: {:?}", proven);
         println!("║  Incomplete or missing degrees present — proof chain has gaps.         ║");
     }
@@ -1026,12 +1185,13 @@ fn main() {
     //   <start>                       → outdir=".", n=start..MAX_PRECOMPUTED
     //   <n1> <n2> …                  → outdir=".", explicit list
     let raw_args: Vec<String> = std::env::args().skip(1).collect();
-    let (outdir, args): (String, Vec<String>) = if raw_args.first().map(|s| s.as_str()) == Some("--outdir") {
-        let dir = raw_args.get(1).cloned().unwrap_or_else(|| ".".to_string());
-        (dir, raw_args.into_iter().skip(2).collect())
-    } else {
-        (".".to_string(), raw_args)
-    };
+    let (outdir, args): (String, Vec<String>) =
+        if raw_args.first().map(|s| s.as_str()) == Some("--outdir") {
+            let dir = raw_args.get(1).cloned().unwrap_or_else(|| ".".to_string());
+            (dir, raw_args.into_iter().skip(2).collect())
+        } else {
+            (".".to_string(), raw_args)
+        };
 
     let degrees: Vec<usize> = if args.is_empty() {
         // No degree args: run everything we have L* for
@@ -1055,7 +1215,12 @@ fn main() {
         session_results.push(result);
 
         // After each n, print cumulative verification of n=3 through this n
-        let highest = session_results.iter().map(|r| r.degree).max().unwrap_or(n).max(n);
+        let highest = session_results
+            .iter()
+            .map(|r| r.degree)
+            .max()
+            .unwrap_or(n)
+            .max(n);
         print_cumulative_proof(&session_results, highest, &outdir);
     }
 
