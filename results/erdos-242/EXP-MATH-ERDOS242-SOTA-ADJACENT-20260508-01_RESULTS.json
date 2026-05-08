@@ -1,0 +1,351 @@
+{
+  "bounded_split_recovery": {
+    "coverage_fraction": 0.999989999799996,
+    "covered_count": 99997,
+    "examples": {
+      "193": {
+        "a": 7,
+        "divisor_s": 10,
+        "xyz": [
+          50,
+          1380,
+          1331700
+        ]
+      },
+      "241": {
+        "a": 7,
+        "divisor_s": 31,
+        "xyz": [
+          62,
+          2139,
+          1030998
+        ]
+      },
+      "313": {
+        "a": 7,
+        "divisor_s": 20,
+        "xyz": [
+          80,
+          3580,
+          4482160
+        ]
+      },
+      "337": {
+        "a": 3,
+        "divisor_s": 5,
+        "xyz": [
+          85,
+          9550,
+          54711950
+        ]
+      },
+      "409": {
+        "a": 7,
+        "divisor_s": 52,
+        "xyz": [
+          104,
+          6084,
+          4976712
+        ]
+      },
+      "433": {
+        "a": 7,
+        "divisor_s": 5,
+        "xyz": [
+          110,
+          6805,
+          64824430
+        ]
+      },
+      "457": {
+        "a": 3,
+        "divisor_s": 5,
+        "xyz": [
+          115,
+          17520,
+          184152720
+        ]
+      },
+      "577": {
+        "a": 3,
+        "divisor_s": 5,
+        "xyz": [
+          145,
+          27890,
+          466683370
+        ]
+      },
+      "601": {
+        "a": 7,
+        "divisor_s": 19,
+        "xyz": [
+          152,
+          13053,
+          62758824
+        ]
+      },
+      "673": {
+        "a": 7,
+        "divisor_s": 5,
+        "xyz": [
+          170,
+          16345,
+          374006290
+        ]
+      },
+      "73": {
+        "a": 7,
+        "divisor_s": 10,
+        "xyz": [
+          20,
+          210,
+          30660
+        ]
+      },
+      "97": {
+        "a": 3,
+        "divisor_s": 5,
+        "xyz": [
+          25,
+          810,
+          392850
+        ]
+      }
+    },
+    "first_misses": [
+      2521
+    ],
+    "max_a": 100,
+    "miss_count": 1
+  },
+  "claim_ceiling": "SOTA-adjacent review packet only; not a proof and not global computational SOTA",
+  "core_seed_residues": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    11,
+    13,
+    14,
+    15,
+    17,
+    19,
+    20,
+    21,
+    23
+  ],
+  "experiment_id": "EXP-MATH-ERDOS242-SOTA-ADJACENT-20260508-01",
+  "forbidden_actions": [
+    "do not claim proof of Erdos-Straus",
+    "do not claim global computational SOTA",
+    "do not update D1 or proof registry from this packet alone",
+    "do not publish without literature review and promotion gate"
+  ],
+  "generated_at": "2026-05-08T20:48:58+00:00",
+  "lean_infrastructure": {
+    "compiled_by_command": "lake env lean erdos-experiments/Erdos242/lean/Erdos242Scaling.lean",
+    "compiled_status": "pass",
+    "file": "erdos-experiments/Erdos242/lean/Erdos242Scaling.lean",
+    "sorry_count": 0,
+    "theorem": "Erdos242Scout.erdosStrausClearedSolves_mul"
+  },
+  "max_n": 100000,
+  "random_baseline": {
+    "max": 1.0,
+    "max_n": 100000,
+    "mean": 0.942041420828417,
+    "min": 0.7958659173183463,
+    "model": "random mod-24 seed classes with divisor-descent closure",
+    "p05": 0.8846576931538631,
+    "p50": 0.9461489229784595,
+    "p95": 0.9815396307926159,
+    "seed": 242,
+    "seed_count": 15,
+    "seed_modulus": 24,
+    "trials": 2000
+  },
+  "sample_count": 99998,
+  "seed_modulus": 24,
+  "sota_context": {
+    "counting_theory": {
+      "claim": "Elsholtz and Tao study the representation-counting function f(n) and prime-average bounds.",
+      "source": "https://www.cambridge.org/core/journals/journal-of-the-australian-mathematical-society/article/counting-the-number-of-solutions-to-the-erdosstraus-equation-on-unit-fractions/A1AB4837F744ED30E0F1243E65C2B646"
+    },
+    "global_computational_frontier": {
+      "claim": "Mihnea and Bogdan report improving computational bounds to 10^18.",
+      "source": "https://arxiv.org/abs/2509.00128"
+    },
+    "salez_modular_equations": {
+      "claim": "Salez reports a complete set of seven modular equations and checking up to 10^17.",
+      "source": "https://arxiv.org/abs/1406.6307"
+    }
+  },
+  "status": "REVIEW_ONLY",
+  "structured_operator": {
+    "coverage_fraction": 0.9877097541950839,
+    "covered_count": 98769,
+    "examples": {
+      "10": {
+        "family": "divisor_descent_from_n_mod_3_eq_2",
+        "metadata": {
+          "base_family": "n_mod_3_eq_2",
+          "base_n": 5,
+          "scale_factor": 2
+        },
+        "xyz": [
+          4,
+          10,
+          20
+        ]
+      },
+      "11": {
+        "family": "n_mod_3_eq_2",
+        "metadata": {
+          "base_n": 11,
+          "scale_factor": 1
+        },
+        "xyz": [
+          4,
+          11,
+          44
+        ]
+      },
+      "12": {
+        "family": "divisor_descent_from_n_mod_4_eq_3_split",
+        "metadata": {
+          "base_family": "n_mod_4_eq_3_split",
+          "base_n": 3,
+          "scale_factor": 4
+        },
+        "xyz": [
+          4,
+          16,
+          48
+        ]
+      },
+      "13": {
+        "family": "n_mod_8_eq_5",
+        "metadata": {
+          "base_n": 13,
+          "scale_factor": 1
+        },
+        "xyz": [
+          4,
+          26,
+          52
+        ]
+      },
+      "14": {
+        "family": "n_mod_3_eq_2",
+        "metadata": {
+          "base_n": 14,
+          "scale_factor": 1
+        },
+        "xyz": [
+          5,
+          14,
+          70
+        ]
+      },
+      "3": {
+        "family": "n_mod_4_eq_3_split",
+        "metadata": {
+          "base_n": 3,
+          "scale_factor": 1
+        },
+        "xyz": [
+          1,
+          4,
+          12
+        ]
+      },
+      "4": {
+        "family": "small_n_4",
+        "metadata": {
+          "base_n": 4,
+          "scale_factor": 1
+        },
+        "xyz": [
+          2,
+          3,
+          6
+        ]
+      },
+      "5": {
+        "family": "n_mod_3_eq_2",
+        "metadata": {
+          "base_n": 5,
+          "scale_factor": 1
+        },
+        "xyz": [
+          2,
+          5,
+          10
+        ]
+      },
+      "6": {
+        "family": "divisor_descent_from_n_mod_4_eq_3_split",
+        "metadata": {
+          "base_family": "n_mod_4_eq_3_split",
+          "base_n": 3,
+          "scale_factor": 2
+        },
+        "xyz": [
+          2,
+          8,
+          24
+        ]
+      },
+      "7": {
+        "family": "n_mod_4_eq_3_split",
+        "metadata": {
+          "base_n": 7,
+          "scale_factor": 1
+        },
+        "xyz": [
+          2,
+          15,
+          210
+        ]
+      },
+      "8": {
+        "family": "n_mod_3_eq_2",
+        "metadata": {
+          "base_n": 8,
+          "scale_factor": 1
+        },
+        "xyz": [
+          3,
+          8,
+          24
+        ]
+      },
+      "9": {
+        "family": "divisor_descent_from_n_mod_4_eq_3_split",
+        "metadata": {
+          "base_family": "n_mod_4_eq_3_split",
+          "base_n": 3,
+          "scale_factor": 3
+        },
+        "xyz": [
+          3,
+          12,
+          36
+        ]
+      }
+    },
+    "family_counts": {
+      "divisor_descent_from_n_mod_3_eq_2": 7858,
+      "divisor_descent_from_n_mod_4_eq_3_split": 23296,
+      "divisor_descent_from_n_mod_8_eq_5": 949,
+      "divisor_descent_from_small_n_4": 8333,
+      "n_mod_3_eq_2": 33332,
+      "n_mod_4_eq_3_split": 16667,
+      "n_mod_8_eq_5": 8333,
+      "small_n_4": 1
+    }
+  },
+  "verdict": "SOTA_ADJACENT_REVIEW_READY"
+}

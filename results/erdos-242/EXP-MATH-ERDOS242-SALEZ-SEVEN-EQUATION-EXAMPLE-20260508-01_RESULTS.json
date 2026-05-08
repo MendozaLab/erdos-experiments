@@ -1,0 +1,149 @@
+{
+  "claim_ceiling": "verifies Salez Example 1 seven-equation family; not a proof and not a full sieve implementation",
+  "example_witness_by_equation": {
+    "eqmod1a": {
+      "denominators": [
+        26,
+        388,
+        5044
+      ],
+      "p": 97,
+      "p_mod_24": 1,
+      "p_mod_5": 2,
+      "t": 1
+    },
+    "eqmod1b": {
+      "denominators": [
+        25,
+        970,
+        4850
+      ],
+      "p": 97,
+      "p_mod_24": 1,
+      "p_mod_5": 2,
+      "t": 1
+    },
+    "eqmod1c": {
+      "denominators": [
+        25,
+        970,
+        4850
+      ],
+      "p": 97,
+      "p_mod_24": 1,
+      "p_mod_5": 2,
+      "t": 1
+    },
+    "eqmod2a": {
+      "denominators": [
+        34,
+        85,
+        16490
+      ],
+      "p": 97,
+      "p_mod_24": 1,
+      "p_mod_5": 2,
+      "t": 1
+    },
+    "eqmod2b": {
+      "denominators": [
+        25,
+        810,
+        392850
+      ],
+      "p": 97,
+      "p_mod_24": 1,
+      "p_mod_5": 2,
+      "t": 1
+    },
+    "eqmod2c": {
+      "denominators": [
+        25,
+        850,
+        16490
+      ],
+      "p": 97,
+      "p_mod_24": 1,
+      "p_mod_5": 2,
+      "t": 1
+    },
+    "eqmod2d": {
+      "denominators": [
+        25,
+        810,
+        392850
+      ],
+      "p": 97,
+      "p_mod_24": 1,
+      "p_mod_5": 2,
+      "t": 1
+    }
+  },
+  "experiment_id": "EXP-MATH-ERDOS242-SALEZ-SEVEN-EQUATION-EXAMPLE-20260508-01",
+  "failure_count": 0,
+  "first_failures": [],
+  "forbidden_actions": [
+    "do not claim proof of Erdos-Straus",
+    "do not claim global computational SOTA",
+    "do not treat this as D1/proof-registry evidence without review"
+  ],
+  "generated_at": "2026-05-08T20:47:01+00:00",
+  "p_family": "p = 120*t - 23; hence p = 1 mod 24 and p = 2 mod 5",
+  "reference_equations": [
+    {
+      "condition": "B + p*C = 0 mod 4*B*C*D - 1",
+      "id": "eqmod1a",
+      "paper_label": "\\ref{eqmod1a}"
+    },
+    {
+      "condition": "p + E = 0 mod 4*A*B and A + B = 0 mod E",
+      "id": "eqmod1b",
+      "paper_label": "\\ref{eqmod1b}"
+    },
+    {
+      "condition": "p + E + 4*B^2*D = 0 mod 4*B*D*E",
+      "id": "eqmod1c",
+      "paper_label": "\\ref{eqmod1c}"
+    },
+    {
+      "condition": "p*E + 1 = 0 mod 4*A*B and A + B = 0 mod E",
+      "id": "eqmod2a",
+      "paper_label": "\\ref{eqmod2a}"
+    },
+    {
+      "condition": "p + F = 0 mod 4*B*C and p*B + C = 0 mod F",
+      "id": "eqmod2b",
+      "paper_label": "\\ref{eqmod2b}"
+    },
+    {
+      "condition": "p + F = 0 mod 4*B*D and 4*B^2*D + 1 = 0 mod F",
+      "id": "eqmod2c",
+      "paper_label": "\\ref{eqmod2c}"
+    },
+    {
+      "condition": "p + F = 0 mod 4*C*D and p^2 + 4*C^2*D = 0 mod F",
+      "id": "eqmod2d",
+      "paper_label": "\\ref{eqmod2d}"
+    }
+  ],
+  "sota_context": {
+    "boundary": "The seven labels are encoded from Proposition eqmod; this script verifies the paper's Example 1 family, not the whole Salez sieve.",
+    "salez_source": "https://arxiv.org/abs/1406.6307",
+    "salez_source_bundle": "arXiv source bundle contained erdos_straus_en.tex and anc/program.cpp"
+  },
+  "status": "REVIEW_ONLY",
+  "t_range": [
+    1,
+    1000
+  ],
+  "verdict": "SALEZ_SEVEN_EXAMPLE_VERIFIED",
+  "verified_counts_by_equation": {
+    "eqmod1a": 1000,
+    "eqmod1b": 1000,
+    "eqmod1c": 1000,
+    "eqmod2a": 1000,
+    "eqmod2b": 1000,
+    "eqmod2c": 1000,
+    "eqmod2d": 1000
+  }
+}

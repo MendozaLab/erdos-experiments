@@ -1,0 +1,250 @@
+{
+  "certificate_theorem_coverage": {
+    "all_certificates_have_formal_label": true,
+    "all_targets_have_witness": true,
+    "certificate_count": 357049,
+    "certified_target_count": 9732,
+    "constant_bound": 21,
+    "equation_counts": {
+      "eqmod1a": 136506,
+      "eqmod1b": 37780,
+      "eqmod1c": 46867,
+      "eqmod2a": 37690,
+      "eqmod2b": 53353,
+      "eqmod2c": 22330,
+      "eqmod2d": 22523
+    },
+    "first_certificate_by_equation": {
+      "eqmod1a": {
+        "A": 21,
+        "B": 1,
+        "C": 2,
+        "D": 1,
+        "constants": {
+          "B": 1,
+          "C": 2,
+          "D": 1
+        },
+        "equation_id": "eqmod1a",
+        "filter_modulus": 7,
+        "filter_residue": 3,
+        "p": 73,
+        "rosati_case": "Rosati_1",
+        "verified": true,
+        "x": 21,
+        "y": 146,
+        "z": 3066
+      },
+      "eqmod1b": {
+        "A": 2,
+        "B": 5,
+        "C": 1,
+        "D": 2,
+        "constants": {
+          "A": 2,
+          "B": 5,
+          "E": 7
+        },
+        "equation_id": "eqmod1b",
+        "filter_modulus": 40,
+        "filter_residue": 33,
+        "p": 73,
+        "rosati_case": "Rosati_1",
+        "verified": true,
+        "x": 20,
+        "y": 292,
+        "z": 730
+      },
+      "eqmod1c": {
+        "A": 20,
+        "B": 1,
+        "C": 3,
+        "D": 1,
+        "constants": {
+          "B": 1,
+          "D": 1,
+          "E": 7
+        },
+        "equation_id": "eqmod1c",
+        "filter_modulus": 28,
+        "filter_residue": 17,
+        "p": 73,
+        "rosati_case": "Rosati_1",
+        "verified": true,
+        "x": 20,
+        "y": 219,
+        "z": 4380
+      },
+      "eqmod2a": {
+        "A": 1,
+        "B": 5,
+        "C": 2,
+        "D": 11,
+        "constants": {
+          "A": 1,
+          "B": 5,
+          "E": 3
+        },
+        "equation_id": "eqmod2a",
+        "filter_modulus": 20,
+        "filter_residue": 13,
+        "p": 73,
+        "rosati_case": "Rosati_2",
+        "verified": true,
+        "x": 22,
+        "y": 110,
+        "z": 4015
+      },
+      "eqmod2b": {
+        "A": 21,
+        "B": 2,
+        "C": 1,
+        "D": 10,
+        "constants": {
+          "B": 2,
+          "C": 1,
+          "F": 7
+        },
+        "equation_id": "eqmod2b",
+        "filter_modulus": 56,
+        "filter_residue": 17,
+        "p": 73,
+        "rosati_case": "Rosati_2",
+        "verified": true,
+        "x": 20,
+        "y": 210,
+        "z": 30660
+      },
+      "eqmod2c": {
+        "A": 11,
+        "B": 1,
+        "C": 4,
+        "D": 5,
+        "constants": {
+          "B": 1,
+          "D": 5,
+          "F": 7
+        },
+        "equation_id": "eqmod2c",
+        "filter_modulus": 20,
+        "filter_residue": 13,
+        "p": 73,
+        "rosati_case": "Rosati_2",
+        "verified": true,
+        "x": 20,
+        "y": 220,
+        "z": 4015
+      },
+      "eqmod2d": {
+        "A": 20,
+        "B": 3,
+        "C": 1,
+        "D": 7,
+        "constants": {
+          "C": 1,
+          "D": 7,
+          "F": 11
+        },
+        "equation_id": "eqmod2d",
+        "filter_modulus": 28,
+        "filter_residue": 17,
+        "p": 73,
+        "rosati_case": "Rosati_2",
+        "verified": true,
+        "x": 21,
+        "y": 140,
+        "z": 30660
+      }
+    },
+    "first_invalid_certificate_sample": [],
+    "invalid_certificate_count": 0,
+    "max_n": 1000000,
+    "missing_target_count": 0,
+    "rosati_case_counts": {
+      "Rosati_1": 221153,
+      "Rosati_2": 135896
+    },
+    "runtime_seconds": 72.65857,
+    "target_prime_count": 9732,
+    "target_strip": "prime p = 1 mod 24",
+    "unknown_label_counts": {}
+  },
+  "claim_ceiling": "formal certificate infrastructure for seven Salez-style filter lemmas; not a new computational bound, not 10^18 replication, and not a proof of Erdos-Straus",
+  "experiment_id": "EXP-MATH-ERDOS242-SALEZ-FILTER-THEOREM-PACKET-20260508-01",
+  "forbidden_actions": [
+    "do not claim proof of Erdos-Straus",
+    "do not claim beyond-10^18 verification",
+    "do not claim exact equality to Mihnea/Bogdan's optimized pipeline",
+    "do not update D1/proof registry from this review-only packet"
+  ],
+  "generated_at": "2026-05-08T23:11:44+00:00",
+  "interpretation": {
+    "public_worthy_axis": "useful verification infrastructure and a clean formal theorem subset",
+    "what_this_adds": "The local certificate generator now has a Lean-checked algebraic sufficiency layer for every emitted Salez-style equation label.",
+    "what_this_does_not_add": "No new global verification bound and no exact formalization of the upstream Mihnea/Bogdan sieve table."
+  },
+  "lean_manifest_status": {
+    "expected_theorem_count": 7,
+    "forbidden_token_hits": [],
+    "lean_file": "erdos-experiments/Erdos242/lean/Erdos242SalezFilters.lean",
+    "lean_file_sha256": "718b5afb84ec13553aab3ba7bd279f93c54d20d0315b1d4822daaf1023084a80",
+    "missing_theorems": [],
+    "present_theorem_count": 7,
+    "present_theorems": [
+      "salez_eqmod1a_clearedWitness",
+      "salez_eqmod1b_clearedWitness",
+      "salez_eqmod1c_clearedWitness",
+      "salez_eqmod2a_clearedWitness",
+      "salez_eqmod2b_clearedWitness",
+      "salez_eqmod2c_clearedWitness",
+      "salez_eqmod2d_clearedWitness"
+    ]
+  },
+  "source_manifest": {
+    "local_implementation_status": "FORMAL_CERTIFICATE_LAYER_RECONSTRUCTED_FROM_SOURCES",
+    "mihnea_bogdan_arxiv": "https://arxiv.org/abs/2509.00128",
+    "mihnea_bogdan_github": "https://github.com/esc-paper/erdos-straus",
+    "salez_arxiv": "https://arxiv.org/abs/1406.6307",
+    "status": "REVIEW_ONLY_LOCAL_THEOREM_PACKET",
+    "third_party_code_committed": false
+  },
+  "status": "REVIEW_ONLY",
+  "theorem_manifest": {
+    "eqmod1a": {
+      "condition_shape": "B + p*C + A = 4*A*B*C*D",
+      "lean_theorem": "salez_eqmod1a_clearedWitness",
+      "rosati_case": "Rosati_1"
+    },
+    "eqmod1b": {
+      "condition_shape": "A+B = C*E and p+E = 4*A*B*D",
+      "lean_theorem": "salez_eqmod1b_clearedWitness",
+      "rosati_case": "Rosati_1"
+    },
+    "eqmod1c": {
+      "condition_shape": "p+E = 4*A*B*D and 4*B*D*E*C = p+E+4*B*B*D",
+      "lean_theorem": "salez_eqmod1c_clearedWitness",
+      "rosati_case": "Rosati_1"
+    },
+    "eqmod2a": {
+      "condition_shape": "A+B = C*E and p*E+1 = 4*A*B*D",
+      "lean_theorem": "salez_eqmod2a_clearedWitness",
+      "rosati_case": "Rosati_2"
+    },
+    "eqmod2b": {
+      "condition_shape": "p+F = 4*B*C*D and p*B+C = A*F",
+      "lean_theorem": "salez_eqmod2b_clearedWitness",
+      "rosati_case": "Rosati_2"
+    },
+    "eqmod2c": {
+      "condition_shape": "A+B = C*E, p+F = 4*B*D*C, and 4*B*B*D+1 = E*F",
+      "lean_theorem": "salez_eqmod2c_clearedWitness",
+      "rosati_case": "Rosati_2"
+    },
+    "eqmod2d": {
+      "condition_shape": "p+F = 4*B*C*D and p*B+C = A*F",
+      "lean_theorem": "salez_eqmod2d_clearedWitness",
+      "rosati_case": "Rosati_2"
+    }
+  },
+  "verdict": "SALEZ_FILTER_LEMMAS_FORMALIZED_LOCAL"
+}
