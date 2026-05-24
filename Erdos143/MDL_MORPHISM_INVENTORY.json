@@ -1,0 +1,173 @@
+{
+  "search_id": "EXP-MATH-143-MDL-MORPHISM-SEARCH",
+  "problem_id": 143,
+  "target_subproblem": "parts.ii — Σ 1/(x log x) < ∞ for every well-separated A",
+  "date_utc": "2026-05-16",
+  "reference_baseline": "Koukoulopoulos-Lamzouri-Lichtman 2025 (arXiv:2502.09539) — GCD-graphs + Selberg sieve; achieves S1 ≪ log N / sqrt(log log N); falls (log log N)^(1/2 + ε) short of forcing parts.ii via Abel summation.",
+  "search_objective": "Find an MDL-native morphism orthogonal to KLL's GCD-graph framing that potentially yields a structurally different attack architecture for parts.ii.",
+  "candidate_cap": 8,
+  "candidates_evaluated": 6,
+  "candidates": [
+    {
+      "id": "M1",
+      "name": "Channel-occupancy under multiplicative action",
+      "mdl_primitive": "1-wide forbidden zone per x under integer-dilation k·x; total occupancy = Σ 1/x.",
+      "predicts_beyond_kll": "Nothing — recovers KLL's o(log N) bound exactly.",
+      "gate_1_verdict": "GREEN (genuine MDL framing) but KLL-EQUIVALENT (no novel prediction)",
+      "rank": "baseline",
+      "follow_through": "deferred — baseline only; informs other candidates",
+      "morphism_file": ".claude/skills/erdos-problem-solver/state/143_morphism_candidate_M1.json"
+    },
+    {
+      "id": "M2",
+      "name": "Multiplicative Sidon analogue (B₂[ℓ]-dilation)",
+      "mdl_primitive": "View A as a multiplicative Sidon set: integer-dilation collisions replace additive Sidon collisions.",
+      "predicts_beyond_kll": "Sidon-rate density bound |A ∩ [1,N]| ≪ √N (or N^(1/2 + o(1))). If true, parts.ii follows trivially.",
+      "prior_art": "Erdős 1969 multiplicative Sidon literature; Erdős-Bateman J. Number Theory 1962; Ruzsa B₂ sets; primitive sets (Banks-Martin, Granville). No published recasting of Erdős #143 as multiplicative Sidon.",
+      "gate_1_verdict": "YELLOW — heuristically attractive but technical content likely converges to KLL counting unless Sidon-quality machinery materializes",
+      "gate_2_strategy": "Need new incidence/energy bounds for the relation (x,y,k) with |kx - y| < 1; need multiplicative analogue of Cilleruelo/Ruzsa/Green-Ruzsa Fourier-analytic B₂ machinery. Current technology does NOT give Sidon-level bounds for primitive-like multiplicative constraints.",
+      "numerical_signal": {
+        "test": "compute |A ∩ [1,N]| / √N across decades for greedy near-WS set |A|=1500 up to N=10^8",
+        "result_at_N_1e3": 2.53,
+        "result_at_N_1e4": 2.46,
+        "result_at_N_1e5": 1.72,
+        "result_at_N_1e6": 0.86,
+        "result_at_N_1e7": 0.38,
+        "result_at_N_1e8": 0.15,
+        "interpretation": "STRONG sub-Sidon behavior observed (ratio decays monotonically below 1.0); consistent with M2 prediction but does NOT prove it",
+        "data_file": "MDL_experiments_results.json#M2_sidon_density"
+      },
+      "perplexity_rank": 3,
+      "session_verdict": "PROMISING-but-TECHNICALLY-BLOCKED. Strong numerical signal, missing analytical handle.",
+      "follow_through": "WORTH PURSUING — but requires breakthrough in multiplicative-Sidon sieve technique. Out of session scope.",
+      "morphism_file_to_write": ".claude/skills/erdos-problem-solver/state/143_morphism_candidate_M2.json"
+    },
+    {
+      "id": "M3",
+      "name": "Logarithmic-position aperiodic point process",
+      "mdl_primitive": "Map x → log x; WS becomes 'log-positions form an aperiodic point process under integer scaling by log k'.",
+      "predicts_beyond_kll": "Low self-correlation of {log x : x ∈ A} under integer log-shifts; possibly zero-entropy under ℤ⁺-action; weighted bounds Σ f(log x)/x going beyond KLL's sieve.",
+      "prior_art": "Log map appears in probabilistic number theory (Montgomery-Odlyzko); Furstenberg correspondence for multiplicative structures (Tao, Frantzikinakis-Host) — but those concern multiplicative function values, not the dilation-avoidance constraint of #143. No explicit log(A)-as-point-process treatment of #143 in literature.",
+      "gate_1_verdict": "GREEN — genuinely orthogonal framing (moves from arithmetic combinatorics to dynamical systems on ℝ with constraints under multiplication by log k)",
+      "gate_2_strategy": "Tools: ergodic theory for ℤ^d-actions with rigidity/aperiodicity constraints; spectral methods for point processes (Palm measures, correlation functions). GAP: translating L²-spectral estimates into arithmetic bounds on Σ 1/(x log x). No standard machinery yet.",
+      "numerical_signal": {
+        "test": "lattice-mode power |Σ exp(i·t·log x)|²/|A| for integer t = 1..10",
+        "result_t1": 8.78,
+        "result_t2": 2.64,
+        "result_t3": 5.98,
+        "result_t4": 0.09,
+        "result_t5_through_8": "all between 0.17 and 1.38",
+        "result_t9_t10": "0.60, 1.23",
+        "poisson_baseline": 1.0,
+        "interpretation": "MIXED — small-shift lattice modes (t=1,2,3) are ELEVATED (clustering at log-scale ratios e, e², e³), larger shifts mostly suppressed. NOT clean aperiodicity. Suggests greedy WS has natural log-spacing preferences that are NOT Poisson.",
+        "data_file": "MDL_experiments_results.json#M3_log_autocorrelation",
+        "caveat": "Tested only on greedy near-WS construction; cannot generalize to all WS sets."
+      },
+      "perplexity_rank": 2,
+      "session_verdict": "GENUINELY-ORTHOGONAL-but-MIXED-SIGNAL. Theoretical framework is novel; experimental signature is messy.",
+      "follow_through": "WORTH PURSUING with cleaner WS constructions (e.g., explicit number-theoretic examples) to verify whether the lattice modes at small t are an artifact of greedy construction or genuine WS structure.",
+      "morphism_file_to_write": ".claude/skills/erdos-problem-solver/state/143_morphism_candidate_M3.json"
+    },
+    {
+      "id": "M4",
+      "name": "Anti-Beatty / forbidden-density",
+      "mdl_primitive": "WS sets exclude infinite Beatty sequences; encode WS as co-Beatty constraint.",
+      "predicts_beyond_kll": "Qualitative: A cannot shadow any Beatty sequence too often. Quantitative parts.ii statement requires a transference principle that does not exist.",
+      "prior_art": "Beatty/Sturmian classical (Rayleigh, Weyl, Niven-Zuckerman-Montgomery). KLL do not use Beatty/Sturmian descriptions. No published transference principle connecting harmonic-sum mass to Beatty correlation in multiplicative context.",
+      "gate_1_verdict": "RED — likely a rephrasing of density constraints; no concrete proof handle",
+      "session_verdict": "REPHRASING. Treat as dropped.",
+      "perplexity_rank": 5,
+      "follow_through": "DROPPED — least concrete, closest to KLL repackaging."
+    },
+    {
+      "id": "M5",
+      "name": "Information-theoretic entropy decay",
+      "mdl_primitive": "Encode A as bit-string 𝟙_A : ℕ → {0,1}; WS gives explicit forbidden finite patterns; bound entropy rate.",
+      "predicts_beyond_kll": "Upper Banach density of A is 0 + zero entropy rate ⟹ counting function is n^o(1) ⟹ parts.ii follows.",
+      "prior_art": "Entropy + forbidden patterns standard in symbolic dynamics (SFTs, sofic shifts). Entropy methods for multiplicative functions (Tao-Teräväinen, Frantzikinakis-Host). No explicit entropy-rate treatment of 𝟙_A(n) with pattern constraints from |kx - y| ≥ 1.",
+      "gate_1_verdict": "GREEN — genuinely orthogonal philosophy",
+      "gate_2_strategy": "Tools: subadditive entropy bounds; SFT-style arguments adapted for nonlocal interactions; Ornstein-Weiss / Gurevich entropy for countable-state shifts. GAP: WS is a global multiplicative constraint, not a finite-radius local pattern — turning this into a usable entropy bound is non-trivial; no off-the-shelf theory.",
+      "numerical_signal": {
+        "test": "compute Shannon binary entropy per integer-bin on dyadic blocks [2^k, 2^(k+1)) for k=2..25",
+        "result_at_k2": {"density": 0.25, "H_bin_bits": 0.81, "H_total_bits": 3.25},
+        "result_at_k10": {"density": 0.045, "H_bin_bits": 0.264, "H_total_bits": 270.8},
+        "result_at_k20": {"density": 1.07e-4, "H_bin_bits": 1.56e-3, "H_total_bits": 1639.2},
+        "result_at_k25": {"density": 3.04e-6, "H_bin_bits": 6.01e-5, "H_total_bits": 2016.6},
+        "interpretation": "WEAK — per-bin entropy decays as expected from density (≈ p log(1/p)), but total block entropy grows ~linearly in k=log N. No sub-counting entropy structure surfaces. Greedy WS has approximately 1 bit per element of entropy — consistent with finite positive entropy rate per element, not the entropy-rate-zero prediction.",
+        "data_file": "MDL_experiments_results.json#M5_entropy_decay"
+      },
+      "perplexity_rank": 4,
+      "session_verdict": "TRULY-ORTHOGONAL-but-EXPERIMENTALLY-WEAK. Framing is novel; numerical entropy structure doesn't surface beyond counting.",
+      "follow_through": "DEFERRED — would need explicit WS subshift construction with a finitely-described forbidden-pattern family, then SFT-style bounds. Out of session scope.",
+      "morphism_file_to_write": ".claude/skills/erdos-problem-solver/state/143_morphism_candidate_M5.json"
+    },
+    {
+      "id": "M6",
+      "name": "Koopman / Transfer-operator spectral",
+      "mdl_primitive": "WS as a spectral constraint on a dilation transfer operator T_k acting on a suitable Hilbert/Banach space; harmonic sums as moments under invariant measure.",
+      "predicts_beyond_kll": "Spectral radius of dilation operator strictly less than 1 in relevant direction ⟹ exponential decay of correlations ⟹ exponential or power-savings in counts of kx ≈ y ⟹ much stronger than KLL's o(log N / √log log N). Could give convergence of Σ x^(-s) for s near 1 — well beyond parts.ii.",
+      "prior_art": "Koopman + transfer operators standard in ergodic theory + dynamical zeta functions; for multiplicative problems see thermodynamic formalism on squarefree numbers (Baladi, Mayer for Gauss map). NO standard Koopman-operator framing for Erdős #143 or primitive sets in literature. KLL do not use spectral theory of operators.",
+      "gate_1_verdict": "GREEN — MOST orthogonal to KLL of all candidates",
+      "gate_2_strategy": "Need: (i) a precise dynamical system whose invariant sets correspond to WS sets, (ii) a function space where the dilation transfer operator is quasi-compact with a spectral gap, (iii) thermodynamic formalism / Dolgopyat-type estimates for the gap. GAP: building such a system is highly non-trivial — there is no canonical Markov partition or symbolic coding as in continued fractions. Heavy-duty analysis required.",
+      "numerical_signal": "NOT TESTED — building a finite-sample transfer operator for WS sets is significantly more complex than the other M-candidate experiments; deferred to follow-up work.",
+      "perplexity_rank": 1,
+      "portfolio_bias_check": "H² portfolio favors Koopman-von Neumann framings (RPQEC, Mendoza Conjecture, KvN bridge). Perplexity rank-1 may be inflated by this bias. Gate 5 should explicitly weight this.",
+      "session_verdict": "MOST-PROMISING-RESEARCH-DIRECTION. Theoretically novel + highest predictive ceiling, but most ambitious technically and at risk of portfolio bias.",
+      "follow_through": "STRONGEST CANDIDATE FOR EXTERNAL HAND-OFF. Construction of the dilation transfer operator is a research project in its own right; warrants Lamzouri/Lichtman consultation (KLL co-authors) on whether the spectral framing complements their sieve.",
+      "morphism_file_to_write": ".claude/skills/erdos-problem-solver/state/143_morphism_candidate_M6.json"
+    }
+  ],
+  "gate_5_synthesis": {
+    "verdict": "FURTHER_WORK_NEEDED",
+    "rationale": "The orthogonal search identified three GREEN candidates (M3, M5, M6) and one YELLOW candidate (M2), none of which yields a tractable proof architecture closeable in a session. M6 (Koopman) is the most genuinely orthogonal and has the highest predictive ceiling but requires building dynamical-system infrastructure from scratch. M2 (Sidon analogue) has the strongest experimental signal but no analytical handle. M3 (log-process) is genuinely novel but experimentally mixed. M5 (entropy) is philosophically orthogonal but lacks sub-counting numerical signal. M4 (anti-Beatty) is a rephrasing.",
+    "most_promising_research_thread": "M6 (Koopman / transfer-operator spectral) — for theoretical orthogonality + highest predictive ceiling. Caveat: portfolio bias acknowledged.",
+    "second_thread": "M2 (multiplicative Sidon analogue) — for experimental signal + concrete predicted bound. Requires Sidon-quality sieve technique that does not yet exist.",
+    "what_search_did_NOT_yield": "No candidate produced a clean conditional reduction lemma comparable to lemmas.parts_ii_of_strengthened_S1 that closes via Athena/Codex in a session. Stage 4 is SKIP for this pass.",
+    "what_KLL_still_owns": "KLL remains the state of the art. No MDL morphism in this inventory bypasses their machinery; all viable alternatives are speculative research programs, not session-attackable proof paths.",
+    "honest_summary": "PARTIAL_PROGRESS via research direction. Search produced a ranked menu of orthogonal attack architectures suitable for external collaborator hand-off (Lamzouri, Lichtman) or follow-up sessions, but did not close any sorry and did not surface a near-term proof path."
+  },
+  "stage_4_decision": "SKIP — no candidate produced a tractable conditional reduction lemma worth scaffolding in 143.lean.",
+  "perplexity_cost_usd_this_pass": 0.04,
+  "budget_remaining_usd_after_initial_pass": 2.96,
+  "follow_up_pass_M7": {
+    "added_2026-05-16": true,
+    "candidate": {
+      "id": "M7",
+      "name": "Von Neumann entropy on bipartite dilation channel (with pinching-identity / Holevo bound)",
+      "mdl_primitive": "Build bipartite Hilbert space ℋ_A ⊗ ℋ_K with |ψ⟩_AK = (1/√Z) Σ_x Σ_k α(x,k) |x⟩|k⟩, α(x,k) = 1 if k·x ≤ N. Partial-trace gives ρ_A; WS forbids collision rows in amplitude matrix. Apply VN entropy, SSA, Araki-Lieb.",
+      "predicts_beyond_kll": "Sub-maximal entanglement entropy S(ρ_A) ≪ log|A|; mutual information I(A:K) constrained by WS-specific arithmetic; potentially tighter than KLL via quantum-information inequalities specific to the dilation structure.",
+      "prior_art": "No published recasting of Selberg sieve as VN entropy bound (Perplexity Q1 confirmed). Closest related: classical Shannon entropy in additive combinatorics (Madiman, Kontoyiannis, Tao-Vu); spectral graph theory in KLL (GCD graphs). H² portfolio infrastructure: Math/Lean4/MendozaLab/PinchingIdentity.lean (the §101 patent shield establishing S_VN = H_Shannon on eigenvalues).",
+      "gate_1_verdict": "RED — universal quantum-information inequalities (SSA, Araki-Lieb, subadditivity) wash out the GCD/congruence structure that's load-bearing in KLL. The arithmetic content lives entirely in the Gram-matrix entries; quantum entropy machinery is generic and captures no novel arithmetic constraint.",
+      "perplexity_verdict_q2": "M7 is a notational reformulation that repackages the same eigenvalue constraints, not an orthogonal route that yields a strictly stronger Σ 1/(x log x)-type bound. Any genuinely novel inequality would need to be non-universal (multiplicative-number-theory-specific) — does not exist in current literature.",
+      "perplexity_verdict_q3": "I(A:K) = 2 S(ρ_A) for pure states is invariant under unitaries on ℋ_K; universal quantum inequalities don't see arithmetic placement of dilation indices. Selberg sieve, by contrast, is exquisitely sensitive to congruence structure.",
+      "numerical_signal": {
+        "test": "naive bipartite indicator α(x,k)=1, varying |A| 100→1000 and N 10^4→10^8",
+        "S_VN_at_A_100": 0.94,
+        "S_VN_at_A_1000": 0.33,
+        "VN_over_log_A_at_1000": 0.05,
+        "effective_rank_at_1000": 1.4,
+        "interpretation": "Bipartite state is approximately a product state (effective_rank → 1.4 as |A| grows). VN/log|A| → 0.05. Mutual information I(A:K) ≈ 0.66 bits at |A|=1000 — nearly zero entanglement.",
+        "WS_specificity": "Low — the near-product structure is a property of the dilation indicator α (for x near N only k=1 works), not of the WS arithmetic. Any sparse set in [1,N] would give similar near-product structure. WS arithmetic is washed out.",
+        "data_file": "MDL_M7_experiment_results.json"
+      },
+      "session_verdict": "NOTATIONAL — drops with M4 to the 'rephrasing' column. Important negative result for the H² portfolio: the KvN / VN-entropy infrastructure is real for spectral patent applications but does NOT translate into a new attack on parts.ii.",
+      "what_might_work": "A non-universal quantum-info inequality specific to multiplicative number theory — not yet developed. Building one would itself be a research project comparable in scope to M6 (Koopman framework). Both routes require establishing arithmetic-specific operator theory rather than invoking generic quantum-info machinery.",
+      "portfolio_bias_note": "The H² portfolio has PinchingIdentity.lean and treats VN-entropy framings favorably. This made M7 a natural candidate to consider; both the Perplexity analysis and the numerical experiment converged on the negative verdict despite that bias. This is honest evidence the portfolio framework has limits.",
+      "perplexity_query_file": "MDL_M7_perplexity_query.md",
+      "perplexity_result_file": "MDL_M7_perplexity_result.md",
+      "experiment_files": ["MDL_M7_experiment.py", "MDL_M7_experiment_results.json"]
+    },
+    "cost_usd": 0.04,
+    "budget_remaining_usd": 2.92,
+    "impact_on_gate_5": "verdict_unchanged_FURTHER_WORK_NEEDED",
+    "impact_on_most_promising_thread": "M6 (Koopman) remains #1; M7 demonstrates that NAIVE quantum-info approaches reduce to KLL via the pinching identity, so M6's strict orthogonality requires explicit thermodynamic-formalism construction (not just borrowing VN-entropy formalism).",
+    "lesson_for_h2_portfolio": "The §101 PinchingIdentity shield is a patent / formalization tool; it does NOT auto-produce new analytic-number-theory bounds. Universal quantum-info inequalities (SSA, Araki-Lieb, subadditivity) are too coarse for multiplicative-number-theory problems where the constraint is congruence-structured."
+  },
+  "next_actions": [
+    "Optional: write per-candidate morphism JSONs (M2, M3, M5, M6) following the existing M1 format, for orchestrator visibility.",
+    "Optional: extend M6 with a concrete finite-sample transfer-operator numerical experiment to give the candidate falsifiable signal. M7's NOTATIONAL verdict raises the bar: M6 must demonstrate genuine arithmetic-specific spectral content, not just generic operator-theoretic framing.",
+    "Optional: extend M3 with cleaner WS constructions (explicit number-theoretic examples like {floor(α^n) : irrational α with strong Diophantine properties}) to verify whether t=1,2,3 lattice-mode elevation is greedy-artifact or genuine.",
+    "Hand-off: MDL_RESEARCH_DIRECTIONS.md prepared for Lamzouri/Lichtman consultation on M6 + M2. Include the M7 negative result so they don't waste cycles on the obvious quantum-info reformulation.",
+    "Skip Stage 4 Lean work — no candidate yielded clean conditional reduction lemma."
+  ]
+}
