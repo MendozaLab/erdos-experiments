@@ -1,0 +1,136 @@
+{
+  "packet_id": "B_PLUS_ATTACK_VECTOR_2026-05-02",
+  "date": "2026-05-02",
+  "evidence_ceiling": "Finite laboratory and formalization-routing evidence. This is not theorem proof and does not solve Erdos #30.",
+  "examples": [
+    {
+      "name": "Sidon #30 field response",
+      "role": "pass_support",
+      "interpretation": "Finite exact field/frontier packet shows field-sensitive extremal faces for #30. It is evidence for a proof-target lane, not a theorem.",
+      "files": [
+        {
+          "path": "erdos-experiments/results/erdos-30/EXP-MM-030-PMF-TRANSFER-FIELD-FRONTIER-56-58-2026-04-29_RESULTS.json",
+          "sha256": "0f541f6f27df28737ae4812e4116587840ac63a6ee61481667c4b4b29f49edbd",
+          "sidecar_verified": true
+        },
+        {
+          "path": "erdos-experiments/results/erdos-30/EXP-MM-030-PMF-TRANSFER-FIELD-FRONTIER-56-58-2026-04-29_REPORT.md",
+          "sha256": "61a9f40d77e5c2ca608d425c97451cdd06cf5c8acf5b1108b20de2d000ea0089",
+          "sidecar_verified": false
+        }
+      ]
+    },
+    {
+      "name": "B_2[g] transfer",
+      "role": "cross_problem_transfer_support",
+      "interpretation": "The B_2[2] finite transfer-state scout split under the same observable family and recorded exact finite counts.",
+      "files": [
+        {
+          "path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw/ATH-GAUNTLET-B2G2-D1-20-30-2026-04-30_RESULTS.json",
+          "sha256": "73489aa14f2786741cd611d87c3e62e9542d736930c061513ec23df0a7b8811e",
+          "sidecar_verified": true
+        },
+        {
+          "path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw/ATH-GAUNTLET-B2G2-D1-20-30-2026-04-30_REPORT.md",
+          "sha256": "f1a00ac3a5a85feef5af447afdcab804621fa981789f1744b92f63fca2f1372f",
+          "sidecar_verified": false
+        }
+      ],
+      "summary": {
+        "checked_count": 11,
+        "split_count": 11,
+        "n_range": "20-30",
+        "total_maximizers": 36234
+      }
+    },
+    {
+      "name": "Sum-free negative control",
+      "role": "negative_control",
+      "interpretation": "The same finite transfer API returned no field split for #166 over this range and reproduced the exact formula in all checked rows.",
+      "files": [
+        {
+          "path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw/ATH-GAUNTLET-SUMFREE-D1-20-30-2026-04-30_RESULTS.json",
+          "sha256": "92e31af9c6788b1408f0b9d2fa5d382ac5c4f2af04f8791e5c7b5f6225370d0b",
+          "sidecar_verified": true
+        },
+        {
+          "path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw/ATH-GAUNTLET-SUMFREE-D1-20-30-2026-04-30_REPORT.md",
+          "sha256": "54a8fd6d0d2c7b6447541460d30120daa4006cc5d8af5aa04f0ec69ec7a111ab",
+          "sidecar_verified": false
+        }
+      ],
+      "summary": {
+        "checked_count": 11,
+        "formula_match_count": 11,
+        "split_count": 0,
+        "n_range": "20-30"
+      }
+    },
+    {
+      "name": "Hypercube LEG4_FAIL",
+      "role": "demoted_failure",
+      "interpretation": "Pre-registered stricter exp8_v2 criteria rejected the hypercube Leg-4 candidate. This is important because it proves the collider can demote attractive candidates.",
+      "files": [
+        {
+          "path": "erdos-experiments/results/CLASSIFIER_BACKPROP_2026-04-19/exp8_v2_results.json",
+          "sha256": "0a5143f2cf58397de31e81fdc5e7461c109108cb0b1e64af74d0ccf937302460",
+          "sidecar_verified": false
+        },
+        {
+          "path": "erdos-experiments/results/CLASSIFIER_BACKPROP_2026-04-19/EXP8_V2_REPORT.md",
+          "sha256": "6e2a9f70b2bc1fa148e782a62fc339b27feb0eb7caf425e184e17990bb7b301e",
+          "sidecar_verified": false
+        }
+      ],
+      "summary": {
+        "verdict": "LEG4_FAIL",
+        "criteria_failed": [
+          "C1_strength_ratio",
+          "C2_scaling_monotonic",
+          "C3_model_selection"
+        ]
+      }
+    },
+    {
+      "name": "Chiral CHIRAL_CLASS_REJECTED",
+      "role": "ambiguous_demoted",
+      "interpretation": "The chiral row kept one criterion but failed the strict class rule. It is not a power morphism.",
+      "files": [
+        {
+          "path": "erdos-experiments/results/CLASSIFIER_BACKPROP_2026-04-19/exp9_v2_results.json",
+          "sha256": "4feb17a314a349b2d70f8a697ac41da41bbfdb682a6439f65415187ca093182b",
+          "sidecar_verified": false
+        },
+        {
+          "path": "erdos-experiments/results/CLASSIFIER_BACKPROP_2026-04-19/EXP9_V2_REPORT.md",
+          "sha256": "346d480ff74c9b8025c6972c7db8e53c9f2d6c164060fcdbd22fac01b94c020e",
+          "sidecar_verified": false
+        }
+      ],
+      "summary": {
+        "verdict": "CHIRAL_CLASS_REJECTED",
+        "failed": [
+          "C1_microscopic_universal",
+          "C2_soft_kink_dominates_bulk"
+        ],
+        "passed": [
+          "C3_stable_flavor_oscillation"
+        ]
+      }
+    }
+  ],
+  "aggregate_files": [
+    {
+      "path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/ATHENEUM_GAUNTLET_2026-04-30_RESULTS.json",
+      "sha256": "c62a685ccdc1e858c71954f77cf0f54cf67802533ea01fe62101f46271d10f92"
+    },
+    {
+      "path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/ATHENEUM_GAUNTLET_2026-04-30_REPORT.md",
+      "sha256": "cd5a73bd63852cd6b593d91f6ae8ed88dc13e1fab366dabb0b98a9c7a4636a00"
+    },
+    {
+      "path": "erdos-experiments/results/CLASSIFIER_BACKPROP_2026-04-19/TRACK_A_RESULTS_SYNTHESIS.md",
+      "sha256": "e1be5571f8d1e87c2f5fceb3644a9e27b5e03661f79dc4ff0c702fdbf17e8b30"
+    }
+  ]
+}

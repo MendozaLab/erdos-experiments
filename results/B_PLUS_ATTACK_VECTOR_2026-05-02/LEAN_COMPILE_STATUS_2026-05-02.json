@@ -1,0 +1,147 @@
+{
+  "packet_id": "B_PLUS_ATTACK_VECTOR_2026-05-02",
+  "date": "2026-05-02",
+  "cwd": "/Users/kenbengoetxea/container-projects/apps/H2/Math",
+  "d1_status": {
+    "direct_wrangler_query": "UNREACHABLE",
+    "wrangler_version": "4.81.1",
+    "error": "Failed to fetch auth token: CLOUDFLARE_API_TOKEN is not available in this non-interactive environment.",
+    "public_count_rule": "Strict publication copy must rerun direct D1 query when D1 auth is available. Do not quote cached markdown or scorecard counts.",
+    "live_api_observation": {
+      "url": "https://erdosatlas-api.dev-ef7.workers.dev/api/lean-artifacts",
+      "total_files": 21,
+      "total_sorry": 0,
+      "lake_pass_count": 21,
+      "interpretation": "Live API reports 21 lake-pass zero-sorry artifacts, but direct Wrangler D1 verification failed in this session."
+    },
+    "health_api_observation": {
+      "url": "https://erdosatlas-api.dev-ef7.workers.dev/api/health",
+      "problems": 5496,
+      "physics": 66,
+      "edges": 14095,
+      "morphisms": 92,
+      "solvent": 1190,
+      "lean_artifacts": 21
+    }
+  },
+  "local_builds": [
+    {
+      "workspace": "Lean4/transdimensional-painter",
+      "command": "lake build",
+      "result": "PASS",
+      "jobs": 3116,
+      "toolchain": "leanprover/lean4:v4.27.0",
+      "mathlib": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+      "sorry_count": 0,
+      "axiom_count": 25,
+      "status_bucket": "COMPILED_LOCAL_WITH_AXIOMS",
+      "notes": "Build passed with linter warnings and explicit axioms. This supports formalization progress, not theorem-resolution claims."
+    },
+    {
+      "workspace": "export-packets/erdos30",
+      "command": "lake build",
+      "result": "PASS",
+      "jobs": 0,
+      "toolchain": "leanprover/lean4:v4.24.0",
+      "mathlib": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+      "built_targets": [
+        "Erdos30_Sidon_Defs",
+        "Erdos30_Complete",
+        "Erdos30_Singer",
+        "Erdos30_Lindstrom",
+        "Erdos30_BFR"
+      ],
+      "sorry_count": 0,
+      "axiom_count_in_built_targets": 5,
+      "status_bucket": "COMPILED_LOCAL_WITH_AXIOMS",
+      "notes": "Older #30 export lane builds, but it is not a proof that Erdos #30 is solved."
+    },
+    {
+      "workspace": "erdos-experiments/private-attacks/lean4",
+      "command": "lake build",
+      "result": "PASS",
+      "jobs": 0,
+      "toolchain": "leanprover/lean4:v4.24.0",
+      "mathlib": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+      "source_files_scanned": 33,
+      "theorem_or_lemma_count": 233,
+      "axiom_count": 10,
+      "sorry_count": 0,
+      "status_bucket": "COMPILED_LOCAL_WITH_AXIOMS",
+      "notes": "This is the larger local Lean portfolio lane. It compiles and is zero-sorry, but contains explicit axioms."
+    },
+    {
+      "workspace": "erdos-experiments/Erdos30",
+      "command": "lake build",
+      "result": "PASS",
+      "jobs": 7886,
+      "toolchain": "leanprover/lean4:v4.27.0",
+      "mathlib": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+      "source_files_scanned": 36,
+      "theorem_or_lemma_count": 4262,
+      "axiom_count": 10,
+      "sorry_count_total": 4,
+      "sorry_files": [
+        "erdos-experiments/Erdos30/scratch/Erdos30_SpectralSidon.lean"
+      ],
+      "zero_sorry_core_targets": [
+        "Erdos166_SumFree",
+        "Erdos1_DistinctSubsetSums",
+        "Erdos30_Sidon_Defs",
+        "Erdos30_Complete",
+        "Erdos30_Lindstrom",
+        "Erdos30_BFR",
+        "Erdos30_Singer",
+        "Erdos30_OrderedElements",
+        "Erdos30_FaceField",
+        "Erdos30_FaceField_ExactObservables",
+        "Erdos30_FaceField_N30_Certificate",
+        "Erdos30_FaceField_Window_Certificate",
+        "Erdos30_FaceField_57_58_Certificate",
+        "Erdos30_FaceField_56_58_FullFace_Certificate",
+        "Erdos30_FaceField_59_FullFace_Certificate",
+        "Erdos30_FaceField_60_FullFace_Certificate",
+        "Erdos30_FaceField_61_JointSurface_Certificate",
+        "Erdos30_FaceField_61_64_JointSurface_Certificate",
+        "Erdos30_FaceField_61_64_JointSurface_Transition_Certificate",
+        "Erdos30_FaceField_65_71_JointSurface_Transition_Certificate",
+        "Erdos30_GroundFaceBranch_58_71_Certificate",
+        "Erdos30_SharpDiff",
+        "Erdos30_Singer57_Certificate",
+        "Erdos755_BhG",
+        "Erdos755_DifferenceCount",
+        "Erdos755_Lindstrom",
+        "Erdos755_Singer_BhG",
+        "Erdos755_Complete",
+        "Erdos755_B3G",
+        "Erdos755_BhG_General",
+        "Erdos755_HigherOrder",
+        "Erdos30_difference_counting",
+        "Sidon_SumCount_Fix"
+      ],
+      "status_bucket": "MIXED_PASS_WITH_NONPUBLIC_SORRY_SCRATCH",
+      "notes": "Workspace build passes, but public COMPILED status can attach only to zero-sorry targets. The scratch spectral Sidon file must be quarantined."
+    }
+  ],
+  "status_table": {
+    "COMPILED": [
+      "Live API reports 21 lake-pass zero-sorry artifacts.",
+      "Local builds confirm multiple zero-sorry workspaces and targets, including TDP, private-attacks, and active Erdos30 core/certificate targets."
+    ],
+    "CLEAN_only": [
+      "No direct CLEAN-only count was established because the canonical D1 query was unavailable and the root lean_artifacts_cache.db is empty.",
+      "The root audit script can scan, but --reconcile was not run because this packet avoids registry mutation."
+    ],
+    "FAIL": [
+      "Direct Wrangler D1 query failed due missing CLOUDFLARE_API_TOKEN.",
+      "erdos-experiments/Erdos30/scratch/Erdos30_SpectralSidon.lean has 4 sorry tokens and is not public-quotable."
+    ],
+    "ARCHIVED": [
+      "No new archive action taken. Older scorecard/dashboard files remain superseded by ERDOS_MASTER_SCORECARD.xlsx per AGENTS.md."
+    ]
+  },
+  "public_number": {
+    "strict_publication_answer": "Do not quote a final direct-D1 Lean count from this session. Rerun the Wrangler D1 query with CLOUDFLARE_API_TOKEN before external use.",
+    "audit_observation": "Live API observed 21 lake-pass zero-sorry artifacts on 2026-05-02."
+  }
+}
