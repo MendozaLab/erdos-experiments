@@ -1,0 +1,332 @@
+{
+  "all_rows_positive": true,
+  "claim_ceiling": "This is a shadow signature, not universal law. It certifies the finite-difference shape matrix under the stated interval marching-squares oracle, not EHP #114.",
+  "experiment_id": "EXP-MATH-EHP114-N14-SHAPE-INTERVAL-MATRIX-20260505-01",
+  "gershgorin_interval_lower_bound": 308540.9038178724,
+  "guardrails": {
+    "no_d1_update": true,
+    "no_email": true,
+    "no_git": true,
+    "no_lean_file_created": true,
+    "no_public_claim": true,
+    "no_scorecard_update": true
+  },
+  "max_matrix_interval_width": 8.693490372024826e-08,
+  "mixed_remainder_obligation": {
+    "status": "OPEN",
+    "target": "Bound mixed radial/shape remainder by <= 12*eps^(1/14) + 0.5*lambda14*||s||^2 on the n=14 local cone.",
+    "why_it_matters": "The radial and shape certificates are now separate; only mixed-term absorption blocks the local theorem."
+  },
+  "next_blocker": "Prove mixed radial/shape remainder absorption for the n=14 local cone.",
+  "oracle": {
+    "elapsed_secs": 5.692930083,
+    "input_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-EHP114-N14-SHAPE-INTERVAL-MATRIX-20260505-01_ORACLE_INPUT.json",
+    "input_sha256": "466923756a7a954964f034a1c441aa3dea13c002aa0bf93762f536b83cc946a7",
+    "method": "Rust/inari interval marching-squares batch length oracle",
+    "output_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-EHP114-N14-SHAPE-INTERVAL-MATRIX-20260505-01_ORACLE_OUTPUT.json",
+    "output_sha256": "6b686b0346bceaa9db7ec9225232c4f1748366367fa061d75c005db6cd281005"
+  },
+  "parameters": {
+    "degree": 14,
+    "eps": 0.005,
+    "extent": 3.0,
+    "oracle_point_count": 1152,
+    "res": 220,
+    "shape_basis_rank": 24,
+    "working_lambda14": 100000.0
+  },
+  "problem": "Erdos #114 / EHP lemniscate perimeter",
+  "rows": [
+    {
+      "diagonal_interval": {
+        "hi": 702839.6284667806,
+        "lo": 702839.6284667522,
+        "width": 2.8405338525772095e-08
+      },
+      "diagonal_lower_minus_radius": 658127.3707103685,
+      "index": 0,
+      "off_diagonal_abs_radius_upper": 44712.25775638373
+    },
+    {
+      "diagonal_interval": {
+        "hi": 702865.8335983588,
+        "lo": 702865.8335983306,
+        "width": 2.8172507882118225e-08
+      },
+      "diagonal_lower_minus_radius": 658085.5368312856,
+      "index": 1,
+      "off_diagonal_abs_radius_upper": 44780.29676704502
+    },
+    {
+      "diagonal_interval": {
+        "hi": 610132.7827793064,
+        "lo": 610132.7827792687,
+        "width": 3.771856427192688e-08
+      },
+      "diagonal_lower_minus_radius": 309306.6107237752,
+      "index": 2,
+      "off_diagonal_abs_radius_upper": 300826.1720554935
+    },
+    {
+      "diagonal_interval": {
+        "hi": 621309.3526458015,
+        "lo": 621309.3526457672,
+        "width": 3.434251993894577e-08
+      },
+      "diagonal_lower_minus_radius": 309113.2539081296,
+      "index": 3,
+      "off_diagonal_abs_radius_upper": 312196.09873763757
+    },
+    {
+      "diagonal_interval": {
+        "hi": 621305.7912646738,
+        "lo": 621305.7912646396,
+        "width": 3.4226104617118835e-08
+      },
+      "diagonal_lower_minus_radius": 309112.03371124895,
+      "index": 4,
+      "off_diagonal_abs_radius_upper": 312193.75755339063
+    },
+    {
+      "diagonal_interval": {
+        "hi": 609396.3777426569,
+        "lo": 609396.3777426189,
+        "width": 3.795139491558075e-08
+      },
+      "diagonal_lower_minus_radius": 308540.9038178724,
+      "index": 5,
+      "off_diagonal_abs_radius_upper": 300855.4739247465
+    },
+    {
+      "diagonal_interval": {
+        "hi": 565643.1571466167,
+        "lo": 565643.1571465734,
+        "width": 4.330649971961975e-08
+      },
+      "diagonal_lower_minus_radius": 312269.4548655362,
+      "index": 6,
+      "off_diagonal_abs_radius_upper": 253373.70228103726
+    },
+    {
+      "diagonal_interval": {
+        "hi": 565678.9941560188,
+        "lo": 565678.994155976,
+        "width": 4.284083843231201e-08
+      },
+      "diagonal_lower_minus_radius": 312310.7233708756,
+      "index": 7,
+      "off_diagonal_abs_radius_upper": 253368.2707851004
+    },
+    {
+      "diagonal_interval": {
+        "hi": 566384.0449079482,
+        "lo": 566384.0449079057,
+        "width": 4.249159246683121e-08
+      },
+      "diagonal_lower_minus_radius": 313291.9728550948,
+      "index": 8,
+      "off_diagonal_abs_radius_upper": 253092.0720528109
+    },
+    {
+      "diagonal_interval": {
+        "hi": 566319.7788089616,
+        "lo": 566319.7788089181,
+        "width": 4.353933036327362e-08
+      },
+      "diagonal_lower_minus_radius": 311309.92352418904,
+      "index": 9,
+      "off_diagonal_abs_radius_upper": 255009.855284729
+    },
+    {
+      "diagonal_interval": {
+        "hi": 526863.5555210283,
+        "lo": 526863.5555209785,
+        "width": 4.98257577419281e-08
+      },
+      "diagonal_lower_minus_radius": 365608.42115995614,
+      "index": 10,
+      "off_diagonal_abs_radius_upper": 161255.13436102238
+    },
+    {
+      "diagonal_interval": {
+        "hi": 521434.3552414375,
+        "lo": 521434.3552413874,
+        "width": 5.011679604649544e-08
+      },
+      "diagonal_lower_minus_radius": 379329.88173057203,
+      "index": 11,
+      "off_diagonal_abs_radius_upper": 142104.47351081535
+    },
+    {
+      "diagonal_interval": {
+        "hi": 521488.67948425206,
+        "lo": 521488.6794842019,
+        "width": 5.0175003707408905e-08
+      },
+      "diagonal_lower_minus_radius": 379543.4059034374,
+      "index": 12,
+      "off_diagonal_abs_radius_upper": 141945.27358076448
+    },
+    {
+      "diagonal_interval": {
+        "hi": 526896.0610405101,
+        "lo": 526896.0610404601,
+        "width": 4.9942173063755035e-08
+      },
+      "diagonal_lower_minus_radius": 366696.9826572081,
+      "index": 13,
+      "off_diagonal_abs_radius_upper": 160199.078383252
+    },
+    {
+      "diagonal_interval": {
+        "hi": 498252.94509422075,
+        "lo": 498252.9450941667,
+        "width": 5.407491698861122e-08
+      },
+      "diagonal_lower_minus_radius": 401843.73217572656,
+      "index": 14,
+      "off_diagonal_abs_radius_upper": 96409.21291844011
+    },
+    {
+      "diagonal_interval": {
+        "hi": 498254.8363535328,
+        "lo": 498254.83635347866,
+        "width": 5.413312464952469e-08
+      },
+      "diagonal_lower_minus_radius": 402972.5212105545,
+      "index": 15,
+      "off_diagonal_abs_radius_upper": 95282.31514292413
+    },
+    {
+      "diagonal_interval": {
+        "hi": 494713.61358680064,
+        "lo": 494713.61358674563,
+        "width": 5.50062395632267e-08
+      },
+      "diagonal_lower_minus_radius": 407163.56537515466,
+      "index": 16,
+      "off_diagonal_abs_radius_upper": 87550.04821159098
+    },
+    {
+      "diagonal_interval": {
+        "hi": 494701.23733054235,
+        "lo": 494701.23733048793,
+        "width": 5.4424162954092026e-08
+      },
+      "diagonal_lower_minus_radius": 406047.7145197622,
+      "index": 17,
+      "off_diagonal_abs_radius_upper": 88653.52281072574
+    },
+    {
+      "diagonal_interval": {
+        "hi": 478822.20485343685,
+        "lo": 478822.20485337987,
+        "width": 5.698530003428459e-08
+      },
+      "diagonal_lower_minus_radius": 451185.72297768,
+      "index": 18,
+      "off_diagonal_abs_radius_upper": 27636.48187569986
+    },
+    {
+      "diagonal_interval": {
+        "hi": 471816.77044476,
+        "lo": 471816.77044470137,
+        "width": 5.861511453986168e-08
+      },
+      "diagonal_lower_minus_radius": 452295.9951131415,
+      "index": 19,
+      "off_diagonal_abs_radius_upper": 19520.77533155988
+    },
+    {
+      "diagonal_interval": {
+        "hi": 471800.14908604143,
+        "lo": 471800.1490859829,
+        "width": 5.855690687894821e-08
+      },
+      "diagonal_lower_minus_radius": 452208.1041874795,
+      "index": 20,
+      "off_diagonal_abs_radius_upper": 19592.04489850343
+    },
+    {
+      "diagonal_interval": {
+        "hi": 478782.14691470825,
+        "lo": 478782.1469146509,
+        "width": 5.7334545999765396e-08
+      },
+      "diagonal_lower_minus_radius": 450119.90048483014,
+      "index": 21,
+      "off_diagonal_abs_radius_upper": 28662.24642982078
+    },
+    {
+      "diagonal_interval": {
+        "hi": 474536.09786270675,
+        "lo": 474536.09786264907,
+        "width": 5.76837919652462e-08
+      },
+      "diagonal_lower_minus_radius": 454624.96260532393,
+      "index": 22,
+      "off_diagonal_abs_radius_upper": 19911.13525732514
+    },
+    {
+      "diagonal_interval": {
+        "hi": 474536.35977888474,
+        "lo": 474536.3597788265,
+        "width": 5.8265868574380875e-08
+      },
+      "diagonal_lower_minus_radius": 456504.5622992215,
+      "index": 23,
+      "off_diagonal_abs_radius_upper": 18031.79747960497
+    }
+  ],
+  "scope": "n=14 shape-cone interval matrix certificate",
+  "shape_basis_labels": [
+    "m1_cos_radial",
+    "m1_cos_tangent",
+    "m2_cos_radial",
+    "m2_cos_tangent",
+    "m2_sin_radial",
+    "m2_sin_tangent",
+    "m3_cos_radial",
+    "m3_cos_tangent",
+    "m3_sin_radial",
+    "m3_sin_tangent",
+    "m4_cos_radial",
+    "m4_cos_tangent",
+    "m4_sin_radial",
+    "m4_sin_tangent",
+    "m5_cos_radial",
+    "m5_cos_tangent",
+    "m5_sin_radial",
+    "m5_sin_tangent",
+    "m6_cos_radial",
+    "m6_cos_tangent",
+    "m6_sin_radial",
+    "m6_sin_tangent",
+    "m7_cos_radial",
+    "m7_cos_tangent"
+  ],
+  "sources": {
+    "inari_n14": {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "sha256": "50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7",
+      "verdict": "EHP_N14_PROVEN"
+    },
+    "radial_compact": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-EHP114-N14-RADIAL-COMPACT-INTERVAL-20260505-01_RESULTS.json",
+    "radial_tail": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-EHP114-N14-RADIAL-TAIL-ARB-20260505-01_RESULTS.json",
+    "splice_packet": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-EHP114-N14-SHAPE-CONE-SPLICE-20260505-01_RESULTS.json"
+  },
+  "status": "SHAPE_INTERVAL_MATRIX_CERTIFIED",
+  "timestamp_utc": "2026-05-06T00:09:55.458726+00:00",
+  "working_lambda14_below_interval_bound": true,
+  "worst_row": {
+    "diagonal_interval": {
+      "hi": 609396.3777426569,
+      "lo": 609396.3777426189,
+      "width": 3.795139491558075e-08
+    },
+    "diagonal_lower_minus_radius": 308540.9038178724,
+    "index": 5,
+    "off_diagonal_abs_radius_upper": 300855.4739247465
+  }
+}

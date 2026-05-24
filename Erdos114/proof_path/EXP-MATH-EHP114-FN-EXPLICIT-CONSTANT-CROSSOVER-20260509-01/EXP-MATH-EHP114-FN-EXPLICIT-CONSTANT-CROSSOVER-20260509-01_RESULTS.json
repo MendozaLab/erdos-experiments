@@ -1,0 +1,69 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-FN-EXPLICIT-CONSTANT-CROSSOVER-20260509-01",
+  "status": "FN_DOES_NOT_CLOSE_ASYMPTOTICALLY",
+  "claim_ceiling": "Internal comparison computation only. Not a proof of Erdos #114, not a finite-n cert. Establishes whether Fryntov-Nazarov's explicit bound, evaluated at the optimal delta in (0, 1/4), ever drops below the symmetric extremizer length L(z^n - 1). Result: it does not, at any n tested up to 10^12.",
+  "fn_bound_form": "26*pi*delta*n + 2*pi*sqrt(n) + e^(4*delta) * (1/pi + 2*delta + 4*a/(delta^3 * sqrt(n))) * 2*pi*(n-1)",
+  "fn_bound_form_note": "Verified directly from arXiv:0808.0717 p. 16. The exponent is e^(4*delta), not e^(2*delta) as transcribed in EHP114_FRYNTOV_NAZAROV_2008_PRIOR_ART_2026-05-09.md. The cap(F) <= e^(2*delta) so area(F) <= pi*e^(4*delta). Prior-art note has a typo at line 24 (and again at line 113); the inequality used here is the PDF version.",
+  "fn_parameter_a_value": 0.622961314121070419664654994147,
+  "fn_parameter_a_definition": "a = sum_{k != 0} |a_k|/|k| where a_k are Fourier coefficients of Re_+(z) = max(Re z, 0) on the unit circle. Closed form: a = 1/2 + (1/pi) * sum_{m>=1} 1/(m * (4*m^2 - 1)). Computed to 30 dps via series truncation at m=300000 (truncation error < 10^-12).",
+  "fn_parameter_a_source": "arXiv:0808.0717 p. 14 eq. (16) and p. 16 eq. (17): Re_+(theta) = 1/pi + sum_{k!=0} a_k theta^k.",
+  "L_sym_form": "2^(1/n) * sqrt(pi) * Gamma(1/(2n)) / Gamma(1/(2n) + 1/2)",
+  "L_sym_form_equiv": "Equivalent: 2^(1/n) * B(1/2, 1/(2n)) where B is the Beta function. Source: forum post #6330 / Wang-Peng 2006 / Eremenko-Hayman 1999. Asymptotic: L_sym(n) = 2n + (pi^2/6 + log 2)/n + O(1/n^2) (so L_sym(n) - 2n -> 0 from above as 1/n).",
+  "evaluations": [
+    {"n": 14,      "L_sym": 30.852910841548542,    "delta_optimal": 0.24999999,           "B_FN_at_optimal": 9954.651159437737,    "B_FN_minus_L_sym": 9923.79824859619,     "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 15,      "L_sym": 32.84744316159257,     "delta_optimal": 0.24999999,           "B_FN_at_optimal": 10372.262823506093,   "B_FN_minus_L_sym": 10339.4153803445,     "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 20,      "L_sym": 42.828434146151295,    "delta_optimal": 0.24999999,           "B_FN_at_optimal": 12274.205313439026,   "B_FN_minus_L_sym": 12231.376879292875,   "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 50,      "L_sym": 102.79471556068937,    "delta_optimal": 0.24999999,           "B_FN_at_optimal": 20625.26520839653,    "B_FN_minus_L_sym": 20522.47049283584,    "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 100,     "L_sym": 202.78361711017905,    "delta_optimal": 0.24999999,           "B_FN_at_optimal": 30454.15359728527,    "B_FN_minus_L_sym": 30251.369980175088,   "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 1000,    "L_sym": 2002.7736884162211,    "delta_optimal": 0.24999999,           "B_FN_at_optimal": 120629.39078956807,   "B_FN_minus_L_sym": 118626.61710115186,   "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 10000,   "L_sym": 20002.772698660232,    "delta_optimal": 0.24999999,           "B_FN_at_optimal": 616933.7216599075,    "B_FN_minus_L_sym": 596930.9489612472,    "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 100000,  "L_sym": 200002.7725997157,     "delta_optimal": 0.20054838629047125,  "B_FN_at_optimal": 4017349.9161406085,   "B_FN_minus_L_sym": 3817347.1435408928,   "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 1000000, "L_sym": 2000002.7725898216,    "delta_optimal": 0.1506616671832684,   "B_FN_at_optimal": 27789417.48185831,    "B_FN_minus_L_sym": 25789414.709268488,   "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 10000000,    "L_sym": 20000002.7725889,  "delta_optimal": 0.11269,              "B_FN_at_optimal": 199983290.66,         "B_FN_minus_L_sym": 199963287.9,          "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 100000000,   "L_sym": 200000002.772589,  "delta_optimal": 0.08416,              "B_FN_at_optimal": 1483400000.0,         "B_FN_minus_L_sym": 1483200000.0,         "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 1000000000,  "L_sym": 2000000002.772589, "delta_optimal": 0.06284,              "B_FN_at_optimal": 11285400000.0,        "B_FN_minus_L_sym": 11283400000.0,        "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false},
+    {"n": 1000000000000, "L_sym": 2000000000002.77,"delta_optimal": 0.02625,              "B_FN_at_optimal": 5693400000000.0,      "B_FN_minus_L_sym": 5691400000000.0,      "L_sym_under_fn": true, "fn_proves_conjecture_at_n": false}
+  ],
+  "fn_closure_threshold_n": null,
+  "leading_constant_diagnostic": {
+    "B_FN_over_n_at_n_equal_14": 711.05,
+    "B_FN_over_n_at_n_equal_1000": 120.63,
+    "B_FN_over_n_at_n_equal_1e6": 27.79,
+    "B_FN_over_n_at_n_equal_1e12": 5.69,
+    "B_FN_over_n_at_delta_equal_one_quarter_boundary_large_n_limit": 34.40,
+    "L_sym_over_n_asymptote": 2.0,
+    "comment": "B_FN/n >> 2 for every n tested. Even with delta forced to 1/4 (boundary), B_FN/n approaches ~34.4 as n -> infinity, far above the conjectured leading constant 2. With optimal delta (which only moves off the boundary for n > ~10^4), B_FN/n decreases like 1 + 26*pi*delta + ... but the third-term contribution e^{4*delta}*(1/pi)*2*pi*(n-1)/n -> 2 already absorbs leading 2 with delta near zero, leaving 26*pi*delta as residual O(1) contribution. delta -> 0 is forbidden by the 4a/(delta^3*sqrt(n)) singularity, which is what enforces the n^{7/8} crossover scale."
+  },
+  "asymptotic_n78_constant_estimate": {
+    "comment": "Empirical (B_FN_at_optimal - L_sym(n)) / n^(7/8) at large n:",
+    "n_1e4_ratio": 188.77,
+    "n_1e6_ratio": 145.02,
+    "n_1e8_ratio": 128.34,
+    "n_1e10_ratio": 120.66,
+    "n_1e12_ratio": 116.79,
+    "limiting_K_FN_estimate": "Approaches a constant near 115 from above as n -> infinity, consistent with B_FN(n, delta=n^{-1/8}) - 2n ~ K_FN * n^{7/8} with K_FN positive and finite (not closing)."
+  },
+  "asymptotic_comparison": "B_FN(n, delta_optimal) - L_sym(n) ~ K_FN * n^(7/8) with K_FN ~ 115 > 0 as n -> infinity, while L_sym(n) - 2n -> 0 (decays as 1/n). Therefore B_FN - L_sym diverges to +infinity polynomially. FN's explicit bound never drops below L_sym at any finite n, and the gap grows without bound.",
+  "implications_for_bridge": "Fryntov-Nazarov's explicit bound does NOT close the middle range alone. It is a structural/methodological reference, not a closure mechanism. The bridge program path is unchanged: (n <= 14 finite cert) + (n >= N_0 by Tao's o(n) bound or a strengthening) + (some path closing the n in [15, N_0 - 1] gap) remains the architecture. FN's contribution is showing |L| <= 2n + O(n^{7/8}) for ALL n with explicit constants, not for any specific n threshold past which the conjecture is closed by their bound alone.",
+  "next_dependency": "FN_DOES_NOT_CLOSE_ASYMPTOTICALLY: FN is a structural reference only, not a closure mechanism. Tao's bound (or a sharper o(n) estimate) remains the gating tool for the bridge's middle range. The orthogonal re-read's three questions are answered: (Q1) at no finite n does FN's bound dip below L_sym; (Q2) combining FN with the n=14 cert does not produce a finite middle-range threshold; (Q3) there is no FN closure threshold because FN's O(n^{7/8}) term genuinely dominates L_sym's O(1/n) correction.",
+  "method_notes": [
+    "All evaluations done in mpmath at 80 decimal places.",
+    "L_sym computed via direct Gamma function call.",
+    "FN bound minimized over delta in (10^-10, 1/4 - 10^-10) via 300-iteration golden-section search to <= 10^-40 width.",
+    "For n <= 10^4 the optimal delta is the upper boundary 1/4 (because the 4a/(delta^3*sqrt(n)) term dominates and pushes delta as large as allowed); for n >= 10^5 delta_opt moves into the interior.",
+    "delta = n^{-1/8} (the asymptotically optimal choice cited on FN p. 17) requires delta < 1/4, hence n > 4^8 = 65536. Below that threshold the asymptotic optimum is unavailable; for n in [14, 65536] the boundary delta = 1/4 (or near it) is optimal.",
+    "The 7/8 power in FN's claim 'O(n^{7/8})' is suboptimal per their own remark on p. 17: 'we have no doubt that the power 7/8 can be substantially improved though to bring it below 1/2 seems quite a challenging problem.' But even 1/2 would not close: L_sym - 2n ~ O(1/n), and any positive power of n above -1 in the slack term diverges from O(1/n) at infinity."
+  ],
+  "files_read": [
+    "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EHP114_FRYNTOV_NAZAROV_2008_PRIOR_ART_2026-05-09.md",
+    "/tmp/fn08.pdf (pp. 9-18, verified inequality form direct from PDF)"
+  ],
+  "files_written": [
+    "EXP-MATH-EHP114-FN-EXPLICIT-CONSTANT-CROSSOVER-20260509-01_RESULTS.json",
+    "EXP-MATH-EHP114-FN-EXPLICIT-CONSTANT-CROSSOVER-20260509-01_REPORT.md",
+    "EXP-MATH-EHP114-FN-EXPLICIT-CONSTANT-CROSSOVER-20260509-01_RESULTS.sha256"
+  ],
+  "timestamp_unix": 1778359365,
+  "timestamp_iso": "2026-05-09",
+  "schema_version": "1.0"
+}

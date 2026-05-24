@@ -1,0 +1,231 @@
+{
+  "experiment_id": "EXP-MM-030-PMF-AFFINE-EMBEDDING-N57-2026-04-30",
+  "date": "2026-04-30",
+  "type": "derived_affine_embedding_certificate_from_exact_packet",
+  "source_packet": {
+    "experiment_id": "EXP-MM-030-PMF-MAXWELL-FACE-HANDOFF-56-58-V2-2026-04-30",
+    "results_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-30/EXP-MM-030-PMF-MAXWELL-FACE-HANDOFF-56-58-V2-2026-04-30_RESULTS.json",
+    "status": "EXACT"
+  },
+  "n": 57,
+  "h_n": 10,
+  "exact_maximizer_count": 6,
+  "unique_difference_skeleton_count": 1,
+  "affine_relations": [
+    {
+      "type": "translation",
+      "from_index": 0,
+      "to_index": 2,
+      "parameter": 1
+    },
+    {
+      "type": "translation",
+      "from_index": 0,
+      "to_index": 4,
+      "parameter": 2
+    },
+    {
+      "type": "reflection_about_n",
+      "from_index": 0,
+      "to_index": 5,
+      "parameter": 57
+    },
+    {
+      "type": "translation",
+      "from_index": 1,
+      "to_index": 3,
+      "parameter": 1
+    },
+    {
+      "type": "translation",
+      "from_index": 1,
+      "to_index": 5,
+      "parameter": 2
+    },
+    {
+      "type": "reflection_about_n",
+      "from_index": 1,
+      "to_index": 4,
+      "parameter": 57
+    },
+    {
+      "type": "translation",
+      "from_index": 2,
+      "to_index": 0,
+      "parameter": -1
+    },
+    {
+      "type": "translation",
+      "from_index": 2,
+      "to_index": 4,
+      "parameter": 1
+    },
+    {
+      "type": "reflection_about_n",
+      "from_index": 2,
+      "to_index": 3,
+      "parameter": 57
+    },
+    {
+      "type": "translation",
+      "from_index": 3,
+      "to_index": 1,
+      "parameter": -1
+    },
+    {
+      "type": "translation",
+      "from_index": 3,
+      "to_index": 5,
+      "parameter": 1
+    },
+    {
+      "type": "reflection_about_n",
+      "from_index": 3,
+      "to_index": 2,
+      "parameter": 57
+    },
+    {
+      "type": "translation",
+      "from_index": 4,
+      "to_index": 0,
+      "parameter": -2
+    },
+    {
+      "type": "translation",
+      "from_index": 4,
+      "to_index": 2,
+      "parameter": -1
+    },
+    {
+      "type": "reflection_about_n",
+      "from_index": 4,
+      "to_index": 1,
+      "parameter": 57
+    },
+    {
+      "type": "translation",
+      "from_index": 5,
+      "to_index": 1,
+      "parameter": -2
+    },
+    {
+      "type": "translation",
+      "from_index": 5,
+      "to_index": 3,
+      "parameter": -1
+    },
+    {
+      "type": "reflection_about_n",
+      "from_index": 5,
+      "to_index": 0,
+      "parameter": 57
+    }
+  ],
+  "translation_chains": [
+    {
+      "chain_id": "A",
+      "indices": [
+        0,
+        2,
+        4
+      ],
+      "relation": "successive +1 translations",
+      "roles": [
+        {
+          "index": 0,
+          "prefix": false,
+          "mass": false,
+          "joint": false,
+          "pareto": false
+        },
+        {
+          "index": 2,
+          "prefix": false,
+          "mass": false,
+          "joint": false,
+          "pareto": false
+        },
+        {
+          "index": 4,
+          "prefix": true,
+          "mass": false,
+          "joint": false,
+          "pareto": false
+        }
+      ]
+    },
+    {
+      "chain_id": "B",
+      "indices": [
+        1,
+        3,
+        5
+      ],
+      "relation": "successive +1 translations",
+      "roles": [
+        {
+          "index": 1,
+          "prefix": false,
+          "mass": false,
+          "joint": false,
+          "pareto": false
+        },
+        {
+          "index": 3,
+          "prefix": false,
+          "mass": true,
+          "joint": false,
+          "pareto": true
+        },
+        {
+          "index": 5,
+          "prefix": true,
+          "mass": false,
+          "joint": true,
+          "pareto": true
+        }
+      ]
+    }
+  ],
+  "exposed_handoff": {
+    "mass_winner_index": 3,
+    "joint_winner_index": 5,
+    "mass_winner": [
+      1,
+      3,
+      15,
+      22,
+      30,
+      33,
+      46,
+      50,
+      55,
+      56
+    ],
+    "joint_winner": [
+      2,
+      4,
+      16,
+      23,
+      31,
+      34,
+      47,
+      51,
+      56,
+      57
+    ],
+    "relation": "joint_winner = mass_winner + 1",
+    "verified": true,
+    "reflection_partner_of_mass_winner": 2,
+    "reflection_partner_of_joint_winner": 0
+  },
+  "certificate_checks": {
+    "all_witnesses_share_one_difference_skeleton": true,
+    "mass_to_joint_is_plus_one_translation": true,
+    "translation_chain_A_present": true,
+    "translation_chain_B_present": true,
+    "reflection_pairs_present": true
+  },
+  "interpretation": "At n=57, the exposed handoff is a +1 translation along one embedding chain of a shared difference skeleton: mass selects index 3, joint selects index 5 = index 3 shifted by +1.",
+  "claim_boundary": "Finite affine-embedding certificate only; no Sidon theorem, no physics proof, no SOTA theorem claim."
+}

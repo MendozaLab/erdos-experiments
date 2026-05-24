@@ -1,0 +1,1999 @@
+{
+  "date": "2026-04-24",
+  "description": "Exact h(n) maximizer scan against the general prefix-drift and mass theorems",
+  "erdos_problem": 30,
+  "experiment_id": "EXP-MM-030-COMPATIBILITY-BEYOND50-MAXIMIZER-PROBE-2026-04-24",
+  "mass_center_diagnostics": {
+    "density_adjusted_center": {
+      "label": "density-adjusted mass template",
+      "worst_n": 54,
+      "worst_residual": 96.0,
+      "worst_residual_ratio_n_pow_11_8": 0.39831789053878175,
+      "worst_set": [
+        0,
+        2,
+        5,
+        9,
+        15,
+        23,
+        34,
+        35,
+        51
+      ]
+    },
+    "sqrt_center": {
+      "label": "sqrt(n)-centered mass template",
+      "worst_n": 51,
+      "worst_residual": 147.36427928442828,
+      "worst_residual_ratio_n_pow_11_8": 0.6614289998409324,
+      "worst_set": [
+        0,
+        2,
+        5,
+        9,
+        15,
+        23,
+        34,
+        35,
+        51
+      ]
+    }
+  },
+  "n_max": 55,
+  "n_min": 51,
+  "observable_split_diagnostics": {
+    "best_joint_n": 52,
+    "best_joint_score": 0.0,
+    "best_joint_witness": [
+      6,
+      10,
+      12,
+      19,
+      33,
+      36,
+      41,
+      51,
+      52
+    ],
+    "finite_compatibility": {
+      "joint_is_mass_best_count": 4,
+      "joint_is_mass_best_ns": [
+        52,
+        53,
+        54,
+        55
+      ],
+      "joint_is_prefix_best_count": 1,
+      "joint_is_prefix_best_ns": [
+        55
+      ],
+      "joint_is_third_count": 1,
+      "joint_is_third_ns": [
+        51
+      ],
+      "mass_best_near_zero_prefix_count": 4,
+      "mass_best_near_zero_prefix_ns": [
+        52,
+        53,
+        54,
+        55
+      ],
+      "mass_best_prefix_ratio_max_n_pow_7_8": 0.03205354707303116,
+      "mass_best_prefix_ratio_mean_n_pow_7_8": 0.006410709414606232,
+      "mass_penalty_gt_prefix_penalty_count": 0,
+      "mass_penalty_gt_prefix_penalty_ns": [],
+      "mass_penalty_le_prefix_penalty_count": 5,
+      "mass_penalty_le_prefix_penalty_ns": [
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "prefix_best_mass_ratio_max_n_pow_11_8": 0.10787776202092006,
+      "prefix_best_mass_ratio_mean_n_pow_11_8": 0.06982082828985535,
+      "prefix_best_zero_mass_count": 0,
+      "prefix_best_zero_mass_ns": [],
+      "zero_tolerance": 1e-09
+    },
+    "same_best_count": 1,
+    "same_best_ns": [
+      55
+    ],
+    "strongest_split_mass_best_prefix_ratio_n_pow_7_8": 0.0,
+    "strongest_split_mass_best_witness": [
+      7,
+      9,
+      13,
+      22,
+      27,
+      43,
+      44,
+      51,
+      54
+    ],
+    "strongest_split_n": 54,
+    "strongest_split_prefix_best_mass_ratio_n_pow_11_8": 0.10787776202092006,
+    "strongest_split_prefix_best_witness": [
+      10,
+      13,
+      19,
+      27,
+      29,
+      42,
+      49,
+      53,
+      54
+    ],
+    "strongest_split_score": 0.10787776202092006
+  },
+  "prefix_drift_diagnostics": {
+    "affine_endpoint_recentered": {
+      "label": "affine endpoint recentered",
+      "worst_drift": -19.16198487095663,
+      "worst_endpoint_bridge": -19.16198487095663,
+      "worst_n": 55,
+      "worst_raw_prefix_deviation": 19.664793948382652,
+      "worst_residual": 29.93447389336795,
+      "worst_residual_ratio_n_pow_7_8": 0.8981611721078684,
+      "worst_set": [
+        38,
+        43,
+        45,
+        51,
+        54,
+        55
+      ],
+      "worst_t": 37
+    },
+    "current_theorem_drift": {
+      "label": "max(abs(card-sqrt(n)), 1) * sqrt(n)",
+      "worst_drift": 12.136223055145807,
+      "worst_endpoint_bridge": -12.136223055145805,
+      "worst_n": 54,
+      "worst_raw_prefix_deviation": 25.43928459844674,
+      "worst_residual": 13.303061543300933,
+      "worst_residual_ratio_n_pow_7_8": 0.40560851198042686,
+      "worst_set": [
+        0,
+        1,
+        5,
+        15,
+        18,
+        24,
+        26,
+        46,
+        53
+      ],
+      "worst_t": 26
+    },
+    "density_adjusted_affine": {
+      "label": "density-adjusted affine",
+      "worst_drift": 0.0,
+      "worst_endpoint_bridge": -12.136223055145805,
+      "worst_n": 54,
+      "worst_raw_prefix_deviation": 25.43928459844674,
+      "worst_residual": 18.0,
+      "worst_residual_ratio_n_pow_7_8": 0.5488175178235005,
+      "worst_set": [
+        0,
+        2,
+        5,
+        6,
+        19,
+        28,
+        35,
+        43,
+        53
+      ],
+      "worst_t": 6
+    },
+    "gap_sqrt_only": {
+      "label": "abs(card-sqrt(n)) * sqrt(n)",
+      "worst_drift": 12.136223055145807,
+      "worst_endpoint_bridge": -12.136223055145805,
+      "worst_n": 54,
+      "worst_raw_prefix_deviation": 25.43928459844674,
+      "worst_residual": 13.303061543300933,
+      "worst_residual_ratio_n_pow_7_8": 0.40560851198042686,
+      "worst_set": [
+        0,
+        1,
+        5,
+        15,
+        18,
+        24,
+        26,
+        46,
+        53
+      ],
+      "worst_t": 26
+    },
+    "raw_prefix": {
+      "label": "0",
+      "worst_drift": 0.0,
+      "worst_endpoint_bridge": -12.136223055145805,
+      "worst_n": 54,
+      "worst_raw_prefix_deviation": 25.43928459844674,
+      "worst_residual": 25.43928459844674,
+      "worst_residual_ratio_n_pow_7_8": 0.775640279362508,
+      "worst_set": [
+        0,
+        1,
+        5,
+        15,
+        18,
+        24,
+        26,
+        46,
+        53
+      ],
+      "worst_t": 26
+    },
+    "sqrt_only": {
+      "label": "sqrt(n)",
+      "worst_drift": 7.3484692283495345,
+      "worst_endpoint_bridge": -12.136223055145805,
+      "worst_n": 54,
+      "worst_raw_prefix_deviation": 25.43928459844674,
+      "worst_residual": 18.090815370097204,
+      "worst_residual_ratio_n_pow_7_8": 0.5515864659344433,
+      "worst_set": [
+        0,
+        1,
+        5,
+        15,
+        18,
+        24,
+        26,
+        46,
+        53
+      ],
+      "worst_t": 26
+    }
+  },
+  "results_by_n": [
+    {
+      "density_adjusted_mass_center": 255.0,
+      "density_adjusted_mass_deviation": {
+        "normalized_by_n_pow_11_8": {
+          "max": 0.3635599430694381,
+          "mean": 0.12355765452400276,
+          "min": 0.0
+        },
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            2,
+            5,
+            9,
+            15,
+            23,
+            34,
+            35,
+            51
+          ],
+          "max_value": 81.0,
+          "mean_value": 27.52825278810409,
+          "min_location": null,
+          "min_set": [
+            5,
+            10,
+            12,
+            20,
+            26,
+            37,
+            46,
+            49,
+            50
+          ],
+          "min_value": 0.0
+        }
+      },
+      "density_adjusted_prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.5021722374774846,
+          "mean": 0.3602985512443261,
+          "min": 0.2243748295112165
+        },
+        "raw": {
+          "max_location": 7,
+          "max_set": [
+            0,
+            4,
+            6,
+            7,
+            17,
+            22,
+            31,
+            43,
+            51
+          ],
+          "max_value": 15.666666666666668,
+          "mean_value": 11.240520446096665,
+          "min_location": 10,
+          "min_set": [
+            5,
+            6,
+            10,
+            17,
+            30,
+            32,
+            40,
+            46,
+            49
+          ],
+          "min_value": 7.0
+        }
+      },
+      "density_adjusted_slope": 5.666666666666667,
+      "endpoint_bridge": -13.272855856885656,
+      "explicit_mass_center": 321.3642792844283,
+      "general_prefix_drift": 13.272855856885649,
+      "joint_observable_score": {
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            1,
+            5,
+            8,
+            18,
+            20,
+            29,
+            45,
+            51
+          ],
+          "max_value": 0.6570303823478125,
+          "mean_value": 0.20977166657619897,
+          "min_location": null,
+          "min_set": [
+            4,
+            6,
+            15,
+            22,
+            25,
+            37,
+            45,
+            50,
+            51
+          ],
+          "min_value": 2.277541502808655e-16
+        }
+      },
+      "mass_deviation": {
+        "normalized_by_n_pow_11_8": {
+          "max": 0.6614289998409324,
+          "mean": 0.41232311292299756,
+          "min": 0.16321722600503571
+        },
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            2,
+            5,
+            9,
+            15,
+            23,
+            34,
+            35,
+            51
+          ],
+          "max_value": 147.36427928442828,
+          "mean_value": 91.86427928443129,
+          "min_location": null,
+          "min_set": [
+            0,
+            16,
+            17,
+            28,
+            36,
+            42,
+            46,
+            49,
+            51
+          ],
+          "min_value": 36.36427928442828
+        }
+      },
+      "maximizer_scan_runtime_sec": 23.344735860824585,
+      "maximizer_set_count": 2690,
+      "maximizer_size_h_n": 9,
+      "n": 51,
+      "normalizers": {
+        "n_pow_11_8": 222.7968222135226,
+        "n_pow_7_8": 31.1977952930325,
+        "sqrt_n": 7.14142842854285
+      },
+      "observable_split": {
+        "best_joint_score": 2.277541502808655e-16,
+        "best_joint_witness": [
+          4,
+          6,
+          15,
+          22,
+          25,
+          37,
+          45,
+          50,
+          51
+        ],
+        "mass_best_prefix_ratio_n_pow_7_8": 0.03205354707303116,
+        "mass_best_prefix_residual": 1.000000000000007,
+        "mass_best_witness": [
+          5,
+          10,
+          12,
+          20,
+          26,
+          37,
+          46,
+          49,
+          50
+        ],
+        "prefix_best_mass_dev": 14.0,
+        "prefix_best_mass_ratio_n_pow_11_8": 0.06283752102434732,
+        "prefix_best_witness": [
+          7,
+          10,
+          16,
+          24,
+          26,
+          39,
+          46,
+          50,
+          51
+        ],
+        "same_best_witness": false,
+        "worst_joint_score": 0.6570303823478125,
+        "worst_joint_witness": [
+          0,
+          1,
+          5,
+          8,
+          18,
+          20,
+          29,
+          45,
+          51
+        ]
+      },
+      "ordered_profile_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.7323777323572587,
+          "mean": 0.5116561220544221,
+          "min": 0.42544211000223864
+        },
+        "raw": {
+          "max_location": 5,
+          "max_set": [
+            0,
+            4,
+            7,
+            9,
+            19,
+            20,
+            37,
+            45,
+            51
+          ],
+          "max_value": 22.8485705712571,
+          "mean_value": 15.96254295628071,
+          "min_location": 8,
+          "min_set": [
+            7,
+            10,
+            16,
+            24,
+            26,
+            39,
+            46,
+            50,
+            51
+          ],
+          "min_value": 13.272855856885656
+        }
+      },
+      "prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.7323777323572587,
+          "mean": 0.5116561220544221,
+          "min": 0.42544211000223864
+        },
+        "raw": {
+          "max_location": 20,
+          "max_set": [
+            0,
+            4,
+            7,
+            9,
+            19,
+            20,
+            37,
+            45,
+            51
+          ],
+          "max_value": 22.8485705712571,
+          "mean_value": 15.96254295628071,
+          "min_location": 51,
+          "min_set": [
+            7,
+            10,
+            16,
+            24,
+            26,
+            39,
+            46,
+            50,
+            51
+          ],
+          "min_value": 13.272855856885656
+        }
+      },
+      "prefix_residual_after_general_drift": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.3069356223550202,
+          "mean": 0.086214012052194,
+          "min": 2.277541502808655e-16
+        },
+        "raw": {
+          "max_location": 20,
+          "max_set": [
+            0,
+            4,
+            7,
+            9,
+            19,
+            20,
+            37,
+            45,
+            51
+          ],
+          "max_value": 9.57571471437145,
+          "mean_value": 2.6896870993953854,
+          "min_location": 51,
+          "min_set": [
+            7,
+            10,
+            16,
+            24,
+            26,
+            39,
+            46,
+            50,
+            51
+          ],
+          "min_value": 7.105427357601002e-15
+        }
+      },
+      "real_deficiency_from_sqrt": 0.0,
+      "real_gap_from_sqrt": 1.8585715714571496,
+      "recentered_prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.8887020830586265,
+          "mean": 0.49629722178833163,
+          "min": 0.2154429292263337
+        },
+        "raw": {
+          "max_location": 33,
+          "max_set": [
+            34,
+            39,
+            41,
+            47,
+            50,
+            51
+          ],
+          "max_value": 27.725545663754595,
+          "mean_value": 15.48337912985312,
+          "min_location": 6,
+          "min_set": [
+            7,
+            13,
+            17,
+            25,
+            32,
+            34,
+            45,
+            48
+          ],
+          "min_value": 6.721344403334448
+        }
+      }
+    },
+    {
+      "density_adjusted_mass_center": 260.0,
+      "density_adjusted_mass_deviation": {
+        "normalized_by_n_pow_11_8": {
+          "max": 0.3758320853723501,
+          "mean": 0.12439545955818954,
+          "min": 0.0
+        },
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            2,
+            5,
+            9,
+            15,
+            23,
+            34,
+            35,
+            51
+          ],
+          "max_value": 86.0,
+          "mean_value": 28.464864864864865,
+          "min_location": null,
+          "min_set": [
+            6,
+            10,
+            12,
+            19,
+            33,
+            36,
+            41,
+            51,
+            52
+          ],
+          "min_value": 0.0
+        }
+      },
+      "density_adjusted_prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.5392315391092595,
+          "mean": 0.3637059003801845,
+          "min": 0.21009021004256867
+        },
+        "raw": {
+          "max_location": 6,
+          "max_set": [
+            0,
+            2,
+            5,
+            6,
+            18,
+            28,
+            37,
+            45,
+            52
+          ],
+          "max_value": 17.11111111111111,
+          "mean_value": 11.541261261261377,
+          "min_location": 24,
+          "min_set": [
+            0,
+            5,
+            13,
+            25,
+            27,
+            36,
+            42,
+            43,
+            46
+          ],
+          "min_value": 6.666666666666668
+        }
+      },
+      "density_adjusted_slope": 5.777777777777778,
+      "endpoint_bridge": -12.899922958351809,
+      "explicit_mass_center": 324.49961479175903,
+      "general_prefix_drift": 12.899922958351809,
+      "joint_observable_score": {
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            1,
+            5,
+            8,
+            18,
+            20,
+            29,
+            45,
+            51
+          ],
+          "max_value": 0.6894127496905903,
+          "mean_value": 0.22067818896726818,
+          "min_location": null,
+          "min_set": [
+            6,
+            10,
+            12,
+            19,
+            33,
+            36,
+            41,
+            51,
+            52
+          ],
+          "min_value": 0.0
+        }
+      },
+      "mass_deviation": {
+        "normalized_by_n_pow_11_8": {
+          "max": 0.6577044659874672,
+          "mean": 0.39549603433236963,
+          "min": 0.1332876026772113
+        },
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            2,
+            5,
+            9,
+            15,
+            23,
+            34,
+            35,
+            51
+          ],
+          "max_value": 150.49961479175903,
+          "mean_value": 90.49961479176598,
+          "min_location": null,
+          "min_set": [
+            1,
+            17,
+            18,
+            29,
+            37,
+            43,
+            47,
+            50,
+            52
+          ],
+          "min_value": 30.49961479175903
+        }
+      },
+      "maximizer_scan_runtime_sec": 29.436929941177368,
+      "maximizer_set_count": 5550,
+      "maximizer_size_h_n": 9,
+      "n": 52,
+      "normalizers": {
+        "n_pow_11_8": 228.82559352216236,
+        "n_pow_7_8": 31.732400407024496,
+        "sqrt_n": 7.211102550927978
+      },
+      "observable_split": {
+        "best_joint_score": 0.0,
+        "best_joint_witness": [
+          6,
+          10,
+          12,
+          19,
+          33,
+          36,
+          41,
+          51,
+          52
+        ],
+        "mass_best_prefix_ratio_n_pow_7_8": 0.0,
+        "mass_best_prefix_residual": 0.0,
+        "mass_best_witness": [
+          6,
+          10,
+          12,
+          19,
+          33,
+          36,
+          41,
+          51,
+          52
+        ],
+        "prefix_best_mass_dev": 18.0,
+        "prefix_best_mass_ratio_n_pow_11_8": 0.07866252949653839,
+        "prefix_best_witness": [
+          8,
+          11,
+          17,
+          25,
+          27,
+          40,
+          47,
+          51,
+          52
+        ],
+        "same_best_witness": false,
+        "worst_joint_score": 0.6894127496905903,
+        "worst_joint_witness": [
+          0,
+          1,
+          5,
+          8,
+          18,
+          20,
+          29,
+          45,
+          51
+        ]
+      },
+      "ordered_profile_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.7580741590955975,
+          "mean": 0.5028048579870282,
+          "min": 0.4065221285779627
+        },
+        "raw": {
+          "max_location": 4,
+          "max_set": [
+            0,
+            1,
+            4,
+            10,
+            12,
+            27,
+            34,
+            47,
+            52
+          ],
+          "max_value": 24.055512754639892,
+          "mean_value": 15.955205080241468,
+          "min_location": 8,
+          "min_set": [
+            8,
+            11,
+            17,
+            25,
+            27,
+            40,
+            47,
+            51,
+            52
+          ],
+          "min_value": 12.899922958351809
+        }
+      },
+      "prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.7580741590955975,
+          "mean": 0.5028048579870282,
+          "min": 0.4065221285779627
+        },
+        "raw": {
+          "max_location": 12,
+          "max_set": [
+            0,
+            1,
+            4,
+            10,
+            12,
+            27,
+            34,
+            47,
+            52
+          ],
+          "max_value": 24.055512754639892,
+          "mean_value": 15.955205080241468,
+          "min_location": 52,
+          "min_set": [
+            8,
+            11,
+            17,
+            25,
+            27,
+            40,
+            47,
+            51,
+            52
+          ],
+          "min_value": 12.899922958351809
+        }
+      },
+      "prefix_residual_after_general_drift": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.35155203051763484,
+          "mean": 0.09628272940908264,
+          "min": 0.0
+        },
+        "raw": {
+          "max_location": 12,
+          "max_set": [
+            0,
+            1,
+            4,
+            10,
+            12,
+            27,
+            34,
+            47,
+            52
+          ],
+          "max_value": 11.155589796288083,
+          "mean_value": 3.0552821218902033,
+          "min_location": 52,
+          "min_set": [
+            8,
+            11,
+            17,
+            25,
+            27,
+            40,
+            47,
+            51,
+            52
+          ],
+          "min_value": 0.0
+        }
+      },
+      "real_deficiency_from_sqrt": 0.0,
+      "real_gap_from_sqrt": 1.7888974490720218,
+      "recentered_prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.891508667627435,
+          "mean": 0.501223893569381,
+          "min": 0.21850702637927324
+        },
+        "raw": {
+          "max_location": 34,
+          "max_set": [
+            35,
+            40,
+            42,
+            48,
+            51,
+            52
+          ],
+          "max_value": 28.289710007486683,
+          "mean_value": 15.905037284311428,
+          "min_location": 50,
+          "min_set": [
+            51
+          ],
+          "min_value": 6.933752452815362
+        }
+      }
+    },
+    {
+      "density_adjusted_mass_center": 265.0,
+      "density_adjusted_mass_deviation": {
+        "normalized_by_n_pow_11_8": {
+          "max": 0.38740219013022226,
+          "mean": 0.12440076925741958,
+          "min": 0.0
+        },
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            2,
+            5,
+            9,
+            15,
+            23,
+            34,
+            35,
+            51
+          ],
+          "max_value": 91.0,
+          "mean_value": 29.221492007104796,
+          "min_location": null,
+          "min_set": [
+            6,
+            8,
+            12,
+            21,
+            26,
+            42,
+            45,
+            52,
+            53
+          ],
+          "min_value": 0.0
+        }
+      },
+      "density_adjusted_prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.5440930664815166,
+          "mean": 0.3670169338972286,
+          "min": 0.20661762018285432
+        },
+        "raw": {
+          "max_location": 6,
+          "max_set": [
+            0,
+            2,
+            5,
+            6,
+            19,
+            28,
+            35,
+            43,
+            53
+          ],
+          "max_value": 17.555555555555557,
+          "mean_value": 11.84206631142825,
+          "min_location": 42,
+          "min_set": [
+            4,
+            7,
+            13,
+            21,
+            23,
+            36,
+            43,
+            47,
+            48
+          ],
+          "min_value": 6.666666666666664
+        }
+      },
+      "density_adjusted_slope": 5.888888888888889,
+      "endpoint_bridge": -12.520989003524662,
+      "explicit_mass_center": 327.6049450176233,
+      "general_prefix_drift": 12.520989003524665,
+      "joint_observable_score": {
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            2,
+            3,
+            10,
+            14,
+            19,
+            32,
+            47,
+            53
+          ],
+          "max_value": 0.7387195105189701,
+          "mean_value": 0.2303731560241787,
+          "min_location": null,
+          "min_set": [
+            6,
+            8,
+            12,
+            21,
+            26,
+            42,
+            45,
+            52,
+            53
+          ],
+          "min_value": 0.0
+        }
+      },
+      "mass_deviation": {
+        "normalized_by_n_pow_11_8": {
+          "max": 0.6539218913698862,
+          "mean": 0.3793346247390819,
+          "min": 0.10474735810836236
+        },
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            2,
+            5,
+            9,
+            15,
+            23,
+            34,
+            35,
+            51
+          ],
+          "max_value": 153.60494501762332,
+          "mean_value": 89.10494501761337,
+          "min_location": null,
+          "min_set": [
+            2,
+            18,
+            19,
+            30,
+            38,
+            44,
+            48,
+            51,
+            53
+          ],
+          "min_value": 24.604945017623322
+        }
+      },
+      "maximizer_scan_runtime_sec": 35.633141040802,
+      "maximizer_set_count": 11260,
+      "maximizer_size_h_n": 9,
+      "n": 53,
+      "normalizers": {
+        "n_pow_11_8": 234.89800088484543,
+        "n_pow_7_8": 32.26572187196202,
+        "sqrt_n": 7.280109889280518
+      },
+      "observable_split": {
+        "best_joint_score": 0.0,
+        "best_joint_witness": [
+          6,
+          8,
+          12,
+          21,
+          26,
+          42,
+          45,
+          52,
+          53
+        ],
+        "mass_best_prefix_ratio_n_pow_7_8": 0.0,
+        "mass_best_prefix_residual": 0.0,
+        "mass_best_witness": [
+          6,
+          8,
+          12,
+          21,
+          26,
+          42,
+          45,
+          52,
+          53
+        ],
+        "prefix_best_mass_dev": 22.0,
+        "prefix_best_mass_ratio_n_pow_11_8": 0.0936576723391746,
+        "prefix_best_witness": [
+          9,
+          12,
+          18,
+          26,
+          28,
+          41,
+          48,
+          52,
+          53
+        ],
+        "same_best_witness": false,
+        "worst_joint_score": 0.7387195105189701,
+        "worst_joint_witness": [
+          0,
+          2,
+          3,
+          10,
+          14,
+          19,
+          32,
+          47,
+          53
+        ]
+      },
+      "ordered_profile_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.7736002102793124,
+          "mean": 0.49403092930339054,
+          "min": 0.3880585425365933
+        },
+        "raw": {
+          "max_location": 6,
+          "max_set": [
+            0,
+            1,
+            5,
+            15,
+            18,
+            24,
+            26,
+            46,
+            53
+          ],
+          "max_value": 24.960769224963627,
+          "mean_value": 15.940264561050132,
+          "min_location": 8,
+          "min_set": [
+            9,
+            12,
+            18,
+            26,
+            28,
+            41,
+            48,
+            52,
+            53
+          ],
+          "min_value": 12.520989003524662
+        }
+      },
+      "prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.7736002102793124,
+          "mean": 0.49403092930339054,
+          "min": 0.3880585425365933
+        },
+        "raw": {
+          "max_location": 26,
+          "max_set": [
+            0,
+            1,
+            5,
+            15,
+            18,
+            24,
+            26,
+            46,
+            53
+          ],
+          "max_value": 24.960769224963627,
+          "mean_value": 15.940264561050132,
+          "min_location": 53,
+          "min_set": [
+            9,
+            12,
+            18,
+            26,
+            28,
+            41,
+            48,
+            52,
+            53
+          ],
+          "min_value": 12.520989003524662
+        }
+      },
+      "prefix_residual_after_general_drift": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.385541667742719,
+          "mean": 0.10597238676676789,
+          "min": 0.0
+        },
+        "raw": {
+          "max_location": 26,
+          "max_set": [
+            0,
+            1,
+            5,
+            15,
+            18,
+            24,
+            26,
+            46,
+            53
+          ],
+          "max_value": 12.439780221438962,
+          "mean_value": 3.4192755575245215,
+          "min_location": 53,
+          "min_set": [
+            9,
+            12,
+            18,
+            26,
+            28,
+            41,
+            48,
+            52,
+            53
+          ],
+          "min_value": 0.0
+        }
+      },
+      "real_deficiency_from_sqrt": 0.0,
+      "real_gap_from_sqrt": 1.719890110719482,
+      "recentered_prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.8940050541466668,
+          "mean": 0.504256654287638,
+          "min": 0.21711551314990468
+        },
+        "raw": {
+          "max_location": 35,
+          "max_set": [
+            36,
+            41,
+            43,
+            49,
+            52,
+            53
+          ],
+          "max_value": 28.845718429224696,
+          "mean_value": 16.270204959331032,
+          "min_location": 51,
+          "min_set": [
+            52
+          ],
+          "min_value": 7.005388761383138
+        }
+      }
+    },
+    {
+      "density_adjusted_mass_center": 270.0,
+      "density_adjusted_mass_deviation": {
+        "normalized_by_n_pow_11_8": {
+          "max": 0.39831789053878175,
+          "mean": 0.12455746484127517,
+          "min": 0.0
+        },
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            2,
+            5,
+            9,
+            15,
+            23,
+            34,
+            35,
+            51
+          ],
+          "max_value": 96.0,
+          "mean_value": 30.02003402003402,
+          "min_location": null,
+          "min_set": [
+            7,
+            9,
+            13,
+            22,
+            27,
+            43,
+            44,
+            51,
+            54
+          ],
+          "min_value": 0.0
+        }
+      },
+      "density_adjusted_prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.5488175178235005,
+          "mean": 0.3686674386303394,
+          "min": 0.21342903470913907
+        },
+        "raw": {
+          "max_location": 6,
+          "max_set": [
+            0,
+            2,
+            5,
+            6,
+            19,
+            28,
+            35,
+            43,
+            53
+          ],
+          "max_value": 18.0,
+          "mean_value": 12.09147609147609,
+          "min_location": 7,
+          "min_set": [
+            8,
+            11,
+            12,
+            18,
+            27,
+            29,
+            41,
+            49,
+            54
+          ],
+          "min_value": 7.0
+        }
+      },
+      "density_adjusted_slope": 6.0,
+      "endpoint_bridge": -12.136223055145805,
+      "explicit_mass_center": 330.68111527572904,
+      "general_prefix_drift": 12.136223055145807,
+      "joint_observable_score": {
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            1,
+            5,
+            7,
+            16,
+            19,
+            29,
+            46,
+            54
+          ],
+          "max_value": 0.780854189720946,
+          "mean_value": 0.23961054751643066,
+          "min_location": null,
+          "min_set": [
+            7,
+            9,
+            13,
+            22,
+            27,
+            43,
+            44,
+            51,
+            54
+          ],
+          "min_value": 0.0
+        }
+      },
+      "mass_deviation": {
+        "normalized_by_n_pow_11_8": {
+          "max": 0.6500926179572093,
+          "mean": 0.3638016341324051,
+          "min": 0.07751065030771045
+        },
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            2,
+            5,
+            9,
+            15,
+            23,
+            34,
+            35,
+            51
+          ],
+          "max_value": 156.68111527572904,
+          "mean_value": 87.68111527571585,
+          "min_location": null,
+          "min_set": [
+            3,
+            19,
+            20,
+            31,
+            39,
+            45,
+            49,
+            52,
+            54
+          ],
+          "min_value": 18.68111527572904
+        }
+      },
+      "maximizer_scan_runtime_sec": 44.36735820770264,
+      "maximizer_set_count": 21164,
+      "maximizer_size_h_n": 9,
+      "n": 54,
+      "normalizers": {
+        "n_pow_11_8": 241.01352783864743,
+        "n_pow_7_8": 32.79778690626416,
+        "sqrt_n": 7.3484692283495345
+      },
+      "observable_split": {
+        "best_joint_score": 0.0,
+        "best_joint_witness": [
+          7,
+          9,
+          13,
+          22,
+          27,
+          43,
+          44,
+          51,
+          54
+        ],
+        "mass_best_prefix_ratio_n_pow_7_8": 0.0,
+        "mass_best_prefix_residual": 0.0,
+        "mass_best_witness": [
+          7,
+          9,
+          13,
+          22,
+          27,
+          43,
+          44,
+          51,
+          54
+        ],
+        "prefix_best_mass_dev": 26.0,
+        "prefix_best_mass_ratio_n_pow_11_8": 0.10787776202092006,
+        "prefix_best_witness": [
+          10,
+          13,
+          19,
+          27,
+          29,
+          42,
+          49,
+          53,
+          54
+        ],
+        "same_best_witness": false,
+        "worst_joint_score": 0.780854189720946,
+        "worst_joint_witness": [
+          0,
+          1,
+          5,
+          7,
+          16,
+          19,
+          29,
+          46,
+          54
+        ]
+      },
+      "ordered_profile_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.775640279362508,
+          "mean": 0.4850846097017239,
+          "min": 0.37003176738208116
+        },
+        "raw": {
+          "max_location": 6,
+          "max_set": [
+            0,
+            1,
+            5,
+            15,
+            18,
+            24,
+            26,
+            46,
+            53
+          ],
+          "max_value": 25.43928459844674,
+          "mean_value": 15.90970166050546,
+          "min_location": 8,
+          "min_set": [
+            10,
+            13,
+            19,
+            27,
+            29,
+            42,
+            49,
+            53,
+            54
+          ],
+          "min_value": 12.136223055145805
+        }
+      },
+      "prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.775640279362508,
+          "mean": 0.48508485005716234,
+          "min": 0.37003176738208116
+        },
+        "raw": {
+          "max_location": 26,
+          "max_set": [
+            0,
+            1,
+            5,
+            15,
+            18,
+            24,
+            26,
+            46,
+            53
+          ],
+          "max_value": 25.43928459844674,
+          "mean_value": 15.90970954363191,
+          "min_location": 54,
+          "min_set": [
+            10,
+            13,
+            19,
+            27,
+            29,
+            42,
+            49,
+            53,
+            54
+          ],
+          "min_value": 12.136223055145805
+        }
+      },
+      "prefix_residual_after_general_drift": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.40560851198042686,
+          "mean": 0.11505308267515502,
+          "min": 0.0
+        },
+        "raw": {
+          "max_location": 26,
+          "max_set": [
+            0,
+            1,
+            5,
+            15,
+            18,
+            24,
+            26,
+            46,
+            53
+          ],
+          "max_value": 13.303061543300933,
+          "mean_value": 3.7734864884885266,
+          "min_location": 54,
+          "min_set": [
+            10,
+            13,
+            19,
+            27,
+            29,
+            42,
+            49,
+            53,
+            54
+          ],
+          "min_value": 0.0
+        }
+      },
+      "real_deficiency_from_sqrt": 0.0,
+      "real_gap_from_sqrt": 1.6515307716504655,
+      "recentered_prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.896215253712259,
+          "mean": 0.5034646540697063,
+          "min": 0.21575552404184034
+        },
+        "raw": {
+          "max_location": 36,
+          "max_set": [
+            37,
+            42,
+            44,
+            50,
+            53,
+            54
+          ],
+          "max_value": 29.393876913398138,
+          "mean_value": 16.512526439014227,
+          "min_location": 52,
+          "min_set": [
+            53
+          ],
+          "min_value": 7.076303701373632
+        }
+      }
+    },
+    {
+      "density_adjusted_mass_center": 302.5,
+      "density_adjusted_mass_deviation": {
+        "normalized_by_n_pow_11_8": {
+          "max": 0.2164487509359052,
+          "mean": 0.1112587037521008,
+          "min": 0.006068656568296408
+        },
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            1,
+            6,
+            10,
+            23,
+            26,
+            34,
+            41,
+            53,
+            55
+          ],
+          "max_value": 53.5,
+          "mean_value": 27.5,
+          "min_location": null,
+          "min_set": [
+            0,
+            2,
+            14,
+            21,
+            29,
+            32,
+            45,
+            49,
+            54,
+            55
+          ],
+          "min_value": 1.5
+        }
+      },
+      "density_adjusted_prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.3600508932840238,
+          "mean": 0.3450487727305228,
+          "min": 0.33004665217702184
+        },
+        "raw": {
+          "max_location": 10,
+          "max_set": [
+            0,
+            1,
+            6,
+            10,
+            23,
+            26,
+            34,
+            41,
+            53,
+            55
+          ],
+          "max_value": 12.0,
+          "mean_value": 11.5,
+          "min_location": 44,
+          "min_set": [
+            0,
+            2,
+            14,
+            21,
+            29,
+            32,
+            45,
+            49,
+            54,
+            55
+          ],
+          "min_value": 11.0
+        }
+      },
+      "density_adjusted_slope": 5.5,
+      "endpoint_bridge": -19.16198487095663,
+      "explicit_mass_center": 407.8909167902615,
+      "general_prefix_drift": 19.16198487095663,
+      "joint_observable_score": {
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            1,
+            6,
+            10,
+            23,
+            26,
+            34,
+            41,
+            53,
+            55
+          ],
+          "max_value": 0.2315351557257848,
+          "mean_value": 0.11880190614704061,
+          "min_location": null,
+          "min_set": [
+            0,
+            2,
+            14,
+            21,
+            29,
+            32,
+            45,
+            49,
+            54,
+            55
+          ],
+          "min_value": 0.006068656568296408
+        }
+      },
+      "mass_deviation": {
+        "normalized_by_n_pow_11_8": {
+          "max": 0.6428362705479055,
+          "mean": 0.5376462233641012,
+          "min": 0.43245617618029675
+        },
+        "raw": {
+          "max_location": null,
+          "max_set": [
+            0,
+            1,
+            6,
+            10,
+            23,
+            26,
+            34,
+            41,
+            53,
+            55
+          ],
+          "max_value": 158.89091679026149,
+          "mean_value": 132.89091679026149,
+          "min_location": null,
+          "min_set": [
+            0,
+            2,
+            14,
+            21,
+            29,
+            32,
+            45,
+            49,
+            54,
+            55
+          ],
+          "min_value": 106.89091679026149
+        }
+      },
+      "maximizer_scan_runtime_sec": 60.52137231826782,
+      "maximizer_set_count": 2,
+      "maximizer_size_h_n": 10,
+      "n": 55,
+      "normalizers": {
+        "n_pow_11_8": 247.17167351934694,
+        "n_pow_7_8": 33.32862165831062,
+        "sqrt_n": 7.416198487095663
+      },
+      "observable_split": {
+        "best_joint_score": 0.006068656568296408,
+        "best_joint_witness": [
+          0,
+          2,
+          14,
+          21,
+          29,
+          32,
+          45,
+          49,
+          54,
+          55
+        ],
+        "mass_best_prefix_ratio_n_pow_7_8": 0.0,
+        "mass_best_prefix_residual": 0.0,
+        "mass_best_witness": [
+          0,
+          2,
+          14,
+          21,
+          29,
+          32,
+          45,
+          49,
+          54,
+          55
+        ],
+        "prefix_best_mass_dev": 1.5,
+        "prefix_best_mass_ratio_n_pow_11_8": 0.006068656568296408,
+        "prefix_best_witness": [
+          0,
+          2,
+          14,
+          21,
+          29,
+          32,
+          45,
+          49,
+          54,
+          55
+        ],
+        "same_best_witness": true,
+        "worst_joint_score": 0.2315351557257848,
+        "worst_joint_witness": [
+          0,
+          1,
+          6,
+          10,
+          23,
+          26,
+          34,
+          41,
+          53,
+          55
+        ]
+      },
+      "ordered_profile_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.5900272189467866,
+          "mean": 0.5824840165518468,
+          "min": 0.574940814156907
+        },
+        "raw": {
+          "max_location": 3,
+          "max_set": [
+            0,
+            1,
+            6,
+            10,
+            23,
+            26,
+            34,
+            41,
+            53,
+            55
+          ],
+          "max_value": 19.664793948382652,
+          "mean_value": 19.41338940966964,
+          "min_location": 9,
+          "min_set": [
+            0,
+            2,
+            14,
+            21,
+            29,
+            32,
+            45,
+            49,
+            54,
+            55
+          ],
+          "min_value": 19.16198487095663
+        }
+      },
+      "prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.5900272189467866,
+          "mean": 0.5824840165518468,
+          "min": 0.574940814156907
+        },
+        "raw": {
+          "max_location": 10,
+          "max_set": [
+            0,
+            1,
+            6,
+            10,
+            23,
+            26,
+            34,
+            41,
+            53,
+            55
+          ],
+          "max_value": 19.664793948382652,
+          "mean_value": 19.41338940966964,
+          "min_location": 55,
+          "min_set": [
+            0,
+            2,
+            14,
+            21,
+            29,
+            32,
+            45,
+            49,
+            54,
+            55
+          ],
+          "min_value": 19.16198487095663
+        }
+      },
+      "prefix_residual_after_general_drift": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.015086404789879595,
+          "mean": 0.007543202394939798,
+          "min": 0.0
+        },
+        "raw": {
+          "max_location": 10,
+          "max_set": [
+            0,
+            1,
+            6,
+            10,
+            23,
+            26,
+            34,
+            41,
+            53,
+            55
+          ],
+          "max_value": 0.5028090774260221,
+          "mean_value": 0.25140453871301105,
+          "min_location": 55,
+          "min_set": [
+            0,
+            2,
+            14,
+            21,
+            29,
+            32,
+            45,
+            49,
+            54,
+            55
+          ],
+          "min_value": 0.0
+        }
+      },
+      "real_deficiency_from_sqrt": 0.0,
+      "real_gap_from_sqrt": 2.583801512904337,
+      "recentered_prefix_deviation": {
+        "normalized_by_n_pow_7_8": {
+          "max": 0.8981611721078684,
+          "mean": 0.49964492726225884,
+          "min": 0.21442586541313965
+        },
+        "raw": {
+          "max_location": 37,
+          "max_set": [
+            38,
+            43,
+            45,
+            51,
+            54,
+            55
+          ],
+          "max_value": 29.93447389336795,
+          "mean_value": 16.652476744217953,
+          "min_location": 53,
+          "min_set": [
+            54
+          ],
+          "min_value": 7.146518542110364
+        }
+      }
+    }
+  ],
+  "scan_mode": "maximizer",
+  "total_runtime_sec": 193.30370211601257
+}

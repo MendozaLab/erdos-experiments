@@ -1,0 +1,269 @@
+{
+  "claim_ceiling": "Primitive constant seed audit only. This packet does not provide a numeric Tao threshold, does not authorize n=15 or higher computation, and does not prove the full all-degree statement.",
+  "expected_tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "experiment_id": "EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01",
+  "first_failed_condition": "poz and pocl exponential constants remain opaque",
+  "full_synthesis_allowed": false,
+  "global_candidate_N0": null,
+  "n15_or_higher_computation_authorized": false,
+  "numeric_seed_ready_count": 6,
+  "opaque_seed_count": 2,
+  "partial_max_N_final_section": null,
+  "primitive_seed_rows": [
+    {
+      "label": "markov-many",
+      "named_blocker": null,
+      "numeric_value": {
+        "population_fraction_lower_bound": 0.25,
+        "valid_for_n_min": 4
+      },
+      "seed_expression": "# {zeta in D(0,2||p||_1/n)} >= n/4 for n >= 4",
+      "seed_status": "NUMERIC_SEED_READY",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{markov-many} \\# \\{ \\zeta: \\zeta \\in D(0,2\\|p\\|_1/n) \\} \\geq n-1-\\frac{n}{2} \\gg n. \\end{equation}",
+        "source_span": [
+          246,
+          248
+        ],
+        "title": ""
+      }
+    },
+    {
+      "label": "disp-upper",
+      "named_blocker": null,
+      "numeric_value": null,
+      "seed_expression": "triangle-inequality dispersion comparison with unit coefficients",
+      "seed_status": "SYMBOLIC_SEED_READY",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{disp-upper} |z_0 - \\bar{z}| \\leq \\frac{1}{n} \\sum_{i=1}^n |z_0 - z_i| \\leq |z_0 - \\bar{z}| + \\frac{1}{n} \\Disp \\{z_1,\\dots,z_n\\} \\end{equation}",
+        "source_span": [
+          474,
+          476
+        ],
+        "title": ""
+      }
+    },
+    {
+      "label": "semi-norm",
+      "named_blocker": null,
+      "numeric_value": null,
+      "seed_expression": "definition ||p||_1 = sum_zeta |zeta|",
+      "seed_status": "SYMBOLIC_SEED_READY",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{semi-norm} \\|p\\|_1 \\coloneqq \\sum_\\zeta |\\zeta|, \\end{equation}",
+        "source_span": [
+          226,
+          228
+        ],
+        "title": ""
+      }
+    },
+    {
+      "label": "size-def",
+      "named_blocker": null,
+      "numeric_value": null,
+      "seed_expression": "definition ||p|| = ||p||_1 + ||p||_0",
+      "seed_status": "SYMBOLIC_SEED_READY",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{size-def} \\|p\\| \\coloneqq \\|p\\|_1 + \\|p\\|_0 \\end{equation}",
+        "source_span": [
+          234,
+          236
+        ],
+        "title": ""
+      }
+    },
+    {
+      "label": "npz",
+      "named_blocker": null,
+      "numeric_value": {
+        "coefficient": 1.0,
+        "scale": "n^(-n)||p||_0^n"
+      },
+      "seed_expression": "|p(z)-p(0)| >= n^(-n)||p||_0^n on the unit-boundary comparison point",
+      "seed_status": "NUMERIC_SEED_READY",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{npz} |p(z) - p(0)| \\geq n^{-n} \\|p\\|_0^n \\end{equation}",
+        "source_span": [
+          253,
+          255
+        ],
+        "title": ""
+      }
+    },
+    {
+      "label": "disp-sum",
+      "named_blocker": null,
+      "numeric_value": {
+        "coefficient": 2.0
+      },
+      "seed_expression": "Disp <= (2/#A) sum_{xi in A} sum_i |z_i-xi|",
+      "seed_status": "NUMERIC_SEED_READY",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{disp-sum} \\Disp \\{ z_1,\\dots,z_n\\} \\leq \\frac{2}{\\# A} \\sum_{\\xi \\in A} \\sum_{i=1}^n |z_i - \\xi| \\end{equation}",
+        "source_span": [
+          482,
+          484
+        ],
+        "title": ""
+      }
+    },
+    {
+      "label": "multip",
+      "named_blocker": null,
+      "numeric_value": {
+        "coefficient": "2*pi"
+      },
+      "seed_expression": "integral_E sum_j 1/|z-zeta_j| <= 2*pi*m*r[E]",
+      "seed_status": "NUMERIC_SEED_READY",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{multip} \\int_E \\sum_{j=1}^m \\frac{1}{|z-\\zeta_j|}\\ dA(z) \\leq 2 \\pi m \\r[E] \\end{equation}",
+        "source_span": [
+          743,
+          745
+        ],
+        "title": ""
+      }
+    },
+    {
+      "label": "riesz-bound",
+      "named_blocker": null,
+      "numeric_value": {
+        "coefficient": "2*pi"
+      },
+      "seed_expression": "I_1 1_E(z0) <= 2*pi*r[E]",
+      "seed_status": "NUMERIC_SEED_READY",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{riesz-bound} I_1 1_E(z_0) \\leq I_1 1_{D(0, \\r[E])}(0) = 2 \\pi \\r[E] \\end{equation}",
+        "source_span": [
+          739,
+          741
+        ],
+        "title": ""
+      }
+    },
+    {
+      "label": "Psi-def",
+      "named_blocker": null,
+      "numeric_value": {
+        "coefficient": "1/pi"
+      },
+      "seed_expression": "Psi(E) = (1/pi) integral_E |psi| dA",
+      "seed_status": "NUMERIC_SEED_READY",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{Psi-def} \\Psi(E) \\coloneqq \\frac{1}{\\pi} \\int_E |\\psi|\\ dA. \\end{equation}",
+        "source_span": [
+          345,
+          347
+        ],
+        "title": ""
+      }
+    },
+    {
+      "label": "tridef",
+      "named_blocker": "C-dependent integral lower bound not numerically evaluated",
+      "numeric_value": null,
+      "seed_expression": "c_tridef(C) is the positive integral of the normalized defect on D(0,1/(2C+1))",
+      "seed_status": "SYMBOLIC_SEED_READY",
+      "source": {
+        "environment": "lemma",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{lemma}[Averaged defect in triangle inequality]\\label{tridef} Suppose that $\\zeta \\in D(z_0,r/2)$ and $\\zeta' \\in D(z_0, Cr)$ for some $z_0 \\in \\C$ and $C, r > 0$. Then $$ \\int_{D(z_0,r)} \\frac{1}{|z-\\zeta|} + \\frac{1}{|z-\\zeta'|} - \\left| \\frac{1}{z-\\zeta} + \\frac{1}{z-\\zeta'} \\right|\\ dA(z) \\asymp_C |\\zeta-\\zeta'|.$$ \\end{lemma}",
+        "source_span": [
+          1012,
+          1014
+        ],
+        "title": "Averaged defect in triangle inequality"
+      }
+    },
+    {
+      "label": "poz",
+      "named_blocker": "exponential O-constant in pvar is not quantified",
+      "numeric_value": null,
+      "seed_expression": "p(z)=p(0)+O(|z|^n exp(O(min(||p||_1/|z|,||p||_1^2/|z|^2))))",
+      "seed_status": "OPAQUE_SEED",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{poz} p(z) = p(0) + O(|z|^n e^{O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))}). \\end{equation}",
+        "source_span": [
+          803,
+          805
+        ],
+        "title": ""
+      }
+    },
+    {
+      "label": "pocl",
+      "named_blocker": "exponential O-constant in pvar is not quantified",
+      "numeric_value": null,
+      "seed_expression": "p(z)=p(0)+O(exp(O(n)) n^(-n)||p||_1^n)",
+      "seed_status": "OPAQUE_SEED",
+      "source": {
+        "environment": "equation",
+        "source_found": true,
+        "source_label_blocker": null,
+        "source_snippet": "\\begin{equation}\\label{pocl} p(z) = p(0) + O(e^{O(n)} n^{-n} \\|p\\|_1^n). \\end{equation}",
+        "source_span": [
+          813,
+          815
+        ],
+        "title": ""
+      }
+    }
+  ],
+  "processed_primitive_count": 12,
+  "silent_generic_count": 0,
+  "source_artifacts": [
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "5b4fc6516620cc5947865817e3feb05b552f7feb5064d387520a6cf6988b7c64",
+        "expected_sha256": "5b4fc6516620cc5947865817e3feb05b552f7feb5064d387520a6cf6988b7c64",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01_RESULTS.json",
+        "role": "base_lemma_constant_audit",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "BASE_LEMMA_CONSTANT_AUDIT_REMAINS_SYMBOLIC"
+    }
+  ],
+  "source_experiment_ids": [
+    "EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01"
+  ],
+  "source_label_missing_count": 0,
+  "status": "PRIMITIVE_CONSTANT_SEED_AUDIT_PARTIAL",
+  "symbolic_seed_ready_count": 4,
+  "tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "tao_source_sha_status": "PASS_PINNED_SOURCE_SHA_MATCH"
+}

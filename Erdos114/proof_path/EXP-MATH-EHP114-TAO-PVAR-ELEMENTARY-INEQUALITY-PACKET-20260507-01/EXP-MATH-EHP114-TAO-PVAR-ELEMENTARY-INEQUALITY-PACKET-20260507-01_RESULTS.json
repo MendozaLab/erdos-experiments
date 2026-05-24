@@ -1,0 +1,216 @@
+{
+  "claim_ceiling": "pvar elementary inequality packet only. This packet does not provide a numeric Tao threshold, does not authorize n=15 or higher computation, and does not prove the full all-degree statement.",
+  "elementary_inequality_rows": [
+    {
+      "elementary_status": "NUMERIC_ELEMENTARY_READY",
+      "inequality": "|(1-w)exp(w)| <= exp(|w|^2) for |w| <= 1/2; use exp(2|w|) otherwise",
+      "named_blocker": null,
+      "named_parameters": {
+        "C_centered_local": 1.0,
+        "local_radius": 0.5
+      },
+      "row_id": "centered_product_bound",
+      "source_labels": [
+        "p'-bound"
+      ],
+      "supports": [
+        "p'-bound centered product estimate"
+      ]
+    },
+    {
+      "elementary_status": "SYMBOLIC_ELEMENTARY_READY",
+      "inequality": "|p'(z)| <= n|z|^(n-1) exp(B1 min(||p||_1/|z|, ||p||_1^2/|z|^2))",
+      "named_blocker": "B1 is named but not numerically minimized",
+      "named_parameters": {
+        "B1": "max(product_factor_coefficient, centered_product_global_coefficient)"
+      },
+      "row_id": "pprime_bound_coefficients",
+      "source_labels": [
+        "p'-bound"
+      ],
+      "supports": [
+        "ppcl",
+        "poz radial gates"
+      ]
+    },
+    {
+      "elementary_status": "SYMBOLIC_ELEMENTARY_READY",
+      "inequality": "if |z| <= A_pocl ||p||_1/n and |p'| <= exp(B1 n)n^(-n)||p||_1^(n-1), then |p(z)-p(0)| <= A_pocl exp(B1 n)n^(-n)||p||_1^n",
+      "named_blocker": "A_pocl remains symbolic",
+      "named_parameters": {
+        "A_pocl": "small-radius maximum-principle/integration radius",
+        "B1": "pprime exponent coefficient"
+      },
+      "row_id": "ppcl_to_pocl_symbolic_gate",
+      "source_labels": [
+        "ppcl",
+        "pocl"
+      ],
+      "supports": [
+        "pocl"
+      ]
+    },
+    {
+      "elementary_status": "SYMBOLIC_ELEMENTARY_READY",
+      "inequality": "for |z| >= 2C||p||_1/n, derivative is negative if C >= max(2, 2B1)",
+      "named_blocker": "B1 remains symbolic",
+      "named_parameters": {
+        "B1": "pprime exponent coefficient",
+        "C": "max(2,2*B1)"
+      },
+      "row_id": "poz_first_radial_gate",
+      "source_labels": [
+        "p'-bound",
+        "poz"
+      ],
+      "supports": [
+        "poz small-to-intermediate radial regime"
+      ]
+    },
+    {
+      "elementary_status": "SYMBOLIC_ELEMENTARY_READY",
+      "inequality": "for |z| >= 3C'||p||_1, derivative is negative if C' >= max(2, B2) and first radial gate is available",
+      "named_blocker": "B2 remains symbolic and depends on first radial gate",
+      "named_parameters": {
+        "B2": "large-radius pprime exponent coefficient",
+        "C_prime": "max(2,B2)"
+      },
+      "row_id": "poz_second_radial_gate",
+      "source_labels": [
+        "p'-bound",
+        "poz"
+      ],
+      "supports": [
+        "poz large-radius radial regime"
+      ]
+    },
+    {
+      "elementary_status": "SYMBOLIC_ELEMENTARY_READY",
+      "inequality": "K_origin = F(A_pocl, B1, B2, C, C_prime) once pvar symbolic gates are accepted",
+      "named_blocker": "K_origin is symbolic-ready but not numeric",
+      "named_parameters": {
+        "A_pocl": "symbolic",
+        "B1": "symbolic",
+        "B2": "symbolic"
+      },
+      "row_id": "k_origin_after_elementary_packet",
+      "source_labels": [
+        "poz",
+        "pocl",
+        "origin-repulsion"
+      ],
+      "supports": [
+        "K_origin"
+      ]
+    }
+  ],
+  "expected_tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "experiment_id": "EXP-MATH-EHP114-TAO-PVAR-ELEMENTARY-INEQUALITY-PACKET-20260507-01",
+  "first_failed_condition": "symbolic parameters remain to be numerically selected",
+  "full_synthesis_allowed": false,
+  "global_candidate_N0": null,
+  "k_origin_status_after_elementary_packet": "K_ORIGIN_SYMBOLIC_READY_NUMERIC_PARAMETERS_PENDING",
+  "n15_or_higher_computation_authorized": false,
+  "numeric_elementary_ready_count": 1,
+  "opaque_elementary_count": 0,
+  "partial_max_N_final_section": null,
+  "processed_elementary_row_count": 6,
+  "silent_generic_count": 0,
+  "source_artifacts": [
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-PVAR-EXPONENTIAL-CONSTANT-EXTRACTION-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PVAR-EXPONENTIAL-CONSTANT-EXTRACTION-20260507-01/EXP-MATH-EHP114-TAO-PVAR-EXPONENTIAL-CONSTANT-EXTRACTION-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "fe3eedb5625c682236baad4465e4d7ae3311fe12ad715f32b76964f3b4d82a3c",
+        "expected_sha256": "fe3eedb5625c682236baad4465e4d7ae3311fe12ad715f32b76964f3b4d82a3c",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PVAR-EXPONENTIAL-CONSTANT-EXTRACTION-20260507-01/EXP-MATH-EHP114-TAO-PVAR-EXPONENTIAL-CONSTANT-EXTRACTION-20260507-01_RESULTS.json",
+        "role": "pvar_exponential_constant_extraction",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PVAR-EXPONENTIAL-CONSTANT-EXTRACTION-20260507-01/EXP-MATH-EHP114-TAO-PVAR-EXPONENTIAL-CONSTANT-EXTRACTION-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "PVAR_CONSTANT_EXTRACTION_PARTIAL"
+    }
+  ],
+  "source_experiment_ids": [
+    "EXP-MATH-EHP114-TAO-PVAR-EXPONENTIAL-CONSTANT-EXTRACTION-20260507-01"
+  ],
+  "status": "PVAR_ELEMENTARY_INEQUALITY_READY",
+  "symbolic_elementary_ready_count": 5,
+  "tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "tao_source_sha_status": "PASS_PINNED_SOURCE_SHA_MATCH",
+  "target_source_missing_count": 0,
+  "target_source_rows": [
+    {
+      "environment": "proposition",
+      "label": "pvar",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{proposition}[Near-constancy near origin]\\label{pvar} Let $z \\in \\C$. \\begin{itemize} \\item[(i)] If $z \\neq 0$, we have the upper bound \\begin{equation}\\label{p'-bound} |p'(z)| \\leq n |z|^{n-1} e^{O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))} \\end{equation} and the lower bound \\begin{equation}\\label{p'-bound-lower} |p'(z)| \\geq n |z|^{n-1} e^{-O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))} \\delta(z)^{O(\\|p\\|_1/|z|)}. \\end{equation} and \\begin{equation}\\label{poz} p(z) = p(0) + O(|z|^n e^{O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))}). \\end{equation} If $|z| > 2\\|p\\|_1$, the $\\delta(z)^{O(\\|p\\|_1/|z|)}$ factor in \\eqref{p'-bound-lower} can be omitted. \\item[(ii)] If $z = O(\\|p\\|_1/n)$, then \\begin{equation}\\label{ppcl} |p'(z)| \\leq e^{O(n)} n^{-n} \\|p\\|_1^{n-1} \\end{equation} and \\begin{equation}\\label{pocl} p(z) = p(0) + O(e^{O(n)} n^{-n} \\|p\\|_1^n). \\end{equation} \\end{itemize} \\end{proposition}",
+      "source_span": [
+        792,
+        817
+      ],
+      "title": "Near-constancy near origin"
+    },
+    {
+      "environment": "equation",
+      "label": "p'-bound",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{equation}\\label{p'-bound} |p'(z)| \\leq n |z|^{n-1} e^{O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))} \\end{equation}",
+      "source_span": [
+        795,
+        797
+      ],
+      "title": ""
+    },
+    {
+      "environment": "equation",
+      "label": "poz",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{equation}\\label{poz} p(z) = p(0) + O(|z|^n e^{O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))}). \\end{equation}",
+      "source_span": [
+        803,
+        805
+      ],
+      "title": ""
+    },
+    {
+      "environment": "equation",
+      "label": "ppcl",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{equation}\\label{ppcl} |p'(z)| \\leq e^{O(n)} n^{-n} \\|p\\|_1^{n-1} \\end{equation}",
+      "source_span": [
+        809,
+        811
+      ],
+      "title": ""
+    },
+    {
+      "environment": "equation",
+      "label": "pocl",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{equation}\\label{pocl} p(z) = p(0) + O(e^{O(n)} n^{-n} \\|p\\|_1^n). \\end{equation}",
+      "source_span": [
+        813,
+        815
+      ],
+      "title": ""
+    },
+    {
+      "environment": "lemma",
+      "label": "origin-repulsion",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{lemma}[Origin repulsion]\\label{origin-repulsion} We have $$ \\|p\\|_0 \\ll \\| p \\|_1 + n \\operatorname{dist}(0, \\partial E_1(p)).$$ In particular, by \\eqref{size-def}, one has $$ \\|p\\| \\ll \\| p \\|_1 + n \\operatorname{dist}(0, \\partial E_1(p)).$$ \\end{lemma}",
+      "source_span": [
+        869,
+        873
+      ],
+      "title": "Origin repulsion"
+    }
+  ]
+}

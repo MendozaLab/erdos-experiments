@@ -1,0 +1,120 @@
+{
+  "claim_ceiling": "Base-lemma seed propagation only. This packet does not provide a numeric Tao threshold, does not authorize n=15 or higher computation, and does not prove the full all-degree statement.",
+  "expected_tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "experiment_id": "EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02",
+  "first_failed_condition": "K_origin remains blocked by poz/pocl exponential pvar constants",
+  "full_synthesis_allowed": false,
+  "global_candidate_N0": null,
+  "n15_or_higher_computation_authorized": false,
+  "numeric_base_ready_count": 1,
+  "opaque_base_count": 1,
+  "partial_max_N_final_section": null,
+  "processed_base_constant_count": 4,
+  "propagated_base_rows": [
+    {
+      "base_constant": "K_disp_split",
+      "base_status": "NUMERIC_BASE_READY",
+      "numeric_seed": {
+        "n_times_local_dispersion_coefficient": 1.0,
+        "outside_mass_coefficient": 2.0,
+        "valid_for_n_min": 4
+      },
+      "propagated_expression": "||p||_1 <= 2*outside_mass + local_dispersion <= 2*outside_mass + n*local_dispersion for n>=4",
+      "remaining_blockers": [],
+      "source_base_lemma": "disp-split",
+      "used_primitive_labels": [
+        "markov-many",
+        "disp-upper",
+        "semi-norm"
+      ]
+    },
+    {
+      "base_constant": "c_defect_C",
+      "base_status": "SYMBOLIC_BASE_READY",
+      "numeric_seed": null,
+      "propagated_expression": "c_defect_C = F(c_tridef(C), c_markov_many, 2, 2*pi)",
+      "remaining_blockers": [
+        "numeric evaluation of c_tridef(C)"
+      ],
+      "source_base_lemma": "defect-psi-cor",
+      "used_primitive_labels": [
+        "tridef",
+        "markov-many",
+        "disp-sum",
+        "multip"
+      ]
+    },
+    {
+      "base_constant": "K_ankh",
+      "base_status": "SYMBOLIC_BASE_READY",
+      "exact_source_identity_labels": [
+        "psi-expand"
+      ],
+      "numeric_seed": null,
+      "propagated_expression": "K_ankh = F(2*pi, 1/pi, pointwise_annulus_constant)",
+      "remaining_blockers": [
+        "pointwise annulus estimate constant in the proof of ankh"
+      ],
+      "source_base_lemma": "ankh",
+      "used_primitive_labels": [
+        "Psi-def",
+        "semi-norm",
+        "riesz-bound"
+      ]
+    },
+    {
+      "base_constant": "K_origin",
+      "base_status": "OPAQUE_BASE",
+      "numeric_seed": null,
+      "propagated_expression": "K_origin depends on pvar constants in poz and pocl before origin repulsion can be quantified",
+      "remaining_blockers": [
+        "poz exponential pvar constant",
+        "pocl exponential pvar constant"
+      ],
+      "source_base_lemma": "origin-repulsion",
+      "used_primitive_labels": [
+        "poz",
+        "npz",
+        "pocl",
+        "size-def"
+      ]
+    }
+  ],
+  "source_artifacts": [
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "5b4fc6516620cc5947865817e3feb05b552f7feb5064d387520a6cf6988b7c64",
+        "expected_sha256": "5b4fc6516620cc5947865817e3feb05b552f7feb5064d387520a6cf6988b7c64",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01_RESULTS.json",
+        "role": "base_lemma_constant_audit",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "BASE_LEMMA_CONSTANT_AUDIT_REMAINS_SYMBOLIC"
+    },
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "43a09f28d3980b2cc2fd7701b6f31acaae80ce1861a9eb1d56dcb0c96cb54698",
+        "expected_sha256": "43a09f28d3980b2cc2fd7701b6f31acaae80ce1861a9eb1d56dcb0c96cb54698",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01_RESULTS.json",
+        "role": "primitive_constant_seed_audit",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "PRIMITIVE_CONSTANT_SEED_AUDIT_PARTIAL"
+    }
+  ],
+  "source_blocked_count": 0,
+  "source_experiment_ids": [
+    "EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01",
+    "EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01"
+  ],
+  "status": "BASE_LEMMA_SEED_PROPAGATION_PARTIAL",
+  "symbolic_base_ready_count": 2,
+  "tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "tao_source_sha_status": "PASS_PINNED_SOURCE_SHA_MATCH"
+}

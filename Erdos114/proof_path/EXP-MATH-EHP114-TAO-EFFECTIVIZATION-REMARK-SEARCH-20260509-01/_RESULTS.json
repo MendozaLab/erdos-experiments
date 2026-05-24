@@ -1,0 +1,125 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-TAO-EFFECTIVIZATION-REMARK-SEARCH-20260509-01",
+  "status": "EFFECTIVIZATION_AFFIRMED",
+  "claim_ceiling": "Internal text-search packet only. Not a proof of Erdos #114. Reports verbatim short quotes from Tao's paper on effectivity questions, plus aggregate verdict on whether Tao asserts his proof is effectivizable.",
+  "tao_paper": {
+    "arxiv_id": "2512.12455v2",
+    "tex_file": "lemniscate.tex",
+    "total_lines": 1965,
+    "title_short": "The extremal lemniscate problem",
+    "structure_note": "Paper has Introduction (sec 1) -> Notation (sec 2) -> tools sections (3-7) -> defect/Stokes (8-9) -> proofs of (i)/(ii)/(iii)/(iv) (10-13) -> bibliography. There is NO concluding/discussion/future-work section. Effectivity meta-commentary lives in exactly one place: the \\begin{remark} block at line 196, in subsection 'Main results' immediately following the Main theorem statement."
+  },
+  "effectivization_passages": [
+    {
+      "line_range": [196, 197],
+      "quote": "\"All implied constants in our arguments are effectively computable\"",
+      "category": "EFFECTIVE_AFFIRM",
+      "section": "Section 1.2 Main results, Remark immediately following Theorem main-thm",
+      "interpretation": "Tao globally asserts effective computability of every implicit constant produced in the proof. This is the strongest possible affirmation for the bridge program: it is a paper-wide claim, not lemma-by-lemma. Combined with Theorem main-thm(iv)'s 'sufficiently large n' threshold, the effectivity claim means that threshold is in principle extractable."
+    },
+    {
+      "line_range": [196, 197],
+      "quote": "\"reduces to checking the conjecture for an explicitly bounded number of n, although we have made no attempt to optimize this bound\"",
+      "category": "EFFECTIVE_AFFIRM",
+      "section": "Section 1.2 Main results, Remark following Theorem main-thm",
+      "interpretation": "Tao explicitly states the threshold N0 in (iv) is explicitly bounded — i.e. extractable from the proof — but disclaims that he has not attempted to optimize the constant. This is exactly the posture the bridge program assumes: extract whatever N0 falls out of the argument, then reduce to finite check up to that N0. The bound is admitted to be loose; that does not affect whether it is finite."
+    },
+    {
+      "line_range": [196, 197],
+      "quote": "\"This almost allows us to declare this conjecture to be decidable\"",
+      "category": "FUTURE_WORK",
+      "section": "Section 1.2 Main results, Remark following Theorem main-thm",
+      "interpretation": "Tao flags ONE residual obstruction to full decidability — see next passage — but explicitly characterizes it as 'very unlikely'. The qualifier 'almost' is not about the n_0 extraction; it is about the small-n verification step."
+    },
+    {
+      "line_range": [196, 197],
+      "quote": "\"there is still one (very unlikely) scenario which could obstruct this conjecture from being decided in finite time\"",
+      "category": "NON_EFFECTIVE_WARN",
+      "section": "Section 1.2 Main results, Remark following Theorem main-thm",
+      "interpretation": "The single non-effective hedge in the entire paper. The obstruction is NOT in the threshold-extraction step (that is fine) but in the small-n verification step: a tie scenario where two competitor lemniscate lengths are equal to all numerically-decidable precision. Because lemniscate lengths are likely transcendental, deciding < vs = vs > by finite computation is not obviously possible. This is a verification-side risk, not an analysis-side risk, and it would only fire if the small-n search produces an exact-equality tie."
+    },
+    {
+      "line_range": [196, 197],
+      "quote": "\"Due to the (likely) transcendental nature of these lengths, it is not immediately obvious that one could decide... by a finite computation\"",
+      "category": "NON_EFFECTIVE_WARN",
+      "section": "Section 1.2 Main results, Remark following Theorem main-thm",
+      "interpretation": "Continues the previous remark. The risk is decidability of the EQUALITY case in the small-n window, not the LARGE-n analytic argument. For Mendoza's bridge, this is the first place where transcendence theory could intrude — but only if a numerical tie shows up in the n=15..N0 sweep. Empirically (n=3..14 verified, no tie), and given Tao's 'very unlikely' qualifier, this is a tractable risk to monitor rather than a structural blocker."
+    },
+    {
+      "line_range": [392, 392],
+      "quote": "\"this can be viewed as an optimized version of the arguments in [Fryntov-Nazarov]\"",
+      "category": "COMPARISON_WITH_PRIOR",
+      "section": "Section 1.3 Methods of proof, discussion of part (i)",
+      "interpretation": "Tao presents (i) as a sharpening of Fryntov-Nazarov 2009 with the same constants tracked through. Consistent with effectivity: he is operating in the same Vinogradov-O regime as F-N, and F-N constants are effective."
+    },
+    {
+      "line_range": [399, 400],
+      "quote": "\"contain these losses to be of size O(||p||/C_0) or better for a large constant C_0\"",
+      "category": "EFFECTIVE_AFFIRM",
+      "section": "Section 1.3 Methods of proof, discussion of part (iv)",
+      "interpretation": "The C_0 here is the master threshold constant in the (iv) proof. Tao tracks dependencies on C_0 in O_{C_0}() notation throughout sections 12-13 (e.g. lines 1517, 1551, 1626, 1714, 1722-1789). This is exactly the 'polynomial bookkeeping' structure that makes effectivization a mechanical (if tedious) extraction job, not a research project."
+    },
+    {
+      "line_range": [435, 437],
+      "quote": "\"|X| <= CY for some absolute constant C>0... C_eps can depend on eps\"",
+      "category": "EFFECTIVE_AFFIRM",
+      "section": "Section 2.1 Asymptotic notation",
+      "interpretation": "The notation convention itself encodes effectivity: every Vinogradov constant is either absolute or has its parameter dependencies declared via subscripts. Combined with line 196's blanket effectivity assertion, every C in the paper is in principle pinnable to a number."
+    },
+    {
+      "line_range": [425, 425],
+      "quote": "\"Various AI tools... were used to perform... numerical experiments, proofs and verifications of individual claims\"",
+      "category": "OTHER",
+      "section": "Section 1.5 Acknowledgments",
+      "interpretation": "Not directly an effectivity remark, but relevant: Tao discloses AlphaEvolve / Gemini / ChatGPT use for numerical experiments and verifications, suggesting individual-step numerical checking is in scope of the paper's method. Aligns with the paper-wide effective-constant posture."
+    }
+  ],
+  "non_effective_steps": [
+    {
+      "step": "Small-n verification (decidability of lemniscate length comparisons in the n < N_0 window)",
+      "reason": "Lemniscate lengths are likely transcendental. If two competitor normalized maximizers produce numerically equal lengths in the small-n window, it is not immediately clear that strict comparison can be decided by a finite computation.",
+      "killable": true,
+      "killable_notes": "Tao himself characterizes this scenario as 'very unlikely'. Empirically the bridge program has verified n=3..14 with no equality ties (per earlier proof_path artifacts). The risk is bounded to: 'a transcendence-theory ambiguity that only fires on an exact numerical tie at some n in [15, N_0]'. Mitigations: (a) interval arithmetic with proven gap, (b) appeal to known transcendence results for specific lemniscate-length combinations, (c) symbolic computation. None of these are required unless the sweep actually produces a tie."
+    }
+  ],
+  "verdict": {
+    "tao_asserts_proof_is_effective": true,
+    "specific_steps_flagged_as_non_effective": [
+      "Small-n equality decidability ONLY (transcendence-theory hedge, characterized by Tao as 'very unlikely')"
+    ],
+    "specific_steps_explicitly_effective": [
+      "All implied constants in the entire proof (paper-wide assertion at line 196)",
+      "The n_0 / N_0 threshold appearing in Theorem main-thm(iv) — explicitly described as 'an explicitly bounded number of n'",
+      "The C_0 master constant in section 13 (proof of (iv)) — tracked via O_{C_0}() notation throughout",
+      "All eps-dependences via O_eps() bookkeeping (sections 11, 12, 13)"
+    ],
+    "implications_for_bridge": "STRONGLY POSITIVE. The bridge program's central conditional ('if a numerical N0 can be extracted from Tao's proof, then EHP reduces to a finite check') is not merely consistent with Tao's text — it is exactly what Tao himself claims, in plain prose, in the paper-wide effectivity remark at line 196. Tao asserts (a) all implied constants are effectively computable, (b) the threshold reduces the conjecture to 'an explicitly bounded number of n', and (c) he has 'made no attempt to optimize this bound' — i.e., a loose extraction is anticipated and welcome. The only non-effective hedge in the entire paper is on the small-n verification side, not the threshold-extraction side, and Tao himself flags it as 'very unlikely'. The bridge program's posture is endorsed by Tao's own meta-statement; the K_sting + K_outside extraction track (Track A5) is structurally green-lit by the paper itself. NO BLOCKING WARNING from Tao on the analytic side."
+  },
+  "next_dependency": "EFFECTIVIZATION_AFFIRMED -> queue Track A5 (K_sting + K_outside numerical-constant extraction from sections 11-13) confidently. The structural risk lives in execution (mechanical bookkeeping through nested O_{C_0,eps}() chains in main-iv-sec) not in feasibility. Concurrently maintain a separate small-n equality-tie watch in the n=15..N_0 sweep as Tao's only flagged caveat; mitigations are off-the-shelf interval arithmetic, not a research blocker.",
+  "search_method": {
+    "tool": "grep on /tmp/tao114_src/lemniscate.tex",
+    "patterns_searched": [
+      "effective|ineffective|non-effective|noneffective",
+      "explicit constant|implicit constant|optimize|not optimi",
+      "Roth|Stepanov|compactness",
+      "in principle|make no attempt|made no attempt|polynomial dependence|exponential dependence",
+      "explicitly bounded|explicit bound|explicit value|explicitly computable|effectively computable",
+      "open question|remains open|future work|open problem|further work",
+      "decide|decidable|finite computation|finite check|finite verification",
+      "we are unable|not able to|do not see|does not seem|cannot.{0,30}made? effective",
+      "for fixed|for any fixed|sufficiently large|absolute constant",
+      "C_0|N_0|n_0",
+      "qualitative|quantitative|asymptotic only",
+      "we do not|cannot.{0,20}determine|caveat|warning"
+    ],
+    "section_headers_inventoried_via_grep": "All \\section and \\subsection headers grepped — paper has no concluding/discussion/future-work section. The line-196 remark IS the global meta-statement.",
+    "passages_read_in_full": [
+      "lines 160-260 (intro, main theorem, methods of proof, normalized-maximizer setup)",
+      "lines 421-447 (acknowledgments, asymptotic-notation conventions)",
+      "lines 1630-1660 (start of section 13, proof of (iv))",
+      "lines 1900-1965 (bibliography, end of file — confirmed no conclusion section)"
+    ]
+  },
+  "timestamp_unix": 1778359206,
+  "schema_version": "1.0"
+}

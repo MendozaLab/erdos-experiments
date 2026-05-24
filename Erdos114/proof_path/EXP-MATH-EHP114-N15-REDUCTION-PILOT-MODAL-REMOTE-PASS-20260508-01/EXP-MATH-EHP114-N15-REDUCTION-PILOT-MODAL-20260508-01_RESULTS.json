@@ -1,0 +1,238 @@
+{
+  "claim_ceiling": "review-only n=15 reduction pilot; not D1, not public state, not formal-status promotion",
+  "created_unix": 1778278481,
+  "experiment_id": "EXP-MATH-EHP114-N15-REDUCTION-PILOT-MODAL-20260508-01",
+  "final_verdict": "NEEDS_REDUCTION",
+  "full_n15_authorized": false,
+  "gate_statuses": {
+    "modal_smoke": "PASS",
+    "n14_control": "PASS",
+    "n15_pilot": "NEEDS_REDUCTION"
+  },
+  "gates": [
+    {
+      "blocked_reason": null,
+      "elapsed_secs": 4.5299530029296875e-06,
+      "gate": "modal_smoke",
+      "log_cadence_checked": true,
+      "meaning": "Tiny Modal task and output-contract check only.",
+      "remote_executed": true,
+      "remote_smoke_sha256": "4c6625c0e292872f90fad5685ca96040615bef3ab4c8d134492e82f4eef6a9b6",
+      "sidecar_hash_checked": true,
+      "status": "PASS",
+      "timestamp_unix": 1778278479,
+      "volume_write_checked": true
+    },
+    {
+      "control_row_count": 3,
+      "control_row_pass_count": 3,
+      "control_rows": [
+        {
+          "cell_tag": "CELL-07-03",
+          "control_pass": true,
+          "expected_cell": "CELL-07-03",
+          "expected_status": "LOCAL_HARD_CELL_CERTIFICATE_PASS_NOT_GLOBAL_PROOF",
+          "first_failed_condition": "none",
+          "margin_to_cap": 0.008190869737216389,
+          "path": "/workspace/inputs/n14_local_cell_07_03.json",
+          "role": "low_margin_local_cell",
+          "sha256": "a6e35e0938eb8e178008708ab21e8a9c198b5599c94b6b4cc1ac3f3aacbe9e85",
+          "status": "LOCAL_HARD_CELL_CERTIFICATE_PASS_NOT_GLOBAL_PROOF"
+        },
+        {
+          "cell_tag": "CELL-06-03",
+          "control_pass": true,
+          "expected_cell": "CELL-06-03",
+          "expected_status": "REGULAR_RESIDUAL_PASS_NOT_GLOBAL_PROOF",
+          "first_failed_condition": "none",
+          "margin_to_cap": 0.016171046881407136,
+          "path": "/workspace/inputs/n14_regular_residual_06_03.json",
+          "role": "regular_residual_cell",
+          "sha256": "0613c1d1e8345717c2f8c3a25a74a6e9e3255dd569ce4ee2985ae5b62f89d815",
+          "status": "REGULAR_RESIDUAL_PASS_NOT_GLOBAL_PROOF"
+        },
+        {
+          "cell_tag": "CELL-02-03",
+          "control_pass": true,
+          "expected_cell": "CELL-02-03",
+          "expected_status": "THIRD_ORDER_FAIL_CRITICAL_EXCLUSION",
+          "first_failed_condition": "third_order_wall_separation_failed",
+          "margin_to_cap": 3.0258881864781593,
+          "path": "/workspace/inputs/n14_third_order_collar_02_03.json",
+          "role": "hard_collar_failure_cell",
+          "sha256": "e32a58c6e150a6dfaeedd6919baa4479a6a8f86b918fc61b4ae1b22d2e66135c",
+          "status": "THIRD_ORDER_FAIL_CRITICAL_EXCLUSION"
+        }
+      ],
+      "gate": "n14_control",
+      "meaning": "Receipt-shape and selected n14 cell/collar control audit only; no new global claim is emitted.",
+      "receipt_gate_pass": true,
+      "receipt_summaries": [
+        {
+          "bb_levels_len": 1,
+          "bb_total_evals": 197132288,
+          "has_nonzero_work_signature": true,
+          "path": "/workspace/inputs/n13_receipt.json",
+          "role": "corrected_n13_receipt",
+          "sha256": "c06c633b4053cdf2c4c6003327f30ee2ce683e6a9da70e047d5c5d43e685fd17"
+        },
+        {
+          "bb_levels_len": 1,
+          "bb_total_evals": 855638016,
+          "has_nonzero_work_signature": true,
+          "path": "/workspace/inputs/n14_receipt.json",
+          "role": "protected_n14_receipt",
+          "sha256": "50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "fourier_diagnostic": {
+        "degree": 15,
+        "method": {
+          "basis": "Fourier radial/tangent modes, projected off translation; global rotation omitted",
+          "coordinate_lift": "centered root perturbations in finite real Hilbert space",
+          "curvature_estimator": "(2*L0 - L(+eps*v) - L(-eps*v)) / eps^2",
+          "functional": "D_n(p) = L(z^n - 1) - L(p)",
+          "length_estimator": "floating-point marching squares",
+          "rigorous": false
+        },
+        "path": "/workspace/inputs/n15_fourier_hessian.json",
+        "sha256": "ba036f608c94ec31d9834c6068d0d453657dcd6c3045f840603f8145ca4f0c69",
+        "status": "DIAGNOSTIC_NUMERICAL_PROBE_NOT_PROOF",
+        "summary_keys": [
+          "all_modes_positive_all_eps",
+          "basis_rows",
+          "best_label",
+          "best_max_deficit_curvature",
+          "rows_not_positive_all_eps",
+          "rows_positive_all_eps",
+          "worst_label",
+          "worst_min_deficit_curvature"
+        ]
+      },
+      "gate": "n15_pilot",
+      "gate_reason": "Modal plumbing and n14 controls are not enough to authorize full n=15; selected n15 slices still need real reduced computations.",
+      "planned_slices": [
+        {
+          "n14_seed_cell": "CELL-07-03",
+          "n15_status": "SELECTED_NOT_EXECUTED",
+          "required_next_evidence": "n15 local-cell source generation plus residual closure accounting",
+          "slice_id": "n15_low_margin_local_cell_transfer",
+          "source_margin_to_cap": 0.008190869737216389,
+          "source_status": "LOCAL_HARD_CELL_CERTIFICATE_PASS_NOT_GLOBAL_PROOF"
+        },
+        {
+          "n14_seed_cell": "CELL-06-03",
+          "n15_status": "SELECTED_NOT_EXECUTED",
+          "required_next_evidence": "n15 regular residual closure row with positive margin and hash sidecar",
+          "slice_id": "n15_regular_residual_transfer",
+          "source_margin_to_cap": 0.016171046881407136,
+          "source_status": "REGULAR_RESIDUAL_PASS_NOT_GLOBAL_PROOF"
+        },
+        {
+          "n14_seed_cell": "CELL-02-03",
+          "n15_status": "SELECTED_NOT_EXECUTED",
+          "required_next_evidence": "n15 collar/root-isolation pilot resolving or classifying the wall-separation failure",
+          "slice_id": "n15_hard_collar_root_isolation_transfer",
+          "source_margin_to_cap": 3.0258881864781593,
+          "source_status": "THIRD_ORDER_FAIL_CRITICAL_EXCLUSION"
+        }
+      ],
+      "source_envelope_decision": "NEEDS_REDUCTION",
+      "source_envelope_stop_go": "NEEDS_REDUCTION",
+      "status": "NEEDS_REDUCTION"
+    }
+  ],
+  "generated_by": "erdos_atlas_autoresearch_librarian",
+  "modal_metadata": {
+    "app_name": "ehp114-n15-reduction-pilot-20260508-01",
+    "remote_out": "/outputs/EXP-MATH-EHP114-N15-REDUCTION-PILOT-MODAL-20260508-01",
+    "volume_name": "ehp114-n15-reduction-pilot-20260508-01"
+  },
+  "next_experiment_if_needed": {
+    "if_GO_FULL_N15": "EXP-MATH-EHP114-N15-FULL-CERTIFICATION-MODAL-<new-id>",
+    "if_NEEDS_REDUCTION": "EXP-MATH-EHP114-N15-SLICE-CELL-COLLAR-MODAL-<new-id>",
+    "if_STOP_NOT_FEASIBLE": "repair Modal/runner/input-contract blocker before spending compute"
+  },
+  "origin": "auto-research",
+  "persona": "Eratosthenes of Cyrene",
+  "problem_id": 114,
+  "promotion_state": "review_only",
+  "safety_checks": {
+    "branch_and_bound_invoked_for_n15": false,
+    "certificate_row_emitted_for_n15": false,
+    "forbidden_writes": [
+      "D1",
+      "morphisms.json",
+      "formal registries",
+      "public pages",
+      "existing #114 packets"
+    ],
+    "old_n15_n16_zero_eval_shortcuts_used_as_evidence": false,
+    "writes_limited_to_new_experiment_folder_and_optional_story": true
+  },
+  "scope": "erdos_atlas_only",
+  "scribe": "Ahmes",
+  "short_name": "Eratosthenes",
+  "source_fingerprints": [
+    {
+      "byte_count": 24540,
+      "exists": true,
+      "path": "/workspace/inputs/finite_less15.json",
+      "role": "finite_less15",
+      "sha256": "869b3902968bcb2419d261853e2e944cf94e8f2820cac08e458f342fa39a064a"
+    },
+    {
+      "byte_count": 685,
+      "exists": true,
+      "path": "/workspace/inputs/n13_receipt.json",
+      "role": "n13_receipt",
+      "sha256": "c06c633b4053cdf2c4c6003327f30ee2ce683e6a9da70e047d5c5d43e685fd17"
+    },
+    {
+      "byte_count": 8058,
+      "exists": true,
+      "path": "/workspace/inputs/n14_local_cell_07_03.json",
+      "role": "n14_local_cell_07_03",
+      "sha256": "a6e35e0938eb8e178008708ab21e8a9c198b5599c94b6b4cc1ac3f3aacbe9e85"
+    },
+    {
+      "byte_count": 693,
+      "exists": true,
+      "path": "/workspace/inputs/n14_receipt.json",
+      "role": "n14_receipt",
+      "sha256": "50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7"
+    },
+    {
+      "byte_count": 2181974,
+      "exists": true,
+      "path": "/workspace/inputs/n14_regular_residual_06_03.json",
+      "role": "n14_regular_residual_06_03",
+      "sha256": "0613c1d1e8345717c2f8c3a25a74a6e9e3255dd569ce4ee2985ae5b62f89d815"
+    },
+    {
+      "byte_count": 140852,
+      "exists": true,
+      "path": "/workspace/inputs/n14_third_order_collar_02_03.json",
+      "role": "n14_third_order_collar_02_03",
+      "sha256": "e32a58c6e150a6dfaeedd6919baa4479a6a8f86b918fc61b4ae1b22d2e66135c"
+    },
+    {
+      "byte_count": 11440,
+      "exists": true,
+      "path": "/workspace/inputs/n15_envelope.json",
+      "role": "n15_envelope",
+      "sha256": "daa0b1ae71ee265386347f8254ba5a166052d2cef32b802e815bad168b338636"
+    },
+    {
+      "byte_count": 42422,
+      "exists": true,
+      "path": "/workspace/inputs/n15_fourier_hessian.json",
+      "role": "n15_fourier_hessian",
+      "sha256": "ba036f608c94ec31d9834c6068d0d453657dcd6c3045f840603f8145ca4f0c69"
+    }
+  ],
+  "story_writer": "Ahmes"
+}

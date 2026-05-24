@@ -1,0 +1,226 @@
+{
+  "claim_ceiling": "pvar exponential constant extraction only. This packet does not provide a numeric Tao threshold, does not authorize n=15 or higher computation, and does not prove the full all-degree statement.",
+  "expected_tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "experiment_id": "EXP-MATH-EHP114-TAO-PVAR-EXPONENTIAL-CONSTANT-EXTRACTION-20260507-01",
+  "first_failed_condition": "pvar exponential and radial-derivative constants remain unquantified",
+  "full_synthesis_allowed": false,
+  "global_candidate_N0": null,
+  "k_origin_status_after_pvar": "OPAQUE_K_ORIGIN_PVAR_CONSTANTS_PENDING",
+  "n15_or_higher_computation_authorized": false,
+  "numeric_pvar_ready_count": 1,
+  "opaque_pvar_count": 4,
+  "partial_max_N_final_section": null,
+  "processed_pvar_row_count": 6,
+  "pvar_constant_rows": [
+    {
+      "constant_expression": "|1-w| <= exp(|w|)",
+      "named_blocker": null,
+      "numeric_value": {
+        "exponent_coefficient": 1.0
+      },
+      "pvar_status": "NUMERIC_PVAR_READY",
+      "row_id": "product_factor_upper_bound",
+      "source_labels": [
+        "pp-factor",
+        "p'-bound"
+      ],
+      "supports": [
+        "p'-bound first upper estimate"
+      ]
+    },
+    {
+      "constant_expression": "|(1-w)exp(w)| <= exp(C_centered |w|^2)",
+      "named_blocker": "elementary centered-product constant C_centered not numerically selected",
+      "numeric_value": null,
+      "pvar_status": "SYMBOLIC_PVAR_READY",
+      "row_id": "centered_product_upper_bound",
+      "source_labels": [
+        "p'-bound"
+      ],
+      "supports": [
+        "p'-bound centered upper estimate"
+      ]
+    },
+    {
+      "constant_expression": "integrate |p'(z)| <= exp(C_ppcl n)n^(-n)||p||_1^(n-1) over radius O(||p||_1/n)",
+      "named_blocker": "ppcl exponential constant and small-radius integration radius are not quantified",
+      "numeric_value": null,
+      "pvar_status": "OPAQUE_PVAR",
+      "row_id": "ppcl_to_pocl_integration",
+      "source_labels": [
+        "ppcl",
+        "pocl"
+      ],
+      "supports": [
+        "pocl"
+      ]
+    },
+    {
+      "constant_expression": "choose C so C n - C^2 ||p||_1/|z| dominates p'-bound for |z| >= 2C||p||_1/n",
+      "named_blocker": "radial derivative domination constant C is large-enough but not explicit",
+      "numeric_value": null,
+      "pvar_status": "OPAQUE_PVAR",
+      "row_id": "poz_radial_derivative_first_gate",
+      "source_labels": [
+        "p'-bound",
+        "poz"
+      ],
+      "supports": [
+        "poz small-to-intermediate radial regime"
+      ]
+    },
+    {
+      "constant_expression": "choose C' so C' n - 2(C')^2 ||p||_1/|z| dominates p'-bound for |z| >= 3C'||p||_1",
+      "named_blocker": "radial derivative domination constant C_prime is large-enough but not explicit",
+      "numeric_value": null,
+      "pvar_status": "OPAQUE_PVAR",
+      "row_id": "poz_radial_derivative_second_gate",
+      "source_labels": [
+        "p'-bound",
+        "poz"
+      ],
+      "supports": [
+        "poz large-radius radial regime"
+      ]
+    },
+    {
+      "constant_expression": "K_origin awaits explicit C_ppcl, C_pocl, C_poz, and C_poz_prime constants",
+      "named_blocker": "K_origin remains blocked by pvar exponential constants",
+      "numeric_value": null,
+      "pvar_status": "OPAQUE_PVAR",
+      "row_id": "k_origin_after_pvar",
+      "source_labels": [
+        "poz",
+        "pocl",
+        "origin-repulsion"
+      ],
+      "supports": [
+        "K_origin"
+      ]
+    }
+  ],
+  "silent_generic_count": 0,
+  "source_artifacts": [
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "7a3c7b6c3289d5a2120017e69dd3155a6d55916ae32f4e6ad4ea21b5c1597436",
+        "expected_sha256": "7a3c7b6c3289d5a2120017e69dd3155a6d55916ae32f4e6ad4ea21b5c1597436",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02_RESULTS.json",
+        "role": "base_lemma_seed_propagation",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "BASE_LEMMA_SEED_PROPAGATION_PARTIAL"
+    },
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "43a09f28d3980b2cc2fd7701b6f31acaae80ce1861a9eb1d56dcb0c96cb54698",
+        "expected_sha256": "43a09f28d3980b2cc2fd7701b6f31acaae80ce1861a9eb1d56dcb0c96cb54698",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01_RESULTS.json",
+        "role": "primitive_constant_seed_audit",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01/EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "PRIMITIVE_CONSTANT_SEED_AUDIT_PARTIAL"
+    }
+  ],
+  "source_experiment_ids": [
+    "EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02",
+    "EXP-MATH-EHP114-TAO-PRIMITIVE-CONSTANT-SEED-AUDIT-20260507-01"
+  ],
+  "status": "PVAR_CONSTANT_EXTRACTION_PARTIAL",
+  "symbolic_pvar_ready_count": 1,
+  "tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "tao_source_sha_status": "PASS_PINNED_SOURCE_SHA_MATCH",
+  "target_source_missing_count": 0,
+  "target_source_rows": [
+    {
+      "environment": "proposition",
+      "label": "pvar",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{proposition}[Near-constancy near origin]\\label{pvar} Let $z \\in \\C$. \\begin{itemize} \\item[(i)] If $z \\neq 0$, we have the upper bound \\begin{equation}\\label{p'-bound} |p'(z)| \\leq n |z|^{n-1} e^{O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))} \\end{equation} and the lower bound \\begin{equation}\\label{p'-bound-lower} |p'(z)| \\geq n |z|^{n-1} e^{-O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))} \\delta(z)^{O(\\|p\\|_1/|z|)}. \\end{equation} and \\begin{equation}\\label{poz} p(z) = p(0) + O(|z|^n e^{O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))}). \\end{equation} If $|z| > 2\\|p\\|_1$, the $\\delta(z)^{O(\\|p\\|_1/|z|)}$ factor in \\eqref{p'-bound-lower} can be omitted. \\item[(ii)] If $z = O(\\|p\\|_1/n)$, then \\begin{equation}\\label{ppcl} |p'(z)| \\leq e^{O(n)} n^{-n} \\|p\\|_1^{n-1} \\end{equation} and \\begin{equation}\\label{pocl} p(z) = p(0) + O(e^{O(n)} n^{-n} \\|p\\|_1^n). \\end{equation} \\end{itemize} \\end{proposition}",
+      "source_span": [
+        792,
+        817
+      ],
+      "title": "Near-constancy near origin"
+    },
+    {
+      "environment": "equation",
+      "label": "p'-bound",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{equation}\\label{p'-bound} |p'(z)| \\leq n |z|^{n-1} e^{O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))} \\end{equation}",
+      "source_span": [
+        795,
+        797
+      ],
+      "title": ""
+    },
+    {
+      "environment": "equation",
+      "label": "p'-bound-lower",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{equation}\\label{p'-bound-lower} |p'(z)| \\geq n |z|^{n-1} e^{-O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))} \\delta(z)^{O(\\|p\\|_1/|z|)}. \\end{equation}",
+      "source_span": [
+        799,
+        801
+      ],
+      "title": ""
+    },
+    {
+      "environment": "equation",
+      "label": "poz",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{equation}\\label{poz} p(z) = p(0) + O(|z|^n e^{O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))}). \\end{equation}",
+      "source_span": [
+        803,
+        805
+      ],
+      "title": ""
+    },
+    {
+      "environment": "equation",
+      "label": "ppcl",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{equation}\\label{ppcl} |p'(z)| \\leq e^{O(n)} n^{-n} \\|p\\|_1^{n-1} \\end{equation}",
+      "source_span": [
+        809,
+        811
+      ],
+      "title": ""
+    },
+    {
+      "environment": "equation",
+      "label": "pocl",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{equation}\\label{pocl} p(z) = p(0) + O(e^{O(n)} n^{-n} \\|p\\|_1^n). \\end{equation}",
+      "source_span": [
+        813,
+        815
+      ],
+      "title": ""
+    },
+    {
+      "environment": "lemma",
+      "label": "origin-repulsion",
+      "named_blocker": null,
+      "source_found": true,
+      "source_snippet": "\\begin{lemma}[Origin repulsion]\\label{origin-repulsion} We have $$ \\|p\\|_0 \\ll \\| p \\|_1 + n \\operatorname{dist}(0, \\partial E_1(p)).$$ In particular, by \\eqref{size-def}, one has $$ \\|p\\| \\ll \\| p \\|_1 + n \\operatorname{dist}(0, \\partial E_1(p)).$$ \\end{lemma}",
+      "source_span": [
+        869,
+        873
+      ],
+      "title": "Origin repulsion"
+    }
+  ]
+}

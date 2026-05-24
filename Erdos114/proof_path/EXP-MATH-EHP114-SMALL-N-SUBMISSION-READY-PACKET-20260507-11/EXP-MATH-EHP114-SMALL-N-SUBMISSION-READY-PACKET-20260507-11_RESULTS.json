@@ -1,0 +1,428 @@
+{
+  "ai_tooling_disclosure": "Tooling disclosure: this packet and draft wording were prepared with AI-assisted tooling. The mathematical claim rests only on the cited literature rows and SHA-checked certificate artifacts; no AI output is used as proof evidence. The author takes responsibility for the mathematical claims, certificate selection, and submission wording.",
+  "audiences": [
+    "erdosproblems.com",
+    "Google DeepMind formal-conjectures"
+  ],
+  "bridge_appendix_question": "Is Tao's sufficiently-large threshold effective in a range that begins at or before n=15? If so, the present finite packet and Tao's theorem would combine into a full proof of Erdos #114.",
+  "bridge_appendix_title": "Toward a Small-to-Large Degree Completion",
+  "bridge_work_internal_until_cleaner": true,
+  "candidate_N0": null,
+  "claim_ceiling": "Submission preflight packet only. It prepares erdosproblems.com and Google DeepMind formal-conjectures wording for the finite n<15 result and the conditional Tao-threshold bridge; it does not assert the all-degree Erdos #114 statement and does not authorize n=15 or higher computation.",
+  "conditional_bridge_only": true,
+  "covered_degree_count": 14,
+  "degree_max_exclusive": 15,
+  "degree_min": 1,
+  "dependency_sha_checks": [
+    {
+      "actual_sha256": "869b3902968bcb2419d261853e2e944cf94e8f2820cac08e458f342fa39a064a",
+      "expected_sha256": "869b3902968bcb2419d261853e2e944cf94e8f2820cac08e458f342fa39a064a",
+      "path": "../../Erdos114/proof_path/EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01/EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01_RESULTS.json",
+      "role": "finite_n_less15_packet",
+      "sha_path": "../../Erdos114/proof_path/EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01/EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01_RESULTS.sha256",
+      "sha_status": "PASS"
+    }
+  ],
+  "dependency_sha_fail_count": 0,
+  "elapsed_secs": 0.001425208,
+  "experiment_id": "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-11",
+  "external_submission_authorized": false,
+  "finite_packet_id": "EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01",
+  "finite_packet_sha256": "869b3902968bcb2419d261853e2e944cf94e8f2820cac08e458f342fa39a064a",
+  "finite_packet_sha_status": "PASS",
+  "finite_packet_status": "FINITE_N_LESS_15_PROOF_PACKET_PASS_NOT_FULL_EHP_PROOF",
+  "finite_source_sha_fail_count": 0,
+  "finite_theorem_ready": true,
+  "first_failed_condition": "none",
+  "flip_side_of_tao_framing": "Tao proves the conjecture for all sufficiently large degrees. This packet verifies the opposite finite frontier through degree fourteen. The remaining bridge question is whether Tao's threshold can be made effective at or below n=15, or whether a finite middle range remains.",
+  "forbidden_language_detected": false,
+  "full_ehp114_claim": false,
+  "internal_threshold_artifacts_submitted_as_evidence": false,
+  "missing_degree_count": 0,
+  "n15_or_higher_computation_authorized": false,
+  "n2_literature_citation": "Historical citation: G. R. MacLane, On a conjecture of Erdos, Herzog, and Piranian, Michigan Math. J. 2 (1953/54), 147-148, doi:10.1307/mmj/1028989918. Accessible source pin: Alexandre Eremenko and Walter K. Hayman, On the length of lemniscates, Michigan Math. J. 46 (1999), 409-415; arXiv:0805.2295.",
+  "n2_literature_pin": "MacLane is cited as the earlier degree-two literature row. The accessible Eremenko-Hayman source states in the abstract that for d=2 the extremal level set is Bernoulli's lemniscate; the proof remark after Lemma 5 says z^2+1 is extremal for d=2. This is length-equivalent to z^2-1 by rotation.",
+  "presentation_title": "Finite verification of the Erdos-Herzog-Piranian lemniscate conjecture for n < 15",
+  "public_abstract": "I have assembled a finite-degree verification of the Erdos-Herzog-Piranian lemniscate length conjecture for 1 <= n < 15. The dependency split is: n=1 is elementary, n=2 is the Eremenko-Hayman degree-two case, and 3 <= n <= 14 are covered by reproducible interval certificates with row-level hashes and public certificate links. This is meant as a finite-frontier result, complementary to Tao's sufficiently-large-n theorem, not as a standalone proof of the all-degree conjecture.",
+  "public_reference_urls": {
+    "erdosproblems_114": "https://www.erdosproblems.com/114",
+    "eremenko_hayman_arxiv": "https://arxiv.org/abs/0805.2295",
+    "eremenko_hayman_pdf": "https://www.math.purdue.edu/~eremenko/dvi/erdos23.pdf",
+    "formal_conjectures": "https://github.com/google-deepmind/formal-conjectures",
+    "github_repository": "https://github.com/MendozaLab/erdos-experiments",
+    "maclane_doi": "https://doi.org/10.1307/mmj/1028989918",
+    "tao_large_n_arxiv": "https://arxiv.org/abs/2512.12455",
+    "zenodo_record": "https://zenodo.org/records/19480329"
+  },
+  "reviewer_grade_certificate_rows": [
+    {
+      "degree": 1,
+      "lemma_name": "LinearMonicLemniscateCircle",
+      "public_source": "Monic linear case: {|z+a|=1} is a translated unit circle of length 2*pi.",
+      "result_json_url": null,
+      "reviewer_note": "No machine artifact is required for n=1.",
+      "row_hash": null,
+      "sha256_url": null,
+      "source_kind": "DIRECT_ANALYTIC",
+      "status": "TRIVIAL_ANALYTIC"
+    },
+    {
+      "accessible_citation": "Alexandre Eremenko and Walter K. Hayman, On the length of lemniscates, Michigan Math. J. 46 (1999), 409-415; arXiv:0805.2295.",
+      "degree": 2,
+      "historical_citation": "G. R. MacLane, On a conjecture of Erdos, Herzog, and Piranian, Michigan Math. J. 2 (1953/54), 147-148, doi:10.1307/mmj/1028989918.",
+      "lemma_name": "EremenkoHaymanDegreeTwo",
+      "result_json_url": null,
+      "reviewer_note": "Pinned literature row; no local computational artifact is used for n=2.",
+      "row_hash": null,
+      "sha256_url": null,
+      "source_kind": "LITERATURE",
+      "source_pin": "MacLane is cited as the earlier degree-two literature row. The accessible Eremenko-Hayman source states in the abstract that for d=2 the extremal level set is Bernoulli's lemniscate. In the proof text, the remark after Lemma 5 says that z^2+1 is extremal for d=2; z^2+1 and z^2-1 are equivalent for length by rotation.",
+      "source_urls": {
+        "arxiv": "https://arxiv.org/abs/0805.2295",
+        "maclane_doi": "https://doi.org/10.1307/mmj/1028989918",
+        "purdue_pdf": "https://www.math.purdue.edu/~eremenko/dvi/erdos23.pdf"
+      },
+      "status": "LITERATURE_ONLY"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 7560,
+      "degree": 3,
+      "experiment_id": "EXP-MM-EHP-007-n3-inari",
+      "l_star_lower": 9.179724222343149,
+      "l_star_upper": 9.179724222343166,
+      "lemma_name": "MachineCertificateDegree3",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n3-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n3-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n3-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "a884d1bfec1563f6e6f7ae4cbb2ec607b43be033d06c41d14782459e67ec2b95",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n3-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n3-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n3-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N3_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 42656,
+      "degree": 4,
+      "experiment_id": "EXP-MM-EHP-007-n4-inari",
+      "l_star_lower": 11.070020517256603,
+      "l_star_upper": 11.070020517256618,
+      "lemma_name": "MachineCertificateDegree4",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n4-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n4-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n4-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "0924dd7424d2615099ff95d47cb4c120ba22e907adaa9af881cded9678241209",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n4-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n4-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n4-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N4_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 312598,
+      "degree": 5,
+      "experiment_id": "EXP-MM-EHP-007-n5-inari",
+      "l_star_lower": 13.00681138191868,
+      "l_star_upper": 13.006811381918702,
+      "lemma_name": "MachineCertificateDegree5",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n5-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n5-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n5-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "21ca3c7607dc1fbb7b08982666f4620dff808fdc581eecae9967c51fafb05447",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n5-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n5-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n5-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N5_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 135936,
+      "degree": 6,
+      "experiment_id": "EXP-MM-EHP-007-n6-inari",
+      "l_star_lower": 14.965732189658617,
+      "l_star_upper": 14.96573218965864,
+      "lemma_name": "MachineCertificateDegree6",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n6-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n6-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n6-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "41ac3027e9ae5add9e1208c0faa5897c36762d69b5eeccef96068c96af567b3d",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n6-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n6-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n6-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N6_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 23552,
+      "degree": 7,
+      "experiment_id": "EXP-MM-EHP-007-n7-inari",
+      "l_star_lower": 16.936900648250898,
+      "l_star_upper": 16.936900648250923,
+      "lemma_name": "MachineCertificateDegree7",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n7-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n7-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n7-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "832ddaf219d717e275ee95c01f271dd3120e255cf81f3aa72ba3c2f56ff84054",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n7-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n7-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n7-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N7_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 110592,
+      "degree": 8,
+      "experiment_id": "EXP-MM-EHP-007-n8-inari",
+      "l_star_lower": 18.915553136286245,
+      "l_star_upper": 18.915553136286267,
+      "lemma_name": "MachineCertificateDegree8",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n8-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n8-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n8-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "c7a1fd80fbfed1efd53eaa35283e467994e3a4175541f3817485d9551d14dcdc",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n8-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n8-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n8-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N8_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 507904,
+      "degree": 9,
+      "experiment_id": "EXP-MM-EHP-007-n9-inari",
+      "l_star_lower": 20.89911180166708,
+      "l_star_upper": 20.89911180166708,
+      "lemma_name": "MachineCertificateDegree9",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n9-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n9-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n9-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "5bc2887826c9ef21752c115c9a4a2ab983f94eea06f0111ea98db454fe1358f4",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n9-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n9-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n9-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N9_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 2293760,
+      "degree": 10,
+      "experiment_id": "EXP-MM-EHP-007-n10-inari",
+      "l_star_lower": 22.88606032816543,
+      "l_star_upper": 22.886060328165435,
+      "lemma_name": "MachineCertificateDegree10",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n10-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n10-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n10-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "2b72e052aa7200f7ac5d40992843601988de234093c44860fde99a7871e19581",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n10-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n10-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n10-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N10_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 10223616,
+      "degree": 11,
+      "experiment_id": "EXP-MM-EHP-007-n11-inari",
+      "l_star_lower": 24.87544868514786,
+      "l_star_upper": 24.875448685147862,
+      "lemma_name": "MachineCertificateDegree11",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n11-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n11-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n11-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "67f20cce1d3d54cad2d6bc708ab9ec796c17cb4d34a9728f2954b8a6cbf7c89c",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n11-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n11-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n11-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N11_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 45088768,
+      "degree": 12,
+      "experiment_id": "EXP-MM-EHP-007-n12-inari",
+      "l_star_lower": 26.866651413612804,
+      "l_star_upper": 26.866651413612814,
+      "lemma_name": "MachineCertificateDegree12",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n12-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n12-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n12-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "42a517997445d158649feefae2b7287bc9b548c6391796df0c1246489c6aa064",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n12-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n12-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n12-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N12_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 0,
+      "bb_total_evals": 0,
+      "degree": 13,
+      "experiment_id": "EXP-MM-EHP-007-n13-inari",
+      "l_star_lower": 28.85923995588822,
+      "l_star_upper": 28.859239955888235,
+      "lemma_name": "MachineCertificateDegree13",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n13-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n13-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n13-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": "n=13 has zero branch-and-bound evaluations and an empty bb_levels array; retain as DOI-backed local interval row but flag for route reconciliation before any refreshed public theorem packet.",
+      "row_hash": "a4e72a9be2811e9d2290c6cdd0f6a9f1dd17fa85790e380bd5af8b09179e02ac",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n13-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n13-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n13-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N13_PROVEN"
+    },
+    {
+      "artifact_sha_status": "PASS",
+      "bb_level_count": 1,
+      "bb_total_evals": 855638016,
+      "degree": 14,
+      "experiment_id": "EXP-MM-EHP-007-n14-inari",
+      "l_star_lower": 30.852910841548532,
+      "l_star_upper": 30.852910841548542,
+      "lemma_name": "MachineCertificateDegree14",
+      "result_json_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n14-inari_RESULTS.json"
+      },
+      "reviewer_note": "Row-level public result JSON and SHA-256 sidecar are linked from Zenodo and GitHub.",
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "route_exception": null,
+      "row_hash": "50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7",
+      "sha256_url": {
+        "github_blob": "https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.sha256",
+        "github_raw": "https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.sha256",
+        "zenodo_file": "https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n14-inari_RESULTS.sha256"
+      },
+      "source_kind": "DOI_BACKED_RUST_INARI_IEEE1788_INTERVAL_CERTIFICATE",
+      "status": "LOCAL_INTERVAL_CERTIFIED",
+      "verdict": "EHP_N14_PROVEN"
+    }
+  ],
+  "reviewer_grade_certificate_table": "| n | dependency | public source | SHA / pin | status |\n|---:|---|---|---|---|\n| 1 | direct analytic | translated unit circle | not applicable | covered |\n| 2 | MacLane / Eremenko-Hayman literature row | [MacLane DOI](https://doi.org/10.1307/mmj/1028989918) / [Eremenko-Hayman arXiv](https://arxiv.org/abs/0805.2295) / [PDF](https://www.math.purdue.edu/~eremenko/dvi/erdos23.pdf) | G. R. MacLane, On a conjecture of Erdos, Herzog, and Piranian, Michigan Math. J. 2 (1953/54), 147-148, doi:10.1307/mmj/1028989918.; Eremenko-Hayman accessible pin: Michigan Math. J. 46 (1999), 409-415; degree-two extremal case pinned to Bernoulli lemniscate | covered |\n| 3 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n3-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n3-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n3-inari_RESULTS.json) | `a884d1bfec1563f6e6f7ae4cbb2ec607b43be033d06c41d14782459e67ec2b95`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n3-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n| 4 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n4-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n4-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n4-inari_RESULTS.json) | `0924dd7424d2615099ff95d47cb4c120ba22e907adaa9af881cded9678241209`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n4-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n| 5 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n5-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n5-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n5-inari_RESULTS.json) | `21ca3c7607dc1fbb7b08982666f4620dff808fdc581eecae9967c51fafb05447`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n5-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n| 6 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n6-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n6-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n6-inari_RESULTS.json) | `41ac3027e9ae5add9e1208c0faa5897c36762d69b5eeccef96068c96af567b3d`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n6-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n| 7 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n7-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n7-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n7-inari_RESULTS.json) | `832ddaf219d717e275ee95c01f271dd3120e255cf81f3aa72ba3c2f56ff84054`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n7-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n| 8 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n8-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n8-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n8-inari_RESULTS.json) | `c7a1fd80fbfed1efd53eaa35283e467994e3a4175541f3817485d9551d14dcdc`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n8-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n| 9 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n9-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n9-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n9-inari_RESULTS.json) | `5bc2887826c9ef21752c115c9a4a2ab983f94eea06f0111ea98db454fe1358f4`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n9-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n| 10 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n10-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n10-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n10-inari_RESULTS.json) | `2b72e052aa7200f7ac5d40992843601988de234093c44860fde99a7871e19581`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n10-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n| 11 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n11-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n11-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n11-inari_RESULTS.json) | `67f20cce1d3d54cad2d6bc708ab9ec796c17cb4d34a9728f2954b8a6cbf7c89c`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n11-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n| 12 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n12-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n12-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n12-inari_RESULTS.json) | `42a517997445d158649feefae2b7287bc9b548c6391796df0c1246489c6aa064`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n12-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n| 13 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n13-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n13-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n13-inari_RESULTS.json) | `a4e72a9be2811e9d2290c6cdd0f6a9f1dd17fa85790e380bd5af8b09179e02ac`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n13-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED route exception flagged |\n| 14 | DOI-backed Rust/inari IEEE-1788 interval certificate | [result JSON](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json) / [raw](https://raw.githubusercontent.com/MendozaLab/erdos-experiments/main/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json) / [Zenodo file](https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n14-inari_RESULTS.json) | `50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7`; [sha sidecar](https://github.com/MendozaLab/erdos-experiments/blob/main/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.sha256) | LOCAL_INTERVAL_CERTIFIED |\n",
+  "reviewer_inquiry_language": "I am not claiming the all-degree Erdos #114 statement here. The finite side covers n <= 14; Tao's theorem covers all sufficiently large n. Is this the right way to record the finite side and phrase the remaining bridge question: extract Tao's threshold, and if it is above 15, certify the intervening finite degrees?",
+  "status": "SMALL_N_PRESENTATION_PACKET_READY_CONDITIONAL_BRIDGE_ONLY",
+  "submit_as_finite_result_not_full_solution": true,
+  "tao_non_bridging_sentence": "No explicit threshold is extracted from Tao's sufficiently-large-n theorem in this finite packet, and no degree n >= 15 is claimed here.",
+  "tao_style_rules_applied": [
+    "theorem-first statement",
+    "typed dependency split",
+    "obstruction named before bridge",
+    "conditional bridge phrasing",
+    "no all-degree status change"
+  ],
+  "tao_threshold_engineering_artifacts_included": false,
+  "tao_threshold_status": "NOT_INCLUDED_IN_SUBMISSION_PACKET",
+  "theorem_statement": "For every monic complex polynomial p of degree n with 1 <= n < 15, the lemniscate length is at most the length for p(z)=z^n-1.",
+  "timestamp_unix": "1778174372"
+}

@@ -1,0 +1,231 @@
+{
+  "arxiv_abs_url": "https://arxiv.org/abs/2512.12455",
+  "arxiv_eprint_url": "https://arxiv.org/e-print/2512.12455",
+  "arxiv_id": "2512.12455",
+  "attack_order": [
+    "constant_chase_final_section_inside2_annulus2_outside_again",
+    "radial_puiseux_interval_hardening_at_n14",
+    "shape_cone_interval_hardening",
+    "mixed_remainder_absorption",
+    "reconcile_n15_n16_zero_eval_records",
+    "versioned_rust_inari_extension_feasibility_n17_n20"
+  ],
+  "claim_ceiling": "This is a closure control packet, not a proof. It identifies the middle-range bottlenecks between n <= 14 Rust/inari certificates and Tao's sufficiently-large-n theorem.",
+  "date": "2026-05-05",
+  "doi_anchor": {
+    "certified_range": "n=3..14",
+    "doi": "10.5281/zenodo.19480329",
+    "rigor": "ieee_1788_interval_arithmetic_inari"
+  },
+  "experiment_id": "EXP-MATH-EHP114-TAO-MIDDLE-KINGDOM-20260505-01",
+  "first_theorem_target": {
+    "name": "ehp114_fixed_n_radial_puiseux_interval",
+    "reason": "n=14 is the DOI-backed material stress case; if n=14 fails, n=20 is premature.",
+    "scope": "fixed n=14 radial deficit lower bound"
+  },
+  "landmarks": [
+    {
+      "extraction": "States the asymptotic theorem: EHP holds for sufficiently large n.",
+      "kind": "theorem[Main theorem]",
+      "label": "main-thm",
+      "line_end": 192,
+      "line_start": 185,
+      "middle_gap_use": "Defines the upper end of the finite middle range, but no practical N0.",
+      "role": "Tao high-degree ceiling"
+    },
+    {
+      "extraction": "Reduces the problem to normalized maximizers with connected lemniscates.",
+      "kind": "proposition",
+      "label": "erem",
+      "line_end": 204,
+      "line_start": 203,
+      "middle_gap_use": "Required if the finite certificate is to match Tao's proof variables.",
+      "role": "Extremizer normalization"
+    },
+    {
+      "extraction": "Represents lemniscate length through the X1..X5 error budget.",
+      "kind": "theorem[Application of Stokes' theorem]",
+      "label": "stokes",
+      "line_end": 370,
+      "line_start": 357,
+      "middle_gap_use": "This is the natural bridge for an interval-compressed certificate.",
+      "role": "Area-to-length functional"
+    },
+    {
+      "extraction": "Gives the exact length formula and asymptotics for z^n - 1.",
+      "kind": "lemma[The lemniscate for $p_0$]",
+      "label": "out",
+      "line_end": 624,
+      "line_start": 612,
+      "middle_gap_use": "This is where DOI L* intervals and Tao's asymptotic reference meet.",
+      "role": "p0 reference value"
+    },
+    {
+      "extraction": "K controls near-roundness, dispersion, and derivative decay.",
+      "kind": "lemma[$K$ controls the geometry of $p$]",
+      "label": "geomcontrol",
+      "line_end": 1220,
+      "line_start": 1190,
+      "middle_gap_use": "First constant-chase choke point: every hidden constant enters later.",
+      "role": "First geometry control"
+    },
+    {
+      "extraction": "Bounds X2 by mu times dispersion.",
+      "kind": "lemma[Control on $X_2$]",
+      "label": "x2-lem",
+      "line_end": 1278,
+      "line_start": 1275,
+      "middle_gap_use": "Quantifying the 'mu sufficiently small' choice is a tractable first chase.",
+      "role": "Small-field error term"
+    },
+    {
+      "extraction": "Bounds X3 by an explicit expression involving n, dispersion, mu.",
+      "kind": "lemma[Control on $X_3$]",
+      "label": "x3-lem",
+      "line_end": 1311,
+      "line_start": 1305,
+      "middle_gap_use": "Pairs with X2 to optimize mu explicitly instead of asymptotically.",
+      "role": "Large-psi error term"
+    },
+    {
+      "extraction": "Upgrades dispersion and origin repulsion to O(1).",
+      "kind": "proposition[Total size bound]",
+      "label": "lemni",
+      "line_end": 1363,
+      "line_start": 1346,
+      "middle_gap_use": "Separates global shape control from final local deficit.",
+      "role": "Total size bound"
+    },
+    {
+      "extraction": "Controls the small-radius part of the lemniscate.",
+      "kind": "proposition[Inner bound]",
+      "label": "inside",
+      "line_end": 1421,
+      "line_start": 1419,
+      "middle_gap_use": "Ancestor of the radial Puiseux interval target.",
+      "role": "Inner annulus estimate"
+    },
+    {
+      "extraction": "Controls the main bulk annulus using zero-counting and local bounds.",
+      "kind": "proposition[Bound in intermediate region]",
+      "label": "annulus",
+      "line_end": 1473,
+      "line_start": 1471,
+      "middle_gap_use": "Middle-region term must be made quantitative for any finite splice.",
+      "role": "Intermediate region estimate"
+    },
+    {
+      "extraction": "Produces the 4 log 2 boundary contribution.",
+      "kind": "proposition[Outer bound]",
+      "label": "outside",
+      "line_end": 1518,
+      "line_start": 1516,
+      "middle_gap_use": "This is where endpoint/tip constants enter the final comparison.",
+      "role": "Outer tip estimate"
+    },
+    {
+      "extraction": "Improves dispersion to o(1).",
+      "kind": "proposition",
+      "label": "ets",
+      "line_end": 1643,
+      "line_start": 1640,
+      "middle_gap_use": "This is the first final-section gate toward uniqueness.",
+      "role": "Critical-point collapse"
+    },
+    {
+      "extraction": "Improves total size to o(1).",
+      "kind": "proposition",
+      "label": "pots",
+      "line_end": 1708,
+      "line_start": 1706,
+      "middle_gap_use": "This makes the final split local around p0.",
+      "role": "Total-size collapse"
+    },
+    {
+      "extraction": "Adds a negative deficit term in the inner region.",
+      "kind": "proposition[Inner bound]",
+      "label": "inside-2",
+      "line_end": 1751,
+      "line_start": 1739,
+      "middle_gap_use": "Closest analytic cousin of the radial Puiseux certificate.",
+      "role": "Final inner deficit"
+    },
+    {
+      "extraction": "Adds a negative deficit term over the intermediate annulus.",
+      "kind": "proposition[Bound in intermediate region]",
+      "label": "annulus-2",
+      "line_end": 1784,
+      "line_start": 1781,
+      "middle_gap_use": "The shape-cone interval bound should target this term.",
+      "role": "Final middle deficit"
+    },
+    {
+      "extraction": "Compares the outer annulus directly against p0.",
+      "kind": "proposition[Outer bound]",
+      "label": "outside-again",
+      "line_end": 1833,
+      "line_start": 1831,
+      "middle_gap_use": "Remainder absorption must keep this error below the inner/middle gain.",
+      "role": "Final outer deficit"
+    }
+  ],
+  "needle_lines": {
+    "absolute constant": [
+      435,
+      727,
+      759,
+      761,
+      950,
+      971,
+      1218,
+      1236,
+      1655,
+      1726,
+      1743,
+      1747,
+      1767,
+      1774,
+      1783
+    ],
+    "effectively computable": [
+      196
+    ],
+    "large enough": [
+      842,
+      850,
+      1289,
+      1374,
+      1405,
+      1406,
+      1717,
+      1719,
+      1726,
+      1770
+    ],
+    "no attempt to optimize": [
+      196
+    ],
+    "small enough": [
+      910,
+      1291
+    ],
+    "sufficiently large": [
+      88,
+      175,
+      183,
+      190,
+      218,
+      838,
+      1173,
+      1339,
+      1632,
+      1649,
+      1661,
+      1711
+    ]
+  },
+  "scope": "Tao large-n constant-chase map plus finite-certificate splice plan",
+  "source_line_count": 1965,
+  "source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "status": "CONTROL_PACKET_READY"
+}

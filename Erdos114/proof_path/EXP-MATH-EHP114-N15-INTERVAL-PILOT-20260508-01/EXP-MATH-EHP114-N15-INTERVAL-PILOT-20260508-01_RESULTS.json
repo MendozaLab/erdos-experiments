@@ -1,0 +1,81 @@
+{
+  "contract_object_id": "ar-phase3:EA-AR-PHASE3-EXECUTION-CONTRACTS-30-114-20260508-01:EXP-MATH-EHP114-N15-INTERVAL-PILOT-20260508-01",
+  "decision": "NEEDS_REDUCTION",
+  "decision_reason": "n13/n14 receipts are now valid, but a full n=15 branch-and-bound should wait for a pilot envelope and reduction/collar plan; projected raw growth is large enough to justify a pilot first.",
+  "experiment_id": "EXP-MATH-EHP114-N15-INTERVAL-PILOT-20260508-01",
+  "forbidden_claims": [
+    "n15 proven",
+    "full finite bridge closed",
+    "all-degree #114 solved"
+  ],
+  "future_output_triplet": {
+    "report": "EXP-MATH-EHP114-N15-INTERVAL-PILOT-20260508-01_REPORT.md",
+    "results": "EXP-MATH-EHP114-N15-INTERVAL-PILOT-20260508-01_RESULTS.json",
+    "sha256": "EXP-MATH-EHP114-N15-INTERVAL-PILOT-20260508-01_RESULTS.sha256"
+  },
+  "generated_by": "erdos_atlas_autoresearch_librarian",
+  "growth_probe": {
+    "interpretation": "growth estimate only; not a runtime commitment",
+    "n14_over_n13_eval_ratio": 4.340425531914893,
+    "naive_projected_n15_evals": 3713833090
+  },
+  "next_required_work": [
+    "choose pilot cell/collar grid",
+    "estimate interval width separation",
+    "record stop/go after pilot only"
+  ],
+  "origin": "auto-research",
+  "persona": "Eratosthenes of Cyrene",
+  "phase3_contract_run": "/Users/kenbengoetxea/container-projects/apps/H2/Model-Mayhem/autoresearch/erdos_atlas_librarian/runs/EA-AR-PHASE3-EXECUTION-CONTRACTS-30-114-20260508-01",
+  "problem_id": 114,
+  "promotion_state": "review_only",
+  "receipt_checks": {
+    "n13_bb_proof_complete": true,
+    "n13_bb_total_evals": 197132288,
+    "n13_no_op_bug_signature": false,
+    "n13_sha256_matches_r7": true,
+    "n13_verdict": "EHP_N13_PROVEN",
+    "n14_bb_proof_complete": true,
+    "n14_bb_total_evals": 855638016,
+    "n14_verdict": "EHP_N14_PROVEN"
+  },
+  "scope": "erdos_atlas_only",
+  "scribe": "Ahmes",
+  "short_name": "Eratosthenes",
+  "source_status": [
+    {
+      "contract_sha256": "c06c633b4053cdf2c4c6003327f30ee2ce683e6a9da70e047d5c5d43e685fd17",
+      "exists": true,
+      "matches_contract": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MM-EHP-007-n13-inari_RESULTS.json",
+      "role": "corrected_n13_receipt",
+      "sha256": "c06c633b4053cdf2c4c6003327f30ee2ce683e6a9da70e047d5c5d43e685fd17"
+    },
+    {
+      "contract_sha256": "50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7",
+      "exists": true,
+      "matches_contract": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json",
+      "role": "n14_receipt",
+      "sha256": "50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7"
+    },
+    {
+      "contract_sha256": "122f01f00252c07733cf96171f3f0dd023b3e4983c88f8d021369a5b706bfb89",
+      "exists": true,
+      "matches_contract": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Model-Mayhem/autoresearch/erdos_atlas_librarian/runs/EA-AR-REQUESTED-TESTS-30-114-20260508-R7/tests/erdos114_n13_receipt_audit.json",
+      "role": "r7_n13_audit",
+      "sha256": "122f01f00252c07733cf96171f3f0dd023b3e4983c88f8d021369a5b706bfb89"
+    },
+    {
+      "contract_sha256": "86feb4bc8c581bddab8cb71076effab9aced476a8f8135bf0fffe9c2f847d8e7",
+      "exists": true,
+      "matches_contract": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/Math-Problems/Erdos-Standard/erdos-114/docs/EHP114_N15_FIRST_PRINCIPLES_PROOF_PACKET_2026-05-02.md",
+      "role": "n15_readiness_doc",
+      "sha256": "86feb4bc8c581bddab8cb71076effab9aced476a8f8135bf0fffe9c2f847d8e7"
+    }
+  ],
+  "status": "PILOT_LAUNCH_PACKET_READY",
+  "story_writer": "Ahmes"
+}

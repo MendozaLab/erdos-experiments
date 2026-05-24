@@ -29,10 +29,10 @@
 | QC-morphism edge PHYS-QC-001↔#755 | Quasicrystal morphism backfill 2026-04-16 | generic | structural_only | — | — (QC substitution geometry (structural)) | — | B_h[g], PMF Tier-1 |
 | QC-morphism edge PHYS-QC-001↔#20 | Quasicrystal morphism backfill 2026-04-16 | geometry_exhausted | structural_only | — | — (QC substitution geometry (structural)) | — | Sunflower closure — SCOPED BUCKET per GSP (displacement-current cost, no geometric handle) |
 | QC-morphism edge PHYS-QC-001↔#141 | Quasicrystal morphism backfill 2026-04-16 | generic | structural_only | — | — (QC substitution geometry (structural)) | — | Consecutive primes AP |
-| QC-morphism edge PHYS-QC-001↔#634 | Quasicrystal morphism backfill 2026-04-16 | generic | structural_only | — | — (QC substitution geometry (structural)) | — | EGZ (Erdős-Ginzburg-Ziv) |
-| QC-morphism edge PHYS-QC-001↔#505 | Quasicrystal morphism backfill 2026-04-16 | generic | structural_only | — | — (QC substitution geometry (structural)) | — | Covering systems |
+| QC-morphism edge PHYS-QC-001↔#634 | Quasicrystal morphism backfill 2026-04-16 | generic | structural_only | — | — (QC substitution geometry (structural)) | — | Triangle tiling / congruent triangle dissection |
+| QC-morphism edge PHYS-QC-001↔#505 | Quasicrystal morphism backfill 2026-04-16 | generic | structural_only | — | — (QC substitution geometry (structural)) | — | Borsuk diameter covering |
 | QC-morphism edge PHYS-QC-001↔#233 | Quasicrystal morphism backfill 2026-04-16 | generic | structural_only | — | — (QC substitution geometry (structural)) | — | Cap sets |
-| QC-morphism edge PHYS-QC-001↔#905 | Quasicrystal morphism backfill 2026-04-16 | generic | structural_only | — | — (QC substitution geometry (structural)) | — | Additive bases |
+| QC-morphism edge PHYS-QC-001↔#905 | Quasicrystal morphism backfill 2026-04-16 | generic | structural_only | — | — (QC substitution geometry (structural)) | — | Triangle-edge supersaturation |
 | QC-morphism edge PHYS-QC-001↔#89 | Quasicrystal morphism backfill 2026-04-16 | generic | structural_only | — | — (QC substitution geometry (structural)) | — | Distinct distances |
 | MOR-DISS-001 (dissipative KvN power morphism) | Graduated power morphism | generic | generic | 0.4805 | 0.5000 (1 - tau* (dissipative semigroup spectral gap)) | 1.0407 | Cited in GSP doc: prefactor is geometric (1-tau*), coincidentally near M_L. Class confirmed by scaling, not magnitude. R |
 

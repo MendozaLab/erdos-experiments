@@ -1,0 +1,216 @@
+{
+  "claim_ceiling": "This is a shadow signature, not universal law. It is a certificate target, not a proof.",
+  "diagnostic_constants": {
+    "calibration_radius_schedule": {
+      "global_min_ratio": {
+        "eps": "0.02",
+        "ratio": "28.8151359533827510919383170269",
+        "row": {
+          "a": "0.927712070403050881132399138007",
+          "admissible_under_roots_in_unit_disk": true,
+          "deficit_over_eps_power_1_over_n": "28.8151359533827510919383170268768681835",
+          "deficit_vs_exact_L_star": "21.790423588506551591468508884714868549914171740214",
+          "eps": "0.02",
+          "exact_length": "9.0624872530419907043756174266273360985159152479619",
+          "exact_minus_marching": null,
+          "marching_length_from_fourier_artifact": null,
+          "radius": "0.994654775161751512306308930382",
+          "sign": -1
+        }
+      },
+      "reason": "The existing calibration schedule has larger sampled ratios than direct a=1-eps; C14=24 stays deliberately conservative.",
+      "source_schedule": "radius = 1 - eps/sqrt(14), a = radius^14",
+      "tail_constant_C14_tail": 27.0,
+      "tail_min_ratio_eps_le_1e_minus_4": {
+        "eps": "0.0001",
+        "ratio": "29.2112033305747017067704054676",
+        "row": {
+          "a": "0.999625899254374324258706572913",
+          "admissible_under_roots_in_unit_disk": true,
+          "deficit_over_eps_power_1_over_n": "29.2112033305747017067704054675879489346",
+          "deficit_vs_exact_L_star": "15.129868800058608947782171270728773636068684503688",
+          "eps": "0.0001",
+          "exact_length": "15.723042041489933348061955040613431012361402484487",
+          "exact_minus_marching": null,
+          "marching_length_from_fourier_artifact": null,
+          "radius": "0.999973273875808757561531544652",
+          "sign": -1
+        }
+      },
+      "working_constant_C14": 24.0
+    },
+    "direct_a_equals_1_minus_eps": {
+      "global_min_ratio": {
+        "eps": "0.1",
+        "ratio": "26.2084041204575507279830524281",
+        "row": {
+          "a": "0.9",
+          "deficit_over_eps_power_1_over_n": "26.2084041204575507279830524280728789684654059513498978375163",
+          "deficit_vs_exact_L_star": "22.2337135099008391388044068619964144600533589921797937087444",
+          "eps": "0.1",
+          "exact_length": "8.6191973316477031570397194493457901883767279959958841021585"
+        }
+      },
+      "reason": "C14=24 sits below every sampled direct-radial ratio, including the largest perturbation eps=0.1. C14_tail=26 is a sharper tail-only target for eps <= 1e-4.",
+      "rows": [
+        {
+          "a": "0.9",
+          "deficit_over_eps_power_1_over_n": "26.2084041204575507279830524280728789684654059513498978375163",
+          "deficit_vs_exact_L_star": "22.2337135099008391388044068619964144600533589921797937087444",
+          "eps": "0.1",
+          "exact_length": "8.6191973316477031570397194493457901883767279959958841021585"
+        },
+        {
+          "a": "0.95",
+          "deficit_over_eps_power_1_over_n": "26.3596873169581045414124113160314317678979181550219658355856",
+          "deficit_vs_exact_L_star": "21.2818579608859186745776205753977650789557253403758756427121",
+          "eps": "0.05",
+          "exact_length": "9.57105288066262362126650573594443956947436164779980216819076"
+        },
+        {
+          "a": "0.98",
+          "deficit_over_eps_power_1_over_n": "26.4742565042596733926287137325824315738005560759177176384118",
+          "deficit_vs_exact_L_star": "20.020216609488860549363498497221336970259639035476107520084",
+          "eps": "0.02",
+          "exact_length": "10.8326942320596817464806278141208676781704479526995702908188"
+        },
+        {
+          "a": "0.99",
+          "deficit_over_eps_power_1_over_n": "26.5220466956431121485161447579731215623734274352786121432698",
+          "deficit_vs_exact_L_star": "19.0875370255218932607649026070817619720601365051337030313115",
+          "eps": "0.01",
+          "exact_length": "11.7653738160266490350792237042604426763699504830419747795914"
+        },
+        {
+          "a": "0.999",
+          "deficit_over_eps_power_1_over_n": "26.5783530371047102740116473390710638574298140510425105488857",
+          "deficit_vs_exact_L_star": "16.2271537672194734700685739977853658735037712610200397180301",
+          "eps": "0.001",
+          "exact_length": "14.6257570743290688257755523135568387749263157271556380928727"
+        },
+        {
+          "a": "0.9999",
+          "deficit_over_eps_power_1_over_n": "26.5870905812431276381831686628177189433004908482042340729009",
+          "deficit_vs_exact_L_star": "13.7707162459975403327862635891590711518398068434926673512807",
+          "eps": "0.0001",
+          "exact_length": "17.0821945955510019630578627221831334965902801446830104596222"
+        },
+        {
+          "a": "0.99999",
+          "deficit_over_eps_power_1_over_n": "26.5883338175233133355727999829589472417224663650174120546026",
+          "deficit_vs_exact_L_star": "11.6828356053878020693901866261678084095782852300218522628944",
+          "eps": "0.00001",
+          "exact_length": "19.1700752361607402264539396851743962388518017581538255480084"
+        },
+        {
+          "a": "0.999999",
+          "deficit_over_eps_power_1_over_n": "26.5885017468887001603814068698581556881068455069141520072938",
+          "deficit_vs_exact_L_star": "9.91111321442851354152434091361787123267527491722913056660478",
+          "eps": "0.000001",
+          "exact_length": "20.9417976271200287543197853977243334157548120709465472442981"
+        },
+        {
+          "a": "0.99999999",
+          "deficit_over_eps_power_1_over_n": "26.5885264800737225694480767874240431034107518736980510053888",
+          "deficit_vs_exact_L_star": "7.13289281907774222769029873074833202418937926368808676252731",
+          "eps": "0.00000001",
+          "exact_length": "23.7200180224708000681538275805938726242407077244875910483756"
+        }
+      ],
+      "tail_constant_C14_tail": 26.0,
+      "tail_min_ratio_eps_le_1e_minus_4": {
+        "eps": "0.0001",
+        "ratio": "26.5870905812431276381831686628",
+        "row": {
+          "a": "0.9999",
+          "deficit_over_eps_power_1_over_n": "26.5870905812431276381831686628177189433004908482042340729009",
+          "deficit_vs_exact_L_star": "13.7707162459975403327862635891590711518398068434926673512807",
+          "eps": "0.0001",
+          "exact_length": "17.0821945955510019630578627221831334965902801446830104596222"
+        }
+      },
+      "working_constant_C14": 24.0
+    }
+  },
+  "experiment_id": "EXP-MATH-EHP114-N14-RADIAL-PUISEUX-INTERVAL-TARGET-20260505-01",
+  "guardrails": {
+    "no_d1_update": true,
+    "no_email": true,
+    "no_git": true,
+    "no_lean_file_created": true,
+    "no_public_claim": true,
+    "no_scorecard_update": true
+  },
+  "interval_hardening_strategy": [
+    {
+      "claim_ceiling": "Fixed-n radial-family interval lemma only.",
+      "domain": "0 < eps <= 1e-4",
+      "stage": "singular_tail",
+      "target": "Use the Gauss 2F1 connection formula at z=1 to prove a lower Puiseux coefficient above 26 for n=14."
+    },
+    {
+      "claim_ceiling": "Numerical interval hardening of a one-parameter slice.",
+      "domain": "1e-4 <= eps <= 1e-1",
+      "stage": "compact_middle",
+      "target": "Use interval subdivision on the exact hypergeometric/integral formula to certify the weaker C14=24 bound."
+    },
+    {
+      "claim_ceiling": "Bridge target between DOI finite proof and Tao constant chase.",
+      "domain": "n=14 local cone around z^14-1",
+      "stage": "radial_to_shape_splice",
+      "target": "Feed the radial deficit into the shape-cone and remainder packets; do not infer global EHP from radial data alone."
+    }
+  ],
+  "lean_shaped_target": "theorem ehp114_n14_radial_puiseux_interval_direct\n    (eps : Real) (hpos : 0 < eps)\n    (hsmall : eps <= (1 : Real) / 10000) :\n    (24 : Real) * Real.rpow eps ((1 : Real) / 14)\n      <= D14 (radialMode14 eps) := by\n  -- fixed-n Gauss 2F1 connection formula + interval constants\n  -- no global EHP conclusion follows from this lemma alone\n  sorry",
+  "next_theorem_target_for_agent": "Prove ehp114_n14_radial_puiseux_interval_direct with an interval-certified 2F1 connection-formula lower bound.",
+  "packet_verdict": "CERTIFICATE_TARGET_READY",
+  "problem": "Erdos #114 / EHP lemniscate perimeter",
+  "radial_model": {
+    "exact_L_star": "30.85291084154854229584412631134220464843008698817567781090286842584087484750144",
+    "exact_length_at_boundary": "L_14(1)=2^(1/14+1)*sqrt(pi)*Gamma(1/28)/(2*Gamma(15/28))",
+    "exact_length_inside": "L_14(a)=2*pi*2F1(13/28,13/28;1;a^2) for |a|<1",
+    "family": "p_a(z)=z^14-a",
+    "singularity_scale": "L_14(1)-L_14(1-eps) is Puiseux scale eps^(1/14), not quadratic Hessian scale."
+  },
+  "scope": "fixed-n=14 radial Puiseux interval-hardening target",
+  "single_current_bottleneck": "Interval-hardening the radial hypergeometric/Puiseux singularity model.",
+  "sources": {
+    "calibration": {
+      "claim_ceiling": "Exact radial-family calculation. It explains the singular boundary layer near z^n - 1, but it does not prove global or local EHP114 maximality.",
+      "experiment_id": "EXP-MATH-EHP114-N14-RADIAL-HYPERGEOMETRIC-CALIBRATION-20260502-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MATH-EHP114-N14-RADIAL-HYPERGEOMETRIC-CALIBRATION-20260502-01_RESULTS.json",
+      "sha256": "6cad8337bed8f93b362e1f78cf1d9ec9b34075efe43ddb03dff5c189793e954a",
+      "status": "ANALYTIC_NUMERICAL_DIAGNOSTIC_NOT_PROOF"
+    },
+    "doi": "10.5281/zenodo.19480329",
+    "inari_ieee1788": {
+      "bb_proof_complete": true,
+      "bb_total_evals": 855638016,
+      "experiment_id": "EXP-MM-EHP-007-n14-inari",
+      "hessian_negative": true,
+      "l_star_interval": {
+        "exact_inside_interval": true,
+        "l_star_lower": 30.852910841548532,
+        "l_star_upper": 30.852910841548546
+      },
+      "outer_domain_safe": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json",
+      "reduced_dim": 25,
+      "rigor": "ieee_1788_interval_arithmetic_inari",
+      "sha256": "50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7",
+      "total_time_secs": 269202.107988042,
+      "verdict": "EHP_N14_PROVEN"
+    },
+    "tao_middle_kingdom_packet": {
+      "experiment_id": "EXP-MATH-EHP114-TAO-MIDDLE-KINGDOM-20260505-01",
+      "first_theorem_target": {
+        "name": "ehp114_fixed_n_radial_puiseux_interval",
+        "reason": "n=14 is the DOI-backed material stress case; if n=14 fails, n=20 is premature.",
+        "scope": "fixed n=14 radial deficit lower bound"
+      },
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-EHP114-TAO-MIDDLE-KINGDOM-20260505-01_RESULTS.json",
+      "sha256": "dc68b6d8f4db859bac8cc6212e38d341c07f055d27ef5f704544c9858a72c10f"
+    }
+  },
+  "timestamp_utc": "2026-05-05T23:53:39.538769+00:00"
+}

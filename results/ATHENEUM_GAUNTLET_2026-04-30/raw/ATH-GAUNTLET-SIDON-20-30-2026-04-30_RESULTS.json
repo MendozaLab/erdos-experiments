@@ -1,0 +1,3492 @@
+{
+  "experiment_id": "ATH-GAUNTLET-SIDON-20-30-2026-04-30",
+  "date": "2026-04-29",
+  "erdos_problem": 30,
+  "scan_mode": "pmf_transfer_operator_parity",
+  "implementation": "Rust bitset transfer-state enumerator",
+  "state_model": {
+    "representation": "State = { occupied_mask: u128, used_differences_mask: u128, cardinality: u8 }",
+    "occupied_mask_bits": "bit i is 1 iff lattice site i is occupied",
+    "used_differences_mask_bits": "bit d is 1 iff a positive difference d has already been realized",
+    "occupied_suffix_width": 8,
+    "transition_rule": "skip x always; occupy x iff every new difference |x-a| is absent from used_differences_mask"
+  },
+  "n_min": 20,
+  "n_max": 30,
+  "frontier_k": 3,
+  "prune_deficiency": null,
+  "total_runtime_sec": 0.10651675,
+  "rows": [
+    {
+      "n": 20,
+      "h_n": 6,
+      "maximizer_count": 206,
+      "first_maximizer_witness": [
+        0,
+        1,
+        3,
+        7,
+        12,
+        20
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12,
+          13,
+          17,
+          19,
+          20
+        ],
+        "cardinality": 6
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 6,
+        "ground_state_degeneracy": 206,
+        "ground_entropy_ln": 5.327876168789581,
+        "first_excited_cardinality": 5,
+        "first_excited_count": 3734,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 3734,
+        "near_ground_count_h_minus_2": 3786,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 21
+          },
+          {
+            "cardinality": 2,
+            "count": 210
+          },
+          {
+            "cardinality": 3,
+            "count": 1230
+          },
+          {
+            "cardinality": 4,
+            "count": 3786
+          },
+          {
+            "cardinality": 5,
+            "count": 3734
+          },
+          {
+            "cardinality": 6,
+            "count": 206
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 6,
+            "count": 206
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 5,
+            "count": 3734
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 4,
+            "count": 3786
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 3,
+            "count": 1230
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 21,
+        "terminal_state_count": 9188,
+        "peak_frontier_state_count": 9188,
+        "peak_frontier_after_site": 20,
+        "transitions_attempted": 24517,
+        "legal_occupy_transitions": 9187,
+        "rejected_occupy_transitions": 15330,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 6,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 6,
+        "exact_maximizer_count": 206,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              7,
+              12,
+              18,
+              20
+            ],
+            "objective_value": 1.7763568394002505e-15,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 1.2916027655842244e-16,
+            "prefix_location": 20,
+            "density_adjusted_mass_dev": 10.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.1625862281560591,
+            "joint_score": 0.16258622815605925
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              3,
+              12,
+              13,
+              18,
+              20
+            ],
+            "objective_value": 1.7763568394002505e-15,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 1.2916027655842244e-16,
+            "prefix_location": 20,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.06503449126242364,
+            "joint_score": 0.06503449126242376
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              12,
+              14,
+              19,
+              20
+            ],
+            "objective_value": 1.7763568394002505e-15,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 1.2916027655842244e-16,
+            "prefix_location": 20,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.03251724563121182,
+            "joint_score": 0.03251724563121195
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              13,
+              15,
+              19,
+              20
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 1.2916027655842244e-16,
+            "prefix_location": 20,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.2916027655842244e-16
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              5,
+              9,
+              17,
+              19,
+              20
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 1.2916027655842244e-16,
+            "prefix_location": 20,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.2916027655842244e-16
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              7,
+              9,
+              15,
+              19,
+              20
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 1.2916027655842244e-16,
+            "prefix_location": 20,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.2916027655842244e-16
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              13,
+              15,
+              19,
+              20
+            ],
+            "objective_value": 1.2916027655842244e-16,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 1.2916027655842244e-16,
+            "prefix_location": 20,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.2916027655842244e-16
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              5,
+              9,
+              17,
+              19,
+              20
+            ],
+            "objective_value": 1.2916027655842244e-16,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 1.2916027655842244e-16,
+            "prefix_location": 20,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.2916027655842244e-16
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              7,
+              9,
+              15,
+              19,
+              20
+            ],
+            "objective_value": 1.2916027655842244e-16,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 1.2916027655842244e-16,
+            "prefix_location": 20,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.2916027655842244e-16
+          }
+        ]
+      }
+    },
+    {
+      "n": 21,
+      "h_n": 6,
+      "maximizer_count": 504,
+      "first_maximizer_witness": [
+        0,
+        1,
+        3,
+        7,
+        12,
+        20
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12,
+          13,
+          17,
+          19,
+          20
+        ],
+        "cardinality": 6
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 6,
+        "ground_state_degeneracy": 504,
+        "ground_entropy_ln": 6.222576268071369,
+        "first_excited_cardinality": 5,
+        "first_excited_count": 5428,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 5428,
+        "near_ground_count_h_minus_2": 4750,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 22
+          },
+          {
+            "cardinality": 2,
+            "count": 231
+          },
+          {
+            "cardinality": 3,
+            "count": 1430
+          },
+          {
+            "cardinality": 4,
+            "count": 4750
+          },
+          {
+            "cardinality": 5,
+            "count": 5428
+          },
+          {
+            "cardinality": 6,
+            "count": 504
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 6,
+            "count": 504
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 5,
+            "count": 5428
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 4,
+            "count": 4750
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 3,
+            "count": 1430
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 22,
+        "terminal_state_count": 12366,
+        "peak_frontier_state_count": 12366,
+        "peak_frontier_after_site": 21,
+        "transitions_attempted": 33705,
+        "legal_occupy_transitions": 12365,
+        "rejected_occupy_transitions": 21340,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 6,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 6,
+        "exact_maximizer_count": 504,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              8,
+              15,
+              17,
+              21
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 21,
+            "density_adjusted_mass_dev": 9.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.14443487670435248,
+            "joint_score": 0.14443487670435248
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              3,
+              8,
+              15,
+              19,
+              21
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 21,
+            "density_adjusted_mass_dev": 7.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.11402753424027827,
+            "joint_score": 0.11402753424027827
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              9,
+              13,
+              20,
+              21
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 21,
+            "density_adjusted_mass_dev": 7.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.11402753424027827,
+            "joint_score": 0.11402753424027827
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              14,
+              16,
+              20,
+              21
+            ],
+            "objective_value": 0.5,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 21,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.007601835616018552,
+            "joint_score": 0.007601835616018552
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              4,
+              12,
+              18,
+              19,
+              21
+            ],
+            "objective_value": 0.5,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 21,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.007601835616018552,
+            "joint_score": 0.007601835616018552
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              4,
+              13,
+              15,
+              20,
+              21
+            ],
+            "objective_value": 0.5,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 21,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.007601835616018552,
+            "joint_score": 0.007601835616018552
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              14,
+              16,
+              20,
+              21
+            ],
+            "objective_value": 0.007601835616018552,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 21,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.007601835616018552,
+            "joint_score": 0.007601835616018552
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              4,
+              12,
+              18,
+              19,
+              21
+            ],
+            "objective_value": 0.007601835616018552,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 21,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.007601835616018552,
+            "joint_score": 0.007601835616018552
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              4,
+              13,
+              15,
+              20,
+              21
+            ],
+            "objective_value": 0.007601835616018552,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 21,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.007601835616018552,
+            "joint_score": 0.007601835616018552
+          }
+        ]
+      }
+    },
+    {
+      "n": 22,
+      "h_n": 6,
+      "maximizer_count": 1004,
+      "first_maximizer_witness": [
+        0,
+        1,
+        3,
+        7,
+        12,
+        20
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12,
+          13,
+          17,
+          19,
+          20
+        ],
+        "cardinality": 6
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 6,
+        "ground_state_degeneracy": 1004,
+        "ground_entropy_ln": 6.911747300251674,
+        "first_excited_cardinality": 5,
+        "first_excited_count": 7612,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 7612,
+        "near_ground_count_h_minus_2": 5874,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 23
+          },
+          {
+            "cardinality": 2,
+            "count": 253
+          },
+          {
+            "cardinality": 3,
+            "count": 1650
+          },
+          {
+            "cardinality": 4,
+            "count": 5874
+          },
+          {
+            "cardinality": 5,
+            "count": 7612
+          },
+          {
+            "cardinality": 6,
+            "count": 1004
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 6,
+            "count": 1004
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 5,
+            "count": 7612
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 4,
+            "count": 5874
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 3,
+            "count": 1650
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 23,
+        "terminal_state_count": 16417,
+        "peak_frontier_state_count": 16417,
+        "peak_frontier_after_site": 22,
+        "transitions_attempted": 46071,
+        "legal_occupy_transitions": 16416,
+        "rejected_occupy_transitions": 29655,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 6,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 6,
+        "exact_maximizer_count": 1004,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              4,
+              9,
+              19,
+              20,
+              22
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 22,
+            "density_adjusted_mass_dev": 3.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.04278485540459505,
+            "joint_score": 0.04278485540459505
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              4,
+              9,
+              19,
+              21,
+              22
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 22,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.028523236936396697,
+            "joint_score": 0.028523236936396697
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              4,
+              10,
+              17,
+              19,
+              22
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 22,
+            "density_adjusted_mass_dev": 5.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.07130809234099174,
+            "joint_score": 0.07130809234099174
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              4,
+              14,
+              16,
+              21,
+              22
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 22,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              8,
+              13,
+              17,
+              19,
+              20
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 2.0,
+            "prefix_ratio_n_pow_7_8": 0.13378584004765282,
+            "prefix_location": 20,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.13378584004765282
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              10,
+              13,
+              14,
+              19,
+              21
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 1.0,
+            "prefix_ratio_n_pow_7_8": 0.06689292002382641,
+            "prefix_location": 21,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.06689292002382641
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              4,
+              14,
+              16,
+              21,
+              22
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 22,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              5,
+              14,
+              15,
+              20,
+              22
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 22,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 3,
+            "witness": [
+              2,
+              4,
+              11,
+              17,
+              21,
+              22
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 22,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "n": 23,
+      "h_n": 6,
+      "maximizer_count": 1910,
+      "first_maximizer_witness": [
+        0,
+        1,
+        3,
+        7,
+        12,
+        20
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12,
+          13,
+          17,
+          19,
+          20
+        ],
+        "cardinality": 6
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 6,
+        "ground_state_degeneracy": 1910,
+        "ground_entropy_ln": 7.554858521040676,
+        "first_excited_cardinality": 5,
+        "first_excited_count": 10488,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 10488,
+        "near_ground_count_h_minus_2": 7196,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 24
+          },
+          {
+            "cardinality": 2,
+            "count": 276
+          },
+          {
+            "cardinality": 3,
+            "count": 1892
+          },
+          {
+            "cardinality": 4,
+            "count": 7196
+          },
+          {
+            "cardinality": 5,
+            "count": 10488
+          },
+          {
+            "cardinality": 6,
+            "count": 1910
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 6,
+            "count": 1910
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 5,
+            "count": 10488
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 4,
+            "count": 7196
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 3,
+            "count": 1892
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 24,
+        "terminal_state_count": 21787,
+        "peak_frontier_state_count": 21787,
+        "peak_frontier_after_site": 23,
+        "transitions_attempted": 62488,
+        "legal_occupy_transitions": 21786,
+        "rejected_occupy_transitions": 40702,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 6,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 6,
+        "exact_maximizer_count": 1910,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              4,
+              9,
+              15,
+              22,
+              23
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 23,
+            "density_adjusted_mass_dev": 7.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.10062027243492003,
+            "joint_score": 0.10062027243492003
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              4,
+              9,
+              20,
+              21,
+              23
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 23,
+            "density_adjusted_mass_dev": 3.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.04695612713629601,
+            "joint_score": 0.04695612713629601
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              4,
+              9,
+              20,
+              22,
+              23
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 23,
+            "density_adjusted_mass_dev": 2.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.03354009081164001,
+            "joint_score": 0.03354009081164001
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              14,
+              19,
+              22,
+              23
+            ],
+            "objective_value": 0.5,
+            "prefix_residual": 1.816673906749119,
+            "prefix_ratio_n_pow_7_8": 0.11688670652921689,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.006708018162328001,
+            "joint_score": 0.1235947246915449
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              15,
+              18,
+              22,
+              23
+            ],
+            "objective_value": 0.5,
+            "prefix_residual": 1.816673906749119,
+            "prefix_ratio_n_pow_7_8": 0.11688670652921689,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.006708018162328001,
+            "joint_score": 0.1235947246915449
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              15,
+              17,
+              22,
+              23
+            ],
+            "objective_value": 0.5,
+            "prefix_residual": 0.8166739067491191,
+            "prefix_ratio_n_pow_7_8": 0.052545656605523114,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.006708018162328001,
+            "joint_score": 0.059253674767851115
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              4,
+              13,
+              20,
+              21,
+              23
+            ],
+            "objective_value": 0.006708018162328001,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 23,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.006708018162328001,
+            "joint_score": 0.006708018162328001
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              4,
+              14,
+              17,
+              22,
+              23
+            ],
+            "objective_value": 0.006708018162328001,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 23,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.006708018162328001,
+            "joint_score": 0.006708018162328001
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              4,
+              15,
+              17,
+              22,
+              23
+            ],
+            "objective_value": 0.006708018162328001,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 23,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.006708018162328001,
+            "joint_score": 0.006708018162328001
+          }
+        ]
+      }
+    },
+    {
+      "n": 24,
+      "h_n": 6,
+      "maximizer_count": 3380,
+      "first_maximizer_witness": [
+        0,
+        1,
+        3,
+        7,
+        12,
+        20
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12,
+          13,
+          17,
+          19,
+          20
+        ],
+        "cardinality": 6
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 6,
+        "ground_state_degeneracy": 3380,
+        "ground_entropy_ln": 8.125630988477065,
+        "first_excited_cardinality": 5,
+        "first_excited_count": 14126,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 14126,
+        "near_ground_count_h_minus_2": 8720,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 25
+          },
+          {
+            "cardinality": 2,
+            "count": 300
+          },
+          {
+            "cardinality": 3,
+            "count": 2156
+          },
+          {
+            "cardinality": 4,
+            "count": 8720
+          },
+          {
+            "cardinality": 5,
+            "count": 14126
+          },
+          {
+            "cardinality": 6,
+            "count": 3380
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 6,
+            "count": 3380
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 5,
+            "count": 14126
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 4,
+            "count": 8720
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 3,
+            "count": 2156
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 25,
+        "terminal_state_count": 28708,
+        "peak_frontier_state_count": 28708,
+        "peak_frontier_after_site": 24,
+        "transitions_attempted": 84275,
+        "legal_occupy_transitions": 28707,
+        "rejected_occupy_transitions": 55568,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 6,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 6,
+        "exact_maximizer_count": 3380,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              5,
+              11,
+              15,
+              23,
+              24
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 24,
+            "density_adjusted_mass_dev": 6.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.07592080302375963,
+            "joint_score": 0.07592080302375963
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              5,
+              11,
+              20,
+              21,
+              24
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 24,
+            "density_adjusted_mass_dev": 3.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.037960401511879814,
+            "joint_score": 0.037960401511879814
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              5,
+              11,
+              20,
+              23,
+              24
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 24,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.012653467170626605,
+            "joint_score": 0.012653467170626605
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              15,
+              20,
+              23,
+              24
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 2.4040820577345725,
+            "prefix_ratio_n_pow_7_8": 0.14902682560396197,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.14902682560396197
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              16,
+              19,
+              23,
+              24
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 2.4040820577345725,
+            "prefix_ratio_n_pow_7_8": 0.14902682560396197,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.14902682560396197
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              16,
+              18,
+              23,
+              24
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 1.4040820577345725,
+            "prefix_ratio_n_pow_7_8": 0.08703774951377488,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.08703774951377488
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              5,
+              11,
+              21,
+              23,
+              24
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 24,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              5,
+              14,
+              20,
+              21,
+              24
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 24,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              5,
+              15,
+              17,
+              23,
+              24
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 24,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "n": 25,
+      "h_n": 7,
+      "maximizer_count": 10,
+      "first_maximizer_witness": [
+        0,
+        1,
+        4,
+        10,
+        18,
+        23,
+        25
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          4,
+          10,
+          18,
+          23,
+          25
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          4,
+          10,
+          18,
+          23,
+          25
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          13,
+          14,
+          15,
+          17,
+          18,
+          19,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "cardinality": 7
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 7,
+        "ground_state_degeneracy": 10,
+        "ground_entropy_ln": 2.302585092994046,
+        "first_excited_cardinality": 6,
+        "first_excited_count": 5688,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 5688,
+        "near_ground_count_h_minus_2": 18744,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 26
+          },
+          {
+            "cardinality": 2,
+            "count": 325
+          },
+          {
+            "cardinality": 3,
+            "count": 2444
+          },
+          {
+            "cardinality": 4,
+            "count": 10484
+          },
+          {
+            "cardinality": 5,
+            "count": 18744
+          },
+          {
+            "cardinality": 6,
+            "count": 5688
+          },
+          {
+            "cardinality": 7,
+            "count": 10
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 7,
+            "count": 10
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 6,
+            "count": 5688
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 5,
+            "count": 18744
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 4,
+            "count": 10484
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 26,
+        "terminal_state_count": 37722,
+        "peak_frontier_state_count": 37722,
+        "peak_frontier_after_site": 25,
+        "transitions_attempted": 112983,
+        "legal_occupy_transitions": 37721,
+        "rejected_occupy_transitions": 75262,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 7,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 7,
+        "exact_maximizer_count": 10,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              7,
+              11,
+              20,
+              23,
+              25
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 25,
+            "density_adjusted_mass_dev": 13.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.15551627324700693,
+            "joint_score": 0.15551627324700693
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              11,
+              16,
+              19,
+              23,
+              25
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 25,
+            "density_adjusted_mass_dev": 5.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.05981395124884882,
+            "joint_score": 0.05981395124884882
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              5,
+              14,
+              18,
+              24,
+              25
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 5,
+            "density_adjusted_mass_dev": 12.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.14355348299723716,
+            "joint_score": 0.14355348299723716
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              4,
+              9,
+              15,
+              22,
+              23,
+              25
+            ],
+            "objective_value": 2.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 25,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.023925580499539526,
+            "joint_score": 0.023925580499539526
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              11,
+              16,
+              19,
+              23,
+              25
+            ],
+            "objective_value": 5.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 25,
+            "density_adjusted_mass_dev": 5.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.05981395124884882,
+            "joint_score": 0.05981395124884882
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              7,
+              15,
+              21,
+              24,
+              25
+            ],
+            "objective_value": 6.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 25,
+            "density_adjusted_mass_dev": 6.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.07177674149861858,
+            "joint_score": 0.07177674149861858
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              4,
+              9,
+              15,
+              22,
+              23,
+              25
+            ],
+            "objective_value": 0.023925580499539526,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 25,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.023925580499539526,
+            "joint_score": 0.023925580499539526
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              11,
+              16,
+              19,
+              23,
+              25
+            ],
+            "objective_value": 0.05981395124884882,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 25,
+            "density_adjusted_mass_dev": 5.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.05981395124884882,
+            "joint_score": 0.05981395124884882
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              7,
+              15,
+              21,
+              24,
+              25
+            ],
+            "objective_value": 0.07177674149861858,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 25,
+            "density_adjusted_mass_dev": 6.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.07177674149861858,
+            "joint_score": 0.07177674149861858
+          }
+        ]
+      }
+    },
+    {
+      "n": 26,
+      "h_n": 7,
+      "maximizer_count": 34,
+      "first_maximizer_witness": [
+        0,
+        1,
+        4,
+        10,
+        18,
+        23,
+        25
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          4,
+          10,
+          18,
+          23,
+          25
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          4,
+          10,
+          18,
+          23,
+          25
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          13,
+          14,
+          15,
+          17,
+          18,
+          19,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "cardinality": 7
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 7,
+        "ground_state_degeneracy": 34,
+        "ground_entropy_ln": 3.5263605246161616,
+        "first_excited_cardinality": 6,
+        "first_excited_count": 9036,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 9036,
+        "near_ground_count_h_minus_2": 24390,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 27
+          },
+          {
+            "cardinality": 2,
+            "count": 351
+          },
+          {
+            "cardinality": 3,
+            "count": 2756
+          },
+          {
+            "cardinality": 4,
+            "count": 12488
+          },
+          {
+            "cardinality": 5,
+            "count": 24390
+          },
+          {
+            "cardinality": 6,
+            "count": 9036
+          },
+          {
+            "cardinality": 7,
+            "count": 34
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 7,
+            "count": 34
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 6,
+            "count": 9036
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 5,
+            "count": 24390
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 4,
+            "count": 12488
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 27,
+        "terminal_state_count": 49083,
+        "peak_frontier_state_count": 49083,
+        "peak_frontier_after_site": 26,
+        "transitions_attempted": 150705,
+        "legal_occupy_transitions": 49082,
+        "rejected_occupy_transitions": 101623,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 7,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 7,
+        "exact_maximizer_count": 34,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              6,
+              14,
+              17,
+              24,
+              26
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 26,
+            "density_adjusted_mass_dev": 16.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.18135587505780046,
+            "joint_score": 0.18135587505780046
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              8,
+              11,
+              20,
+              24,
+              26
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 26,
+            "density_adjusted_mass_dev": 14.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.1586863906755754,
+            "joint_score": 0.1586863906755754
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              6,
+              15,
+              18,
+              25,
+              26
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 26,
+            "density_adjusted_mass_dev": 12.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.13601690629335034,
+            "joint_score": 0.13601690629335034
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              12,
+              18,
+              21,
+              25,
+              26
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 26,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              4,
+              14,
+              17,
+              19,
+              25,
+              26
+            ],
+            "objective_value": 1.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 26,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.011334742191112529,
+            "joint_score": 0.011334742191112529
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              5,
+              10,
+              16,
+              23,
+              24,
+              26
+            ],
+            "objective_value": 1.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 26,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.011334742191112529,
+            "joint_score": 0.011334742191112529
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              12,
+              18,
+              21,
+              25,
+              26
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 26,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              4,
+              14,
+              17,
+              19,
+              25,
+              26
+            ],
+            "objective_value": 0.011334742191112529,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 26,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.011334742191112529,
+            "joint_score": 0.011334742191112529
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              5,
+              10,
+              16,
+              23,
+              24,
+              26
+            ],
+            "objective_value": 0.011334742191112529,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 26,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.011334742191112529,
+            "joint_score": 0.011334742191112529
+          }
+        ]
+      }
+    },
+    {
+      "n": 27,
+      "h_n": 7,
+      "maximizer_count": 98,
+      "first_maximizer_witness": [
+        0,
+        1,
+        3,
+        8,
+        17,
+        21,
+        27
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          3,
+          8,
+          17,
+          21,
+          27
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          3,
+          8,
+          17,
+          21,
+          27
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          24,
+          26,
+          27
+        ],
+        "cardinality": 7
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 7,
+        "ground_state_degeneracy": 98,
+        "ground_entropy_ln": 4.584967478670572,
+        "first_excited_cardinality": 6,
+        "first_excited_count": 14106,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 14106,
+        "near_ground_count_h_minus_2": 31436,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 28
+          },
+          {
+            "cardinality": 2,
+            "count": 378
+          },
+          {
+            "cardinality": 3,
+            "count": 3094
+          },
+          {
+            "cardinality": 4,
+            "count": 14780
+          },
+          {
+            "cardinality": 5,
+            "count": 31436
+          },
+          {
+            "cardinality": 6,
+            "count": 14106
+          },
+          {
+            "cardinality": 7,
+            "count": 98
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 7,
+            "count": 98
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 6,
+            "count": 14106
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 5,
+            "count": 31436
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 4,
+            "count": 14780
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 28,
+        "terminal_state_count": 63921,
+        "peak_frontier_state_count": 63921,
+        "peak_frontier_after_site": 27,
+        "transitions_attempted": 199788,
+        "legal_occupy_transitions": 63920,
+        "rejected_occupy_transitions": 135868,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 7,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 7,
+        "exact_maximizer_count": 98,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              9,
+              15,
+              23,
+              26,
+              27
+            ],
+            "objective_value": 1.7763568394002505e-15,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 9.933148285643546e-17,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 6.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.06456929947198042,
+            "joint_score": 0.06456929947198052
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              12,
+              18,
+              23,
+              26,
+              27
+            ],
+            "objective_value": 1.7763568394002505e-15,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 9.933148285643546e-17,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 9.933148285643546e-17
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              11,
+              20,
+              21,
+              25,
+              27
+            ],
+            "objective_value": 1.7763568394002505e-15,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 9.933148285643546e-17,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.010761549911996737,
+            "joint_score": 0.010761549911996836
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              12,
+              18,
+              23,
+              26,
+              27
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 9.933148285643546e-17,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 9.933148285643546e-17
+          },
+          {
+            "rank": 2,
+            "witness": [
+              2,
+              4,
+              9,
+              17,
+              23,
+              26,
+              27
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 9.933148285643546e-17,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 9.933148285643546e-17
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              11,
+              20,
+              21,
+              25,
+              27
+            ],
+            "objective_value": 1.0,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 9.933148285643546e-17,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.010761549911996737,
+            "joint_score": 0.010761549911996836
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              12,
+              18,
+              23,
+              26,
+              27
+            ],
+            "objective_value": 9.933148285643546e-17,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 9.933148285643546e-17,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 9.933148285643546e-17
+          },
+          {
+            "rank": 2,
+            "witness": [
+              2,
+              4,
+              9,
+              17,
+              23,
+              26,
+              27
+            ],
+            "objective_value": 9.933148285643546e-17,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 9.933148285643546e-17,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 9.933148285643546e-17
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              11,
+              20,
+              21,
+              25,
+              27
+            ],
+            "objective_value": 0.010761549911996836,
+            "prefix_residual": 1.7763568394002505e-15,
+            "prefix_ratio_n_pow_7_8": 9.933148285643546e-17,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.010761549911996737,
+            "joint_score": 0.010761549911996836
+          }
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "h_n": 7,
+      "maximizer_count": 282,
+      "first_maximizer_witness": [
+        0,
+        1,
+        3,
+        8,
+        12,
+        22,
+        28
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          3,
+          8,
+          12,
+          22,
+          28
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          3,
+          8,
+          12,
+          22,
+          28
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          14,
+          16,
+          19,
+          20,
+          21,
+          22,
+          25,
+          27,
+          28
+        ],
+        "cardinality": 7
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 7,
+        "ground_state_degeneracy": 282,
+        "ground_entropy_ln": 5.641907070938114,
+        "first_excited_cardinality": 6,
+        "first_excited_count": 21190,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 21190,
+        "near_ground_count_h_minus_2": 39914,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 29
+          },
+          {
+            "cardinality": 2,
+            "count": 406
+          },
+          {
+            "cardinality": 3,
+            "count": 3458
+          },
+          {
+            "cardinality": 4,
+            "count": 17360
+          },
+          {
+            "cardinality": 5,
+            "count": 39914
+          },
+          {
+            "cardinality": 6,
+            "count": 21190
+          },
+          {
+            "cardinality": 7,
+            "count": 282
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 7,
+            "count": 282
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 6,
+            "count": 21190
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 5,
+            "count": 39914
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 4,
+            "count": 17360
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 29,
+        "terminal_state_count": 82640,
+        "peak_frontier_state_count": 82640,
+        "peak_frontier_after_site": 28,
+        "transitions_attempted": 263709,
+        "legal_occupy_transitions": 82639,
+        "rejected_occupy_transitions": 181070,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 7,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 7,
+        "exact_maximizer_count": 282,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              7,
+              16,
+              24,
+              27,
+              28
+            ],
+            "objective_value": 3.552713678800501e-15,
+            "prefix_residual": 3.552713678800501e-15,
+            "prefix_ratio_n_pow_7_8": 1.924407012104722e-16,
+            "prefix_location": 28,
+            "density_adjusted_mass_dev": 8.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0818931721433853,
+            "joint_score": 0.0818931721433855
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              7,
+              18,
+              24,
+              27,
+              28
+            ],
+            "objective_value": 3.552713678800501e-15,
+            "prefix_residual": 3.552713678800501e-15,
+            "prefix_ratio_n_pow_7_8": 1.924407012104722e-16,
+            "prefix_location": 28,
+            "density_adjusted_mass_dev": 6.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.06141987910753898,
+            "joint_score": 0.061419879107539176
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              8,
+              17,
+              24,
+              27,
+              28
+            ],
+            "objective_value": 3.552713678800501e-15,
+            "prefix_residual": 3.552713678800501e-15,
+            "prefix_ratio_n_pow_7_8": 1.924407012104722e-16,
+            "prefix_location": 28,
+            "density_adjusted_mass_dev": 6.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.06141987910753898,
+            "joint_score": 0.061419879107539176
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              4,
+              15,
+              18,
+              20,
+              27,
+              28
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 3.552713678800501e-15,
+            "prefix_ratio_n_pow_7_8": 1.924407012104722e-16,
+            "prefix_location": 28,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.924407012104722e-16
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              6,
+              10,
+              19,
+              24,
+              26,
+              27
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 1.0000000000000036,
+            "prefix_ratio_n_pow_7_8": 0.05416724189140017,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.05416724189140017
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              6,
+              11,
+              15,
+              25,
+              27,
+              28
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 3.552713678800501e-15,
+            "prefix_ratio_n_pow_7_8": 1.924407012104722e-16,
+            "prefix_location": 28,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.924407012104722e-16
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              4,
+              15,
+              18,
+              20,
+              27,
+              28
+            ],
+            "objective_value": 1.924407012104722e-16,
+            "prefix_residual": 3.552713678800501e-15,
+            "prefix_ratio_n_pow_7_8": 1.924407012104722e-16,
+            "prefix_location": 28,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.924407012104722e-16
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              6,
+              11,
+              15,
+              25,
+              27,
+              28
+            ],
+            "objective_value": 1.924407012104722e-16,
+            "prefix_residual": 3.552713678800501e-15,
+            "prefix_ratio_n_pow_7_8": 1.924407012104722e-16,
+            "prefix_location": 28,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.924407012104722e-16
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              8,
+              10,
+              15,
+              24,
+              27,
+              28
+            ],
+            "objective_value": 1.924407012104722e-16,
+            "prefix_residual": 3.552713678800501e-15,
+            "prefix_ratio_n_pow_7_8": 1.924407012104722e-16,
+            "prefix_location": 28,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 1.924407012104722e-16
+          }
+        ]
+      }
+    },
+    {
+      "n": 29,
+      "h_n": 7,
+      "maximizer_count": 760,
+      "first_maximizer_witness": [
+        0,
+        1,
+        3,
+        8,
+        12,
+        22,
+        28
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          3,
+          8,
+          12,
+          22,
+          28
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          3,
+          8,
+          12,
+          22,
+          28
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          14,
+          16,
+          19,
+          20,
+          21,
+          22,
+          25,
+          27,
+          28
+        ],
+        "cardinality": 7
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 7,
+        "ground_state_degeneracy": 760,
+        "ground_entropy_ln": 6.633318433280377,
+        "first_excited_cardinality": 6,
+        "first_excited_count": 31158,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 31158,
+        "near_ground_count_h_minus_2": 50212,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 30
+          },
+          {
+            "cardinality": 2,
+            "count": 435
+          },
+          {
+            "cardinality": 3,
+            "count": 3850
+          },
+          {
+            "cardinality": 4,
+            "count": 20276
+          },
+          {
+            "cardinality": 5,
+            "count": 50212
+          },
+          {
+            "cardinality": 6,
+            "count": 31158
+          },
+          {
+            "cardinality": 7,
+            "count": 760
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 7,
+            "count": 760
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 6,
+            "count": 31158
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 5,
+            "count": 50212
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 4,
+            "count": 20276
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 30,
+        "terminal_state_count": 106722,
+        "peak_frontier_state_count": 106722,
+        "peak_frontier_after_site": 29,
+        "transitions_attempted": 346349,
+        "legal_occupy_transitions": 106721,
+        "rejected_occupy_transitions": 239628,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 7,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 7,
+        "exact_maximizer_count": 760,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              8,
+              15,
+              19,
+              28,
+              29
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 29,
+            "density_adjusted_mass_dev": 14.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.13656228929461536,
+            "joint_score": 0.13656228929461536
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              3,
+              9,
+              17,
+              24,
+              28,
+              29
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 29,
+            "density_adjusted_mass_dev": 6.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.05852669541197801,
+            "joint_score": 0.05852669541197801
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              10,
+              18,
+              23,
+              27,
+              29
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 29,
+            "density_adjusted_mass_dev": 6.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.05852669541197801,
+            "joint_score": 0.05852669541197801
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              12,
+              22,
+              23,
+              27,
+              29
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 29,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              5,
+              16,
+              18,
+              24,
+              25,
+              28
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 1.0,
+            "prefix_ratio_n_pow_7_8": 0.05252931673507741,
+            "prefix_location": 28,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.05252931673507741
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              9,
+              12,
+              20,
+              22,
+              26,
+              27
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 2.0,
+            "prefix_ratio_n_pow_7_8": 0.10505863347015482,
+            "prefix_location": 27,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.10505863347015482
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              12,
+              22,
+              23,
+              27,
+              29
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 29,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              3,
+              14,
+              19,
+              22,
+              28,
+              29
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 29,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              6,
+              8,
+              19,
+              25,
+              28,
+              29
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 29,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "h_n": 7,
+      "maximizer_count": 1618,
+      "first_maximizer_witness": [
+        0,
+        1,
+        3,
+        7,
+        12,
+        20,
+        30
+      ],
+      "representative_ground_state_encoding": {
+        "occupied_sites": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20,
+          30
+        ],
+        "occupied_suffix": [
+          0,
+          1,
+          3,
+          7,
+          12,
+          20,
+          30
+        ],
+        "used_differences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          17,
+          18,
+          19,
+          20,
+          23,
+          27,
+          29,
+          30
+        ],
+        "cardinality": 7
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 7,
+        "ground_state_degeneracy": 1618,
+        "ground_entropy_ln": 7.388946097618437,
+        "first_excited_cardinality": 6,
+        "first_excited_count": 44370,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 44370,
+        "near_ground_count_h_minus_2": 62390,
+        "layer_counts": [
+          {
+            "cardinality": 0,
+            "count": 1
+          },
+          {
+            "cardinality": 1,
+            "count": 31
+          },
+          {
+            "cardinality": 2,
+            "count": 465
+          },
+          {
+            "cardinality": 3,
+            "count": 4270
+          },
+          {
+            "cardinality": 4,
+            "count": 23530
+          },
+          {
+            "cardinality": 5,
+            "count": 62390
+          },
+          {
+            "cardinality": 6,
+            "count": 44370
+          },
+          {
+            "cardinality": 7,
+            "count": 1618
+          }
+        ],
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 7,
+            "count": 1618
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 6,
+            "count": 44370
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 5,
+            "count": 62390
+          },
+          {
+            "deficiency": 3,
+            "cardinality": 4,
+            "count": 23530
+          }
+        ]
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "full_state_hashmap",
+        "sites_processed": 31,
+        "terminal_state_count": 136675,
+        "peak_frontier_state_count": 136675,
+        "peak_frontier_after_site": 30,
+        "transitions_attempted": 453071,
+        "legal_occupy_transitions": 136674,
+        "rejected_occupy_transitions": 316397,
+        "prune_deficiency": null,
+        "pruning_target_h_n": 7,
+        "pruning_min_cardinality": null,
+        "reachability_pruned_states": 0
+      },
+      "parity_reference": {
+        "exact_h_n": 7,
+        "exact_maximizer_count": 1618,
+        "h_n_matches": true,
+        "maximizer_count_matches": true
+      },
+      "top_k_frontier": {
+        "k": 3,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature ground-state selections under small positive prefix/mass fields after cardinality is fixed at h(n)",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              9,
+              16,
+              20,
+              28,
+              30
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 30,
+            "density_adjusted_mass_dev": 14.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.13034257918140754,
+            "joint_score": 0.13034257918140754
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              3,
+              11,
+              23,
+              24,
+              28,
+              30
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 30,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.009310184227243395,
+            "joint_score": 0.009310184227243395
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              11,
+              23,
+              25,
+              29,
+              30
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 30,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.009310184227243395,
+            "joint_score": 0.009310184227243395
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              16,
+              21,
+              24,
+              28,
+              30
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 1.613872124741695,
+            "prefix_ratio_n_pow_7_8": 0.08229776149259398,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.08229776149259398
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              14,
+              21,
+              24,
+              29,
+              30
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.613872124741695,
+            "prefix_ratio_n_pow_7_8": 0.03130378233469385,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.03130378233469385
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              17,
+              19,
+              25,
+              26,
+              30
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 30,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              17,
+              19,
+              25,
+              26,
+              30
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 30,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              3,
+              16,
+              19,
+              25,
+              26,
+              30
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 30,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              6,
+              10,
+              17,
+              27,
+              29,
+              30
+            ],
+            "objective_value": 0.0,
+            "prefix_residual": 0.0,
+            "prefix_ratio_n_pow_7_8": 0.0,
+            "prefix_location": 30,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n_pow_11_8": 0.0,
+            "joint_score": 0.0
+          }
+        ]
+      }
+    }
+  ],
+  "parity_summary": {
+    "checked_count": 11,
+    "h_n_match_count": 11,
+    "maximizer_count_match_count": 11,
+    "mismatch_ns": []
+  }
+}

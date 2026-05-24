@@ -1,0 +1,143 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-FRYNTOV-NAZAROV-2008-LITERATURE-READ-20260509-01",
+  "experiment_type": "literature_read",
+  "scope": "internal_prior_art_review",
+  "honest_scope": "I read the paper end-to-end. No portfolio binding, no claim upgrade, no IP filing implication.",
+  "date": "2026-05-09",
+  "reader": "Claude Code session, Erdos-114 prior-art gap follow-up",
+  "source": {
+    "title": "New estimates for the length of the Erdos-Herzog-Piranian lemniscate",
+    "authors": ["Alexander Fryntov", "Fedor Nazarov"],
+    "arxiv_id": "0808.0717",
+    "version": "v1",
+    "title_page_date": "2008-05-08",
+    "arxiv_stamp": "2008-08-05",
+    "pages": 18,
+    "msc": "30C10",
+    "subject": ["math.CA", "math.CV"],
+    "funding_acknowledged": "NSF DMS0501067 (Nazarov)",
+    "local_pdf": "/tmp/fn08.pdf",
+    "local_html": "/tmp/fn08_abs.html"
+  },
+  "questions": [
+    {
+      "q": 1,
+      "topic": "What length bound do they prove?",
+      "verdict": "Three bounds, increasing sharpness, culminating in |L| <= 2n + O(n^{7/8}) asymptotic for all monic p of degree n.",
+      "bounds": [
+        {
+          "section": "7",
+          "page": 10,
+          "name": "simplest upper bound",
+          "form": "|L| <= 2*pi*(2n - 1)",
+          "refinement": "|L| <= 2*pi*(2k - 1) where k = number of distinct roots",
+          "proof_sketch": "Bound |L| by area integral of logarithmic-derivative sum; Polya theorem (Ransford [11], Thm 5.3.5) gives area(E) <= pi since logarithmic capacity of E equals 1."
+        },
+        {
+          "section": "8",
+          "page": "10-11",
+          "name": "improved upper bound",
+          "form": "|L| <= 2*pi*(n - 1 + sqrt(n))",
+          "comparison_to_prior": "Marginally worse than Danchenko's 2*pi*n.",
+          "proof_sketch": "Reweight extension s = |p|*|phi|/phi; |L| = 2*int|p'| - int(|p*phi|/phi)*psi (eq. 6); Cauchy on int|p'|^2 = pi*n gives int|p'| <= pi*sqrt(n); tail bounded by 2*pi*(n-1)."
+        },
+        {
+          "section": "9",
+          "page": "11-17",
+          "name": "asymptotic estimate",
+          "form": "|L| <= 2n + O(n^{7/8}) as n -> infinity, for all monic polynomials p of degree n",
+          "explicit_inequality": "|L| <= 26*pi*delta*n + 2*pi*sqrt(n) + e^{2*delta} * (1/pi + 2*delta + 4a/(delta^3 * sqrt(n))) * 2*pi*(n-1) for every delta > 0 (page 16)",
+          "optimal_parameter": "delta ~ n^{-1/8}",
+          "open_remark_by_authors": "Power 7/8 can be substantially improved; bringing below 1/2 is challenging."
+        }
+      ],
+      "auxiliary_result_section_6": "|L_p| <= |L_{p_0}| for p sufficiently close to p_0 = z^n - 1; i.e. p_0 is a strict local maximum of |L| in coefficient space. Qualitative; no explicit neighborhood radius."
+    },
+    {
+      "q": 2,
+      "topic": "Explicit constants?",
+      "verdict": "Two regimes. Anonymous c_n / C 'depending on n only' in section 5-6 local-max argument. Fully numeric explicit prefactors throughout sections 7-9 asymptotic chain.",
+      "anonymous_constants": [
+        {"section": "5", "page": 5, "symbol": "c_n", "context": "|L_p_tilde intersect D_r| <= 2nr - c_n; c_n > 0 depends on n only."},
+        {"section": "6", "page": 8, "symbol": "C", "context": "|G intersect T_rho| <= C*a^2*rho^{-1}; absolute positive constant depending on n only (eq. 5)."}
+      ],
+      "explicit_numerics": [
+        "section 7: 2*pi*(2n-1)",
+        "section 8: pi*n (exact); pi*sqrt(n) Cauchy; 2*pi*(n-1) tail",
+        "section 9 final: 26*pi*delta*n + 2*pi*sqrt(n) + e^{2*delta}*(1/pi + 2*delta + 4a/(delta^3*sqrt(n)))*2*pi*(n-1)",
+        "section 9 Remez application (top of p. 9): 4*2^{1/n}*r^2*int_0^pi d_alpha/|cos(n*alpha)|^{1/n} = C*r^2; the 4*2^{1/n} prefactor is named explicitly."
+      ],
+      "uses_vinogradov_symbol": false,
+      "constants_extractable_to_named_K": "Yes. A careful reader can extract a fully numeric K_FN such that |L| <= 2n + K_FN * n^{7/8} for all n >= N_FN_0, where both K_FN and N_FN_0 are computable from the section 9 inequalities. Authors do not collect K_FN explicitly."
+    },
+    {
+      "q": 3,
+      "topic": "C_0-style scaling? (key question)",
+      "verdict": "NEUTRAL on Track A4's K_logn(C_0) = K_logn_universal * C_0^4. The paper has no C_0 parameter. Closest analogues are delta and r; neither appears with power 4.",
+      "key_finding": "Dominant free-parameter power in section 9 is delta^{-3} (cubic, NOT quartic). Optimization delta + 1/(delta^3 * sqrt(n)) yields delta ~ n^{-1/8}.",
+      "parameters_present": [
+        {"symbol": "delta", "range": "(0, 1/4)", "role": "good-set radius defining E_delta via inequalities (7), (8)", "powers_appearing": ["+1 (in 26*pi*delta*n)", "+1 (in 2*delta)", "-3 (in 4a/(delta^3*sqrt(n)))", "exponential e^{2*delta}, e^{4*delta}"]},
+        {"symbol": "a", "definition": "a = sum_{k != 0} |a_k|/|k|; Fourier coefficients of Re_+ z on unit circle (eq. 16)", "is_free_parameter": false, "note": "Fixed by the function Re_+ z; not user-tunable; cannot play role of Tao's C_0."},
+        {"symbol": "r", "range": "(4a, 1/4)", "role": "annulus radius in section 6 first-variation argument only", "is_free_parameter": false, "note": "Set to r = a^{2/3} where a = max_k |a_k|^{1/k} is smallness scale; adapted to perturbation, not free."}
+      ],
+      "powers_actually_appearing_in_paper": [-3, "1", 2, "n+1", "2/3", "exponential"],
+      "power_4_present": false,
+      "implication_for_track_a4": "Fryntov-Nazarov's text neither confirms nor refutes the C_0^4 claim on its own terms. It DOES refute any narrative that says the C_0^4 factor is inherited from Fryntov-Nazarov. Track A4 must source C_0^4 from elsewhere (likely Tao 2512.12455 internal accounting) or restate the claim."
+    },
+    {
+      "q": 4,
+      "topic": "Methods compared to Tao 2512.12455",
+      "verdict": "Shared technique family (Stokes / Cauchy / area-integral) but different decomposition surgery. Constants do not transfer cleanly.",
+      "shared_with_tao": [
+        "Stokes formula: |L| = 2 Re int_E partial-s dA (Fryntov-Nazarov eq. 4)",
+        "Logarithmic derivative phi = p'/p with pole-at-roots decomposition: 2 partial-s = (|phi|/phi)*(sum_eta 1/(z-eta) - sum_zeta 1/(z-zeta))",
+        "Cauchy / Holder on int|p'|^k dA (e.g. int|p'|^2 = pi*n exact identity)"
+      ],
+      "different_from_tao": [
+        "Fryntov-Nazarov uses good-set E_delta + bad-set tubes + Polya capacity cover F (squares of side delta^2/sqrt(n)). Single scalar delta in (0, 1/4).",
+        "No inside / annulus / outside trichotomy in the asymptotic argument (section 9). The closest radial split is in section 6's first-variation argument near p_0, not the asymptotic estimate.",
+        "Auxiliary tools unique to Fryntov-Nazarov: Poincare central-projection on sphere of radius R -> infinity (section 5, pp. 5-6); Remez theorem from Borwein-Erdelyi [12] Thm 5.1.1 (top of p. 9).",
+        "Tao's C_0-parametrized annulus accounting is absent. No free large parameter is used to control an outer radial shell."
+      ],
+      "implication": "Constants extracted from Fryntov-Nazarov's delta-optimization will not transfer term-for-term to Tao's C_0-parametrized accounting. Any bridge between the two must be reconstructed, not invoked."
+    },
+    {
+      "q": 5,
+      "topic": "Claim ceiling and relation to predecessors / Tao",
+      "verdict": "Section 9 is asymptotic for all n; resolves no new finite-n cases. Section 6 local-max is qualitative.",
+      "predecessor_chain": [
+        {"year": 1958, "authors": "Erdos, Herzog, Piranian", "result": "Original conjecture |L_p| <= |L_{p_0}| = 2n + O(1); listed as Problem 12.", "ref": "[1] J. Anal. Math. 6, 125-148"},
+        {"year": 1960, "authors": "Dolzhenko", "result": "First upper bound |L| <= 4*pi*n", "ref": "[2] PhD thesis, Moscow (Russian); published 1963 [3]"},
+        {"year": 1961, "authors": "Pommerenke", "result": "|L| <= 74*n^2 (looser but better-known)", "ref": "[4] Michigan Math J 8:2, 97-115"},
+        {"year": 1995, "authors": "Borwein", "result": "|L| <= 8*e*pi*n (apparently unaware of Dolzhenko)", "ref": "[5] Proc AMS 123:3, 797-799"},
+        {"year": 1999, "authors": "Eremenko, Hayman", "result": "Proved EHP for n=2; all critical points of extremal p lie on L_p; |L| <= 9.173*n for all n.", "ref": "[6] Michigan Math J 46:2, 409-415; arXiv:0805.2295"},
+        {"year": 2007, "authors": "Danchenko", "result": "|L| <= 2*pi*n; best published upper bound at time of writing.", "ref": "[7] Mat. Sb. 198, 51-58"},
+        {"year": 2008, "authors": "Fryntov, Nazarov", "result": "|L| <= 2n + O(n^{7/8}); first sub-leading remainder; |L_p| <= |L_{p_0}| qualitatively near p_0.", "ref": "this paper, arXiv:0808.0717"}
+      ],
+      "finite_n_cases_resolved_by_paper": "None. Only n=2 has been resolved (Eremenko-Hayman 1999).",
+      "relation_to_tao_2512_12455": "Tao's large-n result sits downstream of Fryntov-Nazarov in the same asymptotic-improvement lineage. Both improve the o(n) remainder. Neither is a finite-n resolution.",
+      "leading_constant_2_is_sharp": true
+    }
+  ],
+  "implications": {
+    "track_a4_c0_to_4th_power_claim": {
+      "verdict": "NEUTRAL_ON_VALUE_NEGATIVE_ON_CITATION",
+      "explanation": "Fryntov-Nazarov has no C_0 and no power-4 free parameter anywhere in the bound. Track A4 cannot cite Fryntov-Nazarov as the prior-art warrant for C_0^4. If the C_0^4 power is correct, it must come from Tao 2512.12455 internal accounting or fresh derivation, not from Fryntov-Nazarov.",
+      "honest_label": "The C_0^4 claim survives only if independently warranted. The Perplexity flag was correct to surface this paper, but the paper itself does not contradict the value of the power; it contradicts the attribution."
+    },
+    "bridge_program_n0_target": {
+      "verdict": "FRYNTOV_NAZAROV_DOES_NOT_CONSTRAIN_N0",
+      "soft_threshold": "delta = n^{-1/8} requires delta < 1/4, i.e. n > 4^8 = 65,536, for the section 9 OPTIMIZATION to be in range. Pre-optimized form valid for all n.",
+      "implication_for_bridge_at_small_n": "Bridge program operates at n <= 14, far below 6.5e4 threshold. Fryntov-Nazarov is structural / methodological reference, not a numerical N_0 constraint."
+    },
+    "acknowledgment_paragraph_for_future_preprints": "The decomposition strategy used here builds on the Stokes-formula framework introduced for the Erdos-Herzog-Piranian lemniscate by Fryntov and Nazarov (arXiv:0808.0717, 2008), who proved |L| <= 2n + O(n^{7/8}) asymptotically and showed that p_0(z) = z^n - 1 is a local maximum of the lemniscate length in coefficient space. We use a different parameter trichotomy than their good-set / bad-set / capacity-cover surgery, and our parameter dependence does not match theirs term-for-term, but the underlying analytic primitives (Stokes reduction |L| = 2 Re int_E partial-s dA, logarithmic-derivative pole decomposition, area-integral Cauchy on |p'|) are theirs. Their o(n) bound was the first sub-leading remainder for the EHP problem and remained the best published asymptotic estimate prior to Tao (2512.12455)."
+  },
+  "reading_audit": {
+    "pages_read": "1 through 18 (full paper)",
+    "tools_used": ["WebFetch on arxiv abstract", "curl on PDF", "PDF reader on /tmp/fn08.pdf"],
+    "constants_quoted_verbatim": ["26*pi*delta*n", "2*pi*sqrt(n)", "e^{2*delta}", "4a/(delta^3*sqrt(n))", "2*pi*(n-1)"],
+    "citation_anchors": ["section 4 eq. (2)-(4)", "section 5 Lemma 1 + p. 5-6 sphere argument", "section 6 eq. (5) page 8", "section 7 page 10 (2*pi*(2n-1))", "section 8 page 11 eq. (6)", "section 9 eqs. (7)-(18) pages 12-16", "page 16 final inequality", "page 17 optimization delta = n^{-1/8} -> 2n + O(n^{7/8})"],
+    "embargoed_tokens_check": "no occurrences of 'Feynman', 'feynman', or 'solver' in this artifact"
+  },
+  "honest_scope_statement": "Internal infrastructure / literature-review artifact. Read-only on the source paper. Not a portfolio claim, not a hypothesis upgrade, not bound to any IP filing. Triggers no scorecard change. Single purpose: answer five specific Track A4 questions with paper-section citations."
+}

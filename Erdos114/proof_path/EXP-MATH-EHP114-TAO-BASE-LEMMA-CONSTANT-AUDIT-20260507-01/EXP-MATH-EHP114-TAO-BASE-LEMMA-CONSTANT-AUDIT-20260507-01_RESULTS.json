@@ -1,0 +1,352 @@
+{
+  "claim_ceiling": "Base-lemma constant audit only. This packet does not provide a numeric Tao threshold, does not authorize n=15 or higher computation, and does not prove the full all-degree statement.",
+  "constant_seed_rows": [
+    {
+      "constant_status": "OPAQUE_SUBDEPENDENCY",
+      "constant_symbol": "K_disp_split",
+      "dependency_rows": [
+        {
+          "dependency_status": "OPAQUE_SUBDEPENDENCY",
+          "environment": "equation",
+          "label": "markov-many",
+          "named_blocker": "asymptotic_or_comparison_constant_not_numeric",
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{markov-many} \\# \\{ \\zeta: \\zeta \\in D(0,2\\|p\\|_1/n) \\} \\geq n-1-\\frac{n}{2} \\gg n. \\end{equation}",
+          "source_span": [
+            246,
+            248
+          ],
+          "title": ""
+        },
+        {
+          "dependency_status": "SYMBOLIC_CONSTANT_READY",
+          "environment": "equation",
+          "label": "disp-upper",
+          "named_blocker": null,
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{disp-upper} |z_0 - \\bar{z}| \\leq \\frac{1}{n} \\sum_{i=1}^n |z_0 - z_i| \\leq |z_0 - \\bar{z}| + \\frac{1}{n} \\Disp \\{z_1,\\dots,z_n\\} \\end{equation}",
+          "source_span": [
+            474,
+            476
+          ],
+          "title": ""
+        },
+        {
+          "dependency_status": "SYMBOLIC_CONSTANT_READY",
+          "environment": "equation",
+          "label": "semi-norm",
+          "named_blocker": null,
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{semi-norm} \\|p\\|_1 \\coloneqq \\sum_\\zeta |\\zeta|, \\end{equation}",
+          "source_span": [
+            226,
+            228
+          ],
+          "title": ""
+        }
+      ],
+      "lemma_label": "disp-split",
+      "lemma_source": {
+        "environment": "lemma",
+        "label": "disp-split",
+        "named_blocker": null,
+        "source_found": true,
+        "source_snippet": "\\begin{lemma}[Splitting the dispersion]\\label{disp-split} If $r \\geq 2\\|p\\|_1/n$, then \\begin{equation}\\label{disp-zeta-r} \\|p\\|_1 \\ll \\sum_{\\zeta: \\zeta \\notin D(0,r)} |\\zeta| + n \\Disp \\{\\zeta: \\zeta \\in D(0,r)\\}. \\end{equation} \\end{lemma}",
+        "source_span": [
+          519,
+          523
+        ],
+        "title": "Splitting the dispersion"
+      },
+      "next_subdependency": "Quantify markov-many and disp-upper constants before K_disp_split can become numeric.",
+      "opaque_or_missing_subdependencies": [
+        "disp-split",
+        "markov-many"
+      ],
+      "symbolic_seed": "K_disp_split = F(K_markov_many, K_disp_upper, K_semi_norm)",
+      "target_role": "constant converting total critical-point size into exterior mass plus local dispersion"
+    },
+    {
+      "constant_status": "OPAQUE_SUBDEPENDENCY",
+      "constant_symbol": "K_origin",
+      "dependency_rows": [
+        {
+          "dependency_status": "OPAQUE_SUBDEPENDENCY",
+          "environment": "equation",
+          "label": "poz",
+          "named_blocker": "asymptotic_or_comparison_constant_not_numeric",
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{poz} p(z) = p(0) + O(|z|^n e^{O(\\min(\\|p\\|_1/|z|, \\|p\\|_1^2/|z|^2))}). \\end{equation}",
+          "source_span": [
+            803,
+            805
+          ],
+          "title": ""
+        },
+        {
+          "dependency_status": "SYMBOLIC_CONSTANT_READY",
+          "environment": "equation",
+          "label": "npz",
+          "named_blocker": null,
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{npz} |p(z) - p(0)| \\geq n^{-n} \\|p\\|_0^n \\end{equation}",
+          "source_span": [
+            253,
+            255
+          ],
+          "title": ""
+        },
+        {
+          "dependency_status": "OPAQUE_SUBDEPENDENCY",
+          "environment": "equation",
+          "label": "pocl",
+          "named_blocker": "asymptotic_or_comparison_constant_not_numeric",
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{pocl} p(z) = p(0) + O(e^{O(n)} n^{-n} \\|p\\|_1^n). \\end{equation}",
+          "source_span": [
+            813,
+            815
+          ],
+          "title": ""
+        },
+        {
+          "dependency_status": "SYMBOLIC_CONSTANT_READY",
+          "environment": "equation",
+          "label": "size-def",
+          "named_blocker": null,
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{size-def} \\|p\\| \\coloneqq \\|p\\|_1 + \\|p\\|_0 \\end{equation}",
+          "source_span": [
+            234,
+            236
+          ],
+          "title": ""
+        }
+      ],
+      "lemma_label": "origin-repulsion",
+      "lemma_source": {
+        "environment": "lemma",
+        "label": "origin-repulsion",
+        "named_blocker": null,
+        "source_found": true,
+        "source_snippet": "\\begin{lemma}[Origin repulsion]\\label{origin-repulsion} We have $$ \\|p\\|_0 \\ll \\| p \\|_1 + n \\operatorname{dist}(0, \\partial E_1(p)).$$ In particular, by \\eqref{size-def}, one has $$ \\|p\\| \\ll \\| p \\|_1 + n \\operatorname{dist}(0, \\partial E_1(p)).$$ \\end{lemma}",
+        "source_span": [
+          869,
+          873
+        ],
+        "title": "Origin repulsion"
+      },
+      "next_subdependency": "Quantify the exponential constants in poz/pocl and the normalization constant in npz.",
+      "opaque_or_missing_subdependencies": [
+        "origin-repulsion",
+        "pocl",
+        "poz"
+      ],
+      "symbolic_seed": "K_origin = F(K_poz, K_npz, K_pocl, K_size_def)",
+      "target_role": "constant converting origin displacement into critical-size and distance-to-lemniscate terms"
+    },
+    {
+      "constant_status": "OPAQUE_SUBDEPENDENCY",
+      "constant_symbol": "K_ankh",
+      "dependency_rows": [
+        {
+          "dependency_status": "SYMBOLIC_CONSTANT_READY",
+          "environment": "equation",
+          "label": "psi-expand",
+          "named_blocker": null,
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{psi-expand} \\psi(z) = \\sum_\\zeta \\frac{1}{z-\\zeta}, \\end{equation}",
+          "source_span": [
+            329,
+            331
+          ],
+          "title": ""
+        },
+        {
+          "dependency_status": "SYMBOLIC_CONSTANT_READY",
+          "environment": "equation",
+          "label": "Psi-def",
+          "named_blocker": null,
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{Psi-def} \\Psi(E) \\coloneqq \\frac{1}{\\pi} \\int_E |\\psi|\\ dA. \\end{equation}",
+          "source_span": [
+            345,
+            347
+          ],
+          "title": ""
+        },
+        {
+          "dependency_status": "SYMBOLIC_CONSTANT_READY",
+          "environment": "equation",
+          "label": "semi-norm",
+          "named_blocker": null,
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{semi-norm} \\|p\\|_1 \\coloneqq \\sum_\\zeta |\\zeta|, \\end{equation}",
+          "source_span": [
+            226,
+            228
+          ],
+          "title": ""
+        },
+        {
+          "dependency_status": "SYMBOLIC_CONSTANT_READY",
+          "environment": "equation",
+          "label": "riesz-bound",
+          "named_blocker": null,
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{riesz-bound} I_1 1_E(z_0) \\leq I_1 1_{D(0, \\r[E])}(0) = 2 \\pi \\r[E] \\end{equation}",
+          "source_span": [
+            739,
+            741
+          ],
+          "title": ""
+        }
+      ],
+      "lemma_label": "ankh",
+      "lemma_source": {
+        "environment": "lemma",
+        "label": "ankh",
+        "named_blocker": null,
+        "source_found": true,
+        "source_snippet": "\\begin{lemma}[Lower bound on $\\Psi$]\\label{ankh} For any $r>0$, we have $$ \\Psi(\\Ann(0,r/2,r))\\geq (n-1) r - O(\\|p\\|_1).$$ \\end{lemma}",
+        "source_span": [
+          1043,
+          1045
+        ],
+        "title": "Lower bound on $\\Psi$"
+      },
+      "next_subdependency": "Quantify the Riesz-bound constant and the pointwise annulus estimate.",
+      "opaque_or_missing_subdependencies": [
+        "ankh"
+      ],
+      "symbolic_seed": "K_ankh = F(K_riesz, K_pointwise_annulus, K_semi_norm)",
+      "target_role": "constant in the lower bound for Psi on a dyadic annulus"
+    },
+    {
+      "constant_status": "OPAQUE_SUBDEPENDENCY",
+      "constant_symbol": "c_defect_C",
+      "dependency_rows": [
+        {
+          "dependency_status": "OPAQUE_SUBDEPENDENCY",
+          "environment": "lemma",
+          "label": "tridef",
+          "named_blocker": "asymptotic_or_comparison_constant_not_numeric",
+          "source_found": true,
+          "source_snippet": "\\begin{lemma}[Averaged defect in triangle inequality]\\label{tridef} Suppose that $\\zeta \\in D(z_0,r/2)$ and $\\zeta' \\in D(z_0, Cr)$ for some $z_0 \\in \\C$ and $C, r > 0$. Then $$ \\int_{D(z_0,r)} \\frac{1}{|z-\\zeta|} + \\frac{1}{|z-\\zeta'|} - \\left| \\frac{1}{z-\\zeta} + \\frac{1}{z-\\zeta'} \\right|\\ dA(z) \\asymp_C |\\zeta-\\zeta'|.$$ \\end{lemma}",
+          "source_span": [
+            1012,
+            1014
+          ],
+          "title": "Averaged defect in triangle inequality"
+        },
+        {
+          "dependency_status": "OPAQUE_SUBDEPENDENCY",
+          "environment": "equation",
+          "label": "markov-many",
+          "named_blocker": "asymptotic_or_comparison_constant_not_numeric",
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{markov-many} \\# \\{ \\zeta: \\zeta \\in D(0,2\\|p\\|_1/n) \\} \\geq n-1-\\frac{n}{2} \\gg n. \\end{equation}",
+          "source_span": [
+            246,
+            248
+          ],
+          "title": ""
+        },
+        {
+          "dependency_status": "SYMBOLIC_CONSTANT_READY",
+          "environment": "equation",
+          "label": "disp-sum",
+          "named_blocker": null,
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{disp-sum} \\Disp \\{ z_1,\\dots,z_n\\} \\leq \\frac{2}{\\# A} \\sum_{\\xi \\in A} \\sum_{i=1}^n |z_i - \\xi| \\end{equation}",
+          "source_span": [
+            482,
+            484
+          ],
+          "title": ""
+        },
+        {
+          "dependency_status": "SYMBOLIC_CONSTANT_READY",
+          "environment": "equation",
+          "label": "multip",
+          "named_blocker": null,
+          "source_found": true,
+          "source_snippet": "\\begin{equation}\\label{multip} \\int_E \\sum_{j=1}^m \\frac{1}{|z-\\zeta_j|}\\ dA(z) \\leq 2 \\pi m \\r[E] \\end{equation}",
+          "source_span": [
+            743,
+            745
+          ],
+          "title": ""
+        }
+      ],
+      "lemma_label": "defect-psi-cor",
+      "lemma_source": {
+        "environment": "corollary",
+        "label": "defect-psi-cor",
+        "named_blocker": null,
+        "source_found": true,
+        "source_snippet": "\\begin{corollary}[Upper bound on $\\Psi$]\\label{defect-psi-cor} Suppose that $r \\geq 10\\|p\\|_1/n$. For any measurable set $E$ containing a disk $D(z_0, r)$ and $C>0$, we have $$ \\Psi(E) \\leq 2(n-1) \\r[E] - c_C \\Disp \\{ \\zeta : \\zeta \\in D(z_0, Cr) \\}$$ for some constant $c_C>0$ depending only on $C$. \\end{corollary}",
+        "source_span": [
+          1025,
+          1028
+        ],
+        "title": "Upper bound on $\\Psi$"
+      },
+      "next_subdependency": "Quantify the C-dependent tridef lower constant and markov-many population constant.",
+      "opaque_or_missing_subdependencies": [
+        "markov-many",
+        "tridef"
+      ],
+      "symbolic_seed": "c_defect_C = F(c_tridef_C, c_markov_many, c_disp_sum, K_multip)",
+      "target_role": "C-dependent positive defect constant in the upper bound for Psi"
+    }
+  ],
+  "expected_tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "experiment_id": "EXP-MATH-EHP114-TAO-BASE-LEMMA-CONSTANT-AUDIT-20260507-01",
+  "first_failed_condition": "asymptotic or comparison subconstants remain unquantified",
+  "full_synthesis_allowed": false,
+  "global_candidate_N0": null,
+  "n15_or_higher_computation_authorized": false,
+  "numeric_seed_ready_count": 0,
+  "opaque_subdependency_count": 4,
+  "partial_max_N_final_section": null,
+  "processed_base_lemma_count": 4,
+  "silent_generic_count": 0,
+  "source_artifacts": [
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-PARENT-CONSTANT-SOURCE-MAP-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PARENT-CONSTANT-SOURCE-MAP-20260507-01/EXP-MATH-EHP114-TAO-PARENT-CONSTANT-SOURCE-MAP-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "17b8afbe2bf8524f21e49313eaf9f40b3de6a495c42ade38ec38100799876705",
+        "expected_sha256": "17b8afbe2bf8524f21e49313eaf9f40b3de6a495c42ade38ec38100799876705",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PARENT-CONSTANT-SOURCE-MAP-20260507-01/EXP-MATH-EHP114-TAO-PARENT-CONSTANT-SOURCE-MAP-20260507-01_RESULTS.json",
+        "role": "parent_constant_source_map",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PARENT-CONSTANT-SOURCE-MAP-20260507-01/EXP-MATH-EHP114-TAO-PARENT-CONSTANT-SOURCE-MAP-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "PARENT_CONSTANT_SOURCE_MAP_READY_NUMERIC_CONSTANTS_PENDING"
+    },
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "07a5716de874167853f77422c248f43457e84791e4a557dc29ccc71de4d70b47",
+        "expected_sha256": "07a5716de874167853f77422c248f43457e84791e4a557dc29ccc71de4d70b47",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01_RESULTS.json",
+        "role": "symbolic_budget_reduction",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "FINAL_SECTION_SYMBOLIC_BUDGET_READY_NUMERIC_CONSTANTS_PENDING"
+    }
+  ],
+  "source_experiment_ids": [
+    "EXP-MATH-EHP114-TAO-PARENT-CONSTANT-SOURCE-MAP-20260507-01",
+    "EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01"
+  ],
+  "source_label_missing_count": 0,
+  "status": "BASE_LEMMA_CONSTANT_AUDIT_REMAINS_SYMBOLIC",
+  "symbolic_constant_ready_count": 0,
+  "tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "tao_source_sha_status": "PASS_PINNED_SOURCE_SHA_MATCH"
+}

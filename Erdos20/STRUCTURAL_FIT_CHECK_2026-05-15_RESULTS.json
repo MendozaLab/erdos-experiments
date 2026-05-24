@@ -1,0 +1,33 @@
+{
+  "experiment_id": "STRUCTURAL-FIT-CHECK-ERDOS-20-2026-05-15",
+  "problem_id": 20,
+  "problem_statement": "Let f(n,k) be minimal such that every F family of n-uniform sets with |F| >= f(n,k) contains a k-sunflower. Is it true that f(n,k) < c_k^n for some constant c_k > 0 and for all n > 0? (Canonical source: DeepMind formal-conjectures Erdos20.erdos_20, citing erdosproblems.com/20.)",
+  "role": "EXPLICIT_NEGATIVE_CONTROL",
+  "feature_1_zero_curve": {
+    "verdict": "NO",
+    "justification": "No F(z) = 0 zero-curve exists. Extremal object is a combinatorial set family witnessing the lower bound f(n,k), not a level set of a real-analytic function. Parameter space is discrete (set families of n-uniform sets). No manifold, no codimension, no normal direction, no tangent space."
+  },
+  "feature_2_wall_separation": {
+    "verdict": "NO",
+    "justification": "Wall-separation gate requires continuous parameter space with smooth boundary curve and bounded-away gradient perpendicular to the boundary. Sunflower problem has no continuous parameter space, no boundary curve, no gradient of any continuous quantity, no collar geometry. Razborov-style approximation and Alweiss-Lovett-Wu-Zhang spread-approximation techniques are combinatorial/probabilistic, no analog in WS-01."
+  },
+  "feature_3_branch_point_ivt": {
+    "verdict": "NO",
+    "justification": "Interval IVT requires a continuous real-valued function with interval-enclosure sign-change checks. f(n,k) is integer-valued, set-family cardinalities are integer-valued, Sunflower predicate is a discrete logical condition. No derivative to bound."
+  },
+  "aggregate_verdict": "NO_STRUCTURAL_FIT",
+  "ws01_applicable_prediction": "WS01_NOT_APPLICABLE (architecturally incompatible; cold test skipped by design as explicit negative control)",
+  "cold_test_status": "SKIPPED_BY_DESIGN",
+  "skip_reason": "All three structural features return NO. The sunflower problem is a discrete combinatorial extremal-set problem with integer-valued objective; WS-01 is an interval-arithmetic wall-separation rewrite for real-analytic level-set boundaries. The two architectures address fundamentally different mathematical objects. Skipping is the intended outcome for the negative control; it confirms the structural-fit checker is not permissive.",
+  "diagnostic_value_for_extension": "Confirms the structural-fit checker correctly distinguishes architectures that apply (YES on #1041, PARTIAL on #1043) from architectures that do not (NO on #20). Without this negative control, a YES verdict on #1041 / #1043 could not be distinguished from a checker that says YES to everything.",
+  "sources_cited": [
+    "Math/formal-conjectures/FormalConjectures/ErdosProblems/20.lean (lines 1-86)",
+    "Math/erdos-experiments/cross_problem_ws01_applicability_probe.py (lines 1-300)",
+    "Math/erdos-experiments/Erdos1041/STRUCTURAL_FIT_CHECK_2026-05-15.md (sibling YES-verdict comparison)",
+    "Math/erdos-experiments/Erdos20/SUNFLOWER_CORE_CLOSURE_LEG4_PACKET_2026-05-05.md (referenced)",
+    "erdosproblems.com/20 (canonical, referenced via Lean file metadata)"
+  ],
+  "claim_ceiling": "Internal structural-fit check. Not a proof, not a solution claim, not a Lean statement. Diagnostic only.",
+  "timestamp_unix": 1747353600,
+  "schema_version": "1.0"
+}

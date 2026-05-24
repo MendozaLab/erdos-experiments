@@ -1,0 +1,387 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-TENSOR-CONE-V1-20260502",
+  "timestamp_utc": "2026-05-02T20:18:34.077203+00:00",
+  "design_doc": "Math/erdos-experiments/Erdos114/TENSOR_CONE_DESIGN_2026-05-02.md",
+  "scope": "SCOPING ARTIFACT \u2014 see honest scope statement in design doc",
+  "n": 3,
+  "L_target_closed_form": 9.17972422234316,
+  "L_target_v5_preprint_certified_interval": [
+    9.17972422234315,
+    9.17972422234317
+  ],
+  "cone_definition": {
+    "atomic_block_K_1": "K_(1) = {(x,y) \u2208 R^2 : [[1,x],[x,1]] \u2ab0 0 AND [[1,y],[y,1]] \u2ab0 0} = {|x|\u22641, |y|\u22641}",
+    "tensor_structure": "K_n = K_(1)^{\u2297 n} \u2229 {trace \u2264 1}",
+    "explicit_constraints": "For each k = 0..n-1: |a_k| \u2264 1 (per-coordinate). Plus global energy: \u03a3 |a_k|^2 \u2264 1.",
+    "psd_witness_z_n_minus_1": "At a* = (-1,0,0,...,0): per-coord block at k=0 is rank-1 PSD ([[1,-1],[-1,1]]); other blocks identity-rank-2; trace = 1 (saturated)."
+  },
+  "boundary_verification_z_n_minus_1": {
+    "coefficient_vector": [
+      -1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cone_membership": {
+      "n": 3,
+      "block_min_eigenvalues": [
+        0.0,
+        1.0,
+        1.0
+      ],
+      "min_block_eigenvalue": 0.0,
+      "energy_trace": 1.0,
+      "in_cone_per_block": true,
+      "in_cone_trace": true,
+      "in_cone": true,
+      "on_boundary_blocks": true,
+      "on_boundary_trace": true,
+      "on_boundary_overall": true,
+      "tol": 1e-12
+    },
+    "expected": "on_boundary_overall = True (both blocks AND trace saturated)",
+    "L_numerical_for_witness": {
+      "method": "per_root_cluster_angular_sweep",
+      "n_components": 3,
+      "L_estimate": 6.126476298714188,
+      "L_lower_bracket": 6.123362638109434,
+      "L_upper_bracket": 6.126476298714188,
+      "components": [
+        {
+          "cluster_root_indices": [
+            0
+          ],
+          "centroid_real": -0.5000000000000001,
+          "centroid_imag": 0.866025403784439,
+          "L_estimate": 3.063238127384367,
+          "estimates": [
+            3.0616809674874865,
+            3.062152546612415,
+            3.063238127384367
+          ],
+          "completion_fraction": 1.0,
+          "grid_points_final": 16000,
+          "n_refinement_passes": 2
+        },
+        {
+          "cluster_root_indices": [
+            1
+          ],
+          "centroid_real": -0.5000000000000001,
+          "centroid_imag": -0.866025403784439,
+          "L_estimate": 3.0632381713298202,
+          "estimates": [
+            3.0616816706219474,
+            3.0621527223959735,
+            3.0632381713298202
+          ],
+          "completion_fraction": 1.0,
+          "grid_points_final": 16000,
+          "n_refinement_passes": 2
+        },
+        {
+          "cluster_root_indices": [
+            2
+          ],
+          "centroid_real": 1.0,
+          "centroid_imag": -1.3256180803817732e-34,
+          "L_estimate": null,
+          "completion_fraction": 0.99975
+        }
+      ],
+      "completion_fraction": 1.0,
+      "note": "Sum of per-component arc-length integrals via Newton-refined polar sweep around each root cluster. SCOPING quality only."
+    },
+    "L_closed_form": 9.17972422234316,
+    "L_numerical_minus_closed_form": -3.0532479236289713
+  },
+  "alternative_polynomials": [
+    {
+      "label": "z^3 - 0.9",
+      "coeffs_real": [
+        -0.9,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cone_membership": {
+        "n": 3,
+        "block_min_eigenvalues": [
+          0.09999999999999992,
+          1.0,
+          1.0
+        ],
+        "min_block_eigenvalue": 0.09999999999999992,
+        "energy_trace": 0.81,
+        "in_cone_per_block": true,
+        "in_cone_trace": true,
+        "in_cone": true,
+        "on_boundary_blocks": false,
+        "on_boundary_trace": false,
+        "on_boundary_overall": false,
+        "tol": 1e-12
+      },
+      "L_numerical": {
+        "method": "per_root_cluster_angular_sweep",
+        "n_components": 3,
+        "L_estimate": 31.62159479791777,
+        "L_lower_bracket": 20.186232298188866,
+        "L_upper_bracket": 31.62159479791777,
+        "components": [
+          {
+            "cluster_root_indices": [
+              0
+            ],
+            "centroid_real": -0.48274469230281514,
+            "centroid_imag": 0.8361383341526797,
+            "L_estimate": 7.210888643454309,
+            "estimates": [
+              6.727604597344296,
+              6.729629103236308,
+              7.210888643454309
+            ],
+            "completion_fraction": 1.0,
+            "grid_points_final": 16000,
+            "n_refinement_passes": 2
+          },
+          {
+            "cluster_root_indices": [
+              1
+            ],
+            "centroid_real": -0.48274469230281514,
+            "centroid_imag": -0.8361383341526798,
+            "L_estimate": 17.676938047666177,
+            "estimates": [
+              6.72760566869896,
+              6.729629371074926,
+              17.676938047666177
+            ],
+            "completion_fraction": 1.0,
+            "grid_points_final": 16000,
+            "n_refinement_passes": 2
+          },
+          {
+            "cluster_root_indices": [
+              2
+            ],
+            "centroid_real": 0.9654893846056299,
+            "centroid_imag": -7.264030325865816e-33,
+            "L_estimate": 6.7337681067972825,
+            "estimates": [
+              6.73102203214561,
+              6.732846151524788,
+              6.7337681067972825
+            ],
+            "completion_fraction": 1.0,
+            "grid_points_final": 16000,
+            "n_refinement_passes": 2
+          }
+        ],
+        "completion_fraction": 1.0,
+        "note": "Sum of per-component arc-length integrals via Newton-refined polar sweep around each root cluster. SCOPING quality only."
+      },
+      "L_target_zn_minus_1": 9.17972422234316,
+      "satisfies_L_le_L_target": false,
+      "L_gap_to_target": -22.44187057557461
+    },
+    {
+      "label": "z^3 + 0.1z - 0.8",
+      "coeffs_real": [
+        -0.8,
+        0.1,
+        0.0
+      ],
+      "coeffs_imag": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cone_membership": {
+        "n": 3,
+        "block_min_eigenvalues": [
+          0.19999999999999996,
+          0.9,
+          1.0
+        ],
+        "min_block_eigenvalue": 0.19999999999999996,
+        "energy_trace": 0.6500000000000001,
+        "in_cone_per_block": true,
+        "in_cone_trace": true,
+        "in_cone": true,
+        "on_boundary_blocks": false,
+        "on_boundary_trace": false,
+        "on_boundary_overall": false,
+        "tol": 1e-12
+      },
+      "L_numerical": {
+        "method": "per_root_cluster_angular_sweep",
+        "n_components": 3,
+        "L_estimate": 20.624644611161862,
+        "L_lower_bracket": 20.5545931560196,
+        "L_upper_bracket": 20.624644611161862,
+        "components": [
+          {
+            "cluster_root_indices": [
+              0
+            ],
+            "centroid_real": -0.4462145602299186,
+            "centroid_imag": 0.8350582622090142,
+            "L_estimate": 6.8633307238250945,
+            "estimates": [
+              6.830954230111693,
+              6.832139719329304,
+              6.8633307238250945
+            ],
+            "completion_fraction": 1.0,
+            "grid_points_final": 16000,
+            "n_refinement_passes": 2
+          },
+          {
+            "cluster_root_indices": [
+              1
+            ],
+            "centroid_real": -0.4462145602299187,
+            "centroid_imag": -0.8350582622090138,
+            "L_estimate": 6.867478098833762,
+            "estimates": [
+              6.830955948410558,
+              6.832140148904587,
+              6.867478098833762
+            ],
+            "completion_fraction": 1.0,
+            "grid_points_final": 16000,
+            "n_refinement_passes": 2
+          },
+          {
+            "cluster_root_indices": [
+              2
+            ],
+            "centroid_real": 0.892429120459836,
+            "centroid_imag": -3.932040207943031e-24,
+            "L_estimate": 6.893835788503004,
+            "estimates": [
+              6.892682977497346,
+              6.893445766663817,
+              6.893835788503004
+            ],
+            "completion_fraction": 1.0,
+            "grid_points_final": 16000,
+            "n_refinement_passes": 2
+          }
+        ],
+        "completion_fraction": 1.0,
+        "note": "Sum of per-component arc-length integrals via Newton-refined polar sweep around each root cluster. SCOPING quality only."
+      },
+      "L_target_zn_minus_1": 9.17972422234316,
+      "satisfies_L_le_L_target": false,
+      "L_gap_to_target": -11.444920388818703
+    },
+    {
+      "label": "z^3 + 0.05i z^2 - 0.9",
+      "coeffs_real": [
+        -0.9,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        0.0,
+        0.0,
+        0.05
+      ],
+      "cone_membership": {
+        "n": 3,
+        "block_min_eigenvalues": [
+          0.09999999999999992,
+          1.0,
+          0.95
+        ],
+        "min_block_eigenvalue": 0.09999999999999992,
+        "energy_trace": 0.8125,
+        "in_cone_per_block": true,
+        "in_cone_trace": true,
+        "in_cone": true,
+        "on_boundary_blocks": false,
+        "on_boundary_trace": false,
+        "on_boundary_overall": false,
+        "tol": 1e-12
+      },
+      "L_numerical": {
+        "method": "per_root_cluster_angular_sweep",
+        "n_components": 3,
+        "L_estimate": 21.336031459304127,
+        "L_lower_bracket": 20.186244181785426,
+        "L_upper_bracket": 21.336031459304127,
+        "components": [
+          {
+            "cluster_root_indices": [
+              0
+            ],
+            "centroid_real": -0.4826037055169464,
+            "centroid_imag": 0.8197191728295723,
+            "L_estimate": 7.826411167528673,
+            "estimates": [
+              6.727991443660587,
+              6.73001261207355,
+              7.826411167528673
+            ],
+            "completion_fraction": 1.0,
+            "grid_points_final": 16000,
+            "n_refinement_passes": 2
+          },
+          {
+            "cluster_root_indices": [
+              1
+            ],
+            "centroid_real": -0.4825979723950482,
+            "centroid_imag": -0.853055818155674,
+            "L_estimate": 6.73106026091287,
+            "estimates": [
+              6.727992477568974,
+              6.730012800186684,
+              6.73106026091287
+            ],
+            "completion_fraction": 1.0,
+            "grid_points_final": 16000,
+            "n_refinement_passes": 2
+          },
+          {
+            "cluster_root_indices": [
+              2
+            ],
+            "centroid_real": 0.9652016779119954,
+            "centroid_imag": -0.01666335467389825,
+            "L_estimate": 6.778560030862584,
+            "estimates": [
+              6.730260260555867,
+              6.732092958526445,
+              6.778560030862584
+            ],
+            "completion_fraction": 1.0,
+            "grid_points_final": 16000,
+            "n_refinement_passes": 2
+          }
+        ],
+        "completion_fraction": 1.0,
+        "note": "Sum of per-component arc-length integrals via Newton-refined polar sweep around each root cluster. SCOPING quality only."
+      },
+      "L_target_zn_minus_1": 9.17972422234316,
+      "satisfies_L_le_L_target": false,
+      "L_gap_to_target": -12.156307236960968
+    }
+  ],
+  "summary": {
+    "boundary_check_passed": true,
+    "n_alternatives_tested": 3,
+    "n_alternatives_in_cone": 3,
+    "n_alternatives_satisfying_L_le_L_target": 0,
+    "v5_preprint_n3_margin_pct": 6.1,
+    "this_cone_quantitative_margin": "NOT extracted by this cone \u2014 the cone certifies coefficient-energy bound, not a quantitative L margin. See \u00a76 of design doc for the analytic gap."
+  },
+  "honest_scope_statement": "This is a prototype scoping artifact. The cone K_n here is candidate-defined and only verified computationally at n=3 with three alternative polynomials. To become a closure-relevant certificate, the cone definition must be (1) shown analytically to enclose all valid coefficient vectors at all n, (2) shown to have z^n-1 on its boundary at every n, (3) verifiable via interval-arithmetic SDP at every n in a tractable way. None achieved in this scoping run."
+}

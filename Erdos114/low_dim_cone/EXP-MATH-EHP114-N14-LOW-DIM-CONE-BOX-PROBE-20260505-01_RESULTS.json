@@ -1,0 +1,1377 @@
+{
+  "claim_ceiling": "Finite 2D coefficient-disk grid evidence for the epsilon-scaled scalar theorem target at n=14. This is not a continuous cone certificate, not a Lean proof, and not a proof of Erd\u0151s #114.",
+  "eps_summaries": [
+    {
+      "all_evaluated_points_pass": true,
+      "eps": 0.0001,
+      "evaluated_admissible_points": 1,
+      "grid_points": 13,
+      "inadmissible_points": 12,
+      "min_margin": 7.5817853383073786,
+      "worst_row": {
+        "admissible": true,
+        "deficit_interval": {
+          "hi": 13.797154953385952,
+          "lo": 13.797154953384833,
+          "width": 1.1191048088221578e-12
+        },
+        "eps": 0.0001,
+        "eps_shape_scale": 0.719685673001152,
+        "eta_cap": 0.014,
+        "eta_norm": 0.0,
+        "evaluated": true,
+        "kind": "low_dim_coefficient_disk_grid",
+        "label": "eps:1e-04:u0:+0.000000:u1:+0.000000",
+        "margin": 7.5817853383073786,
+        "max_root_radius": 0.9999928568112033,
+        "pass": true,
+        "target": 6.215369615077455,
+        "u0_coefficient": 0.0,
+        "u1_coefficient": 0.0
+      }
+    },
+    {
+      "all_evaluated_points_pass": true,
+      "eps": 0.001,
+      "evaluated_admissible_points": 1,
+      "grid_points": 13,
+      "inadmissible_points": 12,
+      "min_margin": 8.943886409592945,
+      "worst_row": {
+        "admissible": true,
+        "deficit_interval": {
+          "hi": 16.270369165496163,
+          "lo": 16.27036916549534,
+          "width": 8.242295734817162e-13
+        },
+        "eps": 0.001,
+        "eps_shape_scale": 0.7813707376518094,
+        "eta_cap": 0.014,
+        "eta_norm": 0.0,
+        "evaluated": true,
+        "kind": "low_dim_coefficient_disk_grid",
+        "label": "eps:1e-03:u0:+0.000000:u1:+0.000000",
+        "margin": 8.943886409592945,
+        "max_root_radius": 0.9999285382439713,
+        "pass": true,
+        "target": 7.3264827559023935,
+        "u0_coefficient": 0.0,
+        "u1_coefficient": 0.0
+      }
+    },
+    {
+      "all_evaluated_points_pass": true,
+      "eps": 0.01,
+      "evaluated_admissible_points": 1,
+      "grid_points": 13,
+      "inadmissible_points": 12,
+      "min_margin": 10.502940354462847,
+      "worst_row": {
+        "admissible": true,
+        "deficit_interval": {
+          "hi": 19.139168430477262,
+          "lo": 19.139168430476673,
+          "width": 5.897504706808832e-13
+        },
+        "eps": 0.01,
+        "eps_shape_scale": 0.848342898244072,
+        "eta_cap": 0.014,
+        "eta_norm": 0.0,
+        "evaluated": true,
+        "kind": "low_dim_coefficient_disk_grid",
+        "label": "eps:1e-02:u0:+0.000000:u1:+0.000000",
+        "margin": 10.502940354462847,
+        "max_root_radius": 0.999282376482618,
+        "pass": true,
+        "target": 8.636228076013825,
+        "u0_coefficient": 0.0,
+        "u1_coefficient": 0.0
+      }
+    },
+    {
+      "all_evaluated_points_pass": true,
+      "eps": 0.1,
+      "evaluated_admissible_points": 13,
+      "grid_points": 13,
+      "inadmissible_points": 0,
+      "min_margin": 12.05951541635811,
+      "worst_row": {
+        "admissible": true,
+        "deficit_interval": {
+          "hi": 22.239630195287297,
+          "lo": 22.239630195286974,
+          "width": 3.232969447708456e-13
+        },
+        "eps": 0.1,
+        "eps_shape_scale": 0.9210553176894817,
+        "eta_cap": 0.014,
+        "eta_norm": 0.014,
+        "evaluated": true,
+        "kind": "low_dim_coefficient_disk_grid",
+        "label": "eps:1e-01:u0:-0.014000:u1:+0.000000",
+        "margin": 12.05951541635811,
+        "max_root_radius": 0.9964714676138704,
+        "pass": true,
+        "target": 10.180114778928864,
+        "u0_coefficient": -0.014,
+        "u1_coefficient": 0.0
+      }
+    }
+  ],
+  "experiment_id": "EXP-MATH-EHP114-N14-LOW-DIM-CONE-BOX-PROBE-20260505-01",
+  "failure_count": 0,
+  "failures": [],
+  "next_blocker": "Promote from sampled grid evidence to interval boxes over the two eigencoefficients, then bind those boxes to an admissibility certificate and a scalar-deficit lower bound.",
+  "oracle": {
+    "input": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/low_dim_cone/EXP-MATH-EHP114-N14-LOW-DIM-CONE-BOX-PROBE-20260505-01_ORACLE_INPUT.json",
+    "output": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/low_dim_cone/EXP-MATH-EHP114-N14-LOW-DIM-CONE-BOX-PROBE-20260505-01_ORACLE_OUTPUT.json",
+    "output_point_count": 16
+  },
+  "parameters": {
+    "coefficient_grid": [
+      -0.014,
+      -0.007,
+      0.0,
+      0.007,
+      0.014
+    ],
+    "cone_scaling": "s = eps^(1/28) * (a*u0(eps) + b*u1(eps)), sqrt(a^2+b^2) <= 0.014",
+    "degree": 14,
+    "eps_values": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "eta_cap": 0.014,
+    "extent": 3.0,
+    "grid_points_before_admissibility_filter": 52,
+    "oracle_point_count": 16,
+    "res": 220,
+    "scalar_target": "D14(eps,s) >= 12 * eps^(1/14)",
+    "subspace": "lowest two midpoint eigendirections from the admissible spectral Taylor matrix for each epsilon"
+  },
+  "parent_packet": "EXP-MATH-EHP114-N14-EPS-SCALED-SPECTRAL-DIRECTION-SEARCH-20260505-01",
+  "rows": [
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.282845435440457,
+        "lo": 22.282845435440134,
+        "width": 3.232969447708456e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.0,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:+0.000000:u1:+0.000000",
+      "margin": 12.10273065651127,
+      "max_root_radius": 0.9925024964407474,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.276136501991132,
+        "lo": 22.276136501990806,
+        "width": 3.268496584496461e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:+0.000000:u1:+0.007000",
+      "margin": 12.096021723061941,
+      "max_root_radius": 0.9941425516664892,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.26142180360481,
+        "lo": 22.261421803604495,
+        "width": 3.161915174132446e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:+0.000000:u1:+0.014000",
+      "margin": 12.081307024675631,
+      "max_root_radius": 0.9957868854433956,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.014
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.27396107975485,
+        "lo": 22.273961079754528,
+        "width": 3.232969447708456e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:+0.000000:u1:-0.007000",
+      "margin": 12.093846300825664,
+      "max_root_radius": 0.9932078517114092,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.264538388060338,
+        "lo": 22.26453838806001,
+        "width": 3.268496584496461e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:+0.000000:u1:-0.014000",
+      "margin": 12.084423609131147,
+      "max_root_radius": 0.993913207732905,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": -0.014
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.270576934815566,
+        "lo": 22.27057693481524,
+        "width": 3.268496584496461e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:+0.007000:u1:+0.000000",
+      "margin": 12.090462155886375,
+      "max_root_radius": 0.994485417413726,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.2666808906288,
+        "lo": 22.26668089062847,
+        "width": 3.268496584496461e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:+0.007000:u1:+0.007000",
+      "margin": 12.086566111699607,
+      "max_root_radius": 0.9961291314966012,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.267751992779342,
+        "lo": 22.267751992779026,
+        "width": 3.161915174132446e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:+0.007000:u1:-0.007000",
+      "margin": 12.087637213850162,
+      "max_root_radius": 0.9937500031290782,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.239630195287535,
+        "lo": 22.239630195287212,
+        "width": 3.232969447708456e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:+0.014000:u1:+0.000000",
+      "margin": 12.059515416358348,
+      "max_root_radius": 0.9964714676138378,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": 0.014,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.27057693481556,
+        "lo": 22.27057693481523,
+        "width": 3.268496584496461e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:-0.007000:u1:+0.000000",
+      "margin": 12.090462155886367,
+      "max_root_radius": 0.9944854174137422,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.266680890628937,
+        "lo": 22.266680890628614,
+        "width": 3.232969447708456e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:-0.007000:u1:+0.007000",
+      "margin": 12.08656611169975,
+      "max_root_radius": 0.9961291314965978,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.267751992779257,
+        "lo": 22.267751992778926,
+        "width": 3.304023721284466e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:-0.007000:u1:-0.007000",
+      "margin": 12.087637213850062,
+      "max_root_radius": 0.9937500031290858,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 22.239630195287297,
+        "lo": 22.239630195286974,
+        "width": 3.232969447708456e-13
+      },
+      "eps": 0.1,
+      "eps_shape_scale": 0.9210553176894817,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-01:u0:-0.014000:u1:+0.000000",
+      "margin": 12.05951541635811,
+      "max_root_radius": 0.9964714676138704,
+      "pass": true,
+      "target": 10.180114778928864,
+      "u0_coefficient": -0.014,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 19.139168430477262,
+        "lo": 19.139168430476673,
+        "width": 5.897504706808832e-13
+      },
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.0,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:+0.000000:u1:+0.000000",
+      "margin": 10.502940354462847,
+      "max_root_radius": 0.999282376482618,
+      "pass": true,
+      "target": 8.636228076013825,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:+0.000000:u1:+0.007000",
+      "margin": null,
+      "max_root_radius": 1.0008592352848404,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:+0.000000:u1:+0.014000",
+      "margin": null,
+      "max_root_radius": 1.0024362167426022,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.014
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:+0.000000:u1:-0.007000",
+      "margin": null,
+      "max_root_radius": 1.0008592352848573,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:+0.000000:u1:-0.014000",
+      "margin": null,
+      "max_root_radius": 1.0024362167426357,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": -0.014
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:+0.007000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.0009553518680139,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:+0.007000:u1:+0.007000",
+      "margin": null,
+      "max_root_radius": 1.0015291959127275,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:+0.007000:u1:-0.007000",
+      "margin": null,
+      "max_root_radius": 1.0015291959127057,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:+0.014000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.0026283272534098,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": 0.014,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:-0.007000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.0009553518680192,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:-0.007000:u1:+0.007000",
+      "margin": null,
+      "max_root_radius": 1.0015291959126735,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:-0.007000:u1:-0.007000",
+      "margin": null,
+      "max_root_radius": 1.0015291959126746,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.01,
+      "eps_shape_scale": 0.848342898244072,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-02:u0:-0.014000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.0026283272534207,
+      "pass": false,
+      "target": 8.636228076013825,
+      "u0_coefficient": -0.014,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 16.270369165496163,
+        "lo": 16.27036916549534,
+        "width": 8.242295734817162e-13
+      },
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.0,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:+0.000000:u1:+0.000000",
+      "margin": 8.943886409592945,
+      "max_root_radius": 0.9999285382439713,
+      "pass": true,
+      "target": 7.3264827559023935,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:+0.000000:u1:+0.007000",
+      "margin": null,
+      "max_root_radius": 1.0012202965205037,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:+0.000000:u1:+0.014000",
+      "margin": null,
+      "max_root_radius": 1.002512054797036,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.014
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:+0.000000:u1:-0.007000",
+      "margin": null,
+      "max_root_radius": 1.001220296520554,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:+0.000000:u1:-0.014000",
+      "margin": null,
+      "max_root_radius": 1.002512054797137,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": -0.014
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:+0.007000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.0013830552690688,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:+0.007000:u1:+0.007000",
+      "margin": null,
+      "max_root_radius": 1.0022253999889892,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:+0.007000:u1:-0.007000",
+      "margin": null,
+      "max_root_radius": 1.00222539998888,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:+0.014000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.0028376578976712,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": 0.014,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:-0.007000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.0013830552690057,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:-0.007000:u1:+0.007000",
+      "margin": null,
+      "max_root_radius": 1.002225399988888,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:-0.007000:u1:-0.007000",
+      "margin": null,
+      "max_root_radius": 1.002225399988838,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.001,
+      "eps_shape_scale": 0.7813707376518094,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-03:u0:-0.014000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.002837657897545,
+      "pass": false,
+      "target": 7.3264827559023935,
+      "u0_coefficient": -0.014,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": true,
+      "deficit_interval": {
+        "hi": 13.797154953385952,
+        "lo": 13.797154953384833,
+        "width": 1.1191048088221578e-12
+      },
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.0,
+      "evaluated": true,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:+0.000000:u1:+0.000000",
+      "margin": 7.5817853383073786,
+      "max_root_radius": 0.9999928568112033,
+      "pass": true,
+      "target": 6.215369615077455,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:+0.000000:u1:+0.007000",
+      "margin": null,
+      "max_root_radius": 1.0012513744869984,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:+0.000000:u1:+0.014000",
+      "margin": null,
+      "max_root_radius": 1.0025102338850571,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": 0.014
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:+0.000000:u1:-0.007000",
+      "margin": null,
+      "max_root_radius": 1.0012513744850715,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:+0.000000:u1:-0.014000",
+      "margin": null,
+      "max_root_radius": 1.002510233881226,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": 0.0,
+      "u1_coefficient": -0.014
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:+0.007000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.0014244664506788,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:+0.007000:u1:+0.007000",
+      "margin": null,
+      "max_root_radius": 1.0022417922483637,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:+0.007000:u1:-0.007000",
+      "margin": null,
+      "max_root_radius": 1.0022417922471978,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": 0.007,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:+0.014000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.002856214353904,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": 0.014,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.007,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:-0.007000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.0014244664516776,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": 0.0
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:-0.007000:u1:+0.007000",
+      "margin": null,
+      "max_root_radius": 1.0022417922491071,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": 0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.009899494936611667,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:-0.007000:u1:-0.007000",
+      "margin": null,
+      "max_root_radius": 1.002241792247,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": -0.007,
+      "u1_coefficient": -0.007
+    },
+    {
+      "admissible": false,
+      "deficit_interval": null,
+      "eps": 0.0001,
+      "eps_shape_scale": 0.719685673001152,
+      "eta_cap": 0.014,
+      "eta_norm": 0.014,
+      "evaluated": false,
+      "kind": "low_dim_coefficient_disk_grid",
+      "label": "eps:1e-04:u0:-0.014000:u1:+0.000000",
+      "margin": null,
+      "max_root_radius": 1.0028562143559012,
+      "pass": false,
+      "target": 6.215369615077455,
+      "u0_coefficient": -0.014,
+      "u1_coefficient": 0.0
+    }
+  ],
+  "status": "LOW_DIM_CONE_GRID_PASS",
+  "subspaces": [
+    {
+      "basis": [
+        {
+          "dominant_shape_components": [
+            {
+              "coefficient": -0.9901160178250863,
+              "shape_index": 1,
+              "shape_label": "m1_cos_tangent"
+            },
+            {
+              "coefficient": 0.09819926091215865,
+              "shape_index": 7,
+              "shape_label": "m3_cos_tangent"
+            },
+            {
+              "coefficient": -0.09707801252347235,
+              "shape_index": 8,
+              "shape_label": "m3_sin_radial"
+            },
+            {
+              "coefficient": 0.01753412888925921,
+              "shape_index": 15,
+              "shape_label": "m5_cos_tangent"
+            },
+            {
+              "coefficient": -0.015319173386368354,
+              "shape_index": 16,
+              "shape_label": "m5_sin_radial"
+            }
+          ],
+          "midpoint_eigenvalue": -94465620.28732537,
+          "rank": 0
+        },
+        {
+          "dominant_shape_components": [
+            {
+              "coefficient": -0.9029023259093225,
+              "shape_index": 0,
+              "shape_label": "m1_cos_radial"
+            },
+            {
+              "coefficient": 0.2993927398814335,
+              "shape_index": 9,
+              "shape_label": "m3_sin_tangent"
+            },
+            {
+              "coefficient": 0.2970397162961361,
+              "shape_index": 6,
+              "shape_label": "m3_cos_radial"
+            },
+            {
+              "coefficient": -0.06326052508331223,
+              "shape_index": 17,
+              "shape_label": "m5_sin_tangent"
+            },
+            {
+              "coefficient": -0.052919210308810784,
+              "shape_index": 14,
+              "shape_label": "m5_cos_radial"
+            }
+          ],
+          "midpoint_eigenvalue": -34491668.51232546,
+          "rank": 1
+        }
+      ],
+      "eps": 0.0001
+    },
+    {
+      "basis": [
+        {
+          "dominant_shape_components": [
+            {
+              "coefficient": -0.9966902584799966,
+              "shape_index": 1,
+              "shape_label": "m1_cos_tangent"
+            },
+            {
+              "coefficient": 0.04268562996219098,
+              "shape_index": 7,
+              "shape_label": "m3_cos_tangent"
+            },
+            {
+              "coefficient": -0.04136283309412246,
+              "shape_index": 8,
+              "shape_label": "m3_sin_radial"
+            },
+            {
+              "coefficient": 0.04118119051702003,
+              "shape_index": 15,
+              "shape_label": "m5_cos_tangent"
+            },
+            {
+              "coefficient": -0.03659359090144714,
+              "shape_index": 16,
+              "shape_label": "m5_sin_radial"
+            }
+          ],
+          "midpoint_eigenvalue": -1417389.7663932475,
+          "rank": 0
+        },
+        {
+          "dominant_shape_components": [
+            {
+              "coefficient": -0.972739614010068,
+              "shape_index": 0,
+              "shape_label": "m1_cos_radial"
+            },
+            {
+              "coefficient": 0.1390561778489699,
+              "shape_index": 9,
+              "shape_label": "m3_sin_tangent"
+            },
+            {
+              "coefficient": 0.13843977820049302,
+              "shape_index": 6,
+              "shape_label": "m3_cos_radial"
+            },
+            {
+              "coefficient": -0.10098986802218088,
+              "shape_index": 17,
+              "shape_label": "m5_sin_tangent"
+            },
+            {
+              "coefficient": -0.07096573804431683,
+              "shape_index": 14,
+              "shape_label": "m5_cos_radial"
+            }
+          ],
+          "midpoint_eigenvalue": -1378909.8924430546,
+          "rank": 1
+        }
+      ],
+      "eps": 0.001
+    },
+    {
+      "basis": [
+        {
+          "dominant_shape_components": [
+            {
+              "coefficient": 0.9982870408933315,
+              "shape_index": 0,
+              "shape_label": "m1_cos_radial"
+            },
+            {
+              "coefficient": 0.0369107404605801,
+              "shape_index": 17,
+              "shape_label": "m5_sin_tangent"
+            },
+            {
+              "coefficient": 0.0355418280067021,
+              "shape_index": 9,
+              "shape_label": "m3_sin_tangent"
+            },
+            {
+              "coefficient": 0.02551795727963699,
+              "shape_index": 6,
+              "shape_label": "m3_cos_radial"
+            },
+            {
+              "coefficient": 0.011641148490235691,
+              "shape_index": 14,
+              "shape_label": "m5_cos_radial"
+            }
+          ],
+          "midpoint_eigenvalue": -18629.711211276794,
+          "rank": 0
+        },
+        {
+          "dominant_shape_components": [
+            {
+              "coefficient": -0.9905544555310213,
+              "shape_index": 1,
+              "shape_label": "m1_cos_tangent"
+            },
+            {
+              "coefficient": 0.07438219751714431,
+              "shape_index": 7,
+              "shape_label": "m3_cos_tangent"
+            },
+            {
+              "coefficient": 0.06937611879972601,
+              "shape_index": 15,
+              "shape_label": "m5_cos_tangent"
+            },
+            {
+              "coefficient": -0.06466062696646603,
+              "shape_index": 16,
+              "shape_label": "m5_sin_radial"
+            },
+            {
+              "coefficient": -0.061014816773565635,
+              "shape_index": 8,
+              "shape_label": "m3_sin_radial"
+            }
+          ],
+          "midpoint_eigenvalue": -14377.624858591633,
+          "rank": 1
+        }
+      ],
+      "eps": 0.01
+    },
+    {
+      "basis": [
+        {
+          "dominant_shape_components": [
+            {
+              "coefficient": 0.8332569454889492,
+              "shape_index": 1,
+              "shape_label": "m1_cos_tangent"
+            },
+            {
+              "coefficient": -0.3608286542470837,
+              "shape_index": 7,
+              "shape_label": "m3_cos_tangent"
+            },
+            {
+              "coefficient": 0.24859424752356685,
+              "shape_index": 15,
+              "shape_label": "m5_cos_tangent"
+            },
+            {
+              "coefficient": 0.2408347956114099,
+              "shape_index": 8,
+              "shape_label": "m3_sin_radial"
+            },
+            {
+              "coefficient": -0.20547699746805834,
+              "shape_index": 23,
+              "shape_label": "m7_cos_tangent"
+            }
+          ],
+          "midpoint_eigenvalue": -450.9247949266723,
+          "rank": 0
+        },
+        {
+          "dominant_shape_components": [
+            {
+              "coefficient": -0.5664270689587658,
+              "shape_index": 5,
+              "shape_label": "m2_sin_tangent"
+            },
+            {
+              "coefficient": 0.5287981262452537,
+              "shape_index": 13,
+              "shape_label": "m4_sin_tangent"
+            },
+            {
+              "coefficient": -0.4800148866634015,
+              "shape_index": 2,
+              "shape_label": "m2_cos_radial"
+            },
+            {
+              "coefficient": 0.3496586716011189,
+              "shape_index": 10,
+              "shape_label": "m4_cos_radial"
+            },
+            {
+              "coefficient": -0.19337822925901774,
+              "shape_index": 21,
+              "shape_label": "m6_sin_tangent"
+            }
+          ],
+          "midpoint_eigenvalue": -390.4365815789082,
+          "rank": 1
+        }
+      ],
+      "eps": 0.1
+    }
+  ],
+  "timestamp_utc": "2026-05-06T02:08:24.194498+00:00"
+}

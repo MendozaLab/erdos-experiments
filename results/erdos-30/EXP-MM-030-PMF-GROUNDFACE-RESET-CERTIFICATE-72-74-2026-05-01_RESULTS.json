@@ -1,0 +1,67 @@
+{
+  "experiment_id": "EXP-MM-030-PMF-GROUNDFACE-RESET-CERTIFICATE-72-74-2026-05-01",
+  "date": "2026-05-01",
+  "type": "derived_groundface_reset_window_certificate",
+  "source_packets": [
+    {
+      "experiment_id": "EXP-MM-030-PMF-GROUNDFACE-RESET-72-2026-05-01",
+      "results_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-30/EXP-MM-030-PMF-GROUNDFACE-RESET-72-2026-05-01_RESULTS.json",
+      "status": "EXACT",
+      "sha256": "00269fc393ad15c1956c4801a67d47e94d8439614e25bb583cc699c68df1a35a"
+    },
+    {
+      "experiment_id": "EXP-MM-030-PMF-GROUNDFACE-RESET-73-2026-05-01",
+      "results_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-30/EXP-MM-030-PMF-GROUNDFACE-RESET-73-2026-05-01_RESULTS.json",
+      "status": "EXACT",
+      "sha256": "ff38c48264345266d586149c5d0f49c4108f8e3456f824938ff05c7a5da55bf1"
+    },
+    {
+      "experiment_id": "EXP-MM-030-PMF-GROUNDFACE-RESET-74-2026-05-01",
+      "results_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-30/EXP-MM-030-PMF-GROUNDFACE-RESET-74-2026-05-01_RESULTS.json",
+      "status": "EXACT",
+      "sha256": "600c055290fbc73aa71e8516bfccb7368c87795cd9149b0d647ef511344256cb"
+    }
+  ],
+  "checks": {
+    "source_exports_complete": true,
+    "source_parity_match": true,
+    "h_stays_11": true,
+    "all_post72_contain_previous_face": true,
+    "all_post72_contain_previous_face_plus_one": true
+  },
+  "all_checks_pass": true,
+  "rows": [
+    {
+      "n": 72,
+      "h_n": 11,
+      "exact_maximizer_count": 4,
+      "skeleton_count": 2,
+      "pareto_count": 1,
+      "distance_edge_total_count": 6
+    },
+    {
+      "n": 73,
+      "h_n": 11,
+      "exact_maximizer_count": 8,
+      "skeleton_count": 2,
+      "pareto_count": 1,
+      "distance_edge_total_count": 28,
+      "exact_previous_persistence_count": 4,
+      "plus_one_previous_persistence_count": 4,
+      "new_witness_count": 0
+    },
+    {
+      "n": 74,
+      "h_n": 11,
+      "exact_maximizer_count": 34,
+      "skeleton_count": 13,
+      "pareto_count": 1,
+      "distance_edge_total_count": 561,
+      "exact_previous_persistence_count": 8,
+      "plus_one_previous_persistence_count": 8,
+      "new_witness_count": 22
+    }
+  ],
+  "interpretation": "After the n=72 cardinality reset to h=11, n=73 is pure exact-plus-shift replication, and n=74 preserves the same two-copy memory rule while restarting new branch production.",
+  "claim_boundary": "Finite reset-window certificate only: no asymptotic theorem, no Sidon proof, and no PMF-proves-Sidon language."
+}

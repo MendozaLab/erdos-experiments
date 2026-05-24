@@ -1,0 +1,57 @@
+{
+  "experiment_id": "EXP-MATH-ERDOS30-BFR-INTERVAL-OCCUPANCY-SCOUT-20260508-01",
+  "generated_by": "erdos_atlas_autoresearch_librarian",
+  "origin": "auto-research",
+  "persona": "Eratosthenes of Cyrene",
+  "short_name": "Eratosthenes",
+  "scribe": "Ahmes",
+  "story_writer": "Ahmes",
+  "mathematician_persona": "David Hilbert",
+  "promotion_state": "review_only",
+  "target_problem": 30,
+  "date": "2026-05-08",
+  "claim_ceiling": "interval-occupancy scout only; no public Sidon coefficient change and no registry or publication update",
+  "input_artifacts": [
+    {
+      "path": "lean/Erdos30_BFR.lean",
+      "sha256": "4ba292e877fcf436afaa37ab8ccd1217a850e0d32ba7df572dc1fc5c4ce7d921",
+      "role": "canonical representation bridge source"
+    },
+    {
+      "path": "scratch/Erdos30_BFR_IntervalOccupancy_SCOUT.lean",
+      "sha256": "75a23b2e37833197d165692a2174988caaa2ee9d4f1e401fdd29dfd1ca845f6b",
+      "role": "new interval occupancy scout"
+    }
+  ],
+  "verification": {
+    "module_build_command": "lake build Erdos30_BFR",
+    "module_build_exit_code": 0,
+    "lean_command": "lake env lean scratch/Erdos30_BFR_IntervalOccupancy_SCOUT.lean",
+    "lean_exit_code": 0,
+    "escape_hatch_scan": {
+      "command": "rg -n \"sorry|axiom|admit\" scratch/Erdos30_BFR_IntervalOccupancy_SCOUT.lean",
+      "matches": 0
+    }
+  },
+  "new_scout_targets": [
+    "bfrIntervalInRange",
+    "mem_bfrIntervalInRange_iff",
+    "bfrIntervalOccupancy",
+    "bfrIntervalInRange_subset_sumRange",
+    "bfrIntervalOccupancy_le_total",
+    "bfrIntervalOccupancy_le_card_sq"
+  ],
+  "decision": "INTERVAL_OCCUPANCY_SCOUT_READY_FOR_REVIEW",
+  "next_actions": [
+    "Add finite interval partition coverage and disjointness when a width parameter is fixed.",
+    "Show the sum of occupancies over a partition recovers the BFR support-range mass.",
+    "Only then approach the discrepancy term in the BFR argument."
+  ],
+  "forbidden_writes_observed": {
+    "d1": false,
+    "morphisms_json": false,
+    "proof_registries": false,
+    "public_pages": false,
+    "existing_114_result_artifacts": false
+  }
+}

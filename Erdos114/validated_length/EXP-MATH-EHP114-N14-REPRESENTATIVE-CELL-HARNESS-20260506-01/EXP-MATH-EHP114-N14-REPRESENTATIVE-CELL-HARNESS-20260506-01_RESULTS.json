@@ -1,0 +1,262 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-N14-REPRESENTATIVE-CELL-HARNESS-20260506-01",
+  "timestamp_unix": "1778108594",
+  "status": "REPRESENTATIVE_CELL_HARNESS_BLOCKED_REGULAR_RESIDUAL_DRIFT",
+  "planned_cells": [
+    "CELL-00-02",
+    "CELL-03-03",
+    "CELL-07-07"
+  ],
+  "processed_cells": [
+    "CELL-00-02",
+    "CELL-03-03"
+  ],
+  "skipped_cells": [
+    {
+      "cell": "CELL-07-07",
+      "reason": "not run because harness stops on first non-transferable blocker"
+    }
+  ],
+  "pass_count": 1,
+  "fail_count": 1,
+  "source_sha_fail_count": 0,
+  "cell_summaries": [
+    {
+      "cell": "CELL-00-02",
+      "packet_status": "LOCAL_HARD_CELL_CERTIFICATE_PASS_NOT_GLOBAL_PROOF",
+      "packet_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-00-02-20260506-01_RESULTS.json",
+      "total_validated_length_upper": 17.183471776637536,
+      "exact_length_cap": 20.672796062619668,
+      "margin_to_cap": 3.489324285982132,
+      "residual_chain_total_closed_count": 64,
+      "source_sha_fail_count": 0,
+      "first_failed_condition": "none",
+      "l31_status": "RESIDUAL_CHAIN_INTEGRATION_PASS_NOT_GLOBAL_PROOF",
+      "l31_first_failed_condition": "none",
+      "l31_candidate_count_drift_count": 0,
+      "l31_source_filter_mismatch_count": 0,
+      "l31_ownership_duplicate_count": 0,
+      "l24_status": "REGULAR_RESIDUAL_PASS_NOT_GLOBAL_PROOF",
+      "l24_processed_regular_region_count": 8,
+      "l24_regular_regions_excluded": 8,
+      "l24_wall_separation_fail_count": 0,
+      "source_status": "SLAB_FAIL_ROOT_ISOLATION",
+      "raw_source_total_validated_length_upper": 17.183471776637536,
+      "raw_source_margin_to_cap": 3.489324285982132,
+      "repair_status": null,
+      "repair_target_count": 0,
+      "overlay_status": null,
+      "overlay_total_validated_length_upper": null
+    },
+    {
+      "cell": "CELL-03-03",
+      "packet_status": "LOCAL_HARD_CELL_FAIL_RESIDUAL_CHAIN",
+      "packet_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-03-03-20260506-01_RESULTS.json",
+      "total_validated_length_upper": 18.01426357052187,
+      "exact_length_cap": 20.672796062619668,
+      "margin_to_cap": 2.658532492097798,
+      "residual_chain_total_closed_count": 60,
+      "source_sha_fail_count": 0,
+      "first_failed_condition": "L31 status is not the expected local pass status",
+      "l31_status": "RESIDUAL_CHAIN_FAIL_COUNT_DRIFT",
+      "l31_first_failed_condition": "L24 processed_regular_region_count is not 8",
+      "l31_candidate_count_drift_count": 1,
+      "l31_source_filter_mismatch_count": 0,
+      "l31_ownership_duplicate_count": 0,
+      "l24_status": "REGULAR_RESIDUAL_FAIL_WALL_SEPARATION",
+      "l24_processed_regular_region_count": 12,
+      "l24_regular_regions_excluded": 8,
+      "l24_wall_separation_fail_count": 4,
+      "source_status": "SLAB_FAIL_ROOT_ISOLATION",
+      "raw_source_total_validated_length_upper": 22.71308313038541,
+      "raw_source_margin_to_cap": -2.0402870677657425,
+      "repair_status": "HIGH_SLOPE_SLAB_REPAIR_ADJUSTED_UNDER_CAP_DIAGNOSTIC",
+      "repair_target_count": 1,
+      "overlay_status": "REPAIRED_SLAB_SOURCE_OVERLAY_READY_FOR_DOWNSTREAM_DIAGNOSTIC",
+      "overlay_total_validated_length_upper": 18.01426357052187
+    }
+  ],
+  "first_failed_cell": "CELL-03-03",
+  "first_failed_condition": "CELL-03-03 L24 produced 12 regular regions, but only 8 were monotone-excluded; 4 regular wall-separation failures remain, and L31 correctly reported count drift rather than promoting a packet.",
+  "blocker_class": "regular_residual_generalization_needed",
+  "what_this_rules_out": "It rules out immediate broad remaining-cell generation under the current fixed eight-regular-region residual-chain assumption.",
+  "what_this_does_not_rule_out": "It does not rule out CELL-03-03 mathematically; the length budget remains under cap after source repair, and the derivative-root chain closes the critical candidates. The blocker is regular-region closure/integration generality.",
+  "next_dependency": "L33K should generalize L24/L31 to variable regular-region counts and add a proof-facing repair for the four CELL-03-03 regular wall-separation failures before returning to representative-cell batching.",
+  "source_sha_status": [
+    {
+      "role": "CELL-00-02:SLAB-VALIDATED-LENGTH-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-SLAB-VALIDATED-LENGTH-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-SLAB-VALIDATED-LENGTH-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-SLAB-VALIDATED-LENGTH-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:PER-CELL-SOURCE-GENERATION-SMOKE-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-PER-CELL-SOURCE-GENERATION-SMOKE-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-PER-CELL-SOURCE-GENERATION-SMOKE-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-PER-CELL-SOURCE-GENERATION-SMOKE-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:CELL-00-02-SLAB-SOURCE-SHARPENING",
+      "experiment_id": "EXP-MATH-EHP114-N14-CELL-00-02-SLAB-SOURCE-SHARPENING-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-CELL-00-02-SLAB-SOURCE-SHARPENING-20260506-01/EXP-MATH-EHP114-N14-CELL-00-02-SLAB-SOURCE-SHARPENING-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:BRANCH-ISOLATION-COLLAR-ATLAS-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-BRANCH-ISOLATION-COLLAR-ATLAS-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-BRANCH-ISOLATION-COLLAR-ATLAS-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-BRANCH-ISOLATION-COLLAR-ATLAS-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:NORMAL-COLLAR-CRITICAL-EXCLUSION-PILOT-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-NORMAL-COLLAR-CRITICAL-EXCLUSION-PILOT-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-NORMAL-COLLAR-CRITICAL-EXCLUSION-PILOT-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-NORMAL-COLLAR-CRITICAL-EXCLUSION-PILOT-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:REGULAR-SLICE-MONOTONE-TAYLOR-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-REGULAR-SLICE-MONOTONE-TAYLOR-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-REGULAR-SLICE-MONOTONE-TAYLOR-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-REGULAR-SLICE-MONOTONE-TAYLOR-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:PPRIME-ROOT-LOCATION-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-PPRIME-ROOT-LOCATION-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-PPRIME-ROOT-LOCATION-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-PPRIME-ROOT-LOCATION-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:SHARP-PPRIME-ROOT-LOCATION-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-SHARP-PPRIME-ROOT-LOCATION-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-SHARP-PPRIME-ROOT-LOCATION-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-SHARP-PPRIME-ROOT-LOCATION-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-00-02:LOCAL-CELL-CERTIFICATE-PACKET-CELL-00-02",
+      "experiment_id": "EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-00-02-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-00-02-20260506-01/EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-00-02-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:SLAB-VALIDATED-LENGTH-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-SLAB-VALIDATED-LENGTH-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-SLAB-VALIDATED-LENGTH-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-SLAB-VALIDATED-LENGTH-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:PER-CELL-SOURCE-GENERATION-SMOKE-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-PER-CELL-SOURCE-GENERATION-SMOKE-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-PER-CELL-SOURCE-GENERATION-SMOKE-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-PER-CELL-SOURCE-GENERATION-SMOKE-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:CELL-03-03-SLAB-SOURCE-SHARPENING",
+      "experiment_id": "EXP-MATH-EHP114-N14-CELL-03-03-SLAB-SOURCE-SHARPENING-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-CELL-03-03-SLAB-SOURCE-SHARPENING-20260506-01/EXP-MATH-EHP114-N14-CELL-03-03-SLAB-SOURCE-SHARPENING-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:CELL-03-03-HIGH-SLOPE-SLAB-REPAIR",
+      "experiment_id": "EXP-MATH-EHP114-N14-CELL-03-03-HIGH-SLOPE-SLAB-REPAIR-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-CELL-03-03-HIGH-SLOPE-SLAB-REPAIR-20260506-01/EXP-MATH-EHP114-N14-CELL-03-03-HIGH-SLOPE-SLAB-REPAIR-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:CELL-03-03-REPAIRED-SLAB-SOURCE-OVERLAY",
+      "experiment_id": "EXP-MATH-EHP114-N14-CELL-03-03-REPAIRED-SLAB-SOURCE-OVERLAY-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-CELL-03-03-REPAIRED-SLAB-SOURCE-OVERLAY-20260506-01/EXP-MATH-EHP114-N14-CELL-03-03-REPAIRED-SLAB-SOURCE-OVERLAY-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:BRANCH-ISOLATION-COLLAR-ATLAS-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-BRANCH-ISOLATION-COLLAR-ATLAS-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-BRANCH-ISOLATION-COLLAR-ATLAS-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-BRANCH-ISOLATION-COLLAR-ATLAS-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:NORMAL-COLLAR-CRITICAL-EXCLUSION-PILOT-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-NORMAL-COLLAR-CRITICAL-EXCLUSION-PILOT-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-NORMAL-COLLAR-CRITICAL-EXCLUSION-PILOT-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-NORMAL-COLLAR-CRITICAL-EXCLUSION-PILOT-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:REGULAR-SLICE-MONOTONE-TAYLOR-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-REGULAR-SLICE-MONOTONE-TAYLOR-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-REGULAR-SLICE-MONOTONE-TAYLOR-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-REGULAR-SLICE-MONOTONE-TAYLOR-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:PPRIME-ROOT-LOCATION-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-PPRIME-ROOT-LOCATION-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-PPRIME-ROOT-LOCATION-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-PPRIME-ROOT-LOCATION-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:SHARP-PPRIME-ROOT-LOCATION-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-SHARP-PPRIME-ROOT-LOCATION-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-SHARP-PPRIME-ROOT-LOCATION-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-SHARP-PPRIME-ROOT-LOCATION-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:LOCAL-CELL-CERTIFICATE-PACKET-CELL-03-03",
+      "experiment_id": "EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-03-03-20260506-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-03-03-20260506-01/EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-03-03-20260506-01_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    },
+    {
+      "role": "CELL-03-03:PER-CELL-SOURCE-GENERATION-SMOKE-OVERLAY",
+      "experiment_id": "EXP-MATH-EHP114-N14-PER-CELL-SOURCE-GENERATION-SMOKE-CELL-03-03-20260506-02",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-PER-CELL-SOURCE-GENERATION-SMOKE-CELL-03-03-20260506-02/EXP-MATH-EHP114-N14-PER-CELL-SOURCE-GENERATION-SMOKE-CELL-03-03-20260506-02_RESULTS.json",
+      "sha_status": "PASS_2026-05-06"
+    }
+  ],
+  "claim_ceiling": "Representative-cell harness diagnostic only. Not a proof of Erdos #114, not a global n=14 certificate, and not an exact lemniscate-length certificate."
+}

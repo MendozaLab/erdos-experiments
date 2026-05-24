@@ -1,0 +1,1819 @@
+{
+  "experiment_id": "EXP-MM-086-SPECTRAL-PHASE",
+  "erdos_problem": 86,
+  "problem_title": "C4-free subgraphs of the hypercube Q_n",
+  "problem_url": "https://www.erdosproblems.com/86",
+  "description": "Spectral phase transition experiment: measure the mean level spacing ratio <r> of randomly-thinned hypercube adjacency matrices as a function of edge retention probability p. The Poisson-to-GOE crossover at <r> = 0.4407 identifies the critical p_c for each Q_n.",
+  "hypothesis": "The critical edge-retention probability p_c (where <r> crosses 0.4407) decreases with n, and the C4-free constraint shifts p_c upward by suppressing spectral entropy (acting as 'entropic cooling').",
+  "method": {
+    "graph": "Hypercube Q_n adjacency matrix",
+    "sampling": "Bernoulli edge retention with probability p",
+    "observable": "Mean level spacing ratio <r> (Oganesyan-Huse)",
+    "reference_values": {
+      "poisson": 0.386,
+      "goe": 0.53,
+      "threshold": 0.4407
+    },
+    "references": [
+      "Oganesyan & Huse, Phys. Rev. B 75, 155111 (2007)",
+      "Atas et al., Phys. Rev. Lett. 110, 084101 (2013)"
+    ]
+  },
+  "parameters": {
+    "n_values": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "p_range": [
+      0.05,
+      0.07,
+      0.09,
+      0.11,
+      0.13,
+      0.15,
+      0.17,
+      0.19,
+      0.21,
+      0.23,
+      0.25,
+      0.27,
+      0.29,
+      0.31,
+      0.33,
+      0.35,
+      0.37,
+      0.39,
+      0.41,
+      0.43,
+      0.45,
+      0.47,
+      0.49,
+      0.51,
+      0.53,
+      0.55,
+      0.57,
+      0.59,
+      0.61,
+      0.63,
+      0.65,
+      0.67,
+      0.69,
+      0.71,
+      0.73,
+      0.75,
+      0.77,
+      0.79,
+      0.81,
+      0.83,
+      0.85,
+      0.87,
+      0.89,
+      0.91,
+      0.93,
+      0.95
+    ],
+    "n_trials": 100,
+    "seed": 42
+  },
+  "results": {
+    "Q_4": {
+      "n": 4,
+      "vertices": 16,
+      "edges": 32,
+      "sweep": [
+        {
+          "p": 0.05,
+          "mean_r": 0.035859,
+          "std_r": 0.107078,
+          "valid_trials": 79,
+          "edge_density": 0.013333
+        },
+        {
+          "p": 0.07,
+          "mean_r": 0.070018,
+          "std_r": 0.136101,
+          "valid_trials": 89,
+          "edge_density": 0.018667
+        },
+        {
+          "p": 0.09,
+          "mean_r": 0.068402,
+          "std_r": 0.126984,
+          "valid_trials": 93,
+          "edge_density": 0.024
+        },
+        {
+          "p": 0.11,
+          "mean_r": 0.077449,
+          "std_r": 0.140494,
+          "valid_trials": 98,
+          "edge_density": 0.029333
+        },
+        {
+          "p": 0.13,
+          "mean_r": 0.105791,
+          "std_r": 0.144283,
+          "valid_trials": 99,
+          "edge_density": 0.034667
+        },
+        {
+          "p": 0.15,
+          "mean_r": 0.115231,
+          "std_r": 0.159776,
+          "valid_trials": 100,
+          "edge_density": 0.04
+        },
+        {
+          "p": 0.17,
+          "mean_r": 0.167705,
+          "std_r": 0.186445,
+          "valid_trials": 100,
+          "edge_density": 0.045333
+        },
+        {
+          "p": 0.19,
+          "mean_r": 0.178796,
+          "std_r": 0.178923,
+          "valid_trials": 100,
+          "edge_density": 0.050667
+        },
+        {
+          "p": 0.21,
+          "mean_r": 0.181976,
+          "std_r": 0.152512,
+          "valid_trials": 100,
+          "edge_density": 0.056
+        },
+        {
+          "p": 0.23,
+          "mean_r": 0.212794,
+          "std_r": 0.187477,
+          "valid_trials": 100,
+          "edge_density": 0.061333
+        },
+        {
+          "p": 0.25,
+          "mean_r": 0.26778,
+          "std_r": 0.180311,
+          "valid_trials": 100,
+          "edge_density": 0.066667
+        },
+        {
+          "p": 0.27,
+          "mean_r": 0.279921,
+          "std_r": 0.193511,
+          "valid_trials": 100,
+          "edge_density": 0.072
+        },
+        {
+          "p": 0.29,
+          "mean_r": 0.282108,
+          "std_r": 0.18893,
+          "valid_trials": 100,
+          "edge_density": 0.077333
+        },
+        {
+          "p": 0.31,
+          "mean_r": 0.324275,
+          "std_r": 0.154625,
+          "valid_trials": 100,
+          "edge_density": 0.082667
+        },
+        {
+          "p": 0.33,
+          "mean_r": 0.304272,
+          "std_r": 0.152836,
+          "valid_trials": 100,
+          "edge_density": 0.088
+        },
+        {
+          "p": 0.35,
+          "mean_r": 0.318225,
+          "std_r": 0.171538,
+          "valid_trials": 100,
+          "edge_density": 0.093333
+        },
+        {
+          "p": 0.37,
+          "mean_r": 0.3172,
+          "std_r": 0.168267,
+          "valid_trials": 100,
+          "edge_density": 0.098667
+        },
+        {
+          "p": 0.39,
+          "mean_r": 0.380863,
+          "std_r": 0.145882,
+          "valid_trials": 100,
+          "edge_density": 0.104
+        },
+        {
+          "p": 0.41,
+          "mean_r": 0.36462,
+          "std_r": 0.152402,
+          "valid_trials": 100,
+          "edge_density": 0.109333
+        },
+        {
+          "p": 0.43,
+          "mean_r": 0.390764,
+          "std_r": 0.159852,
+          "valid_trials": 100,
+          "edge_density": 0.114667
+        },
+        {
+          "p": 0.45,
+          "mean_r": 0.420711,
+          "std_r": 0.133293,
+          "valid_trials": 100,
+          "edge_density": 0.12
+        },
+        {
+          "p": 0.47,
+          "mean_r": 0.42667,
+          "std_r": 0.12578,
+          "valid_trials": 100,
+          "edge_density": 0.125333
+        },
+        {
+          "p": 0.49,
+          "mean_r": 0.442417,
+          "std_r": 0.117294,
+          "valid_trials": 100,
+          "edge_density": 0.130667
+        },
+        {
+          "p": 0.51,
+          "mean_r": 0.442068,
+          "std_r": 0.141456,
+          "valid_trials": 100,
+          "edge_density": 0.136
+        },
+        {
+          "p": 0.53,
+          "mean_r": 0.453191,
+          "std_r": 0.117152,
+          "valid_trials": 100,
+          "edge_density": 0.141333
+        },
+        {
+          "p": 0.55,
+          "mean_r": 0.454559,
+          "std_r": 0.135872,
+          "valid_trials": 100,
+          "edge_density": 0.146667
+        },
+        {
+          "p": 0.57,
+          "mean_r": 0.475374,
+          "std_r": 0.112079,
+          "valid_trials": 100,
+          "edge_density": 0.152
+        },
+        {
+          "p": 0.59,
+          "mean_r": 0.458958,
+          "std_r": 0.122304,
+          "valid_trials": 100,
+          "edge_density": 0.157333
+        },
+        {
+          "p": 0.61,
+          "mean_r": 0.4501,
+          "std_r": 0.122245,
+          "valid_trials": 100,
+          "edge_density": 0.162667
+        },
+        {
+          "p": 0.63,
+          "mean_r": 0.455844,
+          "std_r": 0.104542,
+          "valid_trials": 100,
+          "edge_density": 0.168
+        },
+        {
+          "p": 0.65,
+          "mean_r": 0.474468,
+          "std_r": 0.11252,
+          "valid_trials": 100,
+          "edge_density": 0.173333
+        },
+        {
+          "p": 0.67,
+          "mean_r": 0.459752,
+          "std_r": 0.122709,
+          "valid_trials": 100,
+          "edge_density": 0.178667
+        },
+        {
+          "p": 0.69,
+          "mean_r": 0.443625,
+          "std_r": 0.103053,
+          "valid_trials": 100,
+          "edge_density": 0.184
+        },
+        {
+          "p": 0.71,
+          "mean_r": 0.467993,
+          "std_r": 0.126121,
+          "valid_trials": 100,
+          "edge_density": 0.189333
+        },
+        {
+          "p": 0.73,
+          "mean_r": 0.453328,
+          "std_r": 0.119434,
+          "valid_trials": 100,
+          "edge_density": 0.194667
+        },
+        {
+          "p": 0.75,
+          "mean_r": 0.438469,
+          "std_r": 0.124456,
+          "valid_trials": 100,
+          "edge_density": 0.2
+        },
+        {
+          "p": 0.77,
+          "mean_r": 0.44145,
+          "std_r": 0.11736,
+          "valid_trials": 100,
+          "edge_density": 0.205333
+        },
+        {
+          "p": 0.79,
+          "mean_r": 0.459162,
+          "std_r": 0.105279,
+          "valid_trials": 100,
+          "edge_density": 0.210667
+        },
+        {
+          "p": 0.81,
+          "mean_r": 0.442529,
+          "std_r": 0.123898,
+          "valid_trials": 100,
+          "edge_density": 0.216
+        },
+        {
+          "p": 0.83,
+          "mean_r": 0.4286,
+          "std_r": 0.118265,
+          "valid_trials": 100,
+          "edge_density": 0.221333
+        },
+        {
+          "p": 0.85,
+          "mean_r": 0.380408,
+          "std_r": 0.134663,
+          "valid_trials": 100,
+          "edge_density": 0.226667
+        },
+        {
+          "p": 0.87,
+          "mean_r": 0.348832,
+          "std_r": 0.136364,
+          "valid_trials": 100,
+          "edge_density": 0.232
+        },
+        {
+          "p": 0.89,
+          "mean_r": 0.305756,
+          "std_r": 0.13079,
+          "valid_trials": 100,
+          "edge_density": 0.237333
+        },
+        {
+          "p": 0.91,
+          "mean_r": 0.308756,
+          "std_r": 0.145982,
+          "valid_trials": 100,
+          "edge_density": 0.242667
+        },
+        {
+          "p": 0.93,
+          "mean_r": 0.245406,
+          "std_r": 0.152671,
+          "valid_trials": 100,
+          "edge_density": 0.248
+        },
+        {
+          "p": 0.95,
+          "mean_r": 0.175771,
+          "std_r": 0.155104,
+          "valid_trials": 100,
+          "edge_density": 0.253333
+        }
+      ],
+      "critical_transition": {
+        "p_c": 0.487819,
+        "p_bracket": [
+          0.47,
+          0.49
+        ],
+        "r_bracket": [
+          0.42667,
+          0.442417
+        ],
+        "direction": "rising"
+      },
+      "poisson_reference": 0.386,
+      "goe_reference": 0.53,
+      "goe_threshold": 0.4407
+    },
+    "Q_5": {
+      "n": 5,
+      "vertices": 32,
+      "edges": 80,
+      "sweep": [
+        {
+          "p": 0.05,
+          "mean_r": 0.035806,
+          "std_r": 0.091692,
+          "valid_trials": 97,
+          "edge_density": 0.008065
+        },
+        {
+          "p": 0.07,
+          "mean_r": 0.059878,
+          "std_r": 0.108329,
+          "valid_trials": 100,
+          "edge_density": 0.01129
+        },
+        {
+          "p": 0.09,
+          "mean_r": 0.100669,
+          "std_r": 0.130509,
+          "valid_trials": 100,
+          "edge_density": 0.014516
+        },
+        {
+          "p": 0.11,
+          "mean_r": 0.129732,
+          "std_r": 0.140489,
+          "valid_trials": 100,
+          "edge_density": 0.017742
+        },
+        {
+          "p": 0.13,
+          "mean_r": 0.14844,
+          "std_r": 0.139314,
+          "valid_trials": 100,
+          "edge_density": 0.020968
+        },
+        {
+          "p": 0.15,
+          "mean_r": 0.158427,
+          "std_r": 0.136185,
+          "valid_trials": 100,
+          "edge_density": 0.024194
+        },
+        {
+          "p": 0.17,
+          "mean_r": 0.189716,
+          "std_r": 0.143127,
+          "valid_trials": 100,
+          "edge_density": 0.027419
+        },
+        {
+          "p": 0.19,
+          "mean_r": 0.19493,
+          "std_r": 0.145512,
+          "valid_trials": 100,
+          "edge_density": 0.030645
+        },
+        {
+          "p": 0.21,
+          "mean_r": 0.244072,
+          "std_r": 0.119296,
+          "valid_trials": 100,
+          "edge_density": 0.033871
+        },
+        {
+          "p": 0.23,
+          "mean_r": 0.276372,
+          "std_r": 0.129177,
+          "valid_trials": 100,
+          "edge_density": 0.037097
+        },
+        {
+          "p": 0.25,
+          "mean_r": 0.299814,
+          "std_r": 0.135604,
+          "valid_trials": 100,
+          "edge_density": 0.040323
+        },
+        {
+          "p": 0.27,
+          "mean_r": 0.352751,
+          "std_r": 0.116323,
+          "valid_trials": 100,
+          "edge_density": 0.043548
+        },
+        {
+          "p": 0.29,
+          "mean_r": 0.350527,
+          "std_r": 0.118958,
+          "valid_trials": 100,
+          "edge_density": 0.046774
+        },
+        {
+          "p": 0.31,
+          "mean_r": 0.366704,
+          "std_r": 0.127762,
+          "valid_trials": 100,
+          "edge_density": 0.05
+        },
+        {
+          "p": 0.33,
+          "mean_r": 0.400701,
+          "std_r": 0.113344,
+          "valid_trials": 100,
+          "edge_density": 0.053226
+        },
+        {
+          "p": 0.35,
+          "mean_r": 0.417837,
+          "std_r": 0.107616,
+          "valid_trials": 100,
+          "edge_density": 0.056452
+        },
+        {
+          "p": 0.37,
+          "mean_r": 0.424969,
+          "std_r": 0.092478,
+          "valid_trials": 100,
+          "edge_density": 0.059677
+        },
+        {
+          "p": 0.39,
+          "mean_r": 0.44518,
+          "std_r": 0.095147,
+          "valid_trials": 100,
+          "edge_density": 0.062903
+        },
+        {
+          "p": 0.41,
+          "mean_r": 0.447014,
+          "std_r": 0.090001,
+          "valid_trials": 100,
+          "edge_density": 0.066129
+        },
+        {
+          "p": 0.43,
+          "mean_r": 0.476345,
+          "std_r": 0.087186,
+          "valid_trials": 100,
+          "edge_density": 0.069355
+        },
+        {
+          "p": 0.45,
+          "mean_r": 0.482139,
+          "std_r": 0.082073,
+          "valid_trials": 100,
+          "edge_density": 0.072581
+        },
+        {
+          "p": 0.47,
+          "mean_r": 0.481102,
+          "std_r": 0.084918,
+          "valid_trials": 100,
+          "edge_density": 0.075806
+        },
+        {
+          "p": 0.49,
+          "mean_r": 0.47842,
+          "std_r": 0.073883,
+          "valid_trials": 100,
+          "edge_density": 0.079032
+        },
+        {
+          "p": 0.51,
+          "mean_r": 0.496922,
+          "std_r": 0.077444,
+          "valid_trials": 100,
+          "edge_density": 0.082258
+        },
+        {
+          "p": 0.53,
+          "mean_r": 0.484927,
+          "std_r": 0.081604,
+          "valid_trials": 100,
+          "edge_density": 0.085484
+        },
+        {
+          "p": 0.55,
+          "mean_r": 0.496828,
+          "std_r": 0.082896,
+          "valid_trials": 100,
+          "edge_density": 0.08871
+        },
+        {
+          "p": 0.57,
+          "mean_r": 0.504688,
+          "std_r": 0.070071,
+          "valid_trials": 100,
+          "edge_density": 0.091935
+        },
+        {
+          "p": 0.59,
+          "mean_r": 0.493736,
+          "std_r": 0.085851,
+          "valid_trials": 100,
+          "edge_density": 0.095161
+        },
+        {
+          "p": 0.61,
+          "mean_r": 0.495112,
+          "std_r": 0.074056,
+          "valid_trials": 100,
+          "edge_density": 0.098387
+        },
+        {
+          "p": 0.63,
+          "mean_r": 0.497296,
+          "std_r": 0.065859,
+          "valid_trials": 100,
+          "edge_density": 0.101613
+        },
+        {
+          "p": 0.65,
+          "mean_r": 0.503018,
+          "std_r": 0.07191,
+          "valid_trials": 100,
+          "edge_density": 0.104839
+        },
+        {
+          "p": 0.67,
+          "mean_r": 0.510066,
+          "std_r": 0.075327,
+          "valid_trials": 100,
+          "edge_density": 0.108065
+        },
+        {
+          "p": 0.69,
+          "mean_r": 0.507082,
+          "std_r": 0.078067,
+          "valid_trials": 100,
+          "edge_density": 0.11129
+        },
+        {
+          "p": 0.71,
+          "mean_r": 0.492517,
+          "std_r": 0.079777,
+          "valid_trials": 100,
+          "edge_density": 0.114516
+        },
+        {
+          "p": 0.73,
+          "mean_r": 0.500786,
+          "std_r": 0.073329,
+          "valid_trials": 100,
+          "edge_density": 0.117742
+        },
+        {
+          "p": 0.75,
+          "mean_r": 0.504265,
+          "std_r": 0.066863,
+          "valid_trials": 100,
+          "edge_density": 0.120968
+        },
+        {
+          "p": 0.77,
+          "mean_r": 0.478132,
+          "std_r": 0.072843,
+          "valid_trials": 100,
+          "edge_density": 0.124194
+        },
+        {
+          "p": 0.79,
+          "mean_r": 0.482444,
+          "std_r": 0.077542,
+          "valid_trials": 100,
+          "edge_density": 0.127419
+        },
+        {
+          "p": 0.81,
+          "mean_r": 0.48494,
+          "std_r": 0.078448,
+          "valid_trials": 100,
+          "edge_density": 0.130645
+        },
+        {
+          "p": 0.83,
+          "mean_r": 0.467363,
+          "std_r": 0.069933,
+          "valid_trials": 100,
+          "edge_density": 0.133871
+        },
+        {
+          "p": 0.85,
+          "mean_r": 0.476329,
+          "std_r": 0.092908,
+          "valid_trials": 100,
+          "edge_density": 0.137097
+        },
+        {
+          "p": 0.87,
+          "mean_r": 0.444766,
+          "std_r": 0.07532,
+          "valid_trials": 100,
+          "edge_density": 0.140323
+        },
+        {
+          "p": 0.89,
+          "mean_r": 0.426085,
+          "std_r": 0.092333,
+          "valid_trials": 100,
+          "edge_density": 0.143548
+        },
+        {
+          "p": 0.91,
+          "mean_r": 0.408126,
+          "std_r": 0.080131,
+          "valid_trials": 100,
+          "edge_density": 0.146774
+        },
+        {
+          "p": 0.93,
+          "mean_r": 0.360385,
+          "std_r": 0.085826,
+          "valid_trials": 100,
+          "edge_density": 0.15
+        },
+        {
+          "p": 0.95,
+          "mean_r": 0.303002,
+          "std_r": 0.109796,
+          "valid_trials": 100,
+          "edge_density": 0.153226
+        }
+      ],
+      "critical_transition": {
+        "p_c": 0.385567,
+        "p_bracket": [
+          0.37,
+          0.39
+        ],
+        "r_bracket": [
+          0.424969,
+          0.44518
+        ],
+        "direction": "rising"
+      },
+      "poisson_reference": 0.386,
+      "goe_reference": 0.53,
+      "goe_threshold": 0.4407
+    },
+    "Q_6": {
+      "n": 6,
+      "vertices": 64,
+      "edges": 192,
+      "sweep": [
+        {
+          "p": 0.05,
+          "mean_r": 0.049828,
+          "std_r": 0.087991,
+          "valid_trials": 100,
+          "edge_density": 0.004762
+        },
+        {
+          "p": 0.07,
+          "mean_r": 0.097562,
+          "std_r": 0.104807,
+          "valid_trials": 100,
+          "edge_density": 0.006667
+        },
+        {
+          "p": 0.09,
+          "mean_r": 0.138817,
+          "std_r": 0.124619,
+          "valid_trials": 100,
+          "edge_density": 0.008571
+        },
+        {
+          "p": 0.11,
+          "mean_r": 0.148246,
+          "std_r": 0.124854,
+          "valid_trials": 100,
+          "edge_density": 0.010476
+        },
+        {
+          "p": 0.13,
+          "mean_r": 0.187724,
+          "std_r": 0.121102,
+          "valid_trials": 100,
+          "edge_density": 0.012381
+        },
+        {
+          "p": 0.15,
+          "mean_r": 0.229249,
+          "std_r": 0.107869,
+          "valid_trials": 100,
+          "edge_density": 0.014286
+        },
+        {
+          "p": 0.17,
+          "mean_r": 0.244976,
+          "std_r": 0.099224,
+          "valid_trials": 100,
+          "edge_density": 0.01619
+        },
+        {
+          "p": 0.19,
+          "mean_r": 0.267421,
+          "std_r": 0.101925,
+          "valid_trials": 100,
+          "edge_density": 0.018095
+        },
+        {
+          "p": 0.21,
+          "mean_r": 0.296189,
+          "std_r": 0.095599,
+          "valid_trials": 100,
+          "edge_density": 0.02
+        },
+        {
+          "p": 0.23,
+          "mean_r": 0.328639,
+          "std_r": 0.073117,
+          "valid_trials": 100,
+          "edge_density": 0.021905
+        },
+        {
+          "p": 0.25,
+          "mean_r": 0.367037,
+          "std_r": 0.080973,
+          "valid_trials": 100,
+          "edge_density": 0.02381
+        },
+        {
+          "p": 0.27,
+          "mean_r": 0.397175,
+          "std_r": 0.079217,
+          "valid_trials": 100,
+          "edge_density": 0.025714
+        },
+        {
+          "p": 0.29,
+          "mean_r": 0.41235,
+          "std_r": 0.074939,
+          "valid_trials": 100,
+          "edge_density": 0.027619
+        },
+        {
+          "p": 0.31,
+          "mean_r": 0.435157,
+          "std_r": 0.076297,
+          "valid_trials": 100,
+          "edge_density": 0.029524
+        },
+        {
+          "p": 0.33,
+          "mean_r": 0.451299,
+          "std_r": 0.069187,
+          "valid_trials": 100,
+          "edge_density": 0.031429
+        },
+        {
+          "p": 0.35,
+          "mean_r": 0.474303,
+          "std_r": 0.067951,
+          "valid_trials": 100,
+          "edge_density": 0.033333
+        },
+        {
+          "p": 0.37,
+          "mean_r": 0.478449,
+          "std_r": 0.065473,
+          "valid_trials": 100,
+          "edge_density": 0.035238
+        },
+        {
+          "p": 0.39,
+          "mean_r": 0.492464,
+          "std_r": 0.063033,
+          "valid_trials": 100,
+          "edge_density": 0.037143
+        },
+        {
+          "p": 0.41,
+          "mean_r": 0.481653,
+          "std_r": 0.05651,
+          "valid_trials": 100,
+          "edge_density": 0.039048
+        },
+        {
+          "p": 0.43,
+          "mean_r": 0.51204,
+          "std_r": 0.060893,
+          "valid_trials": 100,
+          "edge_density": 0.040952
+        },
+        {
+          "p": 0.45,
+          "mean_r": 0.499569,
+          "std_r": 0.054298,
+          "valid_trials": 100,
+          "edge_density": 0.042857
+        },
+        {
+          "p": 0.47,
+          "mean_r": 0.505736,
+          "std_r": 0.055103,
+          "valid_trials": 100,
+          "edge_density": 0.044762
+        },
+        {
+          "p": 0.49,
+          "mean_r": 0.518306,
+          "std_r": 0.05694,
+          "valid_trials": 100,
+          "edge_density": 0.046667
+        },
+        {
+          "p": 0.51,
+          "mean_r": 0.506469,
+          "std_r": 0.053042,
+          "valid_trials": 100,
+          "edge_density": 0.048571
+        },
+        {
+          "p": 0.53,
+          "mean_r": 0.51346,
+          "std_r": 0.053401,
+          "valid_trials": 100,
+          "edge_density": 0.050476
+        },
+        {
+          "p": 0.55,
+          "mean_r": 0.514424,
+          "std_r": 0.052777,
+          "valid_trials": 100,
+          "edge_density": 0.052381
+        },
+        {
+          "p": 0.57,
+          "mean_r": 0.509835,
+          "std_r": 0.051845,
+          "valid_trials": 100,
+          "edge_density": 0.054286
+        },
+        {
+          "p": 0.59,
+          "mean_r": 0.513333,
+          "std_r": 0.052937,
+          "valid_trials": 100,
+          "edge_density": 0.05619
+        },
+        {
+          "p": 0.61,
+          "mean_r": 0.51044,
+          "std_r": 0.059026,
+          "valid_trials": 100,
+          "edge_density": 0.058095
+        },
+        {
+          "p": 0.63,
+          "mean_r": 0.516793,
+          "std_r": 0.055489,
+          "valid_trials": 100,
+          "edge_density": 0.06
+        },
+        {
+          "p": 0.65,
+          "mean_r": 0.517605,
+          "std_r": 0.051205,
+          "valid_trials": 100,
+          "edge_density": 0.061905
+        },
+        {
+          "p": 0.67,
+          "mean_r": 0.509505,
+          "std_r": 0.053019,
+          "valid_trials": 100,
+          "edge_density": 0.06381
+        },
+        {
+          "p": 0.69,
+          "mean_r": 0.512471,
+          "std_r": 0.04878,
+          "valid_trials": 100,
+          "edge_density": 0.065714
+        },
+        {
+          "p": 0.71,
+          "mean_r": 0.519181,
+          "std_r": 0.054746,
+          "valid_trials": 100,
+          "edge_density": 0.067619
+        },
+        {
+          "p": 0.73,
+          "mean_r": 0.507622,
+          "std_r": 0.057138,
+          "valid_trials": 100,
+          "edge_density": 0.069524
+        },
+        {
+          "p": 0.75,
+          "mean_r": 0.504703,
+          "std_r": 0.063133,
+          "valid_trials": 100,
+          "edge_density": 0.071429
+        },
+        {
+          "p": 0.77,
+          "mean_r": 0.509958,
+          "std_r": 0.052126,
+          "valid_trials": 100,
+          "edge_density": 0.073333
+        },
+        {
+          "p": 0.79,
+          "mean_r": 0.500307,
+          "std_r": 0.048387,
+          "valid_trials": 100,
+          "edge_density": 0.075238
+        },
+        {
+          "p": 0.81,
+          "mean_r": 0.492885,
+          "std_r": 0.047493,
+          "valid_trials": 100,
+          "edge_density": 0.077143
+        },
+        {
+          "p": 0.83,
+          "mean_r": 0.485583,
+          "std_r": 0.051325,
+          "valid_trials": 100,
+          "edge_density": 0.079048
+        },
+        {
+          "p": 0.85,
+          "mean_r": 0.494227,
+          "std_r": 0.052928,
+          "valid_trials": 100,
+          "edge_density": 0.080952
+        },
+        {
+          "p": 0.87,
+          "mean_r": 0.470871,
+          "std_r": 0.049798,
+          "valid_trials": 100,
+          "edge_density": 0.082857
+        },
+        {
+          "p": 0.89,
+          "mean_r": 0.476461,
+          "std_r": 0.055416,
+          "valid_trials": 100,
+          "edge_density": 0.084762
+        },
+        {
+          "p": 0.91,
+          "mean_r": 0.449761,
+          "std_r": 0.047058,
+          "valid_trials": 100,
+          "edge_density": 0.086667
+        },
+        {
+          "p": 0.93,
+          "mean_r": 0.429551,
+          "std_r": 0.049676,
+          "valid_trials": 100,
+          "edge_density": 0.088571
+        },
+        {
+          "p": 0.95,
+          "mean_r": 0.405886,
+          "std_r": 0.068125,
+          "valid_trials": 100,
+          "edge_density": 0.090476
+        }
+      ],
+      "critical_transition": {
+        "p_c": 0.316868,
+        "p_bracket": [
+          0.31,
+          0.33
+        ],
+        "r_bracket": [
+          0.435157,
+          0.451299
+        ],
+        "direction": "rising"
+      },
+      "poisson_reference": 0.386,
+      "goe_reference": 0.53,
+      "goe_threshold": 0.4407
+    },
+    "Q_7": {
+      "n": 7,
+      "vertices": 128,
+      "edges": 448,
+      "sweep": [
+        {
+          "p": 0.05,
+          "mean_r": 0.074842,
+          "std_r": 0.088418,
+          "valid_trials": 100,
+          "edge_density": 0.002756
+        },
+        {
+          "p": 0.07,
+          "mean_r": 0.145477,
+          "std_r": 0.106874,
+          "valid_trials": 100,
+          "edge_density": 0.003858
+        },
+        {
+          "p": 0.09,
+          "mean_r": 0.174648,
+          "std_r": 0.104675,
+          "valid_trials": 100,
+          "edge_density": 0.004961
+        },
+        {
+          "p": 0.11,
+          "mean_r": 0.185551,
+          "std_r": 0.090536,
+          "valid_trials": 100,
+          "edge_density": 0.006063
+        },
+        {
+          "p": 0.13,
+          "mean_r": 0.231308,
+          "std_r": 0.074622,
+          "valid_trials": 100,
+          "edge_density": 0.007165
+        },
+        {
+          "p": 0.15,
+          "mean_r": 0.2686,
+          "std_r": 0.062235,
+          "valid_trials": 100,
+          "edge_density": 0.008268
+        },
+        {
+          "p": 0.17,
+          "mean_r": 0.302329,
+          "std_r": 0.068189,
+          "valid_trials": 100,
+          "edge_density": 0.00937
+        },
+        {
+          "p": 0.19,
+          "mean_r": 0.330237,
+          "std_r": 0.061045,
+          "valid_trials": 100,
+          "edge_density": 0.010472
+        },
+        {
+          "p": 0.21,
+          "mean_r": 0.372812,
+          "std_r": 0.066628,
+          "valid_trials": 100,
+          "edge_density": 0.011575
+        },
+        {
+          "p": 0.23,
+          "mean_r": 0.394592,
+          "std_r": 0.059768,
+          "valid_trials": 100,
+          "edge_density": 0.012677
+        },
+        {
+          "p": 0.25,
+          "mean_r": 0.427879,
+          "std_r": 0.05664,
+          "valid_trials": 100,
+          "edge_density": 0.01378
+        },
+        {
+          "p": 0.27,
+          "mean_r": 0.451003,
+          "std_r": 0.056796,
+          "valid_trials": 100,
+          "edge_density": 0.014882
+        },
+        {
+          "p": 0.29,
+          "mean_r": 0.472857,
+          "std_r": 0.04474,
+          "valid_trials": 100,
+          "edge_density": 0.015984
+        },
+        {
+          "p": 0.31,
+          "mean_r": 0.485197,
+          "std_r": 0.052791,
+          "valid_trials": 100,
+          "edge_density": 0.017087
+        },
+        {
+          "p": 0.33,
+          "mean_r": 0.492825,
+          "std_r": 0.037776,
+          "valid_trials": 100,
+          "edge_density": 0.018189
+        },
+        {
+          "p": 0.35,
+          "mean_r": 0.504104,
+          "std_r": 0.044191,
+          "valid_trials": 100,
+          "edge_density": 0.019291
+        },
+        {
+          "p": 0.37,
+          "mean_r": 0.503964,
+          "std_r": 0.04305,
+          "valid_trials": 100,
+          "edge_density": 0.020394
+        },
+        {
+          "p": 0.39,
+          "mean_r": 0.514257,
+          "std_r": 0.039874,
+          "valid_trials": 100,
+          "edge_density": 0.021496
+        },
+        {
+          "p": 0.41,
+          "mean_r": 0.512578,
+          "std_r": 0.039957,
+          "valid_trials": 100,
+          "edge_density": 0.022598
+        },
+        {
+          "p": 0.43,
+          "mean_r": 0.520325,
+          "std_r": 0.042167,
+          "valid_trials": 100,
+          "edge_density": 0.023701
+        },
+        {
+          "p": 0.45,
+          "mean_r": 0.515383,
+          "std_r": 0.039545,
+          "valid_trials": 100,
+          "edge_density": 0.024803
+        },
+        {
+          "p": 0.47,
+          "mean_r": 0.52119,
+          "std_r": 0.037963,
+          "valid_trials": 100,
+          "edge_density": 0.025906
+        },
+        {
+          "p": 0.49,
+          "mean_r": 0.513806,
+          "std_r": 0.037669,
+          "valid_trials": 100,
+          "edge_density": 0.027008
+        },
+        {
+          "p": 0.51,
+          "mean_r": 0.522229,
+          "std_r": 0.036769,
+          "valid_trials": 100,
+          "edge_density": 0.02811
+        },
+        {
+          "p": 0.53,
+          "mean_r": 0.514594,
+          "std_r": 0.038668,
+          "valid_trials": 100,
+          "edge_density": 0.029213
+        },
+        {
+          "p": 0.55,
+          "mean_r": 0.517293,
+          "std_r": 0.035625,
+          "valid_trials": 100,
+          "edge_density": 0.030315
+        },
+        {
+          "p": 0.57,
+          "mean_r": 0.521152,
+          "std_r": 0.034965,
+          "valid_trials": 100,
+          "edge_density": 0.031417
+        },
+        {
+          "p": 0.59,
+          "mean_r": 0.526652,
+          "std_r": 0.036683,
+          "valid_trials": 100,
+          "edge_density": 0.03252
+        },
+        {
+          "p": 0.61,
+          "mean_r": 0.525413,
+          "std_r": 0.039891,
+          "valid_trials": 100,
+          "edge_density": 0.033622
+        },
+        {
+          "p": 0.63,
+          "mean_r": 0.51974,
+          "std_r": 0.034669,
+          "valid_trials": 100,
+          "edge_density": 0.034724
+        },
+        {
+          "p": 0.65,
+          "mean_r": 0.521317,
+          "std_r": 0.041253,
+          "valid_trials": 100,
+          "edge_density": 0.035827
+        },
+        {
+          "p": 0.67,
+          "mean_r": 0.526196,
+          "std_r": 0.039882,
+          "valid_trials": 100,
+          "edge_density": 0.036929
+        },
+        {
+          "p": 0.69,
+          "mean_r": 0.519566,
+          "std_r": 0.037234,
+          "valid_trials": 100,
+          "edge_density": 0.038031
+        },
+        {
+          "p": 0.71,
+          "mean_r": 0.520168,
+          "std_r": 0.037293,
+          "valid_trials": 100,
+          "edge_density": 0.039134
+        },
+        {
+          "p": 0.73,
+          "mean_r": 0.515557,
+          "std_r": 0.034218,
+          "valid_trials": 100,
+          "edge_density": 0.040236
+        },
+        {
+          "p": 0.75,
+          "mean_r": 0.514023,
+          "std_r": 0.044769,
+          "valid_trials": 100,
+          "edge_density": 0.041339
+        },
+        {
+          "p": 0.77,
+          "mean_r": 0.507651,
+          "std_r": 0.041129,
+          "valid_trials": 100,
+          "edge_density": 0.042441
+        },
+        {
+          "p": 0.79,
+          "mean_r": 0.514655,
+          "std_r": 0.034933,
+          "valid_trials": 100,
+          "edge_density": 0.043543
+        },
+        {
+          "p": 0.81,
+          "mean_r": 0.503972,
+          "std_r": 0.037022,
+          "valid_trials": 100,
+          "edge_density": 0.044646
+        },
+        {
+          "p": 0.83,
+          "mean_r": 0.50443,
+          "std_r": 0.039775,
+          "valid_trials": 100,
+          "edge_density": 0.045748
+        },
+        {
+          "p": 0.85,
+          "mean_r": 0.509338,
+          "std_r": 0.03562,
+          "valid_trials": 100,
+          "edge_density": 0.04685
+        },
+        {
+          "p": 0.87,
+          "mean_r": 0.508124,
+          "std_r": 0.037856,
+          "valid_trials": 100,
+          "edge_density": 0.047953
+        },
+        {
+          "p": 0.89,
+          "mean_r": 0.504536,
+          "std_r": 0.042321,
+          "valid_trials": 100,
+          "edge_density": 0.049055
+        },
+        {
+          "p": 0.91,
+          "mean_r": 0.490298,
+          "std_r": 0.039023,
+          "valid_trials": 100,
+          "edge_density": 0.050157
+        },
+        {
+          "p": 0.93,
+          "mean_r": 0.479224,
+          "std_r": 0.038673,
+          "valid_trials": 100,
+          "edge_density": 0.05126
+        },
+        {
+          "p": 0.95,
+          "mean_r": 0.463214,
+          "std_r": 0.036649,
+          "valid_trials": 100,
+          "edge_density": 0.052362
+        }
+      ],
+      "critical_transition": {
+        "p_c": 0.261089,
+        "p_bracket": [
+          0.25,
+          0.27
+        ],
+        "r_bracket": [
+          0.427879,
+          0.451003
+        ],
+        "direction": "rising"
+      },
+      "poisson_reference": 0.386,
+      "goe_reference": 0.53,
+      "goe_threshold": 0.4407
+    },
+    "Q_8": {
+      "n": 8,
+      "vertices": 256,
+      "edges": 1024,
+      "sweep": [
+        {
+          "p": 0.05,
+          "mean_r": 0.11097,
+          "std_r": 0.093754,
+          "valid_trials": 100,
+          "edge_density": 0.001569
+        },
+        {
+          "p": 0.07,
+          "mean_r": 0.174148,
+          "std_r": 0.081468,
+          "valid_trials": 100,
+          "edge_density": 0.002196
+        },
+        {
+          "p": 0.09,
+          "mean_r": 0.212133,
+          "std_r": 0.070224,
+          "valid_trials": 100,
+          "edge_density": 0.002824
+        },
+        {
+          "p": 0.11,
+          "mean_r": 0.24708,
+          "std_r": 0.058594,
+          "valid_trials": 100,
+          "edge_density": 0.003451
+        },
+        {
+          "p": 0.13,
+          "mean_r": 0.288281,
+          "std_r": 0.050793,
+          "valid_trials": 100,
+          "edge_density": 0.004078
+        },
+        {
+          "p": 0.15,
+          "mean_r": 0.311952,
+          "std_r": 0.050993,
+          "valid_trials": 100,
+          "edge_density": 0.004706
+        },
+        {
+          "p": 0.17,
+          "mean_r": 0.353238,
+          "std_r": 0.043853,
+          "valid_trials": 100,
+          "edge_density": 0.005333
+        },
+        {
+          "p": 0.19,
+          "mean_r": 0.386342,
+          "std_r": 0.043294,
+          "valid_trials": 100,
+          "edge_density": 0.005961
+        },
+        {
+          "p": 0.21,
+          "mean_r": 0.42321,
+          "std_r": 0.040807,
+          "valid_trials": 100,
+          "edge_density": 0.006588
+        },
+        {
+          "p": 0.23,
+          "mean_r": 0.454875,
+          "std_r": 0.040159,
+          "valid_trials": 100,
+          "edge_density": 0.007216
+        },
+        {
+          "p": 0.25,
+          "mean_r": 0.473091,
+          "std_r": 0.03348,
+          "valid_trials": 100,
+          "edge_density": 0.007843
+        },
+        {
+          "p": 0.27,
+          "mean_r": 0.494508,
+          "std_r": 0.031882,
+          "valid_trials": 100,
+          "edge_density": 0.008471
+        },
+        {
+          "p": 0.29,
+          "mean_r": 0.508272,
+          "std_r": 0.031903,
+          "valid_trials": 100,
+          "edge_density": 0.009098
+        },
+        {
+          "p": 0.31,
+          "mean_r": 0.507418,
+          "std_r": 0.030862,
+          "valid_trials": 100,
+          "edge_density": 0.009725
+        },
+        {
+          "p": 0.33,
+          "mean_r": 0.51601,
+          "std_r": 0.028299,
+          "valid_trials": 100,
+          "edge_density": 0.010353
+        },
+        {
+          "p": 0.35,
+          "mean_r": 0.519383,
+          "std_r": 0.030044,
+          "valid_trials": 100,
+          "edge_density": 0.01098
+        },
+        {
+          "p": 0.37,
+          "mean_r": 0.521209,
+          "std_r": 0.026916,
+          "valid_trials": 100,
+          "edge_density": 0.011608
+        },
+        {
+          "p": 0.39,
+          "mean_r": 0.523704,
+          "std_r": 0.024172,
+          "valid_trials": 100,
+          "edge_density": 0.012235
+        },
+        {
+          "p": 0.41,
+          "mean_r": 0.524209,
+          "std_r": 0.026317,
+          "valid_trials": 100,
+          "edge_density": 0.012863
+        },
+        {
+          "p": 0.43,
+          "mean_r": 0.520698,
+          "std_r": 0.025654,
+          "valid_trials": 100,
+          "edge_density": 0.01349
+        },
+        {
+          "p": 0.45,
+          "mean_r": 0.523567,
+          "std_r": 0.026243,
+          "valid_trials": 100,
+          "edge_density": 0.014118
+        },
+        {
+          "p": 0.47,
+          "mean_r": 0.525978,
+          "std_r": 0.028008,
+          "valid_trials": 100,
+          "edge_density": 0.014745
+        },
+        {
+          "p": 0.49,
+          "mean_r": 0.523872,
+          "std_r": 0.02964,
+          "valid_trials": 100,
+          "edge_density": 0.015373
+        },
+        {
+          "p": 0.51,
+          "mean_r": 0.527938,
+          "std_r": 0.029104,
+          "valid_trials": 100,
+          "edge_density": 0.016
+        },
+        {
+          "p": 0.53,
+          "mean_r": 0.525629,
+          "std_r": 0.02481,
+          "valid_trials": 100,
+          "edge_density": 0.016627
+        },
+        {
+          "p": 0.55,
+          "mean_r": 0.522297,
+          "std_r": 0.028228,
+          "valid_trials": 100,
+          "edge_density": 0.017255
+        },
+        {
+          "p": 0.57,
+          "mean_r": 0.519537,
+          "std_r": 0.028093,
+          "valid_trials": 100,
+          "edge_density": 0.017882
+        },
+        {
+          "p": 0.59,
+          "mean_r": 0.527075,
+          "std_r": 0.026932,
+          "valid_trials": 100,
+          "edge_density": 0.01851
+        },
+        {
+          "p": 0.61,
+          "mean_r": 0.524332,
+          "std_r": 0.027301,
+          "valid_trials": 100,
+          "edge_density": 0.019137
+        },
+        {
+          "p": 0.63,
+          "mean_r": 0.522378,
+          "std_r": 0.027672,
+          "valid_trials": 100,
+          "edge_density": 0.019765
+        },
+        {
+          "p": 0.65,
+          "mean_r": 0.523722,
+          "std_r": 0.026103,
+          "valid_trials": 100,
+          "edge_density": 0.020392
+        },
+        {
+          "p": 0.67,
+          "mean_r": 0.523667,
+          "std_r": 0.026159,
+          "valid_trials": 100,
+          "edge_density": 0.02102
+        },
+        {
+          "p": 0.69,
+          "mean_r": 0.522486,
+          "std_r": 0.027726,
+          "valid_trials": 100,
+          "edge_density": 0.021647
+        },
+        {
+          "p": 0.71,
+          "mean_r": 0.523221,
+          "std_r": 0.024366,
+          "valid_trials": 100,
+          "edge_density": 0.022275
+        },
+        {
+          "p": 0.73,
+          "mean_r": 0.518523,
+          "std_r": 0.024169,
+          "valid_trials": 100,
+          "edge_density": 0.022902
+        },
+        {
+          "p": 0.75,
+          "mean_r": 0.517888,
+          "std_r": 0.026049,
+          "valid_trials": 100,
+          "edge_density": 0.023529
+        },
+        {
+          "p": 0.77,
+          "mean_r": 0.516457,
+          "std_r": 0.027169,
+          "valid_trials": 100,
+          "edge_density": 0.024157
+        },
+        {
+          "p": 0.79,
+          "mean_r": 0.513594,
+          "std_r": 0.026346,
+          "valid_trials": 100,
+          "edge_density": 0.024784
+        },
+        {
+          "p": 0.81,
+          "mean_r": 0.517804,
+          "std_r": 0.02789,
+          "valid_trials": 100,
+          "edge_density": 0.025412
+        },
+        {
+          "p": 0.83,
+          "mean_r": 0.51737,
+          "std_r": 0.025501,
+          "valid_trials": 100,
+          "edge_density": 0.026039
+        },
+        {
+          "p": 0.85,
+          "mean_r": 0.51675,
+          "std_r": 0.026031,
+          "valid_trials": 100,
+          "edge_density": 0.026667
+        },
+        {
+          "p": 0.87,
+          "mean_r": 0.510181,
+          "std_r": 0.02756,
+          "valid_trials": 100,
+          "edge_density": 0.027294
+        },
+        {
+          "p": 0.89,
+          "mean_r": 0.513054,
+          "std_r": 0.02895,
+          "valid_trials": 100,
+          "edge_density": 0.027922
+        },
+        {
+          "p": 0.91,
+          "mean_r": 0.505163,
+          "std_r": 0.026903,
+          "valid_trials": 100,
+          "edge_density": 0.028549
+        },
+        {
+          "p": 0.93,
+          "mean_r": 0.504193,
+          "std_r": 0.024098,
+          "valid_trials": 100,
+          "edge_density": 0.029176
+        },
+        {
+          "p": 0.95,
+          "mean_r": 0.492225,
+          "std_r": 0.024821,
+          "valid_trials": 100,
+          "edge_density": 0.029804
+        }
+      ],
+      "critical_transition": {
+        "p_c": 0.221047,
+        "p_bracket": [
+          0.21,
+          0.23
+        ],
+        "r_bracket": [
+          0.42321,
+          0.454875
+        ],
+        "direction": "rising"
+      },
+      "poisson_reference": 0.386,
+      "goe_reference": 0.53,
+      "goe_threshold": 0.4407
+    }
+  },
+  "timings_seconds": {
+    "Q_4": 0.2,
+    "Q_5": 0.37,
+    "Q_6": 1.15,
+    "Q_7": 4.06,
+    "Q_8": 17.67
+  },
+  "data_integrity": {
+    "tag": "REAL_COMPUTATION",
+    "note": "All values are outputs of Monte Carlo sampling with the stated seed and trial count. No fabricated or illustrative data."
+  },
+  "timestamp": "2026-04-13T19:39:34.641505+00:00",
+  "platform": {
+    "experiment_contract": "EXP-MM prefix, *_RESULTS.json + *_RESULTS.sha256",
+    "portfolio": "H2/Math (MendozaLab)"
+  }
+}

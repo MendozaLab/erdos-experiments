@@ -1,0 +1,33 @@
+{
+  "experiment_id": "STRUCTURAL-FIT-CHECK-ERDOS-1043-2026-05-15",
+  "problem_id": 1043,
+  "problem_statement": "Let f in C[x] be a monic polynomial. Must there exist a straight line ell such that the projection of {z : |f(z)| <= 1} onto ell has measure at most 2? Pommerenke 1961 proved the answer is no; weak variant (measure <= 3.3) holds. (Canonical source: DeepMind formal-conjectures Erdos1043.erdos_1043, citing erdosproblems.com/1043 and EHP58/Po59/Po61.)",
+  "paper_lineage": "EHP58 + Pommerenke 1959/1961 - same boundary geometry as Erdos #114 and #1041",
+  "feature_1_zero_curve": {
+    "verdict": "YES",
+    "justification": "Boundary {F = 0} with F(z) := |f(z)|^2 - 1 is again the lemniscate, identical curve family to #114/#1041. Closed sublevel set {|f| <= 1} bounded by the same curve as the open sublevel set {|f| < 1}. Real-analytic away from critical points {p'(z) = 0}. Local fit is identical; one caveat is that #1043 does not require roots in the unit disk (#114 and #1041 do), so the lemniscate can be unbounded globally, but WS-01's per-box wall test is local."
+  },
+  "feature_2_wall_separation": {
+    "verdict": "PARTIAL",
+    "justification": "Gate operates locally on a box of {F = 0} regardless of objective. WS-01's wall LHS/RHS comparison ports unchanged. However, the connection between certifying the lemniscate's local geometry and bounding the projected measure mu_1(P_u({|f| <= 1})) is more indirect than in #114 or #1041: Pommerenke 1961's negative resolution is precisely a construction of polynomials whose lemniscate-bounded sublevel set has projection > 2 in every direction. WS-01 can still certify the wall (local non-degeneracy of the curve), but the conjecture's failure mechanism lives upstream of where WS-01 helps. Gate machinery applies; diagnostic value for the conjecture is downstream-limited. Cold test on #1043 measures portability across an objective change on the same boundary geometry, which is the correct experimental question."
+  },
+  "feature_3_branch_point_ivt": {
+    "verdict": "YES",
+    "justification": "Branch-point gate uses the same two interval-arithmetic facts as #114/#1041: F_iv straddles zero (interval IVT) and |grad F| bounded away from zero at box center. Both are local properties of polynomial-derived F(z) = |f(z)|^2 - 1, evaluable with same mpmath.iv or inari machinery regardless of objective. Projection direction u in S^1 does not enter the per-box gate; it only enters the downstream measure-computation step."
+  },
+  "aggregate_verdict": "PARTIAL_FIT_PROCEED",
+  "ws01_applicable_prediction": "WS01_APPLICABLE_POSSIBLE (medium-high confidence; gate operates on local lemniscate geometry which is shared with #114/#1041, and per-box closure rate should resemble #1041. Diagnostic value for the conjecture is lower due to Pommerenke 1961 negative result, but diagnostic value for the portability question is identical.)",
+  "recommended_next_step": "Proceed to cold-test step B using the same interval kernel as #1041, with an additional projection-direction parameter sweep over u in S^1 at 6 discrete angles (theta in {0, pi/6, pi/3, pi/2, 2pi/3, 5pi/6}). Projection direction is recorded per box but does not enter the per-box gate.",
+  "sources_cited": [
+    "Math/formal-conjectures/FormalConjectures/ErdosProblems/1043.lean (lines 1-70)",
+    "Math/erdos-experiments/cross_problem_ws01_applicability_probe.py (lines 1-300)",
+    "Math/erdos-experiments/Erdos1038/STRUCTURAL_FIT_CHECK_2026-05-14.md (comparative template)",
+    "Math/erdos-experiments/Erdos1041/STRUCTURAL_FIT_CHECK_2026-05-15.md (sibling reference)",
+    "erdosproblems.com/1043 (canonical, referenced via Lean file metadata)",
+    "Pommerenke, Ch., On metric properties of complex polynomials, Michigan Math. J. (1961), 97-115",
+    "Pommerenke, Ch., On some problems by Erdos, Herzog and Piranian, Michigan Math. J. (1959), 221-225"
+  ],
+  "claim_ceiling": "Internal structural-fit check. Not a proof, not a solution claim, not a Lean statement. Diagnostic only.",
+  "timestamp_unix": 1747353600,
+  "schema_version": "1.0"
+}

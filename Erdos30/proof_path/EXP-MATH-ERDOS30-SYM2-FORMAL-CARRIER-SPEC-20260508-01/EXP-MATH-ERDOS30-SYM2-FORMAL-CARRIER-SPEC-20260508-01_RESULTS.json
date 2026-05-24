@@ -1,0 +1,67 @@
+{
+  "claim_ceiling": "review-only execution packet; not proof promotion, not D1, not curated morphism, not publication state",
+  "contract_executed": "EXP-MATH-ERDOS30-SYM2-OPERATOR-SCOUT-20260508-01",
+  "created_utc": "2026-05-08T20:25:25.324240+00:00",
+  "decision": "FORMALIZE_CARRIER_DISCIPLINE_BEFORE_OPERATOR_BOUND",
+  "decision_reason": "The Sym2 lesson is carrier discipline: define the pair-sum operator on the quotient that sees unordered pairs, separate diagonal characterization from off-diagonal bound, and do not treat this as coefficient pressure.",
+  "experiment_id": "EXP-MATH-ERDOS30-SYM2-FORMAL-CARRIER-SPEC-20260508-01",
+  "forbidden_writes": [
+    "D1",
+    "morphisms.json",
+    "proof registries",
+    "public pages",
+    "existing #30 artifacts"
+  ],
+  "formal_spec": {
+    "breakdown_boundary": "The carrier correction removes swap-sector overhead but does not improve BFR, Lindstrom, or public asymptotic coefficient by itself.",
+    "definitions": [
+      "unordered pair carrier for A.sym2",
+      "offDiag Sym2 image carrier",
+      "unorderedSum map",
+      "pair-sum operator matrix over the carrier"
+    ],
+    "lean_file_target": "Erdos30_Sym2PairSumOperator_SCOUT.lean",
+    "lemma_targets": [
+      "unorderedSum_injOn_iff_sidon reuse boundary",
+      "offDiag carrier count equals A.card.choose 2",
+      "swap sector is quotient noise, not Sidon evidence",
+      "operator trace identity over Sym2 carrier"
+    ],
+    "state": "SCOUT"
+  },
+  "generated_by": "erdos_atlas_autoresearch_librarian",
+  "mathematician_persona": "David Hilbert",
+  "origin": "auto-research",
+  "persona": "Eratosthenes of Cyrene",
+  "problem_id": 30,
+  "promotion_state": "review_only",
+  "proof_status_discipline": "no formal proof-status promotion labels are used in this object",
+  "scope": "erdos_atlas_only",
+  "scribe": "Ahmes",
+  "short_name": "Eratosthenes",
+  "source_fingerprints": [
+    {
+      "byte_count": 3765,
+      "exists": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30/proof_path/EXP-MATH-ERDOS30-SYM2-OPERATOR-SCOUT-20260508-01/EXP-MATH-ERDOS30-SYM2-OPERATOR-SCOUT-20260508-01_RESULTS.json",
+      "role": "phase3_sym2_contract",
+      "sha256": "df5db52a3202d4ec0acde1494a18367488133c8601c103972cb0645b13d859ca"
+    },
+    {
+      "byte_count": 9068,
+      "exists": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/Math-Problems/proofs/archive/ERDOS30_CONVOLUTION_OPERATOR_FULL_SYM2_AUDIT_2026-05-08.md",
+      "role": "sym2_full_characterization_audit",
+      "sha256": "463c0694e229647f66cbd0af29edfd9f6e25a390a8ec53dbfb5c5bf263d3ca72"
+    },
+    {
+      "byte_count": 6295,
+      "exists": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30/lean/Erdos30_CollisionChannel.lean",
+      "role": "collision_channel_lean",
+      "sha256": "f9114265831623042d0bad7a89dd33d77a73233deb1680df64a733039023257a"
+    }
+  ],
+  "status": "SYM2_FORMAL_CARRIER_SPEC_READY",
+  "story_writer": "Ahmes"
+}

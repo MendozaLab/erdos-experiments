@@ -1,0 +1,71 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12",
+  "predecessor_packet": "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-11",
+  "predecessor_status_string_normalization": {
+    "old": "LOCAL_INTERVAL_CERTIFIED",
+    "new": "IEEE-1788 interval-certified",
+    "reason": "Outside reviewers parse the LOCAL prefix as a hedge."
+  },
+  "audiences": [
+    "erdosproblems.com",
+    "Google DeepMind formal-conjectures"
+  ],
+  "presentation_title": "Finite verification of the Erdos-Herzog-Piranian lemniscate conjecture for n <= 14, n != 13",
+  "theorem_statement": "For every monic complex polynomial p of degree n with 1 <= n <= 14 and n != 13, the lemniscate length of {|p|=1} is at most the lemniscate length of p(z) = z^n - 1.",
+  "claim_ceiling": "Submission preflight packet only. It prepares erdosproblems.com and Google DeepMind formal-conjectures wording for the finite n <= 14 (n != 13) result and the conditional Tao-threshold bridge; it does not assert the all-degree Erdos #114 statement and does not authorize n = 15 or higher computation.",
+  "finite_theorem_ready": true,
+  "finite_theorem_excludes": [13],
+  "full_ehp114_claim": false,
+  "external_submission_authorized": false,
+  "n13_route_note": "EXP-MM-EHP-007-n13-inari_RESULTS.json reports bb_total_evals = 0 and bb_level_count = 0 while neighboring rows report 4.5e7 (n=12) and 8.5e8 (n=14). Quarantined from the public table for v12 pending a re-run with the same evaluator profile as n != 13.",
+  "covered_uncontested_degree_count": 12,
+  "quarantined_degree_count": 1,
+  "quarantined_degrees": [13],
+  "covered_degree_list_uncontested": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14],
+  "missing_degree_count": 0,
+  "dependency_sha_fail_count": 0,
+  "tao_threshold_status": "NOT_INCLUDED_IN_SUBMISSION_PACKET",
+  "tao_non_bridging_sentence": "No explicit threshold is extracted from Tao's sufficiently-large-n theorem in this finite packet, and no degree n >= 15 is claimed here.",
+  "n2_literature_citation": "Historical citation: G. R. MacLane, On a conjecture of Erdos, Herzog, and Piranian, Michigan Math. J. 2 (1953/54), 147-148, doi:10.1307/mmj/1028989918. Accessible source pin: Alexandre Eremenko and Walter K. Hayman, On the length of lemniscates, Michigan Math. J. 46 (1999), 409-415; arXiv:0805.2295.",
+  "n2_literature_pin": "MacLane is cited as the earlier degree-two literature row. The accessible Eremenko-Hayman source states in the abstract that for d=2 the extremal level set is Bernoulli's lemniscate; the proof remark after Lemma 5 says z^2+1 is extremal for d=2. This is length-equivalent to z^2-1 by rotation.",
+  "public_reference_urls": {
+    "erdosproblems_114": "https://www.erdosproblems.com/114",
+    "eremenko_hayman_arxiv": "https://arxiv.org/abs/0805.2295",
+    "eremenko_hayman_pdf": "https://www.math.purdue.edu/~eremenko/dvi/erdos23.pdf",
+    "formal_conjectures": "https://github.com/google-deepmind/formal-conjectures",
+    "github_repository": "https://github.com/MendozaLab/erdos-experiments",
+    "maclane_doi": "https://doi.org/10.1307/mmj/1028989918",
+    "tao_large_n_arxiv": "https://arxiv.org/abs/2512.12455",
+    "zenodo_record": "https://zenodo.org/records/19480329",
+    "zenodo_concept_doi": "https://doi.org/10.5281/zenodo.19184467"
+  },
+  "v12_package_files": [
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_README.md",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_ERDOSPROBLEMS_POST.md",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_FORMAL_CONJECTURES_PACKET.md",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_FORMAL_CONJECTURES_ISSUE_DRAFT.md",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_LEAN_STUB.lean",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_ZENODO_STRATEGY.md",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_REVIEWER_INQUIRY.md",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_REPORT.md",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_RESULTS.json",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_RESULTS.sha256",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_SHA_MANIFEST.md",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_CHANGELOG.md",
+    "EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_N13_RERUN_COMMAND.md"
+  ],
+  "process_gates_required_before_deposit": [
+    "prepub-redteam (init -> prompt -> import-critique -> log-edit -> freeze -> verify, must produce FROZEN.lock)",
+    "anthropic-skills:publisher (Publisher Gate over post draft, formal-conjectures PR body, Zenodo description edit)",
+    "crackpot-scrub (over the same three artifacts)"
+  ],
+  "process_gates_status": "NONE_RUN",
+  "deposit_target_order": [
+    "Edit Zenodo v5 description (do not mint v6 unless n=13 is re-run or new degrees added)",
+    "Post to erdosproblems.com",
+    "Open formal-conjectures PR (or issue) with Lean 4 stub"
+  ],
+  "ai_tooling_disclosure": "Tooling disclosure: this packet and draft wording were prepared with AI-assisted tooling. The mathematical claim rests only on the cited literature rows and SHA-checked certificate artifacts; no AI output is used as proof evidence. The author takes responsibility for the mathematical claims, certificate selection, and submission wording.",
+  "status": "SMALL_N_PRESENTATION_PACKET_READY_CONDITIONAL_BRIDGE_ONLY_N13_QUARANTINED",
+  "timestamp_unix": "1778187600"
+}

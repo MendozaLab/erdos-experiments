@@ -1,0 +1,101 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-TAO-INSIDE-2-CONSTANT-EXTRACTION-20260509-01",
+  "status": "TAO_CONSTANT_EXTRACTION_ALL_OPAQUE",
+  "claim_ceiling": "Internal extraction packet only. Not a proof of Erdos #114, not a numeric N0 candidate, and not a public claim. Only a per-constant verdict.",
+  "tao_paper": {
+    "arxiv_id": "2512.12455",
+    "version_fetched": "v2",
+    "title": "The maximal length of the Erdos-Herzog-Piranian lemniscate in high degree",
+    "author": "Terence Tao",
+    "submission_date_v1": "2025-12-13",
+    "submission_date_v2": "2025-12-22",
+    "fetch_method": "WebFetch (abstract) + curl (PDF + e-print TeX source)",
+    "fetch_status": "ok",
+    "source_file_local": "/tmp/tao114_src/lemniscate.tex",
+    "source_file_lines": 1965
+  },
+  "labels_resolved": {
+    "inside-2": "line 1739, Proposition (Inner bound)",
+    "annulus-2": "line 1781, Proposition (Bound in intermediate region)",
+    "outside-again": "line 1831, Proposition (Outer bound)",
+    "defect-psi-cor": "line 1025, Corollary (Upper bound on Psi)",
+    "origin-repulsion": "line 869, Lemma (Origin repulsion)",
+    "pp0": "line 1744, equation label, condition '||p|| >= C ||p||_1'"
+  },
+  "named_constants": [
+    {
+      "name": "inside-2 absolute c (first inequality, in2-first)",
+      "lemma": "inside-2",
+      "tao_line_range": [1739, 1751],
+      "tao_wording": "We have l(dE_1 cap D(0,r_-)) <= 2n r_- - c Disp{zeta : zeta in D(0,10 r_-)} + O(||p||/C_0) for an absolute constant c>0 (independent of C_0).",
+      "extraction_verdict": "SYMBOLIC_ONLY",
+      "candidate_numeric_value": null,
+      "dependency_chain": ["defect-psi-cor (Cor. line 1025)", "Lemma tridef (line 1012)", "Stokes thm + X1..X5 estimates (lines 1755-1762)"],
+      "extraction_notes": "Tao writes 'for an absolute constant c>0 (independent of C_0)' at line 1743 and at line 1767. The constant inherits from defect-psi-cor's c_C with C set to a fixed numeric (here 10, since the displacement is taken over D(0, 10 r_-)). The c_C in defect-psi-cor (line 1027) is itself defined only as 'some constant c_C>0 depending only on C', traced through Lemma tridef line 1013 ('asymp_C') whose proof is non-quantitative (relies on 'direct calculation shows the integrand is non-negative, absolutely integrable, and non-vanishing away from the real axis' -- no explicit lower-integral bound is computed). To extract c numerically would require (a) a quantitative lower bound on the disc-integral of (1/|z| + 1/|z-1| - |1/z + 1/(z-1)|) over D(0, 1/(2C+1)) for C=10, and (b) propagation through the markov-many critical-point count. This is BOUNDED_BY_CASE_ANALYSIS in principle but Tao does not perform it; the chain is symbolic at every link."
+    },
+    {
+      "name": "inside-2 absolute c (refined inequality, in2-second)",
+      "lemma": "inside-2",
+      "tao_line_range": [1747, 1751],
+      "tao_wording": "If furthermore ||p|| >= C ||p||_1 for a large absolute constant C (independent of C_0, c), we can obtain the refinement l(dE_1 cap D(0,r_-)) <= 2n r_- - c Disp{...} - c ||p|| + O(||p||/C_0).",
+      "extraction_verdict": "SYMBOLIC_ONLY",
+      "candidate_numeric_value": null,
+      "dependency_chain": ["origin-repulsion (Lemma line 869)", "Lemma ankh (line 1043)", "defect-psi-cor"],
+      "extraction_notes": "The C in pp0 is symbolic ('a large absolute constant C (independent of C_0, c)'). origin-repulsion is stated with Vinogradov '<<' (line 870: '||p||_0 << ||p||_1 + n dist(0, dE_1(p))'); the implied constant is never made explicit. The lemma's proof at lines 877-881 chains poz, npz, pocl bounds from earlier sections, each itself stated with implied constants. The constant c in 'lemniscate dE_1 does not enter D(0, ||p||/4n)' (line 1770) is then chosen 'for C large enough' relative to that origin-repulsion implied constant. Lemma ankh at line 1043 also gives Psi(Ann(0,r/2,r)) >= (n-1) r - O(||p||_1) with no extracted O-constant. All three nested constants would require independent extraction passes."
+    },
+    {
+      "name": "annulus-2 absolute c",
+      "lemma": "annulus-2",
+      "tao_line_range": [1781, 1784],
+      "tao_wording": "We have l(dE_1 cap Ann(0,r_-,r_+)) <= 2n(r_+ - r_-) - c sum_{zeta notin D(0,10r_-)} |zeta| + O_{C_0}(log n / n * ||p||) for an absolute constant c>0 (independent of C_0).",
+      "extraction_verdict": "SYMBOLIC_ONLY",
+      "candidate_numeric_value": null,
+      "dependency_chain": ["Lemma sting (cited line 1787, 1818)", "Proposition pform (line 889)", "arclength Lemma (eqs. arcl-1, arcl-2)", "Proposition ets (line 1717)"],
+      "extraction_notes": "Two opaque layers. (1) The 'c' is absolute but is the trade-off coefficient against the O_{C_0}(log n / n * ||p||) error -- the implicit constant inside O_{C_0} is C_0-dependent and not quantified anywhere in the proof (lines 1786-1827). (2) The proof reduces via Rouche's theorem and a re-run of Proposition ets (line 1717ff), whose implicit constants are also symbolic. The user's note that this trade-off 'invokes Corollary defect-psi-cor (line ~1767), whose integral is C-dependent' is consistent: the c carried over from inside-2's defect-psi-cor application at line 1765-1767 is the SAME c re-used here under the absolute label, and the C_0 dependence is absorbed into the additive log n / n * ||p|| term, not extracted."
+    },
+    {
+      "name": "outside-again error constant in O(||p||/C_0)",
+      "lemma": "outside-again",
+      "tao_line_range": [1831, 1833],
+      "tao_wording": "l(dE_1 cap Ann(0, r_+, 1+sigma)) <= l(dE_1(p_0)) - 2n r_+ + O(||p||/C_0).",
+      "extraction_verdict": "SYMBOLIC_ONLY",
+      "candidate_numeric_value": null,
+      "dependency_chain": ["Proposition pform (line 889)", "Proposition pvar", "Lemma out (cited line 1856)", "arclength Lemma"],
+      "extraction_notes": "There is no named constant c in the statement. The lemma instead carries an O(||p||/C_0) remainder. The proof (lines 1835-1865) chains: Proposition pform's O(||p||^2 / (n |z|^2)) error (line 1839), pvar's |z|^{n-1} error (line 1843), Lemma out's int_{I_r} ... = l(dE_1(p_0)) - 2n r + O(||p||/C_0^2) (line 1857), and a final residual integral O(n / C_0^2 ||p||) (line 1864). Each Vinogradov '<<' is symbolic. There is one numeric exponent appearing -- C_0^2 vs. C_0 in the remainders -- but the implicit absolute constants buried in << are not extracted. To extract: trace pform's proof at lines 894-938 (uses fundamental-theorem-of-calculus + a substitution t=1-s/n bounded by exp(-s/2)), which is constructive but symbolic. Verdict SYMBOLIC_ONLY because the user asks for a NUMERIC answer or constructive bound, and Tao does not provide one."
+    },
+    {
+      "name": "defect-psi-cor c_C (the C-dependent integral constant)",
+      "lemma": "defect-psi-cor",
+      "tao_line_range": [1025, 1039],
+      "tao_wording": "Suppose r >= 10 ||p||_1 / n. For any measurable set E containing a disk D(z_0, r) and C>0, Psi(E) <= 2(n-1) r[E] - c_C Disp{zeta : zeta in D(z_0, Cr)} for some constant c_C>0 depending only on C.",
+      "extraction_verdict": "BOUNDED_BY_CASE_ANALYSIS",
+      "candidate_numeric_value": null,
+      "dependency_chain": ["Lemma tridef (line 1012)", "markov-many", "disp-sum"],
+      "extraction_notes": "This is the SOURCE of the 'c' that propagates into inside-2 and annulus-2 (with C=10). Tao's proof (lines 1032-1038) reduces to: int_{D(z_0,r)} (1/|z-zeta| + 1/|z-zeta'| - |1/(z-zeta) + 1/(z-zeta')|) dA(z) >>_C |zeta - zeta'|, established via Lemma tridef which after translation+dilation reduces to a CONCRETE integral over D(0, 1/(2C+1)) of (1/|z| + 1/|z-1| - |1/z + 1/(z-1)|). This integral is universal, geometrically explicit, and could be lower-bounded numerically (e.g. by computer-algebra evaluation or piecewise-constant inner-bound on a sufficiently fine grid). For C=10 (the value used by inside-2 at line 1741), the disk is D(0, 1/21) and a numeric c_10 is extractable in principle. Verdict: BOUNDED_BY_CASE_ANALYSIS -- a focused extraction (a few hundred lines of computer-assisted real analysis) could yield a positive numeric c_10. Tao does not perform this."
+    },
+    {
+      "name": "origin-repulsion implied constant in '<<'",
+      "lemma": "origin-repulsion",
+      "tao_line_range": [869, 882],
+      "tao_wording": "We have ||p||_0 << ||p||_1 + n dist(0, dE_1(p)). In particular, by size-def, ||p|| << ||p||_1 + n dist(0, dE_1(p)).",
+      "extraction_verdict": "SYMBOLIC_ONLY",
+      "candidate_numeric_value": null,
+      "dependency_chain": ["poz, npz, pocl bounds from earlier section", "size-def"],
+      "extraction_notes": "Proof (lines 877-881) is two-case: |z| >= ||p||_1/n vs. |z| < ||p||_1/n. Each case uses bounds poz (n^{-n} ||p||_0^n << |z|^n) and pocl (n^{-n} ||p||_0^n << e^{O(n)} n^{-n} ||p||_1^n). Both poz and pocl are themselves stated with implied constants. To extract origin-repulsion's '<<' would require first extracting those, which the user-supplied scope does not request. Verdict SYMBOLIC_ONLY in the form Tao writes it; possibly upgradable to BOUNDED_BY_CASE_ANALYSIS after upstream extraction work."
+    },
+    {
+      "name": "pp0 condition constant C",
+      "lemma": "pp0 (condition, not lemma)",
+      "tao_line_range": [1744, 1747],
+      "tao_wording": "||p|| >= C ||p||_1, for a large absolute constant C (independent of C_0, c).",
+      "extraction_verdict": "SYMBOLIC_ONLY",
+      "candidate_numeric_value": null,
+      "dependency_chain": ["origin-repulsion (line 869)"],
+      "extraction_notes": "C is chosen so that origin-repulsion forces dE_1 to avoid D(0, ||p||/4n). Specifically, line 1770: 'From Lemma origin-repulsion we conclude (for C large enough) that the lemniscate dE_1 does not enter D(0, ||p||/4n)'. The threshold C is therefore 4 * (origin-repulsion's implied constant) + buffer. Without an extracted origin-repulsion constant, C is symbolic. This is the second link in the symbolic chain: pp0 inherits opacity from origin-repulsion."
+    }
+  ],
+  "candidate_N0_path": "Track A1 alone is insufficient to bound a numeric N0. Of the seven named constants, six are SYMBOLIC_ONLY and one (defect-psi-cor c_C with C=10) is BOUNDED_BY_CASE_ANALYSIS. To produce a candidate numeric N0 from Tao's chain, every symbolic '<<' would have to be quantified: defect-psi-cor at C=10 (the case-analysis target), origin-repulsion's two-case implied constant, the X1-X5 estimates feeding inside-2's Stokes-theorem application, Lemma sting's contribution to annulus-2, Proposition pform's t-integral remainder feeding outside-again, and the C_0-dependent constants in O_{C_0}(log n / n * ||p||) inside annulus-2 (the dominant lower-order term). The trade-off c * ||p|| vs. O(||p||/C_0) at line 1868 ('giving the claim a-ineq') sets C_0 large enough that the lower bound c overwhelms the C_0-error; without numeric c, no numeric C_0 emerges; without numeric C_0, no numeric n-threshold emerges from line 1730 ('r_+ = C_0^2 ||p|| = o(1)'). The chain is structurally constructive (no Roth-style non-effective input is invoked) so it is not NON_EFFECTIVE in the strict sense, but it is unfinished as written.",
+  "next_dependency": "Since exactly one constant lands in BOUNDED_BY_CASE_ANALYSIS (defect-psi-cor c_C at C=10) and the rest are SYMBOLIC_ONLY, Track A is not dead but is heavily blocked. Track A2 should target defect-psi-cor c_10 first (compute the universal disk integral over D(0, 1/21) of the Lemma-tridef integrand) since it sits at the root of both inside-2 and annulus-2. If c_10 lands as a clean positive rational, then the secondary blockers are origin-repulsion's implied constant (Track A3) and the C_0-trade-off in annulus-2 (Track A4). If even one of those secondary extractions falls through, Track A is dead and Track B (small-n direct verification at scale, currently n<=14, plus per-n upper-bound certificates extending to a meeting point with Tao's regime) carries the load. Recommendation: queue Track A2 (one-shot, low-risk: a defined integral on a known disk) and run Track B in parallel; do not wait for A2 to clear before running B.",
+  "timestamp_unix": 1778335200,
+  "schema_version": "1.0"
+}

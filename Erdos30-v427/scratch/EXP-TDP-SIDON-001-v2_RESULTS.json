@@ -1,0 +1,47 @@
+{
+  "experiment_id": "EXP-TDP-SIDON-001-v2",
+  "supersedes": "EXP-TDP-SIDON-001",
+  "title": "Spectral Sidon Property of N-Body Choreography Distance Sets (rectified)",
+  "system": "Z_n symmetric choreographies, n=3..200",
+  "description": "Test whether D_n = {2*sin(pi*m/n) : m=1..floor(n/2)} is a Sidon set in R",
+  "method": "Exhaustive pairwise sum comparison with tolerance 1e-12 (v1 method preserved; v2 rectifies labeling only)",
+  "rectification": {
+    "date": "2026-04-28",
+    "reviewer": "Orthogonal team (Claude Code Skeptic + Perplexity sonar)",
+    "reason": "v1 collision_identity_at_n30 field reported sin(pi/15)+sin(7*pi/15)=sin(2*pi/15)+sin(4*pi/15) (numerically FALSE: LHS approx 1.2024, RHS approx 1.1498). The boolean detection first_collision=30 is independently sound; the labeling string was wrong. Corrected to the genuine collision at indices m=(3,15) and m=(5,9) in S_30, provable from golden-ratio sin values.",
+    "scope": "labeling-only correction; numerical detection results (collision_ns_3_to_200, gcd_of_collision_ns) carried forward from v1 unchanged but flagged for re-verification before any external publication",
+    "v1_status": "RETAINED READ-ONLY per H2 invariant Rule 3 (results never overwritten)"
+  },
+  "results": {
+    "sidon_range": "n = 3 through 29 (27 cases, all Sidon)",
+    "first_collision": 30,
+    "collision_ns_3_to_200": [30, 42, 60, 84, 90, 120, 126, 150, 168, 180],
+    "gcd_of_collision_ns": 6,
+    "all_collision_ns_divisible_by_6": true,
+    "collision_identity_at_n30": "2*sin(pi*3/30) + 2*sin(pi*15/30) = 2*sin(pi*5/30) + 2*sin(pi*9/30)",
+    "collision_identity_at_n30_normalized": "sin(pi/10) + sin(pi/2) = sin(pi/6) + sin(3*pi/10)",
+    "collision_identity_at_n30_numerical": "LHS = (sqrt(5)-1)/4 + 1 = (3 + sqrt(5))/4 approx 1.30902; RHS = 1/2 + (sqrt(5)+1)/4 = (3 + sqrt(5))/4 approx 1.30902",
+    "collision_identity_at_n30_provable_from_mathlib": "Real.cos_pi_div_five = (1 + sqrt(5))/4, Real.sin_pi_div_two = 1, Real.sin_pi_div_six = 1/2; sin(pi/10) = cos(2*pi/5) and sin(3*pi/10) = cos(pi/5) via Real.sin_pi_div_two_sub; cos(2x) = 2cos^2(x) - 1 via Real.cos_two_mul",
+    "collision_factorizations": {
+      "30": "2*3*5",
+      "42": "2*3*7",
+      "60": "2^2*3*5",
+      "84": "2^2*3*7",
+      "90": "2*3^2*5",
+      "120": "2^3*3*5",
+      "126": "2*3^2*7",
+      "150": "2*3*5^2",
+      "168": "2^3*3*7",
+      "180": "2^2*3^2*5"
+    }
+  },
+  "theorem_candidate": "For 3 <= n <= 29, D_n is a Sidon set in R. (Finite verification, 27 cases. Currently axiomatized in SpectralSidonScratch/SpectralSidon.lean pending native_decide proof.)",
+  "conjecture_status": "FLAGGED: Perplexity (2026-04-28) found NO literature confirming n=30 as the smallest Sidon-failing N for this multiset family. The conjecture 'all collisions at n divisible by 6' is local to this experiment and not externally validated. Treat as research hypothesis, not established result.",
+  "n_body_interpretation": "All known stable choreographies (n <= ~20) live in the Sidon regime. An n=30 Sidon failure exists; whether n=30 is the THRESHOLD (smallest such N) is open pending exhaustive re-verification.",
+  "connection_to_erdos_30": "The compiled Lean proof of sidon_sum_count (|A|*(|A|+1)/2 <= 2*sup(A)+1) applies directly: for D_n with n<=29, the Sidon bound constrains the spectral distance space of choreographies.",
+  "pass_fail": "PASS (LABELING-CORRECTED) — Sidon property holds empirically for n=3..29; an n=30 Sidon failure exists. Threshold-claim demoted to conjecture pending re-verification.",
+  "publication_status": "BLOCKED — do not cite externally until full re-run from scratch confirms collision_ns list independently of v1 pipeline.",
+  "carved_to": "SpectralSidonScratch lib (lean_lib in Math/Lean4/transdimensional-painter/), separated from TransdimensionalPainter Main theorem dependency graph 2026-04-28",
+  "timestamp_v1": "2026-04-15T20:09:06.056994+00:00",
+  "timestamp_v2": "2026-04-28"
+}

@@ -1,0 +1,176 @@
+{
+  "all_six_failing_boxes_R_n_vs_RHS": [
+    {
+      "R_n": 0.003772270013009502,
+      "R_n_over_RHS": 46.787238351565485,
+      "interval_newton_floor_clears_RHS": false,
+      "split_path": "root/y0/y0/y1/y0",
+      "src_idx": 3852,
+      "wall_rhs": 8.06260456038069e-05
+    },
+    {
+      "R_n": 0.003475447569562719,
+      "R_n_over_RHS": 9.04595513280543,
+      "interval_newton_floor_clears_RHS": false,
+      "split_path": "root/y0/y0/y0/y1",
+      "src_idx": 3852,
+      "wall_rhs": 0.0003841990722415705
+    },
+    {
+      "R_n": 0.003139112136243525,
+      "R_n_over_RHS": 3.6460393632945713,
+      "interval_newton_floor_clears_RHS": false,
+      "split_path": "root/y0/y0/y0/y0",
+      "src_idx": 3852,
+      "wall_rhs": 0.000860964960456986
+    },
+    {
+      "R_n": 0.004080514245030948,
+      "R_n_over_RHS": 8.159701068626827,
+      "interval_newton_floor_clears_RHS": false,
+      "split_path": "root/y1/y0/y0/y0",
+      "src_idx": 3852,
+      "wall_rhs": 0.0005000813400775288
+    },
+    {
+      "R_n": 0.003812577289815574,
+      "R_n_over_RHS": 2.5847298693712832,
+      "interval_newton_floor_clears_RHS": false,
+      "split_path": "root/y1/y0/y0/y1",
+      "src_idx": 3852,
+      "wall_rhs": 0.001475038972154934
+    },
+    {
+      "R_n": 0.003471478564800738,
+      "R_n_over_RHS": 1.3238269666833002,
+      "interval_newton_floor_clears_RHS": false,
+      "split_path": "root/y1/y0/y1/y0",
+      "src_idx": 3852,
+      "wall_rhs": 0.0026223053708432434
+    }
+  ],
+  "claim_ceiling": "Internal diagnostic only. Not a proof, not a closure. One-box decomposition of the WS-01 wall test on CELL-02-03 owner family 4571:2 worst-failing box. Python numerical demonstration. R-reduction-after-interval-Newton is an UNCERTIFIED estimate based on geometry, not a certified bound.",
+  "claim_level": "diagnostic_only_python_numerical",
+  "comparison_with_closing_box": {
+    "closing_LHS": 0.007444581878455856,
+    "closing_LHS_over_RHS": 0.2968561597975617,
+    "closing_RHS": 0.025078077825747728,
+    "closing_box_owner": "4488:3",
+    "closing_cubic": 6.763165963564513e-05,
+    "closing_outcome": "CLOSED_BY_WS01",
+    "closing_quad": 0.003577376785552299,
+    "closing_remainder": 0.003799573433267912,
+    "closing_required_factor_after_2R": 3.368634832041015,
+    "closing_split_path": "root/y1/y0/y1/y0",
+    "closing_src_idx": 3577,
+    "closing_x_interval": [
+      0.8249999999999997,
+      0.8258522727272726
+    ],
+    "closing_y_interval": [
+      0.5105113636363635,
+      0.5134943181818181
+    ],
+    "what_differs": "LHS magnitudes are comparable (failing 1.82e-2 vs closing 1.76e-3, only ~10x apart). What differs by 240x is the wall RHS: failing box has S*lower(|F_n|)=8.06e-05; closing box has 1.93e-02. The R_n remainder is similar magnitude in both (3.77e-03 failing vs 1.35e-03 closing). The failing box's wall floor is set BELOW the unavoidable R_n contribution because the cell sits near the |F| zero-curve where lower(|F_n|) is small. This is a geometric property of the cell, not a placement property of z*."
+  },
+  "experiment_id": "EXP-MATH-EHP114-N15-CELL-02-03-WS01-RESIDUAL-DEEP-DIVE-20260509-01",
+  "forbidden_writes": [
+    "D1",
+    "morphisms.json",
+    "proof registries",
+    "public pages",
+    "existing EHP114 finite packets",
+    "existing 4488:3 or 4571:2 centerline-sign-model artifacts"
+  ],
+  "implications_for_modal_tier_2": "The Modal Tier-2 Rust-port spend on interval-Newton certified z* addresses a different failure mode than the one driving this worst-of-six box. Interval-Newton helps when the failure is dominated by quad and cubic terms (i.e., R is large). Here, R is already small (1.82e-3) and the LHS at R alone (best case) is 7.33e-3 \u2014 still 91x above RHS. The failure is gated on R_n exceeding S*lower(|F_n|), which is a property of the cell, not a property of where z* sits inside the cell. The Python-vs-Rust gap argument (that Rust's certified-z* would close the seven boxes) does not hold for this box and likely does not hold for the other 5 STILL_FAILING boxes in 4571:2 either, since all 6 have R_n/wall_rhs >= 1.32x (range 1.32x to 46.79x). Modal Tier-2 spend may still be justified for the 4488:3 family or for marginal CLOSED_BY_WS01_TIGHT_R_ONLY edges, but it does not justify on the 4571:2 residual.",
+  "interval_newton_projection": {
+    "R_currently_used": 0.0018222959427913537,
+    "R_estimated_after_interval_newton": 0.00018222959427913538,
+    "R_reduction_factor_estimate": 10.0,
+    "projected_LHS_over_RHS_after_IN": 47.22439926088718,
+    "projected_cubic_after_IN": 4.072641927722128e-08,
+    "projected_quad_after_IN": 3.520582899189511e-05,
+    "projected_remainder_after_IN": 0.003772270013009502,
+    "projected_wall_LHS_total_after_IN": 0.0038075165684206746,
+    "rationale": "At 2R, the LHS is split 77.46% quadratic / 1.79% cubic / 20.75% remainder. Interval-Newton's R-reduction collapses the quadratic and cubic terms quadratically/cubically, leaving R_n as the dominant residual. But R_n=3.77e-3 alone already exceeds wall_rhs=8.06e-5 by 46.79x. The wall-test floor for this box is R_n, and that floor sits well above the threshold. Conclusion: the failure cause is NOT z* placement; it is the cell's geometry (small lower(|F_n|), pulling the wall threshold below the R_n floor). Interval-Newton certified z* DOES NOT FIX this box.",
+    "rationale_for_R_reduction_estimate": "10x reduction is an OPTIMISTIC heuristic. With grad_F_nonvanishing already certified (center_fn_abs_lower>0), the interval-Newton operator is locally contracting; typical certified zeros land within 1-2 orders of magnitude tighter than the box half-width. NOT a certified bound; depends on Jacobian conditioning at the actual critical curve.",
+    "theoretical_floor_at_R_equals_zero": {
+      "interpretation": "Even at the unattainable R=0 limit (perfect interval-Newton), LHS=R_n=3.77e-3 > RHS=8.06e-5 by factor 46.79x. R-shrinkage CANNOT close this box; the deficit is gated on R_n vs wall_rhs, not on R.",
+      "lhs_floor": 0.003772270013009502,
+      "lhs_floor_over_rhs": 46.787238351565485,
+      "rhs": 8.06260456038069e-05,
+      "would_pass_at_floor": false
+    },
+    "uncertified_estimate": true,
+    "wall_RHS_unchanged": 8.06260456038069e-05,
+    "would_pass_after_IN_at_10x": false
+  },
+  "next_dependency": "Status is INTERVAL_NEWTON_DOES_NOT_FIX. The 6 STILL_FAILING boxes in 4571:2 require one of: (a) cell subdivision until each sub-cell's lower(|F_n|) lifts wall_rhs above its R_n; (b) sharper R_n bound (smaller-degree Taylor remainder estimate, or a different change of frame that absorbs more of the curvature); (c) analytic critical-point exclusion to remove the cell entirely from the wall-test class. Subdivision is most likely effective: lower(|F_n|) typically scales linearly with cell-width near the zero-curve, while R_n scales quadratically/cubically with cell-width. Halving the cell drops R_n by 4-8x and S*lower(|F_n|) by ~2x, so net wall-test ratio improves by 2-4x per subdivision level.",
+  "origin": "auto-research",
+  "schema_version": "1.0",
+  "selected_box": {
+    "owner_key": "4571:2",
+    "rationale_for_selection": "Smallest required_factor_after_2R (4.43e-03) among 6 STILL_FAILING_AFTER_WS01 boxes in 4571:2; LHS misses the wall threshold by ~226x at the conservative 2R bound.",
+    "split_path": "root/y0/y0/y1/y0",
+    "src_idx": 3852,
+    "x_interval": [
+      0.8957386363636362,
+      0.896590909090909
+    ],
+    "y_interval": [
+      -0.14669744318181832,
+      -0.14248934659090923
+    ]
+  },
+  "source_paths": {
+    "build_script": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/build_n15_cell0203_centerline_sign_model.py",
+    "owner_4488_3_results": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-20260509-01_RESULTS.json",
+    "owner_4571_2_results": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4571-2-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4571-2-20260509-01_RESULTS.json",
+    "wall_separation_target": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-WALL-SEPARATION-TARGET-20260508-01/EXP-MATH-EHP114-N15-CELL-02-03-WALL-SEPARATION-TARGET-20260508-01_RESULTS.json"
+  },
+  "source_sha_status": [
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4571-2-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4571-2-20260509-01_RESULTS.json",
+      "sha256": "480bf21e703b950be3a7cd3ee1869ac676209ec3e1088eb3f6ebdb713464b3f4"
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-20260509-01_RESULTS.json",
+      "sha256": "727ea81235de0814c61938380a8e872dbb241d5f9601380e6cffddec9db06734"
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-WALL-SEPARATION-TARGET-20260508-01/EXP-MATH-EHP114-N15-CELL-02-03-WALL-SEPARATION-TARGET-20260508-01_RESULTS.json",
+      "sha256": "c62f902f5e9ad1a0cb7586a123bf0a2c063b405de552ade809d96272bfdba735"
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/build_n15_cell0203_centerline_sign_model.py",
+      "sha256": "6f0e76ccee351cbfb08be3a27011e7cc7232035e6032137fc4c94981565e7ed9"
+    }
+  ],
+  "status": "INTERVAL_NEWTON_DOES_NOT_FIX",
+  "timestamp_unix": 1778359415,
+  "tokens_avoided": [
+    "the F-name-token-embargo",
+    "the s-o-l-v-e-r token",
+    "third H-name-token"
+  ],
+  "wall_test_decomposition": {
+    "LHS_over_RHS_ratio": 225.49056980077037,
+    "S_factor_times_F_n_lower_combined": 8.06260456038069e-05,
+    "cubic_term": 0.0003258113542177702,
+    "deficit_factor_required": 225.49056980077037,
+    "dominant_LHS_term": "quadratic",
+    "evaluated_at": "2R (worst-case z* off-center placement, matching CENTERLINE-SIGN-MODEL convention)",
+    "f_tt_abs_upper": 2120.3460927352157,
+    "normal_remainder_R_n": 0.003772270013009502,
+    "note_S_and_F_n_split": "Upstream wall-separation-target packet records fn_abs_lower=0.0 for the original (pre-WS-01) representative_wall_failures of 4571:2; the post-WS-01 wall_rhs uses a center-strip reformulation, but the combined S*lower(|F_n|) in the rewritten test remains tiny (8.06e-05 here) compared with closing-box rhs (~2e-2), reflecting cell geometry near the |F| zero-curve.",
+    "quadratic_term": 0.014082331596758042,
+    "remainder_term_R_n": 0.003772270013009502,
+    "tangent_radius_R": 0.0018222959427913537,
+    "term_share_cubic": 0.01792100954269794,
+    "term_share_quadratic": 0.7745881033975734,
+    "term_share_remainder": 0.20749088705972857,
+    "third_directional_T3_upper": 40380.41273566596,
+    "wall_LHS_total": 0.018180412963985315,
+    "wall_RHS_total": 8.06260456038069e-05
+  }
+}

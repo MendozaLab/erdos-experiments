@@ -1,0 +1,299 @@
+{
+  "certificate_ansatz": {
+    "decomposition": "u = r e_0 + s, with e_0 singular radial and s nonradial quotient shape",
+    "open_gap": "No analytic remainder bound or interval shape-cone certificate is established here.",
+    "outer_domain_coercivity": "D_n(p) >= B_n(rho) > 0 outside the singular local cone / middle annulus",
+    "radial_puiseux_lower_bound": "D_n(r e_0) >= C_n |r|^(1/n)",
+    "shape_hessian_remainder_bound": "D_n(r e_0 + s) >= C_n |r|^(1/n) + lambda_n ||s||^2 - R_n(r,s), with R_n bounded so mixed terms cannot cancel the Puiseux deficit"
+  },
+  "claim_boundary": "No global EHP114 maximality claim. No public theorem claim. The artifact aggregates diagnostics and proposes the next certificate ansatz.",
+  "decision": {
+    "overall": "STRATIFIED",
+    "smooth_hessian_layer": "DEAD_AS_ORDINARY_RADIAL_MODEL",
+    "stratified_certificate_layer": "ALIVE_AS_DIAGNOSTIC_ANSATZ",
+    "why": "Radial fits follow a Puiseux 1/n law, while nonradial tensor and Fourier probes retain positive finite-difference curvature."
+  },
+  "experiment_id": "EXP-MATH-EHP114-HESSIAN-FANTASY-20260505-01",
+  "fourier_hessian_curvature": {
+    "artifact": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MATH-EHP114-N15-FOURIER-HESSIAN-20260502-02_RESULTS.json",
+    "basis_rank": 27,
+    "best_label": "m0_radial",
+    "degree": 15,
+    "expected_reduced_dim_2n_minus_3": 27,
+    "experiment_id": "EXP-MATH-EHP114-N15-FOURIER-HESSIAN-20260502-02",
+    "interpretation": {
+      "caution": "This is not an interval certificate and does not prove local maximality. Because z^n - 1 is a singular lemniscate, the measured effect is better read as a stratified deficit/unfolding signal than as an ordinary smooth Hessian certificate.",
+      "next_step": "If all or most directions are positive, upgrade this to an interval or analytic Fourier-mode Hessian certificate and then bound tensor remainders.",
+      "primary": "Positive deficit curvature means the regular root polygon locally beats the tested Fourier perturbation direction under this floating-point estimator."
+    },
+    "l0_relative_error_vs_shortcut_lstar": 0.07252726574534836,
+    "large_reference_error_flag": true,
+    "max_deficit_curvature": 1569895.8427724792,
+    "min_deficit_curvature": 68179.54156975627,
+    "mode_count": 27,
+    "positive_mode_count_all_eps": 27,
+    "rigorous": false,
+    "rows_not_positive_all_eps": 0,
+    "status": "DIAGNOSTIC_NUMERICAL_PROBE_NOT_PROOF",
+    "worst_label": "m7_sin_tangent"
+  },
+  "guardrails": {
+    "no_d1": true,
+    "no_public_docs": true,
+    "no_publication_or_push": true,
+    "no_scorecard": true,
+    "writes_scoped_to": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114"
+  },
+  "next_run_target": {
+    "fail_signal": "radial exponent drift or broad loss of positive nonradial curvature",
+    "inputs": {
+      "fourier": "n=20 quotient Fourier basis rank 37, eps 0.02/0.01/0.005",
+      "radial": "n=20 exact hypergeometric radial family, eps grid from 0.1 down to 1e-8",
+      "tensor_cone": "n=20 mixed shape matrix with singular radial direction excluded"
+    },
+    "outputs": [
+      "EXP-MATH-EHP114-N20-RADIAL-HYPERGEOMETRIC-20260505-02_RESULTS.json",
+      "EXP-MATH-EHP114-N20-FOURIER-HESSIAN-20260505-02_RESULTS.json",
+      "EXP-MATH-EHP114-N20-TENSOR-CONE-SCAFFOLD-20260505-02_RESULTS.json"
+    ],
+    "pass_signal": "radial slope within 5 percent of 1/20 plus broad positive shape curvature",
+    "primary": "n20_triad",
+    "reason": "Best falsification test for the stratified certificate pattern."
+  },
+  "problem": "Erdos #114 / EHP lemniscate perimeter",
+  "proof_oriented_alternative": {
+    "input": "fixed gauss_2F1_puiseux_lower_bound_n14_interval theorem target",
+    "output": "EXP-MATH-EHP114-N14-PUISEUX-INTERVAL-HARDENING-20260505-01_*",
+    "target": "n14_interval_hardening"
+  },
+  "radial_exponent_evidence": [
+    {
+      "abs_error_tail4": 1.9189623966242575e-06,
+      "artifact": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MATH-EHP114-N14-RADIAL-HYPERGEOMETRIC-CALIBRATION-20260502-01_RESULTS.json",
+      "claim_ceiling": "Exact radial-family calculation. It explains the singular boundary layer near z^n - 1, but it does not prove global or local EHP114 maximality.",
+      "degree": 14,
+      "expected_slope_1_over_n": 0.07142857142857142,
+      "experiment_id": "EXP-MATH-EHP114-N14-RADIAL-HYPERGEOMETRIC-CALIBRATION-20260502-01",
+      "relative_error_tail4": 2.6865473552739605e-05,
+      "smallest_eps": 1e-08,
+      "status": "ANALYTIC_NUMERICAL_DIAGNOSTIC_NOT_PROOF",
+      "tail_deficit_over_eps_power_limit_proxy": 29.21644685164899,
+      "tail_window_4_slope": 0.0714266524661748,
+      "tail_window_6_slope": 0.0714237437697705
+    },
+    {
+      "abs_error_tail4": 1.7910298089063303e-06,
+      "artifact": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MATH-EHP114-RADIAL-HYPERGEOMETRIC-20260502-01_RESULTS.json",
+      "claim_ceiling": "Exact radial-family calculation. It explains the singular boundary layer near z^n - 1, but it does not prove global or local EHP114 maximality.",
+      "degree": 15,
+      "expected_slope_1_over_n": 0.06666666666666667,
+      "experiment_id": "EXP-MATH-EHP114-RADIAL-HYPERGEOMETRIC-20260502-01",
+      "relative_error_tail4": 2.6865447133594955e-05,
+      "smallest_eps": 1e-08,
+      "status": "ANALYTIC_NUMERICAL_DIAGNOSTIC_NOT_PROOF",
+      "tail_deficit_over_eps_power_limit_proxy": 31.291114305153705,
+      "tail_window_4_slope": 0.06666487563685776,
+      "tail_window_6_slope": 0.06666214548606897
+    }
+  ],
+  "required_phrase": "shadow signature, not universal law",
+  "scope": "stratified Hessian fantasy diagnostic aggregate",
+  "source_artifacts": [
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/STRATIFICATION_N3_N14_2026-05-02.md",
+      "role": "required_input",
+      "sha256": "b86a9014771a775a482f5324727b3accb98129cba5088901fb39d1c17c18ed3b"
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EHP114_BOUNDARY_CLOSURE_PACKET_2026-05-05.md",
+      "role": "required_input",
+      "sha256": "6dd4c2060c8c897b3abdbed766e09a76a1a503bad3d2cabe0c6300f010f9a457"
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MATH-EHP114-N10-TENSOR-CONE-SCAFFOLD-20260502-02_RESULTS.json",
+      "role": "required_input",
+      "sha256": "da4c35329fb98c3b6b7e2f77b49de00da4e600993ca63ba82e6fe971e1266db1"
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MATH-EHP114-N15-FOURIER-HESSIAN-20260502-02_RESULTS.json",
+      "role": "required_input",
+      "sha256": "ba036f608c94ec31d9834c6068d0d453657dcd6c3045f840603f8145ca4f0c69"
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MATH-EHP114-N14-RADIAL-HYPERGEOMETRIC-CALIBRATION-20260502-01_RESULTS.json",
+      "role": "required_input",
+      "sha256": "6cad8337bed8f93b362e1f78cf1d9ec9b34075efe43ddb03dff5c189793e954a"
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MATH-EHP114-RADIAL-HYPERGEOMETRIC-20260502-01_RESULTS.json",
+      "role": "required_input",
+      "sha256": "4a26ca443b7d1d67cab14f5465595781eb15f10f5d5c5834e42e37db4405fe51"
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/SHADOW_DYNAMICS_HYSTERETIC_INFORMATION_EXHAUST_LIVING_ANALYSIS.md",
+      "role": "required_input",
+      "sha256": "56d40fbccf8c45d99c32d87b9d6ddeece8da646fbae8c57c85e2d470c3f5f3ab"
+    }
+  ],
+  "status": "DIAGNOSTIC_AGGREGATE_NOT_PROOF",
+  "tensor_cone_hessian_proxy": {
+    "all_shape_symmetric_deficits_positive": true,
+    "artifact": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MATH-EHP114-N10-TENSOR-CONE-SCAFFOLD-20260502-02_RESULTS.json",
+    "degree": 10,
+    "experiment_id": "EXP-MATH-EHP114-N10-TENSOR-CONE-SCAFFOLD-20260502-02",
+    "interpretation": {
+      "claim_boundary": "This scaffold uses floating marching-squares estimates for perturbed lengths and is not an interval certificate.",
+      "next_step": "If n=10 shows stable positive deficit and a coherent scaling class, repeat for n=11-14, then interval-harden the first case whose structure is representative.",
+      "primary": "If shape slopes are near 2, a smooth tensor/Hessian shape cone may be viable. If slopes are well below 2, the local proof must be stratified rather than an ordinary tensor Hessian."
+    },
+    "mixed_shape_hessian_proxy": {
+      "condition_proxy_abs_max_over_min": 3.099292157278264,
+      "eigenvalue_count": 16,
+      "eps": 0.005,
+      "max_eigenvalue": 498598.79237226053,
+      "min_eigenvalue": 160875.05374456855,
+      "positive_eigenvalue_count": 16
+    },
+    "radial_singular_slope": 0.09982840496398529,
+    "rigorous": false,
+    "shape_basis_rank": 16,
+    "shape_singular_like_count_slope_lt_1_5": 16,
+    "shape_slope_max": 0.20079627345262827,
+    "shape_slope_mean": 0.15757118486714325,
+    "shape_slope_min": 0.11096937735270675,
+    "shape_smooth_hessian_like_count_slope_ge_1_5": 0,
+    "slope_class_rows": [
+      {
+        "class": "singular_sub_hessian",
+        "kind": "radial",
+        "label": "m1_cos_radial",
+        "mode": 1,
+        "phase": "cos",
+        "slope": 0.11128747986833827
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "tangent",
+        "label": "m1_cos_tangent",
+        "mode": 1,
+        "phase": "cos",
+        "slope": 0.11096937735270675
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "radial",
+        "label": "m2_cos_radial",
+        "mode": 2,
+        "phase": "cos",
+        "slope": 0.13551743753552228
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "tangent",
+        "label": "m2_cos_tangent",
+        "mode": 2,
+        "phase": "cos",
+        "slope": 0.1304529181905277
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "radial",
+        "label": "m2_sin_radial",
+        "mode": 2,
+        "phase": "sin",
+        "slope": 0.13058517636732073
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "tangent",
+        "label": "m2_sin_tangent",
+        "mode": 2,
+        "phase": "sin",
+        "slope": 0.13498859616668615
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "radial",
+        "label": "m3_cos_radial",
+        "mode": 3,
+        "phase": "cos",
+        "slope": 0.15511979703031972
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "tangent",
+        "label": "m3_cos_tangent",
+        "mode": 3,
+        "phase": "cos",
+        "slope": 0.15517403516881842
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "radial",
+        "label": "m3_sin_radial",
+        "mode": 3,
+        "phase": "sin",
+        "slope": 0.15992442927584802
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "tangent",
+        "label": "m3_sin_tangent",
+        "mode": 3,
+        "phase": "sin",
+        "slope": 0.1596042253986232
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "radial",
+        "label": "m4_cos_radial",
+        "mode": 4,
+        "phase": "cos",
+        "slope": 0.1799218634107992
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "tangent",
+        "label": "m4_cos_tangent",
+        "mode": 4,
+        "phase": "cos",
+        "slope": 0.18817939676912257
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "radial",
+        "label": "m4_sin_radial",
+        "mode": 4,
+        "phase": "sin",
+        "slope": 0.1885104687663983
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "tangent",
+        "label": "m4_sin_tangent",
+        "mode": 4,
+        "phase": "sin",
+        "slope": 0.1796635219552807
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "radial",
+        "label": "m5_cos_radial",
+        "mode": 5,
+        "phase": "cos",
+        "slope": 0.20079627345262827
+      },
+      {
+        "class": "singular_sub_hessian",
+        "kind": "tangent",
+        "label": "m5_cos_tangent",
+        "mode": 5,
+        "phase": "cos",
+        "slope": 0.20044396116535165
+      }
+    ],
+    "status": "DIAGNOSTIC_TENSOR_CONE_SCAFFOLD_NOT_PROOF"
+  },
+  "timestamp_utc": "2026-05-05T22:44:20.002754+00:00",
+  "worker": "H114"
+}

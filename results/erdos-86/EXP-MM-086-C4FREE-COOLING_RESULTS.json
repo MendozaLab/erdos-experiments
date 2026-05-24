@@ -1,0 +1,2156 @@
+{
+  "experiment_id": "EXP-MM-086-C4FREE-COOLING",
+  "erdos_problem": 86,
+  "problem_title": "C4-free subgraphs of the hypercube Q_n",
+  "probe_id": "T2-086",
+  "description": "Paired comparison: does C4-free constraint shift the Poisson-to-GOE spectral transition (entropic cooling hypothesis)?",
+  "hypothesis": "C4-free constraint suppresses spectral entropy, shifting p_c upward (more edges needed for GOE).",
+  "falsification_criterion": "If p_c(C4-free) <= p_c(unconstrained) for n >= 5, hypothesis is falsified.",
+  "method": {
+    "ensemble_A": "Bernoulli edge retention at probability p",
+    "ensemble_B": "Sequential random C4-free insertion thinned to matched edge count",
+    "observables": [
+      "mean_spacing_ratio_r",
+      "von_neumann_entropy_S"
+    ],
+    "threshold": 0.4407,
+    "references": [
+      "EXP-MM-086-SPECTRAL-PHASE (baseline)",
+      "Oganesyan & Huse, Phys. Rev. B 75, 155111 (2007)",
+      "Minamoto 2026 (arXiv:2603.29127)"
+    ]
+  },
+  "parameters": {
+    "n_values": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "p_values": [
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95
+    ],
+    "n_trials": 50,
+    "seed": 42
+  },
+  "results": {
+    "Q_4": {
+      "n": 4,
+      "vertices": 16,
+      "edges": 32,
+      "unconstrained_sweep": [
+        {
+          "p": 0.05,
+          "target_edges": 2,
+          "mean_r": 0.902369,
+          "std_r": 0.169102,
+          "mean_S": 1.982492,
+          "valid_trials": 20,
+          "edge_density": 0.013333
+        },
+        {
+          "p": 0.1,
+          "target_edges": 3,
+          "mean_r": 0.793394,
+          "std_r": 0.180165,
+          "mean_S": 2.374091,
+          "valid_trials": 43,
+          "edge_density": 0.026667
+        },
+        {
+          "p": 0.15,
+          "target_edges": 5,
+          "mean_r": 0.713208,
+          "std_r": 0.16718,
+          "mean_S": 2.692186,
+          "valid_trials": 46,
+          "edge_density": 0.04
+        },
+        {
+          "p": 0.2,
+          "target_edges": 6,
+          "mean_r": 0.753347,
+          "std_r": 0.166042,
+          "mean_S": 2.886638,
+          "valid_trials": 50,
+          "edge_density": 0.053333
+        },
+        {
+          "p": 0.25,
+          "target_edges": 8,
+          "mean_r": 0.696067,
+          "std_r": 0.150292,
+          "mean_S": 3.040199,
+          "valid_trials": 50,
+          "edge_density": 0.066667
+        },
+        {
+          "p": 0.3,
+          "target_edges": 10,
+          "mean_r": 0.615038,
+          "std_r": 0.118866,
+          "mean_S": 3.299709,
+          "valid_trials": 50,
+          "edge_density": 0.08
+        },
+        {
+          "p": 0.35,
+          "target_edges": 11,
+          "mean_r": 0.639063,
+          "std_r": 0.140555,
+          "mean_S": 3.344707,
+          "valid_trials": 50,
+          "edge_density": 0.093333
+        },
+        {
+          "p": 0.4,
+          "target_edges": 13,
+          "mean_r": 0.570357,
+          "std_r": 0.112953,
+          "mean_S": 3.425065,
+          "valid_trials": 50,
+          "edge_density": 0.106667
+        },
+        {
+          "p": 0.45,
+          "target_edges": 14,
+          "mean_r": 0.591996,
+          "std_r": 0.120201,
+          "mean_S": 3.481374,
+          "valid_trials": 50,
+          "edge_density": 0.12
+        },
+        {
+          "p": 0.5,
+          "target_edges": 16,
+          "mean_r": 0.577296,
+          "std_r": 0.127895,
+          "mean_S": 3.532378,
+          "valid_trials": 50,
+          "edge_density": 0.133333
+        },
+        {
+          "p": 0.55,
+          "target_edges": 18,
+          "mean_r": 0.569642,
+          "std_r": 0.111921,
+          "mean_S": 3.59793,
+          "valid_trials": 50,
+          "edge_density": 0.146667
+        },
+        {
+          "p": 0.6,
+          "target_edges": 19,
+          "mean_r": 0.533258,
+          "std_r": 0.122892,
+          "mean_S": 3.597121,
+          "valid_trials": 50,
+          "edge_density": 0.16
+        },
+        {
+          "p": 0.65,
+          "target_edges": 21,
+          "mean_r": 0.56446,
+          "std_r": 0.115546,
+          "mean_S": 3.601422,
+          "valid_trials": 50,
+          "edge_density": 0.173333
+        },
+        {
+          "p": 0.7,
+          "target_edges": 22,
+          "mean_r": 0.501808,
+          "std_r": 0.117946,
+          "mean_S": 3.612442,
+          "valid_trials": 50,
+          "edge_density": 0.186667
+        },
+        {
+          "p": 0.75,
+          "target_edges": 24,
+          "mean_r": 0.512522,
+          "std_r": 0.088546,
+          "mean_S": 3.613952,
+          "valid_trials": 50,
+          "edge_density": 0.2
+        },
+        {
+          "p": 0.8,
+          "target_edges": 26,
+          "mean_r": 0.447352,
+          "std_r": 0.101742,
+          "mean_S": 3.608462,
+          "valid_trials": 50,
+          "edge_density": 0.213333
+        },
+        {
+          "p": 0.85,
+          "target_edges": 27,
+          "mean_r": 0.484478,
+          "std_r": 0.12169,
+          "mean_S": 3.584358,
+          "valid_trials": 50,
+          "edge_density": 0.226667
+        },
+        {
+          "p": 0.9,
+          "target_edges": 29,
+          "mean_r": 0.493212,
+          "std_r": 0.19306,
+          "mean_S": 3.483496,
+          "valid_trials": 50,
+          "edge_density": 0.24
+        },
+        {
+          "p": 0.95,
+          "target_edges": 30,
+          "mean_r": 0.495023,
+          "std_r": 0.233591,
+          "mean_S": 3.419821,
+          "valid_trials": 50,
+          "edge_density": 0.253333
+        }
+      ],
+      "c4free_sweep": [
+        {
+          "p": 0.05,
+          "target_edges": 2,
+          "actual_mean_edges": 2.0,
+          "mean_r": 1.0,
+          "std_r": 0.0,
+          "mean_S": 1.85,
+          "valid_trials": 20,
+          "delta_r": 0.097631,
+          "delta_S": -0.132492,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.1,
+          "target_edges": 3,
+          "actual_mean_edges": 3.0,
+          "mean_r": 0.830603,
+          "std_r": 0.191451,
+          "mean_S": 2.314081,
+          "valid_trials": 43,
+          "delta_r": 0.037209,
+          "delta_S": -0.06001,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.15,
+          "target_edges": 5,
+          "actual_mean_edges": 5.0,
+          "mean_r": 0.669138,
+          "std_r": 0.131821,
+          "mean_S": 2.788993,
+          "valid_trials": 46,
+          "delta_r": -0.04407,
+          "delta_S": 0.096807,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.2,
+          "target_edges": 6,
+          "actual_mean_edges": 6.0,
+          "mean_r": 0.681492,
+          "std_r": 0.137976,
+          "mean_S": 2.983037,
+          "valid_trials": 50,
+          "delta_r": -0.071855,
+          "delta_S": 0.0964,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.25,
+          "target_edges": 8,
+          "actual_mean_edges": 8.0,
+          "mean_r": 0.647947,
+          "std_r": 0.114381,
+          "mean_S": 3.163113,
+          "valid_trials": 50,
+          "delta_r": -0.04812,
+          "delta_S": 0.122914,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.3,
+          "target_edges": 10,
+          "actual_mean_edges": 10.0,
+          "mean_r": 0.613623,
+          "std_r": 0.112813,
+          "mean_S": 3.374821,
+          "valid_trials": 50,
+          "delta_r": -0.001415,
+          "delta_S": 0.075111,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.35,
+          "target_edges": 11,
+          "actual_mean_edges": 11.0,
+          "mean_r": 0.56535,
+          "std_r": 0.119869,
+          "mean_S": 3.428689,
+          "valid_trials": 50,
+          "delta_r": -0.073714,
+          "delta_S": 0.083982,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.4,
+          "target_edges": 13,
+          "actual_mean_edges": 13.0,
+          "mean_r": 0.571747,
+          "std_r": 0.11269,
+          "mean_S": 3.535915,
+          "valid_trials": 50,
+          "delta_r": 0.001391,
+          "delta_S": 0.11085,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.45,
+          "target_edges": 14,
+          "actual_mean_edges": 14.0,
+          "mean_r": 0.586558,
+          "std_r": 0.122476,
+          "mean_S": 3.602907,
+          "valid_trials": 50,
+          "delta_r": -0.005438,
+          "delta_S": 0.121533,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.5,
+          "target_edges": 16,
+          "actual_mean_edges": 16.0,
+          "mean_r": 0.543198,
+          "std_r": 0.113278,
+          "mean_S": 3.681823,
+          "valid_trials": 50,
+          "delta_r": -0.034098,
+          "delta_S": 0.149445,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.55,
+          "target_edges": 18,
+          "actual_mean_edges": 18.0,
+          "mean_r": 0.502228,
+          "std_r": 0.118435,
+          "mean_S": 3.726506,
+          "valid_trials": 50,
+          "delta_r": -0.067414,
+          "delta_S": 0.128577,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.6,
+          "target_edges": 19,
+          "actual_mean_edges": 19.0,
+          "mean_r": 0.50169,
+          "std_r": 0.106945,
+          "mean_S": 3.750617,
+          "valid_trials": 50,
+          "delta_r": -0.031568,
+          "delta_S": 0.153497,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.65,
+          "target_edges": 21,
+          "actual_mean_edges": 20.8,
+          "mean_r": 0.445617,
+          "std_r": 0.110059,
+          "mean_S": 3.77866,
+          "valid_trials": 50,
+          "delta_r": -0.118844,
+          "delta_S": 0.177238,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.7,
+          "target_edges": 22,
+          "actual_mean_edges": 21.0,
+          "mean_r": 0.453364,
+          "std_r": 0.109129,
+          "mean_S": 3.76104,
+          "valid_trials": 50,
+          "delta_r": -0.048444,
+          "delta_S": 0.148599,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.75,
+          "target_edges": 24,
+          "actual_mean_edges": 21.4,
+          "mean_r": 0.453034,
+          "std_r": 0.10209,
+          "mean_S": 3.789751,
+          "valid_trials": 50,
+          "delta_r": -0.059488,
+          "delta_S": 0.175799,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.8,
+          "target_edges": 26,
+          "actual_mean_edges": 21.3,
+          "mean_r": 0.425615,
+          "std_r": 0.128361,
+          "mean_S": 3.792343,
+          "valid_trials": 50,
+          "delta_r": -0.021737,
+          "delta_S": 0.183881,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.85,
+          "target_edges": 27,
+          "actual_mean_edges": 21.2,
+          "mean_r": 0.443403,
+          "std_r": 0.12842,
+          "mean_S": 3.781394,
+          "valid_trials": 50,
+          "delta_r": -0.041075,
+          "delta_S": 0.197035,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.9,
+          "target_edges": 29,
+          "actual_mean_edges": 21.1,
+          "mean_r": 0.44357,
+          "std_r": 0.123013,
+          "mean_S": 3.776352,
+          "valid_trials": 50,
+          "delta_r": -0.049641,
+          "delta_S": 0.292856,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.95,
+          "target_edges": 30,
+          "actual_mean_edges": 21.1,
+          "mean_r": 0.460957,
+          "std_r": 0.105377,
+          "mean_S": 3.7742,
+          "valid_trials": 50,
+          "delta_r": -0.034066,
+          "delta_S": 0.354379,
+          "cooling_verdict": "COOLING"
+        }
+      ],
+      "pc_unconstrained": null,
+      "pc_c4free": 0.842402,
+      "pc_shift": null,
+      "cooling_summary": {
+        "cooling_points": 14,
+        "heating_points": 2,
+        "neutral_points": 3
+      }
+    },
+    "Q_5": {
+      "n": 5,
+      "vertices": 32,
+      "edges": 80,
+      "unconstrained_sweep": [
+        {
+          "p": 0.05,
+          "target_edges": 4,
+          "mean_r": 0.865469,
+          "std_r": 0.182094,
+          "mean_S": 2.690742,
+          "valid_trials": 44,
+          "edge_density": 0.008065
+        },
+        {
+          "p": 0.1,
+          "target_edges": 8,
+          "mean_r": 0.653526,
+          "std_r": 0.1196,
+          "mean_S": 3.378603,
+          "valid_trials": 50,
+          "edge_density": 0.016129
+        },
+        {
+          "p": 0.15,
+          "target_edges": 12,
+          "mean_r": 0.657756,
+          "std_r": 0.13008,
+          "mean_S": 3.824359,
+          "valid_trials": 50,
+          "edge_density": 0.024194
+        },
+        {
+          "p": 0.2,
+          "target_edges": 16,
+          "mean_r": 0.598215,
+          "std_r": 0.103993,
+          "mean_S": 4.150385,
+          "valid_trials": 50,
+          "edge_density": 0.032258
+        },
+        {
+          "p": 0.25,
+          "target_edges": 20,
+          "mean_r": 0.553488,
+          "std_r": 0.105576,
+          "mean_S": 4.272157,
+          "valid_trials": 50,
+          "edge_density": 0.040323
+        },
+        {
+          "p": 0.3,
+          "target_edges": 24,
+          "mean_r": 0.537915,
+          "std_r": 0.098176,
+          "mean_S": 4.361417,
+          "valid_trials": 50,
+          "edge_density": 0.048387
+        },
+        {
+          "p": 0.35,
+          "target_edges": 28,
+          "mean_r": 0.514784,
+          "std_r": 0.111763,
+          "mean_S": 4.488371,
+          "valid_trials": 50,
+          "edge_density": 0.056452
+        },
+        {
+          "p": 0.4,
+          "target_edges": 32,
+          "mean_r": 0.540732,
+          "std_r": 0.088323,
+          "mean_S": 4.519216,
+          "valid_trials": 50,
+          "edge_density": 0.064516
+        },
+        {
+          "p": 0.45,
+          "target_edges": 36,
+          "mean_r": 0.554435,
+          "std_r": 0.079805,
+          "mean_S": 4.578164,
+          "valid_trials": 50,
+          "edge_density": 0.072581
+        },
+        {
+          "p": 0.5,
+          "target_edges": 40,
+          "mean_r": 0.534066,
+          "std_r": 0.076602,
+          "mean_S": 4.599146,
+          "valid_trials": 50,
+          "edge_density": 0.080645
+        },
+        {
+          "p": 0.55,
+          "target_edges": 44,
+          "mean_r": 0.542327,
+          "std_r": 0.081065,
+          "mean_S": 4.629295,
+          "valid_trials": 50,
+          "edge_density": 0.08871
+        },
+        {
+          "p": 0.6,
+          "target_edges": 48,
+          "mean_r": 0.526843,
+          "std_r": 0.072343,
+          "mean_S": 4.637222,
+          "valid_trials": 50,
+          "edge_density": 0.096774
+        },
+        {
+          "p": 0.65,
+          "target_edges": 52,
+          "mean_r": 0.526299,
+          "std_r": 0.097206,
+          "mean_S": 4.658469,
+          "valid_trials": 50,
+          "edge_density": 0.104839
+        },
+        {
+          "p": 0.7,
+          "target_edges": 56,
+          "mean_r": 0.512986,
+          "std_r": 0.0876,
+          "mean_S": 4.663686,
+          "valid_trials": 50,
+          "edge_density": 0.112903
+        },
+        {
+          "p": 0.75,
+          "target_edges": 60,
+          "mean_r": 0.503623,
+          "std_r": 0.071132,
+          "mean_S": 4.657309,
+          "valid_trials": 50,
+          "edge_density": 0.120968
+        },
+        {
+          "p": 0.8,
+          "target_edges": 64,
+          "mean_r": 0.484184,
+          "std_r": 0.070972,
+          "mean_S": 4.668795,
+          "valid_trials": 50,
+          "edge_density": 0.129032
+        },
+        {
+          "p": 0.85,
+          "target_edges": 68,
+          "mean_r": 0.453832,
+          "std_r": 0.059962,
+          "mean_S": 4.677135,
+          "valid_trials": 50,
+          "edge_density": 0.137097
+        },
+        {
+          "p": 0.9,
+          "target_edges": 72,
+          "mean_r": 0.440282,
+          "std_r": 0.063867,
+          "mean_S": 4.694668,
+          "valid_trials": 50,
+          "edge_density": 0.145161
+        },
+        {
+          "p": 0.95,
+          "target_edges": 76,
+          "mean_r": 0.434518,
+          "std_r": 0.141418,
+          "mean_S": 4.707778,
+          "valid_trials": 50,
+          "edge_density": 0.153226
+        }
+      ],
+      "c4free_sweep": [
+        {
+          "p": 0.05,
+          "target_edges": 4,
+          "actual_mean_edges": 4.0,
+          "mean_r": 0.845056,
+          "std_r": 0.18879,
+          "mean_S": 2.785072,
+          "valid_trials": 44,
+          "delta_r": -0.020413,
+          "delta_S": 0.09433,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.1,
+          "target_edges": 8,
+          "actual_mean_edges": 8.0,
+          "mean_r": 0.638095,
+          "std_r": 0.086645,
+          "mean_S": 3.481849,
+          "valid_trials": 50,
+          "delta_r": -0.015432,
+          "delta_S": 0.103245,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.15,
+          "target_edges": 12,
+          "actual_mean_edges": 12.0,
+          "mean_r": 0.655992,
+          "std_r": 0.085031,
+          "mean_S": 3.923437,
+          "valid_trials": 50,
+          "delta_r": -0.001764,
+          "delta_S": 0.099079,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.2,
+          "target_edges": 16,
+          "actual_mean_edges": 16.0,
+          "mean_r": 0.574553,
+          "std_r": 0.092978,
+          "mean_S": 4.137553,
+          "valid_trials": 50,
+          "delta_r": -0.023662,
+          "delta_S": -0.012831,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.25,
+          "target_edges": 20,
+          "actual_mean_edges": 20.0,
+          "mean_r": 0.529689,
+          "std_r": 0.083298,
+          "mean_S": 4.320896,
+          "valid_trials": 50,
+          "delta_r": -0.023799,
+          "delta_S": 0.048739,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.3,
+          "target_edges": 24,
+          "actual_mean_edges": 24.0,
+          "mean_r": 0.497141,
+          "std_r": 0.12061,
+          "mean_S": 4.450751,
+          "valid_trials": 50,
+          "delta_r": -0.040773,
+          "delta_S": 0.089333,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.35,
+          "target_edges": 28,
+          "actual_mean_edges": 28.0,
+          "mean_r": 0.541981,
+          "std_r": 0.090611,
+          "mean_S": 4.53235,
+          "valid_trials": 50,
+          "delta_r": 0.027197,
+          "delta_S": 0.043979,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.4,
+          "target_edges": 32,
+          "actual_mean_edges": 32.0,
+          "mean_r": 0.543,
+          "std_r": 0.087384,
+          "mean_S": 4.615503,
+          "valid_trials": 50,
+          "delta_r": 0.002268,
+          "delta_S": 0.096287,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.45,
+          "target_edges": 36,
+          "actual_mean_edges": 36.0,
+          "mean_r": 0.516313,
+          "std_r": 0.071918,
+          "mean_S": 4.651216,
+          "valid_trials": 50,
+          "delta_r": -0.038121,
+          "delta_S": 0.073052,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.5,
+          "target_edges": 40,
+          "actual_mean_edges": 40.0,
+          "mean_r": 0.541894,
+          "std_r": 0.084361,
+          "mean_S": 4.702739,
+          "valid_trials": 50,
+          "delta_r": 0.007829,
+          "delta_S": 0.103593,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.55,
+          "target_edges": 44,
+          "actual_mean_edges": 44.0,
+          "mean_r": 0.511243,
+          "std_r": 0.080734,
+          "mean_S": 4.728263,
+          "valid_trials": 50,
+          "delta_r": -0.031084,
+          "delta_S": 0.098968,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.6,
+          "target_edges": 48,
+          "actual_mean_edges": 48.0,
+          "mean_r": 0.510589,
+          "std_r": 0.083112,
+          "mean_S": 4.7475,
+          "valid_trials": 50,
+          "delta_r": -0.016254,
+          "delta_S": 0.110278,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.65,
+          "target_edges": 52,
+          "actual_mean_edges": 50.2,
+          "mean_r": 0.482438,
+          "std_r": 0.074015,
+          "mean_S": 4.763405,
+          "valid_trials": 50,
+          "delta_r": -0.043861,
+          "delta_S": 0.104935,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.7,
+          "target_edges": 56,
+          "actual_mean_edges": 50.1,
+          "mean_r": 0.48258,
+          "std_r": 0.083169,
+          "mean_S": 4.764905,
+          "valid_trials": 50,
+          "delta_r": -0.030406,
+          "delta_S": 0.101219,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.75,
+          "target_edges": 60,
+          "actual_mean_edges": 50.4,
+          "mean_r": 0.469458,
+          "std_r": 0.071263,
+          "mean_S": 4.759109,
+          "valid_trials": 50,
+          "delta_r": -0.034165,
+          "delta_S": 0.101799,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.8,
+          "target_edges": 64,
+          "actual_mean_edges": 50.5,
+          "mean_r": 0.484718,
+          "std_r": 0.065255,
+          "mean_S": 4.767409,
+          "valid_trials": 50,
+          "delta_r": 0.000534,
+          "delta_S": 0.098614,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.85,
+          "target_edges": 68,
+          "actual_mean_edges": 50.5,
+          "mean_r": 0.479067,
+          "std_r": 0.069133,
+          "mean_S": 4.771836,
+          "valid_trials": 50,
+          "delta_r": 0.025235,
+          "delta_S": 0.094701,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.9,
+          "target_edges": 72,
+          "actual_mean_edges": 50.4,
+          "mean_r": 0.492152,
+          "std_r": 0.058927,
+          "mean_S": 4.769529,
+          "valid_trials": 50,
+          "delta_r": 0.05187,
+          "delta_S": 0.074861,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.95,
+          "target_edges": 76,
+          "actual_mean_edges": 50.1,
+          "mean_r": 0.484426,
+          "std_r": 0.063362,
+          "mean_S": 4.763187,
+          "valid_trials": 50,
+          "delta_r": 0.049908,
+          "delta_S": 0.055409,
+          "cooling_verdict": "HEATING"
+        }
+      ],
+      "pc_unconstrained": null,
+      "pc_c4free": null,
+      "pc_shift": null,
+      "cooling_summary": {
+        "cooling_points": 11,
+        "heating_points": 4,
+        "neutral_points": 4
+      }
+    },
+    "Q_6": {
+      "n": 6,
+      "vertices": 64,
+      "edges": 192,
+      "unconstrained_sweep": [
+        {
+          "p": 0.05,
+          "target_edges": 10,
+          "mean_r": 0.685243,
+          "std_r": 0.13675,
+          "mean_S": 3.868405,
+          "valid_trials": 50,
+          "edge_density": 0.004762
+        },
+        {
+          "p": 0.1,
+          "target_edges": 19,
+          "mean_r": 0.639744,
+          "std_r": 0.088858,
+          "mean_S": 4.702079,
+          "valid_trials": 50,
+          "edge_density": 0.009524
+        },
+        {
+          "p": 0.15,
+          "target_edges": 29,
+          "mean_r": 0.557615,
+          "std_r": 0.092323,
+          "mean_S": 5.023005,
+          "valid_trials": 50,
+          "edge_density": 0.014286
+        },
+        {
+          "p": 0.2,
+          "target_edges": 38,
+          "mean_r": 0.503762,
+          "std_r": 0.09884,
+          "mean_S": 5.198257,
+          "valid_trials": 50,
+          "edge_density": 0.019048
+        },
+        {
+          "p": 0.25,
+          "target_edges": 48,
+          "mean_r": 0.481817,
+          "std_r": 0.072661,
+          "mean_S": 5.400269,
+          "valid_trials": 50,
+          "edge_density": 0.02381
+        },
+        {
+          "p": 0.3,
+          "target_edges": 58,
+          "mean_r": 0.500004,
+          "std_r": 0.064249,
+          "mean_S": 5.458151,
+          "valid_trials": 50,
+          "edge_density": 0.028571
+        },
+        {
+          "p": 0.35,
+          "target_edges": 67,
+          "mean_r": 0.517175,
+          "std_r": 0.06892,
+          "mean_S": 5.532932,
+          "valid_trials": 50,
+          "edge_density": 0.033333
+        },
+        {
+          "p": 0.4,
+          "target_edges": 77,
+          "mean_r": 0.516704,
+          "std_r": 0.046915,
+          "mean_S": 5.588083,
+          "valid_trials": 50,
+          "edge_density": 0.038095
+        },
+        {
+          "p": 0.45,
+          "target_edges": 86,
+          "mean_r": 0.540178,
+          "std_r": 0.057494,
+          "mean_S": 5.608098,
+          "valid_trials": 50,
+          "edge_density": 0.042857
+        },
+        {
+          "p": 0.5,
+          "target_edges": 96,
+          "mean_r": 0.536481,
+          "std_r": 0.053961,
+          "mean_S": 5.635736,
+          "valid_trials": 50,
+          "edge_density": 0.047619
+        },
+        {
+          "p": 0.55,
+          "target_edges": 106,
+          "mean_r": 0.524046,
+          "std_r": 0.055707,
+          "mean_S": 5.647764,
+          "valid_trials": 50,
+          "edge_density": 0.052381
+        },
+        {
+          "p": 0.6,
+          "target_edges": 115,
+          "mean_r": 0.529417,
+          "std_r": 0.055279,
+          "mean_S": 5.649209,
+          "valid_trials": 50,
+          "edge_density": 0.057143
+        },
+        {
+          "p": 0.65,
+          "target_edges": 125,
+          "mean_r": 0.513232,
+          "std_r": 0.053111,
+          "mean_S": 5.64798,
+          "valid_trials": 50,
+          "edge_density": 0.061905
+        },
+        {
+          "p": 0.7,
+          "target_edges": 134,
+          "mean_r": 0.504207,
+          "std_r": 0.059809,
+          "mean_S": 5.645762,
+          "valid_trials": 50,
+          "edge_density": 0.066667
+        },
+        {
+          "p": 0.75,
+          "target_edges": 144,
+          "mean_r": 0.513567,
+          "std_r": 0.047663,
+          "mean_S": 5.635833,
+          "valid_trials": 50,
+          "edge_density": 0.071429
+        },
+        {
+          "p": 0.8,
+          "target_edges": 154,
+          "mean_r": 0.499189,
+          "std_r": 0.047762,
+          "mean_S": 5.627518,
+          "valid_trials": 50,
+          "edge_density": 0.07619
+        },
+        {
+          "p": 0.85,
+          "target_edges": 163,
+          "mean_r": 0.485736,
+          "std_r": 0.05378,
+          "mean_S": 5.608348,
+          "valid_trials": 50,
+          "edge_density": 0.080952
+        },
+        {
+          "p": 0.9,
+          "target_edges": 173,
+          "mean_r": 0.483435,
+          "std_r": 0.056203,
+          "mean_S": 5.574294,
+          "valid_trials": 50,
+          "edge_density": 0.085714
+        },
+        {
+          "p": 0.95,
+          "target_edges": 182,
+          "mean_r": 0.451246,
+          "std_r": 0.046454,
+          "mean_S": 5.505739,
+          "valid_trials": 50,
+          "edge_density": 0.090476
+        }
+      ],
+      "c4free_sweep": [
+        {
+          "p": 0.05,
+          "target_edges": 10,
+          "actual_mean_edges": 10.0,
+          "mean_r": 0.667036,
+          "std_r": 0.118413,
+          "mean_S": 4.036277,
+          "valid_trials": 50,
+          "delta_r": -0.018207,
+          "delta_S": 0.167872,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.1,
+          "target_edges": 19,
+          "actual_mean_edges": 19.0,
+          "mean_r": 0.664238,
+          "std_r": 0.062562,
+          "mean_S": 4.6781,
+          "valid_trials": 50,
+          "delta_r": 0.024495,
+          "delta_S": -0.023979,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.15,
+          "target_edges": 29,
+          "actual_mean_edges": 29.0,
+          "mean_r": 0.588696,
+          "std_r": 0.09009,
+          "mean_S": 5.087248,
+          "valid_trials": 50,
+          "delta_r": 0.031081,
+          "delta_S": 0.064243,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.2,
+          "target_edges": 38,
+          "actual_mean_edges": 38.0,
+          "mean_r": 0.489856,
+          "std_r": 0.085765,
+          "mean_S": 5.272556,
+          "valid_trials": 50,
+          "delta_r": -0.013907,
+          "delta_S": 0.074299,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.25,
+          "target_edges": 48,
+          "actual_mean_edges": 48.0,
+          "mean_r": 0.476682,
+          "std_r": 0.069517,
+          "mean_S": 5.423794,
+          "valid_trials": 50,
+          "delta_r": -0.005135,
+          "delta_S": 0.023525,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.3,
+          "target_edges": 58,
+          "actual_mean_edges": 58.0,
+          "mean_r": 0.512612,
+          "std_r": 0.059471,
+          "mean_S": 5.525369,
+          "valid_trials": 50,
+          "delta_r": 0.012607,
+          "delta_S": 0.067219,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.35,
+          "target_edges": 67,
+          "actual_mean_edges": 67.0,
+          "mean_r": 0.519658,
+          "std_r": 0.06522,
+          "mean_S": 5.596081,
+          "valid_trials": 50,
+          "delta_r": 0.002483,
+          "delta_S": 0.063149,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.4,
+          "target_edges": 77,
+          "actual_mean_edges": 77.0,
+          "mean_r": 0.526022,
+          "std_r": 0.053365,
+          "mean_S": 5.646118,
+          "valid_trials": 50,
+          "delta_r": 0.009317,
+          "delta_S": 0.058035,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.45,
+          "target_edges": 86,
+          "actual_mean_edges": 86.0,
+          "mean_r": 0.532994,
+          "std_r": 0.060295,
+          "mean_S": 5.689267,
+          "valid_trials": 50,
+          "delta_r": -0.007183,
+          "delta_S": 0.081169,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.5,
+          "target_edges": 96,
+          "actual_mean_edges": 96.0,
+          "mean_r": 0.527063,
+          "std_r": 0.053696,
+          "mean_S": 5.71731,
+          "valid_trials": 50,
+          "delta_r": -0.009418,
+          "delta_S": 0.081574,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.55,
+          "target_edges": 106,
+          "actual_mean_edges": 106.0,
+          "mean_r": 0.519071,
+          "std_r": 0.056486,
+          "mean_S": 5.733199,
+          "valid_trials": 50,
+          "delta_r": -0.004975,
+          "delta_S": 0.085436,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.6,
+          "target_edges": 115,
+          "actual_mean_edges": 114.7,
+          "mean_r": 0.525879,
+          "std_r": 0.048082,
+          "mean_S": 5.750517,
+          "valid_trials": 50,
+          "delta_r": -0.003538,
+          "delta_S": 0.101308,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.65,
+          "target_edges": 125,
+          "actual_mean_edges": 116.3,
+          "mean_r": 0.493521,
+          "std_r": 0.049688,
+          "mean_S": 5.754376,
+          "valid_trials": 50,
+          "delta_r": -0.019711,
+          "delta_S": 0.106396,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.7,
+          "target_edges": 134,
+          "actual_mean_edges": 116.8,
+          "mean_r": 0.486211,
+          "std_r": 0.05369,
+          "mean_S": 5.757829,
+          "valid_trials": 50,
+          "delta_r": -0.017996,
+          "delta_S": 0.112067,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.75,
+          "target_edges": 144,
+          "actual_mean_edges": 116.3,
+          "mean_r": 0.49993,
+          "std_r": 0.05526,
+          "mean_S": 5.753427,
+          "valid_trials": 50,
+          "delta_r": -0.013637,
+          "delta_S": 0.117593,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.8,
+          "target_edges": 154,
+          "actual_mean_edges": 116.6,
+          "mean_r": 0.504709,
+          "std_r": 0.04726,
+          "mean_S": 5.753602,
+          "valid_trials": 50,
+          "delta_r": 0.005521,
+          "delta_S": 0.126084,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.85,
+          "target_edges": 163,
+          "actual_mean_edges": 115.8,
+          "mean_r": 0.502937,
+          "std_r": 0.048552,
+          "mean_S": 5.753397,
+          "valid_trials": 50,
+          "delta_r": 0.017201,
+          "delta_S": 0.145049,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.9,
+          "target_edges": 173,
+          "actual_mean_edges": 116.2,
+          "mean_r": 0.485665,
+          "std_r": 0.060797,
+          "mean_S": 5.755296,
+          "valid_trials": 50,
+          "delta_r": 0.002229,
+          "delta_S": 0.181002,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.95,
+          "target_edges": 182,
+          "actual_mean_edges": 116.7,
+          "mean_r": 0.507832,
+          "std_r": 0.051641,
+          "mean_S": 5.755529,
+          "valid_trials": 50,
+          "delta_r": 0.056585,
+          "delta_S": 0.24979,
+          "cooling_verdict": "HEATING"
+        }
+      ],
+      "pc_unconstrained": null,
+      "pc_c4free": null,
+      "pc_shift": null,
+      "cooling_summary": {
+        "cooling_points": 5,
+        "heating_points": 5,
+        "neutral_points": 9
+      }
+    },
+    "Q_7": {
+      "n": 7,
+      "vertices": 128,
+      "edges": 448,
+      "unconstrained_sweep": [
+        {
+          "p": 0.05,
+          "target_edges": 22,
+          "mean_r": 0.655239,
+          "std_r": 0.056566,
+          "mean_S": 5.058578,
+          "valid_trials": 50,
+          "edge_density": 0.002756
+        },
+        {
+          "p": 0.1,
+          "target_edges": 45,
+          "mean_r": 0.555855,
+          "std_r": 0.081936,
+          "mean_S": 5.801975,
+          "valid_trials": 50,
+          "edge_density": 0.005512
+        },
+        {
+          "p": 0.15,
+          "target_edges": 67,
+          "mean_r": 0.469528,
+          "std_r": 0.068941,
+          "mean_S": 6.098141,
+          "valid_trials": 50,
+          "edge_density": 0.008268
+        },
+        {
+          "p": 0.2,
+          "target_edges": 90,
+          "mean_r": 0.450071,
+          "std_r": 0.045569,
+          "mean_S": 6.315467,
+          "valid_trials": 50,
+          "edge_density": 0.011024
+        },
+        {
+          "p": 0.25,
+          "target_edges": 112,
+          "mean_r": 0.483273,
+          "std_r": 0.049523,
+          "mean_S": 6.445959,
+          "valid_trials": 50,
+          "edge_density": 0.01378
+        },
+        {
+          "p": 0.3,
+          "target_edges": 134,
+          "mean_r": 0.506329,
+          "std_r": 0.04507,
+          "mean_S": 6.506337,
+          "valid_trials": 50,
+          "edge_density": 0.016535
+        },
+        {
+          "p": 0.35,
+          "target_edges": 157,
+          "mean_r": 0.526243,
+          "std_r": 0.036253,
+          "mean_S": 6.580629,
+          "valid_trials": 50,
+          "edge_density": 0.019291
+        },
+        {
+          "p": 0.4,
+          "target_edges": 179,
+          "mean_r": 0.528974,
+          "std_r": 0.03604,
+          "mean_S": 6.609023,
+          "valid_trials": 50,
+          "edge_density": 0.022047
+        },
+        {
+          "p": 0.45,
+          "target_edges": 202,
+          "mean_r": 0.536299,
+          "std_r": 0.036379,
+          "mean_S": 6.63426,
+          "valid_trials": 50,
+          "edge_density": 0.024803
+        },
+        {
+          "p": 0.5,
+          "target_edges": 224,
+          "mean_r": 0.535399,
+          "std_r": 0.039537,
+          "mean_S": 6.647583,
+          "valid_trials": 50,
+          "edge_density": 0.027559
+        },
+        {
+          "p": 0.55,
+          "target_edges": 246,
+          "mean_r": 0.527175,
+          "std_r": 0.033425,
+          "mean_S": 6.648891,
+          "valid_trials": 50,
+          "edge_density": 0.030315
+        },
+        {
+          "p": 0.6,
+          "target_edges": 269,
+          "mean_r": 0.523801,
+          "std_r": 0.035235,
+          "mean_S": 6.653948,
+          "valid_trials": 50,
+          "edge_density": 0.033071
+        },
+        {
+          "p": 0.65,
+          "target_edges": 291,
+          "mean_r": 0.517248,
+          "std_r": 0.03671,
+          "mean_S": 6.655186,
+          "valid_trials": 50,
+          "edge_density": 0.035827
+        },
+        {
+          "p": 0.7,
+          "target_edges": 314,
+          "mean_r": 0.520625,
+          "std_r": 0.034379,
+          "mean_S": 6.652058,
+          "valid_trials": 50,
+          "edge_density": 0.038583
+        },
+        {
+          "p": 0.75,
+          "target_edges": 336,
+          "mean_r": 0.511016,
+          "std_r": 0.039978,
+          "mean_S": 6.651205,
+          "valid_trials": 50,
+          "edge_density": 0.041339
+        },
+        {
+          "p": 0.8,
+          "target_edges": 358,
+          "mean_r": 0.508313,
+          "std_r": 0.038659,
+          "mean_S": 6.655093,
+          "valid_trials": 50,
+          "edge_density": 0.044094
+        },
+        {
+          "p": 0.85,
+          "target_edges": 381,
+          "mean_r": 0.509136,
+          "std_r": 0.036155,
+          "mean_S": 6.658196,
+          "valid_trials": 50,
+          "edge_density": 0.04685
+        },
+        {
+          "p": 0.9,
+          "target_edges": 403,
+          "mean_r": 0.488368,
+          "std_r": 0.038012,
+          "mean_S": 6.66902,
+          "valid_trials": 50,
+          "edge_density": 0.049606
+        },
+        {
+          "p": 0.95,
+          "target_edges": 426,
+          "mean_r": 0.477076,
+          "std_r": 0.033256,
+          "mean_S": 6.680711,
+          "valid_trials": 50,
+          "edge_density": 0.052362
+        }
+      ],
+      "c4free_sweep": [
+        {
+          "p": 0.05,
+          "target_edges": 22,
+          "actual_mean_edges": 22.0,
+          "mean_r": 0.671015,
+          "std_r": 0.06348,
+          "mean_S": 5.077544,
+          "valid_trials": 50,
+          "delta_r": 0.015776,
+          "delta_S": 0.018966,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.1,
+          "target_edges": 45,
+          "actual_mean_edges": 45.0,
+          "mean_r": 0.570948,
+          "std_r": 0.077657,
+          "mean_S": 5.835874,
+          "valid_trials": 50,
+          "delta_r": 0.015094,
+          "delta_S": 0.033899,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.15,
+          "target_edges": 67,
+          "actual_mean_edges": 67.0,
+          "mean_r": 0.483922,
+          "std_r": 0.065368,
+          "mean_S": 6.153478,
+          "valid_trials": 50,
+          "delta_r": 0.014394,
+          "delta_S": 0.055337,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.2,
+          "target_edges": 90,
+          "actual_mean_edges": 90.0,
+          "mean_r": 0.451177,
+          "std_r": 0.051961,
+          "mean_S": 6.36224,
+          "valid_trials": 50,
+          "delta_r": 0.001106,
+          "delta_S": 0.046773,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.25,
+          "target_edges": 112,
+          "actual_mean_edges": 112.0,
+          "mean_r": 0.475885,
+          "std_r": 0.04481,
+          "mean_S": 6.489962,
+          "valid_trials": 50,
+          "delta_r": -0.007388,
+          "delta_S": 0.044003,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.3,
+          "target_edges": 134,
+          "actual_mean_edges": 134.0,
+          "mean_r": 0.510732,
+          "std_r": 0.041393,
+          "mean_S": 6.570586,
+          "valid_trials": 50,
+          "delta_r": 0.004403,
+          "delta_S": 0.064249,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.35,
+          "target_edges": 157,
+          "actual_mean_edges": 157.0,
+          "mean_r": 0.521163,
+          "std_r": 0.038984,
+          "mean_S": 6.638713,
+          "valid_trials": 50,
+          "delta_r": -0.00508,
+          "delta_S": 0.058084,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.4,
+          "target_edges": 179,
+          "actual_mean_edges": 179.0,
+          "mean_r": 0.531877,
+          "std_r": 0.036315,
+          "mean_S": 6.674254,
+          "valid_trials": 50,
+          "delta_r": 0.002903,
+          "delta_S": 0.065231,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.45,
+          "target_edges": 202,
+          "actual_mean_edges": 202.0,
+          "mean_r": 0.519495,
+          "std_r": 0.037846,
+          "mean_S": 6.700764,
+          "valid_trials": 50,
+          "delta_r": -0.016804,
+          "delta_S": 0.066504,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.5,
+          "target_edges": 224,
+          "actual_mean_edges": 224.0,
+          "mean_r": 0.523435,
+          "std_r": 0.032013,
+          "mean_S": 6.722207,
+          "valid_trials": 50,
+          "delta_r": -0.011964,
+          "delta_S": 0.074624,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.55,
+          "target_edges": 246,
+          "actual_mean_edges": 246.0,
+          "mean_r": 0.517773,
+          "std_r": 0.034369,
+          "mean_S": 6.738406,
+          "valid_trials": 50,
+          "delta_r": -0.009402,
+          "delta_S": 0.089515,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.6,
+          "target_edges": 269,
+          "actual_mean_edges": 262.2,
+          "mean_r": 0.501109,
+          "std_r": 0.038103,
+          "mean_S": 6.75065,
+          "valid_trials": 50,
+          "delta_r": -0.022692,
+          "delta_S": 0.096702,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.65,
+          "target_edges": 291,
+          "actual_mean_edges": 262.1,
+          "mean_r": 0.506407,
+          "std_r": 0.035075,
+          "mean_S": 6.74873,
+          "valid_trials": 50,
+          "delta_r": -0.010841,
+          "delta_S": 0.093544,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.7,
+          "target_edges": 314,
+          "actual_mean_edges": 263.0,
+          "mean_r": 0.511911,
+          "std_r": 0.036295,
+          "mean_S": 6.750553,
+          "valid_trials": 50,
+          "delta_r": -0.008714,
+          "delta_S": 0.098495,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.75,
+          "target_edges": 336,
+          "actual_mean_edges": 262.7,
+          "mean_r": 0.514565,
+          "std_r": 0.041484,
+          "mean_S": 6.748893,
+          "valid_trials": 50,
+          "delta_r": 0.003548,
+          "delta_S": 0.097688,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.8,
+          "target_edges": 358,
+          "actual_mean_edges": 262.5,
+          "mean_r": 0.515244,
+          "std_r": 0.028828,
+          "mean_S": 6.748219,
+          "valid_trials": 50,
+          "delta_r": 0.006931,
+          "delta_S": 0.093126,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.85,
+          "target_edges": 381,
+          "actual_mean_edges": 262.8,
+          "mean_r": 0.528127,
+          "std_r": 0.031868,
+          "mean_S": 6.750004,
+          "valid_trials": 50,
+          "delta_r": 0.01899,
+          "delta_S": 0.091808,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.9,
+          "target_edges": 403,
+          "actual_mean_edges": 262.3,
+          "mean_r": 0.492777,
+          "std_r": 0.034464,
+          "mean_S": 6.750098,
+          "valid_trials": 50,
+          "delta_r": 0.004409,
+          "delta_S": 0.081078,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.95,
+          "target_edges": 426,
+          "actual_mean_edges": 262.2,
+          "mean_r": 0.506238,
+          "std_r": 0.027685,
+          "mean_S": 6.750304,
+          "valid_trials": 50,
+          "delta_r": 0.029162,
+          "delta_S": 0.069593,
+          "cooling_verdict": "HEATING"
+        }
+      ],
+      "pc_unconstrained": null,
+      "pc_c4free": null,
+      "pc_shift": null,
+      "cooling_summary": {
+        "cooling_points": 4,
+        "heating_points": 5,
+        "neutral_points": 10
+      }
+    },
+    "Q_8": {
+      "n": 8,
+      "vertices": 256,
+      "edges": 1024,
+      "unconstrained_sweep": [
+        {
+          "p": 0.05,
+          "target_edges": 51,
+          "mean_r": 0.635736,
+          "std_r": 0.072323,
+          "mean_S": 6.203775,
+          "valid_trials": 50,
+          "edge_density": 0.001569
+        },
+        {
+          "p": 0.1,
+          "target_edges": 102,
+          "mean_r": 0.490285,
+          "std_r": 0.066778,
+          "mean_S": 6.893733,
+          "valid_trials": 50,
+          "edge_density": 0.003137
+        },
+        {
+          "p": 0.15,
+          "target_edges": 154,
+          "mean_r": 0.419161,
+          "std_r": 0.048581,
+          "mean_S": 7.21133,
+          "valid_trials": 50,
+          "edge_density": 0.004706
+        },
+        {
+          "p": 0.2,
+          "target_edges": 205,
+          "mean_r": 0.452136,
+          "std_r": 0.041928,
+          "mean_S": 7.388821,
+          "valid_trials": 50,
+          "edge_density": 0.006275
+        },
+        {
+          "p": 0.25,
+          "target_edges": 256,
+          "mean_r": 0.514062,
+          "std_r": 0.033886,
+          "mean_S": 7.489854,
+          "valid_trials": 50,
+          "edge_density": 0.007843
+        },
+        {
+          "p": 0.3,
+          "target_edges": 307,
+          "mean_r": 0.517903,
+          "std_r": 0.02533,
+          "mean_S": 7.562976,
+          "valid_trials": 50,
+          "edge_density": 0.009412
+        },
+        {
+          "p": 0.35,
+          "target_edges": 358,
+          "mean_r": 0.522411,
+          "std_r": 0.031654,
+          "mean_S": 7.60198,
+          "valid_trials": 50,
+          "edge_density": 0.01098
+        },
+        {
+          "p": 0.4,
+          "target_edges": 410,
+          "mean_r": 0.528869,
+          "std_r": 0.026011,
+          "mean_S": 7.630601,
+          "valid_trials": 50,
+          "edge_density": 0.012549
+        },
+        {
+          "p": 0.45,
+          "target_edges": 461,
+          "mean_r": 0.52947,
+          "std_r": 0.027726,
+          "mean_S": 7.644335,
+          "valid_trials": 50,
+          "edge_density": 0.014118
+        },
+        {
+          "p": 0.5,
+          "target_edges": 512,
+          "mean_r": 0.535492,
+          "std_r": 0.030673,
+          "mean_S": 7.651198,
+          "valid_trials": 50,
+          "edge_density": 0.015686
+        },
+        {
+          "p": 0.55,
+          "target_edges": 563,
+          "mean_r": 0.533066,
+          "std_r": 0.026424,
+          "mean_S": 7.654395,
+          "valid_trials": 50,
+          "edge_density": 0.017255
+        },
+        {
+          "p": 0.6,
+          "target_edges": 614,
+          "mean_r": 0.520452,
+          "std_r": 0.024929,
+          "mean_S": 7.653398,
+          "valid_trials": 50,
+          "edge_density": 0.018824
+        },
+        {
+          "p": 0.65,
+          "target_edges": 666,
+          "mean_r": 0.523094,
+          "std_r": 0.02616,
+          "mean_S": 7.650113,
+          "valid_trials": 50,
+          "edge_density": 0.020392
+        },
+        {
+          "p": 0.7,
+          "target_edges": 717,
+          "mean_r": 0.518856,
+          "std_r": 0.025262,
+          "mean_S": 7.646982,
+          "valid_trials": 50,
+          "edge_density": 0.021961
+        },
+        {
+          "p": 0.75,
+          "target_edges": 768,
+          "mean_r": 0.524781,
+          "std_r": 0.027984,
+          "mean_S": 7.640892,
+          "valid_trials": 50,
+          "edge_density": 0.023529
+        },
+        {
+          "p": 0.8,
+          "target_edges": 819,
+          "mean_r": 0.517854,
+          "std_r": 0.026307,
+          "mean_S": 7.628958,
+          "valid_trials": 50,
+          "edge_density": 0.025098
+        },
+        {
+          "p": 0.85,
+          "target_edges": 870,
+          "mean_r": 0.512297,
+          "std_r": 0.031471,
+          "mean_S": 7.613938,
+          "valid_trials": 50,
+          "edge_density": 0.026667
+        },
+        {
+          "p": 0.9,
+          "target_edges": 922,
+          "mean_r": 0.500801,
+          "std_r": 0.023264,
+          "mean_S": 7.589163,
+          "valid_trials": 50,
+          "edge_density": 0.028235
+        },
+        {
+          "p": 0.95,
+          "target_edges": 973,
+          "mean_r": 0.502527,
+          "std_r": 0.029772,
+          "mean_S": 7.545065,
+          "valid_trials": 50,
+          "edge_density": 0.029804
+        }
+      ],
+      "c4free_sweep": [
+        {
+          "p": 0.05,
+          "target_edges": 51,
+          "actual_mean_edges": 51.0,
+          "mean_r": 0.640305,
+          "std_r": 0.061337,
+          "mean_S": 6.240361,
+          "valid_trials": 50,
+          "delta_r": 0.004569,
+          "delta_S": 0.036586,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.1,
+          "target_edges": 102,
+          "actual_mean_edges": 102.0,
+          "mean_r": 0.520308,
+          "std_r": 0.072506,
+          "mean_S": 6.92049,
+          "valid_trials": 50,
+          "delta_r": 0.030024,
+          "delta_S": 0.026757,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.15,
+          "target_edges": 154,
+          "actual_mean_edges": 154.0,
+          "mean_r": 0.431047,
+          "std_r": 0.048003,
+          "mean_S": 7.253133,
+          "valid_trials": 50,
+          "delta_r": 0.011886,
+          "delta_S": 0.041803,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.2,
+          "target_edges": 205,
+          "actual_mean_edges": 205.0,
+          "mean_r": 0.471097,
+          "std_r": 0.042036,
+          "mean_S": 7.420125,
+          "valid_trials": 50,
+          "delta_r": 0.018961,
+          "delta_S": 0.031305,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.25,
+          "target_edges": 256,
+          "actual_mean_edges": 256.0,
+          "mean_r": 0.521024,
+          "std_r": 0.03538,
+          "mean_S": 7.537635,
+          "valid_trials": 50,
+          "delta_r": 0.006963,
+          "delta_S": 0.047781,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.3,
+          "target_edges": 307,
+          "actual_mean_edges": 307.0,
+          "mean_r": 0.527754,
+          "std_r": 0.02947,
+          "mean_S": 7.611023,
+          "valid_trials": 50,
+          "delta_r": 0.009851,
+          "delta_S": 0.048047,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.35,
+          "target_edges": 358,
+          "actual_mean_edges": 358.0,
+          "mean_r": 0.528376,
+          "std_r": 0.028312,
+          "mean_S": 7.653311,
+          "valid_trials": 50,
+          "delta_r": 0.005966,
+          "delta_S": 0.051331,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.4,
+          "target_edges": 410,
+          "actual_mean_edges": 410.0,
+          "mean_r": 0.528762,
+          "std_r": 0.028548,
+          "mean_S": 7.688947,
+          "valid_trials": 50,
+          "delta_r": -0.000107,
+          "delta_S": 0.058347,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.45,
+          "target_edges": 461,
+          "actual_mean_edges": 461.0,
+          "mean_r": 0.529641,
+          "std_r": 0.027328,
+          "mean_S": 7.707455,
+          "valid_trials": 50,
+          "delta_r": 0.000171,
+          "delta_S": 0.063119,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.5,
+          "target_edges": 512,
+          "actual_mean_edges": 512.0,
+          "mean_r": 0.522913,
+          "std_r": 0.02729,
+          "mean_S": 7.723621,
+          "valid_trials": 50,
+          "delta_r": -0.012579,
+          "delta_S": 0.072423,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.55,
+          "target_edges": 563,
+          "actual_mean_edges": 563.0,
+          "mean_r": 0.522803,
+          "std_r": 0.028159,
+          "mean_S": 7.737638,
+          "valid_trials": 50,
+          "delta_r": -0.010263,
+          "delta_S": 0.083243,
+          "cooling_verdict": "COOLING"
+        },
+        {
+          "p": 0.6,
+          "target_edges": 614,
+          "actual_mean_edges": 583.0,
+          "mean_r": 0.52854,
+          "std_r": 0.025372,
+          "mean_S": 7.743658,
+          "valid_trials": 50,
+          "delta_r": 0.008088,
+          "delta_S": 0.09026,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.65,
+          "target_edges": 666,
+          "actual_mean_edges": 581.9,
+          "mean_r": 0.522523,
+          "std_r": 0.027533,
+          "mean_S": 7.742831,
+          "valid_trials": 50,
+          "delta_r": -0.000572,
+          "delta_S": 0.092718,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.7,
+          "target_edges": 717,
+          "actual_mean_edges": 581.9,
+          "mean_r": 0.518991,
+          "std_r": 0.031427,
+          "mean_S": 7.742829,
+          "valid_trials": 50,
+          "delta_r": 0.000135,
+          "delta_S": 0.095847,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.75,
+          "target_edges": 768,
+          "actual_mean_edges": 580.9,
+          "mean_r": 0.520572,
+          "std_r": 0.024047,
+          "mean_S": 7.742285,
+          "valid_trials": 50,
+          "delta_r": -0.00421,
+          "delta_S": 0.101393,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.8,
+          "target_edges": 819,
+          "actual_mean_edges": 581.5,
+          "mean_r": 0.514902,
+          "std_r": 0.026,
+          "mean_S": 7.74204,
+          "valid_trials": 50,
+          "delta_r": -0.002952,
+          "delta_S": 0.113082,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.85,
+          "target_edges": 870,
+          "actual_mean_edges": 580.4,
+          "mean_r": 0.518759,
+          "std_r": 0.034833,
+          "mean_S": 7.742223,
+          "valid_trials": 50,
+          "delta_r": 0.006462,
+          "delta_S": 0.128285,
+          "cooling_verdict": "NEUTRAL"
+        },
+        {
+          "p": 0.9,
+          "target_edges": 922,
+          "actual_mean_edges": 581.2,
+          "mean_r": 0.523259,
+          "std_r": 0.0243,
+          "mean_S": 7.742581,
+          "valid_trials": 50,
+          "delta_r": 0.022458,
+          "delta_S": 0.153418,
+          "cooling_verdict": "HEATING"
+        },
+        {
+          "p": 0.95,
+          "target_edges": 973,
+          "actual_mean_edges": 581.4,
+          "mean_r": 0.519815,
+          "std_r": 0.026273,
+          "mean_S": 7.742281,
+          "valid_trials": 50,
+          "delta_r": 0.017288,
+          "delta_S": 0.197216,
+          "cooling_verdict": "HEATING"
+        }
+      ],
+      "pc_unconstrained": 0.18266,
+      "pc_c4free": 0.162051,
+      "pc_shift": -0.020609,
+      "cooling_summary": {
+        "cooling_points": 2,
+        "heating_points": 5,
+        "neutral_points": 12
+      }
+    }
+  },
+  "timings_seconds": {
+    "Q_4": 0.12,
+    "Q_5": 0.21,
+    "Q_6": 0.66,
+    "Q_7": 2.07,
+    "Q_8": 7.52
+  },
+  "total_time_seconds": 10.6,
+  "overall_verdict": "INCONCLUSIVE \u2014 mixed or neutral results across n values",
+  "anti_artifact_note": "All values are Monte Carlo outputs. 'Cooling' is metaphor, not physics. Positive \u0394p_c = C4-free needs more edges for GOE = spectral suppression.",
+  "data_integrity": {
+    "tag": "REAL_COMPUTATION",
+    "note": "All values from Monte Carlo with stated seed. No fabricated data."
+  },
+  "timestamp": "2026-04-13T20:23:17.542323+00:00",
+  "platform": {
+    "experiment_contract": "EXP-MM prefix, *_RESULTS.json + *_RESULTS.sha256",
+    "portfolio": "H2/Math (MendozaLab)"
+  }
+}

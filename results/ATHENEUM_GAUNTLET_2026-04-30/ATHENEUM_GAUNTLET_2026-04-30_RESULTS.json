@@ -1,0 +1,214 @@
+{
+  "claim_boundary": "bounded finite laboratory run; no theorem or public proof claim",
+  "classifier_binding": {
+    "ambiguous_rows": [
+      {
+        "artifact": "exp8_ML_hypercube_leg4",
+        "class_verdict": "ambiguous",
+        "expected_class": "scoped-candidate (if hypercube exhausts geometry)",
+        "notes": "LEG4_PARTIAL: kink is present on hypercube but not strictly absent on GOE null \u2192 hypercube may not be cleanly geometry-exhausted. Flagged for audit: this is the key test of whether hypercube belongs in the scoped bucket. R not computed because no matched geometric bound reported.",
+        "verdict_field": "LEG4_PARTIAL"
+      },
+      {
+        "artifact": "exp9_neutrino_chiral",
+        "class_verdict": "ambiguous",
+        "expected_class": "scoped-candidate",
+        "notes": "NEUTRINO_CLASS_WEAK (1/3 criteria). Does NOT confirm neutrino-morphism as geometry-exhausted. Only 1/3 criteria: {'microscopic_universal': False, 'soft_kink_dominates_bulk': False, 'flavor_oscil",
+        "verdict_field": "NEUTRINO_CLASS_WEAK"
+      }
+    ],
+    "classifier_summary": {
+      "class_distribution": {
+        "ambiguous": 2,
+        "generic": 6,
+        "structural_only": 12
+      },
+      "counterexamples": [
+        "exp8_ML_hypercube_leg4",
+        "exp9_neutrino_chiral"
+      ],
+      "date": "2026-04-19",
+      "protocol": "Geometric Shielding Principle \u2014 classifier backprop (Operating Protocol, GSP doc 2026-04-19)",
+      "total_artifacts": 20
+    },
+    "source_dir": "erdos-experiments/results/CLASSIFIER_BACKPROP_2026-04-19",
+    "strict_false_positive_demotion": {
+      "exp8_c1_overall_pass": false,
+      "exp8_c2_overall_pass": false,
+      "exp8_c3_overall_pass": false,
+      "exp8_v2_verdict": "LEG4_FAIL",
+      "exp9_passed_criteria": [
+        "C3_stable_flavor_oscillation"
+      ],
+      "exp9_v2_verdict": "CHIRAL_CLASS_REJECTED"
+    }
+  },
+  "date": "2026-04-30",
+  "engine_runs": [
+    {
+      "command": [
+        "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30/rust-transfer-operator/target/release/erdos30-transfer-operator",
+        "--n-min",
+        "20",
+        "--n-max",
+        "30",
+        "--frontier-k",
+        "3",
+        "--experiment-id",
+        "ATH-GAUNTLET-SIDON-20-30-2026-04-30",
+        "--output-dir",
+        "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw"
+      ],
+      "experiment_id": "ATH-GAUNTLET-SIDON-20-30-2026-04-30",
+      "key": "sidon",
+      "result_path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw/ATH-GAUNTLET-SIDON-20-30-2026-04-30_RESULTS.json",
+      "title": "Erdos #30 Sidon exact transfer operator"
+    },
+    {
+      "command": [
+        "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30/rust-transfer-operator/target/release/b2g_transfer",
+        "--n-min",
+        "20",
+        "--n-max",
+        "30",
+        "--g",
+        "2",
+        "--frontier-k",
+        "3",
+        "--near-ground-deficiency",
+        "1",
+        "--experiment-id",
+        "ATH-GAUNTLET-B2G2-D1-20-30-2026-04-30",
+        "--output-dir",
+        "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw"
+      ],
+      "experiment_id": "ATH-GAUNTLET-B2G2-D1-20-30-2026-04-30",
+      "key": "b2g2",
+      "result_path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw/ATH-GAUNTLET-B2G2-D1-20-30-2026-04-30_RESULTS.json",
+      "title": "Erdos #755 B_2[2] exact transfer operator with h-1 layer"
+    },
+    {
+      "command": [
+        "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30/rust-transfer-operator/target/release/sumfree_transfer",
+        "--n-min",
+        "20",
+        "--n-max",
+        "30",
+        "--frontier-k",
+        "3",
+        "--prune-deficiency",
+        "1",
+        "--experiment-id",
+        "ATH-GAUNTLET-SUMFREE-D1-20-30-2026-04-30",
+        "--output-dir",
+        "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw"
+      ],
+      "experiment_id": "ATH-GAUNTLET-SUMFREE-D1-20-30-2026-04-30",
+      "key": "sumfree",
+      "result_path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw/ATH-GAUNTLET-SUMFREE-D1-20-30-2026-04-30_RESULTS.json",
+      "title": "Erdos #166 sum-free transfer operator"
+    }
+  ],
+  "gauntlet_answers": {
+    "beautiful_analogy_vs_invariant": "Observable splits are accepted only when they survive exact finite transfer rows; the hypercube analogy was demoted when nulls also showed the kink.",
+    "changed_mind": "Hypercube Leg-4 moved from classifier ambiguity to strict LEG4_FAIL under exp8_v2.",
+    "proof_targets": "Rows with high degeneracy and field splits are proof-target candidates; rigid rows are lower priority.",
+    "same_structure_without_bridge": "The observable-split flag appears in #30 Sidon and #755 B_2[2] under the same transfer API, while #166 sum-free is a negative control.",
+    "smallest_predictive_example": "At n=20 the Sidon run already has different prefix and mass winners; at n=20 B_2[2] also splits.",
+    "where_structure_lives": "In these rows it lives in the ground-state face and in field-selected observables, not in one selected witness."
+  },
+  "mdl_preflight": {
+    "command": [
+      "/Users/kenbengoetxea/miniconda3/bin/pytest",
+      "/Users/kenbengoetxea/container-projects/apps/H2/Math/collider/tests/test_mdl_primitives.py",
+      "-q"
+    ],
+    "output_path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/raw/ATH-GAUNTLET-MDL-PREFLIGHT-2026-04-30.txt",
+    "returncode": 0,
+    "stdout_tail": ".........................                                                [100%]\n25 passed in 0.42s\n"
+  },
+  "run_id": "ATHENEUM_GAUNTLET_2026-04-30",
+  "summary_json_path": "erdos-experiments/results/ATHENEUM_GAUNTLET_2026-04-30/ATHENEUM_GAUNTLET_2026-04-30_RESULTS.json",
+  "transfer_summaries": {
+    "b2g2": {
+      "checked_count": 11,
+      "constraint": "B_2[g] on [0,n] with ordered representation count <= 2g",
+      "erdos_problem": 755,
+      "experiment_id": "ATH-GAUNTLET-B2G2-D1-20-30-2026-04-30",
+      "field_response_present": true,
+      "g": 2,
+      "ground_entropy_ln_range": {
+        "max": 9.701983176325399,
+        "min": 1.791759469228055
+      },
+      "kind": "b2g2",
+      "n_max": 30,
+      "n_min": 20,
+      "near_ground_counts_exact_all_rows": true,
+      "near_ground_deficiency": 1,
+      "observable_split_count": 11,
+      "observable_split_ns": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "total_ground_states": 36234,
+      "total_h_minus_1_states": 1660904
+    },
+    "sidon": {
+      "checked_count": 11,
+      "erdos_problem": 30,
+      "experiment_id": "ATH-GAUNTLET-SIDON-20-30-2026-04-30",
+      "field_response_present": true,
+      "ground_entropy_ln_range": {
+        "max": 8.125630988477065,
+        "min": 2.302585092994046
+      },
+      "kind": "sidon",
+      "n_max": 30,
+      "n_min": 20,
+      "observable_split_count": 11,
+      "observable_split_ns": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "parity_ok": true,
+      "total_ground_states": 9806
+    },
+    "sumfree": {
+      "checked_count": 11,
+      "constraint": "sum_free_no_x_plus_y_equals_z",
+      "erdos_problem": 166,
+      "experiment_id": "ATH-GAUNTLET-SUMFREE-D1-20-30-2026-04-30",
+      "field_response_present": false,
+      "formula_parity_ok": true,
+      "ground_entropy_ln_range": {
+        "max": 1.0986122886681098,
+        "min": 0.6931471805599453
+      },
+      "kind": "sumfree",
+      "n_max": 30,
+      "n_min": 20,
+      "observable_split_count": 0,
+      "observable_split_ns": [],
+      "total_ground_states": 28
+    }
+  }
+}

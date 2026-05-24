@@ -1,0 +1,634 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-TOEPLITZ-LIFT-V1-20260502",
+  "timestamp_utc": "2026-05-02T20:35:29.080711+00:00",
+  "design_doc": "Math/erdos-experiments/Erdos114/TOEPLITZ_MOMENT_LIFT_DESIGN_2026-05-02.md",
+  "iteration_on": "EXP-MATH-EHP114-TENSOR-CONE-V1-20260502 (C-2)",
+  "scope": "SCOPING ARTIFACT \u2014 see honest scope statement in design doc",
+  "n": 3,
+  "L_target_closed_form": 9.17972422234316,
+  "L_target_v5_preprint_certified_interval": [
+    9.17972422234315,
+    9.17972422234317
+  ],
+  "moment_family_chosen": "coefficient_autocorrelation",
+  "moment_family_alternatives_considered": [
+    "coefficient_autocorrelation (CHOSEN \u2014 computable a priori from coefficients)",
+    "trigonometric_on_lemniscate (REJECTED \u2014 requires knowing Lambda first; circular)"
+  ],
+  "atomic_block_definition": {
+    "shape": "(4, 4)",
+    "type": "Hermitian Toeplitz autocorrelation",
+    "entries": "T(p)_{ij} = m_{i-j} for i>=j, conj(m_{j-i}) for i<j; m_k = sum_j a_j conj(a_{j+k}) with a_n=1",
+    "PSD_automatic": "Yes \u2014 Gram matrix of {p, z*p, ..., z^n p} in L^2(d\u03b8/2\u03c0)",
+    "informative_only_relative_to_target": "Yes \u2014 uses dominance T*_n - T(p) \u227d 0 with target T*_n = T(z^n-1)"
+  },
+  "witness_toeplitz_form_T_star_n_3": {
+    "matrix_real": [
+      [
+        2.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      [
+        0.0,
+        2.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        2.0,
+        0.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        2.0
+      ]
+    ],
+    "matrix_imag": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "eigenvalues_sorted": [
+      1.0,
+      2.0,
+      2.0,
+      3.0
+    ],
+    "trace": 8.0,
+    "rank": 4
+  },
+  "witness_check": {
+    "label": "z^3 - 1 (witness)",
+    "coeffs_real": [
+      -1.0,
+      0.0,
+      0.0
+    ],
+    "coeffs_imag": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "moments_m_k": [
+      2.0,
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "T_p_real": [
+      [
+        2.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      [
+        0.0,
+        2.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        2.0,
+        0.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        2.0
+      ]
+    ],
+    "T_p_imag": [
+      [
+        0.0,
+        -0.0,
+        -0.0,
+        -0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -0.0,
+        -0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        -0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "T_star_minus_T_p_max_abs": 0.0,
+    "expected_T_p_equals_T_star": true,
+    "toeplitz_cone": {
+      "n": 3,
+      "loewner_diff_eigenvalues": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "min_loewner_eigenvalue": 0.0,
+      "max_loewner_eigenvalue": 0.0,
+      "frobenius_distance_from_witness": 0.0,
+      "hermiticity_residual": 0.0,
+      "in_cone": true,
+      "on_apex": true,
+      "on_boundary_face": false,
+      "tol": 1e-10
+    },
+    "c2_cone": {
+      "block_min_eigenvalues": [
+        0.0,
+        1.0,
+        1.0
+      ],
+      "min_block_eigenvalue": 0.0,
+      "energy_trace": 1.0,
+      "in_cone": true,
+      "on_boundary": true
+    },
+    "L_target_closed_form": 9.17972422234316
+  },
+  "alternative_polynomials": [
+    {
+      "label": "z^3 - 0.9",
+      "coeffs_real": [
+        -0.9,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "moments_m_k_real": [
+        1.81,
+        0.0,
+        0.0,
+        -0.9
+      ],
+      "moments_m_k_imag": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "toeplitz_cone": {
+        "n": 3,
+        "loewner_diff_eigenvalues": [
+          0.08999999999999997,
+          0.18999999999999995,
+          0.18999999999999995,
+          0.2899999999999999
+        ],
+        "min_loewner_eigenvalue": 0.08999999999999997,
+        "max_loewner_eigenvalue": 0.2899999999999999,
+        "frobenius_distance_from_witness": 0.40546269865426576,
+        "hermiticity_residual": 0.0,
+        "in_cone": true,
+        "on_apex": false,
+        "on_boundary_face": false,
+        "tol": 1e-10
+      },
+      "c2_cone": {
+        "block_min_eigenvalues": [
+          0.09999999999999992,
+          1.0,
+          1.0
+        ],
+        "min_block_eigenvalue": 0.09999999999999992,
+        "energy_trace": 0.81,
+        "in_cone": true,
+        "on_boundary": false
+      },
+      "L_numerical": {
+        "method": "co_area_grid_integration",
+        "grid_size": 1200,
+        "box_radius": 3.0,
+        "grid_spacing": 0.00500417014178467,
+        "L_estimate": 7.245785444143181,
+        "L_estimates_by_eps": [
+          {
+            "eps": 0.04,
+            "L_estimate": 7.315546087550803,
+            "n_points_in_strip": 13746
+          },
+          {
+            "eps": 0.02,
+            "L_estimate": 7.294922435741426,
+            "n_points_in_strip": 6780
+          },
+          {
+            "eps": 0.01,
+            "L_estimate": 7.245785444143181,
+            "n_points_in_strip": 3352
+          }
+        ],
+        "L_lower_bracket": 7.245785444143181,
+        "L_upper_bracket": 7.315546087550803
+      },
+      "L_target_zn_minus_1": 9.17972422234316,
+      "L_estimate_lt_target": true,
+      "L_gap_to_target": 1.9339387781999786
+    },
+    {
+      "label": "z^3 + 0.1z - 0.8",
+      "coeffs_real": [
+        -0.8,
+        0.1,
+        0.0
+      ],
+      "coeffs_imag": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "moments_m_k_real": [
+        1.6500000000000001,
+        -0.08000000000000002,
+        0.1,
+        -0.8
+      ],
+      "moments_m_k_imag": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "toeplitz_cone": {
+        "n": 3,
+        "loewner_diff_eigenvalues": [
+          0.14857864376269045,
+          0.18196491498017223,
+          0.43142135623730976,
+          0.6380350850198274
+        ],
+        "min_loewner_eigenvalue": 0.14857864376269045,
+        "max_loewner_eigenvalue": 0.6380350850198274,
+        "frobenius_distance_from_witness": 0.8052328855678956,
+        "hermiticity_residual": 0.0,
+        "in_cone": true,
+        "on_apex": false,
+        "on_boundary_face": false,
+        "tol": 1e-10
+      },
+      "c2_cone": {
+        "block_min_eigenvalues": [
+          0.19999999999999996,
+          0.9,
+          1.0
+        ],
+        "min_block_eigenvalue": 0.19999999999999996,
+        "energy_trace": 0.6500000000000001,
+        "in_cone": true,
+        "on_boundary": false
+      },
+      "L_numerical": {
+        "method": "co_area_grid_integration",
+        "grid_size": 1200,
+        "box_radius": 3.0,
+        "grid_spacing": 0.00500417014178467,
+        "L_estimate": 6.888589632180812,
+        "L_estimates_by_eps": [
+          {
+            "eps": 0.04,
+            "L_estimate": 6.9608004127430725,
+            "n_points_in_strip": 10498
+          },
+          {
+            "eps": 0.02,
+            "L_estimate": 6.967184821077801,
+            "n_points_in_strip": 5234
+          },
+          {
+            "eps": 0.01,
+            "L_estimate": 6.888589632180812,
+            "n_points_in_strip": 2600
+          }
+        ],
+        "L_lower_bracket": 6.888589632180812,
+        "L_upper_bracket": 6.967184821077801
+      },
+      "L_target_zn_minus_1": 9.17972422234316,
+      "L_estimate_lt_target": true,
+      "L_gap_to_target": 2.291134590162347
+    },
+    {
+      "label": "z^3 + 0.05i z^2 - 0.9",
+      "coeffs_real": [
+        -0.9,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        0.0,
+        0.0,
+        0.05
+      ],
+      "moments_m_k_real": [
+        1.8125,
+        0.0,
+        0.0,
+        -0.9
+      ],
+      "moments_m_k_imag": [
+        0.0,
+        0.05,
+        0.045000000000000005,
+        0.0
+      ],
+      "toeplitz_cone": {
+        "n": 3,
+        "loewner_diff_eigenvalues": [
+          0.08704831595396242,
+          0.10695877687792148,
+          0.20678074489653786,
+          0.34921216227157814
+        ],
+        "min_loewner_eigenvalue": 0.08704831595396242,
+        "max_loewner_eigenvalue": 0.34921216227157814,
+        "frobenius_distance_from_witness": 0.42863154340295584,
+        "hermiticity_residual": 0.0,
+        "in_cone": true,
+        "on_apex": false,
+        "on_boundary_face": false,
+        "tol": 1e-10
+      },
+      "c2_cone": {
+        "block_min_eigenvalues": [
+          0.09999999999999992,
+          1.0,
+          0.95
+        ],
+        "min_block_eigenvalue": 0.09999999999999992,
+        "energy_trace": 0.8125,
+        "in_cone": true,
+        "on_boundary": false
+      },
+      "L_numerical": {
+        "method": "co_area_grid_integration",
+        "grid_size": 1200,
+        "box_radius": 3.0,
+        "grid_spacing": 0.00500417014178467,
+        "L_estimate": 7.374854514154583,
+        "L_estimates_by_eps": [
+          {
+            "eps": 0.04,
+            "L_estimate": 7.333722448368868,
+            "n_points_in_strip": 13765
+          },
+          {
+            "eps": 0.02,
+            "L_estimate": 7.319314749784862,
+            "n_points_in_strip": 6805
+          },
+          {
+            "eps": 0.01,
+            "L_estimate": 7.374854514154583,
+            "n_points_in_strip": 3406
+          }
+        ],
+        "L_lower_bracket": 7.319314749784862,
+        "L_upper_bracket": 7.374854514154583
+      },
+      "L_target_zn_minus_1": 9.17972422234316,
+      "L_estimate_lt_target": true,
+      "L_gap_to_target": 1.8048697081885763
+    }
+  ],
+  "phase_shifted_vertex_tests": [
+    {
+      "phi": 0.0,
+      "coeffs_real": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "toeplitz_cone_min_eig": 0.0,
+      "toeplitz_cone_max_eig": 0.0,
+      "toeplitz_cone_in_cone": true,
+      "toeplitz_cone_on_apex": true,
+      "frobenius_distance_from_witness": 0.0,
+      "c2_cone_min_block_eig": 0.0,
+      "c2_cone_energy_trace": 1.0,
+      "c2_cone_in_cone": true,
+      "c2_cone_on_boundary": true,
+      "L_numerical": 8.446233689203858
+    },
+    {
+      "phi": 0.05,
+      "coeffs_real": [
+        -0.9987502603949663,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        -0.04997916927067833,
+        0.0,
+        0.0
+      ],
+      "toeplitz_cone_min_eig": -0.049994791829424665,
+      "toeplitz_cone_max_eig": 0.049994791829424665,
+      "toeplitz_cone_in_cone": false,
+      "toeplitz_cone_on_apex": false,
+      "frobenius_distance_from_witness": 0.07070331265319196,
+      "c2_cone_min_block_eig": 0.0012497396050337728,
+      "c2_cone_energy_trace": 1.0,
+      "c2_cone_in_cone": true,
+      "c2_cone_on_boundary": true,
+      "L_numerical": 8.444102265208207
+    },
+    {
+      "phi": 0.1,
+      "coeffs_real": [
+        -0.9950041652780258,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        -0.09983341664682815,
+        0.0,
+        0.0
+      ],
+      "toeplitz_cone_min_eig": -0.09995833854135665,
+      "toeplitz_cone_max_eig": 0.09995833854135665,
+      "toeplitz_cone_in_cone": false,
+      "toeplitz_cone_on_apex": false,
+      "frobenius_distance_from_witness": 0.14136243803746784,
+      "c2_cone_min_block_eig": 0.0049958347219741794,
+      "c2_cone_energy_trace": 1.0,
+      "c2_cone_in_cone": true,
+      "c2_cone_on_boundary": true,
+      "L_numerical": 8.441020191965572
+    },
+    {
+      "phi": 0.2,
+      "coeffs_real": [
+        -0.9800665778412416,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        -0.19866933079506122,
+        0.0,
+        0.0
+      ],
+      "toeplitz_cone_min_eig": -0.1996668332936563,
+      "toeplitz_cone_max_eig": 0.1996668332936563,
+      "toeplitz_cone_in_cone": false,
+      "toeplitz_cone_on_apex": false,
+      "frobenius_distance_from_witness": 0.28237154359997657,
+      "c2_cone_min_block_eig": 0.019933422158758318,
+      "c2_cone_energy_trace": 1.0,
+      "c2_cone_in_cone": true,
+      "c2_cone_on_boundary": true,
+      "L_numerical": 8.47984456988023
+    },
+    {
+      "phi": 0.5,
+      "coeffs_real": [
+        -0.8775825618903728,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        -0.479425538604203,
+        0.0,
+        0.0
+      ],
+      "toeplitz_cone_min_eig": -0.4948079185090458,
+      "toeplitz_cone_max_eig": 0.4948079185090458,
+      "toeplitz_cone_in_cone": false,
+      "toeplitz_cone_on_apex": false,
+      "frobenius_distance_from_witness": 0.6997640691250938,
+      "c2_cone_min_block_eig": 0.1224174381096273,
+      "c2_cone_energy_trace": 1.0,
+      "c2_cone_in_cone": true,
+      "c2_cone_on_boundary": true,
+      "L_numerical": 8.392553682515695
+    },
+    {
+      "phi": 1.0,
+      "coeffs_real": [
+        -0.5403023058681398,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        -0.8414709848078965,
+        0.0,
+        0.0
+      ],
+      "toeplitz_cone_min_eig": -0.9588510772084059,
+      "toeplitz_cone_max_eig": 0.9588510772084059,
+      "toeplitz_cone_in_cone": false,
+      "toeplitz_cone_on_apex": false,
+      "frobenius_distance_from_witness": 1.3560201976841795,
+      "c2_cone_min_block_eig": 0.1585290151921035,
+      "c2_cone_energy_trace": 1.0,
+      "c2_cone_in_cone": true,
+      "c2_cone_on_boundary": true,
+      "L_numerical": 8.421141731963143
+    }
+  ],
+  "strict_dominance_evidence": [
+    {
+      "phi": 0.05,
+      "c2_says": "on_boundary",
+      "toeplitz_says": "outside",
+      "discriminates": true,
+      "frob_dist": 0.07070331265319196
+    },
+    {
+      "phi": 0.1,
+      "c2_says": "on_boundary",
+      "toeplitz_says": "outside",
+      "discriminates": true,
+      "frob_dist": 0.14136243803746784
+    },
+    {
+      "phi": 0.2,
+      "c2_says": "on_boundary",
+      "toeplitz_says": "outside",
+      "discriminates": true,
+      "frob_dist": 0.28237154359997657
+    },
+    {
+      "phi": 0.5,
+      "c2_says": "on_boundary",
+      "toeplitz_says": "outside",
+      "discriminates": true,
+      "frob_dist": 0.6997640691250938
+    },
+    {
+      "phi": 1.0,
+      "c2_says": "on_boundary",
+      "toeplitz_says": "outside",
+      "discriminates": true,
+      "frob_dist": 1.3560201976841795
+    }
+  ],
+  "connection_to_length": {
+    "primary_identity": "Fejer-Riesz factorization: T*_n - T(p) \u227d 0 \u27fa |p*(e^i\u03b8)|^2 - |p(e^i\u03b8)|^2 = |r(e^i\u03b8)|^2 \u2265 0 pointwise on |z|=1",
+    "implication_1": "Pointwise dominance: |p(z)| \u2264 |p*(z)| for all z on the unit circle",
+    "implication_2_open": "From pointwise unit-circle dominance to L(p) \u2264 L(p*) requires a Crofton/co-area bridge \u2014 open and being drafted by parallel subagent",
+    "asymptotic_path": "Szego strong limit: log det T_N(|p|^2) ~ 2N log M(p) connects Toeplitz determinants to Mahler measure, but only as N \u2192 \u221e",
+    "this_iteration_provides": "Algebraic SDP-representable certificate for the antecedent of the Crofton bridge",
+    "this_iteration_does_NOT_provide": "Closed analytic step from cone membership to length bound at finite n"
+  },
+  "summary": {
+    "witness_at_apex": true,
+    "witness_loewner_diff_max_abs": 0.0,
+    "n_alternatives_tested": 3,
+    "n_alternatives_in_toeplitz_cone": 3,
+    "n_alternatives_satisfying_L_lt_target": 3,
+    "n_phase_shifts_tested": 6,
+    "n_phase_shifts_discriminating_C2_vs_Toeplitz": 5,
+    "strict_dominance_at_n_3": "demonstrated",
+    "comparison_to_C2": "C-2 sees only |a_k|^2 (energy per coord + total energy). Toeplitz sees cross-moments m_k = sum a_j conj(a_{j+k}). The phase-shifted vertex a_0 = -e^{i\u03c6} is the canonical discriminator: C-2 admits it on boundary at all \u03c6; Toeplitz only admits \u03c6=0 at apex."
+  },
+  "honest_scope_statement": "This is a prototype scoping artifact. The Toeplitz-moment block here is candidate-defined and only verified at n=3 with three alternative polynomials. The bridge from PSD-ness of the Toeplitz block to L(p) \u2264 L(z^n - 1) relies on either Szeg\u0151's strong limit (asymptotic) or Fej\u00e9r-Riesz (finite-n but local). Neither is a closed analytic step at finite n; both are pointers to an analytic completion. Tractability of the analytic completion is for the parallel Crofton-bridge draft, not this iteration."
+}

@@ -1,0 +1,100 @@
+{
+  "experiment_id": "EXP-MM-755-PMF-B2G3-TRANSFER-IMPORTED-GROUND-LAYER-CAPPED-D2-41-2026-04-29",
+  "date": "2026-04-29",
+  "erdos_problem": 755,
+  "scan_mode": "pmf_b2g_transfer_state_exact_scout",
+  "implementation": "Rust exact branch-and-bound transfer-state scanner",
+  "constraint": "B_2[g] on [0,n] with ordered representation count <= 2g",
+  "claim_boundary": "This is an exact finite computational scout for the B_2[g] transfer state, not an independent theorem or parity check against a prior #755 reference packet.",
+  "n_min": 41,
+  "n_max": 41,
+  "g": 3,
+  "frontier_k": 5,
+  "near_ground_deficiency": 2,
+  "near_ground_terminal_cap": 0,
+  "near_ground_layer_cap": 1000000,
+  "skip_near_ground": false,
+  "total_runtime_sec": 767.906127417,
+  "rows": [
+    {
+      "n": 41,
+      "g": 3,
+      "ordered_representation_cap": 6,
+      "h_n_exact_finite": 17,
+      "maximizer_count": 246,
+      "first_maximizer_witness": [],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_imported_ground_nearground_transfer_state",
+        "sites_processed": 42,
+        "nodes_visited": 0,
+        "transitions_attempted": 0,
+        "legal_occupy_transitions": 0,
+        "rejected_occupy_transitions": 0,
+        "branch_bound_pruned_nodes": 0,
+        "best_updates": 0,
+        "progress_every_nodes": 1000000000
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 17,
+        "ground_state_degeneracy": 246,
+        "ground_entropy_ln": 5.5053315359323625,
+        "first_excited_cardinality": 16,
+        "first_excited_count": 1000000,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 1000000,
+        "near_ground_count_h_minus_2": 1000000,
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 17,
+            "count": 12
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 16,
+            "count": 1000000
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 15,
+            "count": 1000000
+          }
+        ],
+        "near_ground_diagnostics": {
+          "requested_deficiency": 2,
+          "min_retained_cardinality": 15,
+          "second_pass_nodes_visited": 17374431898,
+          "second_pass_pruned_nodes": 4992708566,
+          "retained_terminal_states": 2000012,
+          "terminal_cap": 0,
+          "terminal_cap_hit": false,
+          "layer_cap": 1000000,
+          "layer_cap_hit": true,
+          "counts_exact": false,
+          "progress_every_nodes": 1000000000
+        }
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [],
+        "density_adjusted_mass_best": [],
+        "joint_best": []
+      }
+    }
+  ],
+  "summary": {
+    "checked_count": 1,
+    "min_h_n": 17,
+    "max_h_n": 17,
+    "split_count": 0,
+    "split_ns": [],
+    "total_maximizers": 246
+  }
+}

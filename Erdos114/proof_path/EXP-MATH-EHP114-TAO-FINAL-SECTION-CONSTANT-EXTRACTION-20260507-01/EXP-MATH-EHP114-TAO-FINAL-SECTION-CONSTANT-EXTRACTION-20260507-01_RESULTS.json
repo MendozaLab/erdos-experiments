@@ -1,0 +1,546 @@
+{
+  "arxiv_source": {
+    "expected_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+    "source_line_count": 1965,
+    "source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+    "source_sha_status": "PASS_PINNED_SOURCE_SHA_MATCH",
+    "url": "https://arxiv.org/abs/2512.12455"
+  },
+  "claim_ceiling": "Final-section constant extraction only. This packet names blockers and snippets but does not extract Tao's global threshold or prove the full EHP114 statement.",
+  "experiment_id": "EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01",
+  "explicit_inequality_ready_count": 0,
+  "extraction_rows": [
+    {
+      "classified_label": "ets",
+      "dependency_id": "needle-sufficiently-large-1632",
+      "dependency_parents": [
+        "geomcontrol",
+        "x2-lem",
+        "x3-lem"
+      ],
+      "exact_proof_phrase": "We are now ready to establish the last and strongest component of Theorem \\ref{main-thm}, namely part (iv).  Assume that $n$ is sufficiently large, and that $p$ is a normalized maximizing polynomial of degree $n$.  As before we abbreviate $E_r(p)$ as $E_r$. We will show that $\\|p\\|=0$, and hence $p = p_0$.",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Convert critical-point or dispersion collapse to an explicit n-threshold and error budget.",
+      "named_blocker": "large_n_gate_not_converted_to_integer_bound",
+      "named_constants": [
+        "large-n lower bound",
+        "n"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1632,
+      "source_snippet": "\\section{The final result}\\label{main-iv-sec} We are now ready to establish the last and strongest component of Theorem \\ref{main-thm}, namely part (iv). Assume that $n$ is sufficiently large, and that $p$ is a normalized maximizing polynomial of degree $n$. As before we abbreviate $E_r(p)$ as $E_r$. We will show that $\\|p\\|=0$, and hence $p = p_0$. We may assume for sake of contradiction that",
+      "source_span": [
+        1630,
+        1634
+      ]
+    },
+    {
+      "classified_label": "ets",
+      "dependency_id": "needle-sufficiently-large-1649",
+      "dependency_parents": [
+        "geomcontrol",
+        "x2-lem",
+        "x3-lem"
+      ],
+      "exact_proof_phrase": "if $n$ is sufficiently large depending on $\\eps$.",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Convert critical-point or dispersion collapse to an explicit n-threshold and error budget.",
+      "named_blocker": "large_n_gate_not_converted_to_integer_bound",
+      "named_constants": [
+        "large-n lower bound",
+        "epsilon",
+        "n"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1649,
+      "source_snippet": "\\|p\\|_1 \\ll \\eps^{1/2} \\end{equation} if $n$ is sufficiently large depending on $\\eps$. From \\eqref{lupin} and the hypothesis that $p$ is a maximizing polynomial, one has",
+      "source_span": [
+        1647,
+        1651
+      ]
+    },
+    {
+      "classified_label": "ets",
+      "dependency_id": "needle-absolute-constant-1655",
+      "dependency_parents": [
+        "geomcontrol",
+        "x2-lem",
+        "x3-lem"
+      ],
+      "exact_proof_phrase": "Comparing the above bound with the analysis in the previous section (particularly Propositions \\ref{inside}, \\ref{annulus}, \\ref{out}), we see that for any small absolute constant $\\eps>0$ one must have",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Convert critical-point or dispersion collapse to an explicit n-threshold and error budget.",
+      "named_blocker": "absolute_constant_not_numerically_named",
+      "named_constants": [
+        "absolute constant",
+        "epsilon"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1655,
+      "source_snippet": "\\ell(\\partial E_1) \\geq \\ell(\\partial E_1(p_0)) = 2n + 4 \\log 2 + o(1). \\end{equation} Comparing the above bound with the analysis in the previous section (particularly Propositions \\ref{inside}, \\ref{annulus}, \\ref{out}), we see that for any small absolute constant $\\eps>0$ one must have \\begin{align} \\ell(\\partial E_1 \\cap D(0,\\eps)) &= 2n\\eps + O(\\eps^{1/2}) \\label{est-1} \\\\",
+      "source_span": [
+        1653,
+        1657
+      ]
+    },
+    {
+      "classified_label": "ets",
+      "dependency_id": "needle-sufficiently-large-1661",
+      "dependency_parents": [
+        "geomcontrol",
+        "x2-lem",
+        "x3-lem"
+      ],
+      "exact_proof_phrase": "if $n$ is sufficiently large depending on $\\eps$.  We can use this information to get further control on the critical points $\\zeta$, improving upon \\eqref{quam}.",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Convert critical-point or dispersion collapse to an explicit n-threshold and error budget.",
+      "named_blocker": "large_n_gate_not_converted_to_integer_bound",
+      "named_constants": [
+        "large-n lower bound",
+        "epsilon",
+        "n"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1661,
+      "source_snippet": "\\ell(\\partial E_1 \\cap \\Ann(0,1-\\sigma,1+\\sigma)) &= 2n \\sigma + 4 \\log 2 + O(\\eps^{1/2}) \\label{est-3} \\end{align} if $n$ is sufficiently large depending on $\\eps$. We can use this information to get further control on the critical points $\\zeta$, improving upon \\eqref{quam}. Firstly, by comparing \\eqref{est-1} with the proof of Proposition \\ref{inside} (focusing in particular on \\eqref{tri-use}), we see that",
+      "source_span": [
+        1659,
+        1663
+      ]
+    },
+    {
+      "classified_label": "pots",
+      "dependency_id": "needle-sufficiently-large-1711",
+      "dependency_parents": [
+        "inside",
+        "annulus",
+        "outside",
+        "geomcontrol"
+      ],
+      "exact_proof_phrase": "Let $C>0$ be a large constant, and let $\\eps>0$ be small.   By Proposition \\ref{ets} and Lemma \\ref{origin-repulsion}, it suffices to show that lemniscate $\\partial E_1$ enters $D(0,C \\eps^{1/2}/n)$ for $n$ sufficiently large depending on $C,\\eps$.",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Convert total-size collapse to an explicit n-threshold and error budget.",
+      "named_blocker": "large_n_gate_not_converted_to_integer_bound",
+      "named_constants": [
+        "large-n lower bound",
+        "C",
+        "epsilon",
+        "n"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1711,
+      "source_snippet": " \\begin{proof} Let $C>0$ be a large constant, and let $\\eps>0$ be small. By Proposition \\ref{ets} and Lemma \\ref{origin-repulsion}, it suffices to show that lemniscate $\\partial E_1$ enters $D(0,C \\eps^{1/2}/n)$ for $n$ sufficiently large depending on $C,\\eps$. Suppose this is not the case. Setting $\\rho = C\\eps^{1/2}/n$ in \\eqref{dip}, we conclude that",
+      "source_span": [
+        1709,
+        1713
+      ]
+    },
+    {
+      "classified_label": "pots",
+      "dependency_id": "needle-large-enough-1717",
+      "dependency_parents": [
+        "inside",
+        "annulus",
+        "outside",
+        "geomcontrol"
+      ],
+      "exact_proof_phrase": "for $n$ large enough.  But from Lemma \\ref{ankh} and Proposition \\ref{ets} we have",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Convert total-size collapse to an explicit n-threshold and error budget.",
+      "named_blocker": "large_n_gate_not_converted_to_integer_bound",
+      "named_constants": [
+        "large-n lower bound",
+        "C",
+        "epsilon",
+        "n"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1717,
+      "source_snippet": "which on comparison with \\eqref{eo} gives $$ \\Psi(D(0,C\\eps^{1/2}/n)) \\ll \\eps^{1/2}$$ for $n$ large enough. But from Lemma \\ref{ankh} and Proposition \\ref{ets} we have $$ \\Psi(D(0,C\\eps^{1/2}/n)) \\geq (n-1) \\frac{C\\eps^{1/2}}{2n} - o(1),$$ giving the required contradiction if $C$ is large enough.",
+      "source_span": [
+        1715,
+        1719
+      ]
+    },
+    {
+      "classified_label": "pots",
+      "dependency_id": "needle-large-enough-1719",
+      "dependency_parents": [
+        "inside",
+        "annulus",
+        "outside",
+        "geomcontrol"
+      ],
+      "exact_proof_phrase": "giving the required contradiction if $C$ is large enough.",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Convert total-size collapse to an explicit n-threshold and error budget.",
+      "named_blocker": "large_n_gate_not_converted_to_integer_bound",
+      "named_constants": [
+        "large-n lower bound",
+        "C",
+        "epsilon",
+        "n"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1719,
+      "source_snippet": "for $n$ large enough. But from Lemma \\ref{ankh} and Proposition \\ref{ets} we have $$ \\Psi(D(0,C\\eps^{1/2}/n)) \\geq (n-1) \\frac{C\\eps^{1/2}}{2n} - o(1),$$ giving the required contradiction if $C$ is large enough. \\end{proof} ",
+      "source_span": [
+        1717,
+        1721
+      ]
+    },
+    {
+      "classified_label": "pots",
+      "dependency_id": "needle-absolute-constant-1726",
+      "dependency_parents": [
+        "inside",
+        "annulus",
+        "outside",
+        "geomcontrol"
+      ],
+      "exact_proof_phrase": "for some absolute constant $c>0$ (independent of $C_0$), for $n$ large enough; from this, \\eqref{eo}, and Proposition \\ref{pots} we conclude (for $C_0$ large enough) that $\\|p\\|=0$, contradicting \\eqref{p-contra}.",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Convert total-size collapse to an explicit n-threshold and error budget.",
+      "named_blocker": "absolute_constant_not_numerically_named",
+      "named_constants": [
+        "absolute constant",
+        "large-n lower bound",
+        "c",
+        "n"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1726,
+      "source_snippet": "\\ell( \\partial E_1(p) ) \\leq \\ell( \\partial E_1(p_0) ) - c \\|p\\| + O\\left(\\frac{\\|p\\|}{C_0}\\right) \\end{equation} for some absolute constant $c>0$ (independent of $C_0$), for $n$ large enough; from this, \\eqref{eo}, and Proposition \\ref{pots} we conclude (for $C_0$ large enough) that $\\|p\\|=0$, contradicting \\eqref{p-contra}. It remains to establish \\eqref{a-ineq}. Set",
+      "source_span": [
+        1724,
+        1728
+      ]
+    },
+    {
+      "classified_label": "pots",
+      "dependency_id": "needle-large-enough-1726",
+      "dependency_parents": [
+        "inside",
+        "annulus",
+        "outside",
+        "geomcontrol"
+      ],
+      "exact_proof_phrase": "for some absolute constant $c>0$ (independent of $C_0$), for $n$ large enough; from this, \\eqref{eo}, and Proposition \\ref{pots} we conclude (for $C_0$ large enough) that $\\|p\\|=0$, contradicting \\eqref{p-contra}.",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Convert total-size collapse to an explicit n-threshold and error budget.",
+      "named_blocker": "large_n_gate_not_converted_to_integer_bound",
+      "named_constants": [
+        "absolute constant",
+        "large-n lower bound",
+        "c",
+        "n"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1726,
+      "source_snippet": "\\ell( \\partial E_1(p) ) \\leq \\ell( \\partial E_1(p_0) ) - c \\|p\\| + O\\left(\\frac{\\|p\\|}{C_0}\\right) \\end{equation} for some absolute constant $c>0$ (independent of $C_0$), for $n$ large enough; from this, \\eqref{eo}, and Proposition \\ref{pots} we conclude (for $C_0$ large enough) that $\\|p\\|=0$, contradicting \\eqref{p-contra}. It remains to establish \\eqref{a-ineq}. Set",
+      "source_span": [
+        1724,
+        1728
+      ]
+    },
+    {
+      "classified_label": "inside_2",
+      "dependency_id": "needle-absolute-constant-1743",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "for an absolute constant $c>0$ (independent of $C_0$).  If furthermore",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final inner deficit quantitatively dominate its inherited error terms.",
+      "named_blocker": "absolute_constant_not_numerically_named",
+      "named_constants": [
+        "absolute constant",
+        "C",
+        "c"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1743,
+      "source_snippet": "\\ell(\\partial E_1 \\cap D(0,r_-)) \\leq 2n r_- - c \\Disp \\{ \\zeta : \\zeta \\in D(0,10 r_-) \\} + O\\left(\\frac{\\|p\\|}{C_0}\\right) \\end{equation} for an absolute constant $c>0$ (independent of $C_0$). If furthermore \\begin{equation}\\label{pp0} \\|p\\| \\geq C \\|p\\|_1,",
+      "source_span": [
+        1741,
+        1745
+      ]
+    },
+    {
+      "classified_label": "inside_2",
+      "dependency_id": "needle-absolute-constant-1747",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "for a large absolute constant $C$ (independent of $C_0, c$), we can obtain the refinement",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final inner deficit quantitatively dominate its inherited error terms.",
+      "named_blocker": "absolute_constant_not_numerically_named",
+      "named_constants": [
+        "absolute constant",
+        "C",
+        "c"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1747,
+      "source_snippet": "\\|p\\| \\geq C \\|p\\|_1, \\end{equation} for a large absolute constant $C$ (independent of $C_0, c$), we can obtain the refinement \\begin{equation}\\label{in2-second} \\ell(\\partial E_1 \\cap D(0,r_-)) \\leq 2n r_- - c \\Disp \\{ \\zeta : \\zeta \\in D(0,10 r_-) \\} - c \\|p\\| + O\\left(\\frac{\\|p\\|}{C_0}\\right)",
+      "source_span": [
+        1745,
+        1749
+      ]
+    },
+    {
+      "classified_label": "annulus_2",
+      "dependency_id": "needle-absolute-constant-1767",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "for an absolute constant $c>0$.",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final intermediate-region deficit quantitatively dominate bulk and shape errors.",
+      "named_blocker": "absolute_constant_not_numerically_named",
+      "named_constants": [
+        "absolute constant",
+        "c",
+        "n"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1767,
+      "source_snippet": "From Corollary \\ref{defect-psi-cor} we have $$ \\Psi(D(0,r_-)) \\leq 2 (n-1) r_- - c \\Disp \\{ \\zeta : \\zeta \\in D(0,10 r_-) \\}$$ for an absolute constant $c>0$. The claim \\eqref{in2-first} follows. ",
+      "source_span": [
+        1765,
+        1769
+      ]
+    },
+    {
+      "classified_label": "annulus_2",
+      "dependency_id": "needle-large-enough-1770",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "Suppose now that \\eqref{pp0} holds.  From Lemma \\ref{origin-repulsion} we conclude (for $C$ large enough) that the lemniscate $\\partial E_1$ does not enter $D(0,\\|p\\|/4n)$.  We now repeat the above arguments, but with $\\Omega$ set equal to $\\Ann(0,\\|p\\|/4n,r_-)$ rather than $D(0,r_-)$, to obtain",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final intermediate-region deficit quantitatively dominate bulk and shape errors.",
+      "named_blocker": "large_n_gate_not_converted_to_integer_bound",
+      "named_constants": [
+        "large-n lower bound",
+        "C"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1770,
+      "source_snippet": "The claim \\eqref{in2-first} follows. Suppose now that \\eqref{pp0} holds. From Lemma \\ref{origin-repulsion} we conclude (for $C$ large enough) that the lemniscate $\\partial E_1$ does not enter $D(0,\\|p\\|/4n)$. We now repeat the above arguments, but with $\\Omega$ set equal to $\\Ann(0,\\|p\\|/4n,r_-)$ rather than $D(0,r_-)$, to obtain $$ \\ell(\\partial E_1 \\cap D(0,r_-)) \\leq \\Psi(E_2 \\cap \\Ann(0,\\|p\\|/4n,r_-)) + O( X_1 + X_2 + X_3 + X_4 + X_5)$$ From Lemma \\ref{ankh} we have",
+      "source_span": [
+        1768,
+        1772
+      ]
+    },
+    {
+      "classified_label": "annulus_2",
+      "dependency_id": "needle-absolute-constant-1774",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "for some absolute constant $c>0$, and hence",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final intermediate-region deficit quantitatively dominate bulk and shape errors.",
+      "named_blocker": "absolute_constant_not_numerically_named",
+      "named_constants": [
+        "absolute constant",
+        "c"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1774,
+      "source_snippet": "From Lemma \\ref{ankh} we have $$ \\Psi(D(0, \\|p\\|/4n)) \\geq c\\| p \\|$$ for some absolute constant $c>0$, and hence $$\\Psi(E_2 \\cap \\Ann(0,\\|p\\|/4n,r_-)) \\leq \\Psi(E_2 \\cap D(0,r_-)) - c \\|p\\|.$$ Repeating the previous arguments, we obtain the claim.",
+      "source_span": [
+        1772,
+        1776
+      ]
+    },
+    {
+      "classified_label": "annulus_2",
+      "dependency_id": "needle-absolute-constant-1783",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "for an absolute constant $c>0$ (independent of $C_0$).",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final intermediate-region deficit quantitatively dominate bulk and shape errors.",
+      "named_blocker": "absolute_constant_not_numerically_named",
+      "named_constants": [
+        "absolute constant",
+        "c",
+        "n"
+      ],
+      "priority": "HIGH",
+      "source_label": null,
+      "source_line": 1783,
+      "source_snippet": "\\begin{proposition}[Bound in intermediate region]\\label{annulus-2} We have $$ \\ell(\\partial E_1 \\cap \\Ann(0,r_-,r_+)) \\leq 2n (r_+-r_-) - c \\sum_{\\zeta \\notin D(0,10r_-)} |\\zeta| + O_{C_0}\\left(\\frac{\\log n}{n} \\|p\\| \\right)$$ for an absolute constant $c>0$ (independent of $C_0$). \\end{proposition} ",
+      "source_span": [
+        1781,
+        1785
+      ]
+    },
+    {
+      "classified_label": null,
+      "dependency_id": "final-deficit-annulus-2",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "\\label{annulus-2}",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final intermediate-region deficit quantitatively dominate bulk and shape errors.",
+      "named_blocker": "final_deficit_constant_not_explicitly_budgeted",
+      "named_constants": [
+        "absolute constant",
+        "c",
+        "n"
+      ],
+      "priority": "CRITICAL",
+      "source_label": "annulus-2",
+      "source_line": null,
+      "source_snippet": "\\begin{proposition}[Bound in intermediate region]\\label{annulus-2} We have $$ \\ell(\\partial E_1 \\cap \\Ann(0,r_-,r_+)) \\leq 2n (r_+-r_-) - c \\sum_{\\zeta \\notin D(0,10r_-)} |\\zeta| + O_{C_0}\\left(\\frac{\\log n}{n} \\|p\\| \\right)$$ for an absolute constant $c>0$ (independent of $C_0$). \\end{proposition}",
+      "source_span": [
+        1781,
+        1784
+      ]
+    },
+    {
+      "classified_label": null,
+      "dependency_id": "final-deficit-inside-2",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "\\label{inside-2}",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final inner deficit quantitatively dominate its inherited error terms.",
+      "named_blocker": "final_deficit_constant_not_explicitly_budgeted",
+      "named_constants": [
+        "absolute constant",
+        "C",
+        "c"
+      ],
+      "priority": "CRITICAL",
+      "source_label": "inside-2",
+      "source_line": null,
+      "source_snippet": "\\begin{proposition}[Inner bound]\\label{inside-2} We have \\begin{equation}\\label{in2-first} \\ell(\\partial E_1 \\cap D(0,r_-)) \\leq 2n r_- - c \\Disp \\{ \\zeta : \\zeta \\in D(0,10 r_-) \\} + O\\left(\\frac{\\|p\\|}{C_0}\\right) \\end{equation} for an absolute constant $c>0$ (independent of $C_0$). If furthermore \\begin{equation}\\label{pp0} \\|p\\| \\geq C \\|p\\|_1, \\end{equation} for a large absolute constant $C$ (independent of $C_0, c$), we can obtain the refinement \\begin{equation}\\label{in2-second} \\ell(\\partial E_1 \\cap D(0,r_-)) \\leq 2n r_- - c \\Disp \\{ \\zeta : \\zeta \\in D(0,10 r_-) \\} - c \\|p\\| + O\\left(\\frac{\\|p\\|}{C_0}\\right) \\end{equation} \\end{proposition}",
+      "source_span": [
+        1739,
+        1751
+      ]
+    },
+    {
+      "classified_label": null,
+      "dependency_id": "final-deficit-outside-again",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "\\label{outside-again}",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final outer-region comparison quantitatively absorb endpoint and remainder errors.",
+      "named_blocker": "final_deficit_constant_not_explicitly_budgeted",
+      "named_constants": [],
+      "priority": "CRITICAL",
+      "source_label": "outside-again",
+      "source_line": null,
+      "source_snippet": "\\begin{proposition}[Outer bound]\\label{outside-again} We have $$ \\ell(\\partial E_1 \\cap \\Ann(0,r_+,1+\\sigma)) \\leq \\ell(\\partial E_1(p_0)) - 2nr_+ + O\\left( \\frac{\\|p\\|}{C_0} \\right).$$ \\end{proposition}",
+      "source_span": [
+        1831,
+        1833
+      ]
+    }
+  ],
+  "first_failed_condition": "none",
+  "named_blocker_count": 18,
+  "silent_generic_count": 0,
+  "source_artifacts": [
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-THRESHOLD-EXTRACTION-SKELETON-20260507-02",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-THRESHOLD-EXTRACTION-SKELETON-20260507-02/EXP-MATH-EHP114-TAO-THRESHOLD-EXTRACTION-SKELETON-20260507-02_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "d5db3b9678aef3531a1a08a938b90fa1247a11facad4a9ab02db7bb8439ef321",
+        "expected_sha256": "d5db3b9678aef3531a1a08a938b90fa1247a11facad4a9ab02db7bb8439ef321",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-THRESHOLD-EXTRACTION-SKELETON-20260507-02/EXP-MATH-EHP114-TAO-THRESHOLD-EXTRACTION-SKELETON-20260507-02_RESULTS.json",
+        "role": "threshold_extraction_skeleton",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-THRESHOLD-EXTRACTION-SKELETON-20260507-02/EXP-MATH-EHP114-TAO-THRESHOLD-EXTRACTION-SKELETON-20260507-02_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "THRESHOLD_EXTRACTION_SKELETON_READY"
+    },
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-EFFECTIVE-THRESHOLD-CHECKER-20260507-02",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-EFFECTIVE-THRESHOLD-CHECKER-20260507-02/EXP-MATH-EHP114-TAO-EFFECTIVE-THRESHOLD-CHECKER-20260507-02_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "f01327b7bb5f271d83aa9e16e21d943d7aed7ce02ca9e091233b91d20f204057",
+        "expected_sha256": "f01327b7bb5f271d83aa9e16e21d943d7aed7ce02ca9e091233b91d20f204057",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-EFFECTIVE-THRESHOLD-CHECKER-20260507-02/EXP-MATH-EHP114-TAO-EFFECTIVE-THRESHOLD-CHECKER-20260507-02_RESULTS.json",
+        "role": "effective_threshold_checker",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-EFFECTIVE-THRESHOLD-CHECKER-20260507-02/EXP-MATH-EHP114-TAO-EFFECTIVE-THRESHOLD-CHECKER-20260507-02_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "TAO_THRESHOLD_REMAINS_OPAQUE"
+    },
+    {
+      "artifact_id": "EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01/EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "869b3902968bcb2419d261853e2e944cf94e8f2820cac08e458f342fa39a064a",
+        "expected_sha256": "869b3902968bcb2419d261853e2e944cf94e8f2820cac08e458f342fa39a064a",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01/EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01_RESULTS.json",
+        "role": "finite_n_less15_packet",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01/EXP-MATH-EHP114-FINITE-N-LESS-15-PROOF-PACKET-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "FINITE_N_LESS_15_PROOF_PACKET_PASS_NOT_FULL_EHP_PROOF"
+    }
+  ],
+  "status": "FINAL_SECTION_CONSTANT_EXTRACTION_READY",
+  "target_dependency_count": 18,
+  "targeted_labels": [
+    "ets",
+    "pots",
+    "inside-2",
+    "annulus-2",
+    "outside-again"
+  ]
+}

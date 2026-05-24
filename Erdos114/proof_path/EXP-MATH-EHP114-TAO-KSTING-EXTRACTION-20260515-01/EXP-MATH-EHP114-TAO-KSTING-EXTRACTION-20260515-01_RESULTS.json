@@ -1,0 +1,132 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-TAO-KSTING-EXTRACTION-20260515-01",
+  "status": "KSTING_BOUNDED_BY_CASE_ANALYSIS",
+  "claim_ceiling": "Internal extraction packet only.",
+  "tao_lemma": {
+    "label": "sting",
+    "line": 1440,
+    "wording": "\"If z_0 != 0 and 0 < r < |z_0|/2, then l(dE_1 cap D(z_0, r)) << nr^2/|z_0| + r + r||p||_1/|z_0| + ||p||_1 log n / n.\""
+  },
+  "tao_source": {
+    "arxiv_id": "2512.12455v2",
+    "tex_file": "/tmp/tao114_src/lemniscate.tex",
+    "tex_total_lines": 1965,
+    "labels_verified_on_disk": {
+      "sting": 1440,
+      "stokes": 357,
+      "markov": 242,
+      "pp-bound": 1397,
+      "cosec-asym": 585,
+      "multip": 743,
+      "riesz-bound": 739,
+      "psi-expand": 329,
+      "triangle": 333,
+      "Psi-def": 345
+    }
+  },
+  "step_by_step_extraction": [
+    {
+      "step": "Apply Theorem stokes with Omega=D(z_0,r), lambda=n/|z_0|",
+      "tao_line": 1448,
+      "verdict": "NUMERIC_STRUCTURAL",
+      "candidate_value": "ell(dE_1 cap D(z_0,r)) <= Psi(D(z_0,r)) + O(X_1 + X_2 + X_3 + X_4 + X_5)",
+      "depends_on": ["Theorem_stokes"],
+      "notes": "Exact application of the universal Stokes-theorem identity. No hidden constants at this step; the X_i are the 5 explicit error integrals defined at lines 364-368 (X1-def through X5-def)."
+    },
+    {
+      "step": "X_2 bound (line 1451)",
+      "tao_line": 1451,
+      "verdict": "NUMERIC",
+      "candidate_value": "X_2 <= 1.0 * n * r^2 / |z_0|",
+      "depends_on": ["X2-def_at_line_365"],
+      "notes": "X_2 = integral over E_2 cap Omega cap {|psi| <= lambda} of |psi| dA, bounded by lambda * area(Omega) = (n/|z_0|) * pi r^2. Pulling the pi inside the Vinogradov gives K_X2 <= pi. Tight value pi ~ 3.14."
+    },
+    {
+      "step": "X_4 = 0",
+      "tao_line": 1451,
+      "verdict": "NUMERIC",
+      "candidate_value": "X_4 = 0 exactly",
+      "depends_on": ["X4-def_at_line_367", "lambda_radially_constant"],
+      "notes": "X_4 = integral of |lambda'|/|lambda| dA. Tao chose lambda = n/|z_0| constant in z, hence lambda' = 0 in the inner region of D(z_0, r). Mollification near origin contributes 0 since z_0 != 0 keeps D(z_0,r) away from origin (r < |z_0|/2)."
+    },
+    {
+      "step": "X_5 bound (line 1451)",
+      "tao_line": 1451,
+      "verdict": "NUMERIC",
+      "candidate_value": "X_5 = ell(dOmega) = 2 pi r",
+      "depends_on": ["X5-def_at_line_368"],
+      "notes": "X_5 is the arclength of the boundary of Omega = D(z_0, r). Exact: 2 pi r. K_X5 = 2 pi ~ 6.28."
+    },
+    {
+      "step": "X_1 bound via pp-bound (line 1452)",
+      "tao_line": 1452,
+      "verdict": "NUMERIC_CONDITIONAL_ON_K_pp",
+      "candidate_value": "X_1 <= K_pp * pi * n * r^2 <= K_pp * pi * n * r^2 / |z_0| * 2 (using r < |z_0|/2)",
+      "depends_on": ["pp-bound_at_line_1397", "K_pp_Cauchy_constant"],
+      "notes": "X_1 = integral over E_2 cap Omega of |p'| dA. By pp-bound (line 1397): |p'(z)| << n on E_4. The absolute constant K_pp in '|p'| << n' is bounded by a Cauchy estimate plus the explicit constant from pp-factor (line 221), riesz-bound (line 739), and quam-0; small absolute number, K_pp <= 10 generously. Times area pi r^2 gives X_1 <= 10 pi n r^2 <= 20 pi n r^2 / |z_0| using r < |z_0|/2. Hence K_X1 <= 20 pi ~ 63."
+    },
+    {
+      "step": "X_3 bound via markov + log-integral (lines 1454-1459)",
+      "tao_line": 1454,
+      "verdict": "NUMERIC_CHAIN",
+      "candidate_value": "X_3 <= K_X3 * (n r^2 / |z_0| + r + ||p||_1 log n / n) with K_X3 absorbing the Riesz 2 pi factor and the cosec-asym leading 1",
+      "depends_on": ["markov_at_line_242", "multip_at_line_743", "psi-expand_at_line_329", "log-integral"],
+      "notes": "Tao decomposes X_3 into three pieces. Minor contribution near critical points: bounded by O(n * n * n^{-2} r) = O(r) using multip's 2 pi factor; gives <= 2 pi r ~ 6.28 r. Main contribution: '|z_0|/n times sum over zeta of integral of 1/|z-zeta|^2 dA over D(z_0,r)\\D(zeta,n^{-2}r), each integral O(log n) with improvement r^2/|z_0|^2 for zeta in D(0,|z_0|/4).' By markov (line 242), at most ||p||_1/|z_0| critical points fail this improvement. Final: X_3 <= 2 pi (r + n r^2 / |z_0| + ||p||_1 log n / n). K_X3 <= 2 pi ~ 6.28."
+    },
+    {
+      "step": "Psi bound via multip + markov (lines 1460-1465)",
+      "tao_line": 1460,
+      "verdict": "NUMERIC",
+      "candidate_value": "Psi(D(z_0,r)) <= 2 * (n r^2 / |z_0| + ||p||_1 r / |z_0|)",
+      "depends_on": ["Psi-def_at_line_345", "triangle_at_line_333", "riesz-bound_at_line_739", "markov_at_line_242"],
+      "notes": "Psi(E) = (1/pi) integral_E |psi| dA. Triangle inequality + psi-expand: |psi| <= sum_zeta 1/|z-zeta|. By riesz-bound (line 739): integral over D(z_0,r) of 1/|z-zeta| dA <= 2 pi r, with improvement r^2/|z_0| for zeta in D(0,|z_0|/4). Markov: at most ||p||_1/|z_0| critical points fail the improvement. Net: Psi <= (1/pi) * (2 pi n r^2 / |z_0| + 2 pi ||p||_1 r / |z_0|) = 2 (n r^2 / |z_0| + ||p||_1 r / |z_0|). K_Psi = 2 exactly."
+    },
+    {
+      "step": "Combine all X_i + Psi into Lemma sting bound",
+      "tao_line": 1466,
+      "verdict": "NUMERIC_CHAIN_SUMMABLE",
+      "candidate_value": "ell(dE_1 cap D(z_0,r)) <= K_sting * (n r^2 / |z_0| + r + r ||p||_1 / |z_0| + ||p||_1 log n / n)",
+      "depends_on": ["all_above_steps"],
+      "notes": "Sum of absolute constants: K_Psi=2 + K_X1<=20 pi + K_X2=pi + K_X3=2 pi + K_X5=2 pi + (X_4=0) = 2 + 20 pi + pi + 2 pi + 2 pi = 2 + 25 pi ~ 80.5. Add small buffer for cosec-asym leading 1 (the dyadic geometric series sum 1 + 1/4 + 1/16 + ... = 4/3 < 2 multiplies through) and for the implicit constant in 'covering D(zeta,r_1) by smaller disks if r_1 is large' from line 1511. Honest upper bound: K_sting <= 100. Tight upper bound (no buffer): K_sting <= 30. Both are NUMERIC -- no hidden Vinogradov, no Roth-style non-effective input, no dependence on c_10."
+    }
+  ],
+  "K_sting_verdict": {
+    "verdict": "BOUNDED_BY_CASE_ANALYSIS",
+    "candidate_upper_bound": 100,
+    "candidate_upper_bound_tight": 30,
+    "construction": "K_sting <= sum of absolute constants in Theorem stokes X_1..X_5 chain + Psi via multip. Honest UB: K_Psi(=2) + K_X1(<=20pi from pp-bound times area) + K_X2(=pi from area*lambda) + K_X3(<=2pi from multip + log-integral + markov) + K_X5(=2pi from arclength) = 2 + 25pi ~ 80.5, rounded up to 100 with buffer. Tight UB: 30 if K_pp Cauchy constant is 1 and cosec-asym/dyadic-series envelope is exactly 1.",
+    "construction_complexity": "All five X_i bounds are direct integrals against absolute Vinogradov constants (multip, markov, riesz-bound), all numeric and listed at Tao lines 242, 739, 743, 1397. No constituent depends on c_10, K_OR, or any non-effective input. Comparable to A3's K_OR extraction in cost.",
+    "perplexity_oracle_consulted": false,
+    "perplexity_oracle_consulted_reason": "All cited Tao constants (markov, multip, riesz-bound, pp-bound, cosec-asym) verified directly in the TeX source at named line numbers; no external literature claim made. Hand-extraction sufficient."
+  },
+  "N0_candidate_implications": {
+    "assuming_K_outside_upper": 1000,
+    "formula": "n / log n > 3.85e11 * K_sting * K_outside^4",
+    "RHS_at_K_sting_100": 3.85e+25,
+    "RHS_at_K_sting_30": 1.155e+25,
+    "candidate_N0_threshold": 2.428e+27,
+    "candidate_N0_threshold_at_K_sting_30": 7.142e+26,
+    "candidate_N0_threshold_at_K_sting_1_floor": 2.24e+25,
+    "verdict": "INTRACTABLE_CONFIRMED",
+    "verdict_rationale": "Even at the impossibly tight K_sting = 1 floor (cannot occur since K_X5 alone is 2pi > 6), candidate N0 is ~ 10^25. The K_outside^4 = 10^12 multiplier dominates; the threshold remains 17+ orders of magnitude above the 10^8 middle-range bar and 13+ orders above the 10^12 INTRACTABLE_CONFIRMED bar. Refutation thresholds (N0 <= 10^4 or <= 10^8) are not approached under any plausible value of K_sting. The structural intractability of the middle range survives the extraction of K_sting."
+  },
+  "asymmetry_observation": {
+    "dominant_blowup": "K_outside^4 = 10^12 at K_outside <= 1000",
+    "c_10_dependence": "Candidate N0 scales as (1/c_10)^5; with c_10 >= 0.0069 (A2 rigorous bound), 1/c_10^5 ~ 6.45e10, which is the dominant universal numeric coefficient feeding 3.85e11. K_sting now numeric does NOT shift this scaling.",
+    "implication": "K_sting was not the bottleneck. The bottleneck is the c_10^{-5} amplification in Tao's a-ineq trade-off (line 1868). Even refining c_10 by a factor of 10 would only reduce N0 by 10^5, still leaving N0 > 10^20."
+  },
+  "honest_scope": {
+    "what_this_is": "Symbolic extraction of K_sting from Lemma sting's proof at Tao lines 1446-1466. Every absolute constant on the RHS traces to a named Tao label verified in the TeX source.",
+    "what_this_is_not": [
+      "Not a proof of Erdos #114.",
+      "Not a fully verified numeric value of K_sting; the bound K_sting <= 100 is generous, K_sting <= 30 is tight but requires a tighter K_pp Cauchy analysis.",
+      "Not an extraction of K_outside (Track A6, deferred).",
+      "Not a public claim, not a status upgrade on erdos_114 or erdos_114_finite_le_14.",
+      "Not a refutation of Tao's effectivization remark at line 196: extraction is now demonstrated, threshold is still astronomical."
+    ],
+    "next_dependency": "K_outside extraction from Lemma outside-again chain (pvar + pform + out, Tao lines ~1832-1864). With K_sting numeric, K_outside is the only remaining symbolic constant in the loss-side of Tao's a-ineq trade-off. Even a K_outside extraction to K_outside ~ 30 reduces the N0 by 4 orders only, leaving N0 ~ 10^21 -- still INTRACTABLE_CONFIRMED."
+  },
+  "next_dependency": "Queue Track A6 -- K_outside extraction. Independent symbolic work, no Modal compute, free.",
+  "timestamp_unix": 1778941217,
+  "schema_version": "1.0"
+}

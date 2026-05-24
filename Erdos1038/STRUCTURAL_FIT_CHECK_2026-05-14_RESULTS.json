@@ -1,0 +1,38 @@
+{
+  "experiment_id": "STRUCTURAL-FIT-CHECK-ERDOS-1038-2026-05-14",
+  "problem_id": 1038,
+  "problem_statement": "What is the infimum of |{x in R : |f(x)| < 1}| over all nonconstant monic polynomials f such that all of its roots are real and contained in [-1,1]? (Canonical source: DeepMind formal-conjectures Erdos1038.parts.i, citing erdosproblems.com/1038 and Tao25 blog post.)",
+  "feature_1_zero_curve": {
+    "verdict": "YES",
+    "justification": "The sublevel-set boundary {V_mu(x) = 0} is a direct analog of EHP114's lemniscate {|p(z)| = 1}, with F(x; mu) = V_mu(x) playing the role of EHP114's F(z) = |p(z)|^2 - 1. For finite atom-plus-cloud configurations the zero-set is a finite set of real boundary points {a_i, b_i}; for the continuous limit it is two intervals (primary well at +1, secondary well near -1). The codimension story matches when mu is treated as a deformation parameter."
+  },
+  "feature_2_wall_separation": {
+    "verdict": "PARTIAL",
+    "justification": "The boundary-derivative signs (V_mu'(a_i) < 0, V_mu'(b_i) > 0) are observed numerically and required for the EL derivation, giving bounded-away |V_mu'(x_b)| at boundaries. However, the sublevel-measure functional exhibits non-smoothness from boundary components merging/splitting under perturbation (ERDOS1038_PHYSICS_MORPHISMS_PREPRINT.md line 71), which is the same failure family as EHP114 wall-separation failure but parametric (along mu) rather than purely spatial (along x). The recent variational-boundary-kernel robustness audit (2026-05-08) shows the brittleness-vs-bluntness tradeoff that the EHP114 center-strip cancellation was designed to handle. Failure mode is mechanical, not architectural."
+  },
+  "feature_3_branch_point_ivt": {
+    "verdict": "PARTIAL",
+    "justification": "Spatial-direction interval IVT for V_mu(x_b) is tractable: V_mu is real-analytic in x away from supp(mu), and the log kernel admits a standard interval-arithmetic recipe. Bounded-away |V_mu'(x_b)| is observed at O(0.1 - 1) and the Cauchy-kernel V_mu'(x) = integral (x-t)^{-1} dmu(t) is interval-certifiable. The PARTIAL grade reflects that the EHP114 gate is really validating branch points along the parameter direction, which for #1038 corresponds to critical (w, delta) where components merge/split. The gate machinery ports cleanly, but the box is 2D parametric instead of 1D spatial, a quantitative scale-up rather than a qualitative obstruction. Pre-requisite: interval-arithmetic V_mu and V_mu' implementation (does not currently exist locally)."
+  },
+  "aggregate_verdict": "PARTIAL_FIT_PROCEED_WITH_CAVEAT",
+  "recommended_next_step": "Proceed to B2 + B3 cold test on #1038 with three pre-condition gates: (1) interval-arithmetic V_mu kernel reaching 1e-8 enclosure width on recovered N=120 / N=200 configurations; (2) parametric wall-separation gate over a 2D box around (w*, delta*) ~ (0.174, 0.200) using interval-IVT + bounded-away |V_mu'|; (3) cold test against a non-extremal control measure (uniform or arcsine on [-1,1]) which should fail the gate or show visibly weaker margins. Pivot only if gate (1) cannot reach 1e-8 enclosure.",
+  "alternative_candidate": "20",
+  "alternative_candidate_secondary": "233",
+  "alternative_rationale": "Primary fallback #20 (sunflower / Szemeredi): discrete combinatorial extremal with Razborov-style approximation lemma giving an explicit wall between extremal and non-extremal configurations, avoiding the continuum measure-theoretic merge/split failure mode. Secondary fallback #233 (KvN): scoped to live H2 KvN infrastructure (RPQEC / Model-Mayhem KvN runners) with operator-spectral wall-separation analog that bypasses the parametric merge/split issue entirely.",
+  "sources_cited": [
+    "Math/formal-conjectures/FormalConjectures/ErdosProblems/1038.lean (lines 1-70)",
+    "Math/erdosatlas-workbench/data_local/deepmind_erdos_statements.json (entry problem_id 1038)",
+    "Math/Math-Problems/Erdos-Standard/erdos1038-fast/ERDOS1038_CURRENT_STATUS_2026-05-08.md (lines 1-146)",
+    "Math/Math-Problems/Erdos-Standard/erdos1038-fast/euler_lagrange_analysis.py (lines 1-391)",
+    "Math/Math-Problems/Erdos-Standard/erdos1038-fast/MORPHISM_BRIDGE_WHITEPAPER_CORE.md (lines 1-100)",
+    "Math/Math-Problems/Erdos-Standard/erdos1038-fast/ERDOS1038_PHYSICS_MORPHISMS_PREPRINT.md (lines 71, 95, 137, 163)",
+    "Math/Math-Problems/Erdos-Standard/erdos1038-fast/analyze_structure.py (lines 1-80)",
+    "Math/erdos-experiments/Erdos114/EHP114_REGULAR_SLICE_WALL_TAYLOR_TARGET_2026-05-06.md (lines 1-97)",
+    "Math/erdos-experiments/results/erdos-1038/tao_ansatz_eps0.0005_inari_RESULTS.json (listing only)",
+    "erdosproblems.com/1038 (canonical, referenced via Lean file metadata)",
+    "Tao25: terrytao.wordpress.com/wp-content/uploads/2025/12/erdos-1038-1.pdf (canonical reference, locked via Lean file)"
+  ],
+  "claim_ceiling": "Internal structural-fit check. Not a proof, not a solution claim, not a Lean statement. Diagnostic only.",
+  "timestamp_unix": 1747180800,
+  "schema_version": "1.0"
+}

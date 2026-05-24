@@ -1,0 +1,270 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-TENSOR-CONE-V1-20260502",
+  "timestamp_utc": "2026-05-02T20:23:11.636229+00:00",
+  "design_doc": "Math/erdos-experiments/Erdos114/TENSOR_CONE_DESIGN_2026-05-02.md",
+  "scope": "SCOPING ARTIFACT \u2014 see honest scope statement in design doc",
+  "n": 3,
+  "L_target_closed_form": 9.17972422234316,
+  "L_target_v5_preprint_certified_interval": [
+    9.17972422234315,
+    9.17972422234317
+  ],
+  "cone_definition": {
+    "atomic_block_K_1": "K_(1) = {(x,y) \u2208 R^2 : [[1,x],[x,1]] \u2ab0 0 AND [[1,y],[y,1]] \u2ab0 0} = {|x|\u22641, |y|\u22641}",
+    "tensor_structure": "K_n = K_(1)^{\u2297 n} \u2229 {trace \u2264 1}",
+    "explicit_constraints": "For each k = 0..n-1: |a_k| \u2264 1 (per-coordinate). Plus global energy: \u03a3 |a_k|^2 \u2264 1.",
+    "psd_witness_z_n_minus_1": "At a* = (-1,0,0,...,0): per-coord block at k=0 is rank-1 PSD ([[1,-1],[-1,1]]); other blocks identity-rank-2; trace = 1 (saturated)."
+  },
+  "boundary_verification_z_n_minus_1": {
+    "coefficient_vector": [
+      -1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cone_membership": {
+      "n": 3,
+      "block_min_eigenvalues": [
+        0.0,
+        1.0,
+        1.0
+      ],
+      "min_block_eigenvalue": 0.0,
+      "energy_trace": 1.0,
+      "in_cone_per_block": true,
+      "in_cone_trace": true,
+      "in_cone": true,
+      "on_boundary_blocks": true,
+      "on_boundary_trace": true,
+      "on_boundary_overall": true,
+      "tol": 1e-12
+    },
+    "expected": "on_boundary_overall = True (both blocks AND trace saturated)",
+    "L_numerical_for_witness": {
+      "method": "co_area_grid_integration",
+      "grid_size": 1200,
+      "box_radius": 3.0,
+      "grid_spacing": 0.00500417014178467,
+      "L_estimate": 8.446233689203858,
+      "L_estimates_by_eps": [
+        {
+          "eps": 0.04,
+          "L_estimate": 8.023446111038103,
+          "n_points_in_strip": 30244
+        },
+        {
+          "eps": 0.02,
+          "L_estimate": 8.279434182334553,
+          "n_points_in_strip": 19546
+        },
+        {
+          "eps": 0.01,
+          "L_estimate": 8.446233689203858,
+          "n_points_in_strip": 12552
+        }
+      ],
+      "L_lower_bracket": 8.023446111038103,
+      "L_upper_bracket": 8.446233689203858,
+      "completion_fraction": 1.0,
+      "note": "Co-area formula: L = lim (1/2eps) \u222b_{|u-1|<eps} |grad u| dA. Estimated via Riemann sum on a 1200x1200 grid in [-3,3]^2. SCOPING quality only; bracket from eps in {0.04, 0.02, 0.01}."
+    },
+    "L_closed_form": 9.17972422234316,
+    "L_numerical_minus_closed_form": -0.7334905331393013
+  },
+  "alternative_polynomials": [
+    {
+      "label": "z^3 - 0.9",
+      "coeffs_real": [
+        -0.9,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cone_membership": {
+        "n": 3,
+        "block_min_eigenvalues": [
+          0.09999999999999992,
+          1.0,
+          1.0
+        ],
+        "min_block_eigenvalue": 0.09999999999999992,
+        "energy_trace": 0.81,
+        "in_cone_per_block": true,
+        "in_cone_trace": true,
+        "in_cone": true,
+        "on_boundary_blocks": false,
+        "on_boundary_trace": false,
+        "on_boundary_overall": false,
+        "tol": 1e-12
+      },
+      "L_numerical": {
+        "method": "co_area_grid_integration",
+        "grid_size": 1200,
+        "box_radius": 3.0,
+        "grid_spacing": 0.00500417014178467,
+        "L_estimate": 7.245785444143181,
+        "L_estimates_by_eps": [
+          {
+            "eps": 0.04,
+            "L_estimate": 7.315546087550803,
+            "n_points_in_strip": 13746
+          },
+          {
+            "eps": 0.02,
+            "L_estimate": 7.294922435741426,
+            "n_points_in_strip": 6780
+          },
+          {
+            "eps": 0.01,
+            "L_estimate": 7.245785444143181,
+            "n_points_in_strip": 3352
+          }
+        ],
+        "L_lower_bracket": 7.245785444143181,
+        "L_upper_bracket": 7.315546087550803,
+        "completion_fraction": 1.0,
+        "note": "Co-area formula: L = lim (1/2eps) \u222b_{|u-1|<eps} |grad u| dA. Estimated via Riemann sum on a 1200x1200 grid in [-3,3]^2. SCOPING quality only; bracket from eps in {0.04, 0.02, 0.01}."
+      },
+      "L_target_zn_minus_1": 9.17972422234316,
+      "satisfies_L_le_L_target": "True",
+      "L_gap_to_target": 1.9339387781999786
+    },
+    {
+      "label": "z^3 + 0.1z - 0.8",
+      "coeffs_real": [
+        -0.8,
+        0.1,
+        0.0
+      ],
+      "coeffs_imag": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cone_membership": {
+        "n": 3,
+        "block_min_eigenvalues": [
+          0.19999999999999996,
+          0.9,
+          1.0
+        ],
+        "min_block_eigenvalue": 0.19999999999999996,
+        "energy_trace": 0.6500000000000001,
+        "in_cone_per_block": true,
+        "in_cone_trace": true,
+        "in_cone": true,
+        "on_boundary_blocks": false,
+        "on_boundary_trace": false,
+        "on_boundary_overall": false,
+        "tol": 1e-12
+      },
+      "L_numerical": {
+        "method": "co_area_grid_integration",
+        "grid_size": 1200,
+        "box_radius": 3.0,
+        "grid_spacing": 0.00500417014178467,
+        "L_estimate": 6.888589632180812,
+        "L_estimates_by_eps": [
+          {
+            "eps": 0.04,
+            "L_estimate": 6.9608004127430725,
+            "n_points_in_strip": 10498
+          },
+          {
+            "eps": 0.02,
+            "L_estimate": 6.967184821077801,
+            "n_points_in_strip": 5234
+          },
+          {
+            "eps": 0.01,
+            "L_estimate": 6.888589632180812,
+            "n_points_in_strip": 2600
+          }
+        ],
+        "L_lower_bracket": 6.888589632180812,
+        "L_upper_bracket": 6.967184821077801,
+        "completion_fraction": 1.0,
+        "note": "Co-area formula: L = lim (1/2eps) \u222b_{|u-1|<eps} |grad u| dA. Estimated via Riemann sum on a 1200x1200 grid in [-3,3]^2. SCOPING quality only; bracket from eps in {0.04, 0.02, 0.01}."
+      },
+      "L_target_zn_minus_1": 9.17972422234316,
+      "satisfies_L_le_L_target": "True",
+      "L_gap_to_target": 2.291134590162347
+    },
+    {
+      "label": "z^3 + 0.05i z^2 - 0.9",
+      "coeffs_real": [
+        -0.9,
+        0.0,
+        0.0
+      ],
+      "coeffs_imag": [
+        0.0,
+        0.0,
+        0.05
+      ],
+      "cone_membership": {
+        "n": 3,
+        "block_min_eigenvalues": [
+          0.09999999999999992,
+          1.0,
+          0.95
+        ],
+        "min_block_eigenvalue": 0.09999999999999992,
+        "energy_trace": 0.8125,
+        "in_cone_per_block": true,
+        "in_cone_trace": true,
+        "in_cone": true,
+        "on_boundary_blocks": false,
+        "on_boundary_trace": false,
+        "on_boundary_overall": false,
+        "tol": 1e-12
+      },
+      "L_numerical": {
+        "method": "co_area_grid_integration",
+        "grid_size": 1200,
+        "box_radius": 3.0,
+        "grid_spacing": 0.00500417014178467,
+        "L_estimate": 7.374854514154583,
+        "L_estimates_by_eps": [
+          {
+            "eps": 0.04,
+            "L_estimate": 7.333722448368868,
+            "n_points_in_strip": 13765
+          },
+          {
+            "eps": 0.02,
+            "L_estimate": 7.319314749784862,
+            "n_points_in_strip": 6805
+          },
+          {
+            "eps": 0.01,
+            "L_estimate": 7.374854514154583,
+            "n_points_in_strip": 3406
+          }
+        ],
+        "L_lower_bracket": 7.319314749784862,
+        "L_upper_bracket": 7.374854514154583,
+        "completion_fraction": 1.0,
+        "note": "Co-area formula: L = lim (1/2eps) \u222b_{|u-1|<eps} |grad u| dA. Estimated via Riemann sum on a 1200x1200 grid in [-3,3]^2. SCOPING quality only; bracket from eps in {0.04, 0.02, 0.01}."
+      },
+      "L_target_zn_minus_1": 9.17972422234316,
+      "satisfies_L_le_L_target": "True",
+      "L_gap_to_target": 1.8048697081885763
+    }
+  ],
+  "summary": {
+    "boundary_check_passed": true,
+    "n_alternatives_tested": 3,
+    "n_alternatives_in_cone": 3,
+    "n_alternatives_satisfying_L_le_L_target": 3,
+    "v5_preprint_n3_margin_pct": 6.1,
+    "this_cone_quantitative_margin": "NOT extracted by this cone \u2014 the cone certifies coefficient-energy bound, not a quantitative L margin. See \u00a76 of design doc for the analytic gap."
+  },
+  "honest_scope_statement": "This is a prototype scoping artifact. The cone K_n here is candidate-defined and only verified computationally at n=3 with three alternative polynomials. To become a closure-relevant certificate, the cone definition must be (1) shown analytically to enclose all valid coefficient vectors at all n, (2) shown to have z^n-1 on its boundary at every n, (3) verifiable via interval-arithmetic SDP at every n in a tractable way. None achieved in this scoping run."
+}

@@ -1,0 +1,281 @@
+{
+  "claim_ceiling": "This is a shadow signature, not universal law. It is a certificate target, not a proof.",
+  "experiment_id": "EXP-MATH-EHP114-N20-INTERVAL-HARDENING-PACKET-20260505-01",
+  "guardrails": {
+    "no_d1": true,
+    "no_email": true,
+    "no_git": true,
+    "no_public_docs": true,
+    "no_scorecard": true,
+    "writes_scoped_to": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114"
+  },
+  "lean_shaped_targets": {
+    "combined": "theorem ehp114_n20_stratified_local_certificate\n    (r : Real) (s : ShapeQuotient 20)\n    (hr_pos : 0 < abs r) (hr_small : abs r <= delta20)\n    (hs_small : quotientNorm s <= eta20) :\n    (16 : Real) * Real.rpow (abs r) ((1 : Real) / 20)\n      + (125000 : Real) * quotientNormSq s\n      <= D20 (radialMode20 r + shapeMode20 s) := by\n  -- radial Puiseux + shape cone + mixed remainder absorption\n  sorry",
+    "radial": "theorem ehp114_n20_radial_puiseux_interval\n    (eps : Real) (hpos : 0 < eps)\n    (hsmall : eps <= (1 : Real) / 10000) :\n    (32 : Real) * Real.rpow eps ((1 : Real) / 20)\n      <= D20 (radialMode20 eps) := by\n  -- exact hypergeometric interval bound for the radial family\n  sorry",
+    "shape_cone": "theorem ehp114_n20_shape_cone_interval\n    (s : ShapeQuotient 20) :\n    (250000 : Real) * quotientNormSq s\n      <= shapeQuadratic20 s := by\n  -- interval matrix lower bound for the quotient shape block\n  sorry"
+  },
+  "mixed_remainder_obligation": {
+    "needed_bound": "For |r| <= delta20 and ||s|| <= eta20, prove R20(r,s) <= 0.5 * (C20 * |r|^(1/20) + lambda20 * ||s||^2).",
+    "status": "OPEN",
+    "why_it_matters": "The radial and shape terms are separately positive in the diagnostics; the theorem still needs a bound that prevents mixed radial/shape terms from canceling them."
+  },
+  "next_blocker": "Turn the diagnostic constants into interval arithmetic lemmas and prove the mixed remainder absorption bound.",
+  "packet_verdict": "CERTIFICATE_TARGET_READY",
+  "problem": "Erdos #114 / EHP lemniscate perimeter",
+  "radial_puiseux_constant": {
+    "global_min_ratio": {
+      "eps": 0.1,
+      "ratio": 40.16217012308373
+    },
+    "reason": "C20=32 is below the sampled global minimum with about 20 percent diagnostic slack; C20_tail=40 is a sharper tail-only target.",
+    "sampled_eps_count": 13,
+    "tail_constant_C20_tail": 40.0,
+    "tail_min_ratio_eps_le_1e_minus_4": {
+      "eps": 0.0001,
+      "ratio": 41.59227885462488
+    },
+    "working_constant_C20": 32.0
+  },
+  "scope": "proof-facing n=20 interval-hardening target packet",
+  "shape_cone_constant": {
+    "floating_min_eigenvalue": 601487.93407281,
+    "gershgorin_lower_bound": {
+      "all_rows_positive": true,
+      "lower_bound_float": 545638.8900836615,
+      "method": "Gershgorin diagonal dominance on diagnostic mixed matrix",
+      "row_count": 36,
+      "rows": [
+        {
+          "diagonal": 1171359.6280828416,
+          "diagonal_minus_radius": 1072027.9391634203,
+          "index": 0,
+          "off_diagonal_radius": 99331.68891942117
+        },
+        {
+          "diagonal": 1171359.6280820852,
+          "diagonal_minus_radius": 1072027.9391645256,
+          "index": 1,
+          "off_diagonal_radius": 99331.68891755962
+        },
+        {
+          "diagonal": 1082597.4411515777,
+          "diagonal_minus_radius": 587341.3353205558,
+          "index": 2,
+          "off_diagonal_radius": 495256.10583102185
+        },
+        {
+          "diagonal": 1083170.0620912253,
+          "diagonal_minus_radius": 597369.0021407972,
+          "index": 3,
+          "off_diagonal_radius": 485801.05995042814
+        },
+        {
+          "diagonal": 1083049.3151259983,
+          "diagonal_minus_radius": 596836.6213898554,
+          "index": 4,
+          "off_diagonal_radius": 486212.693736143
+        },
+        {
+          "diagonal": 1082169.1246190972,
+          "diagonal_minus_radius": 586482.4487038997,
+          "index": 5,
+          "off_diagonal_radius": 495686.6759151975
+        },
+        {
+          "diagonal": 1023760.0697224654,
+          "diagonal_minus_radius": 546677.5612074053,
+          "index": 6,
+          "off_diagonal_radius": 477082.50851506
+        },
+        {
+          "diagonal": 1023323.2059922786,
+          "diagonal_minus_radius": 547020.292593159,
+          "index": 7,
+          "off_diagonal_radius": 476302.91339911957
+        },
+        {
+          "diagonal": 1023760.0697224902,
+          "diagonal_minus_radius": 548058.9847526319,
+          "index": 8,
+          "off_diagonal_radius": 475701.0849698583
+        },
+        {
+          "diagonal": 1023323.2059917264,
+          "diagonal_minus_radius": 545638.8900836615,
+          "index": 9,
+          "off_diagonal_radius": 477684.31590806483
+        },
+        {
+          "diagonal": 966862.6383576972,
+          "diagonal_minus_radius": 642864.3225507331,
+          "index": 10,
+          "off_diagonal_radius": 323998.315806964
+        },
+        {
+          "diagonal": 981640.5437310342,
+          "diagonal_minus_radius": 617896.3768786725,
+          "index": 11,
+          "off_diagonal_radius": 363744.16685236164
+        },
+        {
+          "diagonal": 981710.3465459311,
+          "diagonal_minus_radius": 618157.0333978788,
+          "index": 12,
+          "off_diagonal_radius": 363553.31314805226
+        },
+        {
+          "diagonal": 967172.7408188229,
+          "diagonal_minus_radius": 642937.7195212587,
+          "index": 13,
+          "off_diagonal_radius": 324235.02129756415
+        },
+        {
+          "diagonal": 947784.7993517987,
+          "diagonal_minus_radius": 702094.3017334756,
+          "index": 14,
+          "off_diagonal_radius": 245690.49761832302
+        },
+        {
+          "diagonal": 949698.9267913688,
+          "diagonal_minus_radius": 699871.9923972926,
+          "index": 15,
+          "off_diagonal_radius": 249826.9343940761
+        },
+        {
+          "diagonal": 947784.799350432,
+          "diagonal_minus_radius": 702094.3083361047,
+          "index": 16,
+          "off_diagonal_radius": 245690.49101432733
+        },
+        {
+          "diagonal": 949698.9267916258,
+          "diagonal_minus_radius": 699871.9811317041,
+          "index": 17,
+          "off_diagonal_radius": 249826.9456599218
+        },
+        {
+          "diagonal": 916481.1371694941,
+          "diagonal_minus_radius": 735965.4069206268,
+          "index": 18,
+          "off_diagonal_radius": 180515.73024886724
+        },
+        {
+          "diagonal": 917123.9170908177,
+          "diagonal_minus_radius": 740669.7651536609,
+          "index": 19,
+          "off_diagonal_radius": 176454.15193715677
+        },
+        {
+          "diagonal": 919803.6927092093,
+          "diagonal_minus_radius": 748333.6143492269,
+          "index": 20,
+          "off_diagonal_radius": 171470.07835998235
+        },
+        {
+          "diagonal": 919639.7538597011,
+          "diagonal_minus_radius": 735872.8746633289,
+          "index": 21,
+          "off_diagonal_radius": 183766.87919637223
+        },
+        {
+          "diagonal": 898494.8690712675,
+          "diagonal_minus_radius": 750937.5917861211,
+          "index": 22,
+          "off_diagonal_radius": 147557.27728514644
+        },
+        {
+          "diagonal": 893317.500834909,
+          "diagonal_minus_radius": 751398.6472409315,
+          "index": 23,
+          "off_diagonal_radius": 141918.85359397755
+        },
+        {
+          "diagonal": 898494.8690694815,
+          "diagonal_minus_radius": 750941.0856770772,
+          "index": 24,
+          "off_diagonal_radius": 147553.78339240432
+        },
+        {
+          "diagonal": 893317.5007917685,
+          "diagonal_minus_radius": 751395.1429618634,
+          "index": 25,
+          "off_diagonal_radius": 141922.35782990517
+        },
+        {
+          "diagonal": 883506.8573218427,
+          "diagonal_minus_radius": 857024.1335725649,
+          "index": 26,
+          "off_diagonal_radius": 26482.72374927771
+        },
+        {
+          "diagonal": 884355.7593081706,
+          "diagonal_minus_radius": 875783.1620016111,
+          "index": 27,
+          "off_diagonal_radius": 8572.597306559577
+        },
+        {
+          "diagonal": 884559.0948214212,
+          "diagonal_minus_radius": 875207.8592329104,
+          "index": 28,
+          "off_diagonal_radius": 9351.235588510708
+        },
+        {
+          "diagonal": 884630.5454514982,
+          "diagonal_minus_radius": 857833.8460415668,
+          "index": 29,
+          "off_diagonal_radius": 26796.699409931432
+        },
+        {
+          "diagonal": 872815.9304359689,
+          "diagonal_minus_radius": 758782.2670881212,
+          "index": 30,
+          "off_diagonal_radius": 114033.66334784773
+        },
+        {
+          "diagonal": 874448.465376974,
+          "diagonal_minus_radius": 766297.1137269535,
+          "index": 31,
+          "off_diagonal_radius": 108151.35165002046
+        },
+        {
+          "diagonal": 872815.9304349745,
+          "diagonal_minus_radius": 758938.5169628931,
+          "index": 32,
+          "off_diagonal_radius": 113877.4134720814
+        },
+        {
+          "diagonal": 874448.4653814515,
+          "diagonal_minus_radius": 766140.8637122016,
+          "index": 33,
+          "off_diagonal_radius": 108307.60166924998
+        },
+        {
+          "diagonal": 877763.1898676014,
+          "diagonal_minus_radius": 852207.0384445918,
+          "index": 34,
+          "off_diagonal_radius": 25556.151423009545
+        },
+        {
+          "diagonal": 877760.0085135077,
+          "diagonal_minus_radius": 859364.5117100709,
+          "index": 35,
+          "off_diagonal_radius": 18395.496803436763
+        }
+      ],
+      "worst_row": {
+        "diagonal": 1023323.2059917264,
+        "diagonal_minus_radius": 545638.8900836615,
+        "index": 9,
+        "off_diagonal_radius": 477684.31590806483
+      }
+    },
+    "reason": "lambda20=250000 is below both the floating eigenvalue lower bound and the Gershgorin diagnostic lower bound.",
+    "working_lambda20": 250000.0
+  },
+  "source_artifact": {
+    "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-EHP114-N20-HESSIAN-TRIAD-20260505-01_RESULTS.json",
+    "sha256": "729c2bc51426d42a97a16fdf9afd817919e87212fdee787a568498dd6e609abc"
+  },
+  "source_experiment_id": "EXP-MATH-EHP114-N20-HESSIAN-TRIAD-20260505-01",
+  "timestamp_utc": "2026-05-05T23:11:54.278021+00:00"
+}

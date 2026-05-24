@@ -1,0 +1,65 @@
+{
+  "config": {
+    "alpha_max": 10.0,
+    "alpha_steps": 80,
+    "delta_unitary": 0.01,
+    "epsilon_kernel": 0.15,
+    "m_sample": 500,
+    "mendoza_limit": 1.0,
+    "perimeter_n_contours": 800,
+    "polynomial": "z^14 - 1",
+    "random_competitors_run": false
+  },
+  "degree": 14,
+  "experiment_id": "EXP-MATH-EHP114-N14-KOOPMAN-PROBE-20260502-02",
+  "interpretation": {
+    "caution": "This is a sampled kernel measurement, not a theorem about the true Koopman spectrum. It binds n=14 to the existing probe rule and the existing interval perimeter artifact. The reused Leg-4 perimeter estimator is diagnostic only for n=14; the interval artifact is the perimeter truth surface.",
+    "floor_verdict": "The n=14 run preserves the Leg-4 floor signature: P1 and P3 are satisfied for z^14-1.",
+    "gap_verdict": "The one-degree n=14 Koopman-kernel probe does not cross exp(1); under this operator, n=14 classifies as Classical."
+  },
+  "interval_perimeter_artifact": {
+    "hessian_negative": true,
+    "interval_proof_complete": true,
+    "l_star_lower": 30.852910841548532,
+    "l_star_midpoint": 30.85291084154854,
+    "l_star_upper": 30.852910841548546,
+    "outer_domain_safe": true,
+    "proof_verdict": "EHP_N14_PROVEN",
+    "rigor": "ieee_1788_interval_arithmetic_inari",
+    "sampled_perimeter_relative_error": 0.7617439291817852
+  },
+  "koopman_probe": {
+    "alpha_star": 0.5063291139240507,
+    "effective_unitary_dim": 1,
+    "floor_p1_max_cp_drop": 0.9981132075471697,
+    "floor_p1_satisfied": true,
+    "floor_p3_peak_d2_ratio": 1791627261.677176,
+    "floor_p3_satisfied": true,
+    "gap_over_exp_1": 0.31971201195447296,
+    "margin_to_quantum_shadow": 1.8492144760231204,
+    "mdl_regime": "Classical",
+    "n_eigenvalues": 530,
+    "perimeter_success": true,
+    "perimeter_trust": "diagnostic_only",
+    "phase_transition_detected": false,
+    "sampled_perimeter": 54.35492837268502,
+    "spectral_entropy": 0.3583254523354352,
+    "spectral_gap": 0.8690673524359248,
+    "threshold_exp_1": 2.718281828459045
+  },
+  "operator_source": "LEG4_UNITARITY_114 one-degree z^14-1 Koopman kernel",
+  "probe_rule": {
+    "classical_when": "spectral_gap <= exp(1)",
+    "lean_rule": "spectral_gap > exp(1) iff mdl_regime != Classical",
+    "quantum_shadow_when": "spectral_gap > exp(1)",
+    "threshold_exp_1": 2.718281828459045
+  },
+  "problem": "Erdos #114 / EHP lemniscate perimeter",
+  "source_artifacts": {
+    "leg4_script": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdosatlas-workbench/experiments/leg4_unitarity_114.py",
+    "leg4_script_sha256": "eebf630301d4846333844c199d9d3471fa81364ee90456dfbbbea39f24778e0c",
+    "n14_interval_artifact": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json",
+    "n14_interval_sha256": "50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7"
+  },
+  "timestamp_utc": "2026-05-02T15:49:35.119420+00:00"
+}

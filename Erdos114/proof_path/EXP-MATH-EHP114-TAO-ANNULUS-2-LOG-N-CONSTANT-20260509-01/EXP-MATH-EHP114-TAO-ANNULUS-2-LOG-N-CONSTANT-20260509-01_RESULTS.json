@@ -1,0 +1,83 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-TAO-ANNULUS-2-LOG-N-CONSTANT-20260509-01",
+  "status": "ANNULUS_2_LOG_N_BOUNDED_BY_CASE_ANALYSIS",
+  "claim_ceiling": "Internal extraction packet only. Not a proof of Erdos #114, not a numeric N0 candidate, and not a public claim. One step in the Tao-dependency chain.",
+  "tao_lemma": {
+    "label": "annulus-2",
+    "line": 1781,
+    "wording": "l(dE_1 cap Ann(0, r_-, r_+)) <= 2n(r_+ - r_-) - c sum_{zeta notin D(0, 10 r_-)} |zeta| + O_{C_0}(log n / n * ||p||) for an absolute constant c>0 (independent of C_0)."
+  },
+  "upstream_inputs_used": {
+    "c_10_lower_bound": 0.006900495524140533,
+    "K_OR_status_from_A3": "BOUNDED_BY_CASE_ANALYSIS",
+    "c_10_used_here": true,
+    "c_10_used_here_reason": "The 'c' that appears as the gain coefficient in annulus-2's statement is the SAME absolute constant c flowing from defect-psi-cor at C=10 (Tao line 1665, 1767, and reused without re-naming at 1782). Track A2's rigorous lower bound c_10 >= 0.006900495524140533 is the numeric realization of that c. The log-n constant we are extracting here is a SEPARATE quantity -- the implied multiplier in O_{C_0}(log n / n * ||p||) -- and we trace its dependence on c_10 (none, it turns out), C_0 (yes), and K_OR (only weakly, via markov bound on critical-point counts which is K_OR-independent)."
+  },
+  "log_n_constant_chain_walk": [
+    {
+      "sub_step": "sting-disk-contribution",
+      "tao_line": 1787,
+      "verdict": "BOUNDED_BY_CASE_ANALYSIS",
+      "depends_on": ["C_0", "Lemma_sting_constant", "markov", "Lemma_geomcontrol"],
+      "candidate_value": "(K_sting * (n_critical_points_in_annulus_with_eps_disk))",
+      "candidate_value_explicit": "<= K_sting * (||p||_1 / r_-/2) * (n * (2 log^{1/2} n / n * r_+)^2 / r_+) = K_sting * (2 ||p|| / (||p|| / C_0^2)) * (4 log n / n * r_+) = K_sting * 8 C_0^2 * log n * r_+/n. Since r_+ = C_0^2 ||p||, this is K_sting * 8 C_0^4 * (log n / n) * ||p||.",
+      "notes": "Tao at line 1787: 'By Lemma sting, the combined contribution of these disks D(zeta, 2 log^{1/2} n / n * r_+) to the lemniscate length is O_{C_0}(log n ||p|| / n).' The number of such bad critical points is O_{C_0}(1) by markov (specifically <= ||p||_1 / (r_-/2) = 2 ||p||_1 / r_- <= 2 ||p|| C_0^2 / ||p|| = 2 C_0^2 since ||p||_1 <= ||p||). Each disk has radius rho = 2 log^{1/2} n / n * r_+. Each disk contributes at most K_sting * n rho^2 / |z_0|, where |z_0| asymp_{C_0} r_+. Plug in: per-disk bound = K_sting * n * (4 log n / n^2) * r_+^2 / r_+ = 4 K_sting * (log n / n) * r_+ = 4 K_sting C_0^2 * (log n / n) * ||p||. Total = (2 C_0^2) * 4 K_sting C_0^2 * (log n / n) * ||p|| = 8 K_sting * C_0^4 * (log n / n) * ||p||. K_sting is the absolute constant in Lemma sting's '<<' (line 1442); its proof at lines 1446-1466 chains Theorem stokes (X1..X5) plus markov, log-integral, and triangle inequality. Each constituent is BOUNDED_BY_CASE_ANALYSIS in the same sense as A3's K_OR -- no Roth-style non-effective input -- so K_sting is in principle extractable. We do not extract it here. Conclusion: this contribution is 8 K_sting * C_0^4 * (log n / n) * ||p|| with K_sting numeric-extractable but not yet numeric."
+    },
+    {
+      "sub_step": "ute-2-correction",
+      "tao_line": 1802,
+      "verdict": "BOUNDED_BY_CASE_ANALYSIS",
+      "depends_on": ["C_0", "Lemma_sting_constant", "markov", "K_arclength"],
+      "candidate_value": "K_arclength * (1/n^2) * integral_term where integral_term <<_{C_0} n ||p|| log n",
+      "candidate_value_explicit": "<= K_ute2 * (1/n^2) * K_arc2 * n ||p|| log n = K_arc2 * K_ute2 * (log n / n) * ||p||. Each K is BOUNDED_BY_CASE_ANALYSIS via the sting/markov chain.",
+      "notes": "Tao at line 1802 expresses l(dE_1 cap Omega) as an arclength integral with a 1/(n^2 delta^2) error term. The correction is bounded by ute-2 (line 1807): integral of 1/delta^2 dr <<_{C_0} n ||p|| log n. ute-2 is established (lines 1810-1818) by reducing to a per-critical-point bound int 1/|z-zeta|^2 dr <<_{C_0} n log n / ||p||, dyadic-decomposed and bounded via Lemma sting again. The 1/n^2 prefactor on the delta-correction (from cosec-asym, line 585) cancels one of the n's, giving a final O_{C_0}((log n / n) * ||p||) contribution. The implied constant is a product: (cosec-asym Taylor coefficient, numeric absolute) * (number of bad critical points = O_{C_0}(1) per markov) * (Lemma sting constant K_sting) * (dyadic-decomposition geometric series, numeric absolute). Net: K_ute2 = (cosec_taylor_coef) * (markov_count) * K_sting * (geom_series_sum). Same status as sting-disk-contribution: BOUNDED_BY_CASE_ANALYSIS, K_sting unfilled."
+    },
+    {
+      "sub_step": "rouche-step",
+      "tao_line": 1826,
+      "verdict": "NUMERIC",
+      "candidate_value": "0 (this step contributes no log n / n term)",
+      "depends_on": [],
+      "notes": "Tao at line 1826 closes the proof by Rouche's theorem applied to z^n p(z) tilde-p(r^2/z) - z^n. Rouche's theorem itself is exact (no implied constants); the application requires |h(z)| < |f(z)| on partial D(0, r'), which Tao establishes from pform's O_{C_0}(1/n) error. This step contributes ONLY to the lower-bound count of zeroes (used in the gain term '- c sum |zeta|'), NOT to the log n / n loss term. So it does not enter the log-n constant we are tracking. Verdict: NUMERIC and contributes 0 to the implied multiplier."
+    },
+    {
+      "sub_step": "pform-error-feed",
+      "tao_line": 1793,
+      "verdict": "BOUNDED_BY_CASE_ANALYSIS",
+      "depends_on": ["C_0"],
+      "candidate_value": "embedded inside K_arc2's chain; pform's relative error is O_{C_0}(1/(n delta(z))), which after integration over Omega and applying delta-upper bound delta <= 1 gives an O_{C_0}(1/n) factor that further amplifies inside K_ute2. No NEW absolute constant beyond what K_ute2 already absorbs.",
+      "notes": "pform (line 889) gives p(z) = -1 + (z p'(z) / n) * (1 + O(||p||^2 / (n |z|^2 delta(z)))). For z in Omega cap Ann(0, r_-, r_+), we have |z| asymp_{C_0} r_- asymp_{C_0} ||p||, so ||p||^2 / (n|z|^2) asymp_{C_0} 1/n. Combined with delta(z) >= log^{1/2} n / n (the Omega cutoff, line 1791), the relative error is at most O_{C_0}(n / log^{1/2} n / n^2) = O_{C_0}(1 / (n log^{1/2} n)). This is dominated by the 1/(n delta) term from arcl-2 + cosec-asym (line 1799). Verdict: pform's contribution is fully absorbed by K_ute2's chain, no new bottleneck."
+    },
+    {
+      "sub_step": "stokes-X1-X5-feed",
+      "tao_line": 1448,
+      "verdict": "BOUNDED_BY_CASE_ANALYSIS",
+      "depends_on": ["K_stokes_X1", "K_stokes_X3"],
+      "candidate_value": "embedded inside K_sting; X2, X4, X5 are bounded by O(nr^2/|z_0|), 0, O(r) respectively (line 1451), all with absolute constants that are direct calculations. X1 uses pp-bound (line 1397, |p'| << n on E_4), so K_X1 = K_pp_bound. X3 chains markov + log-integral, so K_X3 = K_markov * K_log_int.",
+      "notes": "Theorem stokes (cited at line 1448) applies to D(z_0, r) with lambda = n / |z_0|. X1, X2, X3, X4, X5 are 5 explicit error integrals (X1-def through X5-def, lines 1051-1058 region of the paper). For Lemma sting at z_0 in the annulus, |z_0| asymp_{C_0} r_+, so K_sting = O_{C_0}(K_stokes + K_X1 + K_X2 + K_X3 + K_X4 + K_X5). All are BOUNDED_BY_CASE_ANALYSIS in the same sense as K_OR's poz/pocl/Taylor-remainder chain: constructive, traceable, would require ~200-400 lines of focused real analysis to extract numerics. None depend on c_10, none invoke non-effective principles."
+    }
+  ],
+  "log_n_constant_verdict": {
+    "verdict": "BOUNDED_BY_CASE_ANALYSIS",
+    "candidate_formula": "K_logn = (8 K_sting + K_arc2 * K_ute2) * C_0^4, where K_sting, K_arc2, K_ute2 are products of (a) Stokes-theorem X1..X5 absolute constants from Lemma sting's proof, (b) Lemma arclength's cosec-asym Taylor coefficient (numeric, absolute, ~1), (c) markov-bound geometric sums (absolute, numeric small constants). Symbolically: implied multiplier in O_{C_0}(log n / n * ||p||) is bounded above by K_logn(C_0) = K_logn_universal * C_0^4 with K_logn_universal an absolute constant extractable from Lemma sting's proof at lines 1446-1466 plus arclength + cosec-asym.",
+    "candidate_value_at_C0_pinned": null,
+    "candidate_value_at_C0_pinned_notes": "We do not pin C_0 here because C_0 is the FREE PARAMETER that the next-stage trade-off optimizes (gain c * ||p|| vs. loss O_{C_0}(log n / n * ||p||) at line 1868 of Tao). With C_0 still free and K_logn_universal still symbolic, no fully numeric value lands. Once K_logn_universal is extracted (~300-line dedicated session: Stokes-theorem X1..X5 numerics + Lemma sting's chain), we can pick C_0 to balance the two errors and recover a numeric n-threshold. Estimated extraction cost: comparable to A3-followup K_OR extraction.",
+    "notes": "The log-n constant is a polynomial in C_0 (specifically, scales as C_0^4 from chasing r_+ = C_0^2 ||p|| through the bad-disk count, the per-disk sting bound, and the ute-2 dyadic decomposition; markov factor contributes another power but the per-disk radius factor cancels one). The leading universal coefficient is BOUNDED_BY_CASE_ANALYSIS, dominated by the same Stokes-theorem-X1..X5 case-analysis chain that A1 flagged as the symbolic core for inside-2. annulus-2 thus REUSES inside-2's bottleneck rather than introducing a new one -- a structural observation worth recording, since it means a single dedicated extraction session could clear K_sting and immediately unlock both inside-2 and annulus-2."
+  },
+  "n0_candidate_implication": {
+    "feasible": false,
+    "feasible_after_one_more_extraction": true,
+    "sketch": "With c_10 numeric (>= 0.0069 from A2), the gain term in annulus-2 is at least 0.0069 * sum_{zeta notin D(0, 10 r_-)} |zeta|. The loss term is K_logn(C_0) * (log n / n) * ||p|| with K_logn = K_logn_universal * C_0^4. Tao's overall trade-off (line 1868) combines this with inside-2's gain (also c >= c_10 = 0.0069 carrying through, since inside-2 uses defect-psi-cor at C=10 too) and outside-again's O(||p||/C_0) loss. Schematically: net inequality to violate is c * ||p|| (gain) vs (K_logn * C_0^4 * log n / n + K_outside / C_0) * ||p|| (loss). To get a candidate N0, we need: K_logn * C_0^4 * log n / n + K_outside / C_0 < c (assuming a worst-case gain c * ||p|| only). Optimal C_0 satisfies d/dC_0 = 0, giving C_0^5 ~ K_outside * n / (4 K_logn log n), so optimal C_0 ~ (n / log n)^{1/5} times an absolute constant. Plugging back: loss at optimum ~ (K_logn * K_outside^4)^{1/5} * (log n / n)^{1/5}. Setting this < c = 0.0069 gives n > (K_logn * K_outside^4 / 0.0069^5)^{5} * log n approx. So a candidate N0 ~ (numeric)^{5} * log N0 emerges, parametrized by K_logn_universal and K_outside_universal. Without those two universal constants, the formula is structurally complete but not numeric. With one more extraction pass (the K_sting Stokes-X1..X5 session), K_logn_universal lands and the only remaining unknown is K_outside_universal from outside-again's pvar+pform+out chain.",
+    "next_dependency": "A5 should be the K_sting Stokes-X1..X5 extraction. It is the LAST opaque constant feeding annulus-2 (and simultaneously feeds inside-2). A5-followup would then be K_outside extraction from pvar/pform/out chain (line 1832-1864 of Tao). After A5 + A5-followup, the candidate N0 formula above becomes fully numeric and we can finally state a concrete n-threshold consistent with Tao's argument."
+  },
+  "next_dependency": "Queue A5: extract K_sting (Lemma sting's absolute Vinogradov constant from Tao lines 1446-1466). Subroutines required: (1) absolute constants in X1..X5 of Theorem stokes (line 1448), (2) Cauchy-bound K_pp from |p'| << n on E_4 (line 1397, requires |z| in E_4 case analysis), (3) markov-bound numerics (line 242, exact). All are constructive and Vinogradov-style; no non-effective input. Estimated complexity: 300-400 lines focused real analysis, no compute. Once K_sting is in hand, the annulus-2 log-n constant K_logn_universal reduces to a polynomial expression in K_sting and a few absolute numeric small constants (cosec-asym Taylor, dyadic geometric series), all extractable in the same session. A5-followup (K_outside) is independent and feeds outside-again's O(||p||/C_0); together with A5 they close out the loss-side of Tao's a-ineq trade-off.",
+  "track_a_status_after_a4": "Track A is alive and the parts list is now nearly complete. Numeric: c_10 (A2). BOUNDED_BY_CASE_ANALYSIS with explicit construction recipe: K_OR (A3, ~100-200 lines), K_logn_universal (A4 this session, ~300-400 lines via K_sting), K_outside (A5-followup, similar scale). Still SYMBOLIC_ONLY: nothing -- every constant has a routing-recipe. The remaining work is real-analysis case-analysis, no novel mathematical input. Track A's structural completeness gate has now been passed: the chain from c_10 -> annulus-2's gain coefficient -> a-ineq is closed conditional on extraction of three universal constants (K_OR, K_sting, K_outside), each independently tractable. Rough cost-to-completion estimate: 600-1000 lines of focused real analysis spread across three sessions, no novel theory and no compute heavy enough to require Modal.",
+  "honest_assessment": {
+    "a4_was_the_first_place_c10_actually_feeds_into_a_chain": true,
+    "and_does_a4_reveal_a_brand_new_bottleneck_or_a_known_one": "A KNOWN one. K_sting (the Stokes-theorem X1..X5 chain) was already flagged by A1 as the symbolic core feeding inside-2. A4 confirms it ALSO feeds annulus-2's log-n constant. So A4's value is structural-cartographic: it reveals that the same single extraction (K_sting) unlocks BOTH inside-2 AND annulus-2. This compresses the extraction queue from 'two independent extractions' to 'one shared extraction' -- a real efficiency gain.",
+    "is_track_a_n0_landing_one_extraction_away_or_three": "Three, but one of them (K_sting) is shared between two chains. Concretely: K_OR for pp0 and inside-2 second inequality, K_sting for inside-2 first and annulus-2 log-n, K_outside for outside-again. Each is independently tractable in a focused session. None require compute-heavy methods. After all three, the candidate N0 formula in 'sketch' above evaluates to a concrete number.",
+    "consistency_with_a3_recommendation": "A3 explicitly recommended queueing A4 first because c_10 'feeds in directly' here. A4 confirms this: c_10 is the gain coefficient, and the log-n constant is the loss whose universal multiplier is the next bottleneck. A3's queue ordering was correct."
+  },
+  "timestamp_unix": 1778510400,
+  "schema_version": "1.0"
+}

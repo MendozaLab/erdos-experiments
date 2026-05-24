@@ -1,0 +1,290 @@
+{
+  "claim_ceiling": "Parent constant source map only. This packet does not provide a numeric Tao threshold or a full all-degree proof.",
+  "constant_row_count": 8,
+  "constant_rows": [
+    {
+      "constant_symbol": "K_pp0",
+      "needed_for": "C0 >= 2*K_pp0/c_pp0",
+      "quantification_status": "PARENT_CONSTANTS_OPAQUE",
+      "role": "coefficient of the combined O(||p||/C0) remainder in the pp0 case",
+      "source_parents": [
+        "inside-2",
+        "annulus-2",
+        "outside-again",
+        "stokes",
+        "x2-lem",
+        "x3-lem"
+      ]
+    },
+    {
+      "constant_symbol": "c_pp0",
+      "needed_for": "C0 >= 2*K_pp0/c_pp0",
+      "quantification_status": "PARENT_CONSTANTS_OPAQUE",
+      "role": "linear negative gain in the pp0 case",
+      "source_parents": [
+        "inside-2",
+        "origin-repulsion",
+        "ankh",
+        "defect-psi-cor"
+      ]
+    },
+    {
+      "constant_symbol": "K_not_pp0",
+      "needed_for": "C0 >= 2*K_not_pp0*C/c_disp",
+      "quantification_status": "PARENT_CONSTANTS_OPAQUE",
+      "role": "coefficient of the combined O(||p||/C0) remainder in the not-pp0 case",
+      "source_parents": [
+        "inside-2",
+        "annulus-2",
+        "outside-again",
+        "stokes",
+        "x2-lem",
+        "x3-lem"
+      ]
+    },
+    {
+      "constant_symbol": "c_disp",
+      "needed_for": "C0 >= 2*K_not_pp0*C/c_disp",
+      "quantification_status": "PARENT_CONSTANTS_OPAQUE",
+      "role": "conversion from dispersion and exterior critical-point mass to ||p||_1",
+      "source_parents": [
+        "disp-split",
+        "inside-2",
+        "annulus-2"
+      ]
+    },
+    {
+      "constant_symbol": "K_pots_upper",
+      "needed_for": "C/2 > K_pots_upper",
+      "quantification_status": "PARENT_CONSTANTS_OPAQUE",
+      "role": "upper-bound coefficient in the Psi contradiction for Proposition pots",
+      "source_parents": [
+        "inside",
+        "annulus",
+        "out",
+        "ankh",
+        "origin-repulsion"
+      ]
+    },
+    {
+      "constant_symbol": "N_pots(C,eps)",
+      "needed_for": "n >= N_pots(C,eps)",
+      "quantification_status": "PARENT_CONSTANTS_OPAQUE",
+      "role": "large-n gate after choosing C and eps in Proposition pots",
+      "source_parents": [
+        "pots",
+        "ets",
+        "origin-repulsion",
+        "ankh"
+      ]
+    },
+    {
+      "constant_symbol": "eps0",
+      "needed_for": "eps <= eps0",
+      "quantification_status": "PARENT_CONSTANTS_OPAQUE",
+      "role": "small epsilon gate for Proposition ets",
+      "source_parents": [
+        "inside",
+        "annulus",
+        "out",
+        "defect-psi-cor"
+      ]
+    },
+    {
+      "constant_symbol": "N_ets(eps)",
+      "needed_for": "n >= N_ets(eps)",
+      "quantification_status": "PARENT_CONSTANTS_OPAQUE",
+      "role": "large-n gate for the quantitative estimates used in Proposition ets",
+      "source_parents": [
+        "inside",
+        "annulus",
+        "out",
+        "defect-psi-cor",
+        "x2-lem",
+        "x3-lem"
+      ]
+    }
+  ],
+  "experiment_id": "EXP-MATH-EHP114-TAO-PARENT-CONSTANT-SOURCE-MAP-20260507-01",
+  "first_failed_condition": "numeric parent constants remain opaque",
+  "full_synthesis_allowed": false,
+  "global_candidate_N0": null,
+  "n15_or_higher_computation_authorized": false,
+  "next_action": "Start quantifying the smallest parent rows first: disp-split, origin-repulsion, ankh, and defect-psi-cor; then propagate into inside-2 and annulus-2.",
+  "numeric_ready_constant_count": 0,
+  "parent_source_row_count": 12,
+  "parent_source_rows": [
+    {
+      "environment": "lemma",
+      "label": "origin-repulsion",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{lemma}[Origin repulsion]\\label{origin-repulsion} We have $$ \\|p\\|_0 \\ll \\| p \\|_1 + n \\operatorname{dist}(0, \\partial E_1(p)).$$ In particular, by \\eqref{size-def}, one has $$ \\|p\\| \\ll \\| p \\|_1 + n \\operatorname{dist}(0, \\partial E_1(p)).$$ \\end{lemma}",
+      "source_span": [
+        869,
+        873
+      ],
+      "title": "Origin repulsion"
+    },
+    {
+      "environment": "lemma",
+      "label": "disp-split",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{lemma}[Splitting the dispersion]\\label{disp-split} If $r \\geq 2\\|p\\|_1/n$, then \\begin{equation}\\label{disp-zeta-r} \\|p\\|_1 \\ll \\sum_{\\zeta: \\zeta \\notin D(0,r)} |\\zeta| + n \\Disp \\{\\zeta: \\zeta \\in D(0,r)\\}. \\end{equation} \\end{lemma}",
+      "source_span": [
+        519,
+        523
+      ],
+      "title": "Splitting the dispersion"
+    },
+    {
+      "environment": "corollary",
+      "label": "defect-psi-cor",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{corollary}[Upper bound on $\\Psi$]\\label{defect-psi-cor} Suppose that $r \\geq 10\\|p\\|_1/n$. For any measurable set $E$ containing a disk $D(z_0, r)$ and $C>0$, we have $$ \\Psi(E) \\leq 2(n-1) \\r[E] - c_C \\Disp \\{ \\zeta : \\zeta \\in D(z_0, Cr) \\}$$ for some constant $c_C>0$ depending only on $C$. \\end{corollary}",
+      "source_span": [
+        1025,
+        1028
+      ],
+      "title": "Upper bound on $\\Psi$"
+    },
+    {
+      "environment": "lemma",
+      "label": "ankh",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{lemma}[Lower bound on $\\Psi$]\\label{ankh} For any $r>0$, we have $$ \\Psi(\\Ann(0,r/2,r))\\geq (n-1) r - O(\\|p\\|_1).$$ \\end{lemma}",
+      "source_span": [
+        1043,
+        1045
+      ],
+      "title": "Lower bound on $\\Psi$"
+    },
+    {
+      "environment": "proposition",
+      "label": "inside",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{proposition}[Inner bound]\\label{inside} We have $$ \\ell(\\partial E_1 \\cap \\Ann(0,\\rho,\\eps)) \\leq 2\\eps n - \\Psi(D(0,\\rho)) + O(\\eps^{1/2}).$$ \\end{proposition}",
+      "source_span": [
+        1419,
+        1421
+      ],
+      "title": "Inner bound"
+    },
+    {
+      "environment": "proposition",
+      "label": "annulus",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{proposition}[Bound in intermediate region]\\label{annulus} We have $$ \\ell(\\partial E_1 \\cap \\Ann(0,\\eps,1-\\sigma)) \\leq 2n (1-\\eps-\\sigma) + O_\\eps\\left(\\frac{\\log n}{n} \\right).$$ \\end{proposition}",
+      "source_span": [
+        1471,
+        1473
+      ],
+      "title": "Bound in intermediate region"
+    },
+    {
+      "environment": "lemma",
+      "label": "out",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{lemma}[The lemniscate for $p_0$]\\label{out} We have \\begin{equation}\\label{lbo-ident} \\ell(\\partial E_1(p_0)) = \\int_{-\\pi}^\\pi |1+e^{i\\alpha}|^{-\\frac{n-1}{n}}\\ d\\alpha = B\\left(\\frac{1}{2},\\frac{1}{2n}\\right) \\end{equation} and \\begin{equation}\\label{lbo-in} \\ell(\\partial E_1(p_0) \\cap D(0,r_0)) = 2nr_0 + O(r_0^{2n+1}) \\end{equation} for any $0 < r_0 \\leq 1$. In particular, \\begin{equation}\\label{lout} \\ell(\\partial E_1(p_0) \\backslash D(0,r_0)) = \\int_{I_{r_0}} |1 + e^{i\\alpha}|^{-\\frac{n-1}{n}} \\ d\\alpha = \\ell(\\partial E_1(p_0)) - 2nr_0 + O( r_0^{2n+1}) \\end{equation} where $I_{r_0}$ is the set of all $-\\pi < \\alpha < \\pi$ with $|1+e^{i\\alpha}|^{1/n} \\geq r_0$. \\end{lemma}",
+      "source_span": [
+        612,
+        624
+      ],
+      "title": "The lemniscate for $p_0$"
+    },
+    {
+      "environment": "lemma",
+      "label": "x2-lem",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{lemma}[Control on $X_2$]\\label{x2-lem} If $\\mu>0$ is sufficiently small, then $$ X_2 \\ll \\mu \\|p\\|_1.$$ \\end{lemma}",
+      "source_span": [
+        1275,
+        1278
+      ],
+      "title": "Control on $X_2$"
+    },
+    {
+      "environment": "lemma",
+      "label": "x3-lem",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{lemma}[Control on $X_3$]\\label{x3-lem} For any $r>0$, we have $$ \\int_{z \\in D(0,r): |\\psi(z)| \\geq \\mu n / |z|} \\frac{|\\psi'|}{|\\psi|}\\ dA \\ll \\frac{nr+\\|p\\|_1 \\log n}{\\mu n} .$$ In particular, taking $r=2$ (say), we have $$ X_3 \\ll \\frac{n+\\|p\\|_1 \\log n}{\\mu n}.$$ \\end{lemma}",
+      "source_span": [
+        1305,
+        1311
+      ],
+      "title": "Control on $X_3$"
+    },
+    {
+      "environment": "lemma",
+      "label": "sting",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{lemma}[Local upper bound on lemniscate length]\\label{sting} If $z_0 \\neq 0$ and $0 < r < |z_0|/2$, then $$ \\ell(\\partial E_1 \\cap D(z_0, r)) \\ll \\frac{nr^2}{|z_0|} + r + \\frac{r\\|p\\|_1}{|z_0|} + \\frac{\\|p\\|_1 \\log n}{n}.$$ In particular, if $|z_0| \\gg \\|p\\|_1$ and $r \\gg \\frac{\\log^{1/2} n}{n} |z_0|$, then we have the simplified bound $$ \\ell(\\partial E_1 \\cap D(z_0, r)) \\ll \\frac{nr^2}{|z_0|}.$$ \\end{lemma}",
+      "source_span": [
+        1440,
+        1444
+      ],
+      "title": "Local upper bound on lemniscate length"
+    },
+    {
+      "environment": "lemma",
+      "label": "arclength",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{lemma}[Arclength formulae]\\label{arclength} Let $p$ be a non-zero polynomial, and let $\\Omega$ be a semialgebraic open set that does not contain any critical points of $p$ in its closure. \\begin{itemize} \\item[(i)] (First arclength formuula) We have have the arclength formula \\begin{equation}\\label{arcl-1} \\ell(\\partial E_1(p) \\cap \\Omega) = \\int_{-\\pi}^\\pi \\sum_{z \\in \\Omega: p(z) = e^{i\\alpha}} \\frac{1}{|p'(z)|}\\ d\\alpha. \\end{equation} Note that the sum over $z$ is finite by the fundamental theorem of algebra, and is multiplicity-free since $\\Omega$ avoids critical points. \\item[(ii)] (Second arclength formula) If in addition $\\Omega$ avoids the origin $0$, and we have the transversality condition \\begin{equation}\\label{radial} \\arg \\frac{p(z)}{zp'(z)} \\neq 0 \\pmod \\pi \\end{equation} for all $z \\in \\partial E_1(p) \\cap \\Omega$, then we have \\begin{equation}\\label{arcl-2} \\ell(\\partial E_1(p) \\cap \\Omega) = \\int_0^\\infty \\sum_{z \\in \\partial E_1(p) \\cap \\Omega \\cap \\partial D(0,r)} \\frac{1}{\\left|\\sin \\arg \\frac{p(z)}{zp'(z)}\\right|} \\ dr, \\end{equation} where the sum ove...",
+      "source_span": [
+        563,
+        582
+      ],
+      "title": "Arclength formulae"
+    },
+    {
+      "environment": "theorem",
+      "label": "stokes",
+      "quantification_status": "SOURCE_MAPPED_NUMERIC_CONSTANTS_OPAQUE",
+      "source_snippet": "\\begin{theorem}[Application of Stokes' theorem]\\label{stokes} Let $p$ be a polynomial, $\\Omega \\subset \\C$ a semi-algebraic\\footnote{That is to say, $\\Omega$ is defined by a finite number of polynomial inequalities involving the real and imaginary part of the variable $z$. In particular, the boundary of $\\Omega$ will be piecewise smooth by the semi-algebraic stratification theorem \\cite{bochnak}.} open set, and $\\lambda \\colon \\C \\to \\R^+$ be an arbitrary smooth everywhere positive function. Then we have the estimate \\begin{equation}\\label{stokes-eq} \\ell(\\partial E_1(p) \\cap \\overline{\\Omega}) \\leq \\Psi(E_2(p) \\cap \\Omega) + O( X_1 + X_2 + X_3 + X_4 + X_5), \\end{equation} where $\\psi$ was given by \\eqref{psi-def}, and the error terms $X_1,X_2,X_3,X_4,X_5$ are given by \\begin{align} X_1 &\\coloneqq \\int_{E_2(p) \\cap \\Omega} |p'|\\ dA \\label{X1-def} \\\\ X_2 &\\coloneqq \\int_{E_2(p) \\cap \\Omega, |\\psi| \\leq \\lambda} |\\psi|\\ dA \\label{X2-def}\\\\ X_3 &\\coloneqq \\int_{E_2(p) \\cap \\Omega, |\\psi| \\geq \\lambda/2} \\frac{|\\psi'|}{|\\psi|}\\ dA \\label{X3-def}\\\\ X_4 &\\coloneqq \\int_{E_2(p) \\cap \\Ome...",
+      "source_span": [
+        357,
+        370
+      ],
+      "title": "Application of Stokes' theorem"
+    }
+  ],
+  "partial_max_N_final_section": null,
+  "source_artifacts": [
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "07a5716de874167853f77422c248f43457e84791e4a557dc29ccc71de4d70b47",
+        "expected_sha256": "07a5716de874167853f77422c248f43457e84791e4a557dc29ccc71de4d70b47",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01_RESULTS.json",
+        "role": "symbolic_budget_reduction",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "FINAL_SECTION_SYMBOLIC_BUDGET_READY_NUMERIC_CONSTANTS_PENDING"
+    },
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "2603ef79a83d308c96f1a0fd6038635e081c8e979675a5a70d04be9252a47e47",
+        "expected_sha256": "2603ef79a83d308c96f1a0fd6038635e081c8e979675a5a70d04be9252a47e47",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01_RESULTS.json",
+        "role": "final_section_constant_extraction",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "FINAL_SECTION_CONSTANT_EXTRACTION_READY"
+    }
+  ],
+  "source_experiment_ids": [
+    "EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01",
+    "EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01"
+  ],
+  "status": "PARENT_CONSTANT_SOURCE_MAP_READY_NUMERIC_CONSTANTS_PENDING",
+  "tao_source": {
+    "expected_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+    "source_line_count": 1965,
+    "source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+    "source_sha_status": "PASS_PINNED_SOURCE_SHA_MATCH"
+  }
+}

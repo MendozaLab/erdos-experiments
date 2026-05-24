@@ -1,0 +1,54 @@
+{
+  "experiment_id": "EXP-MATH-RH-BEURLING-NYMAN-MDL-QUANTIZATION-STABILITY-CHECK-20260506-01",
+  "timestamp_unix": 1778094906,
+  "status": "BN_MDL_QUANTIZATION_STABILITY_CHECK_PASS_NOT_RH_EVIDENCE",
+  "source_artifacts": [
+    "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-RH-BEURLING-NYMAN-MDL-PROBE-20260506-03_RESULTS.json",
+    "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-RH-BEURLING-NYMAN-MDL-SENSITIVITY-20260506-01_RESULTS.json"
+  ],
+  "source_sha_checks": [
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-RH-BEURLING-NYMAN-MDL-PROBE-20260506-03_RESULTS.json",
+      "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-RH-BEURLING-NYMAN-MDL-PROBE-20260506-03_RESULTS.sha256",
+      "status": "PASS",
+      "expected": "51484a5855bacc99a16174309135c5edacc0eb76230d0067e87316ac29fb35d3",
+      "actual": "51484a5855bacc99a16174309135c5edacc0eb76230d0067e87316ac29fb35d3"
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-RH-BEURLING-NYMAN-MDL-SENSITIVITY-20260506-01_RESULTS.json",
+      "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-RH-BEURLING-NYMAN-MDL-SENSITIVITY-20260506-01_RESULTS.sha256",
+      "status": "PASS",
+      "expected": "886fbb60954331f0fed3890380c8227387fd3f2535cecb3e10365dffeba04f42",
+      "actual": "886fbb60954331f0fed3890380c8227387fd3f2535cecb3e10365dffeba04f42"
+    }
+  ],
+  "source_sha_status": "PASS",
+  "source_audits": [
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-RH-BEURLING-NYMAN-MDL-PROBE-20260506-03_RESULTS.json",
+      "experiment_id": "EXP-MATH-RH-BEURLING-NYMAN-MDL-PROBE-20260506-03",
+      "row_count": 18,
+      "quantized_entry_count": 72,
+      "failure_count": 0,
+      "certified_monotone_fail_count": 0,
+      "failures": [],
+      "claim_ceiling": "SUGGESTIVE / METHOD-SHAPING ONLY: finite quadrature probe of a frozen Nyman-Beurling MDL cost model; not RH evidence and not theorem progress."
+    },
+    {
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-RH-BEURLING-NYMAN-MDL-SENSITIVITY-20260506-01_RESULTS.json",
+      "experiment_id": "EXP-MATH-RH-BEURLING-NYMAN-MDL-SENSITIVITY-20260506-01",
+      "row_count": 80,
+      "quantized_entry_count": 240,
+      "failure_count": 0,
+      "certified_monotone_fail_count": 0,
+      "failures": [],
+      "claim_ceiling": "SUGGESTIVE_NUMERICAL_SENSITIVITY: finite quadrature sensitivity test of the ~3.2-bit bend; not RH evidence, not theorem progress, and not an asymptotic statement."
+    }
+  ],
+  "total_row_count": 98,
+  "total_quantized_entry_count": 312,
+  "total_failure_count": 0,
+  "theorem_target": "||A q_b(a)-y|| <= ||A a-y|| + sigma_max(A) sqrt(k) Delta_b / 2",
+  "bend_name": "first observed finite-N MDL conditioning crossover",
+  "claim_ceiling": "Finite Beurling-Nyman MDL quantization-stability audit only; not RH evidence, not theorem progress, and not an asymptotic statement."
+}

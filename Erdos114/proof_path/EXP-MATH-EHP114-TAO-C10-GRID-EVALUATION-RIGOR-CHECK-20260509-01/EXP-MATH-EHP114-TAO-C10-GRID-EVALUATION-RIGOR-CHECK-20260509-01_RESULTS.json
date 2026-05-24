@@ -1,0 +1,91 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-TAO-C10-GRID-EVALUATION-RIGOR-CHECK-20260509-01",
+  "schema_version": "1.0",
+  "verdict": "RIGOROUS_INTERVAL_FORM",
+  "target_script": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/build_tao_c10_disk_integral_lower_bound.py",
+  "target_artifact": "proof_path/EXP-MATH-EHP114-TAO-DEFECT-PSI-COR-C10-LOWER-BOUND-20260509-01/",
+  "reviewer_concern_summary": "Endpoint sampling on grid corners is NOT a rigorous lower bound; only true mpmath.iv interval-form evaluation, Taylor models, or monotonicity arguments produce a certified enclosure of the cell minimum.",
+  "method_classification": {
+    "uses_interval_form_evaluation": true,
+    "uses_endpoint_sampling_for_lower_bound": false,
+    "uses_lipschitz_or_gradient_bound": false,
+    "uses_proven_analytic_clamps": true,
+    "clamp_basis": [
+      "|z-1|^2 >= (20/21)^2 on D(0, 1/21) [line 138, justified by precondition P2 on lines 22-26 and 134-137]",
+      "|2z-1|^2 >= (19/21)^2 on D(0, 1/21) [line 146, justified by precondition P3 on lines 143-146]"
+    ],
+    "clamps_can_only_tighten_not_invalidate": true
+  },
+  "evidence_citations": {
+    "interval_construction": [
+      "build_tao_c10_disk_integral_lower_bound.py:180  r_iv = iv.mpf([r_lo, r_hi])",
+      "build_tao_c10_disk_integral_lower_bound.py:185  t_iv = iv.mpf([t_lo, t_hi])"
+    ],
+    "interval_evaluation": [
+      "build_tao_c10_disk_integral_lower_bound.py:127  cos_t = iv.cos(theta_iv)",
+      "build_tao_c10_disk_integral_lower_bound.py:133  sq_zm1 = r_iv * r_iv - 2 * r_iv * cos_t + 1",
+      "build_tao_c10_disk_integral_lower_bound.py:139  abs_zm1 = iv.sqrt(sq_zm1)",
+      "build_tao_c10_disk_integral_lower_bound.py:142  sq_2zm1 = 4 * r_iv * r_iv - 4 * r_iv * cos_t + 1",
+      "build_tao_c10_disk_integral_lower_bound.py:147  abs_2zm1 = iv.sqrt(sq_2zm1)",
+      "build_tao_c10_disk_integral_lower_bound.py:149-150  numerator = abs_zm1 + abs_z - abs_2zm1; g = numerator / abs_zm1",
+      "build_tao_c10_disk_integral_lower_bound.py:188  g_iv = integrand_interval(r_iv, t_iv)"
+    ],
+    "lower_bound_aggregation": [
+      "build_tao_c10_disk_integral_lower_bound.py:191  g_lower = mpf(g_iv.a)",
+      "build_tao_c10_disk_integral_lower_bound.py:192  cell_lower = iv.mpf([g_lower, g_lower]) * dr_iv * dt_iv",
+      "build_tao_c10_disk_integral_lower_bound.py:193  total_lo += cell_lower",
+      "build_tao_c10_disk_integral_lower_bound.py:203  return mpf(total_lo.a), neg_cells"
+    ],
+    "endpoint_sampling_routines_present_but_not_in_bound_path": [
+      "build_tao_c10_disk_integral_lower_bound.py:154-160  integrand_float (point evaluation)",
+      "build_tao_c10_disk_integral_lower_bound.py:206-217  nonrigorous_midpoint_estimate (midpoint Riemann sum)",
+      "build_tao_c10_disk_integral_lower_bound.py:223-240  spot_check_nonnegativity (sample-grid scan)"
+    ],
+    "honest_negative_cell_handling": [
+      "build_tao_c10_disk_integral_lower_bound.py:60-65  comment: do NOT clamp negative interval-min; let them drag the bound",
+      "build_tao_c10_disk_integral_lower_bound.py:195-196  if g_lower < 0: neg_cells += 1  (counted, not clamped)",
+      "build_tao_c10_disk_integral_lower_bound.py:367-369  RESULTS.json reports neg_cells honestly"
+    ]
+  },
+  "c10_certification": {
+    "value": 0.006900495524140533,
+    "value_str": "0.00690049552414053277372859578815",
+    "is_certified_lower_bound": true,
+    "certification_basis": "Interval-arithmetic enclosure of g over each cell using mpmath.iv operators with directed (outward) rounding at dps=60; cell contribution = lower endpoint of g_iv times exact cell area, accumulated in interval arithmetic.",
+    "trust_assumption": "Standard correctness of mpmath.iv interval operator implementations.",
+    "non_rigorous_midpoint_reference": 0.007069155243213715,
+    "consistency": "rigorous_LB (0.006900) <= non_rigorous_estimate (0.007069), gap ~2.4% — consistent with dependency-problem widening on a 200x720 grid.",
+    "negative_interval_min_cells": 13288,
+    "total_cells": 144000,
+    "negative_cell_fraction": 0.09227777777777778
+  },
+  "remediation_required": false,
+  "tightening_options_if_desired": [
+    {
+      "priority": 1,
+      "action": "Increase grid resolution N_R x N_theta from 200x720 to 400x1440 (lines 106-107).",
+      "expected_effect": "Quadratic narrowing of dependency widening; bound likely climbs from 0.0069 toward 0.0070.",
+      "rigor_status": "Still rigorous; pure refinement, no code structure change."
+    },
+    {
+      "priority": 2,
+      "action": "Switch interval evaluation to centered-form / mean-value-form using a verified gradient bound on g.",
+      "expected_effect": "Less widening per cell at same grid resolution.",
+      "rigor_status": "Rigorous if and only if the gradient bound is itself proven and implemented with interval arithmetic."
+    },
+    {
+      "priority": 3,
+      "action": "Adaptive subdivision targeting only the 13288 negative-g_lower cells.",
+      "expected_effect": "Tightens bound where widening is worst without global refinement.",
+      "rigor_status": "Rigorous; standard adaptive interval-Newton / branch-and-bound pattern."
+    }
+  ],
+  "constraints_observed": {
+    "target_dir_did_not_exist_before_write": true,
+    "no_existing_artifact_overwritten": true,
+    "rule3_versioning_respected": true,
+    "embargo_token_absent": true,
+    "solver_token_absent": true
+  },
+  "timestamp_unix_artifact_created": 1778368000
+}

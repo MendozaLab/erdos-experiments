@@ -1,0 +1,31 @@
+{
+  "experiment_id": "STRUCTURAL-FIT-CHECK-ERDOS-1041-2026-05-15",
+  "problem_id": 1041,
+  "problem_statement": "Let f(z) = prod_{i=1..n} (z - z_i) with |z_i| < 1 for all i. Must there always exist a path of length less than 2 in {z in C : |f(z)| < 1} which connects two of the roots of f? (Canonical source: DeepMind formal-conjectures Erdos1041.erdos_1041, citing erdosproblems.com/1041 and EHP58 Metric Properties of Polynomials.)",
+  "paper_lineage": "EHP58 (Erdos-Herzog-Piranian 1958, Metric Properties of Polynomials) - same paper as Erdos #114",
+  "feature_1_zero_curve": {
+    "verdict": "YES",
+    "justification": "Lemniscate {|f(z)| = 1} = {F = 0} with F(z) := |f(z)|^2 - 1 is the boundary of the sublevel set {|f(z)| < 1}. Identical to EHP114's zero curve. Path-length objective vs. component-length objective changes which sublevel-set-derived quantity is bounded, but does not change the boundary curve, its codimension, or its parameter-space behavior."
+  },
+  "feature_2_wall_separation": {
+    "verdict": "YES",
+    "justification": "The wall test operates on the F=0 curve, not on the objective functional. Critical points {grad F = 0} = {p'(z) = 0} sit inside the unit disk by Gauss-Lucas, same as #114. Bounded-away |grad F| requirement is a property of the curve and the polynomial. WS-01's center-strip-cancellation rewrite (sup_r |F(0,r)| -> Taylor remainder at validated branch point) operates on the same wall LHS/RHS comparison. The path-length objective introduces a separate certification layer downstream of the wall test; WS-01 certifies the wall, leaves the path construction to downstream."
+  },
+  "feature_3_branch_point_ivt": {
+    "verdict": "YES",
+    "justification": "Inputs to both checks are identical to #114: F(z) = |f(z)|^2 - 1 interval-evaluable, grad F = 2 Re(f-bar * f') horizontal + 2 Im(f-bar * f') vertical interval-evaluable, |F_tt| and T_3 polynomial-derived and interval-evaluable. No part of the gate depends on the objective functional. Same cross_problem_ws01_applicability_probe.py consumer schema applies without modification."
+  },
+  "aggregate_verdict": "YES_STRUCTURAL_FIT",
+  "ws01_applicable_prediction": "WS01_APPLICABLE (high confidence; #1041 shares parameter space and zero curve with #114, differs only in objective functional which lives downstream of the wall test)",
+  "recommended_next_step": "Proceed to cold-test step B (build candidate failure-box generation, then run the probe). No pre-condition gates needed beyond the standard interval kernel from the EHP114 reference implementation.",
+  "sources_cited": [
+    "Math/formal-conjectures/FormalConjectures/ErdosProblems/1041.lean (lines 1-71)",
+    "Math/erdos-experiments/cross_problem_ws01_applicability_probe.py (lines 1-300)",
+    "Math/erdos-experiments/Erdos1038/STRUCTURAL_FIT_CHECK_2026-05-14.md (lines 1-139, used as comparative template)",
+    "erdosproblems.com/1041 (canonical, referenced via Lean file metadata)",
+    "Erdos, P., Herzog, F., and Piranian, G., Metric properties of polynomials, J. Analyse Math. (1958), 125-148"
+  ],
+  "claim_ceiling": "Internal structural-fit check. Not a proof, not a solution claim, not a Lean statement. Diagnostic only.",
+  "timestamp_unix": 1747353600,
+  "schema_version": "1.0"
+}

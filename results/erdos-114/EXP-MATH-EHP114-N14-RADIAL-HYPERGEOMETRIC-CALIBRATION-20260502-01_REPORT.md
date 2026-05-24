@@ -1,0 +1,98 @@
+# EXP-MATH-EHP114-N14-RADIAL-HYPERGEOMETRIC-CALIBRATION-20260502-01 Report
+
+## Status
+
+Exact radial-family calculation. It explains the singular boundary layer near z^n - 1, but it does not prove global or local EHP114 maximality.
+
+This is a diagnostic calculation, not a proof of Erdos #114.
+
+## Exact Formula
+
+For `p_a(z) = z^n - a`, parameterize the lemniscate by `z^n = a + exp(i t)`.
+Summing the derivative length over all branches gives:
+
+`L_n(a) = integral_0^(2 pi) |a + exp(i t)|^(1/n - 1) dt`.
+
+For `|a| < 1`, the constant-term expansion gives:
+
+`L_n(a) = 2 pi * 2F1(p,p;1;a^2)`, where `p = (n - 1)/(2n)`.
+
+For `a = 1`, the Gauss/gamma limit gives the reference value directly.
+
+## Reference Check
+
+- Degree: 14
+- Exact `L_n(1)`: `30.852910841548542295844126311342204648430086988176`
+- Artifact interval contains exact value: True
+- Fourier-probe marching `L0`: None
+- Fourier-probe marching `L0 - exact L*`: `None`
+
+| n | exact L_n(1) | artifact contains exact? | artifact path |
+|---:|---:|---|---|
+| 14 | `30.852910841548542295844126311342204648430086988176` | True | `/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json` |
+| 15 | `32.847443161592574796553537519096796108161302188611` | True | `/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/scripts/erdos-114/EXP-MM-EHP-007-n15-inari_RESULTS.json` |
+| 16 | `34.842672284332028043400724196170721355069679898955` | True | `/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/scripts/erdos-114/EXP-MM-EHP-007-n16-inari_RESULTS.json` |
+
+## Radial Perturbation Table
+
+The inward rows are admissible under the roots-in-unit-disk constraint. The outward rows are diagnostic only.
+
+| eps | side | radius | admissible? | exact length | deficit vs exact L* | marching length | exact - marching |
+|---:|---|---:|---|---:|---:|---:|---:|
+| 0.02 | in | `0.994654775161751512306308930382` | True | `9.0624872530419907043756174266273360985159152479619` | `21.790423588506551591468508884714868549914171740214` |  |  |
+| 0.02 | out | `1.00534522483824848769369106962` | False | `8.4623016125464887432999167014217353693360349429793` | `22.390609229002053552544209609920469279094052045196` |  |  |
+| 0.01 | in | `0.997327387580875756153154465191` | True | `9.9958926093266527175599482249860577607302950279128` | `20.857018232221889578284178086356146887699791960263` |  |  |
+| 0.01 | out | `1.00267261241912424384684553481` | False | `9.6585073382102071561396720094998403674424128642427` | `21.194403503338335139704454301842364280987674123933` |  |  |
+| 0.005 | in | `0.998663693790437878076577232596` | True | `10.93542019598225150441099433382438496390503736054` | `19.917490645566290791433131977517819684525049627636` |  |  |
+| 0.005 | out | `1.0013363062095621219234227674` | False | `10.748984784378946518705174963158095969043289199555` | `20.103926057169595777138951348184108679386797788621` |  |  |
+| 0.0025 | in | `0.999331846895218939038288616298` | True | `11.859469132273520129794408707876735358944418221829` | `18.993441709275022166049717603465469289485668766347` |  |  |
+| 0.0025 | out | `1.0006681531047810609617113837` | False | `11.757808994430313253182073856316940947428643501777` | `19.095101847118229042662052455025263701001443486399` |  |  |
+| 0.001 | in | `0.999732738758087575615315446519` | True | `13.037545824794598247834559915507928659815676709736` | `17.81536501675394404800956639583427598861441027844` |  |  |
+| 0.001 | out | `1.00026726124191242438468455348` | False | `12.992666764126025212845044982796732637412473910835` | `17.860244077422517082999081328545472011017613077341` |  |  |
+| 0.0005 | in | `0.99986636937904378780765772326` | True | `13.888722435518135622874020277407482110228265671918` | `16.964188406030406672970106033934722538201821316258` |  |  |
+| 0.0005 | out | `1.00013363062095621219234227674` | False | `13.864777816723739374539444773326102866196706885462` | `16.988133024824802921304681538016101782233380102714` |  |  |
+| 0.0001 | in | `0.999973273875808757561531544652` | True | `15.723042041489933348061955040613431012361402484487` | `15.129868800058608947782171270728773636068684503688` |  |  |
+| 0.0001 | out | `1.00002672612419124243846845535` | False | `15.717609065939249703489775300675618368578037818895` | `15.135301775609292592354351010666586279852049169281` |  |  |
+
+## Boundary-Layer Scaling
+
+For admissible inward contractions, the deficit behaves like `eps^(1/n)`, not `eps^2`.
+For n = 14, the expected exponent is `0.0714285714285714285714285714286`.
+
+| tail window | fitted log-log slope |
+|---:|---:|
+| 4 | 0.071426652466 |
+| 5 | 0.071425485343 |
+| 6 | 0.071423743770 |
+| 8 | 0.071413955970 |
+| 10 | 0.071384083034 |
+| 12 | 0.071303291566 |
+| 16 | 0.070357577622 |
+
+Tail rows used for the scaling check:
+
+| eps | deficit vs exact L* | deficit / eps^(1/n) |
+|---:|---:|---:|
+| 0.0001 | `15.129868800058608947782171270728773636068684503688` | `29.2112033305747017067704054675879489346` |
+| 0.00005 | `14.40018608991871484426418471381781476200050979266` | `29.21356328373776699965902840214904447177` |
+| 0.00002 | `13.48861518415123385395889572054026957238312038279` | `29.21514724340691277483833234750216560167` |
+| 0.00001 | `12.837309651614088958651272038506844248450762308694` | `29.21573887238648526998991374493140618046` |
+| 5.0e-6 | `12.217340767988530025755270185829414621621243716876` | `29.21606265024642739327745968684324741729` |
+| 1.0e-6 | `10.890670361543508588954551533531288708900387253027` | `29.21635558669030111095870650063984748851` |
+| 1.0e-7 | `9.2390484433191828758824556798058134833640317554205` | `29.21643649352169306304914366103047024` |
+| 1.0e-8 | `7.8378839121932321079883088676166146618210875838579` | `29.21644685164898789398640928550752561549` |
+
+## Interpretation
+
+The radial family around z^n - 1 is a singular boundary-layer problem. The deficit follows an eps^(1/n) scale, so a smooth finite Hessian at the singular point is the wrong local model.
+
+The large positive finite-difference signal survives as a stratified deficit/unfolding signal. It should not be described as an ordinary smooth Hessian certificate.
+
+Replace the finite-Hessian framing with a Puiseux or hypergeometric singularity certificate for radial contractions, then build interval Fourier/tensor bounds for nonradial admissible root perturbations.
+
+## Source Boundary
+
+- Fourier probe artifact: `/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MATH-EHP114-N14-KOOPMAN-PROBE-20260502-02_RESULTS.json`
+- Fourier probe SHA-256: `5962fbd0ddee0d2f4e0d0cce2a47b448cf60c81f7e497a12bac86c711377e52b`
+- Reference artifact: `/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json`
+- Reference artifact SHA-256: `50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7`

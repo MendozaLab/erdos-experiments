@@ -1,0 +1,220 @@
+{
+  "candidate_ranking": [
+    {
+      "candidate": "floor_normalized_I_core_local",
+      "quantity": "I_core_local(s,m) / I_floor(s,m)",
+      "rank_note": "Best Leg-4 target if I_floor is predeclared before the run; preserves the measured core channel.",
+      "scores": {
+        "ahs_literature_control": 1,
+        "core_channel_specificity": 2,
+        "data_available_now": 1,
+        "geometry_drift_resistance": 1,
+        "mendoza_floor_binding": 2,
+        "next_run_operationality": 1,
+        "predeclared_denominator": 1
+      },
+      "total_score": 9
+    },
+    {
+      "candidate": "observed_I_core_local",
+      "quantity": "I_core_local(s,m)",
+      "rank_note": "Best immediate numerator, but not a Leg-4 baseline because it lacks a denominator.",
+      "scores": {
+        "ahs_literature_control": 0,
+        "core_channel_specificity": 2,
+        "data_available_now": 2,
+        "geometry_drift_resistance": 1,
+        "mendoza_floor_binding": 0,
+        "next_run_operationality": 2,
+        "predeclared_denominator": 0
+      },
+      "total_score": 7
+    },
+    {
+      "candidate": "ahs_normalized_closure_cost",
+      "quantity": "I_core_local(s,m) / I_AHS(s,m) or closure excess over an AHS-style construction baseline",
+      "rank_note": "Necessary external control, but not ready as the primary numerator because no AHS construction artifact exists here.",
+      "scores": {
+        "ahs_literature_control": 2,
+        "core_channel_specificity": 1,
+        "data_available_now": 0,
+        "geometry_drift_resistance": 1,
+        "mendoza_floor_binding": 0,
+        "next_run_operationality": 0,
+        "predeclared_denominator": 1
+      },
+      "total_score": 5
+    }
+  ],
+  "claim_ceiling": "A-axis A0; shadow signature, not universal law; no theorem, no lower-bound progress, no Leg-4 pass.",
+  "experiment_id": "EXP-MATH-ERDOS20-CORE-CLOSURE-BASELINE-SELECTION-20260506-01",
+  "guardrails": {
+    "no_d1": true,
+    "no_git": true,
+    "no_new_enumeration": true,
+    "no_scorecard": true,
+    "read_existing_artifacts_only": true,
+    "write_scope": "erdos-experiments/Erdos20/baseline_selection/"
+  },
+  "input_metadata": [
+    {
+      "bytes": 17325,
+      "path": "erdos-experiments/Erdos20/experimental_deepening/EXP-MATH-ERDOS20-CORE-CLOSURE-DEEPENING-20260505-01_RESULTS.json",
+      "sha256": "dd0fed9200f4d0330717de5a93816caffdfcb9869e3b0cae226e8c6fb1b7890e"
+    },
+    {
+      "bytes": 5942,
+      "path": "erdos-experiments/Erdos20/experimental_deepening/ERDOS20_CORE_CLOSURE_DEEPENING_PACKET_2026-05-05.md",
+      "sha256": "76c34c911d1f4d8271288582c352bf8cad7d4444881a9625672281fd14827e71"
+    },
+    {
+      "bytes": 3710,
+      "path": "erdos-experiments/Erdos20/formal_core_closure/ERDOS20_FORMAL_CORE_CLOSURE_TARGETS_2026-05-05.md",
+      "sha256": "a408a9d5fc34768e00e58d46f54c342f9bddfaecfeb378cf49fec88156db0b4f"
+    },
+    {
+      "bytes": 9148,
+      "path": "erdos-experiments/Erdos20/Q1_LITERATURE_GATE_2026-04-17.md",
+      "sha256": "9703809137f78d3e6cb0ca518fa0b118db43e4cfa6ed0c1e6e9af4bfdfd25579"
+    },
+    {
+      "bytes": 8118,
+      "path": "erdos-experiments/Erdos20/EXP-MATH-ERDOS20-SUNFLOWER-001_REPORT_2026-04-17.md",
+      "sha256": "f157916c934580d9d6d4285862eff359f38af1b4b302232b6061f6968d6c051c"
+    },
+    {
+      "bytes": 7696,
+      "path": "erdos-experiments/Erdos20/EXP-MATH-ERDOS20-SUNFLOWER-002_REPORT.md",
+      "sha256": "6fd58ece4ff3d2044eaca3e6db71be200d2baa673681cacf90ec6281f1ecd349"
+    }
+  ],
+  "leg4_suitability_order": [
+    {
+      "candidate": "floor_normalized_I_core_local",
+      "quantity": "I_core_local(s,m) / I_floor(s,m)",
+      "rank_note": "Best Leg-4 target if I_floor is predeclared before the run; preserves the measured core channel.",
+      "scores": {
+        "ahs_literature_control": 1,
+        "core_channel_specificity": 2,
+        "data_available_now": 1,
+        "geometry_drift_resistance": 1,
+        "mendoza_floor_binding": 2,
+        "next_run_operationality": 1,
+        "predeclared_denominator": 1
+      },
+      "total_score": 9
+    },
+    {
+      "candidate": "observed_I_core_local",
+      "quantity": "I_core_local(s,m)",
+      "rank_note": "Best immediate numerator, but not a Leg-4 baseline because it lacks a denominator.",
+      "scores": {
+        "ahs_literature_control": 0,
+        "core_channel_specificity": 2,
+        "data_available_now": 2,
+        "geometry_drift_resistance": 1,
+        "mendoza_floor_binding": 0,
+        "next_run_operationality": 2,
+        "predeclared_denominator": 0
+      },
+      "total_score": 7
+    },
+    {
+      "candidate": "ahs_normalized_closure_cost",
+      "quantity": "I_core_local(s,m) / I_AHS(s,m) or closure excess over an AHS-style construction baseline",
+      "rank_note": "Necessary external control, but not ready as the primary numerator because no AHS construction artifact exists here.",
+      "scores": {
+        "ahs_literature_control": 2,
+        "core_channel_specificity": 1,
+        "data_available_now": 0,
+        "geometry_drift_resistance": 1,
+        "mendoza_floor_binding": 0,
+        "next_run_operationality": 0,
+        "predeclared_denominator": 1
+      },
+      "total_score": 5
+    }
+  ],
+  "problem": "Erdos #20 sunflower core closure",
+  "recommendation": {
+    "candidate": "floor_normalized_I_core_local",
+    "quantity": "I_core_local(s,m) / I_floor(s,m)",
+    "rank_note": "Best Leg-4 target if I_floor is predeclared before the run; preserves the measured core channel.",
+    "scores": {
+      "ahs_literature_control": 1,
+      "core_channel_specificity": 2,
+      "data_available_now": 1,
+      "geometry_drift_resistance": 1,
+      "mendoza_floor_binding": 2,
+      "next_run_operationality": 1,
+      "predeclared_denominator": 1
+    },
+    "total_score": 9
+  },
+  "recommended_next_run_quantity": {
+    "baseline": "predeclared Mendoza-floor information denominator I_floor(s,m)",
+    "numerator": "fixed-core-size local closure information I_core_local(s,m), starting with w=3, s=2, m near m* and across m* +/- delta",
+    "primary": "I_core_local(s,m) / I_floor(s,m)",
+    "secondary_control": "AHS-style construction-normalized closure cost, reported separately as a literature control rather than merged into the floor denominator"
+  },
+  "scope": "baseline selection over saved May 5 core-closure artifacts and April literature/experiment reports",
+  "stability_summary": {
+    "best_current_series": {
+      "N_window": [
+        10,
+        20,
+        35,
+        56
+      ],
+      "classification": "STABLE_BY_SLOPE_ONLY",
+      "late3_cv": 0.182257,
+      "loglog_slope_vs_N": -0.076613,
+      "meaning": "Fixed-s series is closer to the needed Leg-4 observable than strongest-core switching.",
+      "n_window": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "point_count": 4,
+      "series": "w=3, fixed core size s=2",
+      "values_bits": [
+        0.326228,
+        0.459083,
+        0.354808,
+        0.296016
+      ]
+    },
+    "diagnostic_count": 6,
+    "geometry_drift_count": 3,
+    "observations_count": 13,
+    "stable_by_slope_count": 2,
+    "strongest_w3_series": {
+      "N_window": [
+        10,
+        20,
+        35,
+        56
+      ],
+      "classification": "STABLE_BY_SLOPE_ONLY",
+      "late3_cv": 0.106989,
+      "loglog_slope_vs_N": 0.061889,
+      "meaning": "Slope is a geometry-drift screen, not a floor-normalized Leg-4 verdict.",
+      "n_window": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "point_count": 4,
+      "series": "w=3 strongest per-core",
+      "values_bits": [
+        0.326228,
+        0.459083,
+        0.354808,
+        0.393312
+      ]
+    }
+  },
+  "timestamp_utc": "2026-05-06T07:09:00.580565+00:00"
+}

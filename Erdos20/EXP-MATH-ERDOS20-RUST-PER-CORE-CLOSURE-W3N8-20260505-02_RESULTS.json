@@ -1,0 +1,104 @@
+{
+  "build": {
+    "elapsed_seconds": 0.0613922500051558,
+    "returncode": 0,
+    "stderr_tail": "warning: field `n` is never read\n  --> src/main.rs:43:5\n   |\n42 | struct Enumerator {\n   |        ---------- field in this struct\n43 |     n: usize,\n   |     ^\n   |\n   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: `sunflower-core-closure` (bin \"sunflower-core-closure\") generated 1 warning\n    Finished `release` profile [optimized] target(s) in 0.00s\n"
+  },
+  "claim_ceiling": "shadow signature, not universal law; no theorem or lower-bound progress",
+  "classification": "RUST_PER_CORE_SIGNAL_PRESENT",
+  "experiment_id": "EXP-MATH-ERDOS20-RUST-PER-CORE-CLOSURE-W3N8-20260505-02",
+  "guardrails": {
+    "no_d1": true,
+    "no_email": true,
+    "no_git": true,
+    "no_public_docs": true,
+    "no_scorecard": true
+  },
+  "next_heavy_targets": [
+    {
+      "known_sf_free_families": 148790380,
+      "n": 8,
+      "recommended_command": "target/release/sunflower-core-closure --w 3 --n 8 --target-m auto --window 0",
+      "w": 3
+    }
+  ],
+  "problem": "Erdos #20 sunflower core closure",
+  "runner_status": "PASS",
+  "scope": "Rust per-core closure calibration and scale runner",
+  "targets": [
+    {
+      "data": {
+        "aggregate_I_close_bits_at_target": 5.873331,
+        "auto_jamming_m": 8,
+        "core_count": 37,
+        "core_rows": [
+          {
+            "I_core_global_bits": 2.703406,
+            "I_core_local_bits": -0.0,
+            "candidate_count": 2322672240,
+            "channel_count": 48389005,
+            "core_size_s": 0,
+            "global_valid_count": 356600160,
+            "local_valid_count": 2322672240,
+            "m": 8,
+            "petal_size": 3
+          },
+          {
+            "I_core_global_bits": 2.703406,
+            "I_core_local_bits": 0.393312,
+            "candidate_count": 6968016720,
+            "channel_count": 387112040,
+            "core_size_s": 1,
+            "global_valid_count": 1069800480,
+            "local_valid_count": 5305305600,
+            "m": 8,
+            "petal_size": 2
+          },
+          {
+            "I_core_global_bits": 2.703406,
+            "I_core_local_bits": 0.296016,
+            "candidate_count": 6968016720,
+            "channel_count": 1354892140,
+            "core_size_s": 2,
+            "global_valid_count": 1069800480,
+            "local_valid_count": 5675439840,
+            "m": 8,
+            "petal_size": 1
+          }
+        ],
+        "core_seconds": 25.367029,
+        "density": [
+          1,
+          56,
+          1540,
+          26320,
+          296870,
+          2207968,
+          10482612,
+          30073480,
+          48389005,
+          39622240,
+          15011248,
+          2483040,
+          196000
+        ],
+        "density_seconds": 3.632237,
+        "k": 3,
+        "max_family_size": 12,
+        "n": 8,
+        "record_window": 0,
+        "runner": "sunflower-core-closure-rust",
+        "site_count": 56,
+        "target_m": 8,
+        "total_sf_free": 148790380,
+        "w": 3
+      },
+      "elapsed_seconds": 29.281125916000747,
+      "n": 8,
+      "status": "PASS",
+      "stderr": "",
+      "w": 3
+    }
+  ],
+  "timestamp_utc": "2026-05-05T23:13:31.077391+00:00"
+}

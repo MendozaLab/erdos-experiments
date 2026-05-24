@@ -1,0 +1,47 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-TAO-DEFECT-PSI-COR-C10-LOWER-BOUND-20260509-01",
+  "status": "TAO_C10_LOWER_BOUND_RIGOROUS_PASS",
+  "claim_ceiling": "Internal rigorous lower bound on a universal disk integral. Not a proof of Erdos #114, not an N0 candidate by itself, and not a Tao threshold extraction. Produces one numeric input that propagates into Track A3 and A4.",
+  "constant_name": "c_10",
+  "definition": "Disk integral over D(0, 1/21) of f(z) = 1/|z| + 1/|z-1| - |1/z + 1/(z-1)| dA",
+  "rigorous_lower_bound": 0.006900495524140533,
+  "rigorous_lower_bound_mpf_str": "0.00690049552414053277372859578815",
+  "rigorous_lower_bound_rational": [
+    6900495524140532773728595788,
+    1000000000000000000000000000000
+  ],
+  "rigorous_lower_bound_method": "mpmath.iv ball/interval arithmetic on uniform polar grid; g = (|z-1| + |z| - |2z-1|) / |z-1| is bounded and continuous (singular factor 1/|z| canceled by Jacobian r). Cell lower bound = interval-min(g) * cell width (rounded outward by mpmath.iv).",
+  "rigorous_method_notes": "Working precision dps=60. Polar uniform grid 200 radial x 720 angular cells. Used a sound algebraic rewrite to remove the 1/|z| singularity before interval evaluation, so no singular strip is needed. Negative interval-min cells (if any) NOT clamped \u2014 let them drag the lower bound; an honest negative bound would yield BLOCKED status.",
+  "non_rigorous_midpoint_estimate": 0.007069155243213715,
+  "non_rigorous_midpoint_estimate_mpf_str": "0.007069155243213715",
+  "non_rigorous_method": "Midpoint Riemann sum on uniform polar grid 2000 radial x 7200 angular at dps=60; not certified, used only for sanity-check.",
+  "estimate_consistency_check": "rigorous_LB <= non_rigorous_estimate",
+  "grid_resolution": {
+    "radial_cells": 200,
+    "angular_cells": 720,
+    "singular_strip_radius": 0.0,
+    "singular_strip_method": "closed-form (algebraic cancellation of 1/r)"
+  },
+  "negative_interval_min_cells": 13288,
+  "total_cells": 144000,
+  "computation_time_seconds": 501.6653501987457,
+  "rigorous_walltime_seconds": 15.066350221633911,
+  "nonrigorous_walltime_seconds": 486.52162408828735,
+  "library_used": "mpmath (mpmath.iv for intervals, dps=60)",
+  "next_dependency": "If status is RIGOROUS_PASS with c_10 > 0, queue Track A3 (origin-repulsion implied constant). If BLOCKED or NUMERIC_ONLY, document obstacle and refine grid or method.",
+  "tao_paper_reference": {
+    "arxiv_id": "2512.12455v2",
+    "lemma": "defect-psi-cor",
+    "line": 1025,
+    "wording": "c_C := \u222b\u222b_{D(0, 1/(2C+1))} (1/|z| + 1/|z-1| - |1/z + 1/(z-1)|) dA, evaluated here at C = 10."
+  },
+  "math_preconditions_verified": {
+    "P1_nonnegativity": "f >= 0 by triangle inequality |a+b| <= |a|+|b|",
+    "P2_singularity_inside_disk": "Only z=0 lies in D(0,1/21); z=1 has |z-1| > 20/21",
+    "P3_singularity_is_integrable": "g(r,theta) = f * r = (|z-1|+|z|-|2z-1|)/|z-1| continuous bounded; g(0) = 0; integration over polar rectangle is over a continuous bounded function.",
+    "spot_check_min_g": 9.378678549036662e-07,
+    "spot_check_max_g": 0.09882729446010903
+  },
+  "timestamp_unix": 1778353005,
+  "schema_version": "1.0"
+}

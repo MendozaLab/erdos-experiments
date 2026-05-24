@@ -1,0 +1,484 @@
+{
+  "experiment_id": "EXP-MM-755-PMF-B2G2-TRANSFER-NEARGROUND-D2-39-2026-04-29",
+  "date": "2026-04-29",
+  "erdos_problem": 755,
+  "scan_mode": "pmf_b2g_transfer_state_exact_scout",
+  "implementation": "Rust exact branch-and-bound transfer-state scanner",
+  "constraint": "B_2[g] on [0,n] with ordered representation count <= 2g",
+  "claim_boundary": "This is an exact finite computational scout for the B_2[g] transfer state, not an independent theorem or parity check against a prior #755 reference packet.",
+  "n_min": 39,
+  "n_max": 39,
+  "g": 2,
+  "frontier_k": 5,
+  "near_ground_deficiency": 2,
+  "total_runtime_sec": 60.513941334,
+  "rows": [
+    {
+      "n": 39,
+      "g": 2,
+      "ordered_representation_cap": 4,
+      "h_n_exact_finite": 13,
+      "maximizer_count": 1570,
+      "first_maximizer_witness": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        12,
+        15,
+        22,
+        30,
+        31,
+        38,
+        39
+      ],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_exact_branch_and_bound_transfer_state",
+        "sites_processed": 40,
+        "nodes_visited": 431889545,
+        "transitions_attempted": 320488204,
+        "legal_occupy_transitions": 111401340,
+        "rejected_occupy_transitions": 209086864,
+        "branch_bound_pruned_nodes": 111330539,
+        "best_updates": 3
+      },
+      "spectral_observables": {
+        "ground_cardinality_h_n": 13,
+        "ground_state_degeneracy": 1570,
+        "ground_entropy_ln": 7.358830898342354,
+        "first_excited_cardinality": 12,
+        "first_excited_count": 1768784,
+        "gap_to_first_excited_layer": 1,
+        "near_ground_count_h_minus_1": 1768784,
+        "near_ground_count_h_minus_2": 39247586,
+        "deficiency_layers": [
+          {
+            "deficiency": 0,
+            "cardinality": 13,
+            "count": 1570
+          },
+          {
+            "deficiency": 1,
+            "cardinality": 12,
+            "count": 1768784
+          },
+          {
+            "deficiency": 2,
+            "cardinality": 11,
+            "count": 39247586
+          }
+        ],
+        "near_ground_diagnostics": {
+          "requested_deficiency": 2,
+          "min_retained_cardinality": 11,
+          "second_pass_nodes_visited": 817988785,
+          "second_pass_pruned_nodes": 175159698,
+          "retained_terminal_states": 41017940
+        }
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              4,
+              10,
+              12,
+              13,
+              16,
+              24,
+              29,
+              32,
+              34,
+              37,
+              39
+            ],
+            "objective_value": 5.0,
+            "uniform_prefix_residual": 5.0,
+            "uniform_prefix_ratio_n": 0.1282051282051282,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 2.5,
+            "density_adjusted_mass_ratio_n2": 0.001643655489809336,
+            "joint_score": 0.12984878369493752
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              4,
+              12,
+              14,
+              15,
+              20,
+              27,
+              29,
+              32,
+              34,
+              36,
+              38
+            ],
+            "objective_value": 5.0,
+            "uniform_prefix_residual": 5.0,
+            "uniform_prefix_ratio_n": 0.1282051282051282,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 8.5,
+            "density_adjusted_mass_ratio_n2": 0.005588428665351742,
+            "joint_score": 0.13379355687047995
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              1,
+              5,
+              7,
+              10,
+              14,
+              16,
+              19,
+              27,
+              29,
+              35,
+              37,
+              39
+            ],
+            "objective_value": 5.0,
+            "uniform_prefix_residual": 5.0,
+            "uniform_prefix_ratio_n": 0.1282051282051282,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 14.5,
+            "density_adjusted_mass_ratio_n2": 0.00953320184089415,
+            "joint_score": 0.13773833004602234
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              1,
+              5,
+              7,
+              10,
+              17,
+              24,
+              25,
+              26,
+              28,
+              36,
+              37,
+              39
+            ],
+            "objective_value": 5.0,
+            "uniform_prefix_residual": 5.0,
+            "uniform_prefix_ratio_n": 0.1282051282051282,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 1.5,
+            "density_adjusted_mass_ratio_n2": 0.0009861932938856016,
+            "joint_score": 0.1291913214990138
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              5,
+              8,
+              10,
+              15,
+              23,
+              24,
+              27,
+              33,
+              35,
+              36,
+              39
+            ],
+            "objective_value": 5.0,
+            "uniform_prefix_residual": 5.0,
+            "uniform_prefix_ratio_n": 0.1282051282051282,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 2.5,
+            "density_adjusted_mass_ratio_n2": 0.001643655489809336,
+            "joint_score": 0.12984878369493752
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              2,
+              3,
+              16,
+              17,
+              23,
+              26,
+              27,
+              30,
+              34,
+              35,
+              39
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 9.0,
+            "uniform_prefix_ratio_n": 0.23076923076923078,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0003287310979618672,
+            "joint_score": 0.23109796186719264
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              2,
+              3,
+              17,
+              19,
+              23,
+              24,
+              27,
+              30,
+              32,
+              36,
+              39
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 9.0,
+            "uniform_prefix_ratio_n": 0.23076923076923078,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0003287310979618672,
+            "joint_score": 0.23109796186719264
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              1,
+              2,
+              6,
+              7,
+              17,
+              24,
+              26,
+              27,
+              30,
+              36,
+              38,
+              39
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 8.0,
+            "uniform_prefix_ratio_n": 0.20512820512820512,
+            "prefix_location": 7,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0003287310979618672,
+            "joint_score": 0.20545693622616698
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              1,
+              2,
+              6,
+              8,
+              21,
+              22,
+              24,
+              27,
+              32,
+              35,
+              36,
+              39
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 7.0,
+            "uniform_prefix_ratio_n": 0.1794871794871795,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0003287310979618672,
+            "joint_score": 0.17981591058514135
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              2,
+              6,
+              17,
+              18,
+              23,
+              25,
+              26,
+              29,
+              32,
+              36,
+              39
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 7.0,
+            "uniform_prefix_ratio_n": 0.1794871794871795,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0003287310979618672,
+            "joint_score": 0.17981591058514135
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              7,
+              10,
+              11,
+              16,
+              17,
+              21,
+              24,
+              33,
+              36,
+              37,
+              39
+            ],
+            "objective_value": 0.12853385930309005,
+            "uniform_prefix_residual": 5.0,
+            "uniform_prefix_ratio_n": 0.1282051282051282,
+            "prefix_location": 32,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0003287310979618672,
+            "joint_score": 0.12853385930309005
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              5,
+              7,
+              10,
+              17,
+              24,
+              25,
+              26,
+              28,
+              36,
+              37,
+              39
+            ],
+            "objective_value": 0.1291913214990138,
+            "uniform_prefix_residual": 5.0,
+            "uniform_prefix_ratio_n": 0.1282051282051282,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 1.5,
+            "density_adjusted_mass_ratio_n2": 0.0009861932938856016,
+            "joint_score": 0.1291913214990138
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              4,
+              11,
+              13,
+              14,
+              16,
+              20,
+              28,
+              33,
+              34,
+              38,
+              39
+            ],
+            "objective_value": 0.1291913214990138,
+            "uniform_prefix_residual": 5.0,
+            "uniform_prefix_ratio_n": 0.1282051282051282,
+            "prefix_location": 4,
+            "density_adjusted_mass_dev": 1.5,
+            "density_adjusted_mass_ratio_n2": 0.0009861932938856016,
+            "joint_score": 0.1291913214990138
+          },
+          {
+            "rank": 4,
+            "witness": [
+              1,
+              2,
+              4,
+              10,
+              13,
+              14,
+              16,
+              23,
+              28,
+              33,
+              34,
+              38,
+              39
+            ],
+            "objective_value": 0.1291913214990138,
+            "uniform_prefix_residual": 5.0,
+            "uniform_prefix_ratio_n": 0.1282051282051282,
+            "prefix_location": 4,
+            "density_adjusted_mass_dev": 1.5,
+            "density_adjusted_mass_ratio_n2": 0.0009861932938856016,
+            "joint_score": 0.1291913214990138
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              4,
+              10,
+              12,
+              13,
+              16,
+              24,
+              29,
+              32,
+              34,
+              37,
+              39
+            ],
+            "objective_value": 0.12984878369493752,
+            "uniform_prefix_residual": 5.0,
+            "uniform_prefix_ratio_n": 0.1282051282051282,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 2.5,
+            "density_adjusted_mass_ratio_n2": 0.001643655489809336,
+            "joint_score": 0.12984878369493752
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "checked_count": 1,
+    "min_h_n": 13,
+    "max_h_n": 13,
+    "split_count": 1,
+    "split_ns": [
+      39
+    ],
+    "total_maximizers": 1570
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "experiment_id": "EXP-MATH-ERDOS30-BFR-REPRESENTATION-CANONICAL-PORT-20260508-01",
+  "generated_by": "erdos_atlas_autoresearch_librarian",
+  "origin": "auto-research",
+  "persona": "Eratosthenes of Cyrene",
+  "short_name": "Eratosthenes",
+  "scribe": "Ahmes",
+  "story_writer": "Ahmes",
+  "mathematician_persona": "David Hilbert",
+  "promotion_state": "review_only",
+  "target_problem": 30,
+  "date": "2026-05-08",
+  "claim_ceiling": "canonical bridge port only; no public Sidon coefficient change and no registry or publication update",
+  "input_artifacts": [
+    {
+      "path": "scratch/Erdos30_BFR_RepresentationBridge_SCOUT.lean",
+      "sha256": "eaddd7c50aa9849c4f94e7c9c52ecf80482d7b81ab4c3b4a570d639f708a1af4",
+      "role": "reviewed scout source"
+    },
+    {
+      "path": "lean/Erdos30_BFR.lean",
+      "sha256_after": "4ba292e877fcf436afaa37ab8ccd1217a850e0d32ba7df572dc1fc5c4ce7d921",
+      "role": "canonical BFR Lean file"
+    }
+  ],
+  "verification": {
+    "lean_command": "lake env lean lean/Erdos30_BFR.lean",
+    "lean_exit_code": 0,
+    "canonical_bridge_lines": {
+      "start": 197,
+      "end": 360
+    }
+  },
+  "ported_targets": [
+    "bfrRepFunction",
+    "bfrRepFunction_le_card_product",
+    "bfrRepFunction_le_card_sq",
+    "bfrRepFunction_le_half_card_le_one",
+    "bfrRepFunction_gt_half_card_le_one",
+    "bfrRepFunction_sidon_le_two",
+    "bfrRepFunction_sum_mem_range_of_pair",
+    "bfrRepFunction_eq_zero_of_not_mem_range",
+    "bfrSumRange",
+    "mem_bfrSumRange_iff",
+    "bfrRepFunction_eq_zero_of_not_mem_bfrSumRange",
+    "bfr_sum_repFunction_eq_card_sq"
+  ],
+  "boundary": {
+    "bfr_core_bound_still_external": true,
+    "representation_mechanics_only": true,
+    "constant_pressure_not_attempted": true
+  },
+  "decision": "CANONICAL_REPRESENTATION_BRIDGE_PORTED_FOR_REVIEW",
+  "next_actions": [
+    "Use bfr_sum_repFunction_eq_card_sq and bfrRepFunction_sidon_le_two as the entry points for interval occupancy.",
+    "Define per-interval occupancy y_i using bfrSumRange and a finite interval partition.",
+    "Keep the next phase focused on interval bookkeeping before any coefficient-bearing inequality."
+  ],
+  "forbidden_writes_observed": {
+    "d1": false,
+    "morphisms_json": false,
+    "proof_registries": false,
+    "public_pages": false,
+    "existing_114_result_artifacts": false
+  }
+}

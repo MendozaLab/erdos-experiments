@@ -1,0 +1,70 @@
+{
+  "all_positive_by_interval_spectral": false,
+  "all_working_lambda14_pass": false,
+  "claim_ceiling": "This is a diagnostic for the interval Taylor packet. It does not prove or disprove EHP #114.",
+  "experiment_id": "EXP-MATH-EHP114-N14-INTERVAL-TAYLOR-SPECTRAL-DIAGNOSIS-20260505-01",
+  "global_interval_spectral_lower_bound": -93160.96568063524,
+  "guardrails": {
+    "no_d1_update": true,
+    "no_email": true,
+    "no_git": true,
+    "no_lean_status_change": true,
+    "no_public_claim": true,
+    "no_scorecard_update": true
+  },
+  "interpretation": "The Taylor-matrix failure is not just Gershgorin crudeness if any interval spectral lower bound is negative. In that case, the M14 term must absorb genuine radial-base shape softening.",
+  "next_blocker": "Reformulate M14 to absorb radial-base shape softening, or restrict eta14Boundary(eps) until the radial reserve dominates the negative shape curvature.",
+  "parent_packet": "EXP-MATH-EHP114-N14-INTERVAL-TAYLOR-M14-PACKET-20260505-01",
+  "rows": [
+    {
+      "eps": 0.0001,
+      "frobenius_interval_radius": 8.107008500528042e-07,
+      "gershgorin_lower_bound": -74273.96643095801,
+      "interval_spectral_lower_bound": -39575.58732338331,
+      "midpoint_lambda_max": 225272.83798698144,
+      "midpoint_lambda_min": -39575.58732257261,
+      "positive_by_interval_spectral": false,
+      "working_lambda14_pass": false
+    },
+    {
+      "eps": 0.001,
+      "frobenius_interval_radius": 6.774273086445358e-07,
+      "gershgorin_lower_bound": -131824.7210585011,
+      "interval_spectral_lower_bound": -93160.96568063524,
+      "midpoint_lambda_max": 78479.02221111426,
+      "midpoint_lambda_min": -93160.96567995782,
+      "positive_by_interval_spectral": false,
+      "working_lambda14_pass": false
+    },
+    {
+      "eps": 0.01,
+      "frobenius_interval_radius": 4.791239751547712e-07,
+      "gershgorin_lower_bound": -42486.401565973,
+      "interval_spectral_lower_bound": -32480.966922948366,
+      "midpoint_lambda_max": 6621.792459533533,
+      "midpoint_lambda_min": -32480.96692246924,
+      "positive_by_interval_spectral": false,
+      "working_lambda14_pass": false
+    },
+    {
+      "eps": 0.1,
+      "frobenius_interval_radius": 2.563883813540307e-07,
+      "gershgorin_lower_bound": -589.0869514755259,
+      "interval_spectral_lower_bound": -450.9247951830609,
+      "midpoint_lambda_max": 105.1533659121452,
+      "midpoint_lambda_min": -450.9247949266725,
+      "positive_by_interval_spectral": false,
+      "working_lambda14_pass": false
+    }
+  ],
+  "sources": {
+    "inari_n14": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json",
+    "inari_n14_sha256": "50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7",
+    "packet_oracle_output": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-EHP114-N14-INTERVAL-TAYLOR-M14-PACKET-20260505-01_ORACLE_OUTPUT.json",
+    "packet_oracle_output_sha256": "c225b6efabb6ecacac179907cbfed336e6b474f78375c9a1f3e2ed14ae8f5658",
+    "packet_results": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EXP-MATH-EHP114-N14-INTERVAL-TAYLOR-M14-PACKET-20260505-01_RESULTS.json",
+    "packet_results_sha256": "57c2e917260efb1d273b60bd1eca6a87772c6cabfe0a538ee280b4e33f05caf6"
+  },
+  "status": "RADIAL_BASE_SHAPE_SOFTENING_DETECTED",
+  "timestamp_utc": "2026-05-06T00:38:54.622592+00:00"
+}

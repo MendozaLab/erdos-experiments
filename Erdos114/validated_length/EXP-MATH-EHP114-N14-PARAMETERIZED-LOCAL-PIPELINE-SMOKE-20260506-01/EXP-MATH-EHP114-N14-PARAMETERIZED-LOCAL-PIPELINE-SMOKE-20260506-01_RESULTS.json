@@ -1,0 +1,109 @@
+{
+  "binary_audit": [
+    {
+      "binary": "ehp114_n14_global_critical_point_exclusion_target.rs",
+      "blocking": false,
+      "hardcoded_subcell_evidence": [],
+      "has_source_subcell_contract": true,
+      "has_sub_i_cli": true,
+      "has_sub_j_cli": true,
+      "path": "src/bin/ehp114_n14_global_critical_point_exclusion_target.rs",
+      "source_exists": true
+    },
+    {
+      "binary": "ehp114_n14_regular_residual_decomposition.rs",
+      "blocking": false,
+      "hardcoded_subcell_evidence": [],
+      "has_source_subcell_contract": true,
+      "has_sub_i_cli": true,
+      "has_sub_j_cli": true,
+      "path": "src/bin/ehp114_n14_regular_residual_decomposition.rs",
+      "source_exists": true
+    },
+    {
+      "binary": "ehp114_n14_critical_candidate_affine_gradient.rs",
+      "blocking": false,
+      "hardcoded_subcell_evidence": [],
+      "has_source_subcell_contract": true,
+      "has_sub_i_cli": true,
+      "has_sub_j_cli": true,
+      "path": "src/bin/ehp114_n14_critical_candidate_affine_gradient.rs",
+      "source_exists": true
+    },
+    {
+      "binary": "ehp114_n14_pprime_root_location.rs",
+      "blocking": false,
+      "hardcoded_subcell_evidence": [],
+      "has_source_subcell_contract": true,
+      "has_sub_i_cli": true,
+      "has_sub_j_cli": true,
+      "path": "src/bin/ehp114_n14_pprime_root_location.rs",
+      "source_exists": true
+    },
+    {
+      "binary": "ehp114_n14_sharp_pprime_root_location.rs",
+      "blocking": false,
+      "hardcoded_subcell_evidence": [],
+      "has_source_subcell_contract": true,
+      "has_sub_i_cli": true,
+      "has_sub_j_cli": true,
+      "path": "src/bin/ehp114_n14_sharp_pprime_root_location.rs",
+      "source_exists": true
+    },
+    {
+      "binary": "ehp114_n14_residual_chain_integration_cert.rs",
+      "blocking": false,
+      "hardcoded_subcell_evidence": [],
+      "has_source_subcell_contract": true,
+      "has_sub_i_cli": true,
+      "has_sub_j_cli": true,
+      "path": "src/bin/ehp114_n14_residual_chain_integration_cert.rs",
+      "source_exists": true
+    },
+    {
+      "binary": "ehp114_n14_local_hard_cell_certificate_packet.rs",
+      "blocking": false,
+      "hardcoded_subcell_evidence": [],
+      "has_source_subcell_contract": true,
+      "has_sub_i_cli": true,
+      "has_sub_j_cli": true,
+      "path": "src/bin/ehp114_n14_local_hard_cell_certificate_packet.rs",
+      "source_exists": true
+    }
+  ],
+  "claim_ceiling": "Parameterized local-pipeline smoke gate only. Not a proof of Erdos #114, not a global n=14 certificate, and not an exact lemniscate-length certificate.",
+  "elapsed_secs": 0.002025333,
+  "experiment_id": "EXP-MATH-EHP114-N14-PARAMETERIZED-LOCAL-PIPELINE-SMOKE-20260506-01",
+  "first_failed_condition": "per-cell upstream source artifact is missing for CELL-00-00; expected first source like EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-00-00-20260506-01_RESULTS.json",
+  "hard_cell_source_probe": {
+    "declared_subcell": "CELL-06-04",
+    "exists": true,
+    "expected_failure_for_nonhard_smoke": "SOURCE_SUBCELL_MISMATCH or SOURCE_SUBCELL_UNVERIFIED",
+    "path": "../../Erdos114/validated_length/EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-HARD-CELL-20260506-01/EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-HARD-CELL-20260506-01_RESULTS.json"
+  },
+  "hardcoded_blocker_count": 0,
+  "l33a_first_missing_cell": {
+    "cell_tag": "CELL-00-00",
+    "sub_i": 0,
+    "sub_j": 0
+  },
+  "missing_cell_count_from_l33a": 63,
+  "per_cell_source_probe": {
+    "exists": false,
+    "expected_first_source": "EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-00-00-20260506-01_RESULTS.json",
+    "reason": "L33B parameterizes the local pipeline only; it intentionally does not generate the upstream per-cell L18 source artifacts."
+  },
+  "required_binary_count": 7,
+  "smoke_subcell": {
+    "cell_tag": "CELL-00-00",
+    "sub_i": 0,
+    "sub_j": 0
+  },
+  "source_contract_status": "SOURCE_SUBCELL_MISMATCH",
+  "source_l33a_experiment_id": "EXP-MATH-EHP114-N14-MISSING-CELL-LOCAL-PACKETS-20260506-02",
+  "source_l33a_path": "../../Erdos114/validated_length/EXP-MATH-EHP114-N14-MISSING-CELL-LOCAL-PACKETS-20260506-02/EXP-MATH-EHP114-N14-MISSING-CELL-LOCAL-PACKETS-20260506-02_RESULTS.json",
+  "status": "PARAMETERIZED_LOCAL_PIPELINE_BLOCKED_SOURCE_ARTIFACT_MISSING",
+  "timestamp_unix": "1778101843",
+  "what_this_does_not_rule_out": "This does not certify any of the 63 missing cells and does not prove that per-cell upstream source artifacts exist.",
+  "what_this_rules_out": "The seven local residual-chain binaries are no longer allowed to hide fixed subcell constants when the smoke audit reports zero blockers."
+}

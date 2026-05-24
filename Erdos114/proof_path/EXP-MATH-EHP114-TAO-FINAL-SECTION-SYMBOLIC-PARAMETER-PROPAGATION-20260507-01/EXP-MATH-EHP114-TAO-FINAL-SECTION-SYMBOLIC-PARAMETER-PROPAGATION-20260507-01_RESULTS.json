@@ -1,0 +1,146 @@
+{
+  "claim_ceiling": "Final-section symbolic parameter propagation only. This packet does not provide a numeric Tao threshold, does not authorize n=15 or higher computation, and does not prove the full all-degree statement.",
+  "expected_tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "experiment_id": "EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-PARAMETER-PROPAGATION-20260507-01",
+  "final_condition_count": 5,
+  "final_condition_rows": [
+    {
+      "condition_id": "choose_C_for_pp0_refinement",
+      "condition_status": "SYMBOLIC_READY",
+      "remaining_blockers": [
+        "numeric C_origin_repulsion from symbolic K_origin parameters"
+      ],
+      "symbolic_condition": "C >= C_origin_repulsion(c_in, C0_independent_constants)"
+    },
+    {
+      "condition_id": "choose_C0_for_pp0_case",
+      "condition_status": "SYMBOLIC_READY",
+      "remaining_blockers": [
+        "numeric K_pp0, c_pp0, K_not_pp0, c_disp still pending"
+      ],
+      "symbolic_condition": "C0 >= 2*K_pp0/c_pp0"
+    },
+    {
+      "condition_id": "choose_C0_for_not_pp0_case",
+      "condition_status": "SYMBOLIC_READY",
+      "remaining_blockers": [
+        "numeric K_pp0, c_pp0, K_not_pp0, c_disp still pending"
+      ],
+      "symbolic_condition": "C0 >= 2*K_not_pp0*C/c_disp"
+    },
+    {
+      "condition_id": "choose_C_for_pots_contradiction",
+      "condition_status": "OPAQUE",
+      "remaining_blockers": [
+        "K_pots_upper and N_pots(C,eps) remain opaque"
+      ],
+      "symbolic_condition": "C/2 > K_pots_upper and n >= N_pots(C, eps)"
+    },
+    {
+      "condition_id": "choose_epsilon_for_ets",
+      "condition_status": "OPAQUE",
+      "remaining_blockers": [
+        "eps0 and N_ets(eps) remain opaque"
+      ],
+      "symbolic_condition": "eps <= eps0 and n >= N_ets(eps)"
+    }
+  ],
+  "first_failed_condition": "pots and ets final-section conditions remain opaque",
+  "full_synthesis_allowed": false,
+  "global_candidate_N0": null,
+  "k_origin_bridge_status": "K_ORIGIN_SYMBOLIC_READY_NUMERIC_PARAMETERS_PENDING",
+  "n15_or_higher_computation_authorized": false,
+  "numeric_parent_ready_count": 1,
+  "opaque_condition_count": 2,
+  "opaque_parent_count": 0,
+  "parent_parameter_count": 4,
+  "parent_parameter_rows": [
+    {
+      "expression": "||p||_1 <= 2*outside_mass + local_dispersion <= 2*outside_mass + n*local_dispersion for n>=4",
+      "parameter": "K_disp_split",
+      "parameter_status": "NUMERIC_READY",
+      "remaining_blockers": [],
+      "source": "EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02"
+    },
+    {
+      "expression": "c_defect_C = F(c_tridef(C), c_markov_many, 2, 2*pi)",
+      "parameter": "c_defect_C",
+      "parameter_status": "SYMBOLIC_READY",
+      "remaining_blockers": [
+        "numeric evaluation of c_tridef(C)"
+      ],
+      "source": "EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02"
+    },
+    {
+      "expression": "K_ankh = F(2*pi, 1/pi, pointwise_annulus_constant)",
+      "parameter": "K_ankh",
+      "parameter_status": "SYMBOLIC_READY",
+      "remaining_blockers": [
+        "pointwise annulus estimate constant in the proof of ankh"
+      ],
+      "source": "EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02"
+    },
+    {
+      "expression": "K_origin = F(A_pocl, B1, B2, C, C_prime)",
+      "parameter": "K_origin",
+      "parameter_status": "SYMBOLIC_READY",
+      "remaining_blockers": [
+        "numeric selection of A_pocl, B1, B2, C, and C_prime"
+      ],
+      "source": "EXP-MATH-EHP114-TAO-PVAR-ELEMENTARY-INEQUALITY-PACKET-20260507-01"
+    }
+  ],
+  "partial_max_N_final_section": null,
+  "source_artifacts": [
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-PVAR-ELEMENTARY-INEQUALITY-PACKET-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PVAR-ELEMENTARY-INEQUALITY-PACKET-20260507-01/EXP-MATH-EHP114-TAO-PVAR-ELEMENTARY-INEQUALITY-PACKET-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "a5f867b78de0c754dabd6ba9eb33b3dce16c787fa8c443c9e63943d0f7f01c63",
+        "expected_sha256": "a5f867b78de0c754dabd6ba9eb33b3dce16c787fa8c443c9e63943d0f7f01c63",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PVAR-ELEMENTARY-INEQUALITY-PACKET-20260507-01/EXP-MATH-EHP114-TAO-PVAR-ELEMENTARY-INEQUALITY-PACKET-20260507-01_RESULTS.json",
+        "role": "pvar_elementary_inequality_packet",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-PVAR-ELEMENTARY-INEQUALITY-PACKET-20260507-01/EXP-MATH-EHP114-TAO-PVAR-ELEMENTARY-INEQUALITY-PACKET-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "PVAR_ELEMENTARY_INEQUALITY_READY"
+    },
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "7a3c7b6c3289d5a2120017e69dd3155a6d55916ae32f4e6ad4ea21b5c1597436",
+        "expected_sha256": "7a3c7b6c3289d5a2120017e69dd3155a6d55916ae32f4e6ad4ea21b5c1597436",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02_RESULTS.json",
+        "role": "base_lemma_seed_propagation",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02/EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "BASE_LEMMA_SEED_PROPAGATION_PARTIAL"
+    },
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "07a5716de874167853f77422c248f43457e84791e4a557dc29ccc71de4d70b47",
+        "expected_sha256": "07a5716de874167853f77422c248f43457e84791e4a557dc29ccc71de4d70b47",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01_RESULTS.json",
+        "role": "final_section_symbolic_budget",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "FINAL_SECTION_SYMBOLIC_BUDGET_READY_NUMERIC_CONSTANTS_PENDING"
+    }
+  ],
+  "source_blocked_count": 0,
+  "source_experiment_ids": [
+    "EXP-MATH-EHP114-TAO-PVAR-ELEMENTARY-INEQUALITY-PACKET-20260507-01",
+    "EXP-MATH-EHP114-TAO-BASE-LEMMA-SEED-PROPAGATION-20260507-02",
+    "EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01"
+  ],
+  "status": "FINAL_SECTION_SYMBOLIC_PARAMETER_PROPAGATION_PARTIAL",
+  "symbolic_condition_ready_count": 3,
+  "symbolic_parent_ready_count": 3,
+  "tao_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+  "tao_source_sha_status": "PASS_PINNED_SOURCE_SHA_MATCH"
+}

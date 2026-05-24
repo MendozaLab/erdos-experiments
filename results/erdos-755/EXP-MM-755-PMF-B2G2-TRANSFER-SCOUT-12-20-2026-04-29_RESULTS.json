@@ -1,0 +1,3169 @@
+{
+  "experiment_id": "EXP-MM-755-PMF-B2G2-TRANSFER-SCOUT-12-20-2026-04-29",
+  "date": "2026-04-29",
+  "erdos_problem": 755,
+  "scan_mode": "pmf_b2g_transfer_state_exact_scout",
+  "implementation": "Rust exact branch-and-bound transfer-state scanner",
+  "constraint": "B_2[g] on [0,n] with ordered representation count <= 2g",
+  "claim_boundary": "This is an exact finite computational scout for the B_2[g] transfer state, not an independent theorem or parity check against a prior #755 reference packet.",
+  "n_min": 12,
+  "n_max": 20,
+  "g": 2,
+  "frontier_k": 5,
+  "total_runtime_sec": 0.024500416,
+  "rows": [
+    {
+      "n": 12,
+      "g": 2,
+      "ordered_representation_cap": 4,
+      "h_n_exact_finite": 7,
+      "maximizer_count": 328,
+      "first_maximizer_witness": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        11
+      ],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_exact_branch_and_bound_transfer_state",
+        "sites_processed": 13,
+        "nodes_visited": 4439,
+        "transitions_attempted": 2747,
+        "legal_occupy_transitions": 1691,
+        "rejected_occupy_transitions": 1056,
+        "branch_bound_pruned_nodes": 1364,
+        "best_updates": 0
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              1,
+              3,
+              5,
+              7,
+              8,
+              10,
+              11
+            ],
+            "objective_value": 1.0,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.08333333333333333,
+            "prefix_location": 11,
+            "density_adjusted_mass_dev": 3.0,
+            "density_adjusted_mass_ratio_n2": 0.020833333333333332,
+            "joint_score": 0.10416666666666666
+          },
+          {
+            "rank": 2,
+            "witness": [
+              2,
+              3,
+              5,
+              6,
+              8,
+              10,
+              12
+            ],
+            "objective_value": 1.0,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.08333333333333333,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.027777777777777776,
+            "joint_score": 0.1111111111111111
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              3,
+              5,
+              6,
+              8,
+              9,
+              12
+            ],
+            "objective_value": 1.2857142857142847,
+            "uniform_prefix_residual": 1.2857142857142847,
+            "uniform_prefix_ratio_n": 0.10714285714285705,
+            "prefix_location": 9,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.013888888888888888,
+            "joint_score": 0.12103174603174593
+          },
+          {
+            "rank": 4,
+            "witness": [
+              1,
+              4,
+              5,
+              7,
+              8,
+              10,
+              12
+            ],
+            "objective_value": 1.2857142857142858,
+            "uniform_prefix_residual": 1.2857142857142858,
+            "uniform_prefix_ratio_n": 0.10714285714285715,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 5.0,
+            "density_adjusted_mass_ratio_n2": 0.034722222222222224,
+            "joint_score": 0.14186507936507936
+          },
+          {
+            "rank": 5,
+            "witness": [
+              1,
+              2,
+              4,
+              6,
+              9,
+              10,
+              12
+            ],
+            "objective_value": 1.4285714285714284,
+            "uniform_prefix_residual": 1.4285714285714284,
+            "uniform_prefix_ratio_n": 0.11904761904761903,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.013888888888888888,
+            "joint_score": 0.1329365079365079
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              2,
+              7,
+              9,
+              11,
+              12
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 3.1428571428571423,
+            "uniform_prefix_ratio_n": 0.26190476190476186,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.26190476190476186
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              3,
+              5,
+              10,
+              11,
+              12
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.4285714285714284,
+            "uniform_prefix_ratio_n": 0.20238095238095236,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.20238095238095236
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              1,
+              3,
+              7,
+              8,
+              11,
+              12
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.4285714285714284,
+            "uniform_prefix_ratio_n": 0.20238095238095236,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.20238095238095236
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              1,
+              4,
+              5,
+              9,
+              11,
+              12
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.4285714285714284,
+            "uniform_prefix_ratio_n": 0.20238095238095236,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.20238095238095236
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              5,
+              6,
+              8,
+              10,
+              12
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.4285714285714284,
+            "uniform_prefix_ratio_n": 0.20238095238095236,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.20238095238095236
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              1,
+              3,
+              5,
+              7,
+              8,
+              10,
+              11
+            ],
+            "objective_value": 0.10416666666666666,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.08333333333333333,
+            "prefix_location": 11,
+            "density_adjusted_mass_dev": 3.0,
+            "density_adjusted_mass_ratio_n2": 0.020833333333333332,
+            "joint_score": 0.10416666666666666
+          },
+          {
+            "rank": 2,
+            "witness": [
+              2,
+              3,
+              5,
+              6,
+              8,
+              10,
+              12
+            ],
+            "objective_value": 0.1111111111111111,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.08333333333333333,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.027777777777777776,
+            "joint_score": 0.1111111111111111
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              2,
+              4,
+              7,
+              8,
+              9,
+              11
+            ],
+            "objective_value": 0.11904761904761903,
+            "uniform_prefix_residual": 1.4285714285714284,
+            "uniform_prefix_ratio_n": 0.11904761904761903,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.11904761904761903
+          },
+          {
+            "rank": 4,
+            "witness": [
+              1,
+              3,
+              5,
+              6,
+              8,
+              9,
+              12
+            ],
+            "objective_value": 0.12103174603174593,
+            "uniform_prefix_residual": 1.2857142857142847,
+            "uniform_prefix_ratio_n": 0.10714285714285705,
+            "prefix_location": 9,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.013888888888888888,
+            "joint_score": 0.12103174603174593
+          },
+          {
+            "rank": 5,
+            "witness": [
+              1,
+              2,
+              4,
+              6,
+              9,
+              10,
+              12
+            ],
+            "objective_value": 0.1329365079365079,
+            "uniform_prefix_residual": 1.4285714285714284,
+            "uniform_prefix_ratio_n": 0.11904761904761903,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.013888888888888888,
+            "joint_score": 0.1329365079365079
+          }
+        ]
+      }
+    },
+    {
+      "n": 13,
+      "g": 2,
+      "ordered_representation_cap": 4,
+      "h_n_exact_finite": 8,
+      "maximizer_count": 14,
+      "first_maximizer_witness": [
+        0,
+        1,
+        2,
+        3,
+        8,
+        9,
+        12,
+        13
+      ],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_exact_branch_and_bound_transfer_state",
+        "sites_processed": 14,
+        "nodes_visited": 7681,
+        "transitions_attempted": 4816,
+        "legal_occupy_transitions": 2864,
+        "rejected_occupy_transitions": 1952,
+        "branch_bound_pruned_nodes": 2385,
+        "best_updates": 1
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              3,
+              5,
+              8,
+              9,
+              12,
+              13
+            ],
+            "objective_value": 1.875,
+            "uniform_prefix_residual": 1.875,
+            "uniform_prefix_ratio_n": 0.14423076923076922,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.14423076923076922
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              4,
+              5,
+              7,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 1.875,
+            "uniform_prefix_residual": 1.875,
+            "uniform_prefix_ratio_n": 0.14423076923076922,
+            "prefix_location": 10,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.011834319526627219,
+            "joint_score": 0.15606508875739644
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              4,
+              6,
+              7,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 1.875,
+            "uniform_prefix_residual": 1.875,
+            "uniform_prefix_ratio_n": 0.14423076923076922,
+            "prefix_location": 10,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.023668639053254437,
+            "joint_score": 0.16789940828402367
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              2,
+              3,
+              5,
+              6,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 2.125,
+            "uniform_prefix_residual": 2.125,
+            "uniform_prefix_ratio_n": 0.16346153846153846,
+            "prefix_location": 6,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.16346153846153846
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              2,
+              6,
+              8,
+              9,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 2.125,
+            "uniform_prefix_residual": 2.125,
+            "uniform_prefix_ratio_n": 0.16346153846153846,
+            "prefix_location": 7,
+            "density_adjusted_mass_dev": 9.0,
+            "density_adjusted_mass_ratio_n2": 0.05325443786982249,
+            "joint_score": 0.21671597633136094
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              2,
+              7,
+              8,
+              10,
+              11,
+              13
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.875,
+            "uniform_prefix_ratio_n": 0.22115384615384615,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.22115384615384615
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              4,
+              5,
+              8,
+              10,
+              11,
+              13
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.25,
+            "uniform_prefix_ratio_n": 0.17307692307692307,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.17307692307692307
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              3,
+              5,
+              6,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.125,
+            "uniform_prefix_ratio_n": 0.16346153846153846,
+            "prefix_location": 6,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.16346153846153846
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              2,
+              3,
+              5,
+              8,
+              9,
+              12,
+              13
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 1.875,
+            "uniform_prefix_ratio_n": 0.14423076923076922,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.14423076923076922
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              2,
+              6,
+              8,
+              9,
+              11,
+              13
+            ],
+            "objective_value": 2.0,
+            "uniform_prefix_residual": 2.875,
+            "uniform_prefix_ratio_n": 0.22115384615384615,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.011834319526627219,
+            "joint_score": 0.23298816568047337
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              3,
+              5,
+              8,
+              9,
+              12,
+              13
+            ],
+            "objective_value": 0.14423076923076922,
+            "uniform_prefix_residual": 1.875,
+            "uniform_prefix_ratio_n": 0.14423076923076922,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.14423076923076922
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              4,
+              5,
+              7,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 0.15606508875739644,
+            "uniform_prefix_residual": 1.875,
+            "uniform_prefix_ratio_n": 0.14423076923076922,
+            "prefix_location": 10,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.011834319526627219,
+            "joint_score": 0.15606508875739644
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              3,
+              5,
+              6,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 0.16346153846153846,
+            "uniform_prefix_residual": 2.125,
+            "uniform_prefix_ratio_n": 0.16346153846153846,
+            "prefix_location": 6,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.16346153846153846
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              3,
+              4,
+              6,
+              7,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 0.16789940828402367,
+            "uniform_prefix_residual": 1.875,
+            "uniform_prefix_ratio_n": 0.14423076923076922,
+            "prefix_location": 10,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.023668639053254437,
+            "joint_score": 0.16789940828402367
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              4,
+              5,
+              8,
+              10,
+              11,
+              13
+            ],
+            "objective_value": 0.17307692307692307,
+            "uniform_prefix_residual": 2.25,
+            "uniform_prefix_ratio_n": 0.17307692307692307,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.17307692307692307
+          }
+        ]
+      }
+    },
+    {
+      "n": 14,
+      "g": 2,
+      "ordered_representation_cap": 4,
+      "h_n_exact_finite": 8,
+      "maximizer_count": 94,
+      "first_maximizer_witness": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        8,
+        12,
+        14
+      ],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_exact_branch_and_bound_transfer_state",
+        "sites_processed": 15,
+        "nodes_visited": 12861,
+        "transitions_attempted": 8219,
+        "legal_occupy_transitions": 4641,
+        "rejected_occupy_transitions": 3578,
+        "branch_bound_pruned_nodes": 4082,
+        "best_updates": 1
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              1,
+              2,
+              5,
+              6,
+              9,
+              11,
+              12,
+              14
+            ],
+            "objective_value": 1.5,
+            "uniform_prefix_residual": 1.5,
+            "uniform_prefix_ratio_n": 0.10714285714285714,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.02040816326530612,
+            "joint_score": 0.12755102040816327
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              3,
+              4,
+              6,
+              9,
+              10,
+              13,
+              14
+            ],
+            "objective_value": 1.5,
+            "uniform_prefix_residual": 1.5,
+            "uniform_prefix_ratio_n": 0.10714285714285714,
+            "prefix_location": 12,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.02040816326530612,
+            "joint_score": 0.12755102040816327
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              4,
+              6,
+              9,
+              10,
+              13,
+              14
+            ],
+            "objective_value": 1.75,
+            "uniform_prefix_residual": 1.75,
+            "uniform_prefix_ratio_n": 0.125,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.01020408163265306,
+            "joint_score": 0.13520408163265307
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              2,
+              6,
+              8,
+              9,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 1.75,
+            "uniform_prefix_residual": 1.75,
+            "uniform_prefix_ratio_n": 0.125,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 5.0,
+            "density_adjusted_mass_ratio_n2": 0.025510204081632654,
+            "joint_score": 0.15051020408163265
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              3,
+              4,
+              6,
+              7,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 1.75,
+            "uniform_prefix_residual": 1.75,
+            "uniform_prefix_ratio_n": 0.125,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.125
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              3,
+              6,
+              9,
+              10,
+              13,
+              14
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.5,
+            "uniform_prefix_ratio_n": 0.17857142857142858,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.17857142857142858
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              4,
+              5,
+              8,
+              11,
+              13,
+              14
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.5,
+            "uniform_prefix_ratio_n": 0.17857142857142858,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.17857142857142858
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              1,
+              4,
+              5,
+              9,
+              11,
+              12,
+              14
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.5,
+            "uniform_prefix_ratio_n": 0.17857142857142858,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.17857142857142858
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              1,
+              4,
+              5,
+              10,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.5,
+            "uniform_prefix_ratio_n": 0.17857142857142858,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.17857142857142858
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              4,
+              8,
+              9,
+              10,
+              11,
+              13
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.5,
+            "uniform_prefix_ratio_n": 0.17857142857142858,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.17857142857142858
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              4,
+              6,
+              7,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 0.125,
+            "uniform_prefix_residual": 1.75,
+            "uniform_prefix_ratio_n": 0.125,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.125
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              2,
+              5,
+              6,
+              9,
+              11,
+              12,
+              14
+            ],
+            "objective_value": 0.12755102040816327,
+            "uniform_prefix_residual": 1.5,
+            "uniform_prefix_ratio_n": 0.10714285714285714,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.02040816326530612,
+            "joint_score": 0.12755102040816327
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              3,
+              4,
+              6,
+              9,
+              10,
+              13,
+              14
+            ],
+            "objective_value": 0.12755102040816327,
+            "uniform_prefix_residual": 1.5,
+            "uniform_prefix_ratio_n": 0.10714285714285714,
+            "prefix_location": 12,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.02040816326530612,
+            "joint_score": 0.12755102040816327
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              2,
+              4,
+              6,
+              9,
+              10,
+              13,
+              14
+            ],
+            "objective_value": 0.13520408163265307,
+            "uniform_prefix_residual": 1.75,
+            "uniform_prefix_ratio_n": 0.125,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.01020408163265306,
+            "joint_score": 0.13520408163265307
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              2,
+              6,
+              8,
+              9,
+              11,
+              12,
+              13
+            ],
+            "objective_value": 0.15051020408163265,
+            "uniform_prefix_residual": 1.75,
+            "uniform_prefix_ratio_n": 0.125,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 5.0,
+            "density_adjusted_mass_ratio_n2": 0.025510204081632654,
+            "joint_score": 0.15051020408163265
+          }
+        ]
+      }
+    },
+    {
+      "n": 15,
+      "g": 2,
+      "ordered_representation_cap": 4,
+      "h_n_exact_finite": 8,
+      "maximizer_count": 504,
+      "first_maximizer_witness": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        11,
+        15
+      ],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_exact_branch_and_bound_transfer_state",
+        "sites_processed": 16,
+        "nodes_visited": 19778,
+        "transitions_attempted": 12923,
+        "legal_occupy_transitions": 6854,
+        "rejected_occupy_transitions": 6069,
+        "branch_bound_pruned_nodes": 6351,
+        "best_updates": 0
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              1,
+              3,
+              4,
+              6,
+              9,
+              10,
+              13,
+              14
+            ],
+            "objective_value": 1.625,
+            "uniform_prefix_residual": 1.625,
+            "uniform_prefix_ratio_n": 0.10833333333333334,
+            "prefix_location": 4,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.10833333333333334
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              3,
+              5,
+              6,
+              8,
+              12,
+              13,
+              14
+            ],
+            "objective_value": 1.625,
+            "uniform_prefix_residual": 1.625,
+            "uniform_prefix_ratio_n": 0.10833333333333334,
+            "prefix_location": 11,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.008888888888888889,
+            "joint_score": 0.11722222222222223
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              4,
+              5,
+              7,
+              8,
+              12,
+              13,
+              14
+            ],
+            "objective_value": 1.625,
+            "uniform_prefix_residual": 1.625,
+            "uniform_prefix_ratio_n": 0.10833333333333334,
+            "prefix_location": 11,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.017777777777777778,
+            "joint_score": 0.12611111111111112
+          },
+          {
+            "rank": 4,
+            "witness": [
+              2,
+              3,
+              4,
+              8,
+              9,
+              11,
+              12,
+              15
+            ],
+            "objective_value": 1.625,
+            "uniform_prefix_residual": 1.625,
+            "uniform_prefix_ratio_n": 0.10833333333333334,
+            "prefix_location": 4,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.017777777777777778,
+            "joint_score": 0.12611111111111112
+          },
+          {
+            "rank": 5,
+            "witness": [
+              2,
+              3,
+              4,
+              8,
+              10,
+              11,
+              13,
+              15
+            ],
+            "objective_value": 1.625,
+            "uniform_prefix_residual": 1.625,
+            "uniform_prefix_ratio_n": 0.10833333333333334,
+            "prefix_location": 4,
+            "density_adjusted_mass_dev": 6.0,
+            "density_adjusted_mass_ratio_n2": 0.02666666666666667,
+            "joint_score": 0.135
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              2,
+              7,
+              10,
+              11,
+              14,
+              15
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 3.625,
+            "uniform_prefix_ratio_n": 0.24166666666666667,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.24166666666666667
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              2,
+              8,
+              9,
+              12,
+              13,
+              15
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 3.625,
+            "uniform_prefix_ratio_n": 0.24166666666666667,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.24166666666666667
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              1,
+              2,
+              8,
+              10,
+              11,
+              13,
+              15
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 3.625,
+            "uniform_prefix_ratio_n": 0.24166666666666667,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.24166666666666667
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              1,
+              3,
+              6,
+              10,
+              11,
+              14,
+              15
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.75,
+            "uniform_prefix_ratio_n": 0.18333333333333332,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.18333333333333332
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              3,
+              8,
+              9,
+              12,
+              13,
+              14
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 2.75,
+            "uniform_prefix_ratio_n": 0.18333333333333332,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.18333333333333332
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              1,
+              3,
+              4,
+              6,
+              9,
+              10,
+              13,
+              14
+            ],
+            "objective_value": 0.10833333333333334,
+            "uniform_prefix_residual": 1.625,
+            "uniform_prefix_ratio_n": 0.10833333333333334,
+            "prefix_location": 4,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.10833333333333334
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              2,
+              5,
+              6,
+              9,
+              11,
+              12,
+              14
+            ],
+            "objective_value": 0.11666666666666667,
+            "uniform_prefix_residual": 1.75,
+            "uniform_prefix_ratio_n": 0.11666666666666667,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.11666666666666667
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              3,
+              5,
+              6,
+              8,
+              12,
+              13,
+              14
+            ],
+            "objective_value": 0.11722222222222223,
+            "uniform_prefix_residual": 1.625,
+            "uniform_prefix_ratio_n": 0.10833333333333334,
+            "prefix_location": 11,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.008888888888888889,
+            "joint_score": 0.11722222222222223
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              2,
+              4,
+              6,
+              9,
+              10,
+              14,
+              15
+            ],
+            "objective_value": 0.125,
+            "uniform_prefix_residual": 1.875,
+            "uniform_prefix_ratio_n": 0.125,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.125
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              2,
+              4,
+              6,
+              10,
+              11,
+              13,
+              14
+            ],
+            "objective_value": 0.125,
+            "uniform_prefix_residual": 1.875,
+            "uniform_prefix_ratio_n": 0.125,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.125
+          }
+        ]
+      }
+    },
+    {
+      "n": 16,
+      "g": 2,
+      "ordered_representation_cap": 4,
+      "h_n_exact_finite": 8,
+      "maximizer_count": 1612,
+      "first_maximizer_witness": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        11,
+        15
+      ],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_exact_branch_and_bound_transfer_state",
+        "sites_processed": 17,
+        "nodes_visited": 37969,
+        "transitions_attempted": 24892,
+        "legal_occupy_transitions": 13076,
+        "rejected_occupy_transitions": 11816,
+        "branch_bound_pruned_nodes": 11465,
+        "best_updates": 0
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              1,
+              3,
+              5,
+              7,
+              10,
+              11,
+              14,
+              15
+            ],
+            "objective_value": 1.0,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.0625,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.0078125,
+            "joint_score": 0.0703125
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              3,
+              6,
+              8,
+              9,
+              12,
+              13,
+              16
+            ],
+            "objective_value": 1.0,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.0625,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.015625,
+            "joint_score": 0.078125
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              4,
+              5,
+              8,
+              9,
+              11,
+              14,
+              16
+            ],
+            "objective_value": 1.0,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.0625,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.015625,
+            "joint_score": 0.078125
+          },
+          {
+            "rank": 4,
+            "witness": [
+              2,
+              3,
+              6,
+              7,
+              10,
+              12,
+              13,
+              15
+            ],
+            "objective_value": 1.0,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.0625,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.015625,
+            "joint_score": 0.078125
+          },
+          {
+            "rank": 5,
+            "witness": [
+              2,
+              3,
+              6,
+              7,
+              10,
+              12,
+              14,
+              16
+            ],
+            "objective_value": 1.0,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.0625,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 6.0,
+            "density_adjusted_mass_ratio_n2": 0.0234375,
+            "joint_score": 0.0859375
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              2,
+              7,
+              11,
+              12,
+              15,
+              16
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 4.0,
+            "uniform_prefix_ratio_n": 0.25,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.25
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              2,
+              9,
+              10,
+              12,
+              14,
+              16
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 4.0,
+            "uniform_prefix_ratio_n": 0.25,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.25
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              1,
+              2,
+              9,
+              11,
+              12,
+              14,
+              15
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 4.0,
+            "uniform_prefix_ratio_n": 0.25,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.25
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              1,
+              3,
+              7,
+              10,
+              12,
+              15,
+              16
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 3.0,
+            "uniform_prefix_ratio_n": 0.1875,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.1875
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              3,
+              9,
+              10,
+              11,
+              14,
+              16
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 3.0,
+            "uniform_prefix_ratio_n": 0.1875,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.1875
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              1,
+              3,
+              5,
+              7,
+              10,
+              11,
+              14,
+              15
+            ],
+            "objective_value": 0.0703125,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.0625,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 2.0,
+            "density_adjusted_mass_ratio_n2": 0.0078125,
+            "joint_score": 0.0703125
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              3,
+              6,
+              8,
+              9,
+              12,
+              13,
+              16
+            ],
+            "objective_value": 0.078125,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.0625,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.015625,
+            "joint_score": 0.078125
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              4,
+              5,
+              8,
+              9,
+              11,
+              14,
+              16
+            ],
+            "objective_value": 0.078125,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.0625,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.015625,
+            "joint_score": 0.078125
+          },
+          {
+            "rank": 4,
+            "witness": [
+              2,
+              3,
+              6,
+              7,
+              10,
+              12,
+              13,
+              15
+            ],
+            "objective_value": 0.078125,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.0625,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.015625,
+            "joint_score": 0.078125
+          },
+          {
+            "rank": 5,
+            "witness": [
+              2,
+              4,
+              5,
+              7,
+              10,
+              11,
+              14,
+              15
+            ],
+            "objective_value": 0.078125,
+            "uniform_prefix_residual": 1.0,
+            "uniform_prefix_ratio_n": 0.0625,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.015625,
+            "joint_score": 0.078125
+          }
+        ]
+      }
+    },
+    {
+      "n": 17,
+      "g": 2,
+      "ordered_representation_cap": 4,
+      "h_n_exact_finite": 9,
+      "maximizer_count": 34,
+      "first_maximizer_witness": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        10,
+        11,
+        14,
+        17
+      ],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_exact_branch_and_bound_transfer_state",
+        "sites_processed": 18,
+        "nodes_visited": 60266,
+        "transitions_attempted": 39837,
+        "legal_occupy_transitions": 20428,
+        "rejected_occupy_transitions": 19409,
+        "branch_bound_pruned_nodes": 18437,
+        "best_updates": 1
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              5,
+              7,
+              10,
+              13,
+              14,
+              16,
+              17
+            ],
+            "objective_value": 2.5555555555555554,
+            "uniform_prefix_residual": 2.5555555555555554,
+            "uniform_prefix_ratio_n": 0.1503267973856209,
+            "prefix_location": 12,
+            "density_adjusted_mass_dev": 7.5,
+            "density_adjusted_mass_ratio_n2": 0.025951557093425604,
+            "joint_score": 0.17627835447904652
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              3,
+              9,
+              11,
+              12,
+              13,
+              16,
+              17
+            ],
+            "objective_value": 2.666666666666666,
+            "uniform_prefix_residual": 2.666666666666666,
+            "uniform_prefix_ratio_n": 0.15686274509803919,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 6.5,
+            "density_adjusted_mass_ratio_n2": 0.02249134948096886,
+            "joint_score": 0.17935409457900806
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              4,
+              6,
+              7,
+              9,
+              15,
+              16,
+              17
+            ],
+            "objective_value": 2.666666666666668,
+            "uniform_prefix_residual": 2.666666666666668,
+            "uniform_prefix_ratio_n": 0.1568627450980393,
+            "prefix_location": 14,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0017301038062283738,
+            "joint_score": 0.15859284890426767
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              2,
+              4,
+              9,
+              11,
+              12,
+              15,
+              16,
+              17
+            ],
+            "objective_value": 2.666666666666668,
+            "uniform_prefix_residual": 2.666666666666668,
+            "uniform_prefix_ratio_n": 0.1568627450980393,
+            "prefix_location": 14,
+            "density_adjusted_mass_dev": 9.5,
+            "density_adjusted_mass_ratio_n2": 0.0328719723183391,
+            "joint_score": 0.1897347174163784
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              3,
+              4,
+              6,
+              7,
+              9,
+              15,
+              16,
+              17
+            ],
+            "objective_value": 2.666666666666668,
+            "uniform_prefix_residual": 2.666666666666668,
+            "uniform_prefix_ratio_n": 0.1568627450980393,
+            "prefix_location": 14,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0017301038062283738,
+            "joint_score": 0.15859284890426767
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              2,
+              8,
+              10,
+              11,
+              13,
+              14,
+              17
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 3.666666666666666,
+            "uniform_prefix_ratio_n": 0.21568627450980388,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0017301038062283738,
+            "joint_score": 0.21741637831603225
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              2,
+              8,
+              10,
+              11,
+              13,
+              15,
+              17
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 3.666666666666666,
+            "uniform_prefix_ratio_n": 0.21568627450980388,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0017301038062283738,
+            "joint_score": 0.21741637831603225
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              4,
+              6,
+              7,
+              9,
+              15,
+              16,
+              17
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 2.666666666666668,
+            "uniform_prefix_ratio_n": 0.1568627450980393,
+            "prefix_location": 14,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0017301038062283738,
+            "joint_score": 0.15859284890426767
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              3,
+              4,
+              6,
+              7,
+              9,
+              15,
+              16,
+              17
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 2.666666666666668,
+            "uniform_prefix_ratio_n": 0.1568627450980393,
+            "prefix_location": 14,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0017301038062283738,
+            "joint_score": 0.15859284890426767
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              2,
+              8,
+              9,
+              11,
+              12,
+              14,
+              17
+            ],
+            "objective_value": 2.5,
+            "uniform_prefix_residual": 3.666666666666666,
+            "uniform_prefix_ratio_n": 0.21568627450980388,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 2.5,
+            "density_adjusted_mass_ratio_n2": 0.00865051903114187,
+            "joint_score": 0.22433679354094574
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              4,
+              6,
+              7,
+              9,
+              15,
+              16,
+              17
+            ],
+            "objective_value": 0.15859284890426767,
+            "uniform_prefix_residual": 2.666666666666668,
+            "uniform_prefix_ratio_n": 0.1568627450980393,
+            "prefix_location": 14,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0017301038062283738,
+            "joint_score": 0.15859284890426767
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              3,
+              4,
+              6,
+              7,
+              9,
+              15,
+              16,
+              17
+            ],
+            "objective_value": 0.15859284890426767,
+            "uniform_prefix_residual": 2.666666666666668,
+            "uniform_prefix_ratio_n": 0.1568627450980393,
+            "prefix_location": 14,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0017301038062283738,
+            "joint_score": 0.15859284890426767
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              3,
+              5,
+              6,
+              8,
+              9,
+              15,
+              16,
+              17
+            ],
+            "objective_value": 0.16551326412918116,
+            "uniform_prefix_residual": 2.666666666666668,
+            "uniform_prefix_ratio_n": 0.1568627450980393,
+            "prefix_location": 14,
+            "density_adjusted_mass_dev": 2.5,
+            "density_adjusted_mass_ratio_n2": 0.00865051903114187,
+            "joint_score": 0.16551326412918116
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              2,
+              5,
+              7,
+              10,
+              13,
+              14,
+              16,
+              17
+            ],
+            "objective_value": 0.17627835447904652,
+            "uniform_prefix_residual": 2.5555555555555554,
+            "uniform_prefix_ratio_n": 0.1503267973856209,
+            "prefix_location": 12,
+            "density_adjusted_mass_dev": 7.5,
+            "density_adjusted_mass_ratio_n2": 0.025951557093425604,
+            "joint_score": 0.17627835447904652
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              2,
+              3,
+              9,
+              11,
+              12,
+              13,
+              16,
+              17
+            ],
+            "objective_value": 0.17935409457900806,
+            "uniform_prefix_residual": 2.666666666666666,
+            "uniform_prefix_ratio_n": 0.15686274509803919,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 6.5,
+            "density_adjusted_mass_ratio_n2": 0.02249134948096886,
+            "joint_score": 0.17935409457900806
+          }
+        ]
+      }
+    },
+    {
+      "n": 18,
+      "g": 2,
+      "ordered_representation_cap": 4,
+      "h_n_exact_finite": 9,
+      "maximizer_count": 224,
+      "first_maximizer_witness": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        12,
+        15,
+        18
+      ],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_exact_branch_and_bound_transfer_state",
+        "sites_processed": 19,
+        "nodes_visited": 95839,
+        "transitions_attempted": 64084,
+        "legal_occupy_transitions": 31754,
+        "rejected_occupy_transitions": 32330,
+        "branch_bound_pruned_nodes": 29573,
+        "best_updates": 1
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              2,
+              4,
+              7,
+              9,
+              12,
+              13,
+              17,
+              18
+            ],
+            "objective_value": 2.0,
+            "uniform_prefix_residual": 2.0,
+            "uniform_prefix_ratio_n": 0.1111111111111111,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n2": 0.0030864197530864196,
+            "joint_score": 0.11419753086419752
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              4,
+              8,
+              11,
+              12,
+              13,
+              17,
+              18
+            ],
+            "objective_value": 2.0,
+            "uniform_prefix_residual": 2.0,
+            "uniform_prefix_ratio_n": 0.1111111111111111,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.012345679012345678,
+            "joint_score": 0.12345679012345678
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              4,
+              9,
+              11,
+              12,
+              15,
+              16,
+              17
+            ],
+            "objective_value": 2.0,
+            "uniform_prefix_residual": 2.0,
+            "uniform_prefix_ratio_n": 0.1111111111111111,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 5.0,
+            "density_adjusted_mass_ratio_n2": 0.015432098765432098,
+            "joint_score": 0.12654320987654322
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              2,
+              4,
+              9,
+              11,
+              12,
+              15,
+              17,
+              18
+            ],
+            "objective_value": 2.0,
+            "uniform_prefix_residual": 2.0,
+            "uniform_prefix_ratio_n": 0.1111111111111111,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 7.0,
+            "density_adjusted_mass_ratio_n2": 0.021604938271604937,
+            "joint_score": 0.13271604938271603
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              2,
+              5,
+              7,
+              8,
+              13,
+              14,
+              17,
+              18
+            ],
+            "objective_value": 2.0,
+            "uniform_prefix_residual": 2.0,
+            "uniform_prefix_ratio_n": 0.1111111111111111,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 3.0,
+            "density_adjusted_mass_ratio_n2": 0.009259259259259259,
+            "joint_score": 0.12037037037037036
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              2,
+              6,
+              11,
+              13,
+              14,
+              16,
+              18
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 4.0,
+            "uniform_prefix_ratio_n": 0.2222222222222222,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.2222222222222222
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              5,
+              6,
+              7,
+              13,
+              15,
+              16,
+              18
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 3.0,
+            "uniform_prefix_ratio_n": 0.16666666666666666,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.16666666666666666
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              1,
+              6,
+              7,
+              10,
+              11,
+              13,
+              15,
+              18
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 3.0,
+            "uniform_prefix_ratio_n": 0.16666666666666666,
+            "prefix_location": 1,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.16666666666666666
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              2,
+              3,
+              5,
+              11,
+              12,
+              13,
+              17,
+              18
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 3.0,
+            "uniform_prefix_ratio_n": 0.16666666666666666,
+            "prefix_location": 3,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.16666666666666666
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              2,
+              4,
+              5,
+              7,
+              12,
+              16,
+              17,
+              18
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 3.0,
+            "uniform_prefix_ratio_n": 0.16666666666666666,
+            "prefix_location": 5,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.16666666666666666
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              5,
+              7,
+              8,
+              11,
+              12,
+              17,
+              18
+            ],
+            "objective_value": 0.1111111111111111,
+            "uniform_prefix_residual": 2.0,
+            "uniform_prefix_ratio_n": 0.1111111111111111,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.1111111111111111
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              4,
+              7,
+              9,
+              12,
+              13,
+              17,
+              18
+            ],
+            "objective_value": 0.11419753086419752,
+            "uniform_prefix_residual": 2.0,
+            "uniform_prefix_ratio_n": 0.1111111111111111,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n2": 0.0030864197530864196,
+            "joint_score": 0.11419753086419752
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              5,
+              7,
+              8,
+              13,
+              14,
+              17,
+              18
+            ],
+            "objective_value": 0.12037037037037036,
+            "uniform_prefix_residual": 2.0,
+            "uniform_prefix_ratio_n": 0.1111111111111111,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 3.0,
+            "density_adjusted_mass_ratio_n2": 0.009259259259259259,
+            "joint_score": 0.12037037037037036
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              2,
+              5,
+              7,
+              10,
+              13,
+              14,
+              16,
+              17
+            ],
+            "objective_value": 0.12037037037037036,
+            "uniform_prefix_residual": 2.0,
+            "uniform_prefix_ratio_n": 0.1111111111111111,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 3.0,
+            "density_adjusted_mass_ratio_n2": 0.009259259259259259,
+            "joint_score": 0.12037037037037036
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              3,
+              5,
+              6,
+              8,
+              13,
+              14,
+              17,
+              18
+            ],
+            "objective_value": 0.12037037037037036,
+            "uniform_prefix_residual": 2.0,
+            "uniform_prefix_ratio_n": 0.1111111111111111,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 3.0,
+            "density_adjusted_mass_ratio_n2": 0.009259259259259259,
+            "joint_score": 0.12037037037037036
+          }
+        ]
+      }
+    },
+    {
+      "n": 19,
+      "g": 2,
+      "ordered_representation_cap": 4,
+      "h_n_exact_finite": 9,
+      "maximizer_count": 1200,
+      "first_maximizer_witness": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        11,
+        16,
+        19
+      ],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_exact_branch_and_bound_transfer_state",
+        "sites_processed": 20,
+        "nodes_visited": 159302,
+        "transitions_attempted": 107546,
+        "legal_occupy_transitions": 51755,
+        "rejected_occupy_transitions": 55791,
+        "branch_bound_pruned_nodes": 48598,
+        "best_updates": 1
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              3,
+              6,
+              8,
+              9,
+              13,
+              15,
+              17,
+              19
+            ],
+            "objective_value": 2.111111111111111,
+            "uniform_prefix_residual": 2.111111111111111,
+            "uniform_prefix_ratio_n": 0.11111111111111112,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 4.5,
+            "density_adjusted_mass_ratio_n2": 0.012465373961218837,
+            "joint_score": 0.12357648507232996
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              4,
+              5,
+              9,
+              10,
+              12,
+              13,
+              16,
+              19
+            ],
+            "objective_value": 2.111111111111111,
+            "uniform_prefix_residual": 2.111111111111111,
+            "uniform_prefix_ratio_n": 0.11111111111111112,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 2.5,
+            "density_adjusted_mass_ratio_n2": 0.006925207756232687,
+            "joint_score": 0.11803631886734381
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              5,
+              6,
+              8,
+              9,
+              13,
+              15,
+              17,
+              19
+            ],
+            "objective_value": 2.111111111111111,
+            "uniform_prefix_residual": 2.111111111111111,
+            "uniform_prefix_ratio_n": 0.11111111111111112,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 6.5,
+            "density_adjusted_mass_ratio_n2": 0.018005540166204988,
+            "joint_score": 0.1291166512773161
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              3,
+              6,
+              7,
+              9,
+              13,
+              14,
+              18,
+              19
+            ],
+            "objective_value": 2.2222222222222214,
+            "uniform_prefix_residual": 2.2222222222222214,
+            "uniform_prefix_ratio_n": 0.11695906432748533,
+            "prefix_location": 17,
+            "density_adjusted_mass_dev": 3.5,
+            "density_adjusted_mass_ratio_n2": 0.009695290858725761,
+            "joint_score": 0.1266543551862111
+          },
+          {
+            "rank": 5,
+            "witness": [
+              1,
+              3,
+              5,
+              8,
+              10,
+              13,
+              14,
+              18,
+              19
+            ],
+            "objective_value": 2.2222222222222214,
+            "uniform_prefix_residual": 2.2222222222222214,
+            "uniform_prefix_ratio_n": 0.11695906432748533,
+            "prefix_location": 17,
+            "density_adjusted_mass_dev": 5.5,
+            "density_adjusted_mass_ratio_n2": 0.015235457063711912,
+            "joint_score": 0.13219452139119725
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              2,
+              6,
+              12,
+              14,
+              15,
+              17,
+              19
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 4.333333333333334,
+            "uniform_prefix_ratio_n": 0.22807017543859653,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0013850415512465374,
+            "joint_score": 0.22945521698984306
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              2,
+              7,
+              11,
+              14,
+              15,
+              17,
+              19
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 4.333333333333334,
+            "uniform_prefix_ratio_n": 0.22807017543859653,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0013850415512465374,
+            "joint_score": 0.22945521698984306
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              1,
+              2,
+              8,
+              9,
+              13,
+              15,
+              18,
+              19
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 4.333333333333334,
+            "uniform_prefix_ratio_n": 0.22807017543859653,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0013850415512465374,
+            "joint_score": 0.22945521698984306
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              1,
+              2,
+              8,
+              10,
+              13,
+              15,
+              17,
+              19
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 4.333333333333334,
+            "uniform_prefix_ratio_n": 0.22807017543859653,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0013850415512465374,
+            "joint_score": 0.22945521698984306
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              2,
+              9,
+              10,
+              13,
+              15,
+              16,
+              19
+            ],
+            "objective_value": 0.5,
+            "uniform_prefix_residual": 4.333333333333334,
+            "uniform_prefix_ratio_n": 0.22807017543859653,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0013850415512465374,
+            "joint_score": 0.22945521698984306
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              4,
+              5,
+              9,
+              10,
+              12,
+              13,
+              16,
+              19
+            ],
+            "objective_value": 0.11803631886734381,
+            "uniform_prefix_residual": 2.111111111111111,
+            "uniform_prefix_ratio_n": 0.11111111111111112,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 2.5,
+            "density_adjusted_mass_ratio_n2": 0.006925207756232687,
+            "joint_score": 0.11803631886734381
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              2,
+              5,
+              7,
+              10,
+              13,
+              14,
+              16,
+              17
+            ],
+            "objective_value": 0.121114188981225,
+            "uniform_prefix_residual": 2.2222222222222223,
+            "uniform_prefix_ratio_n": 0.11695906432748539,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 1.5,
+            "density_adjusted_mass_ratio_n2": 0.004155124653739612,
+            "joint_score": 0.121114188981225
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              2,
+              5,
+              7,
+              11,
+              12,
+              15,
+              16,
+              19
+            ],
+            "objective_value": 0.121114188981225,
+            "uniform_prefix_residual": 2.2222222222222223,
+            "uniform_prefix_ratio_n": 0.11695906432748539,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 1.5,
+            "density_adjusted_mass_ratio_n2": 0.004155124653739612,
+            "joint_score": 0.121114188981225
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              3,
+              6,
+              8,
+              9,
+              13,
+              15,
+              17,
+              19
+            ],
+            "objective_value": 0.12357648507232996,
+            "uniform_prefix_residual": 2.111111111111111,
+            "uniform_prefix_ratio_n": 0.11111111111111112,
+            "prefix_location": 0,
+            "density_adjusted_mass_dev": 4.5,
+            "density_adjusted_mass_ratio_n2": 0.012465373961218837,
+            "joint_score": 0.12357648507232996
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              2,
+              4,
+              7,
+              9,
+              13,
+              15,
+              16,
+              19
+            ],
+            "objective_value": 0.12419205909510622,
+            "uniform_prefix_residual": 2.333333333333334,
+            "uniform_prefix_ratio_n": 0.12280701754385968,
+            "prefix_location": 4,
+            "density_adjusted_mass_dev": 0.5,
+            "density_adjusted_mass_ratio_n2": 0.0013850415512465374,
+            "joint_score": 0.12419205909510622
+          }
+        ]
+      }
+    },
+    {
+      "n": 20,
+      "g": 2,
+      "ordered_representation_cap": 4,
+      "h_n_exact_finite": 9,
+      "maximizer_count": 3998,
+      "first_maximizer_witness": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        11,
+        16,
+        19
+      ],
+      "state_model": {
+        "representation": "occupied prefix plus bounded ordered-sum-count memory",
+        "occupied_lattice": "[0,n]",
+        "memory": "sum_counts[s] stores ordered representation count for a+b=s",
+        "transition_rule": "occupy x iff all new counts remain <= 2g; self pair adds 1 and each occupied a adds ordered pairs (a,x),(x,a)"
+      },
+      "transfer_diagnostics": {
+        "traversal_mode": "b2g_exact_branch_and_bound_transfer_state",
+        "sites_processed": 21,
+        "nodes_visited": 270434,
+        "transitions_attempted": 183932,
+        "legal_occupy_transitions": 86501,
+        "rejected_occupy_transitions": 97431,
+        "branch_bound_pruned_nodes": 80546,
+        "best_updates": 1
+      },
+      "top_k_frontier": {
+        "k": 5,
+        "zero_temperature_field_interpretation": "prefix_best, density_adjusted_mass_best, and joint_best are zero-temperature selections after cardinality is fixed to the exact finite B_2[g] maximum",
+        "prefix_best": [
+          {
+            "rank": 1,
+            "witness": [
+              2,
+              3,
+              7,
+              8,
+              11,
+              13,
+              16,
+              18,
+              20
+            ],
+            "objective_value": 1.666666666666666,
+            "uniform_prefix_residual": 1.666666666666666,
+            "uniform_prefix_ratio_n": 0.0833333333333333,
+            "prefix_location": 15,
+            "density_adjusted_mass_dev": 8.0,
+            "density_adjusted_mass_ratio_n2": 0.02,
+            "joint_score": 0.1033333333333333
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              3,
+              5,
+              8,
+              10,
+              13,
+              14,
+              18,
+              19
+            ],
+            "objective_value": 1.666666666666667,
+            "uniform_prefix_residual": 1.666666666666667,
+            "uniform_prefix_ratio_n": 0.08333333333333334,
+            "prefix_location": 5,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n2": 0.0025,
+            "joint_score": 0.08583333333333334
+          },
+          {
+            "rank": 3,
+            "witness": [
+              1,
+              3,
+              5,
+              7,
+              11,
+              12,
+              14,
+              17,
+              20
+            ],
+            "objective_value": 1.8888888888888893,
+            "uniform_prefix_residual": 1.8888888888888893,
+            "uniform_prefix_ratio_n": 0.09444444444444447,
+            "prefix_location": 7,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.09444444444444447
+          },
+          {
+            "rank": 4,
+            "witness": [
+              1,
+              3,
+              5,
+              8,
+              10,
+              14,
+              16,
+              17,
+              20
+            ],
+            "objective_value": 1.8888888888888893,
+            "uniform_prefix_residual": 1.8888888888888893,
+            "uniform_prefix_ratio_n": 0.09444444444444447,
+            "prefix_location": 13,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.01,
+            "joint_score": 0.10444444444444446
+          },
+          {
+            "rank": 5,
+            "witness": [
+              1,
+              4,
+              5,
+              7,
+              11,
+              13,
+              16,
+              18,
+              20
+            ],
+            "objective_value": 1.8888888888888893,
+            "uniform_prefix_residual": 1.8888888888888893,
+            "uniform_prefix_ratio_n": 0.09444444444444447,
+            "prefix_location": 7,
+            "density_adjusted_mass_dev": 5.0,
+            "density_adjusted_mass_ratio_n2": 0.0125,
+            "joint_score": 0.10694444444444447
+          }
+        ],
+        "density_adjusted_mass_best": [
+          {
+            "rank": 1,
+            "witness": [
+              0,
+              1,
+              2,
+              7,
+              8,
+              16,
+              17,
+              19,
+              20
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 4.666666666666667,
+            "uniform_prefix_ratio_n": 0.23333333333333334,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.23333333333333334
+          },
+          {
+            "rank": 2,
+            "witness": [
+              0,
+              1,
+              2,
+              7,
+              9,
+              15,
+              17,
+              19,
+              20
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 4.666666666666667,
+            "uniform_prefix_ratio_n": 0.23333333333333334,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.23333333333333334
+          },
+          {
+            "rank": 3,
+            "witness": [
+              0,
+              1,
+              2,
+              9,
+              12,
+              13,
+              15,
+              18,
+              20
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 4.666666666666667,
+            "uniform_prefix_ratio_n": 0.23333333333333334,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.23333333333333334
+          },
+          {
+            "rank": 4,
+            "witness": [
+              0,
+              1,
+              2,
+              9,
+              12,
+              14,
+              15,
+              18,
+              19
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 4.666666666666667,
+            "uniform_prefix_ratio_n": 0.23333333333333334,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.23333333333333334
+          },
+          {
+            "rank": 5,
+            "witness": [
+              0,
+              1,
+              2,
+              10,
+              11,
+              13,
+              16,
+              17,
+              20
+            ],
+            "objective_value": 0.0,
+            "uniform_prefix_residual": 4.666666666666667,
+            "uniform_prefix_ratio_n": 0.23333333333333334,
+            "prefix_location": 2,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.23333333333333334
+          }
+        ],
+        "joint_best": [
+          {
+            "rank": 1,
+            "witness": [
+              1,
+              3,
+              5,
+              8,
+              10,
+              13,
+              14,
+              18,
+              19
+            ],
+            "objective_value": 0.08583333333333334,
+            "uniform_prefix_residual": 1.666666666666667,
+            "uniform_prefix_ratio_n": 0.08333333333333334,
+            "prefix_location": 5,
+            "density_adjusted_mass_dev": 1.0,
+            "density_adjusted_mass_ratio_n2": 0.0025,
+            "joint_score": 0.08583333333333334
+          },
+          {
+            "rank": 2,
+            "witness": [
+              1,
+              3,
+              5,
+              7,
+              11,
+              12,
+              14,
+              17,
+              20
+            ],
+            "objective_value": 0.09444444444444447,
+            "uniform_prefix_residual": 1.8888888888888893,
+            "uniform_prefix_ratio_n": 0.09444444444444447,
+            "prefix_location": 7,
+            "density_adjusted_mass_dev": 0.0,
+            "density_adjusted_mass_ratio_n2": 0.0,
+            "joint_score": 0.09444444444444447
+          },
+          {
+            "rank": 3,
+            "witness": [
+              2,
+              3,
+              7,
+              8,
+              11,
+              13,
+              16,
+              18,
+              20
+            ],
+            "objective_value": 0.1033333333333333,
+            "uniform_prefix_residual": 1.666666666666666,
+            "uniform_prefix_ratio_n": 0.0833333333333333,
+            "prefix_location": 15,
+            "density_adjusted_mass_dev": 8.0,
+            "density_adjusted_mass_ratio_n2": 0.02,
+            "joint_score": 0.1033333333333333
+          },
+          {
+            "rank": 4,
+            "witness": [
+              1,
+              3,
+              5,
+              8,
+              10,
+              14,
+              16,
+              17,
+              20
+            ],
+            "objective_value": 0.10444444444444446,
+            "uniform_prefix_residual": 1.8888888888888893,
+            "uniform_prefix_ratio_n": 0.09444444444444447,
+            "prefix_location": 13,
+            "density_adjusted_mass_dev": 4.0,
+            "density_adjusted_mass_ratio_n2": 0.01,
+            "joint_score": 0.10444444444444446
+          },
+          {
+            "rank": 5,
+            "witness": [
+              1,
+              4,
+              5,
+              7,
+              11,
+              13,
+              16,
+              18,
+              20
+            ],
+            "objective_value": 0.10694444444444447,
+            "uniform_prefix_residual": 1.8888888888888893,
+            "uniform_prefix_ratio_n": 0.09444444444444447,
+            "prefix_location": 7,
+            "density_adjusted_mass_dev": 5.0,
+            "density_adjusted_mass_ratio_n2": 0.0125,
+            "joint_score": 0.10694444444444447
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "checked_count": 9,
+    "min_h_n": 7,
+    "max_h_n": 9,
+    "split_count": 9,
+    "split_ns": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "total_maximizers": 8008
+  }
+}

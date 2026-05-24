@@ -1,0 +1,59 @@
+{
+  "experiment_id": "EXP-MATH-EHP114-TAO-ORIGIN-REPULSION-CONSTANT-20260509-01",
+  "status": "ORIGIN_REPULSION_BOUNDED_BY_CASE_ANALYSIS",
+  "claim_ceiling": "Internal extraction packet only. Not a proof of Erdos #114, not a numeric N0 candidate, and not a public claim. One step in the Tao-dependency chain.",
+  "tao_lemma": {
+    "label": "origin-repulsion",
+    "line": 869,
+    "wording": "We have ||p||_0 << ||p||_1 + n dist(0, dE_1(p)). In particular, by size-def, ||p|| << ||p||_1 + n dist(0, dE_1(p))."
+  },
+  "upstream_inputs_used": {
+    "c_10_lower_bound": 0.006900495524140533,
+    "source_artifact": "EXP-MATH-EHP114-TAO-DEFECT-PSI-COR-C10-LOWER-BOUND-20260509-01",
+    "c_10_used_here": false,
+    "c_10_used_here_reason": "origin-repulsion's chain (poz, npz, pocl) is independent of defect-psi-cor. defect-psi-cor lives downstream of inside-2 and annulus-2 (cited at lines 1234, 1665, 1765 of Tao). Origin-repulsion's chain is upstream of those, fed only by Proposition pvar (Near-constancy near origin, line 792) and Markov's inequality (markov, line 242). Track A2's c_10 input therefore does not propagate into A3."
+  },
+  "chain_walk": [
+    {
+      "sub_lemma": "npz",
+      "tao_line": 253,
+      "tao_wording": "|p(z) - p(0)| >= n^{-n} ||p||_0^n for any z in dE_1(p).",
+      "verdict": "NUMERIC",
+      "candidate_value": 1.0,
+      "depends_on_c_10": false,
+      "extraction_notes": "This is an EXACT inequality, not a Vinogradov bound. Derivation: p(0) is normalized to a non-positive real, so dist(p(0), dD(0,1)) = |1+p(0)| = n^{-n} ||p||_0^n by definition (lines 250-251), and on dE_1(p) one has |p(z)| = 1, so the triangle inequality gives the bound exactly. No implied constant; effective constant = 1. This is the only link in the chain that carries no opacity."
+    },
+    {
+      "sub_lemma": "poz",
+      "tao_line": 803,
+      "tao_wording": "p(z) = p(0) + O(|z|^n e^{O(min(||p||_1/|z|, ||p||_1^2/|z|^2))})",
+      "verdict": "BOUNDED_BY_CASE_ANALYSIS",
+      "candidate_value": null,
+      "depends_on_c_10": false,
+      "extraction_notes": "Two implied constants: (a) the outer O(...) envelope from triangle-inequality after Weierstrass-style factorization at line 822 ('|p'(z)| = n|z|^{n-1} prod_zeta |(1 - zeta/z) e^{zeta/z}|'); (b) the inner O(min(...)) from the Taylor remainder of (1-w)e^w at line 826 ('|(1-zeta/z)e^{zeta/z}| <= e^{O(|zeta|^2/|z|^2)}'). Both are constructive: the Taylor remainder coefficient is an explicit small numeric (e.g. for |w| <= 1/2, (1-w)e^w = 1 + w^2/2 + (w^3/3) (something) + ..., giving |(1-w)e^w| <= 1 + |w|^2 + O(|w|^3) <= e^{|w|^2 + O(|w|^3)} <= e^{2|w|^2} on |w|<=1/2). The poz proof itself (lines 838-850) introduces 'sufficiently large C' twice (and a 'sufficiently large C'' on line 846) to close two derivative arguments. Each C is bounded by a function of (a) and (b): roughly C must dominate the Taylor coefficient of p'-bound such that C*e^{C*u} - K*e^{K*u} - C^2*u*e^{C*u} > 0 holds for the relevant u = ||p||_1/|z| range. Tractable but unfilled by Tao; would require ~50-100 lines of explicit real analysis."
+    },
+    {
+      "sub_lemma": "pocl",
+      "tao_line": 813,
+      "tao_wording": "p(z) = p(0) + O(e^{O(n)} n^{-n} ||p||_1^n) for z = O(||p||_1/n)",
+      "verdict": "BOUNDED_BY_CASE_ANALYSIS",
+      "candidate_value": null,
+      "depends_on_c_10": false,
+      "extraction_notes": "Two implied constants: outer O(...) and inner O(n) in the exponent. Proof at line 837: 'For |z| asymp ||p||_1/n the claim ppcl comes from p'-bound; the case |z| << ||p||_1/n then follows from the maximum principle. To obtain pocl, we integrate ppcl.' The chain is: p'-bound (ppcl applied at |z|=||p||_1/n) -> integrate radially over [0, |z|] -> pocl. Each step is constructive. The inner O(n) in the exponent comes from p'-bound's e^{O(min(||p||_1/|z|, ||p||_1^2/|z|^2))} evaluated at |z| asymp ||p||_1/n, where the min equals ||p||_1/|z| ~ n. So the constant is the same Taylor-remainder coefficient as in poz, lifted by a factor of 2 from radial integration. Same status as poz: constructive, unfilled."
+    }
+  ],
+  "implied_constant_in_origin_repulsion": {
+    "verdict": "BOUNDED_BY_CASE_ANALYSIS",
+    "numeric_value": null,
+    "construction": "The implied constant K_OR in origin-repulsion (||p||_0 <= K_OR * (||p||_1 + n dist(0, dE_1(p)))) is the maximum of two case-specific constants. Case 1 (|z| >= ||p||_1/n): combine npz lower bound n^{-n} ||p||_0^n <= |p(z) - p(0)| with poz upper bound |p(z) - p(0)| <= K_poz * |z|^n * e^{K_poz_exp * min(||p||_1/|z|, ||p||_1^2/|z|^2)}. The min equals ||p||_1/|z| <= n in this case, so the exponential is bounded by e^{K_poz_exp * n}. Hence ||p||_0 <= n * |z| * (K_poz)^{1/n} * e^{K_poz_exp}, and K_OR_case1 = e^{K_poz_exp} * sup_n (K_poz)^{1/n} = e^{K_poz_exp} * max(1, K_poz). Case 2 (|z| < ||p||_1/n): combine npz with pocl, getting n^{-n} ||p||_0^n <= K_pocl * e^{K_pocl_exp * n} * n^{-n} * ||p||_1^n, so ||p||_0 <= ||p||_1 * (K_pocl)^{1/n} * e^{K_pocl_exp} and K_OR_case2 = e^{K_pocl_exp} * max(1, K_pocl). Final: K_OR = max(K_OR_case1, K_OR_case2). Each K_poz, K_poz_exp, K_pocl, K_pocl_exp is itself BOUNDED_BY_CASE_ANALYSIS via Taylor remainder of (1-w)e^w plus the derivative-closure argument in poz's proof. With ~100-200 lines of focused real analysis (Taylor remainder bookkeeping + concrete Markov-bound application + closure inequality for C) a numeric K_OR could be produced. This session does not perform that extraction; the verdict is BOUNDED_BY_CASE_ANALYSIS rather than NUMERIC."
+  },
+  "honest_assessment": {
+    "did_c_10_unblock_origin_repulsion": false,
+    "why_not": "A1's classification of origin-repulsion as SYMBOLIC_ONLY assumed the chain might depend on c_10 via shared opacity. Direct line-by-line read of Tao's proof at lines 877-881 shows origin-repulsion's chain is poz/npz/pocl, which trace through Proposition pvar (line 792) and Markov's inequality (line 242). pvar's proof at lines 819-851 uses Taylor expansion and a derivative-closure C-argument; nothing in this chain touches Lemma tridef (line 1012) or defect-psi-cor (line 1025). c_10 is downstream, not upstream. The original A1 verdict 'possibly upgradable to BOUNDED_BY_CASE_ANALYSIS after upstream extraction work' was directionally right but identified the wrong upstream: the relevant upstream for origin-repulsion is the Taylor coefficient in p'-bound, not c_10.",
+    "is_track_a_still_alive": true,
+    "track_a_status_after_a3": "Alive but with a clearer parts list. After A3 we have: c_10 (numeric, A2). origin-repulsion's K_OR (BOUNDED_BY_CASE_ANALYSIS, this session) -- extractable from Taylor remainder + closure inequality, ~100-200 lines work. inside-2 absolute c (still SYMBOLIC_ONLY per A1, depends on defect-psi-cor's c_C with C=10 = c_10 numeric AND on Stokes-theorem X1..X5 estimates). annulus-2 absolute c (still SYMBOLIC_ONLY per A1, depends on inside-2 + Lemma sting + Proposition pform). pp0's C (still SYMBOLIC_ONLY per A1, depends on origin-repulsion's K_OR -- so pp0 is now also BOUNDED_BY_CASE_ANALYSIS once K_OR is extracted: pp0_C >= 4 * K_OR + buffer per Tao line 1770). One key downgrade in opacity has happened: pp0 moved from SYMBOLIC_ONLY to BOUNDED_BY_CASE_ANALYSIS conditional on A3-followup work. Still no link is fully NUMERIC end-to-end except c_10."
+  },
+  "next_dependency": "Two parallel followups are now defined. (1) A3-followup (the actual K_OR extraction): Taylor-bound the coefficient in p'-bound's exponent (numeric, e.g. K_poz_exp <= 2 from |1+w|^2 analysis on |w|<=1/2 plus a piecewise extension), solve for the smallest C in poz's derivative-closure inequality (C >= K + buffer in a closed form), then chain through case analysis to produce K_OR as a concrete real number. Estimated complexity: ~100-200 lines of real analysis, no compute. (2) A4 (annulus-2 log-n constant): independent of A3-followup, depends on c_10 (now numeric) plus Lemma sting plus Proposition pform's t-integral remainder. A4 is the first place where the c_10 numeric input from A2 actually feeds in. Recommendation: queue A4 first since it consumes the A2 input directly; defer A3-followup to a separate focused session. After A3-followup AND A4 land as numeric (or as BOUNDED_BY_CASE_ANALYSIS with explicit construction recipes), the inside-2 chain becomes the next bottleneck (Stokes-theorem X1..X5 estimates), which Track A1 flagged as the symbolic core. Track A is alive but the path to a clean N0 still requires three or four focused extraction passes; nothing in this session changes that, but the parts inventory is sharper.",
+  "timestamp_unix": 1778421005,
+  "schema_version": "1.0"
+}

@@ -1,0 +1,100 @@
+{
+  "experiment_id": "EXP-MM-086-T3-MORPHISM",
+  "erdos_problem": 86,
+  "probe_id": "T3-086",
+  "probe_tier": 3,
+  "probe_question": "Given PHYS-R-002 (physics bridge, weight 0.7062) and the spectral phase transition in Q_n, is there a transitive morphism from C4-free hypercube structure to a physical system exhibiting the same Poisson-to-GOE transition at a predicted threshold?",
+  "answer": "PHYS-R-002 is SPURIOUS \u2014 but a GENUINE morphism exists to Anderson localization",
+  "morphism_assessment": {
+    "overall_score": "5/12",
+    "overall_status": "PUTATIVE",
+    "legs": {
+      "leg_1_literature": {
+        "score": "2/3",
+        "status": "PARTIAL",
+        "summary": "Novel observation backed by Anderson theory. Poisson-to-GOE via level spacing is standard (Oganesyan-Huse 2007). No existing paper studies this on randomly-thinned hypercubes \u2014 confirmed novel via Perplexity (6 sources)."
+      },
+      "leg_2_positive_results": {
+        "score": "3/3",
+        "status": "STRONG",
+        "summary": "p_c(n) characterized n=4..9 reproducibly. GOE plateau sharpens with n. Q_9 reveals two-phase structure \u2014 genuine discovery."
+      },
+      "leg_3_generalization": {
+        "score": "0/3",
+        "status": "UNTESTED",
+        "summary": "Needs tests on Z_3^n, random d-regular graphs, and p_c/p_perc convergence study."
+      },
+      "leg_4_physics_experiment": {
+        "score": "0/3",
+        "status": "UNTESTED",
+        "summary": "Mendoza Limit test designed but not run. Spectral transition as information channel, M_L as minimum edge density for spectral rigidity."
+      }
+    }
+  },
+  "phys_r_002_assessment": {
+    "physics_id": "PHYS-R-002",
+    "name": "Foucault Pendulum",
+    "category": "Resonances",
+    "similarity": 0.7062,
+    "verdict": "SPURIOUS",
+    "reason": "No phase transition in Foucault pendulum physics. Similarity from generic fingerprint overlap (symmetry: Periodic, growth: Asymptotic). Not a physical morphism."
+  },
+  "proposed_new_bridge": {
+    "physics_id_proposed": "PHYS-AL-001",
+    "name": "Anderson Localization on High-Dimensional Lattices",
+    "connection": "Poisson-to-GOE spectral transition in randomly-thinned Q_n maps to Anderson localization/delocalization transition. Two-phase structure (percolation + delocalization) matches known three-regime picture in Anderson theory.",
+    "references": [
+      "Oganesyan & Huse, Phys Rev B 75, 155111 (2007)",
+      "Anderson localization on Bethe lattice literature"
+    ]
+  },
+  "key_discovery": {
+    "name": "Two-phase spectral transition in Q_9",
+    "description": "Non-monotonic r(p) at n=9: pseudo-GOE (tiny components, p<0.10), Poisson dip (Anderson localized, 0.10<p<0.17), true GOE (delocalized, p>0.17). Invisible at n<=8.",
+    "percolation_threshold": "1/9 = 0.111",
+    "delocalization_threshold": "~0.17",
+    "novelty": "No existing literature found (Perplexity search, 6 sources)"
+  },
+  "scaling_revision": {
+    "old_fit": {
+      "form": "p_c = 1.67/n + 1.17/n^2",
+      "valid_range": "n=4..8",
+      "fails_at": "n=9 (error 0.035)"
+    },
+    "new_fit_power_law": {
+      "form": "p_c = 2.98 * n^(-1.27)",
+      "valid_range": "n=4..9"
+    },
+    "percolation_ratios": {
+      "4": 1.951,
+      "5": 1.928,
+      "6": 1.901,
+      "7": 1.828,
+      "8": 1.768,
+      "9": 1.491
+    },
+    "ratio_trend": "Decreasing \u2014 two distinct transitions (percolation + delocalization) merge for small n, separate for large n"
+  },
+  "supporting_experiments": [
+    "EXP-MM-086-SPECTRAL-PHASE (T1-086 baseline)",
+    "EXP-MM-086-C4FREE-COOLING (T2-086 cooling falsified)",
+    "EXP-MM-086-PC-EXTENSION (Q_9 scaling validation)"
+  ],
+  "recommendations": [
+    "Flag PHYS-R-002 as spurious in erdosatlas.db (needs schema update)",
+    "Create PHYS-AL-001 Anderson Localization bridge",
+    "Leg 3: Test on Z_3^n or random d-regular graphs (T3-086-b)",
+    "Leg 4: Mendoza Limit experiment on spectral channel",
+    "n=10 extension (~5 min compute) to confirm Poisson dip deepens",
+    "Publishable: Q_9 two-phase discovery as standalone note"
+  ],
+  "data_integrity": {
+    "tag": "REAL_COMPUTATION",
+    "note": "All results from Monte Carlo with seed=42, 50-100 trials per point"
+  },
+  "timestamp": "2026-04-13T20:39:28.669569+00:00",
+  "platform": {
+    "experiment_contract": "EXP-MM prefix",
+    "portfolio": "H2/Math (MendozaLab)"
+  }
+}

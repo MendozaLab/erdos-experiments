@@ -1,0 +1,203 @@
+{
+  "claim_ceiling": "review-only execution packet; not proof promotion, not D1, not curated morphism, not publication state",
+  "contract_executed": "EXP-MATH-EHP114-N15-INTERVAL-PILOT-20260508-01",
+  "created_utc": "2026-05-08T20:25:25.324240+00:00",
+  "decision": "NEEDS_REDUCTION",
+  "decision_reason": "Existing n13/n14 receipts are usable, but n14 validated-length work shows many cell/collar proof-path components; n15 needs a reduced pilot envelope before any full branch-and-bound attempt.",
+  "experiment_id": "EXP-MATH-EHP114-N15-PILOT-ENVELOPE-20260508-01",
+  "forbidden_writes": [
+    "D1",
+    "morphisms.json",
+    "proof registries",
+    "public pages",
+    "existing #114 receipts"
+  ],
+  "generated_by": "erdos_atlas_autoresearch_librarian",
+  "mathematician_persona": "David Hilbert",
+  "n14_validated_length_inventory": {
+    "cell_rows_with_failure_or_hard_signal": 447,
+    "cell_rows_with_margins": 660,
+    "distinct_status_count": 37,
+    "result_files_scanned_under_validated_length": 797,
+    "status_counts": {
+      "BRANCH_CENSUS_FAIL_AMBIGUOUS_ROOT_ISOLATION": 1,
+      "BRANCH_ISOLATION_FAIL_COLLAR": 64,
+      "CELL00_SLAB_SOURCE_SHARPENING_DIAGNOSTIC_FAIL_OVER_BUDGET": 1,
+      "CONTROLLED_REMAINING_CELL_BATCH_BLOCKED": 3,
+      "CONTROLLED_REMAINING_CELL_BATCH_PASS_NOT_GLOBAL_PROOF": 1,
+      "CRITICAL_CANDIDATE_AFFINE_GRADIENT_FAILS": 2,
+      "CRITICAL_CANDIDATE_AFFINE_GRADIENT_PARTIAL": 1,
+      "CRITICAL_CANDIDATE_PPRIME_PARTIAL": 65,
+      "GLOBAL_ATLAS_FAIL_MISSING_CELL_CERTIFICATES": 1,
+      "GLOBAL_ATLAS_PASS_NOT_FULL_EHP_PROOF": 1,
+      "GLOBAL_CRITICAL_POINT_TARGET_REGULAR_REGIONS_FOUND": 64,
+      "HIGH_SLOPE_SLAB_REPAIR_ADJUSTED_UNDER_CAP_DIAGNOSTIC": 28,
+      "LOCAL_HARD_CELL_CERTIFICATE_PASS_NOT_GLOBAL_PROOF": 64,
+      "LOCAL_HARD_CELL_FAIL_RESIDUAL_CHAIN": 2,
+      "MISSING_CELL_LOCAL_PACKETS_BLOCKED_PIPELINE_PARAMETERIZATION": 2,
+      "MOVING_FRAME_COLLAR_PILOT_FAIL_BRANCH_CENTERING": 1,
+      "NORMAL_COLLAR_FAIL_CRITICAL_POINT_EXCLUSION": 64,
+      "PARAMETERIZED_LOCAL_PIPELINE_BLOCKED_SOURCE_ARTIFACT_MISSING": 1,
+      "PARAM_SLICED_KRAWCZYK_PILOT_FAILS": 1,
+      "PER_CELL_SOURCE_BLOCKED_SOURCE_ARTIFACT_MISSING": 1,
+      "PER_CELL_SOURCE_CHAIN_READY": 66,
+      "PPRIME_ROOT_LOCATION_PARTIAL": 65,
+      "REGULAR_RESIDUAL_FAIL_WALL_SEPARATION": 6,
+      "REGULAR_RESIDUAL_PASS_NOT_GLOBAL_PROOF": 61,
+      "REPRESENTATIVE_CELL_HARNESS_BLOCKED_REGULAR_RESIDUAL_DRIFT": 1,
+      "REPRESENTATIVE_CELL_HARNESS_CONTINUATION_PASS_NOT_GLOBAL_PROOF": 1,
+      "RESIDUAL_CHAIN_FAIL_COUNT_DRIFT": 3,
+      "RESIDUAL_CHAIN_FAIL_SOURCE_FILTER": 1,
+      "RESIDUAL_CHAIN_INTEGRATION_PASS_NOT_GLOBAL_PROOF": 64,
+      "RESIDUAL_UNIVERSE_ACCOUNTING_PASS_NOT_GLOBAL_PROOF": 1,
+      "ROOT_COLLAR_TAYLOR_AFFINE_PILOT_DEPENDENCY_RECOVERED_NO_COLLAR": 1,
+      "SHARP_PPRIME_ROOT_LOCATION_PASS_NOT_GLOBAL_PROOF": 65,
+      "SLAB_FAIL_ROOT_ISOLATION": 1,
+      "SLAB_SOURCE_SHARPENING_DIAGNOSTIC_FAIL_OVER_BUDGET": 27,
+      "SLAB_SOURCE_SHARPENING_DIAGNOSTIC_FAIL_UNRESOLVED": 1,
+      "THIRD_ORDER_FAIL_CRITICAL_EXCLUSION": 64,
+      "VALIDATED_TAYLOR_ROOT_COLLAR_DERIVATIVE_SIGNED_NO_COLLAR": 1
+    }
+  },
+  "origin": "auto-research",
+  "persona": "Eratosthenes of Cyrene",
+  "problem_id": 114,
+  "promotion_state": "review_only",
+  "proof_status_discipline": "no formal proof-status promotion labels are used in this object",
+  "protected_receipts": {
+    "n13_bb_proof_complete": true,
+    "n13_bb_total_evals": 197132288,
+    "n13_verdict": "EHP_N13_PROVEN",
+    "n14_bb_proof_complete": true,
+    "n14_bb_total_evals": 855638016,
+    "n14_over_n13_eval_ratio": 4.340425531914893,
+    "n14_verdict": "EHP_N14_PROVEN",
+    "naive_projected_n15_evals": 3713833090
+  },
+  "recommended_n15_pilot_envelope": {
+    "first_pilot_operations": [
+      "replay n14 local-cell packet chain on one low-margin cell as a control",
+      "instantiate n15 Fourier/singular radial boundary layer as a diagnostic only",
+      "choose the smallest n15 collar grid that can reproduce source generation and residual closure accounting",
+      "stop before global n15 claim language"
+    ],
+    "minimum_acceptance_metrics": [
+      "bb_total_evals > 0 if branch-and-bound is invoked",
+      "bb_levels length > 0 if a B&B certificate row is emitted",
+      "RESULTS.sha256 matches RESULTS.json",
+      "no no-op signature row may be treated as evidence",
+      "decision must be exactly GO_FULL_N15, NEEDS_REDUCTION, or STOP_NOT_FEASIBLE"
+    ],
+    "pilot_type": "bounded cell/collar transfer rehearsal",
+    "selected_seed_cells_from_n14": [
+      {
+        "artifact_id": "EXP-MATH-EHP114-N14-SLAB-VALIDATED-LENGTH-HARD-CELL-20260506-01",
+        "cell_tag": null,
+        "final_total": null,
+        "first_failed_condition": null,
+        "margin_to_cap": -1.854757280689153,
+        "result_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-SLAB-VALIDATED-LENGTH-HARD-CELL-20260506-01/EXP-MATH-EHP114-N14-SLAB-VALIDATED-LENGTH-HARD-CELL-20260506-01_RESULTS.json",
+        "status": "SLAB_FAIL_ROOT_ISOLATION"
+      },
+      {
+        "artifact_id": "EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-07-03-20260506-01",
+        "cell_tag": "CELL-07-03",
+        "final_total": null,
+        "first_failed_condition": "none",
+        "margin_to_cap": 0.008190869737216389,
+        "result_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-07-03-20260506-01/EXP-MATH-EHP114-N14-LOCAL-CELL-CERTIFICATE-PACKET-CELL-07-03-20260506-01_RESULTS.json",
+        "status": "LOCAL_HARD_CELL_CERTIFICATE_PASS_NOT_GLOBAL_PROOF"
+      },
+      {
+        "artifact_id": "EXP-MATH-EHP114-N14-VARIABLE-REGULAR-RESIDUAL-CLOSURE-CELL-06-03-20260506-01",
+        "cell_tag": "CELL-06-03",
+        "final_total": null,
+        "first_failed_condition": "none",
+        "margin_to_cap": 0.016171046881407136,
+        "result_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-VARIABLE-REGULAR-RESIDUAL-CLOSURE-CELL-06-03-20260506-01/EXP-MATH-EHP114-N14-VARIABLE-REGULAR-RESIDUAL-CLOSURE-CELL-06-03-20260506-01_RESULTS.json",
+        "status": "REGULAR_RESIDUAL_PASS_NOT_GLOBAL_PROOF"
+      },
+      {
+        "artifact_id": "EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-02-03-20260506-01",
+        "cell_tag": "CELL-02-03",
+        "final_total": null,
+        "first_failed_condition": "third_order_wall_separation_failed",
+        "margin_to_cap": 3.0258881864781593,
+        "result_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-02-03-20260506-01/EXP-MATH-EHP114-N14-THIRD-ORDER-COLLAR-REMAINDER-PILOT-CELL-02-03-20260506-01_RESULTS.json",
+        "status": "THIRD_ORDER_FAIL_CRITICAL_EXCLUSION"
+      },
+      {
+        "artifact_id": "EXP-MATH-EHP114-N14-GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-03-01-20260506-01",
+        "cell_tag": "CELL-03-01",
+        "final_total": null,
+        "first_failed_condition": "2484:4:root/y0/y0 remains critical candidate because both Fx and Fy intervals contain zero under root-affine uncertainty",
+        "margin_to_cap": 3.7877486969095386,
+        "result_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-03-01-20260506-01/EXP-MATH-EHP114-N14-GLOBAL-CRITICAL-POINT-EXCLUSION-TARGET-CELL-03-01-20260506-01_RESULTS.json",
+        "status": "GLOBAL_CRITICAL_POINT_TARGET_REGULAR_REGIONS_FOUND"
+      },
+      {
+        "artifact_id": "EXP-MATH-EHP114-N14-CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-05-04-20260506-01",
+        "cell_tag": "CELL-05-04",
+        "final_total": null,
+        "first_failed_condition": "2484:2:root/y0/y0 remains critical after affine-gradient parameter tiles",
+        "margin_to_cap": 0.9594737996467764,
+        "result_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-05-04-20260506-01/EXP-MATH-EHP114-N14-CRITICAL-CANDIDATE-PPRIME-EXCLUSION-P8-CELL-05-04-20260506-01_RESULTS.json",
+        "status": "CRITICAL_CANDIDATE_PPRIME_PARTIAL"
+      },
+      {
+        "artifact_id": "EXP-MATH-EHP114-N14-PPRIME-ROOT-LOCATION-CELL-03-06-20260506-01",
+        "cell_tag": "CELL-03-06",
+        "final_total": null,
+        "first_failed_condition": "3105:1:root/y0/y0 remains near a possible p-prime root under the root-free disk test",
+        "margin_to_cap": 2.20204354169546,
+        "result_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-PPRIME-ROOT-LOCATION-CELL-03-06-20260506-01/EXP-MATH-EHP114-N14-PPRIME-ROOT-LOCATION-CELL-03-06-20260506-01_RESULTS.json",
+        "status": "PPRIME_ROOT_LOCATION_PARTIAL"
+      },
+      {
+        "artifact_id": "EXP-MATH-EHP114-N14-RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-00-00-20260506-02",
+        "cell_tag": "CELL-00-00",
+        "final_total": null,
+        "first_failed_condition": "L28 source_experiment_id does not point to L27",
+        "margin_to_cap": 5.262309783367339,
+        "result_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/validated_length/EXP-MATH-EHP114-N14-RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-00-00-20260506-02/EXP-MATH-EHP114-N14-RESIDUAL-CHAIN-INTEGRATION-CERT-CELL-00-00-20260506-02_RESULTS.json",
+        "status": "RESIDUAL_CHAIN_FAIL_SOURCE_FILTER"
+      }
+    ]
+  },
+  "scope": "erdos_atlas_only",
+  "scribe": "Ahmes",
+  "short_name": "Eratosthenes",
+  "source_fingerprints": [
+    {
+      "byte_count": 685,
+      "exists": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MM-EHP-007-n13-inari_RESULTS.json",
+      "role": "corrected_n13_receipt",
+      "sha256": "c06c633b4053cdf2c4c6003327f30ee2ce683e6a9da70e047d5c5d43e685fd17"
+    },
+    {
+      "byte_count": 693,
+      "exists": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/results/erdos-114/EXP-MM-EHP-007-n14-inari_RESULTS.json",
+      "role": "n14_receipt",
+      "sha256": "50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7"
+    },
+    {
+      "byte_count": 18668,
+      "exists": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/Math-Problems/Erdos-Standard/erdos-114/docs/EHP114_N15_FIRST_PRINCIPLES_PROOF_PACKET_2026-05-02.md",
+      "role": "n15_first_principles_packet",
+      "sha256": "86feb4bc8c581bddab8cb71076effab9aced476a8f8135bf0fffe9c2f847d8e7"
+    },
+    {
+      "byte_count": 3780,
+      "exists": true,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-INTERVAL-PILOT-20260508-01/EXP-MATH-EHP114-N15-INTERVAL-PILOT-20260508-01_RESULTS.json",
+      "role": "phase3_n15_contract",
+      "sha256": "04275147c37dcdd19b83d630f132d875e6a95089eb9c3782c2e3c9b1654eaa61"
+    }
+  ],
+  "status": "PILOT_ENVELOPE_EXECUTED_NOT_CERTIFICATE",
+  "stop_go_rule_result": "NEEDS_REDUCTION",
+  "story_writer": "Ahmes"
+}

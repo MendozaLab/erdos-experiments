@@ -1,0 +1,45 @@
+{
+  "claim_ceiling": "High-degree theorem interface only. Not a full EHP114 proof and not a finite cutoff extraction.",
+  "effectivity_notes": [
+    "The high-degree theorem is treated as an external analytic theorem.",
+    "The threshold is effective in principle but not extracted here as a practical finite cutoff.",
+    "The proof path cannot identify n=15 as the start of the high-degree range without a separate threshold extraction."
+  ],
+  "elapsed_secs": 0.024150583,
+  "experiment_id": "EXP-MATH-EHP114-TAO-HIGH-DEGREE-THRESHOLD-AUDIT-20260507-01",
+  "first_failed_condition": "opaque threshold remains unbridged",
+  "forbidden_threshold_assignment": "Do not set taoEHPThreshold = 15 in this packet.",
+  "primary_sources": [
+    {
+      "label": "Tao arXiv high-degree EHP paper",
+      "recorded_author": "Terence Tao",
+      "recorded_statement": "establishes the EHP conjecture for all sufficiently large n",
+      "recorded_title": "The maximal length of the Erdos-Herzog-Piranian lemniscate in high degree",
+      "recorded_version": "v2, last revised 2025-12-22",
+      "url": "https://arxiv.org/abs/2512.12455"
+    },
+    {
+      "label": "Tao ar5iv HTML mirror",
+      "recorded_role": "readable theorem source mirror",
+      "url": "https://ar5iv.org/html/2512.12455v2"
+    },
+    {
+      "label": "Erdos Problems #114 current statement",
+      "recorded_role": "problem statement and literature-status page",
+      "url": "https://www.erdosproblems.com/history/114"
+    }
+  ],
+  "status": "TAO_HIGH_DEGREE_THRESHOLD_AUDIT_OPAQUE_THRESHOLD",
+  "tao_threshold_status": "EFFECTIVE_IN_PRINCIPLE_NOT_PRACTICALLY_EXTRACTED",
+  "tao_threshold_symbol": "taoEHPThreshold",
+  "tao_threshold_value": null,
+  "timestamp_unix": "1778139035",
+  "typed_interface": {
+    "candidate_length_formula": "length(z^n - 1 lemniscate) = 2^(1/n) * Beta(1/2, 1/(2n))",
+    "finite_bridge_obligation": "certify all 2 <= n < taoEHPThreshold, or extract taoEHPThreshold <= 15",
+    "high_degree_theorem_shape": "forall n >= taoEHPThreshold, EHP_conjecture_holds(n)",
+    "opaque_constant": "taoEHPThreshold : Nat"
+  },
+  "what_this_does_not_rule_out": "A later analytic audit may extract a usable threshold, or computation may certify the remaining finite interval below that threshold.",
+  "what_this_rules_out": "A proof synthesis packet may not silently glue n <= 14 certificates to Tao's theorem by assuming the high-degree range begins at n=15."
+}

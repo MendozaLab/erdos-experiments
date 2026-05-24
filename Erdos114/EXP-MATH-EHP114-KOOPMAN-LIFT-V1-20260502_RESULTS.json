@@ -1,0 +1,171 @@
+{
+  "baseline": {
+    "L_star_exact_closed_form": 9.179724222343156,
+    "L_star_marcher_estimate": 9.171331863682209,
+    "relative_marcher_error": 0.0009142277543066233
+  },
+  "date": "2026-05-02",
+  "degree": 3,
+  "design_choices": {
+    "L_evaluator": "marching squares on 320x320 grid, box [-1.6, 1.6]^2",
+    "euler_step_h": 0.1,
+    "flow": "normalized ascent flow x' = grad L(x) / FLOW_NORMALIZER",
+    "flow_normalizer": 5000000.0,
+    "flow_normalizer_rationale": "raw |grad L| has spectral radius ~3e6 at x_star (v5 Level3 Hessian); we rescale time by 1/FLOW_NORMALIZER so the continuous-time eigenvalues are O(1). This is a flow-time coordinate change; the Koopman spectrum's qualitative structure (which eigenvalues are inside vs outside the unit disk after one Euler step) is preserved.",
+    "grad_finite_diff_step": 0.001,
+    "koopman_approximation": "EDMD (Williams-Kevrekidis-Rowley 2015)",
+    "n_observables": 11,
+    "observable_basis": "[1, x1, x2, x3, x1^2, x2^2, x3^2, x1*x2, x1*x3, x2*x3, L]",
+    "snapshot_count": 343,
+    "snapshot_grid_half_width": 0.4,
+    "state_space": "symmetry-reduced slice, dim 2n-3 (= 3 for n=3)",
+    "x_star": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "x_star_is_stable_fixed_point": true
+  },
+  "experiment_id": "EXP-MATH-EHP114-KOOPMAN-LIFT-V1-20260502",
+  "honest_scope_statement": "This is a prototype scoping artifact, not a certified proof of EHP at any n. The Koopman lift here uses EDMD with finite observable basis; the resulting spectral gap is an empirical estimate, not an interval-arithmetic certificate. To translate this into a closure-relevant artifact, the spectral gap would need to be (1) derived analytically rather than empirically estimated, (2) shown n-invariant or growing in n, (3) lifted to interval-arithmetic certificates. None of those are achieved in this scoping run.",
+  "input_artifacts_referenced": {
+    "preprint": "Math/erdosatlas-workbench/ehp_erdos114_preprint.tex",
+    "v5_n3_results": "Math/erdos-experiments/results/erdos-114/EHP_N3_LEVEL3_RESULTS.json"
+  },
+  "koopman_eigvals_abs": [
+    1.0000194646457594,
+    0.9999998434819446,
+    0.9999998434819446,
+    0.9999997965302774,
+    0.9999997929169995,
+    1.0000000135409566,
+    1.0000000000415001,
+    0.9999999977747301,
+    0.9999999953922624,
+    1.0000000026536962,
+    0.9999999945394268
+  ],
+  "koopman_eigvals_imag": [
+    0.0,
+    2.1607907542728533e-08,
+    -2.1607907542728533e-08,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "koopman_eigvals_real": [
+    1.0000194646457594,
+    0.9999998434819444,
+    0.9999998434819444,
+    0.9999997965302774,
+    0.9999997929169995,
+    1.0000000135409566,
+    1.0000000000415001,
+    0.9999999977747301,
+    0.9999999953922624,
+    1.0000000026536962,
+    0.9999999945394268
+  ],
+  "margin_probe": {
+    "L_star_baseline": 9.171331863682209,
+    "candidate_state": [
+      0.1333333333333333,
+      0.0,
+      -1.0
+    ],
+    "grid_idx_at_star": 171,
+    "max_off_baseline_L": 8.755896907119585,
+    "n_grid_points_evaluated": 343,
+    "note": "This is a coarse-grid sample, not the certified branch-and-bound margin. Compare to v5 preprint's 6.1% (n=3) only as a sanity check.",
+    "sample_margin_pct": 4.529712398781638,
+    "v5_preprint_certified_margin_pct": 6.1
+  },
+  "spectrum": {
+    "all_abs": [
+      1.0000194646457594,
+      0.9999998434819446,
+      0.9999998434819446,
+      0.9999997965302774,
+      0.9999997929169995,
+      1.0000000135409566,
+      1.0000000000415001,
+      0.9999999977747301,
+      0.9999999953922624,
+      1.0000000026536962,
+      0.9999999945394268
+    ],
+    "constant_eig_distance_to_one": 4.150013666048835e-11,
+    "dominant_nontrivial_abs": 1.0000194646457594,
+    "implied_continuous_decay_rate": -0.00019464456325655875,
+    "n_eigvals_inside_unit_disk": 7,
+    "n_eigvals_outside_unit_disk": 3,
+    "spectral_gap_in_disk": -1.9464645759414978e-05
+  },
+  "step_size_sweep": {
+    "dts": [
+      0.1,
+      0.3,
+      1.0,
+      3.0,
+      10.0,
+      30.0
+    ],
+    "sweep_rows": [
+      {
+        "constant_eig_distance_to_one": 4.150013666048835e-11,
+        "dominant_nontrivial_abs": 1.0000194646457594,
+        "h": 0.1,
+        "implied_continuous_decay_rate": -0.00019464456325655875,
+        "spectral_gap_in_disk": -1.9464645759414978e-05
+      },
+      {
+        "constant_eig_distance_to_one": 9.477585383166343e-11,
+        "dominant_nontrivial_abs": 1.00010226399564,
+        "h": 0.3,
+        "implied_continuous_decay_rate": -0.0003408625567804066,
+        "spectral_gap_in_disk": -0.00010226399564006172
+      },
+      {
+        "constant_eig_distance_to_one": 1.976219188293271e-11,
+        "dominant_nontrivial_abs": 1.0000001380393597,
+        "h": 1.0,
+        "implied_continuous_decay_rate": -1.3803935019313382e-07,
+        "spectral_gap_in_disk": -1.3803935972056536e-07
+      },
+      {
+        "constant_eig_distance_to_one": 2.0871082639928318e-11,
+        "dominant_nontrivial_abs": 1.0000004149509218,
+        "h": 3.0,
+        "implied_continuous_decay_rate": -1.3831694525109762e-07,
+        "spectral_gap_in_disk": -4.1495092184540283e-07
+      },
+      {
+        "constant_eig_distance_to_one": 2.2702950630559826e-11,
+        "dominant_nontrivial_abs": 1.0000013900923148,
+        "h": 10.0,
+        "implied_continuous_decay_rate": -1.390091348635037e-07,
+        "spectral_gap_in_disk": -1.3900923148124633e-06
+      },
+      {
+        "constant_eig_distance_to_one": 2.5638158263063815e-11,
+        "dominant_nontrivial_abs": 1.0000042830393185,
+        "h": 30.0,
+        "implied_continuous_decay_rate": -1.4276767154518415e-07,
+        "spectral_gap_in_disk": -4.283039318542237e-06
+      }
+    ]
+  },
+  "uncertainty_flags": [
+    "L marcher is ~1% relative; spectrum is sensitive to L noise.",
+    "EDMD with finite-basis observables can underestimate the true Koopman gap; eigenvalues may also pick up numerical artifacts from the regularizer (1e-10 * I).",
+    "Forward Euler with h=0.02 introduces O(h) error in lambda_d -> lambda_c conversion; the implied continuous decay rate is a first-order estimate.",
+    "Sample-grid margin is NOT the certified branch-and-bound margin from the v5 preprint (which is 6.1% on n=3)."
+  ],
+  "version": "V1",
+  "wall_time_seconds": 70.098219871521
+}

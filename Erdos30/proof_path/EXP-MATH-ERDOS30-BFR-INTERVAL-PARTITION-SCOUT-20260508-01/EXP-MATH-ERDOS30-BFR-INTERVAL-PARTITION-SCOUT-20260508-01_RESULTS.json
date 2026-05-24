@@ -1,0 +1,61 @@
+{
+  "experiment_id": "EXP-MATH-ERDOS30-BFR-INTERVAL-PARTITION-SCOUT-20260508-01",
+  "generated_by": "erdos_atlas_autoresearch_librarian",
+  "origin": "auto-research",
+  "persona": "Eratosthenes of Cyrene",
+  "short_name": "Eratosthenes",
+  "scribe": "Ahmes",
+  "story_writer": "Ahmes",
+  "mathematician_persona": "David Hilbert",
+  "promotion_state": "review_only",
+  "target_problem": 30,
+  "date": "2026-05-08",
+  "claim_ceiling": "interval-partition scout only; no public Sidon coefficient change and no registry or publication update",
+  "input_artifacts": [
+    {
+      "path": "lean/Erdos30_BFR.lean",
+      "sha256": "4ba292e877fcf436afaa37ab8ccd1217a850e0d32ba7df572dc1fc5c4ce7d921",
+      "role": "canonical representation bridge source"
+    },
+    {
+      "path": "scratch/Erdos30_BFR_IntervalPartition_SCOUT.lean",
+      "sha256": "4bea97b6ce68eeae52610c86e266160efcae793cc4d09a57c6edc4de35e946c4",
+      "role": "new interval partition scout"
+    }
+  ],
+  "verification": {
+    "lean_command": "lake env lean scratch/Erdos30_BFR_IntervalPartition_SCOUT.lean",
+    "lean_exit_code": 0,
+    "escape_hatch_scan": {
+      "command": "rg -n \"sorry|axiom|admit\" scratch/Erdos30_BFR_IntervalPartition_SCOUT.lean",
+      "matches": 0
+    },
+    "warning_clean": true
+  },
+  "new_scout_targets": [
+    "bfrPartitionInterval",
+    "bfrPartitionIndexSet",
+    "bfrPartitionOccupancy",
+    "mem_bfrPartitionInterval_iff",
+    "bfrPartitionInterval_subset_sumRange",
+    "bfrPartitionInterval_mem_div_index",
+    "bfrPartitionInterval_cover_sumRange",
+    "bfrPartitionInterval_disjoint_of_ne",
+    "bfrPartitionInterval_pairwiseDisjoint",
+    "bfrPartitionOccupancy_sum_eq_total",
+    "bfrPartitionOccupancy_sum_eq_card_sq"
+  ],
+  "decision": "INTERVAL_PARTITION_SCOUT_READY_FOR_REVIEW",
+  "next_actions": [
+    "Choose the exact BFR interval-width convention and index count used in the paper.",
+    "Port the partition lemmas into the canonical BFR file only after review.",
+    "Define the discrepancy variable over the partition and connect it to bfr_cauchy_schwarz."
+  ],
+  "forbidden_writes_observed": {
+    "d1": false,
+    "morphisms_json": false,
+    "proof_registries": false,
+    "public_pages": false,
+    "existing_114_result_artifacts": false
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "blocked_construct_scan": {
+    "command": "rg -n \"sorry|axiom|admit|by_cases h : False\" scratch/Erdos30_BFR_RepresentationBridge_SCOUT.lean",
+    "exit_code": 1,
+    "interpretation": "ripgrep exit 1 means no matches for the scanned constructs",
+    "match_count": 0
+  },
+  "claim_ceiling": "review-only local formalization scout; no coefficient improvement and no registry or publication state change",
+  "created_utc": "2026-05-08T20:32:46.627602+00:00",
+  "decision": "A1_SUPPORT_RANGE_BLOCK_STARTED",
+  "existing_artifacts_overwritten": false,
+  "experiment_id": "EXP-MATH-ERDOS30-BFR-REPRESENTATION-BRIDGE-SCOUT-20260508-01",
+  "forbidden_writes_observed": [],
+  "generated_by": "erdos_atlas_autoresearch_librarian",
+  "lean_check": {
+    "command": "lake env lean scratch/Erdos30_BFR_RepresentationBridge_SCOUT.lean",
+    "exit_code": 0,
+    "interpretation": "single-file Lean environment check passed; this is narrower than a full package gate",
+    "stderr_stdout": "",
+    "working_directory": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30"
+  },
+  "lean_scout_file": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30/scratch/Erdos30_BFR_RepresentationBridge_SCOUT.lean",
+  "mathematician_persona": "David Hilbert",
+  "new_formal_items": [
+    {
+      "kind": "definition",
+      "name": "bfrRepFunction",
+      "role": "ordered representation count r_A(s)"
+    },
+    {
+      "kind": "lemma",
+      "name": "bfrRepFunction_le_card_product",
+      "role": "ordered representation count bounded by A x A"
+    },
+    {
+      "kind": "lemma",
+      "name": "bfrRepFunction_le_card_sq",
+      "role": "ordered representation count bounded by |A|^2"
+    },
+    {
+      "kind": "lemma",
+      "name": "bfrRepFunction_sum_mem_range_of_pair",
+      "role": "represented sums lie in the natural finite support range"
+    },
+    {
+      "kind": "lemma",
+      "name": "bfrRepFunction_eq_zero_of_not_mem_range",
+      "role": "no representation outside the support range"
+    },
+    {
+      "kind": "definition",
+      "name": "bfrSumRange",
+      "role": "explicit BFR ordered-sum support range"
+    },
+    {
+      "kind": "lemma",
+      "name": "mem_bfrSumRange_iff",
+      "role": "range membership equivalence"
+    },
+    {
+      "kind": "lemma",
+      "name": "bfrRepFunction_eq_zero_of_not_mem_bfrSumRange",
+      "role": "support-range wrapper for zero representation count"
+    }
+  ],
+  "next_targets": [
+    {
+      "name": "bfr_sum_repFunction_eq_card_sq",
+      "reason": "sum r_A(s) over bfrSumRange should recover |A|^2 by fiberwise counting",
+      "state": "NEXT_SCOUT"
+    },
+    {
+      "name": "bfrRepFunction_sidon_le_two",
+      "reason": "Sidon sets give at most two ordered representations for each sum",
+      "state": "NEXT_SCOUT"
+    },
+    {
+      "name": "bfr_addEnergy_sidon",
+      "reason": "needs the representation cap and quadruple count bridge",
+      "state": "LATER_SCOUT"
+    }
+  ],
+  "origin": "auto-research",
+  "persona": "Eratosthenes of Cyrene",
+  "phase4_parent": "EXP-MATH-ERDOS30-BFR-LEAN-BRIDGE-QUEUE-20260508-01",
+  "problem_id": 30,
+  "promotion_state": "review_only",
+  "scope": "erdos_atlas_only",
+  "scribe": "Ahmes",
+  "short_name": "Eratosthenes",
+  "source_fingerprints": [
+    {
+      "byte_count": 4135,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30/proof_path/EXP-MATH-ERDOS30-BFR-LEAN-BRIDGE-QUEUE-20260508-01/EXP-MATH-ERDOS30-BFR-LEAN-BRIDGE-QUEUE-20260508-01_RESULTS.json",
+      "role": "phase4_bfr_lean_bridge_queue",
+      "sha256": "ce4c6bd467d123b499e86effb5d2650b8fa41f4313a7af3d0b0f8f14af46d0c6"
+    },
+    {
+      "byte_count": 3431,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30/scratch/Erdos30_BFR_RepresentationBridge_SCOUT.lean",
+      "role": "new_bfr_representation_bridge_scout",
+      "sha256": "94e6a6491b1f1da09fece86d2b93e1d54ba75b7468fc6e7498c6a3921eddaaa0"
+    },
+    {
+      "byte_count": 17518,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30/lean/Erdos30_BFR.lean",
+      "role": "canonical_bfr_source_unchanged",
+      "sha256": "74c6b724e5ba0f91e3131dc436a109c81057fa656ce052afe4f9a879ec413497"
+    },
+    {
+      "byte_count": 18902,
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos30/CLOSURE_PLAN_BFR.md",
+      "role": "bfr_closure_plan",
+      "sha256": "4a6e0c335fd351a7087c8b053d67aa474afaf898bcf57a498e744ae37a6b061a"
+    }
+  ],
+  "status": "REPRESENTATION_BRIDGE_SCOUT_CHECK_PASSED",
+  "story_writer": "Ahmes"
+}

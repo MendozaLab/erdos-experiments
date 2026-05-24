@@ -1,0 +1,74 @@
+{
+  "experiment_id": "EXP-MATH-ERDOS30-BFR-REPRESENTATION-CAP-SCOUT-20260508-01",
+  "generated_by": "erdos_atlas_autoresearch_librarian",
+  "origin": "auto-research",
+  "persona": "Eratosthenes of Cyrene",
+  "short_name": "Eratosthenes",
+  "scribe": "Ahmes",
+  "story_writer": "Ahmes",
+  "mathematician_persona": "David Hilbert",
+  "promotion_state": "review_only",
+  "target_problem": 30,
+  "date": "2026-05-08",
+  "claim_ceiling": "local Lean scout only; no public Sidon coefficient improvement and no registry or publication state change",
+  "input_artifacts": [
+    {
+      "path": "lean/Erdos30_BFR.lean",
+      "sha256": "74c6b724e5ba0f91e3131dc436a109c81057fa656ce052afe4f9a879ec413497",
+      "role": "canonical BFR target context"
+    },
+    {
+      "path": "CLOSURE_PLAN_BFR.md",
+      "sha256": "4a6e0c335fd351a7087c8b053d67aa474afaf898bcf57a498e744ae37a6b061a",
+      "role": "constant-pressure bridge plan"
+    },
+    {
+      "path": "scratch/Erdos30_BFR_RepresentationBridge_SCOUT.lean",
+      "sha256": "09e4f164329ab992c303cd17ee2acae2d327e8742fb35066c5229571875bfdcd",
+      "role": "new isolated scout file"
+    }
+  ],
+  "verification": {
+    "lean_command": "lake env lean scratch/Erdos30_BFR_RepresentationBridge_SCOUT.lean",
+    "lean_exit_code": 0,
+    "escape_hatch_scan": {
+      "command": "rg -n \"sorry|axiom|admit\" scratch/Erdos30_BFR_RepresentationBridge_SCOUT.lean",
+      "matches": 0
+    }
+  },
+  "new_scout_targets": [
+    {
+      "name": "bfrRepFunction_le_half_card_le_one",
+      "status": "scout_accepted_by_lean",
+      "meaning": "unordered-side ordered pair representations are unique under the Sidon condition"
+    },
+    {
+      "name": "bfrRepFunction_gt_half_card_le_one",
+      "status": "scout_accepted_by_lean",
+      "meaning": "swapped-side ordered pair representations are unique after reversing the pair"
+    },
+    {
+      "name": "bfrRepFunction_sidon_le_two",
+      "status": "scout_accepted_by_lean",
+      "meaning": "each represented sum has at most two ordered witnesses, exactly the swap-sector cap needed before constant work"
+    },
+    {
+      "name": "bfr_sum_repFunction_eq_card_sq",
+      "status": "scout_accepted_by_lean",
+      "meaning": "summing the representation function over the BFR support range recovers the ordered square cardinality"
+    }
+  ],
+  "decision": "REPRESENTATION_CAP_BRIDGE_READY_FOR_REVIEW",
+  "next_actions": [
+    "Review whether the scout theorem names and carrier choices match the canonical BFR file style.",
+    "Only after review, port the representation cap into the canonical BFR bridge block.",
+    "Continue separating representation mechanics from any constant-bearing inequality."
+  ],
+  "forbidden_writes_observed": {
+    "d1": false,
+    "morphisms_json": false,
+    "proof_registries": false,
+    "public_pages": false,
+    "existing_30_114_result_artifacts": false
+  }
+}

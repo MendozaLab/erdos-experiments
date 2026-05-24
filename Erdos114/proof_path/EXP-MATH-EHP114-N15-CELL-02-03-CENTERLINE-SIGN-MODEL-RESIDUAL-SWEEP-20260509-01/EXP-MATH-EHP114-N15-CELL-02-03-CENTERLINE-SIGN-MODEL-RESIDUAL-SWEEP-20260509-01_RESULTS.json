@@ -1,0 +1,2691 @@
+{
+  "aggregate_after_today": {
+    "branch_point_not_found": 0,
+    "closed_across_all_owner_families": 63,
+    "closed_tight_R_only": 38,
+    "closure_pct": "58.33%",
+    "next_dependency": "Aggregate closure rate < 70%. WS-01 alone is insufficient for CELL-02-03. A different rewrite or substantive cell subdivision is needed before Track B1 can be claimed as a CELL-02-03 closure path.",
+    "owner_families_blocked": [
+      "3104:0"
+    ],
+    "owner_families_full_pass": [
+      "4404:0",
+      "2932:1",
+      "4488:3",
+      "2484:4"
+    ],
+    "owner_families_partial": [
+      "3546:0",
+      "3982:0",
+      "4571:2"
+    ],
+    "still_failing": 45,
+    "total_cell_02_03_failures": 108
+  },
+  "cell_id": "CELL-02-03",
+  "claim_ceiling": "Internal sweep artifact only. Not a proof of Erdos #114, not an n=15 certificate, and not a CELL-02-03 closure. Diagnostic of WS-01 effectiveness across all owner families of CELL-02-03 not already covered by 4488:3 / 2484:4 / 4571:2. Python numerical demonstration; NOT Rust interval-certified.",
+  "degree": 15,
+  "experiment_id": "EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-RESIDUAL-SWEEP-20260509-01",
+  "forbidden_writes": [
+    "D1",
+    "morphisms.json",
+    "proof registries",
+    "public pages",
+    "existing EHP114 finite packets",
+    "existing corrected n=13 or n=14 receipts",
+    "any of the per-family centerline-sign-model artifacts (read-only)"
+  ],
+  "generated_at": "2026-05-09T19:27:00+00:00",
+  "generated_by": "track_b1_residual_sweep_aggregator",
+  "interpretation": "Across the 5 residual owner families (65 boxes), WS-01 closes 27 boxes by the conservative 2R bound and an additional 37 boxes by the tight-R bound; 38 remain failing and 0 have no validated branch point. Two of the five (4404:0, 2932:1; 17 boxes total) are uniform full-pass \u2014 those rows have R*|F_n|/|F_t|-style geometry where the rewrite gives a large factor of safety. The remaining three (3104:0, 3546:0, 3982:0; 48 boxes total) are dominated by R^2*|F_tt| where the conservative 2R-radius penalty overshoots the wall RHS by ~30-50%, but the tight-R sensitivity figure clears comfortably (~99% of the 48 close at tight R). Combined with prior runs (4488:3=16/16, 2484:4=16/16, 4571:2=4/11 at 2R), the aggregate across all 108 CELL-02-03 wall failures is 63/108 = 58.3% closed at conservative 2R. This is a Python numerical demonstration, NOT a Rust interval-certified result.",
+  "median_required_factor_after_overall_residual": 0.8439888666232092,
+  "median_required_factor_before_overall_residual": 0.005520414975142834,
+  "next_dependency_residual": "Partial pass on residual sweep. WS-01 generalizes but is not uniform at the conservative 2R bound. Three owner families (3104:0, 3546:0, 3982:0) need either a tighter R bound (interval-certified z* via interval Newton, which would replace 2R with a true off-center radius) or a refined T3/F_tt bound. Recommended next: produce a tight-R (z*-anchored) variant of the WS-01 closure for these three families and verify whether the tight-R closure (which already clears) survives interval-Newton certification.",
+  "origin": "auto-research",
+  "owner_families_already_covered": [
+    "4488:3",
+    "2484:4",
+    "4571:2"
+  ],
+  "owner_families_in_residual_sweep": [
+    "3104:0",
+    "3546:0",
+    "3982:0",
+    "4404:0",
+    "2932:1"
+  ],
+  "per_failure_outcomes_residual": [
+    {
+      "C0_raw_absolute_hull_old": 0.42150366629366287,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 429.48737272683763,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0004264623023794624,
+      "normal_unit": {
+        "x": 0.8366777471217585,
+        "y": -0.5476954879047836
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.9616237985551253,
+      "required_factor_before_rhs_over_lhs": 0.007742735053160432,
+      "source_index": 1375,
+      "split_path": "root/y0/y0/y0/y0",
+      "tangent_radius_R": 0.001837817620718415,
+      "tangent_unit": {
+        "x": 0.5476954879047836,
+        "y": 0.8366777471217585
+      },
+      "third_directional_upper_T3": 8403.890973292786,
+      "wall_lhs_after_2R": 0.003397267415358992,
+      "wall_lhs_after_R": 0.001160469245169868,
+      "wall_lhs_before": 0.42193012859604234,
+      "wall_threshold_S_times_m": 0.003266893196665066,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.8019886363636366,
+        -0.7981534090909093
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.4275865387983714,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 410.3455449558818,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00037485246494677597,
+      "normal_unit": {
+        "x": 0.8544709910189183,
+        "y": -0.5194991102082349
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.8966362536029228,
+      "required_factor_before_rhs_over_lhs": 0.0068766230130852595,
+      "source_index": 1375,
+      "split_path": "root/y0/y0/y0/y1",
+      "tangent_radius_R": 0.0018599226859914333,
+      "tangent_unit": {
+        "x": 0.5194991102082349,
+        "y": 0.8544709910189183
+      },
+      "third_directional_upper_T3": 7962.606831854238,
+      "wall_lhs_after_2R": 0.003282188446036893,
+      "wall_lhs_after_R": 0.0010931478203517388,
+      "wall_lhs_before": 0.42796139126331817,
+      "wall_threshold_S_times_m": 0.0029429291518733186,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7981534090909093,
+        -0.794318181818182
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.4327209805086054,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 390.31824725613734,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00032686965824489054,
+      "normal_unit": {
+        "x": 0.8713054817168772,
+        "y": -0.49074102898588035
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.8418199946489162,
+      "required_factor_before_rhs_over_lhs": 0.006128226759396196,
+      "source_index": 1375,
+      "split_path": "root/y0/y0/y1/y0",
+      "tangent_radius_R": 0.001879949870757828,
+      "tangent_unit": {
+        "x": 0.49074102898588035,
+        "y": 0.8713054817168772
+      },
+      "third_directional_upper_T3": 7525.757696184796,
+      "wall_lhs_after_2R": 0.0031524737359062954,
+      "wall_lhs_after_R": 0.0010249369790968363,
+      "wall_lhs_before": 0.4330478501668503,
+      "wall_threshold_S_times_m": 0.0026538154234914866,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.794318181818182,
+        -0.7904829545454548
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.43671044300763784,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 369.4968359606137,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0002825509418315141,
+      "normal_unit": {
+        "x": 0.8871617227192675,
+        "y": -0.4614586414206384
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.7961588183434247,
+      "required_factor_before_rhs_over_lhs": 0.005482150328744317,
+      "source_index": 1375,
+      "split_path": "root/y0/y0/y1/y1",
+      "tangent_radius_R": 0.0018978777245698423,
+      "tangent_unit": {
+        "x": 0.4614586414206384,
+        "y": 0.8871617227192675
+      },
+      "third_directional_upper_T3": 7094.310276785018,
+      "wall_lhs_after_2R": 0.003009024368308477,
+      "wall_lhs_after_R": 0.0009560864653002654,
+      "wall_lhs_before": 0.43699299394946933,
+      "wall_threshold_S_times_m": 0.002395661285439047,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7904829545454548,
+        -0.7866477272727275
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.4396087370669094,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 348.01261065334415,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0002417751601798956,
+      "normal_unit": {
+        "x": 0.9020228347935316,
+        "y": -0.43168831986867706
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.7588361715428578,
+      "required_factor_before_rhs_over_lhs": 0.004922187567467751,
+      "source_index": 1375,
+      "split_path": "root/y0/y1/y0/y0",
+      "tangent_radius_R": 0.001913689379164547,
+      "tangent_unit": {
+        "x": 0.43168831986867706,
+        "y": 0.9020228347935316
+      },
+      "third_directional_upper_T3": 6669.726806606239,
+      "wall_lhs_after_2R": 0.00285308845837777,
+      "wall_lhs_after_R": 0.0008868128806341592,
+      "wall_lhs_before": 0.43985051222708926,
+      "wall_threshold_S_times_m": 0.002165026722828501,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7866477272727275,
+        -0.7828125000000001
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.4414673890649937,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 326.1174220698367,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00020466362610011286,
+      "normal_unit": {
+        "x": 0.9158742358017697,
+        "y": -0.4014652963763174
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.7286915998150815,
+      "required_factor_before_rhs_over_lhs": 0.00443356685763053,
+      "source_index": 1375,
+      "split_path": "root/y0/y1/y0/y1",
+      "tangent_radius_R": 0.00192737188529156,
+      "tangent_unit": {
+        "x": 0.4014652963763174,
+        "y": 0.9158742358017697
+      },
+      "third_directional_upper_T3": 6253.43993900229,
+      "wall_lhs_after_2R": 0.0026872583343211347,
+      "wall_lhs_after_R": 0.0008178501477130731,
+      "wall_lhs_before": 0.44167205269109383,
+      "wall_threshold_S_times_m": 0.0019581825747528787,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7828125000000001,
+        -0.7789772727272729
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.44233590479909823,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 304.05229721965514,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.000171263342526773,
+      "normal_unit": {
+        "x": 0.9287033232998839,
+        "y": -0.3708235932242595
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.7047043993830551,
+      "required_factor_before_rhs_over_lhs": 0.00400391809639101,
+      "source_index": 1375,
+      "split_path": "root/y0/y1/y1/y0",
+      "tangent_radius_R": 0.001938915574463209,
+      "tangent_unit": {
+        "x": 0.3708235932242595,
+        "y": 0.9287033232998839
+      },
+      "third_directional_upper_T3": 5846.831680135381,
+      "wall_lhs_after_2R": 0.002514192418631287,
+      "wall_lhs_after_R": 0.0007498925424702142,
+      "wall_lhs_before": 0.442507168141625,
+      "wall_threshold_S_times_m": 0.0017717624583049917,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7789772727272729,
+        -0.7751420454545457
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.44226202574916573,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 282.04628823043896,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00014155203118119874,
+      "normal_unit": {
+        "x": 0.9404991660819539,
+        "y": -0.3397959955607912
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.685933089770148,
+      "required_factor_before_rhs_over_lhs": 0.0036227635716427225,
+      "source_index": 1375,
+      "split_path": "root/y0/y1/y1/y1",
+      "tangent_radius_R": 0.001948313455793831,
+      "tangent_unit": {
+        "x": 0.3397959955607912,
+        "y": 0.9404991660819539
+      },
+      "third_directional_upper_T3": 5451.273916123954,
+      "wall_lhs_after_2R": 0.002336559628700974,
+      "wall_lhs_after_R": 0.000683584642740604,
+      "wall_lhs_before": 0.44240357778034695,
+      "wall_threshold_S_times_m": 0.0016027235655470488,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7751420454545457,
+        -0.7713068181818183
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.4412919793742055,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 260.31468782269957,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00011545010449113099,
+      "normal_unit": {
+        "x": 0.9512522097286202,
+        "y": -0.3084140617520825
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.671433246110738,
+      "required_factor_before_rhs_over_lhs": 0.003281030348120424,
+      "source_index": 1375,
+      "split_path": "root/y1/y0/y0/y0",
+      "tangent_radius_R": 0.001955560655765977,
+      "tangent_unit": {
+        "x": 0.3084140617520825,
+        "y": 0.9512522097286202
+      },
+      "third_directional_upper_T3": 5067.989279965228,
+      "wall_lhs_after_2R": 0.0021569846003225306,
+      "wall_lhs_after_R": 0.000619516911232697,
+      "wall_lhs_before": 0.44140742947869666,
+      "wall_threshold_S_times_m": 0.0014482711720054295,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7713068181818183,
+        -0.767471590909091
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.43947072406214704,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 239.03830489332464,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 9.280197353695019e-05,
+      "normal_unit": {
+        "x": 0.9609540001434049,
+        "y": -0.27670816686247085
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.6605022254735149,
+      "required_factor_before_rhs_over_lhs": 0.0029719331483795165,
+      "source_index": 1375,
+      "split_path": "root/y1/y0/y0/y1",
+      "tangent_radius_R": 0.00196065390660842,
+      "tangent_unit": {
+        "x": 0.27670816686247085,
+        "y": 0.9609540001434049
+      },
+      "third_directional_upper_T3": 4697.936297670655,
+      "wall_lhs_after_2R": 0.001977818338019233,
+      "wall_lhs_after_R": 0.0005581546152223024,
+      "wall_lhs_before": 0.439563526035684,
+      "wall_threshold_S_times_m": 0.0013063534138440319,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.767471590909091,
+        -0.7636363636363638
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.436842188593353,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 218.3826523407421,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 7.341387895166501e-05,
+      "normal_unit": {
+        "x": 0.969596928063901,
+        "y": -0.2447075746458341
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.6524311184270534,
+      "required_factor_before_rhs_over_lhs": 0.0026897849145324387,
+      "source_index": 1375,
+      "split_path": "root/y1/y0/y1/y0",
+      "tangent_radius_R": 0.0019635910870454687,
+      "tangent_unit": {
+        "x": 0.2447075746458341,
+        "y": 0.969596928063901
+      },
+      "third_directional_upper_T3": 4342.022396106953,
+      "wall_lhs_after_2R": 0.0018012767375154778,
+      "wall_lhs_after_R": 0.0004999006861322391,
+      "wall_lhs_before": 0.43691560247230465,
+      "wall_threshold_S_times_m": 0.001175208996453857,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7636363636363638,
+        -0.7598011363636366
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.4334556067787162,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 198.49363538474162,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 5.7057061320637735e-05,
+      "normal_unit": {
+        "x": 0.9771739966390298,
+        "y": -0.21244053354410894
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.6464230817550461,
+      "required_factor_before_rhs_over_lhs": 0.0024296003512387526,
+      "source_index": 1375,
+      "split_path": "root/y1/y0/y1/y1",
+      "tangent_radius_R": 0.0019643708175084095,
+      "tangent_unit": {
+        "x": 0.21244053354410894,
+        "y": 0.9771739966390298
+      },
+      "third_directional_upper_T3": 4001.0561959327088,
+      "wall_lhs_after_2R": 0.0016293702221656147,
+      "wall_lhs_after_R": 0.00044508066972534624,
+      "wall_lhs_before": 0.43351266384003684,
+      "wall_threshold_S_times_m": 0.0010532625203322008,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7598011363636366,
+        -0.7559659090909092
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.4293480589747045,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 179.49420209354582,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 4.3474082178320224e-05,
+      "normal_unit": {
+        "x": 0.9836786133824105,
+        "y": -0.1799343924158431
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.6415281774233443,
+      "required_factor_before_rhs_over_lhs": 0.0021870488391770113,
+      "source_index": 1375,
+      "split_path": "root/y1/y1/y0/y0",
+      "tangent_radius_R": 0.0019629921104985914,
+      "tangent_unit": {
+        "x": 0.1799343924158431,
+        "y": 0.9836786133824105
+      },
+      "third_directional_upper_T3": 3675.703742072176,
+      "wall_lhs_after_2R": 0.0014638488019284317,
+      "wall_lhs_after_R": 0.0003939338807350837,
+      "wall_lhs_before": 0.4293915330568828,
+      "wall_threshold_S_times_m": 0.0009391002539244929,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7559659090909092,
+        -0.7521306818181819
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.42461160664168396,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 161.48435610082961,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 3.2394221697495724e-05,
+      "normal_unit": {
+        "x": 0.9891044071506538,
+        "y": -0.14721573202329152
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.6367694343795033,
+      "required_factor_before_rhs_over_lhs": 0.00195867882243313,
+      "source_index": 1375,
+      "split_path": "root/y1/y1/y0/y1",
+      "tangent_radius_R": 0.0019594540756539425,
+      "tangent_unit": {
+        "x": 0.14721573202329152,
+        "y": 0.9891044071506538
+      },
+      "third_directional_upper_T3": 3366.486428084613,
+      "wall_lhs_after_2R": 0.0013061889699132103,
+      "wall_lhs_after_R": 0.00034662175777895664,
+      "wall_lhs_before": 0.42464400086338144,
+      "wall_threshold_S_times_m": 0.0008317412115643809,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7521306818181819,
+        -0.7482954545454547
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.41927333426259983,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 144.5565875838038,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 2.3523592123475118e-05,
+      "normal_unit": {
+        "x": 0.99344507025262,
+        "y": -0.11431050866288171
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.6311411698964863,
+      "required_factor_before_rhs_over_lhs": 0.001742585612253367,
+      "source_index": 1375,
+      "split_path": "root/y1/y1/y1/y0",
+      "tangent_radius_R": 0.0019537556781816915,
+      "tangent_unit": {
+        "x": 0.11431050866288171,
+        "y": 0.99344507025262
+      },
+      "third_directional_upper_T3": 3073.9599740815975,
+      "wall_lhs_after_2R": 0.0011576818414183343,
+      "wall_lhs_after_R": 0.0003032423244255973,
+      "wall_lhs_before": 0.4192968578547233,
+      "wall_threshold_S_times_m": 0.000730660671760686,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7482954545454547,
+        -0.7444602272727274
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.4133250291407743,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 128.7942790805241,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 1.674485427854148e-05,
+      "normal_unit": {
+        "x": 0.9966942253653922,
+        "y": -0.08124420670596048
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3104:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.6227242920048941,
+      "required_factor_before_rhs_over_lhs": 0.0015360910966801824,
+      "source_index": 1375,
+      "split_path": "root/y1/y1/y1/y1",
+      "tangent_radius_R": 0.0019458955486577852,
+      "tangent_unit": {
+        "x": 0.08124420670596048,
+        "y": 0.9966942253653922
+      },
+      "third_directional_upper_T3": 2798.712780899562,
+      "wall_lhs_after_2R": 0.0010196014947089983,
+      "wall_lhs_after_R": 0.00026402212421179725,
+      "wall_lhs_before": 0.41334177399505284,
+      "wall_threshold_S_times_m": 0.0006349306189197928,
+      "x_interval": [
+        -0.3545454545454545,
+        -0.3536931818181821
+      ],
+      "y_interval": [
+        -0.7444602272727274,
+        -0.7406250000000001
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3361511695487539,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 354.12691270869965,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0003281122631509061,
+      "normal_unit": {
+        "x": 0.8765698704326367,
+        "y": -0.48127462248669484
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 1.3514336911613307,
+      "required_factor_before_rhs_over_lhs": 0.01045525779339977,
+      "source_index": 1926,
+      "split_path": "root/y0/y0/y0/y0",
+      "tangent_radius_R": 0.0017692802364730875,
+      "tangent_unit": {
+        "x": 0.48127462248669484,
+        "y": 0.8765698704326367
+      },
+      "third_directional_upper_T3": 7847.165904056184,
+      "wall_lhs_after_2R": 0.002603144835362483,
+      "wall_lhs_after_R": 0.0008896268561907661,
+      "wall_lhs_before": 0.3364792818119048,
+      "wall_threshold_S_times_m": 0.003517977633481475,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8769886363636363,
+        -0.8734197443181818
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3393014297941268,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 342.6213567833497,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00031137803845923115,
+      "normal_unit": {
+        "x": 0.8793030505083704,
+        "y": -0.47626268525538956
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 1.2871147161256935,
+      "required_factor_before_rhs_over_lhs": 0.009545247633998978,
+      "source_index": 1926,
+      "split_path": "root/y0/y0/y0/y1",
+      "tangent_radius_R": 0.0017720216800821058,
+      "tangent_unit": {
+        "x": 0.47626268525538956,
+        "y": 0.8793030505083704
+      },
+      "third_directional_upper_T3": 7479.17123553489,
+      "wall_lhs_after_2R": 0.002518569875572127,
+      "wall_lhs_after_R": 0.0008562399939885093,
+      "wall_lhs_before": 0.339612807832586,
+      "wall_threshold_S_times_m": 0.0032416883504397414,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8734197443181818,
+        -0.8698508522727273
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.34210106776930416,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 331.60286142662056,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0002959031235772798,
+      "normal_unit": {
+        "x": 0.881828690595284,
+        "y": -0.4715698892454932
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 1.2248336940366118,
+      "required_factor_before_rhs_over_lhs": 0.008719309583154502,
+      "source_index": 1926,
+      "split_path": "root/y0/y0/y1/y0",
+      "tangent_radius_R": 0.0017745287774630946,
+      "tangent_unit": {
+        "x": 0.4715698892454932,
+        "y": 0.881828690595284
+      },
+      "third_directional_upper_T3": 7132.23044251741,
+      "wall_lhs_after_2R": 0.002437445347956059,
+      "wall_lhs_after_R": 0.0008246463067201732,
+      "wall_lhs_before": 0.34239697089288146,
+      "wall_threshold_S_times_m": 0.002985465189549374,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8698508522727273,
+        -0.8662819602272727
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.34457090030012716,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 321.0474456848585,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00028157655105144597,
+      "normal_unit": {
+        "x": 0.884157936113862,
+        "y": -0.46718812485643946
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 1.1644657942958585,
+      "required_factor_before_rhs_over_lhs": 0.007967746763354017,
+      "source_index": 1926,
+      "split_path": "root/y0/y0/y1/y1",
+      "tangent_radius_R": 0.0017768179612216134,
+      "tangent_unit": {
+        "x": 0.46718812485643946,
+        "y": 0.884157936113862
+      },
+      "third_directional_upper_T3": 6805.018881380802,
+      "wall_lhs_after_2R": 0.0023596203681767233,
+      "wall_lhs_after_R": 0.0007947253115747236,
+      "wall_lhs_before": 0.3448524768511786,
+      "wall_threshold_S_times_m": 0.0027476972062655943,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8662819602272727,
+        -0.8627130681818181
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3474494373982845,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 312.1300565812162,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0002691557289205496,
+      "normal_unit": {
+        "x": 0.8863013779993467,
+        "y": -0.4631089152202308
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 1.1001693639688768,
+      "required_factor_before_rhs_over_lhs": 0.0072566381189975064,
+      "source_index": 1926,
+      "split_path": "root/y0/y1/y0/y0",
+      "tangent_radius_R": 0.0017789045180082292,
+      "tangent_unit": {
+        "x": 0.4631089152202308,
+        "y": 0.8863013779993467
+      },
+      "third_directional_upper_T3": 6514.861711375359,
+      "wall_lhs_after_2R": 0.0022935268697796994,
+      "wall_lhs_after_R": 0.0007691361127493395,
+      "wall_lhs_before": 0.34771859312720504,
+      "wall_threshold_S_times_m": 0.0025232679975710605,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8627130681818181,
+        -0.8591441761363636
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.35123616133304003,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 305.50362594029536,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0002590241637882161,
+      "normal_unit": {
+        "x": 0.8882690563678057,
+        "y": -0.4593235063650107
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 1.026585898798886,
+      "required_factor_before_rhs_over_lhs": 0.00655362753285608,
+      "source_index": 1926,
+      "split_path": "root/y0/y1/y0/y1",
+      "tangent_radius_R": 0.0017808026334823921,
+      "tangent_unit": {
+        "x": 0.4593235063650107,
+        "y": 0.8882690563678057
+      },
+      "third_directional_upper_T3": 6271.880308254342,
+      "wall_lhs_after_2R": 0.0022439121051960314,
+      "wall_lhs_after_R": 0.0007493428623952893,
+      "wall_lhs_before": 0.35149518549682823,
+      "wall_threshold_S_times_m": 0.0023035685253383685,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8591441761363636,
+        -0.855575284090909
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3551549820978116,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 300.1911161572501,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0002503975694519901,
+      "normal_unit": {
+        "x": 0.890070468984185,
+        "y": -0.4558229483497658
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.9510285018248528,
+      "required_factor_before_rhs_over_lhs": 0.005897152548556323,
+      "source_index": 1926,
+      "split_path": "root/y0/y1/y1/y0",
+      "tangent_radius_R": 0.0017825254419976658,
+      "tangent_unit": {
+        "x": 0.4558229483497658,
+        "y": 0.890070468984185
+      },
+      "third_directional_upper_T3": 6058.624771098539,
+      "wall_lhs_after_2R": 0.002203803289232462,
+      "wall_lhs_after_R": 0.0007330298687510731,
+      "wall_lhs_before": 0.3554053796672636,
+      "wall_threshold_S_times_m": 0.002095879740475431,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.855575284090909,
+        -0.8520063920454545
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.35879635395147924,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 295.0845276522938,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00024240206329583915,
+      "normal_unit": {
+        "x": 0.8917145835556192,
+        "y": -0.45259816777604045
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.8786587707460463,
+      "required_factor_before_rhs_over_lhs": 0.005298872333532243,
+      "source_index": 1926,
+      "split_path": "root/y0/y1/y1/y1",
+      "tangent_radius_R": 0.0017840850794383569,
+      "tangent_unit": {
+        "x": 0.45259816777604045,
+        "y": 0.8917145835556192
+      },
+      "third_directional_upper_T3": 5856.9427112663525,
+      "wall_lhs_after_2R": 0.0021652325046470104,
+      "wall_lhs_after_R": 0.0007175663988269488,
+      "wall_lhs_before": 0.3590387560147751,
+      "wall_threshold_S_times_m": 0.001902500530912525,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8520063920454545,
+        -0.8484375
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3621743399803252,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 290.1755104752978,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00023498656917349492,
+      "normal_unit": {
+        "x": 0.8932098529959903,
+        "y": -0.44964003214891934
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.8093189625003719,
+      "required_factor_before_rhs_over_lhs": 0.004752481052258591,
+      "source_index": 1926,
+      "split_path": "root/y1/y0/y0/y0",
+      "tangent_radius_R": 0.0017854927378848481,
+      "tangent_unit": {
+        "x": 0.44964003214891934,
+        "y": 0.8932098529959903
+      },
+      "third_directional_upper_T3": 5666.085179283552,
+      "wall_lhs_after_2R": 0.0021281392595413175,
+      "wall_lhs_after_R": 0.0007028993996155201,
+      "wall_lhs_before": 0.3624093265494987,
+      "wall_threshold_S_times_m": 0.0017223434575882888,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8484375,
+        -0.8448686079545454
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.36530211668475776,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 285.45551713674956,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00022810431991015804,
+      "normal_unit": {
+        "x": 0.894564232923474,
+        "y": -0.44693940660232323
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.7428641534159971,
+      "required_factor_before_rhs_over_lhs": 0.004252493297160955,
+      "source_index": 1926,
+      "split_path": "root/y1/y0/y0/y1",
+      "tangent_radius_R": 0.001786758721009738,
+      "tangent_unit": {
+        "x": 0.44693940660232323,
+        "y": 0.894564232923474
+      },
+      "third_directional_upper_T3": 5485.406782212389,
+      "wall_lhs_after_2R": 0.002092461734200351,
+      "wall_lhs_after_R": 0.0006889786613834634,
+      "wall_lhs_before": 0.3655302210046679,
+      "wall_threshold_S_times_m": 0.001554414814732113,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8448686079545454,
+        -0.8412997159090909
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.36819203497904973,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 280.91589759103584,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00022171246133298618,
+      "normal_unit": {
+        "x": 0.8957852007599222,
+        "y": -0.4444872035272845
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.6791612109033415,
+      "required_factor_before_rhs_over_lhs": 0.0037941213264118634,
+      "source_index": 1926,
+      "split_path": "root/y1/y0/y1/y0",
+      "tangent_radius_R": 0.0017878924993080711,
+      "tangent_unit": {
+        "x": 0.4444872035272845,
+        "y": 0.8957852007599222
+      },
+      "third_directional_upper_T3": 5314.23246541293,
+      "wall_lhs_after_2R": 0.002058136468435337,
+      "wall_lhs_after_R": 0.000675756563763335,
+      "wall_lhs_before": 0.36841374744038274,
+      "wall_threshold_S_times_m": 0.0013978064561068703,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8412997159090909,
+        -0.8377308238636363
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3708556775386834,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 276.6698762953394,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00021583124066233854,
+      "normal_unit": {
+        "x": 0.8968797758986642,
+        "y": -0.4422744256499146
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.6177131302443944,
+      "required_factor_before_rhs_over_lhs": 0.0033725504483175526,
+      "source_index": 1926,
+      "split_path": "root/y1/y0/y1/y1",
+      "tangent_radius_R": 0.001788902764442778,
+      "tangent_unit": {
+        "x": 0.4422744256499146,
+        "y": 0.8968797758986642
+      },
+      "third_directional_upper_T3": 5153.649846815313,
+      "wall_lhs_after_2R": 0.0020259523750070225,
+      "wall_lhs_after_R": 0.0006634442564242379,
+      "wall_lhs_before": 0.37107150877934575,
+      "wall_threshold_S_times_m": 0.001251457383291653,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8377308238636363,
+        -0.8341619318181818
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3733039125852686,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 272.60884589096383,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00021037467010718295,
+      "normal_unit": {
+        "x": 0.8978545404951425,
+        "y": -0.44029220310182277
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.5587552937214606,
+      "required_factor_before_rhs_over_lhs": 0.0029846212971017987,
+      "source_index": 1926,
+      "split_path": "root/y1/y1/y0/y0",
+      "tangent_radius_R": 0.001789797482141497,
+      "tangent_unit": {
+        "x": 0.44029220310182277,
+        "y": 0.8978545404951425
+      },
+      "third_directional_upper_T3": 5001.638372583107,
+      "wall_lhs_after_2R": 0.001995146549913352,
+      "wall_lhs_after_R": 0.0006517882473550104,
+      "wall_lhs_before": 0.37351428725537583,
+      "wall_threshold_S_times_m": 0.0011147986965141937,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8341619318181818,
+        -0.8305930397727272
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3755469442227052,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 268.69359104699214,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00020529492628192035,
+      "normal_unit": {
+        "x": 0.8987156605129903,
+        "y": -0.4385318250123924
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.5022742200325448,
+      "required_factor_before_rhs_over_lhs": 0.0026272373996606654,
+      "source_index": 1926,
+      "split_path": "root/y1/y1/y0/y1",
+      "tangent_radius_R": 0.0017905839432147813,
+      "tangent_unit": {
+        "x": 0.4385318250123924,
+        "y": 0.8987156605129903
+      },
+      "third_directional_upper_T3": 4857.2308524339405,
+      "wall_lhs_after_2R": 0.0019654409808938476,
+      "wall_lhs_after_R": 0.000640683916892679,
+      "wall_lhs_before": 0.3757522391489871,
+      "wall_threshold_S_times_m": 0.0009871903356984573,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8305930397727272,
+        -0.8270241477272726
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.37759435945661757,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 264.91629076650804,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0002005623093750077,
+      "normal_unit": {
+        "x": 0.8994689067268091,
+        "y": -0.43698476613227466
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.44816220063875517,
+      "required_factor_before_rhs_over_lhs": 0.0022975174455023674,
+      "source_index": 1926,
+      "split_path": "root/y1/y1/y1/y0",
+      "tangent_radius_R": 0.00179126881237966,
+      "tangent_unit": {
+        "x": 0.43698476613227466,
+        "y": 0.8994689067268091
+      },
+      "third_directional_upper_T3": 4719.970488582273,
+      "wall_lhs_after_2R": 0.0019367774041238717,
+      "wall_lhs_after_R": 0.0006300947101680607,
+      "wall_lhs_before": 0.37779492176599255,
+      "wall_threshold_S_times_m": 0.00086799042357957,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8270241477272726,
+        -0.8234552556818181
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3794551720414905,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 261.27611865514643,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00019615338532221456,
+      "normal_unit": {
+        "x": 0.9001196754427571,
+        "y": -0.43564270897241636
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3546:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.39629957726464665,
+      "required_factor_before_rhs_over_lhs": 0.001992865351125157,
+      "source_index": 1926,
+      "split_path": "root/y1/y1/y1/y1",
+      "tangent_radius_R": 0.0017918581746686542,
+      "tangent_unit": {
+        "x": 0.43564270897241636,
+        "y": 0.9001196754427571
+      },
+      "third_directional_upper_T3": 4589.463472709884,
+      "wall_lhs_after_2R": 0.0019091465531556374,
+      "wall_lhs_after_R": 0.0006200009792968947,
+      "wall_lhs_before": 0.3796513254268127,
+      "wall_threshold_S_times_m": 0.0007565939719518364,
+      "x_interval": [
+        0.02215909090909074,
+        0.02301136363636358
+      ],
+      "y_interval": [
+        -0.8234552556818181,
+        -0.8198863636363636
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.4009667486250521,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 321.8455006516068,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00022495084246243908,
+      "normal_unit": {
+        "x": 0.9308479886476569,
+        "y": -0.36540665296435393
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 1.2237360483015156,
+      "required_factor_before_rhs_over_lhs": 0.006986042996991887,
+      "source_index": 2476,
+      "split_path": "root/y0/y0/y0/y0",
+      "tangent_radius_R": 0.0017671775313261922,
+      "tangent_unit": {
+        "x": 0.36540665296435393,
+        "y": 0.9308479886476569
+      },
+      "third_directional_upper_T3": 7497.9140332029,
+      "wall_lhs_after_2R": 0.00229031617267986,
+      "wall_lhs_after_R": 0.0007343956589928864,
+      "wall_lhs_before": 0.40119169946751454,
+      "wall_threshold_S_times_m": 0.002802742462516304,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.778977272727273,
+        -0.7755149147727276
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.38918229925051784,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 323.47599522918733,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00023665972240443864,
+      "normal_unit": {
+        "x": 0.9239232706644048,
+        "y": -0.38257782205034985
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 1.1520602950813033,
+      "required_factor_before_rhs_over_lhs": 0.006803977589083917,
+      "source_index": 2476,
+      "split_path": "root/y0/y0/y0/y1",
+      "tangent_radius_R": 0.0017625068646838391,
+      "tangent_unit": {
+        "x": 0.38257782205034985,
+        "y": 0.9239232706644048
+      },
+      "third_directional_upper_T3": 7329.543325059873,
+      "wall_lhs_after_2R": 0.002299877776300905,
+      "wall_lhs_after_R": 0.0007457758993404222,
+      "wall_lhs_before": 0.3894189589729223,
+      "wall_threshold_S_times_m": 0.0026495978696161526,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7755149147727276,
+        -0.7720525568181821
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.37720389784564534,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 324.88783445186294,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0002487302904435331,
+      "normal_unit": {
+        "x": 0.9164606246234636,
+        "y": -0.4001248848981664
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 1.0832268561112763,
+      "required_factor_before_rhs_over_lhs": 0.006619534980276296,
+      "source_index": 2476,
+      "split_path": "root/y0/y0/y1/y0",
+      "tangent_radius_R": 0.0017570651302974015,
+      "tangent_unit": {
+        "x": 0.4001248848981664,
+        "y": 0.9164606246234636
+      },
+      "third_directional_upper_T3": 7164.963926403727,
+      "wall_lhs_after_2R": 0.0023065905920332834,
+      "wall_lhs_after_R": 0.0007567175836972537,
+      "wall_lhs_before": 0.3774526281360889,
+      "wall_threshold_S_times_m": 0.002498560875344061,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7720525568181821,
+        -0.7685901988636366
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3650263690603026,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 326.0302747919859,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00026108875247139057,
+      "normal_unit": {
+        "x": 0.9084388225077068,
+        "y": -0.4180178294771782
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 1.0172853455851143,
+      "required_factor_before_rhs_over_lhs": 0.006433013070205031,
+      "source_index": 2476,
+      "split_path": "root/y0/y0/y1/y1",
+      "tangent_radius_R": 0.001750802789452308,
+      "tangent_unit": {
+        "x": 0.4180178294771782,
+        "y": 0.9084388225077068
+      },
+      "third_directional_upper_T3": 7003.341271263369,
+      "wall_lhs_after_2R": 0.0023099703546205583,
+      "wall_lhs_after_R": 0.0007670449513644264,
+      "wall_lhs_before": 0.365287457812774,
+      "wall_threshold_S_times_m": 0.002349898990491544,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7685901988636366,
+        -0.7651278409090911
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3526466408832538,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 326.8529536307081,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.000273649875997451,
+      "normal_unit": {
+        "x": 0.8998370885975181,
+        "y": -0.43622610419866265
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.9542732941643158,
+      "required_factor_before_rhs_over_lhs": 0.006244861272956478,
+      "source_index": 2476,
+      "split_path": "root/y0/y1/y0/y0",
+      "tangent_radius_R": 0.001743670856516802,
+      "tangent_unit": {
+        "x": 0.43622610419866265,
+        "y": 0.8998370885975181
+      },
+      "third_directional_upper_T3": 6843.903256860523,
+      "wall_lhs_after_2R": 0.0023095461957080535,
+      "wall_lhs_after_R": 0.0007765768700221116,
+      "wall_lhs_before": 0.35292029075925124,
+      "wall_threshold_S_times_m": 0.002203938256202988,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7651278409090911,
+        -0.7616654829545457
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.340063779179568,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 327.3063331115387,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00028631684600028524,
+      "normal_unit": {
+        "x": 0.8906351711070957,
+        "y": -0.45471858548671
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.8942179721748118,
+      "required_factor_before_rhs_over_lhs": 0.006055688431322945,
+      "source_index": 2476,
+      "split_path": "root/y0/y1/y0/y1",
+      "tangent_radius_R": 0.0017356210091375864,
+      "tangent_unit": {
+        "x": 0.45471858548671,
+        "y": 0.8906351711070957
+      },
+      "third_directional_upper_T3": 6685.939866414603,
+      "wall_lhs_after_2R": 0.0023048677204384896,
+      "wall_lhs_after_R": 0.0007851284917533636,
+      "wall_lhs_before": 0.34035009602556826,
+      "wall_threshold_S_times_m": 0.0020610541391016873,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7616654829545457,
+        -0.7582031250000002
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3272790185519423,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 327.3422088318555,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00029898140097590854,
+      "normal_unit": {
+        "x": 0.8808134120147134,
+        "y": -0.4734635500384361
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.8371383992403988,
+      "required_factor_before_rhs_over_lhs": 0.005866272672545735,
+      "source_index": 2476,
+      "split_path": "root/y0/y1/y1/y0",
+      "tangent_radius_R": 0.0017266056973075823,
+      "tangent_unit": {
+        "x": 0.4734635500384361,
+        "y": 0.8808134120147134
+      },
+      "third_directional_upper_T3": 6528.80324818975,
+      "wall_lhs_after_2R": 0.002295512750334552,
+      "wall_lhs_after_R": 0.0007925132864623715,
+      "wall_lhs_before": 0.3275779999529182,
+      "wall_threshold_S_times_m": 0.001921661869250992,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7582031250000002,
+        -0.7547407670454547
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3142957866869931,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 326.91427589706524,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00031152428523484077,
+      "normal_unit": {
+        "x": 0.8703528152160954,
+        "y": -0.4924286517308038
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.7830475050346369,
+      "required_factor_before_rhs_over_lhs": 0.005677573697383214,
+      "source_index": 2476,
+      "split_path": "root/y0/y1/y1/y1",
+      "tangent_radius_R": 0.0017165782515111716,
+      "tangent_unit": {
+        "x": 0.4924286517308038,
+        "y": 0.8703528152160954
+      },
+      "third_directional_upper_T3": 6371.9081674428135,
+      "wall_lhs_after_2R": 0.002281095568654385,
+      "wall_lhs_after_R": 0.0007985454391740902,
+      "wall_lhs_before": 0.31460731097222794,
+      "wall_threshold_S_times_m": 0.0017862061937803826,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7547407670454547,
+        -0.7512784090909093
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3082786809599496,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 325.9812177399862,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00032381970398492795,
+      "normal_unit": {
+        "x": 0.8592351130992976,
+        "y": -0.5115809031006114
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.7319212920628257,
+      "required_factor_before_rhs_over_lhs": 0.0053632562529024545,
+      "source_index": 2476,
+      "split_path": "root/y1/y0/y0/y0",
+      "tangent_radius_R": 0.0017054929900851713,
+      "tangent_unit": {
+        "x": 0.5115809031006114,
+        "y": 0.8592351130992976
+      },
+      "third_directional_upper_T3": 6219.982592734374,
+      "wall_lhs_after_2R": 0.0022613282456675834,
+      "wall_lhs_after_R": 0.0008030541803227853,
+      "wall_lhs_before": 0.3086025006639345,
+      "wall_threshold_S_times_m": 0.0016551142913471806,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7512784090909093,
+        -0.7478160511363638
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3081399027544248,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 324.50347038466685,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0003357354574164245,
+      "normal_unit": {
+        "x": 0.8474428316149522,
+        "y": -0.5308866612982774
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.683702349571321,
+      "required_factor_before_rhs_over_lhs": 0.004955896281545385,
+      "source_index": 2476,
+      "split_path": "root/y1/y0/y0/y1",
+      "tangent_radius_R": 0.0016933053258810817,
+      "tangent_unit": {
+        "x": 0.5308866612982774,
+        "y": 0.8474428316149522
+      },
+      "third_directional_upper_T3": 6086.228447659458,
+      "wall_lhs_after_2R": 0.0022360216683765077,
+      "wall_lhs_after_R": 0.0008058820488551792,
+      "wall_lhs_before": 0.30847563821184126,
+      "wall_threshold_S_times_m": 0.0015287732683614036,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7478160511363638,
+        -0.7443536931818183
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.30772516158511254,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 322.4408235154865,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0003471165261476591,
+      "normal_unit": {
+        "x": 0.8349593538967567,
+        "y": -0.5503116183948064
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.6385100179271191,
+      "required_factor_before_rhs_over_lhs": 0.004569620251800414,
+      "source_index": 2476,
+      "split_path": "root/y1/y0/y1/y0",
+      "tangent_radius_R": 0.0016799718722729964,
+      "tangent_unit": {
+        "x": 0.5503116183948064,
+        "y": 0.8349593538967567
+      },
+      "third_directional_upper_T3": 5949.075451991118,
+      "wall_lhs_after_2R": 0.0022047787529563714,
+      "wall_lhs_after_R": 0.0008068309312319864,
+      "wall_lhs_before": 0.3080722781112602,
+      "wall_threshold_S_times_m": 0.001407773321075504,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7443536931818183,
+        -0.7408913352272728
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3080413169975226,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 321.15711459752754,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00035938607213226913,
+      "normal_unit": {
+        "x": 0.8217689824733586,
+        "y": -0.569820795904029
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.5908989208017064,
+      "required_factor_before_rhs_over_lhs": 0.004170939587289323,
+      "source_index": 2476,
+      "split_path": "root/y1/y0/y1/y1",
+      "tangent_radius_R": 0.0016654505485236158,
+      "tangent_unit": {
+        "x": 0.569820795904029,
+        "y": 0.8217689824733586
+      },
+      "third_directional_upper_T3": 5828.295542935059,
+      "wall_lhs_after_2R": 0.00217688788369398,
+      "wall_lhs_after_R": 0.0008092742205186444,
+      "wall_lhs_before": 0.30840070306965484,
+      "wall_threshold_S_times_m": 0.0012863207011810833,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7408913352272728,
+        -0.7374289772727274
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3112334077139284,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 321.5197270861479,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00037374840762442095,
+      "normal_unit": {
+        "x": 0.8078570001036889,
+        "y": -0.5893785433687491
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.5329061759468187,
+      "required_factor_before_rhs_over_lhs": 0.003690853560369105,
+      "source_index": 2476,
+      "split_path": "root/y1/y1/y0/y0",
+      "tangent_radius_R": 0.0016497006844985902,
+      "tangent_unit": {
+        "x": 0.5893785433687491,
+        "y": 0.8078570001036889
+      },
+      "third_directional_upper_T3": 5741.667546099623,
+      "wall_lhs_after_2R": 0.0021581592286190705,
+      "wall_lhs_after_R": 0.0008155547371313623,
+      "wall_lhs_before": 0.3116071561215528,
+      "wall_threshold_S_times_m": 0.0011500963816077248,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7374289772727274,
+        -0.733966619318182
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3151553673766445,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 324.07645196355287,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00039147127129697204,
+      "normal_unit": {
+        "x": 0.7932097292629336,
+        "y": -0.6089485408494083
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.46718238687383384,
+      "required_factor_before_rhs_over_lhs": 0.0031866735037745122,
+      "source_index": 2476,
+      "split_path": "root/y1/y1/y0/y1",
+      "tangent_radius_R": 0.0016326831247075253,
+      "tangent_unit": {
+        "x": 0.6089485408494083,
+        "y": 0.7932097292629336
+      },
+      "third_directional_upper_T3": 5710.493199851429,
+      "wall_lhs_after_2R": 0.002152360144927213,
+      "wall_lhs_after_R": 0.0008275513181669977,
+      "wall_lhs_before": 0.3155468386479415,
+      "wall_threshold_S_times_m": 0.0010055447499192063,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.733966619318182,
+        -0.7305042613636364
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.31863863565024564,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 325.9332375335419,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00040866505108982877,
+      "normal_unit": {
+        "x": 0.7778145903051054,
+        "y": -0.6284938051472753
+      },
+      "outcome": "CLOSED_BY_WS01_TIGHT_R_ONLY",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.4053016239568535,
+      "required_factor_before_rhs_over_lhs": 0.0027177311662078415,
+      "source_index": 2476,
+      "split_path": "root/y1/y1/y1/y0",
+      "tangent_radius_R": 0.0016143603316457452,
+      "tangent_unit": {
+        "x": 0.6284938051472753,
+        "y": 0.7778145903051054
+      },
+      "third_directional_upper_T3": 5673.0064770537065,
+      "wall_lhs_after_2R": 0.0021393568181281458,
+      "wall_lhs_after_R": 0.0008373600049161288,
+      "wall_lhs_before": 0.31904730070133547,
+      "wall_threshold_S_times_m": 0.0008670847926105043,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7305042613636364,
+        -0.7270419034090909
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.32166596492808364,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 329.04322528065006,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00042510095230215297,
+      "normal_unit": {
+        "x": 0.7616601583301248,
+        "y": -0.6479766995907563
+      },
+      "outcome": "STILL_FAILING_AFTER_WS01",
+      "ownership_key": "3982:0",
+      "required_factor_after_rhs_over_lhs_2R": 0.34541635510730084,
+      "required_factor_before_rhs_over_lhs": 0.002283271749421961,
+      "source_index": 2476,
+      "split_path": "root/y1/y1/y1/y1",
+      "tangent_radius_R": 0.0015946964884120474,
+      "tangent_unit": {
+        "x": 0.6479766995907563,
+        "y": 0.7616601583301248
+      },
+      "third_directional_upper_T3": 5628.536192839859,
+      "wall_lhs_after_2R": 0.0021290868848333477,
+      "wall_lhs_after_R": 0.0008472931041706419,
+      "wall_lhs_before": 0.3220910658803858,
+      "wall_threshold_S_times_m": 0.0007354214314658925,
+      "x_interval": [
+        0.3937499999999998,
+        0.39460227272727266
+      ],
+      "y_interval": [
+        -0.7270419034090909,
+        -0.7235795454545455
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.8529809115216849,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 748.98481394027,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0008383625453034873,
+      "normal_unit": {
+        "x": 0.6060750052840804,
+        "y": -0.795407498059895
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 3.137463801518887,
+      "required_factor_before_rhs_over_lhs": 0.01002312638337762,
+      "source_index": 3302,
+      "split_path": "root/y0/y0/y0/y0",
+      "tangent_radius_R": 0.0011137638553601892,
+      "tangent_unit": {
+        "x": 0.795407498059895,
+        "y": 0.6060750052840804
+      },
+      "third_directional_upper_T3": 16889.47390350307,
+      "wall_lhs_after_2R": 0.002727661268440499,
+      "wall_lhs_after_R": 0.001306798169784165,
+      "wall_lhs_before": 0.8538192740669883,
+      "wall_threshold_S_times_m": 0.008557938492537158,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.5181818181818185,
+        -0.5156250000000003
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.8158401535670707,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 725.374917102614,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.000825200913681299,
+      "normal_unit": {
+        "x": 0.5846630246787712,
+        "y": -0.8112762461538429
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 3.228216833157597,
+      "required_factor_before_rhs_over_lhs": 0.010228054444093335,
+      "source_index": 3302,
+      "split_path": "root/y0/y0/y0/y1",
+      "tangent_radius_R": 0.0010931528353082052,
+      "tangent_unit": {
+        "x": 0.8112762461538429,
+        "y": 0.5846630246787712
+      },
+      "third_directional_upper_T3": 16444.783433753186,
+      "wall_lhs_after_2R": 0.002587464888491937,
+      "wall_lhs_after_R": 0.0012621866061783146,
+      "wall_lhs_before": 0.8166653544807521,
+      "wall_threshold_S_times_m": 0.008352897708233916,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.5156250000000003,
+        -0.5130681818181821
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.7782302266937831,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 700.0540897901857,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0008085329717692892,
+      "normal_unit": {
+        "x": 0.562518781246912,
+        "y": -0.8267845068362667
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 3.34138677187149,
+      "required_factor_before_rhs_over_lhs": 0.010474339640872429,
+      "source_index": 3302,
+      "split_path": "root/y0/y0/y1/y0",
+      "tangent_radius_R": 0.0010714520670071417,
+      "tangent_unit": {
+        "x": 0.8267845068362667,
+        "y": 0.562518781246912
+      },
+      "third_directional_upper_T3": 15977.767652189588,
+      "wall_lhs_after_2R": 0.0024420748387564443,
+      "wall_lhs_after_R": 0.0012136428971227897,
+      "wall_lhs_before": 0.7790387596655524,
+      "wall_threshold_S_times_m": 0.008159916562140985,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.5130681818181821,
+        -0.510511363636364
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.7402369411128322,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 673.1483311664434,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0007884283937526304,
+      "normal_unit": {
+        "x": 0.5396410304817533,
+        "y": -0.8418952180768053
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 3.480115011894298,
+      "required_factor_before_rhs_over_lhs": 0.010767349271994252,
+      "source_index": 3302,
+      "split_path": "root/y0/y0/y1/y1",
+      "tangent_radius_R": 0.0010486441659894087,
+      "tangent_unit": {
+        "x": 0.8418952180768053,
+        "y": 0.5396410304817533
+      },
+      "third_directional_upper_T3": 15489.695256673247,
+      "wall_lhs_after_2R": 0.002292705541516839,
+      "wall_lhs_after_R": 0.0011615206997248495,
+      "wall_lhs_before": 0.7410253695065848,
+      "wall_threshold_S_times_m": 0.007978878972885997,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.510511363636364,
+        -0.5079545454545458
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.7019495414127042,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 644.8054975307858,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0007650102301737169,
+      "normal_unit": {
+        "x": 0.5160300775344143,
+        "y": -0.856570463581267
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 3.648194000951236,
+      "required_factor_before_rhs_over_lhs": 0.011113311246098725,
+      "source_index": 3302,
+      "split_path": "root/y0/y1/y0/y0",
+      "tangent_radius_R": 0.0010247133648512421,
+      "tangent_unit": {
+        "x": 0.856570463581267,
+        "y": 0.5160300775344143
+      },
+      "third_directional_upper_T3": 14982.153522007493,
+      "wall_lhs_after_2R": 0.002140644255084505,
+      "wall_lhs_after_R": 0.001106231968233795,
+      "wall_lhs_before": 0.7027145516428779,
+      "wall_threshold_S_times_m": 0.007809485529570019,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.5079545454545458,
+        -0.5053977272727276
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.6634602254208655,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 615.193950826644,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0007384552268827479,
+      "normal_unit": {
+        "x": 0.4916878724493291,
+        "y": -0.8707715177279585
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 3.8501787231481033,
+      "required_factor_before_rhs_over_lhs": 0.011519411741969203,
+      "source_index": 3302,
+      "split_path": "root/y0/y1/y0/y1",
+      "tangent_radius_R": 0.0009996456541515662,
+      "tangent_unit": {
+        "x": 0.8707715177279585,
+        "y": 0.4916878724493291
+      },
+      "third_directional_upper_T3": 14456.923657704654,
+      "wall_lhs_after_2R": 0.00198722673180172,
+      "wall_lhs_after_R": 0.0010482411763041407,
+      "wall_lhs_before": 0.6641986806477482,
+      "wall_threshold_S_times_m": 0.0076511780808541235,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.5053977272727276,
+        -0.5028409090909094
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.624873845085187,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 584.5007185442408,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0007089927702658936,
+      "normal_unit": {
+        "x": 0.46661810630724443,
+        "y": -0.884458898347595
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 4.091590283504134,
+      "required_factor_before_rhs_over_lhs": 0.011993939061978107,
+      "source_index": 3302,
+      "split_path": "root/y0/y1/y1/y0",
+      "tangent_radius_R": 0.0009734289278135152,
+      "tangent_unit": {
+        "x": 0.884458898347595,
+        "y": 0.46661810630724443
+      },
+      "third_directional_upper_T3": 13915.938983463147,
+      "wall_lhs_after_2R": 0.001833810796185515,
+      "wall_lhs_after_R": 0.000988057965322785,
+      "wall_lhs_before": 0.6255828378554529,
+      "wall_threshold_S_times_m": 0.007503202435457633,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.5028409090909094,
+        -0.5002840909090912
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.5862820660230854,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 552.9291742378588,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0006769023810607366,
+      "normal_unit": {
+        "x": 0.4408263077563551,
+        "y": -0.8975924277699201
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 4.379145553980407,
+      "required_factor_before_rhs_over_lhs": 0.012547080749678564,
+      "source_index": 3302,
+      "split_path": "root/y0/y1/y1/y1",
+      "tangent_radius_R": 0.0009460531325448749,
+      "tangent_unit": {
+        "x": 0.8975924277699201,
+        "y": 0.4408263077563551
+      },
+      "third_directional_upper_T3": 13361.329896750856,
+      "wall_lhs_after_2R": 0.0016817485243487303,
+      "wall_lhs_after_R": 0.0009262283366316959,
+      "wall_lhs_before": 0.5869589684041462,
+      "wall_threshold_S_times_m": 0.007364621573314851,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.5002840909090912,
+        -0.497727272727273
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.5478624831216172,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 520.6962629893604,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.000642509655122695,
+      "normal_unit": {
+        "x": 0.4143199393462279,
+        "y": -0.9101313025383414
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 4.721048888710841,
+      "required_factor_before_rhs_over_lhs": 0.013189187054032929,
+      "source_index": 3302,
+      "split_path": "root/y1/y0/y0/y0",
+      "tangent_radius_R": 0.0009175104207002875,
+      "tangent_unit": {
+        "x": 0.9101313025383414,
+        "y": 0.4143199393462279
+      },
+      "third_directional_upper_T3": 12795.378266541693,
+      "wall_lhs_after_2R": 0.0015323575587413282,
+      "wall_lhs_after_R": 0.000863324474409718,
+      "wall_lhs_before": 0.5485049927767399,
+      "wall_threshold_S_times_m": 0.007234334949803404,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.497727272727273,
+        -0.49517045454545483
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.5097317187050192,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 488.02931202402925,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0006061807349016601,
+      "normal_unit": {
+        "x": 0.3871084930112433,
+        "y": -0.9220341721642232
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 5.127363284139561,
+      "required_factor_before_rhs_over_lhs": 0.013934107237577967,
+      "source_index": 3302,
+      "split_path": "root/y1/y0/y0/y1",
+      "tangent_radius_R": 0.0008877953059080672,
+      "tangent_unit": {
+        "x": 0.9220341721642232,
+        "y": 0.3871084930112433
+      },
+      "third_directional_upper_T3": 12220.536791550257,
+      "wall_lhs_after_2R": 0.0013868927602990152,
+      "wall_lhs_after_R": 0.000799933535501279,
+      "wall_lhs_before": 0.5103378994399209,
+      "wall_threshold_S_times_m": 0.007111103018196139,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.49517045454545483,
+        -0.49261363636363664
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.4718604326184388,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 455.16248276368276,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0005683153465063773,
+      "normal_unit": {
+        "x": 0.3592035839816455,
+        "y": -0.9332592272540041
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 5.610485675390363,
+      "required_factor_before_rhs_over_lhs": 0.0148034531905676,
+      "source_index": 3302,
+      "split_path": "root/y1/y0/y1/y0",
+      "tangent_radius_R": 0.0008569048206812133,
+      "tangent_unit": {
+        "x": 0.9332592272540041,
+        "y": 0.3592035839816455
+      },
+      "third_directional_upper_T3": 11639.381160851157,
+      "wall_lhs_after_2R": 0.0012465189755414409,
+      "wall_lhs_after_R": 0.0007366456452418397,
+      "wall_lhs_before": 0.47242874796494516,
+      "wall_threshold_S_times_m": 0.006993576856377524,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.49261363636363664,
+        -0.49005681818181845
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.43434629495332455,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 422.33293623570216,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0005293725703099531,
+      "normal_unit": {
+        "x": 0.33061904233151457,
+        "y": -0.9437642972945057
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 6.185490879344958,
+      "required_factor_before_rhs_over_lhs": 0.015821186593140833,
+      "source_index": 3302,
+      "split_path": "root/y1/y0/y1/y1",
+      "tangent_radius_R": 0.0008248386751230192,
+      "tangent_unit": {
+        "x": 0.9437642972945057,
+        "y": 0.33061904233151457
+      },
+      "third_directional_upper_T3": 11055.36842706172,
+      "wall_lhs_after_2R": 0.0011123206249779019,
+      "wall_lhs_after_R": 0.0006740755637889765,
+      "wall_lhs_before": 0.4348756675236345,
+      "wall_threshold_S_times_m": 0.006880249080708096,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.49005681818181845,
+        -0.48750000000000027
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3972857733298021,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 389.80470869513016,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0004897937240038031,
+      "normal_unit": {
+        "x": 0.3013710013054414,
+        "y": -0.9535069583239315
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 6.871024488589046,
+      "required_factor_before_rhs_over_lhs": 0.017018758769546262,
+      "source_index": 3302,
+      "split_path": "root/y1/y1/y0/y0",
+      "tangent_radius_R": 0.0007915994157272248,
+      "tangent_unit": {
+        "x": 0.9535069583239315,
+        "y": 0.3013710013054414
+      },
+      "third_directional_upper_T3": 10471.1567872638,
+      "wall_lhs_after_2R": 0.0009852455672877878,
+      "wall_lhs_after_R": 0.000612790999995049,
+      "wall_lhs_before": 0.3977755670538059,
+      "wall_threshold_S_times_m": 0.006769646420108196,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.48750000000000027,
+        -0.4849431818181821
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.3607734322702101,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 357.7791272480105,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00044998244766610544,
+      "normal_unit": {
+        "x": 0.27147798150048474,
+        "y": -0.9624446506477256
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 7.6911425746259,
+      "required_factor_before_rhs_over_lhs": 0.01843806330188182,
+      "source_index": 3302,
+      "split_path": "root/y1/y1/y0/y1",
+      "tangent_radius_R": 0.0007571925831600033,
+      "tangent_unit": {
+        "x": 0.9624446506477256,
+        "y": 0.27147798150048474
+      },
+      "third_directional_upper_T3": 9888.648628087722,
+      "wall_lhs_after_2R": 0.0008659649879152146,
+      "wall_lhs_after_R": 0.0005532625907830958,
+      "wall_lhs_before": 0.36122341471787617,
+      "wall_threshold_S_times_m": 0.00666026018669011,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.4849431818181821,
+        -0.4823863636363639
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.32490124377762064,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 326.4776515902925,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00041038188435901183,
+      "normal_unit": {
+        "x": 0.24096096991873972,
+        "y": -0.9705348066791939
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 8.675657236315544,
+      "required_factor_before_rhs_over_lhs": 0.020136789053115542,
+      "source_index": 3302,
+      "split_path": "root/y1/y1/y1/y0",
+      "tangent_radius_R": 0.0007216268677990218,
+      "tangent_unit": {
+        "x": 0.9705348066791939,
+        "y": 0.24096096991873972
+      },
+      "third_directional_upper_T3": 9310.620704622965,
+      "wall_lhs_after_2R": 0.000755070354215999,
+      "wall_lhs_after_R": 0.0004959708717114924,
+      "wall_lhs_before": 0.32531162566197963,
+      "wall_threshold_S_times_m": 0.006550731582481373,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.4823863636363639,
+        -0.4798295454545457
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.2897579195502338,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 296.1180885171699,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.00037143521176897994,
+      "normal_unit": {
+        "x": 0.20984349284993264,
+        "y": -0.9777349888945062
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "4404:0",
+      "required_factor_after_rhs_over_lhs_2R": 9.861023092405741,
+      "required_factor_before_rhs_over_lhs": 0.022194468966779998,
+      "source_index": 3302,
+      "split_path": "root/y1/y1/y1/y1",
+      "tangent_radius_R": 0.0006849142616948547,
+      "tangent_unit": {
+        "x": 0.9777349888945062,
+        "y": 0.20984349284993264
+      },
+      "third_directional_upper_T3": 8740.106126022169,
+      "wall_lhs_after_2R": 0.00065300191473806,
+      "wall_lhs_after_R": 0.00044135885708833887,
+      "wall_lhs_before": 0.29012935476200274,
+      "wall_threshold_S_times_m": 0.006439266960617174,
+      "x_interval": [
+        0.7534090909090909,
+        0.7542613636363633
+      ],
+      "y_interval": [
+        -0.4798295454545457,
+        -0.4772727272727275
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    },
+    {
+      "C0_raw_absolute_hull_old": 0.7106661773387035,
+      "F_t_at_z_star_argument": "zero_by_construction:t_is_grad_F_rotated_90deg_so_F_t_vanishes_on_zero_curve",
+      "branch_validated": true,
+      "f_interval_contains_zero": true,
+      "f_tt_abs_upper": 908.1321175369277,
+      "grad_F_nonvanishing": true,
+      "normal_remainder_bound_Rn": 0.0008229962803652157,
+      "normal_unit": {
+        "x": -0.4712046475463786,
+        "y": -0.882023911314593
+      },
+      "outcome": "CLOSED_BY_WS01",
+      "ownership_key": "2932:1",
+      "required_factor_after_rhs_over_lhs_2R": 2.0443904669620077,
+      "required_factor_before_rhs_over_lhs": 0.008529360272181926,
+      "source_index": 1100,
+      "split_path": "root/y0/y0/y0/y0",
+      "tangent_radius_R": 0.00107865348482685,
+      "tangent_unit": {
+        "x": 0.882023911314593,
+        "y": -0.4712046475463786
+      },
+      "third_directional_upper_T3": 19232.190118048908,
+      "wall_lhs_after_2R": 0.002968389644553557,
+      "wall_lhs_after_R": 0.0013553218686120547,
+      "wall_lhs_before": 0.7114891736190687,
+      "wall_threshold_S_times_m": 0.006068547491554034,
+      "x_interval": [
+        -0.5011363636363639,
+        -0.5002840909090911
+      ],
+      "y_interval": [
+        0.7721590909090907,
+        0.7751420454545452
+      ],
+      "z_star_method": "interval_existence_via_IVT_on_f_interval_with_constant_sign_F_n"
+    }
+  ],
+  "per_owner_family_prior": [
+    {
+      "branch_point_not_found": 0,
+      "closed": 16,
+      "closed_tight_R_only": 0,
+      "experiment_id": "EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-20260509-01",
+      "failures": 16,
+      "median_required_factor_after": 4.17417952861563,
+      "median_required_factor_before": 0.012902527624671575,
+      "outcome_summary": "FULL_PASS",
+      "owner_key": "4488:3",
+      "source_artifact_status": "CENTERLINE_SIGN_MODEL_FULL_PASS_4488_3",
+      "still_failing": 0
+    },
+    {
+      "branch_point_not_found": 0,
+      "closed": 16,
+      "closed_tight_R_only": 0,
+      "experiment_id": "EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-2484-4-20260509-01",
+      "failures": 16,
+      "median_required_factor_after": 8.866047942748601,
+      "median_required_factor_before": 0.028722739683563148,
+      "outcome_summary": "FULL_PASS",
+      "owner_key": "2484:4",
+      "source_artifact_status": "CENTERLINE_SIGN_MODEL_FULL_PASS_2484_4",
+      "still_failing": 0
+    },
+    {
+      "branch_point_not_found": 0,
+      "closed": 4,
+      "closed_tight_R_only": 1,
+      "experiment_id": "EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4571-2-20260509-01",
+      "failures": 11,
+      "median_required_factor_after": 0.36307964164003076,
+      "median_required_factor_before": 0.0039039881908065933,
+      "outcome_summary": "PARTIAL",
+      "owner_key": "4571:2",
+      "source_artifact_status": "CENTERLINE_SIGN_MODEL_PARTIAL_PASS_4571_2",
+      "still_failing": 7
+    }
+  ],
+  "per_owner_family_residual": [
+    {
+      "branch_point_not_found": 0,
+      "closed": 0,
+      "closed_tight_R_only": 16,
+      "experiment_id": "EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3104-0-20260509-01",
+      "failures": 16,
+      "median_required_factor_after": 0.678683167940443,
+      "median_required_factor_before": 0.003451896959881573,
+      "outcome_summary": "BLOCKED",
+      "owner_key": "3104:0",
+      "source_artifact_status": "CENTERLINE_SIGN_MODEL_BLOCKED_3104_0",
+      "still_failing": 16
+    },
+    {
+      "branch_point_not_found": 0,
+      "closed": 6,
+      "closed_tight_R_only": 10,
+      "experiment_id": "EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3546-0-20260509-01",
+      "failures": 16,
+      "median_required_factor_after": 0.8439888666232092,
+      "median_required_factor_before": 0.005025676692895417,
+      "outcome_summary": "PARTIAL",
+      "owner_key": "3546:0",
+      "source_artifact_status": "CENTERLINE_SIGN_MODEL_PARTIAL_PASS_3546_0",
+      "still_failing": 10
+    },
+    {
+      "branch_point_not_found": 0,
+      "closed": 4,
+      "closed_tight_R_only": 11,
+      "experiment_id": "EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3982-0-20260509-01",
+      "failures": 16,
+      "median_required_factor_after": 0.7574843985487314,
+      "median_required_factor_before": 0.005520414975142834,
+      "outcome_summary": "PARTIAL",
+      "owner_key": "3982:0",
+      "source_artifact_status": "CENTERLINE_SIGN_MODEL_PARTIAL_PASS_3982_0",
+      "still_failing": 12
+    },
+    {
+      "branch_point_not_found": 0,
+      "closed": 16,
+      "closed_tight_R_only": 0,
+      "experiment_id": "EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4404-0-20260509-01",
+      "failures": 16,
+      "median_required_factor_after": 4.550097221345624,
+      "median_required_factor_before": 0.012868133901855747,
+      "outcome_summary": "FULL_PASS",
+      "owner_key": "4404:0",
+      "source_artifact_status": "CENTERLINE_SIGN_MODEL_FULL_PASS_4404_0",
+      "still_failing": 0
+    },
+    {
+      "branch_point_not_found": 0,
+      "closed": 1,
+      "closed_tight_R_only": 0,
+      "experiment_id": "EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-2932-1-20260509-01",
+      "failures": 1,
+      "median_required_factor_after": 2.0443904669620077,
+      "median_required_factor_before": 0.008529360272181926,
+      "outcome_summary": "FULL_PASS",
+      "owner_key": "2932:1",
+      "source_artifact_status": "CENTERLINE_SIGN_MODEL_FULL_PASS_2932_1",
+      "still_failing": 0
+    }
+  ],
+  "promotion_state": "review_only",
+  "schema_version": "1.0",
+  "source_paths": {
+    "boundary_slice_source": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-BOUNDARY-SLICE-CELL-02-03-ADAPTIVE-REFINE-20260508-03/EXP-MATH-EHP114-N15-BOUNDARY-SLICE-CELL-02-03-ADAPTIVE-REFINE-20260508-03_RESULTS.json",
+    "math_reference": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/EHP114_CENTER_STRIP_ROOT_COLLAR_REDUCTION_PACKET_2026-05-06.md",
+    "prior_family_artifacts": {
+      "2484:4": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-2484-4-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-2484-4-20260509-01_RESULTS.json",
+      "4488:3": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-20260509-01_RESULTS.json",
+      "4571:2": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4571-2-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4571-2-20260509-01_RESULTS.json"
+    },
+    "residual_family_artifacts": {
+      "2932:1": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-2932-1-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-2932-1-20260509-01_RESULTS.json",
+      "3104:0": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3104-0-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3104-0-20260509-01_RESULTS.json",
+      "3546:0": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3546-0-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3546-0-20260509-01_RESULTS.json",
+      "3982:0": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3982-0-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3982-0-20260509-01_RESULTS.json",
+      "4404:0": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4404-0-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4404-0-20260509-01_RESULTS.json"
+    },
+    "wall_separation_target_packet": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-WALL-SEPARATION-TARGET-20260508-01/EXP-MATH-EHP114-N15-CELL-02-03-WALL-SEPARATION-TARGET-20260508-01_RESULTS.json"
+  },
+  "source_sha_status": [
+    {
+      "actual_sha256": "d1bda21bc23af8a8da856a65604cdf002b4a40101a02f6b07fb0d8b2ebb28c64",
+      "owner_key": "3104:0",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3104-0-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3104-0-20260509-01_RESULTS.json"
+    },
+    {
+      "actual_sha256": "24579215ce5169a3d8a112da5287e27e07bbafa6be9b0ae6c98ce87ce1be13a1",
+      "owner_key": "3546:0",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3546-0-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3546-0-20260509-01_RESULTS.json"
+    },
+    {
+      "actual_sha256": "b4f34a2e9c53926c443a59ca8c946fdbd241fb253947ef1e5c1402631bd39f1c",
+      "owner_key": "3982:0",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3982-0-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-3982-0-20260509-01_RESULTS.json"
+    },
+    {
+      "actual_sha256": "690784541a97bd0c277ee3bd8883ffc508b6f64b17760a5f2238aa8f10a2edf2",
+      "owner_key": "4404:0",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4404-0-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-4404-0-20260509-01_RESULTS.json"
+    },
+    {
+      "actual_sha256": "987df4a64a409e4c1d09f09fa0efe99562de053176d9d4b5bfc3adc3c5cfc027",
+      "owner_key": "2932:1",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-2932-1-20260509-01/EXP-MATH-EHP114-N15-CELL-02-03-CENTERLINE-SIGN-MODEL-OWNER-2932-1-20260509-01_RESULTS.json"
+    }
+  ],
+  "status": "RESIDUAL_SWEEP_PARTIAL",
+  "target_problem": 114,
+  "timestamp_unix": 1778354820,
+  "total_residual_branch_point_not_found": 0,
+  "total_residual_closed_by_ws01": 27,
+  "total_residual_closed_by_ws01_tight_R_only": 37,
+  "total_residual_failures": 65,
+  "total_residual_still_failing": 38
+}

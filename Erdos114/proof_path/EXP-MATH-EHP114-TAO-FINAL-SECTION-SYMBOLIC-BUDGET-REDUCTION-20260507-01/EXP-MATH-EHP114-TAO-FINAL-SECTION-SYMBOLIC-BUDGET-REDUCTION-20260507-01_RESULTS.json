@@ -1,0 +1,237 @@
+{
+  "claim_ceiling": "Symbolic final-section budget reduction only. This packet is not a full all-degree proof and does not authorize n=15 or higher computation.",
+  "experiment_id": "EXP-MATH-EHP114-TAO-FINAL-SECTION-SYMBOLIC-BUDGET-REDUCTION-20260507-01",
+  "final_case_row_count": 2,
+  "final_case_rows": [
+    {
+      "case_id": "pp0_holds",
+      "case_status": "SYMBOLIC_BUDGET_READY_NUMERIC_CONSTANTS_PENDING",
+      "needed_parent_rows": [
+        "inside-2-second",
+        "annulus-2",
+        "outside-again",
+        "split-2"
+      ],
+      "source_snippet": "If \\eqref{pp0} holds, then from Propositions \\ref{inside-2}, \\ref{annulus-2}, \\ref{outside-again} and \\eqref{split-2} (and discarding some terms with a favorable sign) we have $$ \\ell(\\partial E_1(p)) \\leq \\ell(\\partial E_1(p_0)) - c \\|p\\| + O\\left(\\frac{\\|p\\|}{C_0}\\right)$$ giving the claim \\eqref{a-ineq}. If instead \\eqref{pp0} fails, we instead have",
+      "source_span": [
+        1867,
+        1869
+      ],
+      "sufficient_condition": "C0 >= 2*K_pp0/c_pp0",
+      "symbolic_deficit": "c_pp0*||p|| - K_pp0*||p||/C0"
+    },
+    {
+      "case_id": "pp0_fails",
+      "case_status": "SYMBOLIC_BUDGET_READY_NUMERIC_CONSTANTS_PENDING",
+      "needed_parent_rows": [
+        "inside-2-first",
+        "annulus-2",
+        "disp-split",
+        "failure-of-pp0"
+      ],
+      "source_snippet": "giving the claim \\eqref{a-ineq}. If instead \\eqref{pp0} fails, we instead have $$ \\ell(\\partial E_1(p)) \\leq \\ell(\\partial E_1(p_0)) - c \\Disp \\{ \\zeta : \\zeta \\in D(0,10 r_-) \\} - c \\sum_{\\zeta \\notin D(0,10r_-)} |\\zeta| + O\\left(\\frac{\\|p\\|}{C_0}\\right)$$ and hence by Lemma \\ref{disp-split} $$ \\ell(\\partial E_1(p)) \\leq \\ell(\\partial E_1(p_0)) - c \\|p\\|_1 + O\\left(\\frac{\\|p\\|}{C_0}\\right)$$ after adjusting $c$ as necessary. The claim \\eqref{a-ineq} now follows from the failure of \\eqref{pp0}. Thus \\eqref{a-ineq} is proven in all cases, giving Theorem \\ref{main-thm}(iv).",
+      "source_span": [
+        1869,
+        1873
+      ],
+      "sufficient_condition": "C0 >= 2*K_not_pp0*C/c_disp",
+      "symbolic_deficit": "c_disp*||p||_1 - K_not_pp0*||p||/C0"
+    }
+  ],
+  "final_deficit_row_count": 3,
+  "final_deficit_rows": [
+    {
+      "classified_label": null,
+      "dependency_id": "final-deficit-annulus-2",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "\\label{annulus-2}",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final intermediate-region deficit quantitatively dominate bulk and shape errors.",
+      "named_blocker": "final_deficit_constant_not_explicitly_budgeted",
+      "named_constants": [
+        "absolute constant",
+        "c",
+        "n"
+      ],
+      "priority": "CRITICAL",
+      "source_label": "annulus-2",
+      "source_line": null,
+      "source_snippet": "\\begin{proposition}[Bound in intermediate region]\\label{annulus-2} We have $$ \\ell(\\partial E_1 \\cap \\Ann(0,r_-,r_+)) \\leq 2n (r_+-r_-) - c \\sum_{\\zeta \\notin D(0,10r_-)} |\\zeta| + O_{C_0}\\left(\\frac{\\log n}{n} \\|p\\| \\right)$$ for an absolute constant $c>0$ (independent of $C_0$). \\end{proposition}",
+      "source_span": [
+        1781,
+        1784
+      ]
+    },
+    {
+      "classified_label": null,
+      "dependency_id": "final-deficit-inside-2",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "\\label{inside-2}",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final inner deficit quantitatively dominate its inherited error terms.",
+      "named_blocker": "final_deficit_constant_not_explicitly_budgeted",
+      "named_constants": [
+        "absolute constant",
+        "C",
+        "c"
+      ],
+      "priority": "CRITICAL",
+      "source_label": "inside-2",
+      "source_line": null,
+      "source_snippet": "\\begin{proposition}[Inner bound]\\label{inside-2} We have \\begin{equation}\\label{in2-first} \\ell(\\partial E_1 \\cap D(0,r_-)) \\leq 2n r_- - c \\Disp \\{ \\zeta : \\zeta \\in D(0,10 r_-) \\} + O\\left(\\frac{\\|p\\|}{C_0}\\right) \\end{equation} for an absolute constant $c>0$ (independent of $C_0$). If furthermore \\begin{equation}\\label{pp0} \\|p\\| \\geq C \\|p\\|_1, \\end{equation} for a large absolute constant $C$ (independent of $C_0, c$), we can obtain the refinement \\begin{equation}\\label{in2-second} \\ell(\\partial E_1 \\cap D(0,r_-)) \\leq 2n r_- - c \\Disp \\{ \\zeta : \\zeta \\in D(0,10 r_-) \\} - c \\|p\\| + O\\left(\\frac{\\|p\\|}{C_0}\\right) \\end{equation} \\end{proposition}",
+      "source_span": [
+        1739,
+        1751
+      ]
+    },
+    {
+      "classified_label": null,
+      "dependency_id": "final-deficit-outside-again",
+      "dependency_parents": [
+        "pots",
+        "ets"
+      ],
+      "exact_proof_phrase": "\\label{outside-again}",
+      "extracted_N_i": null,
+      "extraction_status": "NAMED_BLOCKER",
+      "inequality_needed": "Make the final outer-region comparison quantitatively absorb endpoint and remainder errors.",
+      "named_blocker": "final_deficit_constant_not_explicitly_budgeted",
+      "named_constants": [],
+      "priority": "CRITICAL",
+      "source_label": "outside-again",
+      "source_line": null,
+      "source_snippet": "\\begin{proposition}[Outer bound]\\label{outside-again} We have $$ \\ell(\\partial E_1 \\cap \\Ann(0,r_+,1+\\sigma)) \\leq \\ell(\\partial E_1(p_0)) - 2nr_+ + O\\left( \\frac{\\|p\\|}{C_0} \\right).$$ \\end{proposition}",
+      "source_span": [
+        1831,
+        1833
+      ]
+    }
+  ],
+  "first_failed_condition": "numeric parent constants remain opaque",
+  "full_synthesis_allowed": false,
+  "global_candidate_N0": null,
+  "n15_or_higher_computation_authorized": false,
+  "next_action": "Quantify parent constants K_pp0, K_not_pp0, c_pp0, c_disp, K_pots_upper, N_pots, eps0, and N_ets before any threshold integer can be emitted.",
+  "numeric_ready_condition_count": 0,
+  "partial_max_N_final_section": null,
+  "source_artifacts": [
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "2603ef79a83d308c96f1a0fd6038635e081c8e979675a5a70d04be9252a47e47",
+        "expected_sha256": "2603ef79a83d308c96f1a0fd6038635e081c8e979675a5a70d04be9252a47e47",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01_RESULTS.json",
+        "role": "final_section_constant_extraction",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "FINAL_SECTION_CONSTANT_EXTRACTION_READY"
+    },
+    {
+      "artifact_id": "EXP-MATH-EHP114-TAO-FINAL-SECTION-THRESHOLD-SUBCHECK-20260507-01",
+      "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-THRESHOLD-SUBCHECK-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-THRESHOLD-SUBCHECK-20260507-01_RESULTS.json",
+      "sha_check": {
+        "actual_sha256": "d613d97b94a4e8c8f22136a2021dbdf3862d28e1adacd110dbdb7dfd16360b85",
+        "expected_sha256": "d613d97b94a4e8c8f22136a2021dbdf3862d28e1adacd110dbdb7dfd16360b85",
+        "path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-THRESHOLD-SUBCHECK-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-THRESHOLD-SUBCHECK-20260507-01_RESULTS.json",
+        "role": "final_section_threshold_subcheck",
+        "sha_path": "/Users/kenbengoetxea/container-projects/apps/H2/Math/erdos-experiments/Erdos114/proof_path/EXP-MATH-EHP114-TAO-FINAL-SECTION-THRESHOLD-SUBCHECK-20260507-01/EXP-MATH-EHP114-TAO-FINAL-SECTION-THRESHOLD-SUBCHECK-20260507-01_RESULTS.sha256",
+        "sha_status": "PASS"
+      },
+      "status": "FINAL_SECTION_REMAINS_OPAQUE"
+    }
+  ],
+  "source_experiment_ids": [
+    "EXP-MATH-EHP114-TAO-FINAL-SECTION-CONSTANT-EXTRACTION-20260507-01",
+    "EXP-MATH-EHP114-TAO-FINAL-SECTION-THRESHOLD-SUBCHECK-20260507-01"
+  ],
+  "status": "FINAL_SECTION_SYMBOLIC_BUDGET_READY_NUMERIC_CONSTANTS_PENDING",
+  "symbolic_condition_count": 5,
+  "symbolic_conditions": [
+    {
+      "blocks": [
+        "inside-2-second",
+        "annulus-2-repeat"
+      ],
+      "condition_id": "choose_C_for_pp0_refinement",
+      "meaning": "The extra inner-region gain is available only when the origin-repulsion input makes the small disk empty under pp0.",
+      "numeric_status": "PARENT_CONSTANTS_OPAQUE",
+      "source_rows": [
+        "needle-absolute-constant-1747",
+        "needle-large-enough-1770"
+      ],
+      "symbolic_condition": "C >= C_origin_repulsion(c_in, C0_independent_constants)"
+    },
+    {
+      "blocks": [
+        "a-ineq-pp0-case"
+      ],
+      "condition_id": "choose_C0_for_pp0_case",
+      "meaning": "The combined O(||p||/C0) terms must be less than half of the negative pp0-case linear gain.",
+      "numeric_status": "PARENT_CONSTANTS_OPAQUE",
+      "source_rows": [
+        "final-deficit-inside-2",
+        "final-deficit-annulus-2",
+        "final-deficit-outside-again"
+      ],
+      "symbolic_condition": "C0 >= 2*K_pp0/c_pp0"
+    },
+    {
+      "blocks": [
+        "a-ineq-not-pp0-case"
+      ],
+      "condition_id": "choose_C0_for_not_pp0_case",
+      "meaning": "When pp0 fails, ||p|| < C||p||_1 converts the remainder into a ||p||_1 cost; C0 must make that cost smaller than the dispersion gain.",
+      "numeric_status": "PARENT_CONSTANTS_OPAQUE",
+      "source_rows": [
+        "final-deficit-inside-2",
+        "final-deficit-annulus-2"
+      ],
+      "symbolic_condition": "C0 >= 2*K_not_pp0*C/c_disp"
+    },
+    {
+      "blocks": [
+        "pots"
+      ],
+      "condition_id": "choose_C_for_pots_contradiction",
+      "meaning": "The lower bound for Psi(D(0,C eps^(1/2)/n)) must exceed the upper bound forced by the comparison with the reference lemniscate.",
+      "numeric_status": "PARENT_CONSTANTS_OPAQUE",
+      "source_rows": [
+        "needle-sufficiently-large-1711",
+        "needle-large-enough-1717",
+        "needle-large-enough-1719"
+      ],
+      "symbolic_condition": "C/2 > K_pots_upper and n >= N_pots(C, eps)"
+    },
+    {
+      "blocks": [
+        "ets"
+      ],
+      "condition_id": "choose_epsilon_for_ets",
+      "meaning": "The inherited inside/annulus/outside estimates must be quantitative enough to turn ||p||_1 into a prescribed small quantity.",
+      "numeric_status": "PARENT_CONSTANTS_OPAQUE",
+      "source_rows": [
+        "needle-sufficiently-large-1649",
+        "needle-absolute-constant-1655",
+        "needle-sufficiently-large-1661"
+      ],
+      "symbolic_condition": "eps <= eps0 and n >= N_ets(eps)"
+    }
+  ],
+  "symbolic_ready_condition_count": 5,
+  "tao_source": {
+    "expected_source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+    "source_line_count": 1965,
+    "source_sha256": "ab792bd8fe806a985e44f692ccb8305cf386677509846979bb8ff35a276814a6",
+    "source_sha_status": "PASS_PINNED_SOURCE_SHA_MATCH"
+  }
+}
