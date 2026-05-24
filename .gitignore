@@ -28,3 +28,9 @@ scripts/zenodo_publish.py
 !scripts/erdos-1038-tao-ansatz/**
 !results/erdos-1038/
 !results/erdos-1038/**
+
+# Re-exclude generated caches inside explicitly allowed experiment trees.
+**/target/
+**/.lake/
+**/__pycache__/
+**/*.pyc
