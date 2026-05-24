@@ -8,28 +8,38 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 use std::time::Instant;
 
 #[derive(Clone, Copy)]
-struct C64 { re: f64, im: f64 }
+struct C64 {
+    re: f64,
+    im: f64,
+}
 
 impl C64 {
-    fn new(re: f64, im: f64) -> Self { C64 { re, im } }
-    fn norm_sq(self) -> f64 { self.re * self.re + self.im * self.im }
+    fn new(re: f64, im: f64) -> Self {
+        C64 { re, im }
+    }
+    fn norm_sq(self) -> f64 {
+        self.re * self.re + self.im * self.im
+    }
 }
 
 impl std::ops::Mul for C64 {
     type Output = C64;
     fn mul(self, r: C64) -> C64 {
-        C64::new(self.re * r.re - self.im * r.im, self.re * r.im + self.im * r.re)
+        C64::new(
+            self.re * r.re - self.im * r.im,
+            self.re * r.im + self.im * r.re,
+        )
     }
 }
 impl std::ops::Add for C64 {
     type Output = C64;
-    fn add(self, r: C64) -> C64 { C64::new(self.re + r.re, self.im + r.im) }
+    fn add(self, r: C64) -> C64 {
+        C64::new(self.re + r.re, self.im + r.im)
+    }
 }
 
 // Lemniscate length for degree-4: p(z) = z^4 + a*z^2 + b*z + c
-fn lemniscate_length_n4(
-    ar: f64, ai: f64, br: f64, bi: f64, cr: f64, ci: f64, res: usize
-) -> f64 {
+fn lemniscate_length_n4(ar: f64, ai: f64, br: f64, bi: f64, cr: f64, ci: f64, res: usize) -> f64 {
     let a = C64::new(ar, ai);
     let b = C64::new(br, bi);
     let c = C64::new(cr, ci);
@@ -65,10 +75,16 @@ fn lemniscate_length_n4(
                 | (((fne > 0.0) as u8) << 2)
                 | (((fnw > 0.0) as u8) << 3);
 
-            if case == 0 || case == 15 { continue; }
+            if case == 0 || case == 15 {
+                continue;
+            }
 
             let interp = |fa: f64, fb: f64| {
-                if (fa - fb).abs() < 1e-30 { 0.5 } else { fa / (fa - fb) }
+                if (fa - fb).abs() < 1e-30 {
+                    0.5
+                } else {
+                    fa / (fa - fb)
+                }
             };
 
             let s = (x0 + interp(fsw, fse) * step, y0);
@@ -76,9 +92,8 @@ fn lemniscate_length_n4(
             let n = (x0 + interp(fnw, fne) * step, y1);
             let w = (x0, y0 + interp(fsw, fnw) * step);
 
-            let seg = |a: (f64, f64), b: (f64, f64)| {
-                ((a.0 - b.0).powi(2) + (a.1 - b.1).powi(2)).sqrt()
-            };
+            let seg =
+                |a: (f64, f64), b: (f64, f64)| ((a.0 - b.0).powi(2) + (a.1 - b.1).powi(2)).sqrt();
 
             match case {
                 1 | 14 => total += seg(s, w),
@@ -87,15 +102,21 @@ fn lemniscate_length_n4(
                 4 | 11 => total += seg(e, n),
                 5 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { total += seg(s, w) + seg(e, n); }
-                    else { total += seg(s, e) + seg(w, n); }
+                    if avg > 0.0 {
+                        total += seg(s, w) + seg(e, n);
+                    } else {
+                        total += seg(s, e) + seg(w, n);
+                    }
                 }
                 6 | 9 => total += seg(s, n),
                 7 | 8 => total += seg(w, n),
                 10 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { total += seg(s, e) + seg(w, n); }
-                    else { total += seg(s, w) + seg(e, n); }
+                    if avg > 0.0 {
+                        total += seg(s, e) + seg(w, n);
+                    } else {
+                        total += seg(s, w) + seg(e, n);
+                    }
                 }
                 _ => {}
             }
@@ -143,8 +164,14 @@ fn main() {
     let dt_timing = t_timing.elapsed().as_secs_f64();
     let time_per_eval_us = dt_timing / n_timing as f64 * 1e6;
     let evals_per_sec = n_timing as f64 / dt_timing;
-    println!("    {} evals at res={} in {:.3}s", n_timing, test_res, dt_timing);
-    println!("    Time per eval: {:.0} us ({:.0} evals/s parallel)", time_per_eval_us, evals_per_sec);
+    println!(
+        "    {} evals at res={} in {:.3}s",
+        n_timing, test_res, dt_timing
+    );
+    println!(
+        "    Time per eval: {:.0} us ({:.0} evals/s parallel)",
+        time_per_eval_us, evals_per_sec
+    );
 
     // ── Step 3: Coarse 6D sweep (small sample) ──
     println!("\n  === STEP 3: COARSE 6D SAMPLE ===");
@@ -153,7 +180,10 @@ fn main() {
     let sample_res: usize = 8; // 8^6 = 262,144 -- manageable sample
     let step = 2.0 * radius / sample_res as f64;
     let n_total = sample_res.pow(6);
-    println!("  {}^6 = {} evaluations at res={}", sample_res, n_total, test_res);
+    println!(
+        "  {}^6 = {} evaluations at res={}",
+        sample_res, n_total, test_res
+    );
 
     let counter = AtomicUsize::new(0);
     let l_ref_coarse = lemniscate_length_n4(0.0, 0.0, 0.0, 0.0, -1.0, 0.0, test_res);
@@ -201,15 +231,25 @@ fn main() {
         .max_by(|a, b| a.6.partial_cmp(&b.6).unwrap())
         .unwrap();
 
-    let max_dist = (max_ar.powi(2) + max_ai.powi(2) + max_br.powi(2) + max_bi.powi(2)
-        + (max_cr + 1.0).powi(2) + max_ci.powi(2)).sqrt();
+    let max_dist = (max_ar.powi(2)
+        + max_ai.powi(2)
+        + max_br.powi(2)
+        + max_bi.powi(2)
+        + (max_cr + 1.0).powi(2)
+        + max_ci.powi(2))
+    .sqrt();
 
     // Competitors: away from extremizer
     let mut competitors: Vec<&(f64, f64, f64, f64, f64, f64, f64)> = results
         .iter()
         .filter(|&&(ar, ai, br, bi, cr, ci, _)| {
-            let d = (ar.powi(2) + ai.powi(2) + br.powi(2) + bi.powi(2)
-                + (cr + 1.0).powi(2) + ci.powi(2)).sqrt();
+            let d = (ar.powi(2)
+                + ai.powi(2)
+                + br.powi(2)
+                + bi.powi(2)
+                + (cr + 1.0).powi(2)
+                + ci.powi(2))
+            .sqrt();
             d > 0.5
         })
         .collect();
@@ -218,23 +258,41 @@ fn main() {
     // Count counterexamples
     let n_above = results.iter().filter(|r| r.6 > l_ref_coarse).count();
 
-    println!("  Time: {:.2}s ({:.0} evals/s)", dt_sweep, n_total as f64 / dt_sweep);
+    println!(
+        "  Time: {:.2}s ({:.0} evals/s)",
+        dt_sweep,
+        n_total as f64 / dt_sweep
+    );
     println!("  L*(z^4-1) at res={}: {:.8}", test_res, l_ref_coarse);
-    println!("  Global max: L={:.8} at ({:.2},{:.2},{:.2},{:.2},{:.2},{:.2}) dist={:.3}",
-        max_l, max_ar, max_ai, max_br, max_bi, max_cr, max_ci, max_dist);
+    println!(
+        "  Global max: L={:.8} at ({:.2},{:.2},{:.2},{:.2},{:.2},{:.2}) dist={:.3}",
+        max_l, max_ar, max_ai, max_br, max_bi, max_cr, max_ci, max_dist
+    );
     println!("  Counterexamples (L > L_ref): {}/{}", n_above, n_total);
 
     if !competitors.is_empty() {
         let c = competitors[0];
         let margin = l_ref_coarse - c.6;
         let margin_pct = margin / l_ref_coarse * 100.0;
-        println!("  Closest competitor: L={:.8} margin={:.6} ({:.3}%)", c.6, margin, margin_pct);
+        println!(
+            "  Closest competitor: L={:.8} margin={:.6} ({:.3}%)",
+            c.6, margin, margin_pct
+        );
     }
 
     println!("\n  Top 5 competitors:");
     for (i, c) in competitors.iter().take(5).enumerate() {
-        println!("    #{}: L={:.8} at ({:.2},{:.2},{:.2},{:.2},{:.2},{:.2})",
-            i+1, c.6, c.0, c.1, c.2, c.3, c.4, c.5);
+        println!(
+            "    #{}: L={:.8} at ({:.2},{:.2},{:.2},{:.2},{:.2},{:.2})",
+            i + 1,
+            c.6,
+            c.0,
+            c.1,
+            c.2,
+            c.3,
+            c.4,
+            c.5
+        );
     }
 
     // ── Step 4: Extrapolate full B&B runtime ──
@@ -259,12 +317,21 @@ fn main() {
     println!("    10^6 = {} boxes", full_grid_10);
     println!("    15^6 = {} boxes", full_grid_15);
     println!("    20^6 = {} boxes", full_grid_20);
-    println!("  Eval rate: {:.0} evals/s (parallel, res={})", actual_evals_per_sec, test_res);
-    println!("  Survival rate at 80% threshold: {:.4} ({}/{})",
-        survival_rate, n_above_threshold, n_total);
+    println!(
+        "  Eval rate: {:.0} evals/s (parallel, res={})",
+        actual_evals_per_sec, test_res
+    );
+    println!(
+        "  Survival rate at 80% threshold: {:.4} ({}/{})",
+        survival_rate, n_above_threshold, n_total
+    );
 
     // Time estimates
-    for (name, n) in [("10^6", full_grid_10), ("15^6", full_grid_15), ("20^6", full_grid_20)] {
+    for (name, n) in [
+        ("10^6", full_grid_10),
+        ("15^6", full_grid_15),
+        ("20^6", full_grid_20),
+    ] {
         let t_level0 = n as f64 / actual_evals_per_sec;
         let survivors = (n as f64 * survival_rate) as usize;
         let t_level1 = survivors as f64 * 64.0 / actual_evals_per_sec; // 2^6=64 subdivisions
@@ -272,16 +339,31 @@ fn main() {
 
         println!("\n  {} initial boxes:", name);
         println!("    Level 0: {:.1}s ({} boxes)", t_level0, n);
-        println!("    Survivors: ~{} ({:.2}%)", survivors, survival_rate * 100.0);
-        println!("    Level 1: ~{:.1}s ({} sub-boxes)", t_level1, survivors * 64);
-        println!("    Estimated total: ~{:.0}s ({:.1} min)", t_total_est, t_total_est / 60.0);
+        println!(
+            "    Survivors: ~{} ({:.2}%)",
+            survivors,
+            survival_rate * 100.0
+        );
+        println!(
+            "    Level 1: ~{:.1}s ({} sub-boxes)",
+            t_level1,
+            survivors * 64
+        );
+        println!(
+            "    Estimated total: ~{:.0}s ({:.1} min)",
+            t_total_est,
+            t_total_est / 60.0
+        );
     }
 
     // n=3 comparison
     println!("\n  === COMPARISON WITH n=3 ===");
     println!("  n=3 (4D): 160K boxes, 50s, 4 levels, 98.9% elimination");
-    println!("  n=4 (6D): {}x more boxes, ~{:.1}x more params per box",
-        full_grid_20 as f64 / 160000.0, 6.0 / 4.0);
+    println!(
+        "  n=4 (6D): {}x more boxes, ~{:.1}x more params per box",
+        full_grid_20 as f64 / 160000.0,
+        6.0 / 4.0
+    );
 
     // Save results
     let results_json = serde_json::json!({

@@ -14,26 +14,40 @@ use std::time::Instant;
 // ── Complex number ────────────────────────────────────────────────
 
 #[derive(Clone, Copy)]
-struct C64 { re: f64, im: f64 }
+struct C64 {
+    re: f64,
+    im: f64,
+}
 
 impl C64 {
-    fn new(re: f64, im: f64) -> Self { C64 { re, im } }
-    fn norm_sq(self) -> f64 { self.re * self.re + self.im * self.im }
+    fn new(re: f64, im: f64) -> Self {
+        C64 { re, im }
+    }
+    fn norm_sq(self) -> f64 {
+        self.re * self.re + self.im * self.im
+    }
 }
 
 impl std::ops::Mul for C64 {
     type Output = C64;
     fn mul(self, r: C64) -> C64 {
-        C64::new(self.re * r.re - self.im * r.im, self.re * r.im + self.im * r.re)
+        C64::new(
+            self.re * r.re - self.im * r.im,
+            self.re * r.im + self.im * r.re,
+        )
     }
 }
 impl std::ops::Add for C64 {
     type Output = C64;
-    fn add(self, r: C64) -> C64 { C64::new(self.re + r.re, self.im + r.im) }
+    fn add(self, r: C64) -> C64 {
+        C64::new(self.re + r.re, self.im + r.im)
+    }
 }
 impl std::ops::Sub for C64 {
     type Output = C64;
-    fn sub(self, r: C64) -> C64 { C64::new(self.re - r.re, self.im - r.im) }
+    fn sub(self, r: C64) -> C64 {
+        C64::new(self.re - r.re, self.im - r.im)
+    }
 }
 
 // ── Lemniscate length (marching squares) ─────────────────────────
@@ -71,16 +85,25 @@ fn lemniscate_length(a_re: f64, a_im: f64, b_re: f64, b_im: f64, res: usize) -> 
                 | (((fne > 0.0) as u8) << 2)
                 | (((fnw > 0.0) as u8) << 3);
 
-            if case == 0 || case == 15 { continue; }
+            if case == 0 || case == 15 {
+                continue;
+            }
 
-            let interp = |fa: f64, fb: f64| if (fa - fb).abs() < 1e-30 { 0.5 } else { fa / (fa - fb) };
+            let interp = |fa: f64, fb: f64| {
+                if (fa - fb).abs() < 1e-30 {
+                    0.5
+                } else {
+                    fa / (fa - fb)
+                }
+            };
 
             let s = (x0 + interp(fsw, fse) * step, y0);
             let e = (x1, y0 + interp(fse, fne) * step);
             let n = (x0 + interp(fnw, fne) * step, y1);
             let w = (x0, y0 + interp(fsw, fnw) * step);
 
-            let seg = |a: (f64, f64), b: (f64, f64)| ((a.0-b.0).powi(2) + (a.1-b.1).powi(2)).sqrt();
+            let seg =
+                |a: (f64, f64), b: (f64, f64)| ((a.0 - b.0).powi(2) + (a.1 - b.1).powi(2)).sqrt();
 
             match case {
                 1 | 14 => total += seg(s, w),
@@ -89,15 +112,21 @@ fn lemniscate_length(a_re: f64, a_im: f64, b_re: f64, b_im: f64, res: usize) -> 
                 4 | 11 => total += seg(e, n),
                 5 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { total += seg(s, w) + seg(e, n); }
-                    else { total += seg(s, e) + seg(w, n); }
+                    if avg > 0.0 {
+                        total += seg(s, w) + seg(e, n);
+                    } else {
+                        total += seg(s, e) + seg(w, n);
+                    }
                 }
                 6 | 9 => total += seg(s, n),
                 7 | 8 => total += seg(w, n),
                 10 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { total += seg(s, e) + seg(w, n); }
-                    else { total += seg(s, w) + seg(e, n); }
+                    if avg > 0.0 {
+                        total += seg(s, e) + seg(w, n);
+                    } else {
+                        total += seg(s, w) + seg(e, n);
+                    }
                 }
                 _ => {}
             }
@@ -110,10 +139,14 @@ fn lemniscate_length(a_re: f64, a_im: f64, b_re: f64, b_im: f64, res: usize) -> 
 
 #[derive(Clone, Copy)]
 struct Box4D {
-    ar_lo: f64, ar_hi: f64,
-    ai_lo: f64, ai_hi: f64,
-    br_lo: f64, br_hi: f64,
-    bi_lo: f64, bi_hi: f64,
+    ar_lo: f64,
+    ar_hi: f64,
+    ai_lo: f64,
+    ai_hi: f64,
+    br_lo: f64,
+    br_hi: f64,
+    bi_lo: f64,
+    bi_hi: f64,
 }
 
 impl Box4D {
@@ -153,10 +186,14 @@ impl Box4D {
                 for &(brl, brh) in &br {
                     for &(bil, bih) in &bi {
                         subs.push(Box4D {
-                            ar_lo: arl, ar_hi: arh,
-                            ai_lo: ail, ai_hi: aih,
-                            br_lo: brl, br_hi: brh,
-                            bi_lo: bil, bi_hi: bih,
+                            ar_lo: arl,
+                            ar_hi: arh,
+                            ai_lo: ail,
+                            ai_hi: aih,
+                            br_lo: brl,
+                            br_hi: brh,
+                            bi_lo: bil,
+                            bi_hi: bih,
                         });
                     }
                 }
@@ -166,10 +203,14 @@ impl Box4D {
     }
 
     fn contains_extremizer(&self) -> bool {
-        self.ar_lo <= 0.0 && 0.0 <= self.ar_hi
-            && self.ai_lo <= 0.0 && 0.0 <= self.ai_hi
-            && self.br_lo <= -1.0 && -1.0 <= self.br_hi
-            && self.bi_lo <= 0.0 && 0.0 <= self.bi_hi
+        self.ar_lo <= 0.0
+            && 0.0 <= self.ar_hi
+            && self.ai_lo <= 0.0
+            && 0.0 <= self.ai_hi
+            && self.br_lo <= -1.0
+            && -1.0 <= self.br_hi
+            && self.bi_lo <= 0.0
+            && 0.0 <= self.bi_hi
     }
 }
 
@@ -207,7 +248,10 @@ fn main() {
     // Marching squares UNDERESTIMATES (piecewise linear approximation)
     let l_lower = l_refs[1]; // res=800
     let grid_error = l_star - l_lower;
-    println!("    L*(res=800) = {:.10} (conservative lower bound)", l_lower);
+    println!(
+        "    L*(res=800) = {:.10} (conservative lower bound)",
+        l_lower
+    );
     println!("    Grid error estimate: {:.8}", grid_error);
 
     // ── Step 2: Coarse global sweep to find competitors ──
@@ -220,7 +264,10 @@ fn main() {
     let step = 2.0 * radius / sweep_res as f64;
     let n_total = sweep_res.pow(4);
 
-    println!("  {}^4 = {} evaluations at res={}", sweep_res, n_total, coarse_res);
+    println!(
+        "  {}^4 = {} evaluations at res={}",
+        sweep_res, n_total, coarse_res
+    );
 
     let t_sweep = Instant::now();
 
@@ -275,18 +322,37 @@ fn main() {
     let coarse_margin = l_ref_coarse - candidates[0].4;
     let coarse_margin_pct = coarse_margin / l_ref_coarse * 100.0;
 
-    println!("  Time: {:.2}s ({:.0} evals/s)", dt_sweep, n_total as f64 / dt_sweep);
+    println!(
+        "  Time: {:.2}s ({:.0} evals/s)",
+        dt_sweep,
+        n_total as f64 / dt_sweep
+    );
     println!("  L*(z^3-1) at res={}: {:.8}", coarse_res, l_ref_coarse);
-    println!("  Global max: L = {:.8} at ({:.3}, {:.3}, {:.3}, {:.3})",
-        gmax_l, gmax_ar, gmax_ai, gmax_br, gmax_bi);
-    println!("  Dist to (0,-1): {:.4}",
-        (gmax_ar.powi(2) + gmax_ai.powi(2) + (gmax_br + 1.0).powi(2) + gmax_bi.powi(2)).sqrt());
-    println!("  Coarse margin: {:.8} ({:.4}%)", coarse_margin, coarse_margin_pct);
+    println!(
+        "  Global max: L = {:.8} at ({:.3}, {:.3}, {:.3}, {:.3})",
+        gmax_l, gmax_ar, gmax_ai, gmax_br, gmax_bi
+    );
+    println!(
+        "  Dist to (0,-1): {:.4}",
+        (gmax_ar.powi(2) + gmax_ai.powi(2) + (gmax_br + 1.0).powi(2) + gmax_bi.powi(2)).sqrt()
+    );
+    println!(
+        "  Coarse margin: {:.8} ({:.4}%)",
+        coarse_margin, coarse_margin_pct
+    );
     println!("\n  Top 5 competitors (away from extremizer):");
     for (i, &(ar, ai, br, bi, l)) in candidates.iter().take(5).enumerate() {
         let d = (ar * ar + ai * ai + (br + 1.0).powi(2) + bi * bi).sqrt();
-        println!("    #{}: L={:.8} at ({:.3},{:.3},{:.3},{:.3}) d={:.3}",
-            i+1, l, ar, ai, br, bi, d);
+        println!(
+            "    #{}: L={:.8} at ({:.3},{:.3},{:.3},{:.3}) d={:.3}",
+            i + 1,
+            l,
+            ar,
+            ai,
+            br,
+            bi,
+            d
+        );
     }
 
     // ── Step 3: Refine top candidates at high resolution ──
@@ -305,7 +371,8 @@ fn main() {
 
     let dt_refine = t_refine.elapsed().as_secs_f64();
 
-    let best_competitor = refined.iter()
+    let best_competitor = refined
+        .iter()
         .cloned()
         .max_by(|a, b| a.4.partial_cmp(&b.4).unwrap())
         .unwrap();
@@ -313,10 +380,23 @@ fn main() {
     let margin_800 = l_lower - best_competitor.4;
     let margin_800_pct = margin_800 / l_lower * 100.0;
 
-    println!("  Refined {} candidates in {:.2}s", candidates.len(), dt_refine);
-    println!("  Best competitor (res=800): L={:.10} at ({:.3},{:.3},{:.3},{:.3})",
-        best_competitor.4, best_competitor.0, best_competitor.1, best_competitor.2, best_competitor.3);
-    println!("  MARGIN (res=800): {:.10} ({:.4}%)", margin_800, margin_800_pct);
+    println!(
+        "  Refined {} candidates in {:.2}s",
+        candidates.len(),
+        dt_refine
+    );
+    println!(
+        "  Best competitor (res=800): L={:.10} at ({:.3},{:.3},{:.3},{:.3})",
+        best_competitor.4,
+        best_competitor.0,
+        best_competitor.1,
+        best_competitor.2,
+        best_competitor.3
+    );
+    println!(
+        "  MARGIN (res=800): {:.10} ({:.4}%)",
+        margin_800, margin_800_pct
+    );
 
     // ── Step 4: Adaptive B&B around decision boundary ──
     println!("\n  === STEP 4: ADAPTIVE BRANCH-AND-BOUND ===");
@@ -339,10 +419,14 @@ fn main() {
                 for i3 in 0..init_res {
                     let bi_lo = -radius + i3 as f64 * init_step;
                     boxes.push(Box4D {
-                        ar_lo, ar_hi: ar_lo + init_step,
-                        ai_lo, ai_hi: ai_lo + init_step,
-                        br_lo, br_hi: br_lo + init_step,
-                        bi_lo, bi_hi: bi_lo + init_step,
+                        ar_lo,
+                        ar_hi: ar_lo + init_step,
+                        ai_lo,
+                        ai_hi: ai_lo + init_step,
+                        br_lo,
+                        br_hi: br_lo + init_step,
+                        bi_lo,
+                        bi_hi: bi_lo + init_step,
                     });
                 }
             }
@@ -350,11 +434,19 @@ fn main() {
     }
 
     println!("  Initial boxes: {} (step={:.2})", boxes.len(), init_step);
-    println!("  Using res={} for B&B, threshold={:.4}", bb_res, bb_threshold);
+    println!(
+        "  Using res={} for B&B, threshold={:.4}",
+        bb_res, bb_threshold
+    );
 
     let total_evals = AtomicUsize::new(0);
     let mut global_best_competitor_l = best_competitor.4;
-    let mut global_best_competitor_params = (best_competitor.0, best_competitor.1, best_competitor.2, best_competitor.3);
+    let mut global_best_competitor_params = (
+        best_competitor.0,
+        best_competitor.1,
+        best_competitor.2,
+        best_competitor.3,
+    );
     let max_levels = 4; // Fewer levels since we use coarse res
 
     // The threshold for elimination: L(center) + safety < L*(res=coarse)
@@ -362,7 +454,11 @@ fn main() {
     let elim_threshold = l_ref_coarse;
 
     for level in 0..max_levels {
-        let hw = if boxes.is_empty() { 0.0 } else { boxes[0].half_width() };
+        let hw = if boxes.is_empty() {
+            0.0
+        } else {
+            boxes[0].half_width()
+        };
         // Safety margin: empirical Lipschitz bound on L variation within a box
         // At the coarse resolution, the L function varies by at most ~8 per unit distance
         // (from the PoC sweep data). Safety = lip * sqrt(4) * hw
@@ -370,7 +466,10 @@ fn main() {
 
         println!(
             "\n  Level {}: {} boxes, half-width={:.4}, safety={:.4}",
-            level, boxes.len(), hw, safety
+            level,
+            boxes.len(),
+            hw,
+            safety
         );
 
         if boxes.is_empty() {
@@ -424,7 +523,10 @@ fn main() {
 
         println!(
             "    Evaluated in {:.2}s. Max L = {:.8}. Eliminated {}/{} ({:.1}%)",
-            dt_level, max_l, eliminated, boxes.len(),
+            dt_level,
+            max_l,
+            eliminated,
+            boxes.len(),
             eliminated as f64 / boxes.len() as f64 * 100.0
         );
 
@@ -434,18 +536,23 @@ fn main() {
         }
 
         // Check if only the extremizer box survives
-        let non_ext_survivors: Vec<usize> = survived.iter()
+        let non_ext_survivors: Vec<usize> = survived
+            .iter()
             .filter(|&&idx| !boxes[idx].contains_extremizer())
             .cloned()
             .collect();
 
-        let ext_survivors: Vec<usize> = survived.iter()
+        let ext_survivors: Vec<usize> = survived
+            .iter()
             .filter(|&&idx| boxes[idx].contains_extremizer())
             .cloned()
             .collect();
 
-        println!("    Survivors: {} extremizer + {} non-extremizer",
-            ext_survivors.len(), non_ext_survivors.len());
+        println!(
+            "    Survivors: {} extremizer + {} non-extremizer",
+            ext_survivors.len(),
+            non_ext_survivors.len()
+        );
 
         if non_ext_survivors.is_empty() {
             println!("    ONLY EXTREMIZER BOXES SURVIVE — PROOF STRUCTURE COMPLETE!");
@@ -454,16 +561,21 @@ fn main() {
 
         if level == max_levels - 1 {
             // Last level: verify remaining non-extremizer boxes at high res
-            println!("\n    Final verification of {} survivors at res={}...",
-                non_ext_survivors.len(), refine_res);
+            println!(
+                "\n    Final verification of {} survivors at res={}...",
+                non_ext_survivors.len(),
+                refine_res
+            );
             let t_verify = Instant::now();
             let mut any_threatens = false;
             for &idx in &non_ext_survivors {
                 let (ar, ai, br, bi) = boxes[idx].center();
                 let l_high = lemniscate_length(ar, ai, br, bi, refine_res);
                 if l_high > l_lower {
-                    println!("      WARNING: ({:.3},{:.3},{:.3},{:.3}) L={:.8} > L*={:.8}",
-                        ar, ai, br, bi, l_high, l_lower);
+                    println!(
+                        "      WARNING: ({:.3},{:.3},{:.3},{:.3}) L={:.8} > L*={:.8}",
+                        ar, ai, br, bi, l_high, l_lower
+                    );
                     any_threatens = true;
                 }
                 if l_high > global_best_competitor_l {
@@ -476,7 +588,10 @@ fn main() {
             }
             let dt_verify = t_verify.elapsed().as_secs_f64();
             if !any_threatens {
-                println!("    All survivors verified below L* at res={} [{:.2}s]", refine_res, dt_verify);
+                println!(
+                    "    All survivors verified below L* at res={} [{:.2}s]",
+                    refine_res, dt_verify
+                );
             }
             break;
         }
@@ -497,27 +612,40 @@ fn main() {
 
     let h = 1e-4;
     let l0 = lemniscate_length(0.0, 0.0, -1.0, 0.0, refine_res);
-    let params = [(1,0,0,0), (0,1,0,0), (0,0,1,0), (0,0,0,1)];
+    let params = [(1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)];
     let names = ["a_re", "a_im", "b_re", "b_im"];
 
     println!("  L*(0,0,-1,0) = {:.10} at res={}", l0, refine_res);
     let mut all_negative = true;
     for (i, &(dar, dai, dbr, dbi)) in params.iter().enumerate() {
         let lp = lemniscate_length(
-            dar as f64 * h, dai as f64 * h,
-            -1.0 + dbr as f64 * h, dbi as f64 * h,
+            dar as f64 * h,
+            dai as f64 * h,
+            -1.0 + dbr as f64 * h,
+            dbi as f64 * h,
             refine_res,
         );
         let lm = lemniscate_length(
-            -(dar as f64) * h, -(dai as f64) * h,
-            -1.0 - dbr as f64 * h, -(dbi as f64) * h,
+            -(dar as f64) * h,
+            -(dai as f64) * h,
+            -1.0 - dbr as f64 * h,
+            -(dbi as f64) * h,
             refine_res,
         );
         let d2l = (lp + lm - 2.0 * l0) / (h * h);
         println!("    d²L/d{}² = {:.2}", names[i], d2l);
-        if d2l >= 0.0 { all_negative = false; }
+        if d2l >= 0.0 {
+            all_negative = false;
+        }
     }
-    println!("  Hessian diagonal: {}", if all_negative { "ALL NEGATIVE (local max confirmed)" } else { "NOT ALL NEGATIVE" });
+    println!(
+        "  Hessian diagonal: {}",
+        if all_negative {
+            "ALL NEGATIVE (local max confirmed)"
+        } else {
+            "NOT ALL NEGATIVE"
+        }
+    );
 
     // ── Final report ──
     let margin = l_lower - global_best_competitor_l;
@@ -537,24 +665,39 @@ fn main() {
         global_best_competitor_params.3,
     );
 
-    println!("  MARGIN (L* - L_competitor): {:.10} ({:.4}%)", margin, margin_pct);
+    println!(
+        "  MARGIN (L* - L_competitor): {:.10} ({:.4}%)",
+        margin, margin_pct
+    );
     println!("  Total B&B evaluations: {}", total_ev);
     println!("  Total time: {:.1}s", total_time);
 
     // Feasibility assessment
     println!("\n  === INTERVAL ARITHMETIC FEASIBILITY ===");
     if margin > 0.0 {
-        println!("  Margin is POSITIVE: L* exceeds all competitors by {:.6}", margin);
-        println!("  Grid error at res=800: {:.6} ({:.4}% of L*)",
-            grid_error, grid_error / l_star * 100.0);
+        println!(
+            "  Margin is POSITIVE: L* exceeds all competitors by {:.6}",
+            margin
+        );
+        println!(
+            "  Grid error at res=800: {:.6} ({:.4}% of L*)",
+            grid_error,
+            grid_error / l_star * 100.0
+        );
         let margin_ratio = margin / grid_error;
         if margin_ratio > 3.0 {
             println!("  Margin is {:.1}x larger than grid error", margin_ratio);
             println!("  VERDICT: TRIVIALLY FEASIBLE for interval arithmetic proof");
         } else if margin_ratio > 1.0 {
-            println!("  Margin is {:.1}x grid error — feasible with moderate resolution", margin_ratio);
+            println!(
+                "  Margin is {:.1}x grid error — feasible with moderate resolution",
+                margin_ratio
+            );
         } else {
-            println!("  Margin is {:.1}x grid error — needs higher resolution", margin_ratio);
+            println!(
+                "  Margin is {:.1}x grid error — needs higher resolution",
+                margin_ratio
+            );
         }
 
         // Estimate interval arithmetic effort
@@ -564,7 +707,10 @@ fn main() {
         let needed_res = (refine_res as f64 * (grid_error / (margin / 4.0)).sqrt()) as usize;
         println!("  Estimated resolution needed for IA: ~{}", needed_res);
         let time_per_eval_ms = dt_refine / candidates.len() as f64 * 1000.0;
-        println!("  Time per eval at res={}: {:.1}ms", refine_res, time_per_eval_ms);
+        println!(
+            "  Time per eval at res={}: {:.1}ms",
+            refine_res, time_per_eval_ms
+        );
     } else {
         println!("  WARNING: Margin is NEGATIVE — possible counterexample!");
         println!("  Closest competitor exceeds L* by {:.6}", -margin);

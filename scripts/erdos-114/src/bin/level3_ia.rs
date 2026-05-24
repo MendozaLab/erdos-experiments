@@ -26,22 +26,34 @@ use std::time::Instant;
 // ── Complex number ────────────────────────────────────────────────
 
 #[derive(Clone, Copy)]
-struct C64 { re: f64, im: f64 }
+struct C64 {
+    re: f64,
+    im: f64,
+}
 
 impl C64 {
-    fn new(re: f64, im: f64) -> Self { C64 { re, im } }
-    fn norm_sq(self) -> f64 { self.re * self.re + self.im * self.im }
+    fn new(re: f64, im: f64) -> Self {
+        C64 { re, im }
+    }
+    fn norm_sq(self) -> f64 {
+        self.re * self.re + self.im * self.im
+    }
 }
 
 impl std::ops::Mul for C64 {
     type Output = C64;
     fn mul(self, r: C64) -> C64 {
-        C64::new(self.re * r.re - self.im * r.im, self.re * r.im + self.im * r.re)
+        C64::new(
+            self.re * r.re - self.im * r.im,
+            self.re * r.im + self.im * r.re,
+        )
     }
 }
 impl std::ops::Add for C64 {
     type Output = C64;
-    fn add(self, r: C64) -> C64 { C64::new(self.re + r.re, self.im + r.im) }
+    fn add(self, r: C64) -> C64 {
+        C64::new(self.re + r.re, self.im + r.im)
+    }
 }
 
 // ── Lemniscate length (marching squares) ─────────────────────────
@@ -79,16 +91,25 @@ fn lemniscate_length(a_re: f64, a_im: f64, b_re: f64, b_im: f64, res: usize) -> 
                 | (((fne > 0.0) as u8) << 2)
                 | (((fnw > 0.0) as u8) << 3);
 
-            if case == 0 || case == 15 { continue; }
+            if case == 0 || case == 15 {
+                continue;
+            }
 
-            let interp = |fa: f64, fb: f64| if (fa - fb).abs() < 1e-30 { 0.5 } else { fa / (fa - fb) };
+            let interp = |fa: f64, fb: f64| {
+                if (fa - fb).abs() < 1e-30 {
+                    0.5
+                } else {
+                    fa / (fa - fb)
+                }
+            };
 
             let s = (x0 + interp(fsw, fse) * step, y0);
             let e = (x1, y0 + interp(fse, fne) * step);
             let n = (x0 + interp(fnw, fne) * step, y1);
             let w = (x0, y0 + interp(fsw, fnw) * step);
 
-            let seg = |a: (f64, f64), b: (f64, f64)| ((a.0-b.0).powi(2) + (a.1-b.1).powi(2)).sqrt();
+            let seg =
+                |a: (f64, f64), b: (f64, f64)| ((a.0 - b.0).powi(2) + (a.1 - b.1).powi(2)).sqrt();
 
             match case {
                 1 | 14 => total += seg(s, w),
@@ -97,15 +118,21 @@ fn lemniscate_length(a_re: f64, a_im: f64, b_re: f64, b_im: f64, res: usize) -> 
                 4 | 11 => total += seg(e, n),
                 5 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { total += seg(s, w) + seg(e, n); }
-                    else { total += seg(s, e) + seg(w, n); }
+                    if avg > 0.0 {
+                        total += seg(s, w) + seg(e, n);
+                    } else {
+                        total += seg(s, e) + seg(w, n);
+                    }
                 }
                 6 | 9 => total += seg(s, n),
                 7 | 8 => total += seg(w, n),
                 10 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { total += seg(s, e) + seg(w, n); }
-                    else { total += seg(s, w) + seg(e, n); }
+                    if avg > 0.0 {
+                        total += seg(s, e) + seg(w, n);
+                    } else {
+                        total += seg(s, w) + seg(e, n);
+                    }
                 }
                 _ => {}
             }
@@ -123,9 +150,12 @@ fn lemniscate_length_reduced(a_re: f64, a_im: f64, b: f64, res: usize) -> f64 {
 
 #[derive(Clone, Copy)]
 struct Box3D {
-    ar_lo: f64, ar_hi: f64,
-    ai_lo: f64, ai_hi: f64,
-    b_lo: f64, b_hi: f64,
+    ar_lo: f64,
+    ar_hi: f64,
+    ai_lo: f64,
+    ai_hi: f64,
+    b_lo: f64,
+    b_hi: f64,
 }
 
 impl Box3D {
@@ -187,17 +217,24 @@ impl Box3D {
         let b = [(self.b_lo, b_mid), (b_mid, self.b_hi)];
 
         let mut subs = [Box3D {
-            ar_lo: 0.0, ar_hi: 0.0, ai_lo: 0.0, ai_hi: 0.0,
-            b_lo: 0.0, b_hi: 0.0,
+            ar_lo: 0.0,
+            ar_hi: 0.0,
+            ai_lo: 0.0,
+            ai_hi: 0.0,
+            b_lo: 0.0,
+            b_hi: 0.0,
         }; 8];
         let mut idx = 0;
         for &(arl, arh) in &ar {
             for &(ail, aih) in &ai {
                 for &(bl, bh) in &b {
                     subs[idx] = Box3D {
-                        ar_lo: arl, ar_hi: arh,
-                        ai_lo: ail, ai_hi: aih,
-                        b_lo: bl, b_hi: bh,
+                        ar_lo: arl,
+                        ar_hi: arh,
+                        ai_lo: ail,
+                        ai_hi: aih,
+                        b_lo: bl,
+                        b_hi: bh,
                     };
                     idx += 1;
                 }
@@ -208,9 +245,12 @@ impl Box3D {
 
     /// The extremizer in reduced space is (0, 0, 1).
     fn contains_extremizer(&self) -> bool {
-        self.ar_lo <= 0.0 && 0.0 <= self.ar_hi
-            && self.ai_lo <= 0.0 && 0.0 <= self.ai_hi
-            && self.b_lo <= 1.0 && 1.0 <= self.b_hi
+        self.ar_lo <= 0.0
+            && 0.0 <= self.ar_hi
+            && self.ai_lo <= 0.0
+            && 0.0 <= self.ai_hi
+            && self.b_lo <= 1.0
+            && 1.0 <= self.b_hi
     }
 }
 
@@ -227,7 +267,7 @@ fn upper_bound_simple(bx: &Box3D, res: usize, evals: &AtomicUsize) -> f64 {
         200 => l_center * 0.015,
         400 => l_center * 0.004,
         800 => l_center * 0.001,
-        _ =>   l_center * 0.02,
+        _ => l_center * 0.02,
     };
     l_center + 16.0 * hw + grid_corr
 }
@@ -240,15 +280,19 @@ fn upper_bound_multipoint(bx: &Box3D, res: usize, evals: &AtomicUsize) -> f64 {
     for &(ar, ai, b) in &pts {
         evals.fetch_add(1, Ordering::Relaxed);
         let l = lemniscate_length_reduced(ar, ai, b, res);
-        if l > max_l { max_l = l; }
-        if l < min_l { min_l = l; }
+        if l > max_l {
+            max_l = l;
+        }
+        if l < min_l {
+            min_l = l;
+        }
     }
     let variation = max_l - min_l;
     let grid_corr = match res {
         200 => max_l * 0.015,
         400 => max_l * 0.004,
         800 => max_l * 0.001,
-        _ =>   max_l * 0.02,
+        _ => max_l * 0.02,
     };
     // Interpolation margin: in 3D with 15 sample points covering a box
     // of half-width hw, any point is at most hw from a sample.
@@ -316,7 +360,10 @@ fn main() {
     let delta_r3 = (r3_1234 - r3_0123).abs();
 
     println!("\n    Convergence deltas:");
-    println!("    |R1| = {:.2e}, |R2| = {:.2e}, |R3| = {:.2e}", delta_r1, delta_r2, delta_r3);
+    println!(
+        "    |R1| = {:.2e}, |R2| = {:.2e}, |R3| = {:.2e}",
+        delta_r1, delta_r2, delta_r3
+    );
 
     // Conservative lower bound
     let l_star_lower = r2_234.min(r2_123) - 3.0 * delta_r2;
@@ -364,15 +411,30 @@ fn main() {
             let re200 = (l_rich - l200).abs() / l_rich;
             let re400 = (l_rich - l400).abs() / l_rich;
             let re800 = (l_rich - l800).abs() / l_rich;
-            if re200 > max_rel_err_200 { max_rel_err_200 = re200; }
-            if re400 > max_rel_err_400 { max_rel_err_400 = re400; }
-            if re800 > max_rel_err_800 { max_rel_err_800 = re800; }
-            println!("    {:<12}: rel_err 200={:.4}% 400={:.4}% 800={:.4}%",
-                name, re200 * 100.0, re400 * 100.0, re800 * 100.0);
+            if re200 > max_rel_err_200 {
+                max_rel_err_200 = re200;
+            }
+            if re400 > max_rel_err_400 {
+                max_rel_err_400 = re400;
+            }
+            if re800 > max_rel_err_800 {
+                max_rel_err_800 = re800;
+            }
+            println!(
+                "    {:<12}: rel_err 200={:.4}% 400={:.4}% 800={:.4}%",
+                name,
+                re200 * 100.0,
+                re400 * 100.0,
+                re800 * 100.0
+            );
         }
     }
-    println!("    Max rel errors: 200={:.4}% 400={:.4}% 800={:.4}%",
-        max_rel_err_200 * 100.0, max_rel_err_400 * 100.0, max_rel_err_800 * 100.0);
+    println!(
+        "    Max rel errors: 200={:.4}% 400={:.4}% 800={:.4}%",
+        max_rel_err_200 * 100.0,
+        max_rel_err_400 * 100.0,
+        max_rel_err_800 * 100.0
+    );
 
     // ══════════════════════════════════════════════════════════════
     // STEP 3: 3D BRANCH-AND-BOUND
@@ -384,7 +446,7 @@ fn main() {
     let radius = 4.0;
     let init_n: usize = 16;
     let init_step_a = 2.0 * radius / init_n as f64; // for a_re, a_im: [-4, 4]
-    let init_step_b = radius / init_n as f64;        // for b: [0, 4]
+    let init_step_b = radius / init_n as f64; // for b: [0, 4]
 
     let mut boxes: Vec<Box3D> = Vec::new();
     for i0 in 0..init_n {
@@ -394,17 +456,26 @@ fn main() {
             for i2 in 0..init_n {
                 let b_lo = i2 as f64 * init_step_b;
                 boxes.push(Box3D {
-                    ar_lo, ar_hi: ar_lo + init_step_a,
-                    ai_lo, ai_hi: ai_lo + init_step_a,
-                    b_lo, b_hi: b_lo + init_step_b,
+                    ar_lo,
+                    ar_hi: ar_lo + init_step_a,
+                    ai_lo,
+                    ai_hi: ai_lo + init_step_a,
+                    b_lo,
+                    b_hi: b_lo + init_step_b,
                 });
             }
         }
     }
 
     println!("    Domain: a in [-{0},{0}]^2 x b in [0,{0}]", radius);
-    println!("    Initial boxes: {} ({}^2*{}), step_a={:.3}, step_b={:.3}",
-        boxes.len(), init_n, init_n, init_step_a, init_step_b);
+    println!(
+        "    Initial boxes: {} ({}^2*{}), step_a={:.3}, step_b={:.3}",
+        boxes.len(),
+        init_n,
+        init_n,
+        init_step_a,
+        init_step_b
+    );
     println!("    Lower bound threshold: {:.10}", l_lower);
 
     let total_evals = AtomicUsize::new(0);
@@ -426,13 +497,15 @@ fn main() {
         // Select resolution and strategy based on level
         let (res, use_multipoint) = match level {
             0 | 1 => (200, false),
-            2     => (400, false),
-            3     => (400, true),
-            _     => (800, true),
+            2 => (400, false),
+            3 => (400, true),
+            _ => (800, true),
         };
 
-        println!("\n    Level {}: {} boxes, hw={:.6}, res={}, mp={}",
-            level, n_boxes, hw, res, use_multipoint);
+        println!(
+            "\n    Level {}: {} boxes, hw={:.6}, res={}, mp={}",
+            level, n_boxes, hw, res, use_multipoint
+        );
 
         let t_level = Instant::now();
 
@@ -454,26 +527,38 @@ fn main() {
         let dt_level = t_level.elapsed().as_secs_f64();
 
         // Eliminate boxes where upper_bound < l_lower
-        let survived: Vec<usize> = results.iter()
-            .filter(|&&(_, l_upper, contains_ext)| {
-                contains_ext || l_upper > l_lower
-            })
+        let survived: Vec<usize> = results
+            .iter()
+            .filter(|&&(_, l_upper, contains_ext)| contains_ext || l_upper > l_lower)
             .map(|&(idx, _, _)| idx)
             .collect();
 
         let eliminated = n_boxes - survived.len();
-        let max_upper_nonext = results.iter()
+        let max_upper_nonext = results
+            .iter()
             .filter(|&&(_, _, ce)| !ce)
             .map(|&(_, u, _)| u)
             .fold(0.0f64, f64::max);
-        let ext_count = survived.iter().filter(|&&idx| boxes[idx].contains_extremizer()).count();
+        let ext_count = survived
+            .iter()
+            .filter(|&&idx| boxes[idx].contains_extremizer())
+            .count();
         let nonext_count = survived.len() - ext_count;
 
-        println!("      {:.2}s | evals={} | max_upper_nonext={:.6}",
-            dt_level, total_evals.load(Ordering::Relaxed), max_upper_nonext);
-        println!("      Eliminated: {}/{} ({:.1}%) | Survivors: {} ext + {} non-ext",
-            eliminated, n_boxes, eliminated as f64 / n_boxes as f64 * 100.0,
-            ext_count, nonext_count);
+        println!(
+            "      {:.2}s | evals={} | max_upper_nonext={:.6}",
+            dt_level,
+            total_evals.load(Ordering::Relaxed),
+            max_upper_nonext
+        );
+        println!(
+            "      Eliminated: {}/{} ({:.1}%) | Survivors: {} ext + {} non-ext",
+            eliminated,
+            n_boxes,
+            eliminated as f64 / n_boxes as f64 * 100.0,
+            ext_count,
+            nonext_count
+        );
 
         if nonext_count == 0 {
             println!("      *** ONLY EXTREMIZER BOXES SURVIVE ***");
@@ -483,9 +568,13 @@ fn main() {
 
         if level == max_levels - 1 {
             // Final: high-res verification
-            println!("\n      FINAL VERIFICATION of {} non-ext survivors at res=1600...", nonext_count);
+            println!(
+                "\n      FINAL VERIFICATION of {} non-ext survivors at res=1600...",
+                nonext_count
+            );
             let mut any_threatens = false;
-            let nonext_boxes: Vec<&Box3D> = survived.iter()
+            let nonext_boxes: Vec<&Box3D> = survived
+                .iter()
                 .filter(|&&idx| !boxes[idx].contains_extremizer())
                 .map(|&idx| &boxes[idx])
                 .collect();
@@ -495,13 +584,17 @@ fn main() {
                 let mut max_l_hr = 0.0f64;
                 for &(ar, ai, b) in &pts {
                     let l = lemniscate_length_reduced(ar, ai, b, 1600);
-                    if l > max_l_hr { max_l_hr = l; }
+                    if l > max_l_hr {
+                        max_l_hr = l;
+                    }
                 }
                 let l_upper_hr = max_l_hr * 1.0003 + 0.001;
                 if l_upper_hr > l_lower {
                     let (ar, ai, b) = bx.center();
-                    println!("        THREAT: ({:.5},{:.5},{:.5}) L_upper={:.8} > {:.8}",
-                        ar, ai, b, l_upper_hr, l_lower);
+                    println!(
+                        "        THREAT: ({:.5},{:.5},{:.5}) L_upper={:.8} > {:.8}",
+                        ar, ai, b, l_upper_hr, l_lower
+                    );
                     any_threatens = true;
                 }
             }
@@ -548,7 +641,8 @@ fn main() {
             .collect();
 
         // Top 20 non-extremizer candidates, refine at res=800
-        let mut candidates: Vec<(f64, f64, f64, f64)> = sweep_results.iter()
+        let mut candidates: Vec<(f64, f64, f64, f64)> = sweep_results
+            .iter()
             .filter(|&&(ar, ai, b, _)| {
                 let d = (ar * ar + ai * ai + (b - 1.0).powi(2)).sqrt();
                 d > 0.3
@@ -565,9 +659,13 @@ fn main() {
                 best_competitor_params = (ar, ai, b);
             }
         }
-        println!("    Best competitor: L={:.10} at ({:.4},{:.4},{:.4})",
-            best_competitor_l, best_competitor_params.0,
-            best_competitor_params.1, best_competitor_params.2);
+        println!(
+            "    Best competitor: L={:.10} at ({:.4},{:.4},{:.4})",
+            best_competitor_l,
+            best_competitor_params.0,
+            best_competitor_params.1,
+            best_competitor_params.2
+        );
     }
 
     // ══════════════════════════════════════════════════════════════
@@ -587,9 +685,11 @@ fn main() {
 
     // Faces: a_re=+/-4 (2 faces), a_im=+/-4 (2 faces), b=4 (1 face)
     let faces: [(usize, f64); 5] = [
-        (0, -4.0), (0, 4.0),  // a_re fixed
-        (1, -4.0), (1, 4.0),  // a_im fixed
-        (2, 4.0),             // b fixed
+        (0, -4.0),
+        (0, 4.0), // a_re fixed
+        (1, -4.0),
+        (1, 4.0), // a_im fixed
+        (2, 4.0), // b fixed
     ];
 
     for &(fixed_axis, fixed_val) in &faces {
@@ -632,12 +732,20 @@ fn main() {
     let face_margin = l_lower - face_upper;
 
     println!("    Faces sampled: {} evals (40x40 per face)", face_evals);
-    println!("    Max L on boundary (raw): {:.6} at ({:.2},{:.2},{:.2})",
-        max_face_l, max_face_params.0, max_face_params.1, max_face_params.2);
-    println!("    Lip correction: {:.4} (step={:.3})", lip_correction, max_face_step);
+    println!(
+        "    Max L on boundary (raw): {:.6} at ({:.2},{:.2},{:.2})",
+        max_face_l, max_face_params.0, max_face_params.1, max_face_params.2
+    );
+    println!(
+        "    Lip correction: {:.4} (step={:.3})",
+        lip_correction, max_face_step
+    );
     println!("    Max L on boundary (corrected): {:.6}", face_upper);
     println!("    Margin (lower - face): {:.6}", face_margin);
-    println!("    Outer domain safe: {}", if face_margin > 0.0 { "YES" } else { "NO" });
+    println!(
+        "    Outer domain safe: {}",
+        if face_margin > 0.0 { "YES" } else { "NO" }
+    );
 
     // ══════════════════════════════════════════════════════════════
     // STEP 5: HESSIAN
@@ -660,13 +768,24 @@ fn main() {
         let d2l = (lp + lm - 2.0 * l0) / (h * h);
         hessian_diag.push(d2l);
         let neg = d2l < 0.0;
-        if !neg { all_negative = false; }
-        println!("    d2L/d{}^2 = {:.2} {}", names[i], d2l,
-            if neg { "(NEGATIVE)" } else { "(**POSITIVE**)" });
+        if !neg {
+            all_negative = false;
+        }
+        println!(
+            "    d2L/d{}^2 = {:.2} {}",
+            names[i],
+            d2l,
+            if neg { "(NEGATIVE)" } else { "(**POSITIVE**)" }
+        );
     }
-    println!("    Hessian: {}",
-        if all_negative { "ALL NEGATIVE => strict local max" }
-        else { "NOT ALL NEGATIVE" });
+    println!(
+        "    Hessian: {}",
+        if all_negative {
+            "ALL NEGATIVE => strict local max"
+        } else {
+            "NOT ALL NEGATIVE"
+        }
+    );
 
     if !all_negative {
         println!("\n    Retrying with h=1e-3...");
@@ -677,9 +796,15 @@ fn main() {
             let lm = lemniscate_length_reduced(-dar * h2, -dai * h2, 1.0 - db * h2, hess_res);
             let d2l = (lp + lm - 2.0 * l0) / (h2 * h2);
             let neg = d2l < 0.0;
-            if !neg { all_neg2 = false; }
-            println!("    d2L/d{}^2 (h=1e-3) = {:.2} {}", names[i], d2l,
-                if neg { "(NEGATIVE)" } else { "(**POSITIVE**)" });
+            if !neg {
+                all_neg2 = false;
+            }
+            println!(
+                "    d2L/d{}^2 (h=1e-3) = {:.2} {}",
+                names[i],
+                d2l,
+                if neg { "(NEGATIVE)" } else { "(**POSITIVE**)" }
+            );
         }
         if all_neg2 {
             println!("    At h=1e-3: ALL NEGATIVE => confirmed");
@@ -702,15 +827,21 @@ fn main() {
         for i1 in 0..b0_n {
             let ai = -4.0 + (i1 as f64 + 0.5) * b0_step;
             let l = lemniscate_length_reduced(ar, ai, 0.0, 400);
-            if l > max_b0_l { max_b0_l = l; }
+            if l > max_b0_l {
+                max_b0_l = l;
+            }
         }
     }
-    let b0_upper = max_b0_l * (1.0 + 2.0 * max_rel_err_400) + 8.0 * 2.0_f64.sqrt() * (b0_step / 2.0);
+    let b0_upper =
+        max_b0_l * (1.0 + 2.0 * max_rel_err_400) + 8.0 * 2.0_f64.sqrt() * (b0_step / 2.0);
     let b0_margin = l_lower - b0_upper;
     println!("    Max L on b=0 face (raw): {:.6}", max_b0_l);
     println!("    Max L on b=0 face (corrected): {:.6}", b0_upper);
     println!("    Margin: {:.6}", b0_margin);
-    println!("    b=0 safe: {}", if b0_margin > 0.0 { "YES" } else { "NO" });
+    println!(
+        "    b=0 safe: {}",
+        if b0_margin > 0.0 { "YES" } else { "NO" }
+    );
 
     // ══════════════════════════════════════════════════════════════
     // FINAL REPORT
@@ -718,7 +849,11 @@ fn main() {
     let total_ev = total_evals.load(Ordering::Relaxed) + face_evals;
     let total_time = t_total.elapsed().as_secs_f64();
     let margin = l_lower - best_competitor_l;
-    let margin_pct = if l_lower > 0.0 { margin / l_lower * 100.0 } else { 0.0 };
+    let margin_pct = if l_lower > 0.0 {
+        margin / l_lower * 100.0
+    } else {
+        0.0
+    };
     let outer_safe = face_margin > 0.0 && b0_margin > 0.0;
 
     let verdict = if bb_proof_complete && outer_safe && all_negative && margin > 0.0 {
@@ -735,15 +870,23 @@ fn main() {
     println!("  L*(z^3-1) lower bound:   {:.10}", l_lower);
     println!("  L*(z^3-1) best estimate: {:.10}", l_star_best);
     println!("  L*(z^3-1) upper bound:   {:.10}", l_star_upper);
-    println!("  Bound width:             {:.2e}", l_star_upper - l_star_lower);
+    println!(
+        "  Bound width:             {:.2e}",
+        l_star_upper - l_star_lower
+    );
     println!();
     println!("  Best competitor:  L = {:.10}", best_competitor_l);
-    println!("    at a=({:.5},{:.5}), b={:.5}",
-        best_competitor_params.0, best_competitor_params.1, best_competitor_params.2);
+    println!(
+        "    at a=({:.5},{:.5}), b={:.5}",
+        best_competitor_params.0, best_competitor_params.1, best_competitor_params.2
+    );
     println!("  MARGIN: {:.10} ({:.4}%)", margin, margin_pct);
     println!();
     println!("  B&B proof complete:   {}", bb_proof_complete);
-    println!("  Outer domain safe:    {} (face={:.4}, b0={:.4})", outer_safe, face_margin, b0_margin);
+    println!(
+        "  Outer domain safe:    {} (face={:.4}, b0={:.4})",
+        outer_safe, face_margin, b0_margin
+    );
     println!("  Hessian all negative: {}", all_negative);
     println!();
     println!("  Total evaluations:    {}", total_ev);

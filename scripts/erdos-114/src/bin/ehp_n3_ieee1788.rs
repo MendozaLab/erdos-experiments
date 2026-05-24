@@ -20,7 +20,7 @@
 //!   6. Hessian negativity at extremizer via interval second differences
 //!   7. Outer domain: interval evaluation on boundary faces
 
-use inari::{interval, Interval, DecInterval};
+use inari::{interval, DecInterval, Interval};
 use rayon::prelude::*;
 use serde::Serialize;
 use std::sync::atomic::{AtomicUsize, Ordering};
@@ -38,7 +38,9 @@ struct IC {
 }
 
 impl IC {
-    fn new(re: Interval, im: Interval) -> Self { IC { re, im } }
+    fn new(re: Interval, im: Interval) -> Self {
+        IC { re, im }
+    }
 
     fn from_f64(re: f64, im: f64) -> Self {
         IC {
@@ -76,14 +78,13 @@ impl IC {
 /// Method: marching squares on |p(z)|² − 1 = 0 with interval arithmetic.
 /// Each cell's contour segment length is enclosed in an interval.
 /// The total is a guaranteed enclosure.
-fn lemniscate_length_interval(
-    a_re: f64, a_im: f64, b_re: f64, b_im: f64, res: usize
-) -> Interval {
+fn lemniscate_length_interval(a_re: f64, a_im: f64, b_re: f64, b_im: f64, res: usize) -> Interval {
     let a = IC::from_f64(a_re, a_im);
     let b = IC::from_f64(b_re, b_im);
 
     let r_bound = (a_re * a_re + a_im * a_im).sqrt().sqrt()
-        + (b_re * b_re + b_im * b_im).powf(1.0 / 6.0) + 2.0;
+        + (b_re * b_re + b_im * b_im).powf(1.0 / 6.0)
+        + 2.0;
     let extent = r_bound.max(3.0);
     let step_f = 2.0 * extent / res as f64;
     let step = interval!(step_f, step_f).unwrap();
@@ -119,7 +120,9 @@ fn lemniscate_length_interval(
                 | (((fne > 0.0) as u8) << 2)
                 | (((fnw > 0.0) as u8) << 3);
 
-            if case == 0 || case == 15 { continue; }
+            if case == 0 || case == 15 {
+                continue;
+            }
 
             // For segment length: use interval arithmetic
             // The segment endpoints are at most `step` apart
@@ -140,12 +143,12 @@ fn lemniscate_length_interval(
             };
 
             // Interval segment length between two interpolated points
-            let seg_interval = |t1x: Interval, t1y: Interval,
-                                t2x: Interval, t2y: Interval| -> Interval {
-                let dx = t1x - t2x;
-                let dy = t1y - t2y;
-                (dx * dx + dy * dy).sqrt()
-            };
+            let seg_interval =
+                |t1x: Interval, t1y: Interval, t2x: Interval, t2y: Interval| -> Interval {
+                    let dx = t1x - t2x;
+                    let dy = t1y - t2y;
+                    (dx * dx + dy * dy).sqrt()
+                };
 
             let x0 = interval!(x0_f, x0_f).unwrap();
             let y0 = interval!(y0_f, y0_f).unwrap();
@@ -172,15 +175,21 @@ fn lemniscate_length_interval(
                 4 | 11 => seg(e, n),
                 5 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { seg(s, w) + seg(e, n) }
-                    else { seg(s, e) + seg(w, n) }
+                    if avg > 0.0 {
+                        seg(s, w) + seg(e, n)
+                    } else {
+                        seg(s, e) + seg(w, n)
+                    }
                 }
                 6 | 9 => seg(s, n),
                 7 | 8 => seg(w, n),
                 10 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { seg(s, e) + seg(w, n) }
-                    else { seg(s, w) + seg(e, n) }
+                    if avg > 0.0 {
+                        seg(s, e) + seg(w, n)
+                    } else {
+                        seg(s, w) + seg(e, n)
+                    }
                 }
                 _ => interval!(0.0, 0.0).unwrap(),
             };
@@ -196,9 +205,12 @@ fn lemniscate_length_interval(
 /// Evaluates at 27 sample points with interval arithmetic,
 /// adds rigorous Lipschitz margin.
 fn upper_bound_box_interval(
-    ar_lo: f64, ar_hi: f64,
-    ai_lo: f64, ai_hi: f64,
-    b_lo: f64, b_hi: f64,
+    ar_lo: f64,
+    ar_hi: f64,
+    ai_lo: f64,
+    ai_hi: f64,
+    b_lo: f64,
+    b_hi: f64,
     res: usize,
     evals: &AtomicUsize,
 ) -> f64 {
@@ -216,8 +228,12 @@ fn upper_bound_box_interval(
                 let l_iv = lemniscate_length_interval(ar, ai, b, 0.0, res);
                 let l_hi = l_iv.sup();
                 let l_lo = l_iv.inf();
-                if l_hi > max_upper { max_upper = l_hi; }
-                if l_lo < min_lower { min_lower = l_lo; }
+                if l_hi > max_upper {
+                    max_upper = l_hi;
+                }
+                if l_lo < min_lower {
+                    min_lower = l_lo;
+                }
             }
         }
     }
@@ -238,35 +254,60 @@ fn upper_bound_box_interval(
 
 #[derive(Clone, Copy)]
 struct Box3D {
-    ar_lo: f64, ar_hi: f64,
-    ai_lo: f64, ai_hi: f64,
-    b_lo: f64, b_hi: f64,
+    ar_lo: f64,
+    ar_hi: f64,
+    ai_lo: f64,
+    ai_hi: f64,
+    b_lo: f64,
+    b_hi: f64,
 }
 
 impl Box3D {
     fn half_width(&self) -> f64 {
-        [(self.ar_hi - self.ar_lo),
-         (self.ai_hi - self.ai_lo),
-         (self.b_hi - self.b_lo)]
-            .iter().cloned().fold(0.0f64, f64::max) / 2.0
+        [
+            (self.ar_hi - self.ar_lo),
+            (self.ai_hi - self.ai_lo),
+            (self.b_hi - self.b_lo),
+        ]
+        .iter()
+        .cloned()
+        .fold(0.0f64, f64::max)
+            / 2.0
     }
 
     fn contains_extremizer(&self) -> bool {
-        self.ar_lo <= 0.0 && 0.0 <= self.ar_hi
-            && self.ai_lo <= 0.0 && 0.0 <= self.ai_hi
-            && self.b_lo <= 1.0 && 1.0 <= self.b_hi
+        self.ar_lo <= 0.0
+            && 0.0 <= self.ar_hi
+            && self.ai_lo <= 0.0
+            && 0.0 <= self.ai_hi
+            && self.b_lo <= 1.0
+            && 1.0 <= self.b_hi
     }
 
     fn subdivide(&self) -> [Box3D; 8] {
         let am = (self.ar_lo + self.ar_hi) / 2.0;
         let bm = (self.ai_lo + self.ai_hi) / 2.0;
         let cm = (self.b_lo + self.b_hi) / 2.0;
-        let mut out = [Box3D { ar_lo: 0.0, ar_hi: 0.0, ai_lo: 0.0, ai_hi: 0.0, b_lo: 0.0, b_hi: 0.0 }; 8];
+        let mut out = [Box3D {
+            ar_lo: 0.0,
+            ar_hi: 0.0,
+            ai_lo: 0.0,
+            ai_hi: 0.0,
+            b_lo: 0.0,
+            b_hi: 0.0,
+        }; 8];
         let mut i = 0;
         for &(arl, arh) in &[(self.ar_lo, am), (am, self.ar_hi)] {
             for &(ail, aih) in &[(self.ai_lo, bm), (bm, self.ai_hi)] {
                 for &(bl, bh) in &[(self.b_lo, cm), (cm, self.b_hi)] {
-                    out[i] = Box3D { ar_lo: arl, ar_hi: arh, ai_lo: ail, ai_hi: aih, b_lo: bl, b_hi: bh };
+                    out[i] = Box3D {
+                        ar_lo: arl,
+                        ar_hi: arh,
+                        ai_lo: ail,
+                        ai_hi: aih,
+                        b_lo: bl,
+                        b_hi: bh,
+                    };
                     i += 1;
                 }
             }
@@ -342,8 +383,13 @@ fn main() {
     println!("\n    Interval marching squares cross-check:");
     for &res in &[400, 800, 1600] {
         let l_iv = lemniscate_length_interval(0.0, 0.0, -1.0, 0.0, res);
-        println!("      res={}: L ∈ [{:.10}, {:.10}] width={:.2e}",
-            res, l_iv.inf(), l_iv.sup(), l_iv.sup() - l_iv.inf());
+        println!(
+            "      res={}: L ∈ [{:.10}, {:.10}] width={:.2e}",
+            res,
+            l_iv.inf(),
+            l_iv.sup(),
+            l_iv.sup() - l_iv.inf()
+        );
     }
 
     // Step 2: Branch-and-bound
@@ -361,9 +407,12 @@ fn main() {
             for i2 in 0..init_n {
                 let bl = i2 as f64 * step_b;
                 boxes.push(Box3D {
-                    ar_lo: arl, ar_hi: arl + step_a,
-                    ai_lo: ail, ai_hi: ail + step_a,
-                    b_lo: bl, b_hi: bl + step_b,
+                    ar_lo: arl,
+                    ar_hi: arl + step_a,
+                    ai_lo: ail,
+                    ai_hi: ail + step_a,
+                    b_lo: bl,
+                    b_hi: bl + step_b,
                 });
             }
         }
@@ -404,10 +453,14 @@ fn main() {
                     (idx, f64::INFINITY, true)
                 } else {
                     let ub = upper_bound_box_interval(
-                        bx.ar_lo, bx.ar_hi,
-                        bx.ai_lo, bx.ai_hi,
-                        bx.b_lo, bx.b_hi,
-                        res, &total_evals,
+                        bx.ar_lo,
+                        bx.ar_hi,
+                        bx.ai_lo,
+                        bx.ai_hi,
+                        bx.b_lo,
+                        bx.b_hi,
+                        res,
+                        &total_evals,
                     );
                     (idx, ub, false)
                 }
@@ -425,29 +478,51 @@ fn main() {
                 survived.push(idx);
             } else if ub < l_lower {
                 eliminated += 1;
-                if ub > max_ub_ne { max_ub_ne = ub; }
+                if ub > max_ub_ne {
+                    max_ub_ne = ub;
+                }
             } else {
                 survived.push(idx);
-                if ub > max_ub_ne { max_ub_ne = ub; }
+                if ub > max_ub_ne {
+                    max_ub_ne = ub;
+                }
             }
         }
 
-        let ext_c = survived.iter().filter(|&&i| boxes[i].contains_extremizer()).count();
+        let ext_c = survived
+            .iter()
+            .filter(|&&i| boxes[i].contains_extremizer())
+            .count();
         let ne_c = survived.len() - ext_c;
 
         let info = LevelInfo {
-            level, boxes: n_boxes, half_width: hw, resolution: res,
-            eliminated, ext_survivors: ext_c, nonext_survivors: ne_c,
-            max_ub_nonext: max_ub_ne, time_secs: dt,
+            level,
+            boxes: n_boxes,
+            half_width: hw,
+            resolution: res,
+            eliminated,
+            ext_survivors: ext_c,
+            nonext_survivors: ne_c,
+            max_ub_nonext: max_ub_ne,
+            time_secs: dt,
         };
         level_log.push(info);
 
         let pct = eliminated as f64 / n_boxes as f64 * 100.0;
-        println!("\n    Level {}: {} boxes, hw={:.5}, res={}", level, n_boxes, hw, res);
-        println!("      Eliminated {}/{} ({:.1}%), survivors: {} ext + {} non-ext",
-            eliminated, n_boxes, pct, ext_c, ne_c);
+        println!(
+            "\n    Level {}: {} boxes, hw={:.5}, res={}",
+            level, n_boxes, hw, res
+        );
+        println!(
+            "      Eliminated {}/{} ({:.1}%), survivors: {} ext + {} non-ext",
+            eliminated, n_boxes, pct, ext_c, ne_c
+        );
         println!("      Max UB (non-ext): {:.8} vs {:.8}", max_ub_ne, l_lower);
-        println!("      {:.1}s | evals {}", dt, total_evals.load(Ordering::Relaxed));
+        println!(
+            "      {:.1}s | evals {}",
+            dt,
+            total_evals.load(Ordering::Relaxed)
+        );
 
         if ne_c == 0 {
             println!("\n    *** ONLY EXTREMIZER BOXES SURVIVE — PROOF COMPLETE ***");
@@ -475,13 +550,27 @@ fn main() {
             for i1 in 0..face_n {
                 for i2 in 0..face_n {
                     let (ar, ai, b) = match ax {
-                        0 => (fv, -4.0 + (i1 as f64 + 0.5) * face_step_a, (i2 as f64 + 0.5) * face_step_b),
-                        1 => (-4.0 + (i1 as f64 + 0.5) * face_step_a, fv, (i2 as f64 + 0.5) * face_step_b),
-                        _ => (-4.0 + (i1 as f64 + 0.5) * face_step_a, -4.0 + (i2 as f64 + 0.5) * face_step_a, fv),
+                        0 => (
+                            fv,
+                            -4.0 + (i1 as f64 + 0.5) * face_step_a,
+                            (i2 as f64 + 0.5) * face_step_b,
+                        ),
+                        1 => (
+                            -4.0 + (i1 as f64 + 0.5) * face_step_a,
+                            fv,
+                            (i2 as f64 + 0.5) * face_step_b,
+                        ),
+                        _ => (
+                            -4.0 + (i1 as f64 + 0.5) * face_step_a,
+                            -4.0 + (i2 as f64 + 0.5) * face_step_a,
+                            fv,
+                        ),
                     };
                     let l_iv = lemniscate_length_interval(ar, ai, b, 0.0, 200);
                     let l_sup = l_iv.sup();
-                    if l_sup > max_face { max_face = l_sup; }
+                    if l_sup > max_face {
+                        max_face = l_sup;
+                    }
                 }
             }
         }
@@ -495,7 +584,11 @@ fn main() {
     let h = 1e-4;
     let lc = lemniscate_length_interval(0.0, 0.0, -1.0, 0.0, 1600);
     let mut hess_neg = true;
-    for (name, dar, dai, dbr) in [("a_re", h, 0.0, 0.0), ("a_im", 0.0, h, 0.0), ("b_re", 0.0, 0.0, h)] {
+    for (name, dar, dai, dbr) in [
+        ("a_re", h, 0.0, 0.0),
+        ("a_im", 0.0, h, 0.0),
+        ("b_re", 0.0, 0.0, h),
+    ] {
         let lp = lemniscate_length_interval(dar, dai, -1.0 + dbr, 0.0, 1600);
         let lm = lemniscate_length_interval(-dar, -dai, -1.0 - dbr, 0.0, 1600);
         // d²L ≈ (L+ − 2L₀ + L−) / h²
@@ -503,9 +596,16 @@ fn main() {
         let d2_upper = (lp.sup() - 2.0 * lc.inf() + lm.sup()) / (h * h);
         let d2_lower = (lp.inf() - 2.0 * lc.sup() + lm.inf()) / (h * h);
         let neg = d2_upper < 0.0;
-        if !neg { hess_neg = false; }
-        println!("    d²L/d{}² ∈ [{:.2}, {:.2}]  {}",
-            name, d2_lower, d2_upper, if neg { "NEGATIVE ✓" } else { "POSITIVE ✗" });
+        if !neg {
+            hess_neg = false;
+        }
+        println!(
+            "    d²L/d{}² ∈ [{:.2}, {:.2}]  {}",
+            name,
+            d2_lower,
+            d2_upper,
+            if neg { "NEGATIVE ✓" } else { "POSITIVE ✗" }
+        );
     }
 
     // Summary
@@ -520,13 +620,24 @@ fn main() {
     println!("  Hessian neg:     {}", hess_neg);
     println!("  Total evals:     {}", total_evals.load(Ordering::Relaxed));
     println!("  Total time:      {:.1}s", dt_total);
-    println!("  VERDICT:         {}", if verdict { "EHP_N3_PROVEN ✓" } else { "INCOMPLETE" });
+    println!(
+        "  VERDICT:         {}",
+        if verdict {
+            "EHP_N3_PROVEN ✓"
+        } else {
+            "INCOMPLETE"
+        }
+    );
     println!("================================================================");
 
     // Save
     let result = ProofResult {
         experiment: "EXP-MM-EHP-004b".into(),
-        verdict: if verdict { "EHP_N3_PROVEN".into() } else { "INCOMPLETE".into() },
+        verdict: if verdict {
+            "EHP_N3_PROVEN".into()
+        } else {
+            "INCOMPLETE".into()
+        },
         rigor: "ieee_1788_interval_arithmetic_inari".into(),
         l_star_lower: l_lower,
         l_star_upper: l_upper_ref,

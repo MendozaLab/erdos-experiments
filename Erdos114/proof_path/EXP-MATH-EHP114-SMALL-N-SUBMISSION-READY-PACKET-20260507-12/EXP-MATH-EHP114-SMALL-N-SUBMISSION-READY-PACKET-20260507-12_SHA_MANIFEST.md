@@ -1,0 +1,56 @@
+# SHA-256 manifest — v12 packet contents
+
+Computed locally with `shasum -a 256` over the v12 packet directory.
+
+| File | SHA-256 |
+|---|---|
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_README.md` | `6f4b854d4390de043bd5d0178cbc081fa02e99ad78dea52a73d10e2799b76fc6` |
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_ERDOSPROBLEMS_POST.md` | `d5fa1e29978e6d222464820dc8ebaf97099f8a427b1e2b2d478ce98d5a322234` |
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_FORMAL_CONJECTURES_PACKET.md` | `245aacfc60e745da175bab9ddcbb1f0312c814e2f1e045afe52e72ae0b6f484b` |
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_FORMAL_CONJECTURES_ISSUE_DRAFT.md` | `a34accd132a5f36d7bc698d4b0923b372ab02e4b3d97581108dfce8e71070b94` |
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_LEAN_STUB.lean` | `d2ef991f262e0175ee2de81ea8b3ec9de3c5da811f327e1d1d6fd4cd95272f05` |
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_ZENODO_STRATEGY.md` | `4414331b070dbdb71f0e02cddd014d3e624adfb5b9862b45ba20f3c6ef73bc62` |
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_REVIEWER_INQUIRY.md` | `9c06c3fdf0e995e86b5b8365ff25c2294a993a9ca48c613167d8ec08383f64e4` |
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_REPORT.md` | `eb402629bf02f9af2612c161649dbe42d94a4cae8451eea3f0f3c851fa1cae63` |
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_CHANGELOG.md` | `c66193340647c1ac92a32fd4951e853f19f14006c443c3a077d849950c4ab220` |
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_N13_RERUN_COMMAND.md` | `58510363785e8df7896cd387f2b6a9ac199ec8dae7596b6c0256a229da05b9d6` |
+| `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_RESULTS.json` | `358b8c23486b4fe72212bf15b5be319c033076fb50d57333b60a10852ce791ad` |
+
+This manifest excludes itself and `EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12_RESULTS.sha256`.
+
+## External certificate dependencies (unchanged from v5 Zenodo record)
+
+| n | result JSON SHA-256 | Zenodo URL |
+|---:|---|---|
+| 3 | `a884d1bfec1563f6e6f7ae4cbb2ec607b43be033d06c41d14782459e67ec2b95` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n3-inari_RESULTS.json> |
+| 4 | `0924dd7424d2615099ff95d47cb4c120ba22e907adaa9af881cded9678241209` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n4-inari_RESULTS.json> |
+| 5 | `21ca3c7607dc1fbb7b08982666f4620dff808fdc581eecae9967c51fafb05447` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n5-inari_RESULTS.json> |
+| 6 | `41ac3027e9ae5add9e1208c0faa5897c36762d69b5eeccef96068c96af567b3d` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n6-inari_RESULTS.json> |
+| 7 | `832ddaf219d717e275ee95c01f271dd3120e255cf81f3aa72ba3c2f56ff84054` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n7-inari_RESULTS.json> |
+| 8 | `c7a1fd80fbfed1efd53eaa35283e467994e3a4175541f3817485d9551d14dcdc` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n8-inari_RESULTS.json> |
+| 9 | `5bc2887826c9ef21752c115c9a4a2ab983f94eea06f0111ea98db454fe1358f4` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n9-inari_RESULTS.json> |
+| 10 | `2b72e052aa7200f7ac5d40992843601988de234093c44860fde99a7871e19581` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n10-inari_RESULTS.json> |
+| 11 | `67f20cce1d3d54cad2d6bc708ab9ec796c17cb4d34a9728f2954b8a6cbf7c89c` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n11-inari_RESULTS.json> |
+| 12 | `42a517997445d158649feefae2b7287bc9b548c6391796df0c1246489c6aa064` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n12-inari_RESULTS.json> |
+| 13 | `a4e72a9be2811e9d2290c6cdd0f6a9f1dd17fa85790e380bd5af8b09179e02ac` | quarantined from v12 public table; archived for transparency |
+| 14 | `50b1c965c842ced25b2930c2b71ffb6e2da693872aa464a19fbd9d5d9efa0ca7` | <https://zenodo.org/records/19480329/files/EXP-MM-EHP-007-n14-inari_RESULTS.json> |
+
+## Verification
+
+```bash
+cd EXP-MATH-EHP114-SMALL-N-SUBMISSION-READY-PACKET-20260507-12
+shasum -a 256 \
+  *_README.md \
+  *_ERDOSPROBLEMS_POST.md \
+  *_FORMAL_CONJECTURES_PACKET.md \
+  *_FORMAL_CONJECTURES_ISSUE_DRAFT.md \
+  *_LEAN_STUB.lean \
+  *_ZENODO_STRATEGY.md \
+  *_REVIEWER_INQUIRY.md \
+  *_REPORT.md \
+  *_CHANGELOG.md \
+  *_N13_RERUN_COMMAND.md \
+  *_RESULTS.json
+```
+
+Each line of output should match the corresponding row in this manifest.

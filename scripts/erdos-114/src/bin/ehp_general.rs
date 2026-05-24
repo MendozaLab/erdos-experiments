@@ -173,7 +173,10 @@ fn extremizer_point(degree: usize) -> Vec<f64> {
 /// Grid extent is chosen adaptively based on coefficient magnitudes.
 fn lemniscate_length(degree: usize, coeffs: &[(f64, f64)], res: usize) -> f64 {
     // Compute extent: max(3.0, (sum |a_k|)^{1/n} + 2.0)
-    let coeff_sum: f64 = coeffs.iter().map(|&(re, im)| (re * re + im * im).sqrt()).sum();
+    let coeff_sum: f64 = coeffs
+        .iter()
+        .map(|&(re, im)| (re * re + im * im).sqrt())
+        .sum();
     let extent = (coeff_sum.powf(1.0 / degree as f64) + 2.0).max(3.0);
 
     let step = 2.0 * extent / res as f64;
@@ -208,14 +211,13 @@ fn lemniscate_length(degree: usize, coeffs: &[(f64, f64)], res: usize) -> f64 {
                 continue;
             }
 
-            let interp =
-                |fa: f64, fb: f64| -> f64 {
-                    if (fa - fb).abs() < 1e-30 {
-                        0.5
-                    } else {
-                        fa / (fa - fb)
-                    }
-                };
+            let interp = |fa: f64, fb: f64| -> f64 {
+                if (fa - fb).abs() < 1e-30 {
+                    0.5
+                } else {
+                    fa / (fa - fb)
+                }
+            };
 
             let s = (x0 + interp(fsw, fse) * step, y0);
             let e = (x1, y0 + interp(fse, fne) * step);
@@ -279,7 +281,10 @@ impl BoxND {
     }
 
     fn center(&self) -> Vec<f64> {
-        self.bounds.iter().map(|&(lo, hi)| (lo + hi) / 2.0).collect()
+        self.bounds
+            .iter()
+            .map(|&(lo, hi)| (lo + hi) / 2.0)
+            .collect()
     }
 
     fn half_width(&self) -> f64 {
@@ -297,7 +302,11 @@ impl BoxND {
     fn subdivide(&self) -> Vec<BoxND> {
         let d = self.dim();
         let n_children = 1usize << d;
-        let mids: Vec<f64> = self.bounds.iter().map(|&(lo, hi)| (lo + hi) / 2.0).collect();
+        let mids: Vec<f64> = self
+            .bounds
+            .iter()
+            .map(|&(lo, hi)| (lo + hi) / 2.0)
+            .collect();
         let mut children = Vec::with_capacity(n_children);
 
         for mask in 0..n_children {
@@ -455,7 +464,9 @@ fn estimate_lipschitz(degree: usize, n_samples: usize, res: usize) -> f64 {
     // Generate deterministic "random" points using a simple LCG
     let mut rng_state: u64 = 42 + degree as u64 * 137;
     let next_rng = |state: &mut u64| -> f64 {
-        *state = state.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
+        *state = state
+            .wrapping_mul(6364136223846793005)
+            .wrapping_add(1442695040888963407);
         // Map to [-4, 4]
         ((*state >> 33) as f64 / (1u64 << 31) as f64) * 8.0 - 4.0
     };
@@ -559,7 +570,10 @@ fn run_feasibility(degree: usize) -> FeasibilityResult {
     for &(res, l) in &raw_values {
         println!("    res={:>4}: L(z^{}-1) = {:.10}", res, degree, l);
     }
-    println!("    Richardson: lower={:.10}, best={:.10}, upper={:.10}", l_lower, l_best, l_upper);
+    println!(
+        "    Richardson: lower={:.10}, best={:.10}, upper={:.10}",
+        l_lower, l_best, l_upper
+    );
     println!("    Width: {:.2e}", l_upper - l_lower);
 
     println!("\n  === STEP 2: RANDOM SAMPLING ({} dimensions) ===", d);
@@ -584,15 +598,23 @@ fn run_feasibility(degree: usize) -> FeasibilityResult {
         lemniscate_length(degree, &c, sample_res)
     };
 
-    println!("    L*(z^{}-1) at res={}: {:.10}", degree, sample_res, l_ref_coarse);
-    println!("    Sampling {} points in [-4,4]^{} (a_0 in [0,4])...", n_samples, d);
+    println!(
+        "    L*(z^{}-1) at res={}: {:.10}",
+        degree, sample_res, l_ref_coarse
+    );
+    println!(
+        "    Sampling {} points in [-4,4]^{} (a_0 in [0,4])...",
+        n_samples, d
+    );
 
     // Generate deterministic pseudo-random samples
     let samples: Vec<Vec<f64>> = {
         let mut all = Vec::with_capacity(n_samples);
         let mut rng_state: u64 = 12345 + degree as u64 * 67890;
         let next_rng = |state: &mut u64| -> f64 {
-            *state = state.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
+            *state = state
+                .wrapping_mul(6364136223846793005)
+                .wrapping_add(1442695040888963407);
             ((*state >> 33) as f64 / (1u64 << 31) as f64) * 8.0 - 4.0
         };
         for _ in 0..n_samples {
@@ -622,7 +644,10 @@ fn run_feasibility(degree: usize) -> FeasibilityResult {
     let dt_sample = t_sample.elapsed().as_secs_f64();
 
     let evals_per_sec = n_samples as f64 / dt_sample;
-    println!("    Done in {:.2}s ({:.0} evals/s)", dt_sample, evals_per_sec);
+    println!(
+        "    Done in {:.2}s ({:.0} evals/s)",
+        dt_sample, evals_per_sec
+    );
 
     // Find best competitor
     let mut best_competitor_idx = 0;
@@ -656,7 +681,10 @@ fn run_feasibility(degree: usize) -> FeasibilityResult {
         0.0
     };
 
-    println!("    Counterexamples (L > L_ref at coarse res): {}", n_counterexamples);
+    println!(
+        "    Counterexamples (L > L_ref at coarse res): {}",
+        n_counterexamples
+    );
     println!(
         "    Closest competitor: L={:.8}, margin={:.6} ({:.3}%)",
         best_competitor_l, margin, margin_pct
@@ -684,7 +712,10 @@ fn run_feasibility(degree: usize) -> FeasibilityResult {
 
     let initial_boxes = m.pow(d as u32);
     let survival_threshold = l_ref_coarse * 0.80;
-    let n_above_threshold = results.iter().filter(|&&(_, l)| l > survival_threshold).count();
+    let n_above_threshold = results
+        .iter()
+        .filter(|&&(_, l)| l > survival_threshold)
+        .count();
     let survival_rate = n_above_threshold as f64 / n_samples as f64;
 
     // Estimate B&B with subdivision factor 2^D
@@ -819,7 +850,10 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
     for &(res, l) in &raw_values {
         println!("    res={:>4}: L(z^{}-1) = {:.12}", res, degree, l);
     }
-    println!("    Richardson: lower={:.10}, best={:.10}, upper={:.10}", l_lower, l_best, l_upper);
+    println!(
+        "    Richardson: lower={:.10}, best={:.10}, upper={:.10}",
+        l_lower, l_best, l_upper
+    );
 
     // ── Step 2: Grid error calibration ──
     println!("\n  === STEP 2: GRID ERROR CALIBRATION ===");
@@ -872,8 +906,11 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
             );
         }
     }
-    println!("    Max rel errors: 200={:.4}% 400={:.4}%",
-        max_rel_err_200 * 100.0, max_rel_err_400 * 100.0);
+    println!(
+        "    Max rel errors: 200={:.4}% 400={:.4}%",
+        max_rel_err_200 * 100.0,
+        max_rel_err_400 * 100.0
+    );
 
     // ── Step 3: Lipschitz estimation ──
     println!("\n  === STEP 3: LIPSCHITZ ESTIMATION ===");
@@ -881,7 +918,10 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
     println!("    Lipschitz estimate: {:.4}", lip);
 
     // ── Step 4: Adaptive B&B ──
-    println!("\n  === STEP 4: ADAPTIVE BRANCH-AND-BOUND ({} dimensions) ===", d);
+    println!(
+        "\n  === STEP 4: ADAPTIVE BRANCH-AND-BOUND ({} dimensions) ===",
+        d
+    );
 
     let radius = 4.0;
 
@@ -940,7 +980,11 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
     // Guard: if too many boxes, reduce m
     let actual_m = if total_initial_boxes > 50_000_000 {
         let max_m = (50_000_000.0f64).powf(1.0 / d as f64).floor() as usize;
-        println!("    WARNING: Reducing grid from {} to {} (too many boxes)", m, max_m.max(2));
+        println!(
+            "    WARNING: Reducing grid from {} to {} (too many boxes)",
+            m,
+            max_m.max(2)
+        );
         max_m.max(2)
     } else {
         m
@@ -976,7 +1020,10 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
         // Check time budget
         let elapsed = t_total.elapsed().as_secs_f64();
         if elapsed > budget_secs * 0.9 {
-            println!("\n    Level {}: TIME BUDGET EXHAUSTED ({:.1}s / {:.1}s)", level, elapsed, budget_secs);
+            println!(
+                "\n    Level {}: TIME BUDGET EXHAUSTED ({:.1}s / {:.1}s)",
+                level, elapsed, budget_secs
+            );
             break;
         }
 
@@ -1052,14 +1099,16 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
                 let mut local_lip = 0.0f64;
                 for dim in 0..d {
                     let mut pt_plus = center.clone();
-                    pt_plus[dim] = (pt_plus[dim] + h_fd).min(if dim == 0 { radius } else { radius });
+                    pt_plus[dim] =
+                        (pt_plus[dim] + h_fd).min(if dim == 0 { radius } else { radius });
                     let l_plus = lemniscate_length_reduced(degree, &pt_plus, level_res);
                     total_evals.fetch_add(1, Ordering::Relaxed);
                     let grad_p = (l_plus - l_center).abs() / h_fd;
                     local_lip = local_lip.max(grad_p);
 
                     let mut pt_minus = center.clone();
-                    pt_minus[dim] = (pt_minus[dim] - h_fd).max(if dim == 0 { 0.0 } else { -radius });
+                    pt_minus[dim] =
+                        (pt_minus[dim] - h_fd).max(if dim == 0 { 0.0 } else { -radius });
                     let l_minus = lemniscate_length_reduced(degree, &pt_minus, level_res);
                     total_evals.fetch_add(1, Ordering::Relaxed);
                     let grad_m = (l_minus - l_center).abs() / h_fd;
@@ -1212,7 +1261,10 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
 
     let sweep_total = sweep_m.checked_pow(d as u32).unwrap_or(0);
     if sweep_total > 0 && sweep_total < 10_000_000 {
-        println!("    Coarse sweep: {}^{} = {} points at res=200...", sweep_m, d, sweep_total);
+        println!(
+            "    Coarse sweep: {}^{} = {} points at res=200...",
+            sweep_m, d, sweep_total
+        );
 
         let mut sweep_boxes: Vec<Vec<f64>> = Vec::with_capacity(sweep_total);
         fn generate_sweep_points(
@@ -1305,7 +1357,10 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
 
     // For each dimension, sample the two boundary faces
     // (except dim 0 where only the hi face exists since a_0 >= 0)
-    let face_points_per_face = face_n.checked_pow((d - 1).max(1) as u32).unwrap_or(0).min(1_000_000);
+    let face_points_per_face = face_n
+        .checked_pow((d - 1).max(1) as u32)
+        .unwrap_or(0)
+        .min(1_000_000);
 
     if face_points_per_face > 0 && d > 0 {
         println!(
@@ -1328,13 +1383,17 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
                 let face_m = if face_dim == 0 {
                     1
                 } else {
-                    (face_points_per_face as f64).powf(1.0 / face_dim as f64).floor() as usize
+                    (face_points_per_face as f64)
+                        .powf(1.0 / face_dim as f64)
+                        .floor() as usize
                 };
                 let actual_face_m = face_m.max(1).min(face_n);
 
                 // Generate face points
                 let free_dims: Vec<usize> = (0..d).filter(|&i| i != fix_dim).collect();
-                let face_total = actual_face_m.checked_pow(free_dims.len() as u32).unwrap_or(0);
+                let face_total = actual_face_m
+                    .checked_pow(free_dims.len() as u32)
+                    .unwrap_or(0);
 
                 if face_total == 0 || face_total > 2_000_000 {
                     continue;
@@ -1453,7 +1512,8 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
         // Clamp: a_0 must stay non-negative
         if i == 0 && pt_minus[0] < 0.0 {
             // Use one-sided difference
-            let d2l = (l_plus - 2.0 * l0 + lemniscate_length_reduced(degree, &ext, hess_res)) / (h * h);
+            let d2l =
+                (l_plus - 2.0 * l0 + lemniscate_length_reduced(degree, &ext, hess_res)) / (h * h);
             // Actually, the extremizer a_0=1 is well away from 0, so this shouldn't trigger
             // for h=1e-3. But handle it gracefully.
             hessian_diag.push(d2l);
@@ -1477,7 +1537,11 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
                 "    d2L/d{}^2 = {:.2} {}",
                 dim_name,
                 d2l,
-                if d2l < 0.0 { "(NEGATIVE)" } else { "(**POSITIVE**)" }
+                if d2l < 0.0 {
+                    "(NEGATIVE)"
+                } else {
+                    "(**POSITIVE**)"
+                }
             );
             continue;
         }
@@ -1506,7 +1570,11 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
             "    d2L/d{}^2 = {:.2} {}",
             dim_name,
             d2l,
-            if d2l < 0.0 { "(NEGATIVE)" } else { "(**POSITIVE**)" }
+            if d2l < 0.0 {
+                "(NEGATIVE)"
+            } else {
+                "(**POSITIVE**)"
+            }
         );
     }
 
@@ -1577,7 +1645,10 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
     println!("  B&B proof complete:   {}", bb_proof_complete);
     println!("  B&B levels:           {}", bb_levels);
     println!("  B&B total evals:      {}", total_ev);
-    println!("  Outer domain safe:    {} (margin={:.4})", outer_safe, face_margin);
+    println!(
+        "  Outer domain safe:    {} (margin={:.4})",
+        outer_safe, face_margin
+    );
     println!("  Hessian all negative: {}", all_negative);
     println!();
     println!("  Total time: {:.1}s", total_time);
@@ -1631,7 +1702,7 @@ fn run_verify(degree: usize, budget_secs: f64) -> VerifyResult {
 
 struct Args {
     degree: usize,
-    mode: String,       // "feasibility", "verify", "both"
+    mode: String, // "feasibility", "verify", "both"
     budget_secs: f64,
 }
 
@@ -1671,7 +1742,9 @@ fn parse_args() -> Args {
                 println!("  --budget-secs S, -t S  Time budget in seconds (default: 600)");
                 println!();
                 println!("Examples:");
-                println!("  cargo run --release --bin ehp_general -- --degree 4 --mode feasibility");
+                println!(
+                    "  cargo run --release --bin ehp_general -- --degree 4 --mode feasibility"
+                );
                 println!("  cargo run --release --bin ehp_general -- -n 5 -m verify -t 3600");
                 std::process::exit(0);
             }
@@ -1711,11 +1784,21 @@ fn main() {
     println!("  Kenneth A. Mendoza · Oregon Coast AI · March 2026");
     println!("============================================================");
     println!();
-    println!("  Polynomial: p(z) = z^{} + a_{{{}}}*z^{{{}}} + ... + a_1*z + a_0",
-        args.degree, args.degree - 2, args.degree - 2);
-    println!("  Symmetry: fix a_0 real >= 0 (rotation z -> e^{{it/{}}}*z)", args.degree);
+    println!(
+        "  Polynomial: p(z) = z^{} + a_{{{}}}*z^{{{}}} + ... + a_1*z + a_0",
+        args.degree,
+        args.degree - 2,
+        args.degree - 2
+    );
+    println!(
+        "  Symmetry: fix a_0 real >= 0 (rotation z -> e^{{it/{}}}*z)",
+        args.degree
+    );
     println!("  Reduced parameters: D = 2*{} - 3 = {}", args.degree, d);
-    println!("  Extremizer: a_0 = 1, all others = 0 (i.e., z^{} - 1)", args.degree);
+    println!(
+        "  Extremizer: a_0 = 1, all others = 0 (i.e., z^{} - 1)",
+        args.degree
+    );
 
     match args.mode.as_str() {
         "feasibility" => {
@@ -1746,7 +1829,10 @@ fn main() {
             let remaining_budget = args.budget_secs - feasibility.total_time_secs;
 
             if feasibility.bb_prediction.feasible && remaining_budget > 60.0 {
-                println!("\n  Predicted feasible. Running verify with {:.0}s remaining...\n", remaining_budget);
+                println!(
+                    "\n  Predicted feasible. Running verify with {:.0}s remaining...\n",
+                    remaining_budget
+                );
                 let result = run_verify(args.degree, remaining_budget);
                 let ver_filename = format!("EHP_N{}_VERIFY_RESULTS.json", args.degree);
                 let json = serde_json::to_string_pretty(&result).unwrap();
@@ -1767,7 +1853,10 @@ fn main() {
             }
         }
         _ => {
-            eprintln!("Unknown mode: {}. Use feasibility, verify, or both.", args.mode);
+            eprintln!(
+                "Unknown mode: {}. Use feasibility, verify, or both.",
+                args.mode
+            );
             std::process::exit(1);
         }
     }
@@ -1783,9 +1872,9 @@ mod tests {
 
     #[test]
     fn test_reduced_dim() {
-        assert_eq!(reduced_dim(2), 1);  // z^2 + a_0: 1 real param
-        assert_eq!(reduced_dim(3), 3);  // z^3 + a_1*z + a_0: a_0 real + a_1 complex = 3
-        assert_eq!(reduced_dim(4), 5);  // z^4 + a_2*z^2 + a_1*z + a_0: 1 + 2 + 2 = 5
+        assert_eq!(reduced_dim(2), 1); // z^2 + a_0: 1 real param
+        assert_eq!(reduced_dim(3), 3); // z^3 + a_1*z + a_0: a_0 real + a_1 complex = 3
+        assert_eq!(reduced_dim(4), 5); // z^4 + a_2*z^2 + a_1*z + a_0: 1 + 2 + 2 = 5
         assert_eq!(reduced_dim(5), 7);
         assert_eq!(reduced_dim(6), 9);
         assert_eq!(reduced_dim(7), 11);
@@ -1798,8 +1887,8 @@ mod tests {
         let coeffs = reduced_to_coeffs(3, &[1.0, 0.5, -0.3]);
         assert_eq!(coeffs.len(), 2); // a_0 and a_1
         assert!((coeffs[0].0 - 1.0).abs() < 1e-15); // a_0 real
-        assert!((coeffs[0].1).abs() < 1e-15);         // a_0 imag = 0
-        assert!((coeffs[1].0 - 0.5).abs() < 1e-15);  // a_1 re
+        assert!((coeffs[0].1).abs() < 1e-15); // a_0 imag = 0
+        assert!((coeffs[1].0 - 0.5).abs() < 1e-15); // a_1 re
         assert!((coeffs[1].1 - (-0.3)).abs() < 1e-15); // a_1 im
     }
 
@@ -1872,7 +1961,11 @@ mod tests {
         // L(z^3 - 1) should be approximately 9.17
         let coeffs = vec![(-1.0, 0.0), (0.0, 0.0)];
         let l = lemniscate_length(3, &coeffs, 800);
-        assert!((l - 9.17).abs() < 0.1, "L(z^3-1) should be ~9.17, got {}", l);
+        assert!(
+            (l - 9.17).abs() < 0.1,
+            "L(z^3-1) should be ~9.17, got {}",
+            l
+        );
     }
 
     #[test]
@@ -1912,7 +2005,8 @@ mod tests {
         assert!(
             (l1 - l2).abs() < 0.01,
             "L(z^3-1) = {} should equal L(z^3+1) = {} by rotation",
-            l1, l2
+            l1,
+            l2
         );
     }
 }

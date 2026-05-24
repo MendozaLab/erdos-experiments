@@ -99,11 +99,7 @@ fn level_func_roots(x: f64, y: f64, r1: C64, r2: C64, r3: C64) -> f64 {
 /// Compute lemniscate length via marching squares.
 /// `level_fn` returns |p(z)|^2 - 1 at point (x, y).
 /// Grid covers [-extent, extent]^2 at resolution `res`.
-fn marching_squares_length<F: Fn(f64, f64) -> f64>(
-    level_fn: &F,
-    extent: f64,
-    res: usize,
-) -> f64 {
+fn marching_squares_length<F: Fn(f64, f64) -> f64>(level_fn: &F, extent: f64, res: usize) -> f64 {
     let step = 2.0 * extent / res as f64;
     let mut total_length = 0.0f64;
 
@@ -293,7 +289,10 @@ fn main() {
     let l_ref = lemniscate_length_ab(0.0, 0.0, -1.0, 0.0, work_res);
     let rel_err = ((l_ref - l_ref_known) / l_ref_known * 100.0).abs();
 
-    println!("\n  Reference: L(z^3-1) = {:.6} (known ≈ {:.4})", l_ref, l_ref_known);
+    println!(
+        "\n  Reference: L(z^3-1) = {:.6} (known ≈ {:.4})",
+        l_ref, l_ref_known
+    );
     println!("  Working resolution: {}", work_res);
     println!("  Relative error: {:.4}%", rel_err);
 
@@ -307,7 +306,10 @@ fn main() {
     let step = 2.0 * PI / sweep_2d_res as f64;
     let n_2d = sweep_2d_res * sweep_2d_res;
 
-    println!("  Grid: {}x{} = {} evaluations", sweep_2d_res, sweep_2d_res, n_2d);
+    println!(
+        "  Grid: {}x{} = {} evaluations",
+        sweep_2d_res, sweep_2d_res, n_2d
+    );
 
     let t_2d = Instant::now();
 
@@ -426,7 +428,12 @@ fn main() {
 
     let time_per_box_us = dt_4d / n_4d as f64 * 1e6;
 
-    println!("  Time: {:.2}s ({:.1} evals/s, {:.1} μs/eval)", dt_4d, n_4d as f64 / dt_4d, time_per_box_us);
+    println!(
+        "  Time: {:.2}s ({:.1} evals/s, {:.1} μs/eval)",
+        dt_4d,
+        n_4d as f64 / dt_4d,
+        time_per_box_us
+    );
     println!(
         "  Maximum: L = {:.6} at a=({:.3}+{:.3}i), b=({:.3}+{:.3}i)",
         max_l_4d, max_ar, max_ai, max_br, max_bi
@@ -438,7 +445,12 @@ fn main() {
         ((max_br + 1.0).powi(2) + max_bi * max_bi).sqrt()
     );
     println!("  All ≤ L_ref (within 0.1%): {}", all_below_4d);
-    println!("  Boxes within 10% of max: {} / {} ({:.2}%)", surviving_boxes, n_4d, surviving_boxes as f64 / n_4d as f64 * 100.0);
+    println!(
+        "  Boxes within 10% of max: {} / {} ({:.2}%)",
+        surviving_boxes,
+        n_4d,
+        surviving_boxes as f64 / n_4d as f64 * 100.0
+    );
 
     // ── Phase 3: Time extrapolation ──
     println!("\n  === PHASE 3: TIME EXTRAPOLATION ===");
@@ -459,7 +471,10 @@ fn main() {
     let levels = 6;
     let mut total_boxes = 0u64;
     let mut active = n_4d as u64;
-    println!("  Branch-and-bound estimate (survival rate={:.4}):", survival_rate);
+    println!(
+        "  Branch-and-bound estimate (survival rate={:.4}):",
+        survival_rate
+    );
     for level in 0..levels {
         total_boxes += active;
         let survivors = ((active as f64) * survival_rate).max(1.0) as u64;
@@ -476,7 +491,10 @@ fn main() {
     let extrap_time_hours = extrap_time_secs / 3600.0;
 
     println!("  Total estimated boxes: {:.2e}", total_boxes as f64);
-    println!("  Estimated time: {:.1}s = {:.2} hours", extrap_time_secs, extrap_time_hours);
+    println!(
+        "  Estimated time: {:.1}s = {:.2} hours",
+        extrap_time_secs, extrap_time_hours
+    );
     println!(
         "  (at {:.1} μs/box on {} cores)",
         time_per_box_us,
@@ -517,7 +535,11 @@ fn main() {
             "    d²L/d{}² = {:.4}  ({})",
             name,
             d2l,
-            if d2l < 0.0 { "NEGATIVE ✓" } else { "POSITIVE ✗" }
+            if d2l < 0.0 {
+                "NEGATIVE ✓"
+            } else {
+                "POSITIVE ✗"
+            }
         );
     }
 

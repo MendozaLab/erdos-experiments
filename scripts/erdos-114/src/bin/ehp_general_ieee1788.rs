@@ -57,8 +57,9 @@
 use inari::{interval, Interval};
 use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
+use std::io::Write;
 use std::sync::atomic::{AtomicUsize, Ordering};
-use std::time::Instant;
+use std::time::{Instant, SystemTime, UNIX_EPOCH};
 
 // ══════════════════════════════════════════════════════════════════
 // INTERVAL COMPLEX ARITHMETIC
@@ -123,6 +124,24 @@ struct DegreeConfig {
     coeff_bound: f64,
     /// Maximum B&B refinement levels before declaring incomplete.
     max_levels: usize,
+}
+
+#[derive(Clone)]
+struct RunOptions {
+    outdir: String,
+    resume: bool,
+    log_every: usize,
+    checkpoint_every: usize,
+}
+
+impl RunOptions {
+    fn checkpoint_every(&self) -> usize {
+        self.checkpoint_every.max(1)
+    }
+
+    fn log_every(&self) -> usize {
+        self.log_every.max(1)
+    }
 }
 
 /// Return per-degree configuration.
@@ -454,7 +473,7 @@ const MAX_PRECOMPUTED: usize = 16;
 /// Each component of `bounds` is `(lo, hi)` for one parameter. The coordinate
 /// system follows `reduced_to_coeffs`: index 0 is `Re(a_0)` (constrained ≥ 0
 /// by the rotation symmetry), indices 1,2 are `Re(a_1), Im(a_1)`, and so on.
-#[derive(Clone)]
+#[derive(Clone, Serialize, Deserialize)]
 struct BoxND {
     bounds: Vec<(f64, f64)>,
 }
@@ -657,6 +676,78 @@ struct LevelInfo {
     time_secs: f64,
 }
 
+#[derive(Serialize, Deserialize, Clone)]
+struct BbCheckpoint {
+    experiment: String,
+    degree: usize,
+    reduced_dim: usize,
+    level: usize,
+    n_boxes: usize,
+    next_start: usize,
+    survived_indices: Vec<usize>,
+    eliminated: usize,
+    max_ub_nonext: f64,
+    total_evals: usize,
+    completed_levels: Vec<LevelInfo>,
+    current_boxes: Option<Vec<BoxND>>,
+    checkpoint_unix_secs: u64,
+}
+
+fn now_unix_secs() -> u64 {
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|d| d.as_secs())
+        .unwrap_or(0)
+}
+
+fn progress_log_path(outdir: &str, degree: usize) -> String {
+    format!("{}/EXP-MM-EHP-007-n{}-inari_PROGRESS.log", outdir, degree)
+}
+
+fn checkpoint_path(outdir: &str, degree: usize) -> String {
+    format!("{}/EXP-MM-EHP-007-n{}-inari_BB_CHECKPOINT.json", outdir, degree)
+}
+
+fn append_progress_log(outdir: &str, degree: usize, line: &str) {
+    let path = progress_log_path(outdir, degree);
+    if let Ok(mut file) = std::fs::OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open(path)
+    {
+        let _ = writeln!(file, "{}", line);
+    }
+}
+
+fn log_progress(outdir: &str, degree: usize, line: &str) {
+    println!("{}", line);
+    let _ = std::io::stdout().flush();
+    append_progress_log(outdir, degree, line);
+}
+
+fn write_bb_checkpoint(outdir: &str, ckpt: &BbCheckpoint) {
+    let path = checkpoint_path(outdir, ckpt.degree);
+    let tmp = format!("{}.tmp", path);
+    match serde_json::to_string_pretty(ckpt) {
+        Ok(json) => {
+            if std::fs::write(&tmp, json).is_ok() {
+                let _ = std::fs::rename(&tmp, &path);
+            }
+        }
+        Err(err) => eprintln!("WARNING: could not serialize B&B checkpoint: {}", err),
+    }
+}
+
+fn load_bb_checkpoint(outdir: &str, degree: usize) -> Option<BbCheckpoint> {
+    let path = checkpoint_path(outdir, degree);
+    let json = std::fs::read_to_string(&path).ok()?;
+    serde_json::from_str(&json).ok()
+}
+
+fn clear_bb_checkpoint(outdir: &str, degree: usize) {
+    let _ = std::fs::remove_file(checkpoint_path(outdir, degree));
+}
+
 // ══════════════════════════════════════════════════════════════════
 // PROVE ONE DEGREE
 // ══════════════════════════════════════════════════════════════════
@@ -666,7 +757,8 @@ struct LevelInfo {
 /// The result is also written immediately to disk so that partial runs survive
 /// interruption and future sessions can load prior results for the cumulative
 /// summary table.
-fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
+fn prove_degree(degree: usize, options: &RunOptions) -> ProofResult {
+    let outdir = options.outdir.as_str();
     let d = reduced_dim(degree);
     let cfg = config_for(degree);
     let t_total = Instant::now();
@@ -731,8 +823,37 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
     let mut proof_complete = false;
     let mut level_log = Vec::new();
     let mut boxes = initial_boxes;
+    let resume_checkpoint = if options.resume {
+        load_bb_checkpoint(outdir, degree)
+    } else {
+        None
+    };
+    let start_level = resume_checkpoint.as_ref().map(|c| c.level).unwrap_or(0);
+    if let Some(ckpt) = &resume_checkpoint {
+        let msg = format!(
+            "    RESUME: checkpoint level={} next_start={} survivors_so_far={} evals={}",
+            ckpt.level,
+            ckpt.next_start,
+            ckpt.survived_indices.len(),
+            ckpt.total_evals
+        );
+        log_progress(outdir, degree, &msg);
+        level_log = ckpt.completed_levels.clone();
+        total_evals.store(ckpt.total_evals, Ordering::Relaxed);
+        if ckpt.level == 0 {
+            // Level 0 can be reconstructed from the deterministic initial tiling.
+        } else if let Some(saved_boxes) = &ckpt.current_boxes {
+            boxes = saved_boxes.clone();
+        } else {
+            log_progress(
+                outdir,
+                degree,
+                "    WARNING: nonzero-level checkpoint lacks current_boxes; restarting from level 0",
+            );
+        }
+    }
 
-    for level in 0..cfg.max_levels {
+    for level in start_level..cfg.max_levels {
         if boxes.is_empty() {
             proof_complete = true;
             break;
@@ -748,41 +869,111 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
 
         let t_lev = Instant::now();
 
-        // Parallel evaluation
-        let results: Vec<(usize, f64, bool)> = boxes
-            .par_iter()
-            .enumerate()
-            .map(|(idx, bx)| {
-                if bx.contains_extremizer() {
-                    (idx, f64::INFINITY, true)
-                } else {
-                    let ub = upper_bound_box(degree, bx, res, &total_evals);
-                    (idx, ub, false)
-                }
-            })
-            .collect();
-
-        let dt = t_lev.elapsed().as_secs_f64();
-
         let mut survived_idx = Vec::new();
         let mut eliminated = 0usize;
         let mut max_ub_ne = 0.0f64;
+        let mut next_start = 0usize;
 
-        for &(idx, ub, ce) in &results {
-            if ce {
-                survived_idx.push(idx);
-            } else if ub < l_lower {
-                eliminated += 1;
-                if ub > max_ub_ne {
-                    max_ub_ne = ub;
-                }
-            } else {
-                survived_idx.push(idx);
-                if ub > max_ub_ne {
-                    max_ub_ne = ub;
-                }
+        if let Some(ckpt) = &resume_checkpoint {
+            if ckpt.level == level && ckpt.n_boxes == n_boxes {
+                survived_idx = ckpt.survived_indices.clone();
+                eliminated = ckpt.eliminated;
+                max_ub_ne = ckpt.max_ub_nonext;
+                next_start = ckpt.next_start.min(n_boxes);
             }
         }
+
+        let start_msg = format!(
+            "\n    Level {} start: {} boxes, hw={:.5}, res={}, resume_from={}",
+            level, n_boxes, hw, res, next_start
+        );
+        log_progress(outdir, degree, &start_msg);
+
+        while next_start < n_boxes {
+            let end = (next_start + options.checkpoint_every()).min(n_boxes);
+            let chunk_start = next_start;
+            let chunk_results: Vec<(usize, f64, bool)> = boxes[chunk_start..end]
+                .par_iter()
+                .enumerate()
+                .map(|(local_idx, bx)| {
+                    let idx = chunk_start + local_idx;
+                    if bx.contains_extremizer() {
+                        (idx, f64::INFINITY, true)
+                    } else {
+                        let ub = upper_bound_box(degree, bx, res, &total_evals);
+                        (idx, ub, false)
+                    }
+                })
+                .collect();
+
+            for (idx, ub, ce) in chunk_results {
+                if ce {
+                    survived_idx.push(idx);
+                } else if ub < l_lower {
+                    eliminated += 1;
+                    if ub > max_ub_ne {
+                        max_ub_ne = ub;
+                    }
+                } else {
+                    survived_idx.push(idx);
+                    if ub > max_ub_ne {
+                        max_ub_ne = ub;
+                    }
+                }
+            }
+
+            next_start = end;
+            if next_start == n_boxes || next_start % options.log_every() == 0 {
+                let elapsed = t_lev.elapsed().as_secs_f64();
+                let pct_done = next_start as f64 / n_boxes as f64 * 100.0;
+                let rate = if elapsed > 0.0 {
+                    next_start as f64 / elapsed
+                } else {
+                    0.0
+                };
+                let remaining = if rate > 0.0 {
+                    (n_boxes - next_start) as f64 / rate
+                } else {
+                    f64::INFINITY
+                };
+                let msg = format!(
+                    "      level {} progress: {}/{} ({:.2}%) boxes, eliminated={}, survivors_so_far={}, evals={}, elapsed={:.1}s, eta={:.1}s",
+                    level,
+                    next_start,
+                    n_boxes,
+                    pct_done,
+                    eliminated,
+                    survived_idx.len(),
+                    total_evals.load(Ordering::Relaxed),
+                    elapsed,
+                    remaining
+                );
+                log_progress(outdir, degree, &msg);
+            }
+
+            let ckpt = BbCheckpoint {
+                experiment: format!("EXP-MM-EHP-007-n{}-inari", degree),
+                degree,
+                reduced_dim: d,
+                level,
+                n_boxes,
+                next_start,
+                survived_indices: survived_idx.clone(),
+                eliminated,
+                max_ub_nonext: max_ub_ne,
+                total_evals: total_evals.load(Ordering::Relaxed),
+                completed_levels: level_log.clone(),
+                current_boxes: if level == 0 {
+                    None
+                } else {
+                    Some(boxes.clone())
+                },
+                checkpoint_unix_secs: now_unix_secs(),
+            };
+            write_bb_checkpoint(outdir, &ckpt);
+        }
+
+        let dt = t_lev.elapsed().as_secs_f64();
 
         let ext_c = survived_idx
             .iter()
@@ -817,10 +1008,26 @@ fn prove_degree(degree: usize, outdir: &str) -> ProofResult {
             dt,
             total_evals.load(Ordering::Relaxed)
         );
+        append_progress_log(
+            outdir,
+            degree,
+            &format!(
+                "    Level {} complete: boxes={} eliminated={} ext_survivors={} nonext_survivors={} max_ub_nonext={:.12} evals={} time_secs={:.1}",
+                level,
+                n_boxes,
+                eliminated,
+                ext_c,
+                ne_c,
+                max_ub_ne,
+                total_evals.load(Ordering::Relaxed),
+                dt
+            ),
+        );
 
         if ne_c == 0 {
             println!("\n    *** ONLY EXTREMIZER BOXES SURVIVE — PROOF COMPLETE ***");
             proof_complete = true;
+            clear_bb_checkpoint(outdir, degree);
             break;
         }
 
@@ -1176,26 +1383,77 @@ fn main() {
     println!("║  Kenneth A. Mendoza · MendozaLab.org · March 2026         ║");
     println!("╚══════════════════════════════════════════════════════════════╝");
 
-    // Parse args: optional --outdir <path> followed by optional degree list.
+    // Parse args: optional flags followed by optional degree list.
     // Supported forms:
     //   (no args)                     → outdir=".", n=3..MAX_PRECOMPUTED
     //   --outdir <path>               → outdir=path, n=3..MAX_PRECOMPUTED
     //   --outdir <path> <start>       → outdir=path, n=start..MAX_PRECOMPUTED
     //   --outdir <path> <n1> <n2> … → outdir=path, explicit list
+    //   --resume                      → resume from EXP-MM-EHP-007-n{n}-inari_BB_CHECKPOINT.json
+    //   --log-every <N>               → print progress every N boxes
+    //   --checkpoint-every <N>        → checkpoint after each chunk of N boxes
+    //   --only <n1> [n2 ...]          → treat following degree args as exact list
     //   <start>                       → outdir=".", n=start..MAX_PRECOMPUTED
     //   <n1> <n2> …                  → outdir=".", explicit list
     let raw_args: Vec<String> = std::env::args().skip(1).collect();
-    let (outdir, args): (String, Vec<String>) =
-        if raw_args.first().map(|s| s.as_str()) == Some("--outdir") {
-            let dir = raw_args.get(1).cloned().unwrap_or_else(|| ".".to_string());
-            (dir, raw_args.into_iter().skip(2).collect())
-        } else {
-            (".".to_string(), raw_args)
-        };
+    let mut outdir = ".".to_string();
+    let mut resume = false;
+    let mut exact_degrees = false;
+    let mut log_every = 100_000usize;
+    let mut checkpoint_every = 100_000usize;
+    let mut args = Vec::new();
+    let mut i = 0usize;
+    while i < raw_args.len() {
+        match raw_args[i].as_str() {
+            "--outdir" => {
+                outdir = raw_args
+                    .get(i + 1)
+                    .cloned()
+                    .expect("--outdir requires a path");
+                i += 2;
+            }
+            "--resume" => {
+                resume = true;
+                i += 1;
+            }
+            "--only" => {
+                exact_degrees = true;
+                i += 1;
+            }
+            "--log-every" => {
+                log_every = raw_args
+                    .get(i + 1)
+                    .expect("--log-every requires a positive integer")
+                    .parse()
+                    .expect("--log-every must be a positive integer");
+                i += 2;
+            }
+            "--checkpoint-every" => {
+                checkpoint_every = raw_args
+                    .get(i + 1)
+                    .expect("--checkpoint-every requires a positive integer")
+                    .parse()
+                    .expect("--checkpoint-every must be a positive integer");
+                i += 2;
+            }
+            other => {
+                args.push(other.to_string());
+                i += 1;
+            }
+        }
+    }
+    let options = RunOptions {
+        outdir: outdir.clone(),
+        resume,
+        log_every,
+        checkpoint_every,
+    };
 
     let degrees: Vec<usize> = if args.is_empty() {
         // No degree args: run everything we have L* for
         (3..=MAX_PRECOMPUTED).collect()
+    } else if exact_degrees {
+        args.iter().filter_map(|s| s.parse().ok()).collect()
     } else if args.len() == 1 {
         // Single arg: treat as starting n, run through MAX_PRECOMPUTED
         let start: usize = args[0].parse().expect("degree must be a positive integer");
@@ -1206,12 +1464,18 @@ fn main() {
     };
 
     println!("  Output directory: {}", outdir);
+    println!(
+        "  Restart/logging: resume={} log_every={} checkpoint_every={}",
+        options.resume,
+        options.log_every(),
+        options.checkpoint_every()
+    );
 
     let t_global = Instant::now();
     let mut session_results: Vec<ProofResult> = Vec::new();
 
     for &n in &degrees {
-        let result = prove_degree(n, &outdir);
+        let result = prove_degree(n, &options);
         session_results.push(result);
 
         // After each n, print cumulative verification of n=3 through this n

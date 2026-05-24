@@ -1,0 +1,70 @@
+# EHP114 n=14 Radial Tail Arb Certificate
+
+Experiment: `EXP-MATH-EHP114-N14-RADIAL-TAIL-ARB-20260505-01`
+
+## Meaning
+
+This closes the missing radial tail left by the compact-middle interval
+verifier. Together with `EXP-MATH-EHP114-N14-RADIAL-COMPACT-INTERVAL-20260505-01`, the radial family now has an executable
+certificate path for
+
+```text
+0 < eps <= 1e-1,  L_14(1)-L_14(1-eps) >= 24 eps^(1/14).
+```
+
+The claim ceiling is still narrow: this is a shadow signature, not universal
+law. It is radial-family evidence only. It does not prove #114 and does not
+settle nonradial local stability.
+
+## Verdict
+
+- Status: `RADIAL_TAIL_CERTIFIED`
+- Constant: `C14 = 24`
+- Tail domain: `(0, 1e-4]`
+- Companion compact certificate: `EXP-MATH-EHP114-N14-RADIAL-COMPACT-INTERVAL-20260505-01`
+- Next blocker: `Splice tail + compact radial certificates into the n=14 shape-cone and mixed-remainder local-stability packet.`
+
+## Micro-Tail Connection Formula Bound
+
+For `(0, 1e-8]`, the packet uses the Gauss 2F1 connection formula
+at `z=1`. The certified coefficient lower bound is:
+
+```text
+25.304169858286159276467082057586698228234056420266 > 24
+```
+
+The margin over `C14=24` is `1.3041698582861592764670820575866982282340564202659`. This is the analytic
+piece that prevents the endpoint from being just another floating sweep.
+
+## Arb Bins for `1e-8 <= eps <= 1e-4`
+
+| eps lo | eps hi | margin lower | pass |
+|---:|---:|---:|---:|
+| 1.00000000000000000000000e-8 | 2.00000000000000000000000e-8 | 0.36762755678985526906158948651754349652322681817169 | True |
+| 2.00000000000000000000000e-8 | 4.00000000000000000000000e-8 | 0.38628685559650157256066233468904049585798441623615 | True |
+| 4.00000000000000000000000e-8 | 8.00000000000000000000000e-8 | 0.40589300803565973585959071782330168491700214507947 | True |
+| 8.00000000000000000000000e-8 | 1.60000000000000000000000e-7 | 0.42649387011662752971913791396875695476098754149531 | True |
+| 1.60000000000000000000000e-7 | 3.20000000000000000000000e-7 | 0.44813942122686165143400210754051017474616017065947 | True |
+| 3.20000000000000000000000e-7 | 6.40000000000000000000000e-7 | 0.47088183678700273440059900816569120624071375545714 | True |
+| 6.40000000000000000000000e-7 | 1.28000000000000000000000e-6 | 0.49477501043326333639667125576930991299914600131027 | True |
+| 1.28000000000000000000000e-6 | 2.56000000000000000000000e-6 | 0.51987387089581064149107123419240813429599169504536 | True |
+| 2.56000000000000000000000e-6 | 5.12000000000000000000000e-6 | 0.54623246119354551174442418936430044520632369239130 | True |
+| 5.12000000000000000000000e-6 | 1.02400000000000000000000e-5 | 0.57390175907582131963395255533621844643626695777848 | True |
+| 1.02400000000000000000000e-5 | 2.04800000000000000000000e-5 | 0.60292097386835405563787856252691422052762515781202 | True |
+| 2.04800000000000000000000e-5 | 4.09600000000000000000000e-5 | 0.63330598128192974424113296991990753402585802023480 | True |
+| 4.09600000000000000000000e-5 | 8.19200000000000000000000e-5 | 0.66502213404076505525591396780613763008590187716748 | True |
+| 8.19200000000000000000000e-5 | 0.000100000000000000000000000 | 1.1450623806524106253455118561914192934716874799169 | True |
+
+## What Remains
+
+The radial bound is no longer the blocker. The next mathematical task is the
+shape-cone/remainder splice: show nonradial perturbations cannot erase the
+radial Puiseux deficit inside the n=14 local cone.
+
+## Files
+
+- Tail script: `erdos-experiments/Erdos114/ehp114_n14_radial_tail_arb_certificate.py`
+- Result JSON: `erdos-experiments/Erdos114/EXP-MATH-EHP114-N14-RADIAL-TAIL-ARB-20260505-01_RESULTS.json`
+- SHA sidecar: `erdos-experiments/Erdos114/EXP-MATH-EHP114-N14-RADIAL-TAIL-ARB-20260505-01_RESULTS.sha256`
+
+No scorecard, D1, public document, Lean file, git, or email state was changed.

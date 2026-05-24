@@ -4,22 +4,34 @@
 use std::time::Instant;
 
 #[derive(Clone, Copy)]
-struct C64 { re: f64, im: f64 }
+struct C64 {
+    re: f64,
+    im: f64,
+}
 
 impl C64 {
-    fn new(re: f64, im: f64) -> Self { C64 { re, im } }
-    fn norm_sq(self) -> f64 { self.re * self.re + self.im * self.im }
+    fn new(re: f64, im: f64) -> Self {
+        C64 { re, im }
+    }
+    fn norm_sq(self) -> f64 {
+        self.re * self.re + self.im * self.im
+    }
 }
 
 impl std::ops::Mul for C64 {
     type Output = C64;
     fn mul(self, r: C64) -> C64 {
-        C64::new(self.re * r.re - self.im * r.im, self.re * r.im + self.im * r.re)
+        C64::new(
+            self.re * r.re - self.im * r.im,
+            self.re * r.im + self.im * r.re,
+        )
     }
 }
 impl std::ops::Add for C64 {
     type Output = C64;
-    fn add(self, r: C64) -> C64 { C64::new(self.re + r.re, self.im + r.im) }
+    fn add(self, r: C64) -> C64 {
+        C64::new(self.re + r.re, self.im + r.im)
+    }
 }
 
 fn lemniscate_length(a_re: f64, a_im: f64, b_re: f64, b_im: f64, res: usize) -> f64 {
@@ -55,16 +67,25 @@ fn lemniscate_length(a_re: f64, a_im: f64, b_re: f64, b_im: f64, res: usize) -> 
                 | (((fne > 0.0) as u8) << 2)
                 | (((fnw > 0.0) as u8) << 3);
 
-            if case == 0 || case == 15 { continue; }
+            if case == 0 || case == 15 {
+                continue;
+            }
 
-            let interp = |fa: f64, fb: f64| if (fa - fb).abs() < 1e-30 { 0.5 } else { fa / (fa - fb) };
+            let interp = |fa: f64, fb: f64| {
+                if (fa - fb).abs() < 1e-30 {
+                    0.5
+                } else {
+                    fa / (fa - fb)
+                }
+            };
 
             let s = (x0 + interp(fsw, fse) * step, y0);
             let e = (x1, y0 + interp(fse, fne) * step);
             let n = (x0 + interp(fnw, fne) * step, y1);
             let w = (x0, y0 + interp(fsw, fnw) * step);
 
-            let seg = |a: (f64, f64), b: (f64, f64)| ((a.0-b.0).powi(2) + (a.1-b.1).powi(2)).sqrt();
+            let seg =
+                |a: (f64, f64), b: (f64, f64)| ((a.0 - b.0).powi(2) + (a.1 - b.1).powi(2)).sqrt();
 
             match case {
                 1 | 14 => total += seg(s, w),
@@ -73,15 +94,21 @@ fn lemniscate_length(a_re: f64, a_im: f64, b_re: f64, b_im: f64, res: usize) -> 
                 4 | 11 => total += seg(e, n),
                 5 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { total += seg(s, w) + seg(e, n); }
-                    else { total += seg(s, e) + seg(w, n); }
+                    if avg > 0.0 {
+                        total += seg(s, w) + seg(e, n);
+                    } else {
+                        total += seg(s, e) + seg(w, n);
+                    }
                 }
                 6 | 9 => total += seg(s, n),
                 7 | 8 => total += seg(w, n),
                 10 => {
                     let avg = (fsw + fse + fne + fnw) / 4.0;
-                    if avg > 0.0 { total += seg(s, e) + seg(w, n); }
-                    else { total += seg(s, w) + seg(e, n); }
+                    if avg > 0.0 {
+                        total += seg(s, e) + seg(w, n);
+                    } else {
+                        total += seg(s, w) + seg(e, n);
+                    }
                 }
                 _ => {}
             }
@@ -106,7 +133,10 @@ fn main() {
             let lm = lemniscate_length(0.0, -h, -1.0, 0.0, res);
             let d2 = (lp + lm - 2.0 * l0) / (h * h);
             let dl = lp - l0;
-            println!("  h={:.4}: L(0,+h,-1,0)={:.12}  delta={:+.2e}  d2L/dai2={:+.2e}", h, lp, dl, d2);
+            println!(
+                "  h={:.4}: L(0,+h,-1,0)={:.12}  delta={:+.2e}  d2L/dai2={:+.2e}",
+                h, lp, dl, d2
+            );
         }
         println!();
     }
