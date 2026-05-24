@@ -45,14 +45,14 @@ theorem sidon_diff_injective (A : Finset ℕ)
     · -- Apply Sidon to (b₂, a₁) and (a₂, b₁)
       push_neg at h2
       have h_sidon := hS b₂ hb₂ a₁ ha₁ a₂ ha₂ b₁ hb₁ h1 (Nat.le_of_lt h2) (by omega)
-      -- Returns a₂ = b₂ ∧ a₁ = b₁, but we need a₁ = a₂ ∧ b₁ = b₂
-      exact ⟨h_sidon.right.symm, h_sidon.left.symm⟩
+      -- Returns b₂ = a₂ ∧ a₁ = b₁. Case impossible: hlt₁ : b₁ < a₁ contradicts a₁ = b₁.
+      exact absurd h_sidon.right.symm (Nat.ne_of_lt hlt₁)
   · push_neg at h1
     by_cases h2 : b₁ ≤ a₂
     · -- Apply Sidon to (a₁, b₂) and (b₁, a₂)
       have h_sidon := hS a₁ ha₁ b₂ hb₂ b₁ hb₁ a₂ ha₂ (Nat.le_of_lt h1) h2 (by omega)
-      -- Returns a₁ = b₁ ∧ b₂ = a₂, but we need a₁ = a₂ ∧ b₁ = b₂
-      exact ⟨h_sidon.right.symm, h_sidon.left.symm⟩
+      -- Returns a₁ = b₁ ∧ b₂ = a₂. Case impossible: hlt₁ : b₁ < a₁ contradicts a₁ = b₁.
+      exact absurd h_sidon.left.symm (Nat.ne_of_lt hlt₁)
     · -- Apply Sidon to (a₁, b₂) and (a₂, b₁)
       push_neg at h2
       have h_sidon := hS a₁ ha₁ b₂ hb₂ a₂ ha₂ b₁ hb₁ (Nat.le_of_lt h1) (Nat.le_of_lt h2) (by omega)
@@ -92,10 +92,13 @@ theorem sidon_difference_count (A : Finset ℕ) (N : ℕ)
   -- Step 2: Image is bounded by {1,...,N}
   have h_range : Finset.image diff_map pairs ⊆ Finset.Icc 1 N := by
     intro d hd
-    simp [Finset.mem_image, Finset.mem_filter, Finset.mem_product] at hd
-    obtain ⟨⟨a, b⟩, ⟨ha, hb, hlt⟩, rfl⟩ := hd
-    simp [Finset.mem_Icc]
-    constructor
+    rw [Finset.mem_image] at hd
+    obtain ⟨⟨a, b⟩, hp, rfl⟩ := hd
+    rw [Finset.mem_filter, Finset.mem_product] at hp
+    obtain ⟨⟨ha, hb⟩, hlt⟩ := hp
+    rw [Finset.mem_Icc]
+    show 1 ≤ a - b ∧ a - b ≤ N
+    refine ⟨?_, ?_⟩
     · omega
     · have : a ≤ N := by
         have := Finset.mem_range.mp (hA ha)
@@ -118,35 +121,43 @@ theorem sidon_difference_count (A : Finset ℕ) (N : ℕ)
     have : pairs.card = (Finset.powersetCard 2 A).card := by
       refine Finset.card_bij (fun p _ => {p.1, p.2}) ?_ ?_ ?_
       · intro ⟨a, b⟩ hp
-        simp [Finset.mem_filter, Finset.mem_product] at hp
+        rw [Finset.mem_filter, Finset.mem_product] at hp
+        -- hp : (a ∈ A ∧ b ∈ A) ∧ b < a
         rw [Finset.mem_powersetCard]
         refine ⟨?_, ?_⟩
         · intro x hx
-          simp [Finset.mem_insert, Finset.mem_singleton] at hx
-          cases hx with
-          | inl h => exact h ▸ hp.1
-          | inr h => exact h ▸ hp.2.1
-        · rw [Finset.card_pair]
-          exact Nat.ne_of_gt hp.2.2
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          rcases hx with rfl | rfl
+          · exact hp.1.1
+          · exact hp.1.2
+        · exact Finset.card_pair (Nat.ne_of_gt hp.2)
       · intro ⟨a₁, b₁⟩ h₁ ⟨a₂, b₂⟩ h₂ heq
-        simp [Finset.mem_filter, Finset.mem_product] at h₁ h₂
-        have h₁lt := h₁.2.2
-        have h₂lt := h₂.2.2
-        suffices a₁ = a₂ ∧ b₁ = b₂ from Prod.ext this.1 this.2
-        have ha : a₁ ∈ ({a₂, b₂} : Finset ℕ) := heq ▸ mem_insert_self a₁ _
-        simp only [mem_insert, mem_singleton] at ha
-        rcases ha with rfl | rfl
-        · refine ⟨rfl, ?_⟩
-          have hb : b₁ ∈ ({a₂, b₂} : Finset ℕ) :=
-            heq ▸ mem_insert.mpr (Or.inr (mem_singleton_self b₁))
-          simp only [mem_insert, mem_singleton] at hb
-          rcases hb with rfl | rfl
-          · omega
-          · rfl
-        · exfalso
-          have ha₂ : a₂ ∈ ({b₂, b₁} : Finset ℕ) := heq.symm ▸ mem_insert_self a₂ _
-          simp only [mem_insert, mem_singleton] at ha₂
-          rcases ha₂ with rfl | rfl <;> omega
+        rw [Finset.mem_filter, Finset.mem_product] at h₁ h₂
+        -- h₁ : (a₁ ∈ A ∧ b₁ ∈ A) ∧ b₁ < a₁,  h₂ similarly
+        have h₁lt := h₁.2
+        have h₂lt := h₂.2
+        -- beta-reduce heq from the card_bij function
+        change ({a₁, b₁} : Finset ℕ) = ({a₂, b₂} : Finset ℕ) at heq
+        suffices h : a₁ = a₂ ∧ b₁ = b₂ from Prod.ext h.1 h.2
+        -- a₁ ∈ {a₁, b₁} = {a₂, b₂}, so a₁ = a₂ ∨ a₁ = b₂
+        have h_a₁_in : a₁ ∈ ({a₂, b₂} : Finset ℕ) := by
+          rw [← heq]; exact Finset.mem_insert_self _ _
+        -- b₁ ∈ {a₁, b₁} = {a₂, b₂}, so b₁ = a₂ ∨ b₁ = b₂
+        have h_b₁_in : b₁ ∈ ({a₂, b₂} : Finset ℕ) := by
+          rw [← heq]; exact Finset.mem_insert_of_mem (Finset.mem_singleton.mpr rfl)
+        simp only [Finset.mem_insert, Finset.mem_singleton] at h_a₁_in h_b₁_in
+        rcases h_a₁_in with h_a1_a2 | h_a1_b2
+        · -- a₁ = a₂
+          rcases h_b₁_in with h_b1_a2 | h_b1_b2
+          · -- b₁ = a₂, but h₁lt: b₁ < a₁ = a₂, contradicts b₁ = a₂
+            omega
+          · exact ⟨h_a1_a2, h_b1_b2⟩
+        · -- a₁ = b₂; h₁lt: b₁ < a₁ = b₂; h₂lt: b₂ < a₂
+          rcases h_b₁_in with h_b1_a2 | h_b1_b2
+          · -- b₁ = a₂, b₂ < a₂ = b₁, but b₁ < a₁ = b₂ < a₂ = b₁. Contradiction.
+            omega
+          · -- b₁ = b₂ = a₁, but b₁ < a₁. Contradiction.
+            omega
       · intro s hs
         rw [Finset.mem_powersetCard] at hs
         obtain ⟨hsub, hcard⟩ := hs
@@ -154,10 +165,20 @@ theorem sidon_difference_count (A : Finset ℕ) (N : ℕ)
         obtain ⟨x, y, hxy, rfl⟩ := hcard
         cases Nat.lt_or_gt_of_ne hxy with
         | inl hlt =>
-          exact ⟨(y, x), by simp [Finset.mem_filter, Finset.mem_product, hsub, hlt,
-            Finset.pair_comm], by simp [Finset.pair_comm]⟩
+          refine ⟨(y, x), ?_, ?_⟩
+          · rw [Finset.mem_filter, Finset.mem_product]
+            refine ⟨⟨?_, ?_⟩, hlt⟩
+            · exact hsub (by simp)
+            · exact hsub (by simp)
+          · -- beta-reduce goal: (fun p _ => {p.1, p.2}) (y, x) _ = {x, y}
+            change ({y, x} : Finset ℕ) = ({x, y} : Finset ℕ)
+            exact Finset.pair_comm y x
         | inr hgt =>
-          exact ⟨(x, y), by simp [Finset.mem_filter, Finset.mem_product, hsub, hgt], rfl⟩
+          refine ⟨(x, y), ?_, rfl⟩
+          rw [Finset.mem_filter, Finset.mem_product]
+          refine ⟨⟨?_, ?_⟩, hgt⟩
+          · exact hsub (by simp)
+          · exact hsub (by simp)
     rw [this, Finset.card_powersetCard, Nat.choose_two_right]
 
   -- Step 6: Combine
@@ -165,7 +186,9 @@ theorem sidon_difference_count (A : Finset ℕ) (N : ℕ)
   have h_even : Even (A.card * (A.card - 1)) := by
     rcases Nat.even_or_odd A.card with ⟨m, hm⟩ | ⟨m, hm⟩
     · exact ⟨m * (A.card - 1), by rw [hm]; ring⟩
-    · exact ⟨A.card * m, by rw [hm]; omega⟩
+    · refine ⟨A.card * m, ?_⟩
+      have : A.card - 1 = 2 * m := by omega
+      rw [this, hm]; ring
   obtain ⟨k, hk⟩ := h_even
   rw [hk] at h_div
   rw [hk]

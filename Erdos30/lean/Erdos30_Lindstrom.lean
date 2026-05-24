@@ -36,6 +36,7 @@
 
 import Mathlib
 import Erdos30_Sidon_Defs
+import Erdos30_Complete
 
 open Finset Nat
 
@@ -107,20 +108,21 @@ theorem residue_class_scaled_sidon (A : Finset ℕ) (t r : ℕ) (ht : 0 < t)
   have hs := hS x₁ hx₁A y₁ hy₁A x₂ hx₂A y₂ hy₂A ord₁ ord₂ sum_eq
   exact ⟨by rw [hs.1], by rw [hs.2]⟩
 
-/-! ## Step 5b: Elementary Sidon Bound (External Dependency)
+/-! ## Step 5b: Elementary Sidon Bound — CLOSED 2026-05-02
 
-  This is proved in Erdos30_Complete.sidon_difference_count (zero sorries).
-  Declared as axiom here because the Complete file requires proof fixes to compile
-  against this Mathlib version (f897ebcf72). The theorem is fully verified in the
-  src/Erdos/ compilation environment.
-  TODO: Port Erdos30_Complete proofs to current Mathlib API to enable direct import.
+  Previously declared as axiom; now proved by direct bridge to
+  `Erdos30_Complete.sidon_difference_count`, which has a full Lean 4 proof
+  using only difference injectivity + pigeonhole on Finset.image.
+  Mathlib v4.27.0 API drift (simp lemma changes, ▸ motive issues,
+  Finset.pair_comm decidable inference) was patched in `Erdos30_Complete.lean`
+  on the same date so both files compile against the same Mathlib pin.
 -/
 
 /-- **Elementary Sidon bound**: For Sidon A ⊆ {0,...,M}, |A|*(|A|-1) ≤ 2*M.
-    Proved in `Erdos30_Complete.lean` as `sidon_difference_count`.
-    Declared as axiom here pending Mathlib API port. -/
-axiom sidon_elem_bound (A : Finset ℕ) (M : ℕ) (hS : IsSidonSet A)
-    (hA : A ⊆ Finset.range (M + 1)) : A.card * (A.card - 1) ≤ 2 * M
+    Proved in `Erdos30_Complete.sidon_difference_count`. -/
+theorem sidon_elem_bound (A : Finset ℕ) (M : ℕ) (hS : IsSidonSet A)
+    (hA : A ⊆ Finset.range (M + 1)) : A.card * (A.card - 1) ≤ 2 * M :=
+  sidon_difference_count A M hS hA
 
 /-! ## Step 6: Elementary Bound on Scaled Set -/
 
@@ -134,7 +136,7 @@ theorem scaled_range (A : Finset ℕ) (N t r : ℕ) (ht : 0 < t)
   simp [Finset.mem_range]
   have : a ≤ N := by
     have := Finset.mem_range.mp (hA ha); omega
-  exact Nat.lt_succ_of_le (Nat.div_le_div_right this)
+  exact Nat.div_le_div_right this
 
 /-! ## Step 7–8: The Key Inequality
 
@@ -412,27 +414,460 @@ lemma sum_distinct_pos_ge (S : Finset ℕ) (h_pos : ∀ x ∈ S, 0 < x) :
 
 /-! ### Combinatorial core: counting and summing order-bounded differences -/
 
+/-! #### Sorted-enumeration helpers (private; localized to avoid stale OrderedElements) -/
+
+/-- The sorted enumeration of A as a list. -/
+private noncomputable def oList (A : Finset ℕ) : List ℕ := A.sort (· ≤ ·)
+
+private lemma length_oList (A : Finset ℕ) : (oList A).length = A.card := by
+  unfold oList; rw [Finset.length_sort]
+
+private lemma sortedLT_oList (A : Finset ℕ) : StrictMono (oList A).get :=
+  Finset.sortedLT_sort A
+
+/-- The i-th element in the sorted enumeration; default 0 outside bounds. -/
+private noncomputable def oGet (A : Finset ℕ) (i : ℕ) : ℕ := (oList A).getD i 0
+
+private lemma oGet_eq_get {A : Finset ℕ} {i : ℕ} (h : i < A.card) :
+    oGet A i = (oList A).get ⟨i, by rw [length_oList]; exact h⟩ := by
+  unfold oGet
+  have hl : i < (oList A).length := by rw [length_oList]; exact h
+  exact List.getD_eq_getElem _ 0 hl
+
+private lemma oGet_mem {A : Finset ℕ} {i : ℕ} (h : i < A.card) : oGet A i ∈ A := by
+  rw [oGet_eq_get h]
+  unfold oList
+  apply (Finset.mem_sort (· ≤ ·)).mp
+  exact List.get_mem _ _
+
+private lemma oGet_lt {A : Finset ℕ} {i j : ℕ} (hi : i < A.card) (hj : j < A.card)
+    (hij : i < j) : oGet A i < oGet A j := by
+  rw [oGet_eq_get hi, oGet_eq_get hj]
+  exact sortedLT_oList A hij
+
+private lemma oGet_le {A : Finset ℕ} {i j : ℕ} (hi : i < A.card) (hj : j < A.card)
+    (hij : i ≤ j) : oGet A i ≤ oGet A j := by
+  rcases lt_or_eq_of_le hij with h | h
+  · exact le_of_lt (oGet_lt hi hj h)
+  · subst h; rfl
+
+private lemma oGet_le_N {A : Finset ℕ} {N : ℕ} (hA : A ⊆ Finset.range (N + 1))
+    {i : ℕ} (hi : i < A.card) : oGet A i ≤ N := by
+  have h_mem : oGet A i ∈ A := oGet_mem hi
+  have := Finset.mem_range.mp (hA h_mem)
+  omega
+
+/-! #### orderPairs and orderDiffs -/
+
+/-- The set of index pairs (i, j) with i < j ≤ i + ℓ, both indices < A.card. -/
+private noncomputable def orderPairs (A : Finset ℕ) (ℓ : ℕ) : Finset (ℕ × ℕ) :=
+  ((Finset.range A.card) ×ˢ (Finset.range A.card)).filter
+    (fun p => p.1 < p.2 ∧ p.2 ≤ p.1 + ℓ)
+
+private lemma mem_orderPairs_iff (A : Finset ℕ) (ℓ : ℕ) (p : ℕ × ℕ) :
+    p ∈ orderPairs A ℓ ↔ p.1 < A.card ∧ p.2 < A.card ∧ p.1 < p.2 ∧ p.2 ≤ p.1 + ℓ := by
+  unfold orderPairs
+  simp only [Finset.mem_filter, Finset.mem_product, Finset.mem_range]
+  tauto
+
+/-- The set of differences a_j - a_i for (i, j) ∈ orderPairs. -/
+private noncomputable def orderDiffs (A : Finset ℕ) (ℓ : ℕ) : Finset ℕ :=
+  (orderPairs A ℓ).image (fun p => oGet A p.2 - oGet A p.1)
+
+/-! #### Cardinality of orderPairs and orderDiffs -/
+
+/-- Auxiliary: integer arithmetic for cardinality formula.
+    2 * Σ_{r=0}^{ℓ-1} (k - (r+1)) = ℓ * (2k - ℓ - 1) when ℓ ≤ k. -/
+private lemma sum_int_offset (ℓ : ℕ) (k : ℤ) :
+    (∑ r ∈ Finset.range ℓ, (k - r - 1)) = ℓ * k - (∑ r ∈ Finset.range ℓ, (r : ℤ)) - ℓ := by
+  induction ℓ with
+  | zero => simp
+  | succ n ih =>
+    rw [Finset.sum_range_succ, Finset.sum_range_succ, ih]
+    push_cast
+    ring
+
+private lemma cardSum_doubled (k ℓ : ℕ) (hℓ : ℓ ≤ k) :
+    2 * (∑ r ∈ Finset.range ℓ, (k - (r + 1))) = ℓ * (2 * k - ℓ - 1) := by
+  rcases Nat.eq_zero_or_pos ℓ with hℓ0 | hℓpos
+  · subst hℓ0; simp
+  have h2kℓ : ℓ + 1 ≤ 2 * k := by omega
+  zify [show 2 * k ≥ ℓ + 1 from by omega, hℓ]
+  have h1 : ∀ r ∈ Finset.range ℓ, ((k - (r + 1) : ℕ) : ℤ) = (k : ℤ) - r - 1 := by
+    intro r hr
+    rw [Finset.mem_range] at hr
+    omega
+  rw [Finset.sum_congr rfl h1]
+  rw [show ((2 * k - ℓ - 1 : ℕ) : ℤ) = 2 * (k : ℤ) - ℓ - 1 from by omega]
+  rw [sum_int_offset ℓ (k : ℤ)]
+  have hS : (∑ r ∈ Finset.range ℓ, (r : ℤ)) * 2 = (ℓ : ℤ) * (ℓ - 1) := by
+    have := Finset.sum_range_id_mul_two ℓ
+    zify at this
+    have h_lift : ((ℓ - 1 : ℕ) : ℤ) = (ℓ : ℤ) - 1 := by omega
+    rw [h_lift] at this
+    exact this
+  linarith
+
+private lemma orderPairs_card_eq (A : Finset ℕ) (ℓ : ℕ) :
+    (orderPairs A ℓ).card = ∑ r ∈ Finset.range ℓ, (A.card - (r + 1)) := by
+  rw [show (∑ r ∈ Finset.range ℓ, (A.card - (r + 1))) =
+      ((Finset.range ℓ).sigma (fun r => Finset.range (A.card - (r + 1)))).card from ?_]
+  · apply Finset.card_bij (fun (p : ℕ × ℕ) _ => Sigma.mk (p.2 - p.1 - 1) p.1)
+    · intro ⟨i, j⟩ hp
+      simp only [orderPairs, Finset.mem_filter, Finset.mem_product, Finset.mem_range] at hp
+      simp only [Finset.mem_sigma, Finset.mem_range]
+      exact ⟨by omega, by omega⟩
+    · intro ⟨i1, j1⟩ hp1 ⟨i2, j2⟩ hp2 heq
+      simp only [orderPairs, Finset.mem_filter, Finset.mem_product, Finset.mem_range] at hp1 hp2
+      simp only [Sigma.mk.injEq] at heq
+      obtain ⟨_, hieq⟩ := heq
+      subst hieq
+      have h1 : i1 < j1 := hp1.2.1
+      have h2 : i1 < j2 := hp2.2.1
+      have hj : j1 = j2 := by omega
+      simp [hj]
+    · intro ⟨r, i⟩ hri
+      simp only [Finset.mem_sigma, Finset.mem_range] at hri
+      obtain ⟨hr, hi_bound⟩ := hri
+      refine ⟨(i, i + r + 1), ?_, ?_⟩
+      · simp only [orderPairs, Finset.mem_filter, Finset.mem_product, Finset.mem_range]
+        exact ⟨⟨by omega, by omega⟩, by omega, by omega⟩
+      · ext
+        · simp; omega
+        · simp
+  · rw [Finset.card_sigma]
+    congr 1
+    ext r
+    rw [Finset.card_range]
+
+private lemma orderPairs_card_doubled (A : Finset ℕ) (ℓ : ℕ) (hℓ : ℓ ≤ A.card) :
+    (orderPairs A ℓ).card * 2 = ℓ * (2 * A.card - ℓ - 1) := by
+  rw [orderPairs_card_eq, mul_comm]
+  exact cardSum_doubled A.card ℓ hℓ
+
+/-- Sidon injectivity: (i, j) → a_j - a_i is injective on orderPairs. -/
+private lemma orderDiffs_injOn (A : Finset ℕ) (ℓ : ℕ) (hS : IsSidonSet A) :
+    Set.InjOn (fun p : ℕ × ℕ => oGet A p.2 - oGet A p.1) (orderPairs A ℓ) := by
+  intro ⟨i1, j1⟩ hp1 ⟨i2, j2⟩ hp2 heq
+  rw [Finset.mem_coe, mem_orderPairs_iff] at hp1 hp2
+  obtain ⟨hi1, hj1, hij1, _⟩ := hp1
+  obtain ⟨hi2, hj2, hij2, _⟩ := hp2
+  -- oGet A i_k ∈ A, and oGet A i_k < oGet A j_k
+  have hi1_lt : oGet A i1 < oGet A j1 := oGet_lt hi1 hj1 hij1
+  have hi2_lt : oGet A i2 < oGet A j2 := oGet_lt hi2 hj2 hij2
+  have ha_i1 : oGet A i1 ∈ A := oGet_mem hi1
+  have ha_j1 : oGet A j1 ∈ A := oGet_mem hj1
+  have ha_i2 : oGet A i2 ∈ A := oGet_mem hi2
+  have ha_j2 : oGet A j2 ∈ A := oGet_mem hj2
+  have h_diff_eq := sidon_distinct_differences A hS
+    (oGet A i1) ha_i1 (oGet A j1) ha_j1
+    (oGet A i2) ha_i2 (oGet A j2) ha_j2 hi1_lt hi2_lt heq
+  -- h_diff_eq : oGet A i1 = oGet A i2 ∧ oGet A j1 = oGet A j2
+  -- Need: i1 = i2 and j1 = j2.
+  -- oGet is strict mono, so injective on indices < A.card.
+  ext
+  · -- (i1, j1).1 = (i2, j2).1, i.e., i1 = i2
+    have hii : oGet A i1 = oGet A i2 := h_diff_eq.1
+    by_contra hne
+    rcases Nat.lt_or_ge i1 i2 with h12 | h21
+    · exact absurd hii (Nat.ne_of_lt (oGet_lt hi1 hi2 h12))
+    · have h21' : i2 ≤ i1 := h21
+      rcases lt_or_eq_of_le h21' with h | h
+      · exact absurd hii (Nat.ne_of_gt (oGet_lt hi2 hi1 h))
+      · exact hne h.symm
+  · -- j1 = j2
+    have hjj : oGet A j1 = oGet A j2 := h_diff_eq.2
+    by_contra hne
+    rcases Nat.lt_or_ge j1 j2 with h12 | h21
+    · exact absurd hjj (Nat.ne_of_lt (oGet_lt hj1 hj2 h12))
+    · have h21' : j2 ≤ j1 := h21
+      rcases lt_or_eq_of_le h21' with h | h
+      · exact absurd hjj (Nat.ne_of_gt (oGet_lt hj2 hj1 h))
+      · exact hne h.symm
+
+private lemma orderDiffs_card_eq (A : Finset ℕ) (ℓ : ℕ) (hS : IsSidonSet A) :
+    (orderDiffs A ℓ).card = (orderPairs A ℓ).card := by
+  unfold orderDiffs
+  exact Finset.card_image_of_injOn (orderDiffs_injOn A ℓ hS)
+
+private lemma orderDiffs_pos (A : Finset ℕ) (ℓ : ℕ) :
+    ∀ d ∈ orderDiffs A ℓ, 0 < d := by
+  intro d hd
+  unfold orderDiffs at hd
+  simp only [Finset.mem_image] at hd
+  obtain ⟨p, hp, rfl⟩ := hd
+  rw [mem_orderPairs_iff] at hp
+  obtain ⟨hp1, hp2, hij, _⟩ := hp
+  have h_lt : oGet A p.1 < oGet A p.2 := oGet_lt hp1 hp2 hij
+  omega
+
+/-! #### Sum bound: 2 * Σ orderDiffs ≤ ℓ * (ℓ + 1) * N
+
+    Strategy: decompose orderPairs by row r := j - i - 1 ∈ [0, ℓ-1]; for fixed r,
+    the row sum Σ_{i=0}^{k-r-2} (a_{i+r+1} - a_i) telescopes to ≤ (r+1) * N. -/
+
+/-- Row r of orderPairs: pairs (i, i + r + 1) with i + r + 1 < A.card. -/
+private noncomputable def rowPairs (A : Finset ℕ) (r : ℕ) : Finset (ℕ × ℕ) :=
+  (Finset.range (A.card - (r + 1))).image (fun i => (i, i + r + 1))
+
+private lemma mem_rowPairs (A : Finset ℕ) (r : ℕ) (p : ℕ × ℕ) :
+    p ∈ rowPairs A r ↔ p.1 + r + 1 < A.card ∧ p.2 = p.1 + r + 1 := by
+  unfold rowPairs
+  simp only [Finset.mem_image, Finset.mem_range]
+  constructor
+  · rintro ⟨i, hi, rfl⟩
+    refine ⟨by omega, rfl⟩
+  · rintro ⟨h1, h2⟩
+    refine ⟨p.1, by omega, ?_⟩
+    ext
+    · simp
+    · simp [h2]
+
+private lemma orderPairs_eq_biUnion_rowPairs (A : Finset ℕ) (ℓ : ℕ) :
+    orderPairs A ℓ = (Finset.range ℓ).biUnion (fun r => rowPairs A r) := by
+  ext ⟨i, j⟩
+  simp only [Finset.mem_biUnion, Finset.mem_range]
+  rw [mem_orderPairs_iff]
+  constructor
+  · rintro ⟨hi, hj, hij, hjℓ⟩
+    refine ⟨j - i - 1, by omega, ?_⟩
+    rw [mem_rowPairs]
+    refine ⟨by omega, by omega⟩
+  · rintro ⟨r, hr, hrow⟩
+    rw [mem_rowPairs] at hrow
+    obtain ⟨h1, h2⟩ := hrow
+    -- p.1 + r + 1 < A.card, p.2 = p.1 + r + 1
+    -- Goal: (i, j).1 < A.card ∧ (i, j).2 < A.card ∧ (i, j).1 < (i, j).2 ∧ ...
+    refine ⟨by omega, by omega, by omega, by omega⟩
+
+private lemma rowPairs_disjoint (A : Finset ℕ) :
+    ∀ {r1 r2 : ℕ}, r1 ≠ r2 → Disjoint (rowPairs A r1) (rowPairs A r2) := by
+  intro r1 r2 hne
+  rw [Finset.disjoint_left]
+  intro ⟨i, j⟩ h1 h2
+  rw [mem_rowPairs] at h1 h2
+  obtain ⟨_, h1eq⟩ := h1
+  obtain ⟨_, h2eq⟩ := h2
+  apply hne
+  omega
+
+private lemma rowPairs_pairwiseDisjoint (A : Finset ℕ) (ℓ : ℕ) :
+    Set.PairwiseDisjoint (Finset.range ℓ : Set ℕ) (fun r => rowPairs A r) := by
+  intro r1 _ r2 _ hne
+  exact rowPairs_disjoint A hne
+
+/-- Sum of orderPairs decomposes as a sum over rows. -/
+private lemma sum_orderPairs_eq_sum_rowPairs (A : Finset ℕ) (ℓ : ℕ) (f : ℕ × ℕ → ℤ) :
+    (∑ p ∈ orderPairs A ℓ, f p) = ∑ r ∈ Finset.range ℓ, ∑ p ∈ rowPairs A r, f p := by
+  rw [orderPairs_eq_biUnion_rowPairs A ℓ]
+  exact Finset.sum_biUnion (rowPairs_pairwiseDisjoint A ℓ)
+
+/-- Row r of rowPairs sum telescopes (in ℤ) to a_{k-1} - a_? for the r=0 case,
+    or a difference of partial sums in general. We just need an upper bound. -/
+private lemma rowPairs_sum_bound (A : Finset ℕ) (N : ℕ) (r : ℕ)
+    (hA : A ⊆ Finset.range (N + 1)) :
+    (∑ p ∈ rowPairs A r, ((oGet A p.2 : ℤ) - oGet A p.1)) ≤ (r + 1) * N := by
+  -- rowPairs A r = {(i, i+r+1) : i + r + 1 < A.card}
+  -- Sum: Σ_i (a_{i+r+1} - a_i) where i ranges over [0, A.card - r - 2]
+  unfold rowPairs
+  rw [Finset.sum_image (by
+    intro i _ j _ heq
+    simp only [Prod.mk.injEq] at heq
+    exact heq.1)]
+  -- Goal: ∑ i ∈ range (A.card - (r+1)), (oGet A (i+r+1) - oGet A i) ≤ (r+1) * N
+  by_cases h_empty : A.card ≤ r + 1
+  · -- range is empty, sum is 0, RHS ≥ 0.
+    rw [show A.card - (r + 1) = 0 from by omega]
+    simp
+  push_neg at h_empty
+  -- A.card > r + 1, so A.card - (r+1) > 0
+  -- Telescoping: a_{i+r+1} - a_i = Σ_{s=0}^{r} (a_{i+s+1} - a_{i+s})
+  have h_telescope : ∀ i, i + r + 1 < A.card →
+      ((oGet A (i + r + 1) : ℤ) - oGet A i) =
+      ∑ s ∈ Finset.range (r + 1), ((oGet A (i + s + 1) : ℤ) - oGet A (i + s)) := by
+    intro i _
+    have h_eq := Finset.sum_range_sub (fun s => (oGet A (i + s) : ℤ)) (r + 1)
+    -- h_eq : ∑ s in range (r+1), (oGet A (i+(s+1)) - oGet A (i+s)) = oGet A (i+(r+1)) - oGet A (i+0)
+    have h_eq' : ∑ s ∈ Finset.range (r + 1), ((oGet A (i + s + 1) : ℤ) - oGet A (i + s)) =
+                 (oGet A (i + (r + 1)) : ℤ) - oGet A (i + 0) := by
+      rw [← h_eq]
+      apply Finset.sum_congr rfl
+      intro s _
+      have : i + s + 1 = i + (s + 1) := by ring
+      rw [this]
+    rw [h_eq']
+    have hr1 : i + (r + 1) = i + r + 1 := by ring
+    have hi0 : i + 0 = i := by ring
+    rw [hr1, hi0]
+  rw [Finset.sum_congr rfl (fun i hi => h_telescope i (by
+    rw [Finset.mem_range] at hi; omega))]
+  rw [Finset.sum_comm]
+  -- Goal: ∑ s in range (r+1), ∑ i in range (A.card - (r+1)), (a_{i+s+1} - a_{i+s}) ≤ (r+1) * N
+  -- Inner sum (over i): telescopes to a_{(A.card - r - 1) + s} - a_s ≤ N (in ℤ)
+  have h_inner : ∀ s ∈ Finset.range (r + 1),
+      (∑ i ∈ Finset.range (A.card - (r + 1)), ((oGet A (i + s + 1) : ℤ) - oGet A (i + s))) ≤ N := by
+    intro s hs
+    rw [Finset.mem_range] at hs
+    -- Σ_{i=0}^{m-1} (a_{i+s+1} - a_{i+s}) = a_{m+s} - a_s (telescoping with shift s)
+    let m := A.card - (r + 1)
+    have h_telescope_inner : ∀ M, (∑ i ∈ Finset.range M, ((oGet A (i + s + 1) : ℤ) - oGet A (i + s))) =
+        oGet A (M + s) - oGet A s := by
+      intro M
+      induction M with
+      | zero => simp
+      | succ M' ih =>
+        rw [Finset.sum_range_succ, ih]
+        have : (M' + s + 1 : ℕ) = (M' + 1 + s : ℕ) := by ring
+        rw [this]
+        ring
+    rw [h_telescope_inner]
+    -- m + s = A.card - (r+1) + s. Since s ≤ r, m + s ≤ A.card - 1.
+    have h_idx : m + s < A.card := by
+      simp only [m]
+      omega
+    have h_aN : oGet A (m + s) ≤ N := oGet_le_N hA h_idx
+    have h_a0 : 0 ≤ (oGet A s : ℤ) := Int.natCast_nonneg _
+    -- m + s = A.card - (r+1) + s = A.card - 1 - (r - s); always ≤ A.card - 1
+    -- oGet A (m + s) ≤ N
+    have : (oGet A (m + s) : ℤ) ≤ N := by exact_mod_cast h_aN
+    linarith
+  -- Now apply outer sum bound
+  calc (∑ s ∈ Finset.range (r + 1), ∑ i ∈ Finset.range (A.card - (r + 1)),
+          ((oGet A (i + s + 1) : ℤ) - oGet A (i + s)))
+      ≤ ∑ s ∈ Finset.range (r + 1), (N : ℤ) := by
+        apply Finset.sum_le_sum h_inner
+    _ = (r + 1) * N := by
+        rw [Finset.sum_const, Finset.card_range]
+        rw [nsmul_eq_mul]
+        push_cast; ring
+
+private lemma orderPairs_sum_bound (A : Finset ℕ) (N : ℕ) (ℓ : ℕ)
+    (hA : A ⊆ Finset.range (N + 1)) :
+    (∑ p ∈ orderPairs A ℓ, ((oGet A p.2 : ℤ) - oGet A p.1)) ≤ (ℓ * (ℓ + 1) / 2) * N := by
+  rw [sum_orderPairs_eq_sum_rowPairs A ℓ (fun p => (oGet A p.2 : ℤ) - oGet A p.1)]
+  -- Σ_{r=0}^{ℓ-1} rowPairs.sum ≤ Σ_r (r+1) * N = N * ℓ(ℓ+1)/2
+  have h_each : ∀ r ∈ Finset.range ℓ,
+      (∑ p ∈ rowPairs A r, ((oGet A p.2 : ℤ) - oGet A p.1)) ≤ (r + 1) * N := fun r _ =>
+    rowPairs_sum_bound A N r hA
+  calc (∑ r ∈ Finset.range ℓ, ∑ p ∈ rowPairs A r, ((oGet A p.2 : ℤ) - oGet A p.1))
+      ≤ ∑ r ∈ Finset.range ℓ, ((r + 1) * N : ℤ) := Finset.sum_le_sum h_each
+    _ = (ℓ * (ℓ + 1) / 2) * N := by
+        -- Σ_{r=0}^{ℓ-1} (r+1) = ℓ(ℓ+1)/2
+        have h_div : (2 : ℤ) ∣ (ℓ : ℤ) * (ℓ + 1) := by
+          rcases Nat.even_or_odd ℓ with ⟨m, hm⟩ | ⟨m, hm⟩
+          · exact ⟨m * (ℓ + 1), by push_cast [hm]; ring⟩
+          · refine ⟨ℓ * (m+1), ?_⟩
+            have : (ℓ : ℤ) + 1 = 2 * (m + 1) := by push_cast [hm]; ring
+            rw [this]; ring
+        have h_sum : ∑ r ∈ Finset.range ℓ, ((r + 1 : ℕ) : ℤ) = (ℓ : ℤ) * (ℓ + 1) / 2 := by
+          have hS : (∑ r ∈ Finset.range ℓ, (r : ℤ)) * 2 = (ℓ : ℤ) * (ℓ - 1) := by
+            have := Finset.sum_range_id_mul_two ℓ
+            zify at this
+            rcases Nat.eq_zero_or_pos ℓ with hℓ0 | hℓpos
+            · subst hℓ0; simp at this ⊢
+            · have h_lift : ((ℓ - 1 : ℕ) : ℤ) = (ℓ : ℤ) - 1 := by omega
+              rw [h_lift] at this
+              exact this
+          have h_simp : ∑ r ∈ Finset.range ℓ, ((r + 1 : ℕ) : ℤ) =
+              (∑ r ∈ Finset.range ℓ, (r : ℤ)) + ℓ := by
+            rw [show (fun r : ℕ => ((r + 1 : ℕ) : ℤ)) = (fun r : ℕ => (r : ℤ) + 1) from
+              funext (fun r => by push_cast; ring)]
+            rw [Finset.sum_add_distrib, Finset.sum_const, Finset.card_range, nsmul_eq_mul]
+            ring
+          rw [h_simp]
+          obtain ⟨q, hq⟩ := h_div
+          have h_div2 : (2 : ℤ) ∣ (ℓ : ℤ) * ((ℓ : ℤ) - 1) := by
+            rcases Nat.even_or_odd ℓ with ⟨m, hm⟩ | ⟨m, hm⟩
+            · exact ⟨m * ((ℓ : ℤ) - 1), by push_cast [hm]; ring⟩
+            · refine ⟨ℓ * m, ?_⟩
+              have : (ℓ : ℤ) - 1 = 2 * m := by push_cast [hm]; ring
+              rw [this]; ring
+          obtain ⟨q', hq'⟩ := h_div2
+          rw [hq, Int.mul_ediv_cancel_left _ (by norm_num : (2 : ℤ) ≠ 0)]
+          rw [hq'] at hS
+          have hS' : (∑ r ∈ Finset.range ℓ, (r : ℤ)) = q' := by linarith
+          linarith [hS', hq, hq']
+        rw [show (∑ r ∈ Finset.range ℓ, ((r + 1) * N : ℤ)) =
+            (∑ r ∈ Finset.range ℓ, ((r + 1 : ℕ) : ℤ)) * N from by
+          rw [Finset.sum_mul]
+          apply Finset.sum_congr rfl
+          intro r _; push_cast; ring]
+        rw [h_sum]
+
+/-- The sum of orderDiffs equals the sum over orderPairs of (oGet j - oGet i), in ℤ. -/
+private lemma sum_orderDiffs_eq_sum_orderPairs (A : Finset ℕ) (ℓ : ℕ) (hS : IsSidonSet A) :
+    (((orderDiffs A ℓ).sum id : ℕ) : ℤ) =
+    ∑ p ∈ orderPairs A ℓ, ((oGet A p.2 : ℤ) - oGet A p.1) := by
+  -- Step 1: sum over image = sum over orderPairs (using Sidon injection)
+  have h_img : (orderDiffs A ℓ).sum id =
+      (orderPairs A ℓ).sum (fun p => oGet A p.2 - oGet A p.1) := by
+    unfold orderDiffs
+    rw [Finset.sum_image (fun p1 hp1 p2 hp2 heq =>
+      orderDiffs_injOn A ℓ hS hp1 hp2 heq)]
+    rfl
+  rw [h_img]
+  -- Step 2: cast each ℕ-difference to ℤ-difference (uses oGet_lt to ensure non-negativity)
+  push_cast
+  apply Finset.sum_congr rfl
+  intro p hp
+  rw [mem_orderPairs_iff] at hp
+  obtain ⟨hi, hj, hij, _⟩ := hp
+  have h_lt : oGet A p.1 < oGet A p.2 := oGet_lt hi hj hij
+  omega
+
 /-- **Order-bounded difference counting for Sidon sets.**
 
     For Sidon A = {a₀ < ... < a_{k-1}} ⊆ {0,...,N}, the differences of
     orders 1 through ℓ (i.e., a_{i+r} - a_i for 1 ≤ r ≤ ℓ) form a set D of
     m distinct positive naturals where 2m = ℓ(2k-ℓ-1) and sum(D) ≤ ℓ(ℓ+1)N/2.
 
-    **Proof requires (not formalized here):**
-    - Sorted enumeration via `Finset.orderEmbOfFin`
-    - Strict monotonicity → injectivity of (r,i) ↦ (a_i, a_{i+r})
-    - `sidon_distinct_differences` → all d(r,i) distinct
-    - Telescoping: ∑_i (a_{i+r}-a_i) = ∑_{j≥k-r} a_j - ∑_{j<r} a_j ≤ r·N
+    **Proof:** Construct D := orderDiffs A ℓ (image of (i, j) ↦ a_j - a_i for
+    pairs i < j ≤ i + ℓ). Sidon distinct-differences gives injectivity. The
+    sum bound uses telescoping on each row r ∈ {0, …, ℓ-1}: the row sum
+    Σ_i (a_{i+r+1} - a_i) telescopes to ≤ (r+1)·N via single-step differences,
+    yielding total ≤ N · ℓ(ℓ+1)/2.
 
     **Reference:** Lindström (1969); BFR (2023) Section 2.
     Stated in doubled form (2m, 2·sum) to avoid ℕ division. -/
-axiom order_diff_counting (A : Finset ℕ) (N : ℕ) (ℓ : ℕ)
+theorem order_diff_counting (A : Finset ℕ) (N : ℕ) (ℓ : ℕ)
     (hS : IsSidonSet A) (hA : A ⊆ Finset.range (N + 1))
-    (hℓ : ℓ < A.card) (hℓ_pos : 0 < ℓ) :
+    (hℓ : ℓ < A.card) (_hℓ_pos : 0 < ℓ) :
     ∃ D : Finset ℕ,
       D.card * 2 = ℓ * (2 * A.card - ℓ - 1) ∧
       (∀ d ∈ D, 0 < d) ∧
-      2 * D.sum id ≤ ℓ * (ℓ + 1) * N
+      2 * D.sum id ≤ ℓ * (ℓ + 1) * N := by
+  refine ⟨orderDiffs A ℓ, ?_, orderDiffs_pos A ℓ, ?_⟩
+  · rw [orderDiffs_card_eq A ℓ hS]
+    exact orderPairs_card_doubled A ℓ (le_of_lt hℓ)
+  · -- 2 * D.sum id ≤ ℓ * (ℓ + 1) * N
+    -- Let S = (orderDiffs A ℓ).sum id : ℕ. Show 2 * S ≤ ℓ * (ℓ + 1) * N.
+    set S : ℕ := (orderDiffs A ℓ).sum id with hS_def
+    have h_sum_int : ((S : ℕ) : ℤ) =
+        ∑ p ∈ orderPairs A ℓ, ((oGet A p.2 : ℤ) - oGet A p.1) := by
+      rw [hS_def]
+      exact sum_orderDiffs_eq_sum_orderPairs A ℓ hS
+    have h_bound_int : ((S : ℕ) : ℤ) ≤ (ℓ * (ℓ + 1) / 2) * N := by
+      rw [h_sum_int]
+      exact orderPairs_sum_bound A N ℓ hA
+    -- 2 * sum ≤ ℓ * (ℓ + 1) * N
+    have h_div : (2 : ℤ) ∣ (ℓ : ℤ) * (ℓ + 1) := by
+      rcases Nat.even_or_odd ℓ with ⟨m, hm⟩ | ⟨m, hm⟩
+      · exact ⟨m * (ℓ + 1), by push_cast [hm]; ring⟩
+      · refine ⟨ℓ * (m+1), ?_⟩
+        have : (ℓ : ℤ) + 1 = 2 * (m + 1) := by push_cast [hm]; ring
+        rw [this]; ring
+    obtain ⟨q, hq⟩ := h_div
+    have h_eq : (ℓ * (ℓ + 1) / 2 : ℤ) = q := by
+      rw [hq, Int.mul_ediv_cancel_left _ (by norm_num : (2 : ℤ) ≠ 0)]
+    rw [h_eq] at h_bound_int
+    -- h_bound_int : (S : ℤ) ≤ q * N. From hq: 2q = ℓ(ℓ+1).
+    have h_int : ((2 * S : ℕ) : ℤ) ≤ ((ℓ * (ℓ + 1) * N : ℕ) : ℤ) := by
+      push_cast
+      have h2q : (2 : ℤ) * q = (ℓ : ℤ) * (ℓ + 1) := by linarith
+      calc (2 : ℤ) * (S : ℤ) ≤ 2 * (q * N) := by linarith
+        _ = 2 * q * N := by ring
+        _ = (ℓ : ℤ) * (ℓ + 1) * N := by rw [h2q]
+    exact_mod_cast h_int
 
 /-! ### Lindström core quadratic inequality -/
 

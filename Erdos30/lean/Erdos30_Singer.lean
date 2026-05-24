@@ -137,6 +137,85 @@ theorem singer_sidon_q5 :
     ∃ A : Finset ℕ, IsSidonSet A ∧ A.card = 5 + 1 ∧ ∀ a ∈ A, a ≤ 5 * 5 + 5 :=
   ⟨singer_q5, singer_q5_sidon, singer_q5_card, singer_q5_range⟩
 
+/-! ## Layer 2c: Singer Construction for q = 7
+
+  The Singer difference set for q = 7 is {0, 1, 3, 13, 32, 36, 43, 52} in Z_57.
+  - PG(2,7) has 57 points (q²+q+1 = 49+7+1 = 57)
+  - A line has 8 = q+1 points
+  - {0, 1, 3, 13, 32, 36, 43, 52} is a perfect difference set mod 57:
+    each of the 56 nonzero residues mod 57 is realized as exactly one
+    ordered difference a - b (a ≠ b in S). Verified externally.
+  - All elements ≤ 56 = q²+q = 49+7
+  - Sidon property in ℕ follows from PDS structure (all 36 unordered pairwise
+    sums distinct), verified computationally below via `native_decide`.
+-/
+
+/-- The Singer set for q=7. -/
+def singer_q7 : Finset ℕ := {0, 1, 3, 13, 32, 36, 43, 52}
+
+/-- {0, 1, 3, 13, 32, 36, 43, 52} is a Sidon set — verified computationally. -/
+theorem singer_q7_sidon : IsSidonSet singer_q7 := by native_decide
+
+/-- {0, 1, 3, 13, 32, 36, 43, 52} has exactly 8 = q+1 elements. -/
+theorem singer_q7_card : singer_q7.card = 8 := by decide
+
+/-- All elements of {0, 1, 3, 13, 32, 36, 43, 52} are ≤ 56 = q²+q = 49+7. -/
+theorem singer_q7_range : ∀ a ∈ singer_q7, a ≤ 7 * 7 + 7 := by decide
+
+/-- Singer construction witness for q = 7. -/
+theorem singer_sidon_q7 :
+    ∃ A : Finset ℕ, IsSidonSet A ∧ A.card = 7 + 1 ∧ ∀ a ∈ A, a ≤ 7 * 7 + 7 :=
+  ⟨singer_q7, singer_q7_sidon, singer_q7_card, singer_q7_range⟩
+
+/-! ## Layer 2d: Singer Construction for q = 11
+
+  The Singer difference set for q = 11 is {0, 1, 3, 12, 20, 34, 38, 81, 88, 94, 104, 109}
+  in Z_133. PG(2,11) has 133 points; a line has 12 = q+1 points; max element
+  109 ≤ 132 = q²+q. Externally verified to be a perfect difference set mod 133.
+-/
+
+/-- The Singer set for q=11. -/
+def singer_q11 : Finset ℕ := {0, 1, 3, 12, 20, 34, 38, 81, 88, 94, 104, 109}
+
+/-- The q=11 Singer candidate is a Sidon set — verified computationally. -/
+theorem singer_q11_sidon : IsSidonSet singer_q11 := by native_decide
+
+/-- The q=11 Singer candidate has exactly 12 = q+1 elements. -/
+theorem singer_q11_card : singer_q11.card = 12 := by decide
+
+/-- All elements of the q=11 Singer set are ≤ 132 = q²+q. -/
+theorem singer_q11_range : ∀ a ∈ singer_q11, a ≤ 11 * 11 + 11 := by decide
+
+/-- Singer construction witness for q = 11. -/
+theorem singer_sidon_q11 :
+    ∃ A : Finset ℕ, IsSidonSet A ∧ A.card = 11 + 1 ∧ ∀ a ∈ A, a ≤ 11 * 11 + 11 :=
+  ⟨singer_q11, singer_q11_sidon, singer_q11_card, singer_q11_range⟩
+
+/-! ## Layer 2e: Singer Construction for q = 13
+
+  The Singer difference set for q = 13 is
+  {0, 1, 3, 16, 23, 28, 42, 76, 82, 86, 119, 137, 154, 175} in Z_183.
+  PG(2,13) has 183 points; a line has 14 = q+1 points; max element
+  175 ≤ 182 = q²+q. Externally verified to be a perfect difference set mod 183.
+-/
+
+/-- The Singer set for q=13. -/
+def singer_q13 : Finset ℕ := {0, 1, 3, 16, 23, 28, 42, 76, 82, 86, 119, 137, 154, 175}
+
+/-- The q=13 Singer candidate is a Sidon set — verified computationally. -/
+theorem singer_q13_sidon : IsSidonSet singer_q13 := by native_decide
+
+/-- The q=13 Singer candidate has exactly 14 = q+1 elements. -/
+theorem singer_q13_card : singer_q13.card = 14 := by decide
+
+/-- All elements of the q=13 Singer set are ≤ 182 = q²+q. -/
+theorem singer_q13_range : ∀ a ∈ singer_q13, a ≤ 13 * 13 + 13 := by decide
+
+/-- Singer construction witness for q = 13. -/
+theorem singer_sidon_q13 :
+    ∃ A : Finset ℕ, IsSidonSet A ∧ A.card = 13 + 1 ∧ ∀ a ∈ A, a ≤ 13 * 13 + 13 :=
+  ⟨singer_q13, singer_q13_sidon, singer_q13_card, singer_q13_range⟩
+
 /-! ## Layer 3: General Singer Construction (Axiom)
 
   The general Singer construction requires:
@@ -224,6 +303,10 @@ theorem singer_exceeds_sqrt (q : ℕ) (hq : 0 < q) :
   - Sum counting: ✅ VERIFIED (0 sorry, via Sidon_SumCount_Fix.lean)
   - Singer q=2: ✅ VERIFIED (0 sorry, this file)
   - Singer q=3: ✅ VERIFIED (0 sorry, this file)
+  - Singer q=5: ✅ VERIFIED (0 sorry, this file)
+  - Singer q=7: ✅ VERIFIED (0 sorry, this file, added 2026-05-02)
+  - Singer q=11: ✅ VERIFIED (0 sorry, this file, added 2026-05-02)
+  - Singer q=13: ✅ VERIFIED (0 sorry, this file, added 2026-05-02)
   - Singer general: AXIOM (Singer 1938, not formalized in any prover)
   - Lindström tight bound: NOT YET ATTEMPTED
   - Error term o(√N): OPEN — this is the $1,000 prize

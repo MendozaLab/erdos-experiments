@@ -35,6 +35,58 @@ lean_lib Erdos30_OrderedElements where
   srcDir := "lean"
   roots := #[`Erdos30_OrderedElements]
 
+lean_lib Erdos30_FaceField where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField]
+
+lean_lib Erdos30_FaceField_ExactObservables where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_ExactObservables]
+
+lean_lib Erdos30_FaceField_N30_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_N30_Certificate]
+
+lean_lib Erdos30_FaceField_Window_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_Window_Certificate]
+
+lean_lib Erdos30_FaceField_57_58_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_57_58_Certificate]
+
+lean_lib Erdos30_FaceField_56_58_FullFace_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_56_58_FullFace_Certificate]
+
+lean_lib Erdos30_FaceField_59_FullFace_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_59_FullFace_Certificate]
+
+lean_lib Erdos30_FaceField_60_FullFace_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_60_FullFace_Certificate]
+
+lean_lib Erdos30_FaceField_61_JointSurface_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_61_JointSurface_Certificate]
+
+lean_lib Erdos30_FaceField_61_64_JointSurface_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_61_64_JointSurface_Certificate]
+
+lean_lib Erdos30_FaceField_61_64_JointSurface_Transition_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_61_64_JointSurface_Transition_Certificate]
+
+lean_lib Erdos30_FaceField_65_71_JointSurface_Transition_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_FaceField_65_71_JointSurface_Transition_Certificate]
+
+lean_lib Erdos30_GroundFaceBranch_58_71_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_GroundFaceBranch_58_71_Certificate]
+
 -- ══════════════════════════════════════════════════════════════
 -- Scratch / supplementary files (not discussed in paper,
 -- not imported by core files — kept for reference only)
@@ -47,6 +99,10 @@ lean_lib Erdos30_difference_counting where
 lean_lib Sidon_SumCount_Fix where
   srcDir := "scratch"
   roots := #[`Sidon_SumCount_Fix]
+
+lean_lib Ehp114LocalMixedRemainderScratch where
+  srcDir := "scratch"
+  roots := #[`Ehp114LocalMixedRemainderScratch]
 
 -- ══════════════════════════════════════════════════════════════
 -- Erdős #755 — B_h[g] Sequences (salvo attack 2026-04-19)
@@ -80,6 +136,10 @@ lean_lib Erdos755_BhG_General where
   srcDir := "lean"
   roots := #[`Erdos755_BhG_General]
 
+lean_lib Erdos755_SymmetryQuotient where
+  srcDir := "lean"
+  roots := #[`Erdos755_SymmetryQuotient]
+
 -- ══════════════════════════════════════════════════════════════
 -- Erdős #1 — Distinct Subset Sums (salvo attack 2026-04-19)
 -- ══════════════════════════════════════════════════════════════
@@ -112,5 +172,23 @@ lean_lib Erdos30_SharpDiff where
   srcDir := "lean"
   roots := #[`Erdos30_SharpDiff]
 
+lean_lib Erdos30_Singer57_Certificate where
+  srcDir := "lean"
+  roots := #[`Erdos30_Singer57_Certificate]
+
+lean_lib Erdos30_CollisionChannel where
+  srcDir := "lean"
+  roots := #[`Erdos30_CollisionChannel]
+
+-- ══════════════════════════════════════════════════════════════
+-- Erdős #114 — EHP radial-direction Athena spike (2026-05-02)
+-- Scaffold for n=14 closed-form theorem; namespace Erdos114.Radial
+-- See: erdos-experiments/Erdos114/ATHENA_SPIKE_PROTOCOL_2026-05-02.md
+-- ══════════════════════════════════════════════════════════════
+
+lean_lib EhpRadialPuiseux where
+  srcDir := "lean"
+  roots := #[`EhpRadialPuiseux]
+
 require mathlib from git
-  "https://github.com/leanprover-community/mathlib4" @ "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
+  "https://github.com/leanprover-community/mathlib4" @ "v4.27.0"

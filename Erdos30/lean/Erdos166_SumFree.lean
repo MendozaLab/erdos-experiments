@@ -14,8 +14,8 @@
     3. A ⊆ [0, a] and φ(A) ⊆ [0, a].
   Therefore |A| + |φ(A)| ≤ a + 1, hence 2|A| ≤ a + 1 ≤ N + 1.
 
-  Lean version: leanprover/lean4:v4.24.0
-  Mathlib version: f897ebcf72cd16f89ab4577d0c826cd14afaafc7
+  Lean version: leanprover/lean4:v4.27.0
+  Mathlib version: v4.27.0
 -/
 
 import Mathlib
@@ -101,5 +101,50 @@ theorem sumfree_bound (A : Finset ℕ) (N : ℕ)
   rw [h_union_card, h_img_card] at h_union_card_le
   -- 2|A| ≤ a + 1 ≤ N + 1
   omega
+
+/-- The upper half of `[0,N]`: all integers strictly above `N/2`. -/
+def upperHalf (N : ℕ) : Finset ℕ :=
+  Finset.Icc (N / 2 + 1) N
+
+/-- The upper half is sum-free inside `[0,N]`. -/
+theorem upperHalf_sumfree (N : ℕ) : IsSumFree (upperHalf N) := by
+  intro a ha b hb hab
+  rw [upperHalf, Finset.mem_Icc] at ha hb hab
+  omega
+
+/-- The upper half lies in `Finset.range (N+1)`. -/
+theorem upperHalf_subset_range (N : ℕ) :
+    upperHalf N ⊆ Finset.range (N + 1) := by
+  intro x hx
+  rw [upperHalf, Finset.mem_Icc] at hx
+  rw [Finset.mem_range]
+  omega
+
+/-- Cardinality of the upper-half construction. -/
+theorem upperHalf_card (N : ℕ) :
+    (upperHalf N).card = N - N / 2 := by
+  rw [upperHalf, Nat.card_Icc]
+  omega
+
+/-- The upper-half construction is extremal up to the parity unit. -/
+theorem upperHalf_large (N : ℕ) :
+    N ≤ 2 * (upperHalf N).card := by
+  rw [upperHalf_card]
+  omega
+
+/-- The upper-half construction also satisfies the universal upper bound. -/
+theorem upperHalf_bound_tight (N : ℕ) :
+    2 * (upperHalf N).card ≤ N + 1 := by
+  exact sumfree_bound (upperHalf N) N (upperHalf_sumfree N) (upperHalf_subset_range N)
+
+/-- Exact elementary package: the shift-injection upper bound and the upper-half
+construction match up to the unavoidable parity gap. -/
+theorem sumfree_upperHalf_sandwich (N : ℕ) :
+    IsSumFree (upperHalf N) ∧
+      upperHalf N ⊆ Finset.range (N + 1) ∧
+      N ≤ 2 * (upperHalf N).card ∧
+      2 * (upperHalf N).card ≤ N + 1 := by
+  exact ⟨upperHalf_sumfree N, upperHalf_subset_range N,
+    upperHalf_large N, upperHalf_bound_tight N⟩
 
 end Erdos.SumFree
