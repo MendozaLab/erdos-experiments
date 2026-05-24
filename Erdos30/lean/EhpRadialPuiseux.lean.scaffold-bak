@@ -1,0 +1,303 @@
+/-
+  EhpRadialPuiseux.lean
+  =====================
+
+  Athena/Aristotle SPIKE SCAFFOLD — Erdős #114 (Erdős–Herzog–Piranian conjecture)
+  Radial-direction closed-form target for n = 14.
+
+  **Lean version:** leanprover/lean4:v4.27.0
+  **Mathlib pin:**  v4.27.0 (rev a3a10db0e9d66acbebf76c5e6a135066525ac900)
+  **Build target:** `lean_lib EhpRadialPuiseux` in `Erdos30/lakefile.lean`
+  **Spike date:**   2026-05-02
+  **Spike protocol:** `Math/erdos-experiments/Erdos114/ATHENA_SPIKE_PROTOCOL_2026-05-02.md`
+
+  ## Honest scope (Formalization Integrity Protocol §7)
+
+  This file is a **proof architecture / spike scaffold**, not a complete proof.
+  All four classical analytic results (Federer co-area, Fejér–Riesz factorization,
+  Gauss `₂F₁` connection at z=1, and the radial closed form
+  `L(z^n - a) = 2π · ₂F₁((n-1)/(2n), (n-1)/(2n); 1; a²)`) are declared as
+  `axiom` with full bibliographic citations inline. The proof body of the target
+  theorem `ehp_radial_L_form_n14` contains exactly two `sorry` stubs at the
+  arithmetic-specialization and substitution steps that Athena is asked to close.
+
+  ## Closed-form coefficient — note on a discrepancy in design docs
+
+  Two H² internal docs diverge on the closed form:
+    * `RADIAL_PUISEUX_FIT_2026-05-02.md` (line 15):
+        `L_n(a) = 2*pi * 2F1((n-1)/(2n), (n-1)/(2n); 1; a^2)`
+    * `CROFTON_COAREA_DRAFT_2026-05-02.md` (§4 Step 3) and the spike-task brief:
+        `L(z^n - a) = 2π · n · ₂F₁((n-1)/(2n), (n-1)/(2n); 1; a²)`
+
+  The discrepancy resolves in favor of the **`2π` form (no `n` factor)**: at
+  `a = 0`, `p(z) = z^n` and `Λ(p) = {|z^n| = 1} = {|z| = 1}` is the unit circle,
+  so `L(z^n - 0) = 2π`. With `₂F₁(...;1;0) = 1`, the `2π` form returns `2π`
+  correctly, while the `2π·n` form returns `2π·n`, which is wrong at `a=0`.
+
+  The Fryntov–Nazarov asymptotic `L(z^n - 1) = 2πn + o(n)` is consistent with
+  the `2π` form via the boundary value of `₂F₁` at `z=1` (Gauss connection
+  formula gives the `n`-dependent prefactor in the limit, not in the integrand).
+
+  This scaffold uses the **`2π` form**. The `2π·n` form in the task brief is
+  flagged for separate review — see `ATHENA_SPIKE_PROTOCOL_2026-05-02.md` §
+  "Pre-spike issues to resolve".
+
+  ## Architecture
+
+  Step 1: Generic `n` closed form           — declared as `axiom hypergeometric_lemniscate_radial`
+  Step 2: Specialize to `n = 14`            — `sorry` (ATHENA closes — arithmetic)
+  Step 3: Substitute and simplify           — `sorry` (ATHENA closes — substitution)
+
+  Future targets (also stubbed):
+    * `ehp_radial_puiseux_n14` — Puiseux deficit at `a = 1` from the closed form
+                                 plus the `gauss_2F1_connection_at_one` axiom.
+
+  ## Perplexity Pre-Submission Gate
+
+  Pending. Per `~/.claude/CLAUDE.md` Formalization Integrity Protocol §5, this
+  scaffold must pass a Perplexity gate before any Athena-completed version is
+  promoted to public artifact (Zenodo / arXiv / formal-conjectures). The spike
+  protocol document specifies the exact query.
+-/
+
+import Mathlib
+
+open Real Complex MeasureTheory
+open scoped ENNReal NNReal
+
+namespace Erdos114
+namespace Radial
+
+/-! ## Helper definitions -/
+
+/-- The lemniscate of a polynomial-shaped function `p : ℂ → ℂ` is the level
+set `{z : ℂ | |p z| = 1}`. We use the generic norm `‖·‖` (which on `ℂ`
+agrees with the classical complex modulus); the legacy `Complex.abs`
+identifier is deprecated as of Mathlib `2025-08-26` (see
+`Mathlib/Data/Complex/Norm.lean`). -/
+def lemniscate (p : ℂ → ℂ) : Set ℂ := {z : ℂ | ‖p z‖ = 1}
+
+/-- The lemniscate length of `p` is the 1-dimensional Hausdorff measure of its
+lemniscate, expressed as a real number via `ENNReal.toReal`.
+
+For polynomials of degree `n ≥ 1`, the lemniscate is a finite union of
+piecewise-analytic Jordan arcs (Fryntov–Nazarov 2025), so the Hausdorff
+1-measure is finite and `toReal` is a faithful representation. -/
+noncomputable def ehp_lemniscate_length (p : ℂ → ℂ) : ℝ :=
+  (μH[1] (lemniscate p)).toReal
+
+/-- Real-valued Gauss hypergeometric `₂F₁(a, b; c; z)`. We use Mathlib's
+`ordinaryHypergeometric` (notation `₂F₁`) specialized to `ℝ`. The Mathlib
+definition uses the power series
+`∑_k (ascPochhammer a k) (ascPochhammer b k) / (ascPochhammer c k) · zᵏ / k!`
+which agrees with the classical analytic continuation on its disk of
+convergence `|z| < 1`. -/
+noncomputable def gauss_2F1 (a b c : ℝ) (z : ℝ) : ℝ :=
+  ordinaryHypergeometric a b c z
+
+/-! ## Classical analytic axioms
+
+  Each axiom below states a result that is rigorously known in classical
+  analysis but **not** present in Mathlib v4.27.0 (verified by directory scan
+  on 2026-05-02). Per H² Formalization Integrity Protocol §7, every axiom
+  carries a full bibliographic citation. Do not close any of these with a
+  Lean tactic — that would constitute hidden-sorry tactic-smuggling and fail
+  the Aristotle/Athena pre-submission gate.
+-/
+
+/-- **Federer co-area formula on lemniscates.**
+
+For a Lipschitz function `u : ℂ → ℝ` with `u = |p|` and `p` a non-constant
+polynomial, the lemniscate `Λ(p) = u⁻¹{1}` admits a level-set co-area identity
+relating the 1-dimensional Hausdorff measure of `Λ` to integrals of `1/|p'|`
+over `Λ`. This is the analytic substrate behind the `1/n` Puiseux exponent.
+
+**Reference:** Federer, *Geometric Measure Theory*, Springer (1969),
+Theorem 3.2.22 (co-area formula). Specialization to lemniscates: classical
+folklore; explicit form in Pommerenke, *Univalent Functions*, Vandenhoeck &
+Ruprecht (1975), Ch. 10.
+
+**Status in Mathlib v4.27.0:** The general `MeasureTheory.coarea` lemma is
+not yet present at the level needed for level-set arc length. Specialization
+to polynomial lemniscates would require its own development. -/
+axiom coarea_lemniscate_length (p : ℂ → ℂ) (hp : ∃ n : ℕ, ∃ a : ℂ, ∀ z, p z = z^n - a)
+    (n : ℕ) (hn : 1 ≤ n) :
+    -- Existence of a co-area identity expressing ehp_lemniscate_length as
+    -- an integral over the lemniscate. Used downstream by the radial closed
+    -- form. We axiomatize the *existence* rather than the explicit form,
+    -- since the explicit form composes with `hypergeometric_lemniscate_radial`.
+    ∃ I : ℝ, ehp_lemniscate_length p = I
+
+/-- **Fejér–Riesz factorization.**
+
+If `q : ℝ → ℝ` is a non-negative trigonometric polynomial of degree `≤ N` on
+the unit circle (i.e., `q(θ) ≥ 0` for all `θ`), then there exists an analytic
+polynomial `g(z) = ∑_{k=0}^N c_k z^k` such that `q(θ) = |g(e^{iθ})|²` for all
+`θ`. Equivalently: every PSD Toeplitz form on the unit circle is the Gram
+matrix of a finite analytic system.
+
+**References:**
+* L. Fejér, *Über trigonometrische Polynome*, J. Reine Angew. Math. 146
+  (1916), 53–82.
+* F. Riesz, *Über ein Problem des Herrn Carathéodory*, Acta Litt. ac
+  Scient. Szeged 6 (1916), 87–99.
+* Modern statement: U. Grenander, G. Szegő, *Toeplitz Forms and Their
+  Applications*, Univ. of California Press (1958), Ch. 1.
+
+**Status in Mathlib v4.27.0:** Not present. Provides the Loewner-ordering
+half of the Toeplitz cone feeder used downstream of the radial direction. -/
+axiom fejer_riesz_factorization
+    (q : ℝ → ℝ) (N : ℕ)
+    (hq_nonneg : ∀ θ, 0 ≤ q θ)
+    (hq_trig_poly : ∃ c : Fin (N + 1) → ℂ,
+      ∀ θ, q θ = ((Finset.univ.sum (fun k => c k * Complex.exp (Complex.I * θ * (k : ℕ)))).re)^2 +
+                 ((Finset.univ.sum (fun k => c k * Complex.exp (Complex.I * θ * (k : ℕ)))).im)^2) :
+    ∃ g : ℂ → ℂ, ∀ θ : ℝ, q θ = ‖g (Complex.exp (Complex.I * θ))‖^2
+
+/-- **Gauss connection formula at z = 1.**
+
+For `Re(c - a - b) > 0`, the Gauss hypergeometric series `₂F₁(a, b; c; z)`
+admits a finite limit at `z = 1`, given by
+`₂F₁(a, b; c; 1) = Γ(c) Γ(c - a - b) / (Γ(c - a) Γ(c - b))`.
+
+For the radial EHP application: `a = b = (n-1)/(2n)` and `c = 1` give
+`c - a - b = 1/n > 0` for all `n ≥ 1`, so the limit exists and the
+Puiseux expansion at `z = 1⁻` has leading exponent `1/n`.
+
+**References:**
+* C. F. Gauss, *Disquisitiones generales circa seriem infinitam...*,
+  Comm. Soc. Reg. Sci. Gott. (1812), §6.
+* E. T. Whittaker, G. N. Watson, *A Course of Modern Analysis*, 4th ed.
+  Cambridge Univ. Press (1927), §14.11.
+* DLMF §15.4.20: <https://dlmf.nist.gov/15.4.E20>
+
+**Status in Mathlib v4.27.0:** `ordinaryHypergeometric` is defined as a
+power series; analytic continuation and the Gauss connection formula at
+`z = 1` are not yet formalized. -/
+axiom gauss_2F1_connection_at_one (a b c : ℝ)
+    (hpos : 0 < c - a - b) :
+    Filter.Tendsto (fun z : ℝ => gauss_2F1 a b c z) (nhds 1)
+      (nhds (Real.Gamma c * Real.Gamma (c - a - b) /
+             (Real.Gamma (c - a) * Real.Gamma (c - b))))
+
+/-- **Radial-direction closed form for the EHP lemniscate length.**
+
+For monic polynomials of the form `p(z) = z^n - a` with `n ≥ 2` and
+`0 ≤ a < 1`, the lemniscate length admits the closed form
+`L(z^n - a) = 2π · ₂F₁((n-1)/(2n), (n-1)/(2n); 1; a²)`.
+
+The `a = 0` case `p(z) = z^n` gives `L = 2π` (the unit circle), consistent
+with `₂F₁(α, α; 1; 0) = 1`.
+The `a → 1⁻` limit composed with `gauss_2F1_connection_at_one` gives the
+Fryntov–Nazarov asymptotic `L(z^n - 1) = 2πn + o(n)` via Gamma-function
+identities (the `n` factor in the asymptotic emerges from the connection
+formula, not from the closed-form prefactor).
+
+**Provenance (citation chain audited 2026-05-02 post-Perplexity-gate):**
+* Empirically verified at machine precision for `n ∈ {3,…,15}` —
+  `RADIAL_PUISEUX_FIT_2026-05-02.md`, slope `1/n` matches to ≤ 10⁻⁵
+  across all cases (synthesis n=3..13, direct n=14, n=15).
+* Formula recorded in `EXP-MATH-EHP114-N14-RADIAL-HYPERGEOMETRIC-CALIBRATION-20260502-01_RESULTS.json`
+  field `formula`.
+* **NOT in Krishnapur–Lundberg–Ramachandran 2025** (arXiv:2503.18270, "On the
+  area of polynomial lemniscates"). KLR 2025 addresses the *minimal-area* and
+  *inradius* EHP problems, NOT the maximum lemniscate length question that is
+  Erdős #114. The earlier draft attribution to KLR was incorrect — verified via
+  arXiv abstract review on 2026-05-02.
+* **Derivation chain (corrected):**
+  - Underlying integral identity: ∫₀^{2π} (1 + a² − 2a cos θ)^(−s) dθ = 2π · ₂F₁(s, s; 1; a²).
+    Classical, in Gradshteyn–Ryzhik §3.665.2 (2014 edition) and DLMF §15.6.
+  - Application to L(z^n − a): change of variables z^n − a = e^{iθ}, sum over
+    n branches, set s = (n−1)/(2n). The arc-length integrand is
+    (1 + a² + 2a cos θ)^((1/n − 1)/2); the substitution θ → π − θ converts to
+    the G-R form. Result: L(z^n − a) = 2π · ₂F₁((n−1)/(2n), (n−1)/(2n); 1; a²).
+  - Specific application to lemniscate length: appears to be folklore or
+    original to v5 preprint Theorem 1 (`ehp_erdos114_preprint.tex`); we have
+    found no prior citation. Tagged [PROVENANCE: ORIGINAL DERIVATION OR FOLKLORE,
+    underlying integral identity classical] for transparency.
+* Boundary checks: at a = 0, ₂F₁(...; 0) = 1, so L(z^n − 0) = 2π = length of
+  the unit circle ✓. At a = 1, Gauss's theorem gives ₂F₁(...; 1) =
+  Γ(1/n)/Γ((n+1)/(2n))², so L(z^n − 1) = 2π · Γ(1/n)/Γ((n+1)/(2n))² ∼ 2n as
+  n → ∞, matching the v5 preprint's certified margins to 4 sig figs at n=14.
+
+**Status in Mathlib v4.27.0:** Not present. This is the load-bearing
+analytic identity for the entire spike. Athena is **not** asked to close
+this — it is a deep classical-analysis statement. -/
+axiom hypergeometric_lemniscate_radial (n : ℕ) (hn : 2 ≤ n) (a : ℝ)
+    (ha : 0 ≤ a) (ha1 : a < 1) :
+    ehp_lemniscate_length (fun z : ℂ => z^n - (a : ℂ)) =
+      2 * Real.pi * gauss_2F1 ((n - 1 : ℝ) / (2 * n)) ((n - 1 : ℝ) / (2 * n)) 1 (a^2)
+
+/-! ## Target theorem (Athena spike target)
+
+  Closed-form expression for the EHP lemniscate length at `n = 14`,
+  specializing the general identity `hypergeometric_lemniscate_radial`.
+
+  **Athena's job:** close two arithmetic/substitution sorries below.
+  **NOT Athena's job:** close any of the four declared axioms above.
+-/
+
+/-- **Closed-form expression for the lemniscate length of `z^14 - a`
+(radial slice).**
+
+Specializes `hypergeometric_lemniscate_radial` at `n = 14`. The arithmetic
+content reduces to verifying `(14 - 1)/(2 · 14) = 13 / 28`.
+
+**Athena protocol:** see `ATHENA_SPIKE_PROTOCOL_2026-05-02.md`. Success
+criterion: zero `sorry` remain in this theorem AND `lake build` PASS.
+-/
+theorem ehp_radial_L_form_n14 (a : ℝ) (ha : 0 ≤ a) (ha1 : a < 1) :
+    ehp_lemniscate_length (fun z : ℂ => z^14 - (a : ℂ)) =
+      2 * Real.pi * gauss_2F1 (13/28) (13/28) 1 (a^2) := by
+  -- Step 1: invoke the generic radial closed form at n = 14.
+  have h_general :
+      ehp_lemniscate_length (fun z : ℂ => z^14 - (a : ℂ)) =
+        2 * Real.pi *
+          gauss_2F1 ((14 - 1 : ℝ) / (2 * 14)) ((14 - 1 : ℝ) / (2 * 14)) 1 (a^2) :=
+    hypergeometric_lemniscate_radial 14 (by norm_num) a ha ha1
+  -- Step 2: arithmetic specialization (n - 1)/(2n) = 13/28 at n = 14.
+  --   ATHENA: prove the parameter equality and rewrite.
+  --   Hint: `((14 : ℝ) - 1) / (2 * 14) = 13 / 28` should be `norm_num` or `ring`.
+  sorry
+  -- Step 3: substitute h_general into the goal and conclude.
+  --   ATHENA: `rw [h_general]` after Step 2 rewrites both sides into a
+  --   common form, then the goal closes by `rfl` or trivial arithmetic.
+  -- (Second sorry slot intentionally absent — Step 3 expected to close
+  --  immediately after Step 2 in a single chained tactic block.)
+
+/-! ## Future targets (Puiseux corollary, also stubbed)
+
+  The radial Puiseux deficit at `a → 1⁻` flows from `ehp_radial_L_form_n14`
+  (or its generic-`n` parent) composed with `gauss_2F1_connection_at_one`.
+  The exponent is `1/14`. The constant `K_14` is explicit but messy
+  (involves `Γ(1/28)` and `Γ(15/28)`), so it is wrapped in an existential
+  for the spike target.
+-/
+
+/-- **Puiseux expansion at `a = 1` for n = 14.**
+
+There exists `C > 0` such that for every small `ε ∈ (0, 1/4]`, the deficit
+`L(z^14 - 1) - L(z^14 - (1-ε))` is bounded below by `C · ε^(1/14)`.
+
+Empirical anchor: `RADIAL_PUISEUX_FIT_2026-05-02.md` measured the slope
+`0.0714237438` at `n = 14` (target `1/14 = 0.0714285714`), match to 4 sig figs.
+
+**Athena protocol:** secondary target. Closing `ehp_radial_puiseux_n14` is
+post-MVP — the primary spike success criterion is closing
+`ehp_radial_L_form_n14` only. -/
+theorem ehp_radial_puiseux_n14 :
+    ∃ C : ℝ, 0 < C ∧ ∀ ε : ℝ, 0 < ε → ε ≤ 1/4 →
+      ehp_lemniscate_length (fun z : ℂ => z^14 - 1) -
+      ehp_lemniscate_length (fun z : ℂ => z^14 - ((1 - ε : ℝ) : ℂ)) ≥
+        C * Real.rpow ε (1/14) := by
+  -- ATHENA (post-MVP): extract `C` from the closed form
+  --   `L(z^14 - 1) = 2π · lim_{a → 1⁻} ₂F₁(13/28, 13/28; 1; a²)`
+  -- via `gauss_2F1_connection_at_one` with `a = b = 13/28`, `c = 1`,
+  -- so `c - a - b = 1/14 > 0`. The Gamma-quotient evaluation gives
+  -- `L(z^14 - 1) = 2π · Γ(1) Γ(1/14) / (Γ(15/28))²`.
+  -- The leading Puiseux coefficient comes from the next-order term in the
+  -- connection formula expansion at `z = 1`.
+  sorry
+
+end Radial
+end Erdos114

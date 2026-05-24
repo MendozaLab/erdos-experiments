@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "queued_at_utc": "__WILL_BE_SET_ON_NEXT_RUN__",
+  "operations": [
+    {
+      "op": "upsert",
+      "table": "papers",
+      "key": "stable_id",
+      "row": {
+        "stable_id": "h2:erdos30:three-formalisms",
+        "title": "Three Formalisms for the Sidon Counting Problem: Lattice Gas, Entropy Decrement, and the Holevo Bound",
+        "status": "draft-intake",
+        "evidence_root": "59974bfc9e23acf5dbfa3dcfb097df52eedf8316f6de482d4fa66ecabfe12f5a",
+        "last_stage": "2a-ensconcement",
+        "last_stage_at_utc": "2026-04-16T22:42Z"
+      }
+    },
+    {
+      "op": "insert",
+      "table": "pipeline_runs",
+      "row": {
+        "paper_stable_id": "h2:erdos30:three-formalisms",
+        "stage": "2a",
+        "verdict": "verified",
+        "notes": "Three verified claims sealed: V=0 on 20 Singer PDS (Sec 2.3), 310/44370 Sidon-6 at q=5 all PDS (Sec 5), 31 translates x 10 multiplier classes = 310 (Sec 5). Evidence root = 59974bfc9e... k^2.19 power law excluded from paper pending raw-output verification.",
+        "run_at_utc": "2026-04-16T22:42Z",
+        "degraded": false
+      }
+    },
+    {
+      "op": "bulk_insert",
+      "table": "paper_evidence_seals",
+      "source_file": ".publisher/evidence_seals.json",
+      "source_key": "seals"
+    }
+  ]
+}
