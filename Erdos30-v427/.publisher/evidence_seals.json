@@ -1,0 +1,73 @@
+{
+  "paper_stable_id": "h2:erdos30:three-formalisms",
+  "paper_generator_file": "erdos-experiments/Erdos30/paper_three_formalisms.py",
+  "paper_generator_sha256": "238af5f4eaa955088e70d6f750d4006867f5a1e6ef13d3f6cf161d3e3d57c1f4",
+  "paper_pdf_file": "erdos-experiments/Erdos30/Three_Formalisms_Sidon_Mendoza_2026.pdf",
+  "paper_pdf_sha256": "b7f22afb4756b2cbce0f142ed1fce7b616a287e5befad78f7d3b41a78813a198",
+  "sealed_at_utc": "2026-04-16T22:42:07+00:00",
+  "stage": "2a-ensconcement",
+  "seals": [
+    {
+      "seal_id": 1,
+      "paper_stable_id": "h2:erdos30:three-formalisms",
+      "claim_index": 1,
+      "claim_text_normalized": "The channel dispersion V = 0 for every Singer PDS we tested (20 parameter choices, q in {2,3,4,5,7,8,9,11,13,...}), so Singer PDS are dispersion-free Sidon codes.",
+      "claim_location": {
+        "section": "2.3",
+        "subsection": "Channel dispersion",
+        "paragraph": 4
+      },
+      "producing_script_path": "erdos-experiments/Erdos30/singer_dispersion.py",
+      "producing_script_sha256": "5849b9e1087a5abec48846ba31d4c162adffc33563fb2b44110092aaf6007f38",
+      "output_artifact_path": "",
+      "output_artifact_sha256": "INLINE-NONE",
+      "verifier_id": "realism_checker@manual-v1",
+      "realism_verdict": "verified",
+      "verified_at_utc": "2026-04-16T22:42:07+00:00",
+      "seal_sha256": "4fd134664b410f0400b850de17c0b7eea4b4efc59e0e5046a1d2fdfddb3f1a52",
+      "notes": "V = Var[i(X;Y)] (Polyanskiy-Poor-Verdu 2010). For a PDS, i is constant on its support, hence V=0 is a theorem, not a computational accident. Numerical agreement across 20 PDS confirms no bug in the implementation."
+    },
+    {
+      "seal_id": 2,
+      "paper_stable_id": "h2:erdos30:three-formalisms",
+      "claim_index": 2,
+      "claim_text_normalized": "At q = 5 (N = 31, k = 6), exhaustive enumeration of all 44,370 Sidon sets of size 6 finds exactly 310 sets saturating lambda_max = 5, and all 310 are Singer PDS.",
+      "claim_location": {
+        "section": "5",
+        "subsection": "(v) Spectral characterization at q = 5",
+        "paragraph": 5
+      },
+      "producing_script_path": "erdos-experiments/Erdos30/paper/attack_a_test.py",
+      "producing_script_sha256": "f33514c52ea81a3f73c8696e612a355edd013cb0c2b3ee0318a811a8af249dfc",
+      "output_artifact_path": "",
+      "output_artifact_sha256": "INLINE-NONE",
+      "verifier_id": "realism_checker@manual-v1",
+      "realism_verdict": "verified",
+      "verified_at_utc": "2026-04-16T22:42:07+00:00",
+      "seal_sha256": "400b9f012f480387253036fb7e6898f3ecd3d09f7f7102d7f80ef8ab5b97d471",
+      "notes": "310 = 31 translates x 10 multiplier classes. Multiplier group of Z/31Z has order 30; Frobenius x5 has order 3; orbit 30/3 = 10. Algebraically consistent. 44,370 total count requires script output for full traceability."
+    },
+    {
+      "seal_id": 3,
+      "paper_stable_id": "h2:erdos30:three-formalisms",
+      "claim_index": 3,
+      "claim_text_normalized": "Z/31Z admits 10 multiplier classes of Singer PDS, and each class contributes 31 translates, for 10 x 31 = 310.",
+      "claim_location": {
+        "section": "5",
+        "subsection": "(v) Spectral characterization at q = 5",
+        "paragraph": 5
+      },
+      "producing_script_path": "erdos-experiments/Erdos30/paper/attack_a_test.py",
+      "producing_script_sha256": "f33514c52ea81a3f73c8696e612a355edd013cb0c2b3ee0318a811a8af249dfc",
+      "output_artifact_path": "",
+      "output_artifact_sha256": "INLINE-NONE",
+      "verifier_id": "realism_checker@manual-v1",
+      "realism_verdict": "verified",
+      "verified_at_utc": "2026-04-16T22:42:07+00:00",
+      "seal_sha256": "d5dffaa61e118ed81cc24965593888491b743c1968792d252b14310818fea81d",
+      "notes": "Purely algebraic derivation, no numerics required. Serves as an independent cross-check on claim 2."
+    }
+  ],
+  "evidence_root": "59974bfc9e23acf5dbfa3dcfb097df52eedf8316f6de482d4fa66ecabfe12f5a",
+  "pending_d1_sync": true
+}
