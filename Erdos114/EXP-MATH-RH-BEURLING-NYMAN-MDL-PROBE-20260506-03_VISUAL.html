@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>RH Beurling-Nyman MDL Probe Visual</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --ink: #172026;
+      --muted: #65727c;
+      --line: #c9c1b4;
+      --panel: #fffdf8;
+      --blue: #2563eb;
+      --green: #087f5b;
+      --red: #b42318;
+      --amber: #b7791f;
+      --violet: #6d28d9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    main {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 36px;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+    }
+    h1 {
+      font-size: clamp(28px, 4.8vw, 56px);
+      line-height: 1.02;
+      margin: 0 0 10px;
+      letter-spacing: 0;
+      max-width: 980px;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      letter-spacing: 0;
+    }
+    .subhead {
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: #2d3942;
+    }
+    .meta span {
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      border-radius: 6px;
+      padding: 6px 8px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      min-width: 0;
+    }
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-12 { grid-column: span 12; }
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      overflow: visible;
+    }
+    .axis { stroke: #8d8477; stroke-width: 1; }
+    .gridline { stroke: #ded8cf; stroke-width: 1; }
+    .label, .tick { fill: #53606a; font-size: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .caption { color: var(--muted); font-size: 13px; margin: 10px 0 0; }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      color: #3e4a52;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    .legend i {
+      display: inline-block;
+      width: 14px;
+      height: 3px;
+      vertical-align: middle;
+      margin-right: 6px;
+      border-radius: 2px;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .kpi {
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+    .kpi:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .kpi strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.05;
+    }
+    .kpi span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      border-bottom: 1px solid #e5ded4;
+      padding: 8px 7px;
+      text-align: right;
+      white-space: nowrap;
+    }
+    th:first-child, td:first-child,
+    th:nth-child(2), td:nth-child(2) { text-align: left; }
+    th {
+      color: #53606a;
+      font-size: 11px;
+      font-weight: 650;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+    .warning {
+      border-left: 4px solid var(--red);
+      background: #fff7f5;
+      padding: 12px 14px;
+      border-radius: 6px;
+      color: #54251f;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .94em;
+    }
+    @media (max-width: 900px) {
+      .span-8, .span-4, .span-6 { grid-column: span 12; }
+      table { font-size: 12px; }
+      th, td { padding: 7px 5px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Beurling-Nyman MDL Probe: residual curve with penalty exposed</h1>
+      <p class="subhead">
+        A standalone visual of the first frozen MDL cost object from the EHP114 -> RH overlook.
+        The purpose is to show what survives coefficient quantization, not to claim evidence for RH.
+      </p>
+      <div class="meta">
+        <span>EXP-MATH-RH-BEURLING-NYMAN-MDL-PROBE-20260506-03</span>
+        <span>status: SUGGESTIVE_NUMERICAL_PROBE</span>
+        <span>sha256: 51484a5855bacc99a16174309135c5edacc0eb76230d0067e87316ac29fb35d3</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="span-8">
+        <h2>Description Bits vs Residual Information</h2>
+        <svg id="mdlCurve" viewBox="0 0 780 430" role="img" aria-label="Description bits versus negative log residual chart"></svg>
+        <div class="legend">
+          <span><i style="background:var(--blue)"></i>8-bit measured</span>
+          <span><i style="background:var(--green)"></i>16-bit measured</span>
+          <span><i style="background:var(--violet)"></i>24-bit measured</span>
+          <span><i style="background:var(--red); border-top:2px dashed var(--red); background:transparent"></i>certified upper residual</span>
+        </div>
+        <p class="caption">
+          Higher is better on the y-axis. Dashed companion lines apply the deterministic quantization penalty.
+        </p>
+      </section>
+
+      <section class="span-4">
+        <h2>Read This First</h2>
+        <div class="kpis">
+          <div class="kpi"><strong>0.0614301</strong><span>best measured relative residual at N=32</span></div>
+          <div class="kpi"><strong>0.0615262</strong><span>16-bit certified upper residual at N=32</span></div>
+          <div class="kpi"><strong>44.67</strong><span>condition number for the best N=32 dictionary</span></div>
+          <div class="kpi"><strong>577 bits</strong><span>16-bit description cost at N=32</span></div>
+        </div>
+        <div class="warning">
+          This artifact is a method gate. It shows a computable finite MDL curve and the conditioning penalty that must be controlled before any theorem-shaped claim.
+        </div>
+      </section>
+
+      <section class="span-6">
+        <h2>Approximation Improves, Conditioning Rises</h2>
+        <svg id="nTrend" viewBox="0 0 560 360" role="img" aria-label="N trend chart for residual and condition number"></svg>
+        <p class="caption">
+          The residual improves with larger dictionaries, but the condition number becomes the tax on interpretation.
+        </p>
+      </section>
+
+      <section class="span-6">
+        <h2>N=32 Quantization Penalty</h2>
+        <svg id="penaltyBars" viewBox="0 0 560 360" role="img" aria-label="N=32 quantization penalty bars"></svg>
+        <p class="caption">
+          At 8 bits the penalty materially changes the bound. At 16 and 24 bits it is small relative to the residual.
+        </p>
+      </section>
+
+      <section class="span-12">
+        <h2>Best Quantized Rows</h2>
+        <table id="rowsTable">
+          <thead>
+            <tr>
+              <th>N</th>
+              <th>bits</th>
+              <th>dictionary</th>
+              <th>description bits</th>
+              <th>measured residual</th>
+              <th>certified upper</th>
+              <th>condition</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const bestByN = [
+      {N:4, active_count:4, condition_number:4.985478869606194, dictionary:"geometric", neglog:2.3493382789952046, residual:0.19623601141638344},
+      {N:8, active_count:8, condition_number:9.356113269560419, dictionary:"geometric", neglog:2.8183666851979887, residual:0.1417708975804015},
+      {N:12, active_count:12, condition_number:14.406601292592795, dictionary:"geometric", neglog:3.0863203267543677, residual:0.1177402640425345},
+      {N:16, active_count:16, condition_number:41.5481223218339, dictionary:"seeded_log_uniform", neglog:3.4283368409670185, residual:0.09288974606292537},
+      {N:24, active_count:24, condition_number:36.393461195238956, dictionary:"geometric", neglog:3.4434560170477835, residual:0.09192136188235764},
+      {N:32, active_count:32, condition_number:44.66946219129291, dictionary:"geometric", neglog:4.024909467122404, residual:0.06143014218981282}
+    ];
+    const quantized = [
+      {N:4,bits:8,dictionary:"geometric",desc:97,residual:0.1962434292547541,upper:0.2002405481764125,condition:4.985478869606194,penalty:0.004004536760029044},
+      {N:4,bits:16,dictionary:"geometric",desc:129,residual:0.19623601146339156,upper:0.1962516541381023,condition:4.985478869606194,penalty:1.5642721718863455e-5},
+      {N:4,bits:24,dictionary:"geometric",desc:161,residual:0.1962360114163871,upper:0.19623607252076516,condition:4.985478869606194,penalty:6.110438171431037e-8},
+      {N:8,bits:8,dictionary:"geometric",desc:129,residual:0.1417729144706932,upper:0.1491030007459322,condition:9.356113269560419,penalty:0.007332103165530664},
+      {N:8,bits:16,dictionary:"geometric",desc:193,residual:0.14177089772948417,upper:0.14179953860839187,condition:9.356113269560419,penalty:2.8641027990354157e-5},
+      {N:8,bits:24,dictionary:"geometric",desc:257,residual:0.14177089758040778,upper:0.1417710094594171,condition:9.356113269560419,penalty:1.1187901558732093e-7},
+      {N:12,bits:8,dictionary:"geometric",desc:161,residual:0.11774325301377785,upper:0.12816294827482738,condition:14.406601292592795,penalty:0.010422684232292869},
+      {N:12,bits:16,dictionary:"geometric",desc:257,residual:0.11774026416010784,upper:0.11778097765281689,condition:14.406601292592795,penalty:4.071361028239402e-5},
+      {N:12,bits:24,dictionary:"geometric",desc:353,residual:0.11774026404253568,upper:0.11774042308007467,condition:14.406601292592795,penalty:1.5903754016560163e-7},
+      {N:16,bits:8,dictionary:"seeded_log_uniform",desc:225,residual:0.09292664969334168,upper:0.10773612063528756,condition:41.5481223218339,penalty:0.014846374572362186},
+      {N:16,bits:16,dictionary:"seeded_log_uniform",desc:353,residual:0.0928897461652227,upper:0.09294773971359865,condition:41.5481223218339,penalty:5.799365067328979e-5},
+      {N:16,bits:24,dictionary:"seeded_log_uniform",desc:481,residual:0.0928897460629299,upper:0.09288997260062332,condition:41.5481223218339,penalty:2.2653769794253824e-7},
+      {N:24,bits:8,dictionary:"geometric",desc:257,residual:0.09192572922517218,upper:0.11105284066140633,condition:36.393461195238956,penalty:0.01913147877904869},
+      {N:24,bits:16,dictionary:"geometric",desc:449,residual:0.09192136444924301,upper:0.0919960942213383,condition:36.393461195238956,penalty:7.473233898065895e-5},
+      {N:24,bits:24,dictionary:"geometric",desc:641,residual:0.09192136188236297,upper:0.09192165380555678,condition:36.393461195238956,penalty:2.91923199143199e-7},
+      {N:32,bits:8,dictionary:"geometric",desc:321,residual:0.06145049228131252,upper:0.08603127971024968,condition:44.66946219129291,penalty:0.024601137520436855},
+      {N:32,bits:16,dictionary:"geometric",desc:577,residual:0.06143014994905689,upper:0.06152624038325202,condition:44.66946219129291,penalty:9.609819343920647e-5},
+      {N:32,bits:24,dictionary:"geometric",desc:833,residual:0.0614301421898338,upper:0.06143051757338094,condition:44.66946219129291,penalty:3.7538356812190026e-7}
+    ];
+
+    const colors = {8:"#2563eb",16:"#087f5b",24:"#6d28d9"};
+    const upperColor = "#b42318";
+    const negLog = v => -Math.log2(v);
+    const fmt = (v, n=4) => Number(v).toPrecision(n);
+
+    function drawAxes(svg, width, height, pad, xTicks, yTicks, xScale, yScale, xLabel, yLabel) {
+      svg.innerHTML = "";
+      const ns = "http://www.w3.org/2000/svg";
+      const add = (name, attrs, text) => {
+        const el = document.createElementNS(ns, name);
+        Object.entries(attrs || {}).forEach(([k,v]) => el.setAttribute(k, v));
+        if (text !== undefined) el.textContent = text;
+        svg.appendChild(el);
+        return el;
+      };
+      yTicks.forEach(t => {
+        add("line", {x1:pad.l, y1:yScale(t), x2:width-pad.r, y2:yScale(t), class:"gridline"});
+        add("text", {x:pad.l-8, y:yScale(t)+4, "text-anchor":"end", class:"tick"}, t.toFixed(1));
+      });
+      xTicks.forEach(t => {
+        add("line", {x1:xScale(t), y1:pad.t, x2:xScale(t), y2:height-pad.b, class:"gridline"});
+        add("text", {x:xScale(t), y:height-pad.b+20, "text-anchor":"middle", class:"tick"}, String(t));
+      });
+      add("line", {x1:pad.l, y1:height-pad.b, x2:width-pad.r, y2:height-pad.b, class:"axis"});
+      add("line", {x1:pad.l, y1:pad.t, x2:pad.l, y2:height-pad.b, class:"axis"});
+      add("text", {x:(width+pad.l-pad.r)/2, y:height-12, "text-anchor":"middle", class:"label"}, xLabel);
+      add("text", {x:18, y:(height+pad.t-pad.b)/2, transform:`rotate(-90 18 ${(height+pad.t-pad.b)/2})`, "text-anchor":"middle", class:"label"}, yLabel);
+      return add;
+    }
+
+    function pathFor(points) {
+      return points.map((p, i) => `${i ? "L" : "M"}${p[0].toFixed(2)},${p[1].toFixed(2)}`).join(" ");
+    }
+
+    function drawMdlCurve() {
+      const svg = document.getElementById("mdlCurve");
+      const width = 780, height = 430, pad = {l:62,r:24,t:18,b:52};
+      const xs = quantized.map(d => d.desc);
+      const ys = quantized.flatMap(d => [negLog(d.residual), negLog(d.upper)]);
+      const xMin = 80, xMax = 860, yMin = 2.2, yMax = 4.15;
+      const xScale = x => pad.l + (x-xMin)/(xMax-xMin)*(width-pad.l-pad.r);
+      const yScale = y => height-pad.b - (y-yMin)/(yMax-yMin)*(height-pad.t-pad.b);
+      const add = drawAxes(svg, width, height, pad, [100,300,500,700,850], [2.5,3,3.5,4], xScale, yScale, "description bits", "-log2(relative residual)");
+      [8,16,24].forEach(bits => {
+        const rows = quantized.filter(d => d.bits === bits);
+        add("path", {d:pathFor(rows.map(d => [xScale(d.desc), yScale(negLog(d.residual))])), fill:"none", stroke:colors[bits], "stroke-width":3});
+        add("path", {d:pathFor(rows.map(d => [xScale(d.desc), yScale(negLog(d.upper))])), fill:"none", stroke:upperColor, "stroke-width":1.5, "stroke-dasharray":"6 5", opacity: bits === 16 ? 1 : .42});
+        rows.forEach(d => add("circle", {cx:xScale(d.desc), cy:yScale(negLog(d.residual)), r:4.2, fill:colors[bits]}));
+      });
+    }
+
+    function drawNTrend() {
+      const svg = document.getElementById("nTrend");
+      const width = 560, height = 360, pad = {l:56,r:48,t:18,b:48};
+      const xScale = x => pad.l + (x-4)/(32-4)*(width-pad.l-pad.r);
+      const yScale = y => height-pad.b - (y-0.05)/(0.22-0.05)*(height-pad.t-pad.b);
+      const add = drawAxes(svg, width, height, pad, [4,8,16,24,32], [0.06,0.10,0.14,0.18,0.22], xScale, yScale, "dictionary size N", "relative residual");
+      add("path", {d:pathFor(bestByN.map(d => [xScale(d.N), yScale(d.residual)])), fill:"none", stroke:"#2563eb", "stroke-width":3});
+      bestByN.forEach(d => add("circle", {cx:xScale(d.N), cy:yScale(d.residual), r:4.5, fill:"#2563eb"}));
+      const cScale = c => height-pad.b - (c-0)/(50-0)*(height-pad.t-pad.b);
+      add("text", {x:width-10, y:pad.t+4, "text-anchor":"end", class:"label"}, "condition");
+      [0,25,50].forEach(t => add("text", {x:width-10, y:cScale(t)+4, "text-anchor":"end", class:"tick"}, String(t)));
+      add("path", {d:pathFor(bestByN.map(d => [xScale(d.N), cScale(d.condition_number)])), fill:"none", stroke:"#b7791f", "stroke-width":2.5});
+      bestByN.forEach(d => add("rect", {x:xScale(d.N)-4, y:cScale(d.condition_number)-4, width:8, height:8, fill:"#b7791f"}));
+    }
+
+    function drawPenaltyBars() {
+      const svg = document.getElementById("penaltyBars");
+      const width = 560, height = 360, pad = {l:64,r:24,t:18,b:48};
+      const rows = quantized.filter(d => d.N === 32);
+      const max = Math.max(...rows.map(d => d.upper));
+      const x = i => pad.l + i * ((width-pad.l-pad.r) / rows.length) + 34;
+      const barW = 54;
+      const y = v => height-pad.b - v / (max*1.12) * (height-pad.t-pad.b);
+      const ns = "http://www.w3.org/2000/svg";
+      const add = (name, attrs, text) => {
+        const el = document.createElementNS(ns, name);
+        Object.entries(attrs || {}).forEach(([k,v]) => el.setAttribute(k, v));
+        if (text !== undefined) el.textContent = text;
+        svg.appendChild(el);
+      };
+      svg.innerHTML = "";
+      [0.03,0.06,0.09].forEach(t => {
+        add("line", {x1:pad.l, y1:y(t), x2:width-pad.r, y2:y(t), class:"gridline"});
+        add("text", {x:pad.l-8, y:y(t)+4, "text-anchor":"end", class:"tick"}, t.toFixed(2));
+      });
+      add("line", {x1:pad.l, y1:height-pad.b, x2:width-pad.r, y2:height-pad.b, class:"axis"});
+      add("line", {x1:pad.l, y1:pad.t, x2:pad.l, y2:height-pad.b, class:"axis"});
+      rows.forEach((d,i) => {
+        const bx = x(i);
+        const residualH = height-pad.b-y(d.residual);
+        const upperH = height-pad.b-y(d.upper);
+        add("rect", {x:bx, y:y(d.upper), width:barW, height:upperH, fill:"#f8d7d2"});
+        add("rect", {x:bx, y:y(d.residual), width:barW, height:residualH, fill:colors[d.bits]});
+        add("text", {x:bx+barW/2, y:height-pad.b+20, "text-anchor":"middle", class:"tick"}, `${d.bits} bit`);
+        add("text", {x:bx+barW/2, y:y(d.upper)-6, "text-anchor":"middle", class:"tick"}, fmt(d.upper,3));
+      });
+      add("text", {x:(width+pad.l-pad.r)/2, y:height-12, "text-anchor":"middle", class:"label"}, "coefficient quantization");
+      add("text", {x:18, y:(height+pad.t-pad.b)/2, transform:`rotate(-90 18 ${(height+pad.t-pad.b)/2})`, "text-anchor":"middle", class:"label"}, "relative residual");
+    }
+
+    function fillTable() {
+      const tbody = document.querySelector("#rowsTable tbody");
+      quantized.filter(d => [8,16,24].includes(d.bits)).forEach(d => {
+        const tr = document.createElement("tr");
+        [d.N, d.bits, d.dictionary, d.desc, fmt(d.residual,6), fmt(d.upper,6), d.condition.toFixed(2)].forEach(v => {
+          const td = document.createElement("td");
+          td.textContent = v;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+    }
+
+    drawMdlCurve();
+    drawNTrend();
+    drawPenaltyBars();
+    fillTable();
+  </script>
+</body>
+</html>
