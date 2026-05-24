@@ -187,10 +187,10 @@ qc_edges = [
     ('PHYS-QC-001','755',0.77,'generic','B_h[g], PMF Tier-1'),
     ('PHYS-QC-001','20',0.64,'geometry_exhausted','Sunflower closure — SCOPED BUCKET per GSP (displacement-current cost, no geometric handle)'),
     ('PHYS-QC-001','141',0.61,'generic','Consecutive primes AP'),
-    ('PHYS-QC-001','634',0.58,'generic','EGZ (Erdős-Ginzburg-Ziv)'),
-    ('PHYS-QC-001','505',0.57,'generic','Covering systems'),
+    ('PHYS-QC-001','634',0.58,'generic','Triangle tiling / congruent triangle dissection'),
+    ('PHYS-QC-001','505',0.57,'generic','Borsuk diameter covering'),
     ('PHYS-QC-001','233',0.54,'generic','Cap sets'),
-    ('PHYS-QC-001','905',0.52,'generic','Additive bases'),
+    ('PHYS-QC-001','905',0.52,'generic','Triangle-edge supersaturation'),
     ('PHYS-QC-001','89',0.50,'generic','Distinct distances'),
 ]
 for phys,prob,sim,cls,note in qc_edges:
