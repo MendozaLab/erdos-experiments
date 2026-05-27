@@ -1,0 +1,15 @@
+[package]
+name = "erdos1038-fast"
+version = "0.1.0"
+edition = "2021"
+description = "High-performance sublevel measure evaluator for Erdős Problem #1038"
+
+[lib]
+name = "erdos1038_fast"
+path = "lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.22", features = ["extension-module"] }
+rayon = "1.10"
+inari = "2.0"

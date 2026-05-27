@@ -1,0 +1,17 @@
+{
+  "claimed_dimension": 24,
+  "count_derivation": "The consumed conditioning gate records the best basis matrix shape as [24, 24], and the gap-period vector legitimacy rewrite records the 24-row period contract",
+  "dimension_derivation": "24 gap-period kernel rows from the 25-component PUBLIC cloud: one normalization row is not a period row, so the period-kernel dimension is m-1 for m=25 components",
+  "expected_failure_modes": [
+    "the f64 orthogonalizing transform cannot be interval-certified",
+    "the 11 rank-recovered directions are not interval-independent",
+    "the transformed period matrix has interval condition number above threshold",
+    "a superseded upstream packet is accidentally consumed",
+    "f64 condition evidence is mistaken for directed interval evidence"
+  ],
+  "object_being_audited": "Stage-B interval certificate for the transformed 24-row gap-period matrix basis selected by the stable-basis conditioning gate",
+  "object_count": 24,
+  "packet_id": "EXP-MATH-ERDOS1038-PHI-K-STABLE-GAP-PERIOD-BASIS-INTERVAL-CERTIFICATE-20260527-01",
+  "sign_convention": "Right-transform convention: transformed_period_matrix = seed_period_matrix @ basis_transform. Rows are gap-period functionals; columns are transformed basis functions. The signed principal-value source convention is inherited but not evaluated in this packet.",
+  "sign_convention_source": "EXP-MATH-ERDOS1038-PHI-K-STABLE-GAP-PERIOD-BASIS-CONDITIONING-GATE-20260527-01 for the right-transform basis convention; EXP-MATH-ERDOS1038-PHI-K-INTERIOR-GAP-SOURCE-REGULARIZATION-PILOT-20260527-02 for signed principal-value source orientation; this packet performs no potential-sign replay"
+}

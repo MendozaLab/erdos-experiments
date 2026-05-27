@@ -1,0 +1,112 @@
+{
+  "altitude": "8525 m -- unchanged",
+  "claim_ceiling": "Gap-period vector rewrite-contract packet only. This packet does not interval-audit a period residual, does not prove signed period-matrix legitimacy, does not compose attainment, does not prove selector existence, does not close KKT composition, does not give a global reduction, does not solve #1038, and does not improve public SOTA.",
+  "created_utc": "2026-05-27T17:49:00+00:00",
+  "gate_checks": {
+    "all_positive_atoms_directly_supported": false,
+    "altitude_reconsideration_allowed": false,
+    "attainment_composed": false,
+    "component_count_is_25": true,
+    "gap_period_row_count_is_24": true,
+    "mixed_atom_transfer_pending": true,
+    "old_27_row_model_retired": true,
+    "period_polynomial_degree_bound_is_23": true,
+    "period_residual_audit_ready": false,
+    "right_tail_negative_atom_directly_supported": true,
+    "signed_period_legitimacy_proved": false,
+    "source_result_sidecars_ok": true
+  },
+  "hypothesis_status": {
+    "ATTAINED_WITNESS_TYPED_DUAL_MARGIN": "PENDING_PERIOD_LEGITIMACY_COMPOSITION",
+    "GAP_PERIOD_VECTOR_RESIDUAL_AUDIT": "PENDING_AFTER_TRANSFER",
+    "GAP_PERIOD_VECTOR_ROW_MODEL": "CONTRACT_EMITTED_24_ROWS",
+    "GLOBAL_REDUCTION": "UNTOUCHED",
+    "KKT_COMPOSITION": "PENDING",
+    "POSITIVE_CORE_GAP_KERNEL_TRANSFER": "PENDING_MIXED_ATOM_THEOREM",
+    "RIGHT_TAIL_NEGATIVE_ATOM_GAP_KERNEL": "AVAILABLE_FOR_CURRENT_WITNESS",
+    "SIGNED_WITNESS_PERIOD_MATRIX_LEGITIMACY": "PENDING_MIXED_ATOM_TRANSFER_AND_RESIDUAL_AUDIT"
+  },
+  "next_blocker": "Prove or falsify the mixed-atom gap-kernel transfer: endpoint and interior-gap positive atoms must be legitimate inputs to the 24-row hyperelliptic gap-period vector, or the signed witness must be rebuilt with exterior-source-only atoms.",
+  "packet_id": "EXP-MATH-ERDOS1038-PHI-K-GAP-PERIOD-VECTOR-LEGITIMACY-REWRITE-20260527-01",
+  "products": {
+    "atom_domain_transfer_audit": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-PHI-K-GAP-PERIOD-VECTOR-LEGITIMACY-REWRITE-20260527-01_ATOM_DOMAIN_TRANSFER_AUDIT.json",
+    "gap_period_vector_contract": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-PHI-K-GAP-PERIOD-VECTOR-LEGITIMACY-REWRITE-20260527-01_GAP_PERIOD_VECTOR_CONTRACT.json",
+    "obligation_ledger": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-PHI-K-GAP-PERIOD-VECTOR-LEGITIMACY-REWRITE-20260527-01_OBLIGATION_LEDGER.jsonl",
+    "report": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-PHI-K-GAP-PERIOD-VECTOR-LEGITIMACY-REWRITE-20260527-01_REPORT.md",
+    "theorem_target": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-PHI-K-GAP-PERIOD-VECTOR-LEGITIMACY-REWRITE-20260527-01_THEOREM_TARGET.md"
+  },
+  "public_sota": "Problem open; no public SOTA improvement.",
+  "recommended_next_pitch": "EXP-MATH-ERDOS1038-PHI-K-MIXED-ATOM-GAP-KERNEL-TRANSFER-GATE-20260527-01",
+  "route_type": "gap_period_vector_legitimacy_rewrite",
+  "source_packets": {
+    "hyperelliptic_harmonic_measure_derivation_gate": {
+      "actual_sha256": "f5ebc1f68048969b723d7000db91b3a979c0647f9d7880525f083fbd2ae50d52",
+      "exists": true,
+      "expected_sha256": "f5ebc1f68048969b723d7000db91b3a979c0647f9d7880525f083fbd2ae50d52",
+      "packet_id": "EXP-MATH-ERDOS1038-HYPERELLIPTIC-HARMONIC-MEASURE-DERIVATION-GATE-20260526-01",
+      "results_path": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-HYPERELLIPTIC-HARMONIC-MEASURE-DERIVATION-GATE-20260526-01_RESULTS.json",
+      "sha_ok": true,
+      "source_status": null,
+      "source_verdict": "HYPERELLIPTIC_HARMONIC_MEASURE_DERIVATION_GATE_PASS__GLOBAL_MARGIN_PENDING",
+      "status": "OK"
+    },
+    "kernel_definition_gate": {
+      "actual_sha256": "e34f17d20b154a1e01bd8c26024e419fc6d62ddfd8ab465d76ebc864a88d1467",
+      "exists": true,
+      "expected_sha256": "e34f17d20b154a1e01bd8c26024e419fc6d62ddfd8ab465d76ebc864a88d1467",
+      "packet_id": "EXP-MATH-ERDOS1038-PHI-K-RIGHT-TAIL-PERIOD-ROW-KERNEL-DEFINITION-GATE-20260527-02",
+      "results_path": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-PHI-K-RIGHT-TAIL-PERIOD-ROW-KERNEL-DEFINITION-GATE-20260527-02_RESULTS.json",
+      "sha_ok": true,
+      "source_status": "RIGHT_TAIL_PERIOD_ROW_KERNEL_DEFINITION_GATE_BLOCKED__HYPERELLIPTIC_GAP_PERIOD_KERNEL_AVAILABLE_BUT_27_ROW_TAIL_KERNEL_NOT_DEFINED",
+      "source_verdict": "KERNEL_DEFINITION_NOT_CLOSED__REWRITE_TO_GAP_PERIOD_VECTOR_OR_PROVE_NEW_TAIL_FUNCTIONAL",
+      "status": "OK"
+    },
+    "period_corrected_signed_witness_rust_inari_replay": {
+      "actual_sha256": "ee34f5c522787cbe34d4386518bb14278765742973bf8f97021b2a12e55e375f",
+      "exists": true,
+      "expected_sha256": "ee34f5c522787cbe34d4386518bb14278765742973bf8f97021b2a12e55e375f",
+      "packet_id": "EXP-MATH-ERDOS1038-PHI-K-PERIOD-CORRECTED-SIGNED-WITNESS-RUST-INARI-REPLAY-20260527-01",
+      "results_path": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-PHI-K-PERIOD-CORRECTED-SIGNED-WITNESS-RUST-INARI-REPLAY-20260527-01_RESULTS.json",
+      "sha_ok": true,
+      "source_status": "PERIOD_CORRECTED_SIGNED_WITNESS_RUST_INARI_REPLAY_PASS__SIGN_AUDIT_AND_PANEL_LOWER_BOUNDS_CERTIFIED_FOR_FIXED_CLOUD__PERIOD_THEOREM_PENDING",
+      "source_verdict": "SIGNED_WITNESS_RUST_INARI_REPLAY_CERTIFIED_FIXED_CLOUD__PERIOD_MATRIX_THEOREM_NEXT",
+      "status": "OK"
+    },
+    "right_tail_period_correction_theorem_scaffold": {
+      "actual_sha256": "4c4c4153e00794690ac6efc1fd9dc29f79658f12761b8a8518bc0805d4063226",
+      "exists": true,
+      "expected_sha256": "4c4c4153e00794690ac6efc1fd9dc29f79658f12761b8a8518bc0805d4063226",
+      "packet_id": "EXP-MATH-ERDOS1038-PHI-K-RIGHT-TAIL-PERIOD-CORRECTION-THEOREM-SCAFFOLD-20260527-01",
+      "results_path": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-PHI-K-RIGHT-TAIL-PERIOD-CORRECTION-THEOREM-SCAFFOLD-20260527-01_RESULTS.json",
+      "sha_ok": true,
+      "source_status": "RIGHT_TAIL_PERIOD_CORRECTION_THEOREM_SCAFFOLD_PASS__THEOREM_SHAPE_STATED__PERIOD_ROWS_AND_RESIDUAL_AUDIT_PENDING",
+      "source_verdict": "RIGHT_TAIL_PERIOD_CORRECTION_THEOREM_STATED_FOR_SIGNED_WITNESS__LEGITIMACY_NOT_PROVED",
+      "status": "OK"
+    },
+    "root_factor_full_panel_replay": {
+      "actual_sha256": "7279d33d48d97048366741a458d8382ef800d476ad9e50e4b48d20e258ed8ede",
+      "exists": true,
+      "expected_sha256": "7279d33d48d97048366741a458d8382ef800d476ad9e50e4b48d20e258ed8ede",
+      "packet_id": "EXP-MATH-ERDOS1038-PHI-K-SCALED-COEFFICIENT-ROOT-FACTOR-FULL-PANEL-REPLAY-20260527-01",
+      "results_path": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-PHI-K-SCALED-COEFFICIENT-ROOT-FACTOR-FULL-PANEL-REPLAY-20260527-01_RESULTS.json",
+      "sha_ok": true,
+      "source_status": "ROOT_FACTOR_DEPENDENCY_FULL_PANEL_REPLAY_PASS__CROSSINGS_COMPONENTS_GAP_GUARDS_TAILS_CERTIFIED__DIRECT_GAP_COVER_DIAGNOSTIC_INCONCLUSIVE",
+      "source_verdict": null,
+      "status": "OK"
+    },
+    "signed_jordan_compactness_extension_gate": {
+      "actual_sha256": "b43d81c55fddc87ef58044e953aaf6633a690e4e773f81d940b7788a935308f2",
+      "exists": true,
+      "expected_sha256": "b43d81c55fddc87ef58044e953aaf6633a690e4e773f81d940b7788a935308f2",
+      "packet_id": "EXP-MATH-ERDOS1038-PHI-K-SIGNED-JORDAN-COMPACTNESS-EXTENSION-GATE-20260527-01",
+      "results_path": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos-1038/EXP-MATH-ERDOS1038-PHI-K-SIGNED-JORDAN-COMPACTNESS-EXTENSION-GATE-20260527-01_RESULTS.json",
+      "sha_ok": true,
+      "source_status": "SIGNED_JORDAN_COMPACTNESS_EXTENSION_GATE_PASS__NARROW_RIGHT_TAIL_SIGNED_CLASS_COMPACT_AND_CONTAINS_CERTIFIED_WITNESS__PERIOD_THEOREM_PENDING",
+      "source_verdict": "FINITE_DIMENSIONAL_SIGNED_JORDAN_COMPACTNESS_AVAILABLE_FOR_ONE_RIGHT_TAIL_NEGATIVE_ATOM__PERIOD_LEGITIMACY_AND_ATTAINMENT_COMPOSITION_PENDING",
+      "status": "OK"
+    }
+  },
+  "status": "GAP_PERIOD_VECTOR_LEGITIMACY_REWRITE_PASS__24_ROW_CONTRACT_EMITTED__ATOM_DOMAIN_TRANSFER_PENDING",
+  "verdict": "REWRITE_CONTRACT_CREATED__PERIOD_LEGITIMACY_PENDING_MIXED_ATOM_KERNELS",
+  "version": "20260527-01"
+}

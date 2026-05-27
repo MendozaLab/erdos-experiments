@@ -1,0 +1,43 @@
+{
+  "best_f64_target_basis": "chebyshev_global__weighted_qr_orthogonalized",
+  "claim_ceiling": "Backend requirements only. These fields are not computed by this Python packet.",
+  "packet_id": "EXP-MATH-ERDOS1038-PHI-K-STABLE-GAP-PERIOD-BASIS-INTERVAL-CERTIFICATE-20260527-01",
+  "required_stages": [
+    {
+      "name": "transform_interval_certificate",
+      "pass_condition": "interval upper bound on transform condition < 1e10",
+      "required_fields": [
+        "basis_transform_entry_intervals",
+        "transform_condition_interval_upper_bound",
+        "transform_column_action_interval_bounds",
+        "proof_that_transform_matches_right-transform convention"
+      ],
+      "stage": "B1"
+    },
+    {
+      "name": "rank_recovered_direction_certificate",
+      "pass_condition": "all recovered directions have interval-certified separation from the robust 13-dimensional seed span",
+      "required_fields": [
+        "robust_seed_rank",
+        "recovered_direction_count",
+        "interval_independence_witnesses_for_recovered_directions",
+        "span-separation lower bounds from the 13 robust directions"
+      ],
+      "stage": "B2"
+    },
+    {
+      "name": "transformed_matrix_interval_certificate",
+      "pass_condition": "interval upper bound on transformed matrix condition < 1e10",
+      "required_fields": [
+        "transformed_period_matrix_entry_intervals",
+        "smallest_singular_value_interval_lower_bound",
+        "largest_singular_value_interval_upper_bound",
+        "condition_number_interval_upper_bound"
+      ],
+      "stage": "B3"
+    }
+  ],
+  "status": "BLOCKED_BACKEND_NOT_IMPLEMENTED",
+  "target_backend": "<H2_MATH_REPO>/Math-Problems/Erdos-Standard/erdos1038-fast/src/bin/phi_k_stable_gap_period_basis_interval_certificate_backend.rs",
+  "target_backend_exists": false
+}
