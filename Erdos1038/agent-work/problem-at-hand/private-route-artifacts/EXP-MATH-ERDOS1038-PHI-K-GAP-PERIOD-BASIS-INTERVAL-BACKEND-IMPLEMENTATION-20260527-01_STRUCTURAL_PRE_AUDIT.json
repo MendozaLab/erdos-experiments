@@ -1,0 +1,18 @@
+{
+  "claimed_dimension": 24,
+  "count_derivation": "The backend rejects 27-row/normalization-inclusive payloads and accepts only 24-row contract fixtures.",
+  "dimension_derivation": "The real downstream certificate is for the 24-row gap-period kernel; normalization is excluded from the period rows.",
+  "expected_failure_modes": [
+    "27-vs-24 row mismatch",
+    "normalization row leakage into period rows",
+    "sign convention mismatch",
+    "transform condition above threshold",
+    "missing recovered-direction independence witnesses",
+    "nonpositive smallest singular value"
+  ],
+  "object_being_audited": "Fail-closed backend harness for the Stage-B stable gap-period basis interval certificate",
+  "object_count": 24,
+  "packet_id": "EXP-MATH-ERDOS1038-PHI-K-GAP-PERIOD-BASIS-INTERVAL-BACKEND-IMPLEMENTATION-20260527-01",
+  "sign_convention": "Right-transform convention: transformed_period_matrix = seed_period_matrix @ basis_transform. This packet tests the sign-convention guard, not the real period residual.",
+  "sign_convention_source": "EXP-MATH-ERDOS1038-PHI-K-STABLE-GAP-PERIOD-BASIS-INTERVAL-CERTIFICATE-20260527-01"
+}

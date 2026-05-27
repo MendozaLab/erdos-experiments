@@ -42,18 +42,47 @@ The useful next blocker is not a residual audit. The residual audit is blocked
 until the period object, endpoint-source admissibility, and basis interval
 certificate are all sound.
 
-Primary current packet target:
+Primary current packet landed locally and is now mirrored here:
 
 ```text
 EXP-MATH-ERDOS1038-PHI-K-GAP-PERIOD-BASIS-INTERVAL-BACKEND-IMPLEMENTATION-20260527-01
 ```
 
-Goal: design and implement the missing interval backend for:
+Status:
+
+```text
+GAP_PERIOD_BASIS_INTERVAL_BACKEND_IMPLEMENTATION_PASS__FAIL_CLOSED_FIXTURES_PASS__PRIVATE_NUMERIC_PAYLOADS_PENDING
+```
+
+Meaning: the Rust/Inari backend harness now exists and passes synthetic
+fail-closed fixtures. It rejects the known bad cases before any real private
+numeric payload is consumed:
+
+- 27-vs-24 row mismatch;
+- normalization row leakage;
+- sign-convention mismatch;
+- transform condition above threshold;
+- missing recovered-direction independence witnesses;
+- nonpositive smallest singular value.
+
+It does not certify the real B1/B2/B3 payload. The next packet target is:
+
+```text
+EXP-MATH-ERDOS1038-PHI-K-GAP-PERIOD-BASIS-PRIVATE-PAYLOAD-INTEGRATION-20260527-01
+```
+
+Goal: feed real private numeric interval payloads into the backend for:
 
 - B1: transform interval certificate;
 - B2: independence witnesses for the recovered basis directions;
 - B3: transformed period matrix interval entries and singular-value/condition
   bounds.
+
+The weighted-QR route is structurally suspect: f64 transformed matrix condition
+is about `264.93593439501007`, but the f64 transform condition is about
+`4.726362562410606e16` and the seed evaluation rank is only `13`. Treat this as
+high-risk until B1/B2 certify. Prepare the hyperelliptic-canonical basis
+fallback in parallel.
 
 Parallel theorem target:
 
