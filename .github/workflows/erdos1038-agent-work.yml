@@ -1,0 +1,81 @@
+name: Erdos1038 Agent Work
+
+on:
+  pull_request:
+    paths:
+      - "Erdos1038/**"
+      - ".github/workflows/erdos1038-agent-work.yml"
+      - ".github/PULL_REQUEST_TEMPLATE/erdos1038_packet.md"
+  push:
+    branches:
+      - "agent/codex/erdos-experiments-preserve-2026-05-24"
+    paths:
+      - "Erdos1038/**"
+      - ".github/workflows/erdos1038-agent-work.yml"
+      - ".github/PULL_REQUEST_TEMPLATE/erdos1038_packet.md"
+
+jobs:
+  erdos1038-agent-work:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Compile Python runners
+        run: |
+          python -m py_compile \
+            Erdos1038/agent-work/problem-at-hand/runner-source/*.py
+
+      - name: Parse JSON artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          for path in sorted(Path("Erdos1038").rglob("*.json")):
+              json.loads(path.read_text(encoding="utf-8"))
+              print(f"json ok: {path}")
+          PY
+
+      - name: Parse JSONL ledgers
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          for path in sorted(Path("Erdos1038").rglob("*.jsonl")):
+              for line_no, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+                  if line.strip():
+                      json.loads(line)
+              print(f"jsonl ok: {path}")
+          PY
+
+      - name: Verify result checksums
+        run: |
+          find Erdos1038 -name '*_RESULTS.sha256' -print0 | while IFS= read -r -d '' file; do
+            (cd "$(dirname "$file")" && shasum -a 256 -c "$(basename "$file")")
+          done
+
+      - name: Check agent-work manifest
+        run: |
+          shasum -a 256 -c Erdos1038/agent-work/MANIFEST.sha256
+
+      - name: Cargo check #1038 backend
+        working-directory: Erdos1038/agent-work/problem-at-hand/backend-source
+        run: |
+          cargo check --all-targets
+
+      - name: Run scaffold runners
+        run: |
+          tmpdir="$(mktemp -d)"
+          cp -R Erdos1038 "$tmpdir/Erdos1038"
+          rm -f "$tmpdir"/Erdos1038/agent-work/problem-at-hand/private-route-artifacts/EXP-MATH-ERDOS1038-PHI-K-DEPENDENT-VIETA-IMAGE-CONSUMER-20260527-01_*
+          python "$tmpdir/Erdos1038/agent-work/problem-at-hand/runner-source/run_phi_k_dependent_vieta_image_consumer.py"

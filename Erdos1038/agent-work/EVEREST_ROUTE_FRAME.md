@@ -94,3 +94,38 @@ Do not upgrade any of the following from this public staging lane:
 
 Mode 2 work product can propose a ladder, rope, or route repair. It cannot say
 the summit was reached.
+
+## End-to-End Summit Attempts
+
+An external agent may be asked to attempt the entire problem, not only one
+packet. That is allowed, but it changes the required bookkeeping:
+
+```text
+MODE_2_INTENSE_SOLVE_END_TO_END
+```
+
+means:
+
+- attack all open routes that look relevant;
+- use public papers and public Git context;
+- propose or produce code, proof scaffolds, theorem statements, falsifiers,
+  and PRs;
+- keep going until a real stop condition appears;
+- maintain the Everest route ledger incrementally.
+
+It does not mean:
+
+- claim a solution without a complete proof;
+- skip packet receipts;
+- treat external reasoning as verified evidence;
+- overwrite the current route map with a narrative after the fact.
+
+For end-to-end work, every route move must add a row to:
+
+```text
+Erdos1038/agent-work/EVEREST_ROUTE_PLAYBACK.jsonl
+```
+
+The playback ledger is for human review and later animation/playback. It should
+record route forks, failed gates, recovered gates, altitude claims, blockers,
+dependencies, and next actions as they happen.
