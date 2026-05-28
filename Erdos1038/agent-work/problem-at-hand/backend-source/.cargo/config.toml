@@ -1,0 +1,33 @@
+# Erdos1038 backend Cargo configuration.
+#
+# Required by the inari interval-arithmetic crate (v2.0): inari uses FMA
+# intrinsics that the default rustc target features do not enable. Without
+# a target-cpu specification, inari fails to compile with 49 errors of the
+# form "cannot find function `sub1_ru` in this scope" (functions live in
+# inari's FMA SIMD backend which is gated on target-cpu).
+#
+# Per inari's README: "Haswell-based and newer processors are supported.
+# You need to specify the target CPU when building a crate that depends
+# on inari... change `native` to `haswell` for the best compatibility if
+# you are going to distribute binaries."
+#
+# We use `haswell` rather than `native` for:
+# - Reproducible builds across local + CI + collaborator environments
+# - Portable binaries (Haswell is 2013 vintage; any modern x86-64 host
+#   in GitHub Actions / collaborator laptops / cloud runners supports it)
+# - Avoiding the "works on my machine" problem when binaries are shared
+#
+# For AArch64 builds, this setting is inert (the [target.aarch64-*] block
+# below is empty by default; inari's AArch64 backend doesn't require
+# explicit target-cpu).
+
+[build]
+rustflags = ["-C", "target-cpu=haswell"]
+
+[target.aarch64-apple-darwin]
+# inari's AArch64 backend works without explicit target-cpu
+rustflags = []
+
+[target.aarch64-unknown-linux-gnu]
+# inari's AArch64 backend works without explicit target-cpu
+rustflags = []
