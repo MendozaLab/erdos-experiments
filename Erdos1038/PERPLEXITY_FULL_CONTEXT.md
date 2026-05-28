@@ -9,6 +9,24 @@ Claude, Codex, and human reviewers working from the public
 It is a context packet, not proof evidence. Local packet artifacts, checksums,
 Rust/Lean builds, and PR checks decide what is actually verified.
 
+## Route status as of 2026-05-27
+
+The weighted-QR route is demoted to diagnostic only. Its f64 transform
+condition is approximately 4.7e16, which disqualifies it as a primary
+certificate — the apparent niceness of the post-transform condition (~264.9)
+is an artifact of passing through a violently ill-conditioned step, not a
+property of the basis itself. The canonical hyperelliptic basis is now the
+primary parallel route; the weighted-QR diagnostic tooling is retained for
+mechanical comparison but not treated as a summit-critical path. The dependent
+Vieta consumer remains blocked on six missing receipts (`ROOT_BOX.json`,
+`ROOT_MULTIPLICITY_LEDGER.json`, `ORDERED_ROOT_INTERVALS.json`,
+`SCALED_VIETA_IMAGE_CONTRACT.json`, `FIXED_CLOUD_BOUND_CERTIFICATE.json`,
+`ATTAINED_WITNESS_TYPED_DUAL_MARGIN_RESULTS.json`) — this is not a dead end,
+it is the correct next local-agent deliverable. The coeff-box theorem is
+dangerous to assert without a falsifier-first test. The endpoint-limit kernel,
+KKT/slack, and global reduction threads remain summit-level open work. Plan
+reference: `/Users/kenbengoetxea/.claude/plans/remove-all-items-that-hashed-donut.md`.
+
 ## Public Git Entry
 
 ```text

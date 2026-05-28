@@ -78,25 +78,11 @@ Goal: feed real private numeric interval payloads into the backend for:
 - B3: transformed period matrix interval entries and singular-value/condition
   bounds.
 
-### Route status — weighted-QR: STATUS: DEMOTED — diagnostic only (2026-05-27)
-
-The weighted-QR route is demoted to diagnostic capability only and is not a
-summit-critical certificate. The evidence: the f64 transform condition is
-approximately `4.726362562410606e16`, the seed evaluation rank is only `13`,
-and the number of recovered independent basis directions is `11`. The "nice"
-apparent condition of approximately `264.9` only emerges after passing through
-a violently ill-conditioned transform — which means the apparent niceness is an
-artifact of the conditioning step, not a property of the underlying basis. No
-interval certification can be built on top of that without first addressing the
-transform conditioning; the weighted-QR route does not provide a path to a
-legitimate basis certificate.
-
-The canonical hyperelliptic basis is now the **primary parallel route** — not a
-fallback. The hyperelliptic-canonical basis seed work
-(`EXP-MATH-ERDOS1038-PHI-K-HYPERELLIPTIC-CANONICAL-BASIS-INTERVAL-SEED-20260527-01`)
-should be treated as the leading route alongside the endpoint-limit kernel and
-KKT/slack/global reduction threads. The weighted-QR diagnostic tooling is
-retained for mechanical comparison purposes only.
+The weighted-QR route is structurally suspect: f64 transformed matrix condition
+is about `264.93593439501007`, but the f64 transform condition is about
+`4.726362562410606e16` and the seed evaluation rank is only `13`. Treat this as
+high-risk until B1/B2 certify. Prepare the hyperelliptic-canonical basis
+fallback in parallel.
 
 Parallel theorem target:
 
