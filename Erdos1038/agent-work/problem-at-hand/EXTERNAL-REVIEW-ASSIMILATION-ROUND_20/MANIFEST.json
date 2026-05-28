@@ -1,0 +1,94 @@
+{
+  "packet_id": "EXTERNAL-REVIEW-ASSIMILATION-ROUND_20",
+  "round_id": "ROUND_20",
+  "created_utc": "2026-05-28T04:50:00Z",
+  "external_agent": "perplexity-computer",
+  "external_dispatch": {
+    "linear_comment_id_initial": "44d36001-6271-41bb-b77e-8d239718a8c9",
+    "linear_comment_id_corrective": "a5553f4e-7fa7-44e2-b9a9-2d9c40eb0570",
+    "linear_issue": "KEN-5",
+    "dispatched_utc_initial": "2026-05-28T03:49:08Z",
+    "dispatched_utc_corrective": "2026-05-28T04:22:50Z",
+    "mode": "MODE_2_INTENSE_SOLVE_END_TO_END",
+    "tracks": ["G1 (genus-growth conditioning probe through g=24)", "G2 (non-tautological transform diagnostic, Option b basis-change matrix conditioning)"]
+  },
+  "bundle_provenance": {
+    "source_path": "/Users/kenbengoetxea/Downloads/round20_bundle/",
+    "substrate_path": "Research-Hub/perplexity-substrate/projects/erdos-1038/jobs/ROUND_20/",
+    "bundle_manifest": "Research-Hub/perplexity-substrate/projects/erdos-1038/jobs/ROUND_20/BUNDLE.sha256",
+    "pc_self_manifest": "MANIFEST.json (sha256 479e8d07...e7055c2b)",
+    "pc_branch_read": "agent/claude/round-19-assimilation-20260527 @ 94606179a6deb9c60fbdd6d44498a7470d67da3f",
+    "pc_anchor_compared_against": "4d5c42b27",
+    "anchor_is_ancestor_of_pc_head": true,
+    "files": [
+      {"name": "MANIFEST.json", "sha256": "479e8d07789fef99cd67eb7bcb5b4e8d71a3253551c0155b46712445e7055c2b"},
+      {"name": "GENUS_GROWTH_CONDITIONING_REPORT.json", "sha256": "56d1cc0c6f3f2432ef8b6ccc7fc28f6f007ca36fdc2aea0641c2ecad7c072fb7"},
+      {"name": "genus_growth_sweep.py", "sha256": "c94dd90213d0aaf7642f71fa95bee3144ccf2b5d88f0cd7e3b79c14b4bd690f8"},
+      {"name": "CONDITIONING_LITERATURE.md", "sha256": "ad2da90cbe112db83574184ed526d9d834552e4fa559177f73c7d03397210ed9"},
+      {"name": "TRANSFORM_DIAGNOSTIC_REPORT.json", "sha256": "98142037862b6288e0a5b853578caf4618e3698e10e2c1bb4845e0577ee298f8"},
+      {"name": "transform_diagnostic.py", "sha256": "e41a50d0dce52790ddd068cb674a4cc68e22c5262d97ccf28c420b4de062afb6"},
+      {"name": "TRANSFORM_DIAGNOSTIC_RATIONALE.md", "sha256": "79316f90eea3a035b977d1794c853e9da8c989c99254123c5be11fbd7e0af24f"},
+      {"name": "PROPOSED_PLAYBACK_ROWS.jsonl", "sha256": "8a9d677616acc50b3daa3ecab21c1cfca6d5eb1d54a94b3dbba084305c5d18b6"}
+    ]
+  },
+  "headline_results": {
+    "G1_verdict": "FAIL_CANONICAL_MONOMIAL_AT_OR_BEFORE_G24",
+    "G1_first_crossing_genus_uniform": 24,
+    "G1_per_genus_max_cond_M": {
+      "g2": 2.748,
+      "g4": 18.67,
+      "g8": 1440.37,
+      "g12": 144370.27,
+      "g16": 15807207.56,
+      "g20": 1806931859.40,
+      "g24": 211888589927.56
+    },
+    "G2_verdict": "DEFENSIVE_PIVOT_TO_CHEBYSHEV_RESCALED_IS_ACTIONABLE_UNDER_EQUILIBRATION",
+    "G2_g24_max_block_cond_equilibrated": 11762000.0,
+    "G2_g24_max_block_cond_raw": 4.631e118,
+    "weighted_qr_demote_cond_for_comparison": 4.7e16,
+    "non_tautology_evidence": "cond(M) ~2.1e11 (G1) vs equilibrated cond(P) ~1.18e7 (G2) at g=24, eps=1e-4, jit=0: differ by 4 orders of magnitude. G2's basis-change matrix P is constructed from gap geometry alone (mid, half), independent of M's cycle integrals — verified by reading transform_diagnostic.py."
+  },
+  "verdicts": {
+    "MANIFEST.json": "ACCEPT",
+    "GENUS_GROWTH_CONDITIONING_REPORT.json": "ACCEPT",
+    "genus_growth_sweep.py": "ACCEPT",
+    "CONDITIONING_LITERATURE.md": "ACCEPT",
+    "TRANSFORM_DIAGNOSTIC_REPORT.json": "ACCEPT",
+    "transform_diagnostic.py": "ACCEPT_WITH_NOTES",
+    "TRANSFORM_DIAGNOSTIC_RATIONALE.md": "ACCEPT",
+    "PROPOSED_PLAYBACK_ROWS.jsonl": "ACCEPT_AND_INCORPORATE_VARIATION"
+  },
+  "status": "ASSIMILATED",
+  "claim_level_at_assimilation": 0,
+  "claim_ceiling": "Two methodology gaps (C1 tautological QR diagnostic, C2 unprobed genus-24 conditioning) closed with rigorous f64 evidence. Canonical hyperelliptic basis route stays PRIMARY PARALLEL but working basis pivots from unrescaled monomial to Chebyshev-rescaled. No #1038 altitude movement, no theorem advance, six receipts still absent. F64_SAMPLED_ONLY scope. G3 interval re-implementation + G4 endpoint-limit source vector remain local-only future work.",
+  "scope_tags": ["F64_SAMPLED_ONLY", "PUBLIC_SAFE_SCAFFOLD", "TRIAGE_PROBE_NOT_CERTIFICATE"],
+  "forbidden_claims_confirmed": [
+    "Does not claim #1038 solved",
+    "Does not claim altitude movement",
+    "Does not treat external prose as evidence",
+    "Does not turn synthetic fixtures into theorem pass",
+    "Does not promote claim level beyond 0"
+  ],
+  "confound_status_after_assimilation": {
+    "C1_tautological_qr_diagnostic": "RESOLVED — G2's basis-change matrix is constructed independently of M; non-tautology proven empirically (4-order-of-magnitude separation at g=24) and structurally (P depends only on gap geometry)",
+    "C2_unprobed_genus_24": "RESOLVED — G1 swept g={2,4,8,12,16,20,24} × 7 eps × 3 jitter = 147 trials; first cond(M) >= 1e10 crossing is g=24 across all (eps, jitter)",
+    "C3_f64_only_sampling": "STILL_OPEN — both sweeps remain F64_SAMPLED_ONLY; G3 interval re-implementation required for certified seed",
+    "C4_silent_main_fallback": "RESOLVED_BY_TEMPLATE_UPDATE_a4b5bc6 — substrate _template/PERPLEXITY.md §3 + §7 baseline now require git ls-remote check + forbid main-fallback (carried forward from Round 20 first-attempt incident)"
+  },
+  "route_state_after_assimilation": {
+    "canonical_hyperelliptic_basis": {
+      "status": "PRIMARY_PARALLEL",
+      "working_basis": "Chebyshev-rescaled T_{j-1}(scaled_x) dx/y (pivoted from unrescaled monomial after Round 20 G1 FAIL)",
+      "evidence_level": "Toy-scale f64 evidence through g=24; basis-change to Chebyshev-rescaled is well-conditioned at structural level under equilibration"
+    },
+    "weighted_qr_basis": "DEMOTED to diagnostic (unchanged)",
+    "dependent_vieta_image_consumer": "BLOCKED on six absent receipts (unchanged)",
+    "independent_coefficient_box_theorem": "DANGEROUS (unchanged)",
+    "endpoint_limit_source_kernel": "SUMMIT-LEVEL OPEN (unchanged)",
+    "kkt_strict_slack": "SUMMIT-LEVEL OPEN (unchanged)",
+    "global_reduction": "SUMMIT-LEVEL OPEN (unchanged)"
+  },
+  "playback_event_id": "evt-20260528-round-20-complete",
+  "next_local_gate": "EXP-MATH-ERDOS1038-PHI-K-HYPERELLIPTIC-CANONICAL-BASIS-INTERVAL-SEED-20260527-01 (G3 + G4 portion — both local-only)"
+}
