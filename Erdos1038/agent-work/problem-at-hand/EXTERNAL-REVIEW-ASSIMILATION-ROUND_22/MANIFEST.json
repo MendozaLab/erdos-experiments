@@ -1,0 +1,119 @@
+{
+  "packet_id": "EXTERNAL-REVIEW-ASSIMILATION-ROUND_22",
+  "round_id": "ROUND_22",
+  "created_utc": "2026-05-28T05:35:00Z",
+  "external_agent": "perplexity-computer",
+  "external_dispatch": {
+    "linear_comment_id": "f13c87ca",
+    "linear_issue": "KEN-5",
+    "dispatched_utc": "2026-05-28T05:00:00Z",
+    "mode": "MODE_1_REVIEW_RESEARCH_OPINE",
+    "tracks": [
+      "endpoint-limit source-kernel literature scout (24 citations)",
+      "FIXED_CLOUD_BOUND_CERTIFICATE schema proposal",
+      "putative morphisms M1-M5 with falsifiable tests T1-T5"
+    ]
+  },
+  "bundle_provenance": {
+    "substrate_path": "Research-Hub/perplexity-substrate/projects/erdos-1038/jobs/ROUND_22/",
+    "pc_self_manifest": "MANIFEST.json",
+    "pc_branch_read": "agent/claude/round-19-assimilation-20260527 @ 33109f0",
+    "pc_anchor_accepted": "33109f0",
+    "anchor_is_ancestor_of_pc_head": true,
+    "next_local_gate_md_status": "HTTP_404 — PC could not read EXTERNAL-REVIEW-ASSIMILATION-ROUND_19/NEXT_LOCAL_GATE.md via its sandbox access; file DOES exist locally (verified). PC pivoted to playback-row tail for Task C deferred status. See METHODOLOGY_NOTES §4.",
+    "files": [
+      {"name": "MANIFEST.json", "sha256": "SELF"},
+      {"name": "ENDPOINT_LIMIT_LITERATURE_SCOUT.md", "sha256": "2c8d7e1f21be9a9b46ffe3f2059c7e027f89375a96750b824499a6657ff668f0"},
+      {"name": "FIXED_CLOUD_BOUND_CERTIFICATE_SCHEMA_PROPOSAL.json", "sha256": "c3cbd8af5ab72132e28696654f61b18364b637aed55f35a0ead275641058338e"},
+      {"name": "ENDPOINT_LIMIT_KERNEL_MORPHISMS.md", "sha256": "3d69506a33c5803a49a4afb35e26f8a0cd3d5028ae72e22bc6c598c6526c40b5"},
+      {"name": "PROPOSED_PLAYBACK_ROWS.jsonl", "sha256": "b1e055a3d2fa2d9f9b1aadc6a7639d8f4b544a86844f51e0e1f23b3079845d68"}
+    ]
+  },
+  "headline_results": {
+    "citation_count": 24,
+    "citations_classified": {
+      "established_theorem_I": 21,
+      "putative_morphism_II": 0,
+      "exclusion_III": 3,
+      "dual_classification_I_plus_III": 3
+    },
+    "morphism_count": 5,
+    "morphisms": {
+      "M1": "Lubinsky-Bessel endpoint universality → endpoint source finite period contribution (test T1: density vanishing exponent fit)",
+      "M2": "Kuijlaars-Mo Cauchy kernel → source kernel = hyperelliptic Cauchy kernel residue (test T2: residue convergence as ε→0)",
+      "M3": "Bogatyrev period fiber degeneracy → rank-drop exclusion as component width → 0 (test T3: cond(M_T) vs component width)",
+      "M4": "Deift et al. theta-function parametrix → period row from boundary component = normal theta-row (test T4: linear independence + cond < 1e8; NOTE: bare a-period matrix vs symplectic Ω — see METHODOLOGY_NOTES §2)",
+      "M5": "Eichinger-Lukić Robin constant → FIXED_CLOUD_BOUND via renormalized energy (test T5: Vieta bound for f(x)=x^24)"
+    },
+    "exclusion_count": 2,
+    "exclusions": {
+      "X1": "Naive CD-kernel formula fails for biorthogonal structure (Claeys-Wang 2022) — must verify generic density-vanishing order before applying M1-M4",
+      "X2": "Eynard-Orantin quantization requires smooth ramification, fails at hard-wall boundary (Eynard et al. 2024)"
+    },
+    "new_confound": {
+      "id": "C5",
+      "description": "Boundary-component rank-drop risk at g=24. If the boundary-near atom's support interval is narrow, the associated period row may nearly degenerate (Bogatyrev M3), causing cond(M_T) to grow beyond threshold even under Chebyshev rescaling. Direct risk to Round 21 G2.5 outcome.",
+      "status": "OPEN",
+      "falsifiable_via": "T3 locally"
+    },
+    "schema_proposal": {
+      "description": "FIXED_CLOUD_BOUND_CERTIFICATE JSON Schema (draft 2020-12)",
+      "validation_rule_count": 10,
+      "validation_rule_ids": ["VLD-01", "VLD-02", "VLD-03", "VLD-04", "VLD-05", "VLD-06", "VLD-07", "VLD-08", "VLD-09", "VLD-10"],
+      "certificate_status_at_proposal": "UNCERTIFIED_SCHEMA_ONLY",
+      "note": "Schema only — no values populated. All six receipt references null in any populated instance until local receipts are produced."
+    }
+  },
+  "verdicts": {
+    "MANIFEST.json": "ACCEPT",
+    "ENDPOINT_LIMIT_LITERATURE_SCOUT.md": "ACCEPT",
+    "ENDPOINT_LIMIT_KERNEL_MORPHISMS.md": "ACCEPT_WITH_NOTES",
+    "FIXED_CLOUD_BOUND_CERTIFICATE_SCHEMA_PROPOSAL.json": "ACCEPT",
+    "PROPOSED_PLAYBACK_ROWS.jsonl": "ACCEPT_AND_INCORPORATE_VARIATION"
+  },
+  "status": "ASSIMILATED",
+  "claim_level_at_assimilation": 0,
+  "claim_ceiling": "Literature research framing only. 24 citations classified, 5 putative morphisms proposed, 2 exclusions identified, schema proposed. No #1038 altitude movement, no theorem advance, no receipt population. Morphisms are PUTATIVE — not verified against private cloud data. Six receipts still absent. G3+G4 local-only. endpoint_limit_source_kernel remains SUMMIT-LEVEL OPEN.",
+  "scope_tags": [
+    "LITERATURE_SCOUT_OUTPUT",
+    "SCHEMA_PROPOSAL_ONLY",
+    "PUTATIVE_MORPHISMS_ONLY",
+    "PUBLIC_SAFE_SCAFFOLD",
+    "MODE_1_NO_THEOREM_ADVANCE"
+  ],
+  "forbidden_claims_confirmed": [
+    "Does not claim #1038 solved",
+    "Does not claim altitude movement",
+    "Does not treat external prose as evidence",
+    "Does not populate the certificate",
+    "Does not invent receipts",
+    "Does not promote claim level beyond 0",
+    "Does not use ErdosAtlas/Collider internals as external literature",
+    "Does not present morphisms without falsifiable tests"
+  ],
+  "confound_status_after_assimilation": {
+    "C1_tautological_qr_diagnostic": "RESOLVED — carried forward from Round 20 (non-tautology proven empirically + structurally)",
+    "C2_unprobed_genus_24": "RESOLVED — carried forward from Round 20 (sweep complete through g=24; FAIL outcome quantified)",
+    "C3_f64_only_sampling": "STILL_OPEN — G3 interval re-implementation required for certified seed; local-only future work",
+    "C4_silent_main_fallback": "RESOLVED_BY_TEMPLATE_UPDATE_a4b5bc6 — substrate _template/PERPLEXITY.md §3 + §7 baseline updated; Round 22 verified no main-fallback",
+    "C5_boundary_component_rank_drop": "NEW — OPEN. Surfaced by Bogatyrev morphism M3: if boundary-near component has narrow support [aₑ, bₑ] with bₑ−aₑ ≪ 1, period row associated to that component may nearly degenerate. Falsifiable via T3 locally. Direct risk to cond(M_T) at g=24 even under Chebyshev rescaling."
+  },
+  "route_state_after_assimilation": {
+    "canonical_hyperelliptic_basis": {
+      "status": "PRIMARY_PARALLEL",
+      "working_basis": "Chebyshev-rescaled T_{j-1}(scaled_x) dx/y (post-Round 20 pivot)",
+      "note": "C5 introduces a new risk: if the boundary-near atom is narrow, cond(M_T) may exceed threshold. R21 G2.5 result (in flight) will determine whether this risk materializes."
+    },
+    "weighted_qr_basis": "DEMOTED to diagnostic (unchanged)",
+    "dependent_vieta_image_consumer": "BLOCKED on six absent receipts (unchanged)",
+    "independent_coefficient_box_theorem": "DANGEROUS (unchanged)",
+    "endpoint_limit_source_kernel": {
+      "status": "SUMMIT-LEVEL OPEN",
+      "note": "R22 provides literature foundation, schema target, and five putative morphisms. Gate EXP-MATH-ERDOS1038-PHI-K-ENDPOINT-LIMIT-SOURCE-KERNEL-GATE-20260527-01 remains open. Local execution required. M1 (Lubinsky-Bessel) and M2 (Kuijlaars-Mo) are highest-leverage morphisms for local investment."
+    },
+    "kkt_strict_slack": "SUMMIT-LEVEL OPEN (unchanged)",
+    "global_reduction": "SUMMIT-LEVEL OPEN, R23 in flight (unchanged)"
+  },
+  "playback_event_id": "evt-20260528-round-22-complete",
+  "next_local_gate": "See NEXT_LOCAL_GATE.md — T5 (Robin/Vieta toy test) runnable immediately; schema adoption; C5 tracking; M1+M2 for local endpoint-limit gate investment"
+}

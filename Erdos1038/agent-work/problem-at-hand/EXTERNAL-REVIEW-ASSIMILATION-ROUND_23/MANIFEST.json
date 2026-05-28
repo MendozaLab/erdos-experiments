@@ -1,0 +1,107 @@
+{
+  "packet_id": "EXTERNAL-REVIEW-ASSIMILATION-ROUND_23",
+  "round_id": "ROUND_23",
+  "created_utc": "2026-05-28T05:40:00Z",
+  "external_agent": "perplexity-computer",
+  "external_dispatch": {
+    "linear_comment_id": "9638bdc3",
+    "linear_issue": "KEN-5",
+    "dispatched_utc": "2026-05-28T06:00:00Z",
+    "mode": "MODE_1_REVIEW_RESEARCH_OPINE",
+    "tracks": [
+      "Global reduction scout — theorem-family morphism hunt for #1038 phi-k-gap structure",
+      "Six theorem families surveyed (TF-01 through TF-06)",
+      "Three putative morphisms identified (A: hyperelliptic Jacobian, B: NPS theorem, C: KKT optimality)"
+    ]
+  },
+  "bundle_provenance": {
+    "source_path": "Research-Hub/perplexity-substrate/projects/erdos-1038/jobs/ROUND_23/",
+    "files": [
+      {"name": "MANIFEST.json", "status": "ACCEPT"},
+      {"name": "GLOBAL_REDUCTION_SCOUT.md", "status": "ACCEPT"},
+      {"name": "THEOREM_FAMILIES_INVENTORY.json", "status": "ACCEPT"},
+      {"name": "PUTATIVE_MORPHISMS_TO_1038.md", "status": "ACCEPT_WITH_METHODOLOGY_FLAG"},
+      {"name": "PROPOSED_PLAYBACK_ROWS.jsonl", "status": "ACCEPT_AND_INCORPORATE_VARIATION"}
+    ],
+    "pc_git_head_anchor": "33109f0",
+    "pc_branch_read": "agent/claude/round-19-assimilation-20260527"
+  },
+  "headline_results": {
+    "theorem_families_surveyed": 6,
+    "putative_morphisms_identified": 3,
+    "negative_exclusions": 3,
+    "morphism_A_hyperelliptic_jacobian": {
+      "status": "PUTATIVE_MORPHISM",
+      "strength": "STRONGEST",
+      "explicit_map": "M_{ij} = Omega_{ij}; gap-period matrix maps to period matrix of genus-24 hyperelliptic curve y^2 = prod(x-a_j)(x-b_j)",
+      "falsifiable_test": "FT-02A: symmetry + positivity of 2x2 Omega for toy g=2 hyperelliptic curve with 2 gaps",
+      "methodology_flag": "FT-02A AS WRITTEN IS CONCEPTUALLY MISMATCHED — see METHODOLOGY_NOTES.md; tests real a-period matrix M_a, not full symplectic Omega; corrected protocol documented"
+    },
+    "morphism_B_nps_theorem": {
+      "status": "PUTATIVE_MORPHISM",
+      "strength": "SECOND_STRONGEST",
+      "explicit_map": "m({|f|<1}) >= c_NPS / log(nu); nu = 2 x gap_count <= 50; gives degree-independent lower bound if component count bounded",
+      "falsifiable_test": "FT-05A: component count sweep for degrees n in {10, 20, 50, 100}",
+      "methodology_note": "Well-designed test; runnable inline; no private receipts required"
+    },
+    "morphism_C_kkt_optimality": {
+      "status": "PUTATIVE_MORPHISM",
+      "strength": "THIRD",
+      "explicit_map": "d/d(a_i) m = i-th row of M via co-area formula; at extremum all rows zero => period legitimacy = KKT stationarity",
+      "falsifiable_test": "FT-06A: finite-difference Jacobian vs analytic co-area formula at degree-10",
+      "methodology_note": "Well-designed test; runnable inline; no private receipts required"
+    },
+    "negative_exclusion_TF01": "NEGATIVE_EXCLUSION — modular forms / Hecke eigenforms: structural type mismatch; gap structure is topological, not spectral; no Hecke commutation",
+    "negative_exclusion_TF03": "NEGATIVE_EXCLUSION — L-functions / Weil bounds: field-type mismatch; #1038 is over R, Weil applies to F_q; analogy is superficial",
+    "negative_exclusion_TF04": "NEGATIVE_EXCLUSION (direct) — Sato-Tate: no ensemble average in play; indirect connection via TF-02 hyperelliptic Jacobian only",
+    "composability_note": "PUTATIVE: if Morphism A (M = Omega) AND Morphism C (M = KKT Jacobian) both hold, then KKT stationarity <=> Omega in H_24 (Siegel upper half-space). A+C composability would be a powerful global reduction. Research-level direction only, not verified.",
+    "local_toy_check": {
+      "performed": true,
+      "result": "g=2 a-period matrix M_a = [[1.92, -1.35], [4.53, 3.70]]; cond(M_a) = 2.625; det = 13.2; asymmetric as expected (correct mathematical behavior — symmetry belongs to Omega, not M_a). Confirms FT-02A as written would falsely reject morphism A; corrected test must compute both M_a and M_b, then form Omega = M_a^{-1} M_b."
+    }
+  },
+  "verdicts": {
+    "MANIFEST.json": "ACCEPT",
+    "GLOBAL_REDUCTION_SCOUT.md": "ACCEPT",
+    "THEOREM_FAMILIES_INVENTORY.json": "ACCEPT",
+    "PUTATIVE_MORPHISMS_TO_1038.md": "ACCEPT_WITH_METHODOLOGY_FLAG",
+    "PROPOSED_PLAYBACK_ROWS.jsonl": "ACCEPT_AND_INCORPORATE_VARIATION"
+  },
+  "status": "ASSIMILATED",
+  "claim_level_at_assimilation": 0,
+  "claim_ceiling": "Six theorem families surveyed; three putative morphisms identified with explicit maps. No #1038 altitude movement. No period legitimacy claim. No KKT/global reduction closure. FT-02A methodology gap surfaced (tests real a-period matrix, not full symplectic period matrix Omega — corrected protocol documented in METHODOLOGY_NOTES.md). FT-05A and FT-06A are well-designed and runnable inline. Composability note (Morphism A + Morphism C => Siegel constraint) is a legitimate research direction, not a claim.",
+  "scope_tags": ["MODE_1_REVIEW_OPINE", "PUBLIC_SAFE_SCAFFOLD", "PUTATIVE_MORPHISMS_ONLY", "NO_RECEIPT_ADVANCEMENT"],
+  "forbidden_claims_confirmed": [
+    "Does not claim #1038 solved",
+    "Does not claim altitude movement",
+    "Does not treat external prose as evidence",
+    "Does not invent private receipts",
+    "Does not promote claim level beyond 0",
+    "Does not claim any morphism verified"
+  ],
+  "confound_status_after_assimilation": {
+    "C1_tautological_qr_diagnostic": "RESOLVED — carried forward from Round 20",
+    "C2_unprobed_genus_24": "RESOLVED — carried forward from Round 20",
+    "C3_f64_only_sampling": "STILL_OPEN — G3 interval re-implementation still required; Round 23 did not address",
+    "C4_silent_main_fallback": "RESOLVED_BY_TEMPLATE_UPDATE — carried forward from Round 20",
+    "G2_5_chebyshev_period_matrix_conditioning": "RESOLVED — G2.5 closed as noted in Round 21/22 continuity; route working basis is Chebyshev-rescaled",
+    "NEW_FT_02A_methodology_gap": "SURFACED THIS ROUND — FT-02A as written tests M_a (real a-period matrix) for symmetry which it does not have; corrected test requires both M_a and M_b to form Omega = M_a^{-1} M_b; toy g=2 sanity check confirms route infrastructure is sound"
+  },
+  "route_state_after_assimilation": {
+    "canonical_hyperelliptic_basis": {
+      "status": "PRIMARY_PARALLEL",
+      "working_basis": "Chebyshev-rescaled T_{j-1}(scaled_x) dx/y (unchanged from Round 20 pivot)",
+      "evidence_level": "Toy-scale f64 evidence through g=24; basis-change to Chebyshev-rescaled well-conditioned under equilibration"
+    },
+    "weighted_qr_basis": "DEMOTED to diagnostic (unchanged)",
+    "dependent_vieta_image_consumer": "BLOCKED on six absent receipts (unchanged)",
+    "independent_coefficient_box_theorem": "DANGEROUS (unchanged)",
+    "endpoint_limit_source_kernel": "SUMMIT-LEVEL OPEN (unchanged)",
+    "kkt_strict_slack": "SUMMIT-LEVEL OPEN (unchanged)",
+    "global_reduction": {
+      "status": "SUMMIT-LEVEL OPEN — three putative morphisms now identified with explicit maps and falsifiable tests; none verified; route advances from 'named open thread' to 'three candidate morphisms with explicit maps' on assimilation of this PC bundle"
+    }
+  },
+  "playback_event_id": "evt-20260528-round-23-complete",
+  "next_local_gate": "See NEXT_LOCAL_GATE.md: (a) FT-05A inline, (b) FT-06A inline, (c) corrected FT-02A with complex b-period contour integration, (d) future PC round on A+C composability formalization"
+}

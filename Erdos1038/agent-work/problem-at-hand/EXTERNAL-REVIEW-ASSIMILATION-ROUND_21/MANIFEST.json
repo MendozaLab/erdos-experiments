@@ -1,0 +1,85 @@
+{
+  "packet_id": "EXTERNAL-REVIEW-ASSIMILATION-ROUND_21",
+  "round_id": "ROUND_21",
+  "created_utc": "2026-05-28T05:30:00Z",
+  "external_agent": "perplexity-computer",
+  "external_dispatch": {
+    "linear_comment_id": "6eec5a97",
+    "linear_issue": "KEN-5",
+    "mode": "MODE_2_INTENSE_SOLVE_END_TO_END",
+    "tracks": ["G2.5 (Chebyshev-rescaled period matrix M_T own conditioning sweep, same axes as Round 20 G1)"]
+  },
+  "bundle_provenance": {
+    "substrate_path": "Research-Hub/perplexity-substrate/projects/erdos-1038/jobs/ROUND_21/",
+    "pc_self_manifest": "MANIFEST.json (sha256 — see ROUND_21 substrate MANIFEST.json files[] for per-file hashes)",
+    "pc_branch_read": "agent/claude/round-19-assimilation-20260527 @ 41d8a0f3a91ba248a748b63bb35a20154970324c",
+    "anchor_in_dispatch": "33109f0",
+    "anchor_is_ancestor_of_pc_head": true,
+    "main_fallback_used": false,
+    "branch_verification_preamble_passed": true,
+    "files": [
+      {"name": "MANIFEST.json", "sha256": "(from ROUND_21 substrate MANIFEST.json)", "kind": "metadata"},
+      {"name": "CHEBYSHEV_M_T_CONDITIONING_REPORT.json", "sha256": "e2f5e461262d81628a024aad874b8c0cdfcdf631b421885b4db60d27ea3915ba", "kind": "report", "size_bytes": 53359},
+      {"name": "CHEBYSHEV_M_T_RATIONALE.md", "sha256": "421892882bfca5d446cd275d13bfe7ef6a243ac69d926d8eac94ccbfabeaca18", "kind": "rationale", "size_bytes": 13104},
+      {"name": "chebyshev_m_t_sweep.py", "sha256": "56f46338b00e4cea08b5cc3607ab4620032a9a3aafa08be7e83cd52acd508658", "kind": "executable", "size_bytes": 15955},
+      {"name": "PROPOSED_PLAYBACK_ROWS.jsonl", "sha256": "f557f4a89acad114842ae0374be6a223560966090ef4dc3bc7a3a514d81c7933", "kind": "playback", "size_bytes": 5099}
+    ]
+  },
+  "headline_results": {
+    "decision": "RELABELING_ONLY_PIVOT_TO_ROW_SPACE_CYCLE_SPACE_EQUIVALENCE",
+    "decision_strengthening": "M_T is empirically worse than M_monomial, not merely comparable; the Round 20 working-basis pivot to Chebyshev-rescaled is walked back in the strongest possible form",
+    "g24_max_cond_M_T_pc_scaffold": 2.2828952107093512e+19,
+    "g24_max_cond_M_monomial_pc_scaffold": 1.700053347e+09,
+    "ratio_cond_M_T_over_M_monomial_at_g24_pc": 1.34e+10,
+    "g24_max_cond_M_T_r20_branch_points": 3.119e+20,
+    "g24_max_cond_M_monomial_r20_branch_points": 2.119e+11,
+    "ratio_cond_M_T_over_M_monomial_at_g24_r20": 1.47e+09,
+    "round_20_g1_anchor_cond_M_monomial_g24": 2.118886e+11,
+    "round_20_g2_anchor_cond_P_equilibrated_g24": 1.1762e+07,
+    "first_M_T_crossing_genus_1e10_threshold_pc": 8,
+    "first_M_T_crossing_genus_1e10_threshold_r20_branch_points": 8,
+    "trial_count": 147,
+    "sweep_axes_match_round_20_g1_exactly": true,
+    "qualitative_finding_construction_robust": true
+  },
+  "verdicts": {
+    "MANIFEST.json": "ACCEPT",
+    "CHEBYSHEV_M_T_CONDITIONING_REPORT.json": "ACCEPT",
+    "CHEBYSHEV_M_T_RATIONALE.md": "ACCEPT",
+    "chebyshev_m_t_sweep.py": "ACCEPT_WITH_NOTES",
+    "PROPOSED_PLAYBACK_ROWS.jsonl": "ACCEPT_AND_INCORPORATE_VARIATION"
+  },
+  "status": "ASSIMILATED",
+  "claim_level_at_assimilation": 0,
+  "claim_ceiling": "Round 20's working-basis pivot to Chebyshev-rescaled is walked back. Neither unrescaled monomial (FAIL at g=24, Round 20 G1) nor Chebyshev-rescaled (FAIL at g=24, Round 21 G2.5) is viable in f64. Route stays PRIMARY PARALLEL but working basis is UNCERTAIN. No #1038 altitude movement, no theorem advance, six receipts still absent. F64_SAMPLED_ONLY scope. G3 interval re-implementation and G4 endpoint-limit source vector remain local-only.",
+  "scope_tags": ["F64_SAMPLED_ONLY", "PUBLIC_SAFE_SCAFFOLD", "TRIAGE_PROBE_NOT_CERTIFICATE"],
+  "forbidden_claims_confirmed": [
+    "Does not claim #1038 solved",
+    "Does not claim altitude movement",
+    "Does not treat external prose as evidence",
+    "Does not turn synthetic fixtures into theorem pass",
+    "Does not promote claim level beyond 0"
+  ],
+  "confound_status_after_assimilation": {
+    "C1_tautological_qr_diagnostic": "RESOLVED (Round 20 G2 — unchanged)",
+    "C2_unprobed_genus_24": "RESOLVED (Round 20 G1 — unchanged)",
+    "C3_f64_only_sampling": "STILL_OPEN — G3 interval re-implementation closes; local-only, requires private endpoint payload",
+    "C4_silent_main_fallback": "RESOLVED_BY_TEMPLATE_UPDATE_a4b5bc6 — Round 21 dispatch branch-verification preamble passed at 41d8a0f3 (unchanged)",
+    "G2_5_chebyshev_M_T_conditioning": "RESOLVED 2026-05-28 ROUND_21 — M_T is empirically worse than M_monomial; defensive pivot to Chebyshev-rescaled (Round 20 outcome) walked back; next probe is Option (c) row-space/cycle-space equivalence (local-only)"
+  },
+  "route_state_after_g2_5": {
+    "canonical_hyperelliptic_basis": {
+      "status": "PRIMARY_PARALLEL",
+      "working_basis_status": "UNCERTAIN — neither unrescaled monomial (FAIL at g=24, Round 20 G1, max cond 2.12e11) nor Chebyshev-rescaled (FAIL at g=24, Round 21 G2.5, max cond 2.28e19–3.12e20 depending on branch-point construction) is viable in f64; Option (c) row-space/cycle-space equivalence is the next probe but is local-only",
+      "evidence_level": "Toy-scale f64 evidence through g=24 for two working-basis candidates; both fail the Higham 1e10 conditioning threshold at g=24"
+    },
+    "weighted_qr_basis": "DEMOTED to diagnostic (unchanged)",
+    "dependent_vieta_image_consumer": "BLOCKED on six absent receipts (unchanged)",
+    "independent_coefficient_box_theorem": "DANGEROUS (unchanged)",
+    "endpoint_limit_source_kernel": "SUMMIT-LEVEL OPEN (unchanged)",
+    "kkt_strict_slack": "SUMMIT-LEVEL OPEN (unchanged)",
+    "global_reduction": "SUMMIT-LEVEL OPEN (unchanged)"
+  },
+  "playback_event_id": "evt-20260528-round-21-complete",
+  "next_local_gate": "Option (c) row-space/cycle-space equivalence as the canonical-basis working-basis candidate (local-only; requires private receipt data). G3 (interval re-implementation) remains the gate for any certified seed regardless of working-basis choice. G4 (endpoint-limit source vector expression) remains local-only. Local-Codex receipt sprint on ROOT_BOX.json is the only altitude-moving path."
+}
