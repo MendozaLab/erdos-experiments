@@ -1,0 +1,39 @@
+{
+  "experiment_id": "EXP-MATH-ERDOS1038-SUPREMUM-TESTMEASURE-INEQUALITIES-INTERVAL-CERT-20260528-01",
+  "phase": "IV_DIRECTED_ROUNDING_UPGRADE",
+  "date": "2026-05-28",
+  "supersedes": "re-certifies the SAME three inequalities under directed-rounding interval arithmetic and mechanizes the Case-1 corner via an interval enclosure of D''. The original (superseded-phase) RESULTS.json is preserved unchanged internally (sha256 97a5f889...0776; see SEALS.md).",
+  "rigor_method": "[REDACTED pending IP review - implementation detail present in the internally sealed original; see SEALS.md]",
+  "case_2p6": {
+    "certified": true,
+    "certified_max_LHS_upper": "-1.3731001e-4",
+    "domain": "[0.7624, 2.7987]"
+  },
+  "case_2p5": {
+    "certified": true,
+    "certified_max_LHS_upper_compact": "-1.3814608e-8",
+    "compact_domain": "[0.7987, 4]",
+    "tail_ok": true,
+    "tail_arg": "t>=4: -log t<0 and -A*int_a^{2sqrt2} log(t-c) dc <0, L decreasing -> L<0 for all t>=4",
+    "full_domain_certified": true
+  },
+  "case_2p4": {
+    "interior_certified": true,
+    "certified_min_D_lower": "+5.5680635e-11",
+    "interior_domain": "[sqrt2+1e-3, 1.7624]",
+    "corner_certified": true,
+    "corner_method": "interval D''(t0) enclosed over [sqrt2, sqrt2+1e-3] = [0.66983051, 0.80454230], lower bound > 0 => D strictly convex there; with D(sqrt2)=0 and D'(sqrt2)=0 (both EXACT by the symmetric structure a1=b1, a2=b2 at t0=sqrt2: (sqrt2+1)(sqrt2-1)=1 so log(sqrt2+1)=-log(sqrt2-1)), Taylor gives D(t0)=\u00bdD''(xi)(t0-sqrt2)^2 > 0 on (sqrt2, sqrt2+1e-3].",
+    "corner_upgrade": "Previously the corner rested on a point-verified D''(sqrt2)=0.737225; it is now closed by a rigorous interval bound D''>0 over the whole corner neighborhood."
+  },
+  "overall_verdict": "ALL_THREE_TEST_MEASURE_INEQUALITIES_MACHINE_RIGOROUS_DIRECTED_ROUNDING__CASE1_CORNER_MECHANIZED",
+  "what_changed_from_original": [
+    "Re-certified under true directed-rounding interval arithmetic (no heuristic safety margin).",
+    "Case-1 corner upgraded from point-verified D''(sqrt2)>0 to interval-certified D''>0 on [sqrt2, sqrt2+1e-3]."
+  ],
+  "remaining_for_a_lean_grade_artifact": [
+    "Port the certified inequalities into Lean (e.g. a native_decide / interval-tactic backing) for FormalConjectures/ErdosProblems/1038.lean parts.ii.",
+    "Supply Tao Lemma 2.1 (duality) + Lemma 2.2 (rearrangement) - the analysis core, NOT covered here."
+  ],
+  "claim_ceiling": "Machine-rigorous certification of the test-measure inequalities (2.4)/(2.5)/(2.6) ONLY. Supremum value 2sqrt2 is Tao's; does NOT supply Tao's analysis lemmas; NOT a Lean proof; NOT the open infimum; NOT a SOTA advance.",
+  "_public_redaction_note": "Selected implementation-detail fields (certification-method internals, subdivision granularity, code references) are redacted or removed in this public copy pending IP review. The unredacted original is internally sealed: sha256 8861a5b4ad228c02d5171b80c09c16fda10093088604dc6dca23bfd55ed720cd. All certified bounds, domains, and the corner mathematics are unmodified."
+}
