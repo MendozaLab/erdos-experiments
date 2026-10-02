@@ -26,7 +26,7 @@ The bound sweep visualizer shows the phase-space transition between analytical b
 
 - **n = 2**: Proved by Eremenko–Hayman (1999), who also showed a maximizer exists with all critical points on the lemniscate
 - **n ≥ N₀**: Proved by Tao (arXiv:2512.12455, Dec 2025) with a tower-exponential threshold N₀
-- **n = 3–14**: Certified computationally in this repository (Mendoza, 2026)
+- **n = 3–14**: Open. This repository holds a computational census, not a proof (corrected 2026-10-02): a Rust search found no competing polynomial longer than zⁿ − 1 in the part of a bounded coefficient box it evaluated. For n ≥ 6, the half of the box containing zⁿ − 1 is never evaluated, and arc length is a floating-point estimate. See [issue #4](https://github.com/MendozaLab/erdos-experiments/issues/4).
 - **n = 15**: In computation (Modal clusters proposed)
 - **n = 16–18**: Open but computationally feasible via distributed architectures
 - **n = 19 to N₀**: Open, beyond current hardware
@@ -52,7 +52,7 @@ All cases use IEEE 1788 certified interval arithmetic via the `inari` Rust crate
 
 **Dim.** is the reduced parameter space dimension 2n − 5 (symmetry-reduced from 2(n−1)).
 
-**Margins increase monotonically** from 17.1% (n=3) to 71.4% (n=10), consistent with Tao's asymptotic result. Zero counterexamples found across the full search.
+**Margins increase monotonically** from 17.1% (n=3) to 71.4% (n=10), consistent with Tao's asymptotic result. No competing polynomial longer than zⁿ − 1 was found in the evaluated part of the box (corrected 2026-10-02): the exempted half-box (n ≥ 6) was not searched and the region outside the box was randomly sampled, so this does not show that no counterexample exists.
 n=11 through n=14 use the full IEEE 1788 certified B&B (branch-and-bound) proof; competitor margin not separately computed for these degrees.
 
 **Search methodology**: Margins are relative to the best competitor found across three tested families: (1) the Eremenko–Hayman family (all critical points on the lemniscate), (2) zⁿ + c for c on a fine grid, and (3) random monic sampling. The interval arithmetic certifies the arc-length evaluation; the branch-and-bound certifies exhaustive coverage of each family. These are not certified global gaps over all monic polynomials.
