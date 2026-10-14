@@ -1,0 +1,935 @@
+--- openai-original/OAI/Geometry/PinnedDistances/ArithmeticGraphs.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/ArithmeticGraphs.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.IncomingFibers
+ 
+ namespace OAI
+@@ -267,13 +274,13 @@
+       (θ/(θ-η))*(if (C.card : ℝ)≤(Fintype.card V : ℝ)^(1-c) then pairCell Finset.univ C else 0) := by
+     rw [G.qCell_split hne (1/Real.log (Fintype.card V : ℝ)) C]
+     by_cases hC : (C.card : ℝ)≤(Fintype.card V : ℝ)^(1-c)
+-    · rw [ite_eq_left hC]
++    · rw [if_pos hC]
+       have hh := h.small_heavy_bound hη hη0 C hC
+       have he : (θ+η)/(θ-η)-θ/(θ-η)=η/(θ-η) := by ring
+       calc
+         _ ≤ slice G.fiberWeight (fun e => prob (G.targets e)) G.source (1/Real.log (Fintype.card V : ℝ)) C + (η/(θ-η))*pairCell Finset.univ C := add_le_add_right hh _
+         _ = _ := by rw [← he]; ring
+-    · simp only [ite_eq_right hC,mul_zero,sub_zero]
++    · simp only [if_neg hC,mul_zero,sub_zero]
+       exact add_le_add_right (h.heavy_bound hη hη0 C) _
+   have hint := Finset.sum_le_sum (s:=Finset.univ) (fun C _ => mul_le_mul_of_nonneg_left (hpoint C) (hm C))
+   change weightedIntegral m G.qCell ≤ _ at hint
+--- openai-original/OAI/Geometry/PinnedDistances/ArithmeticHierarchy.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/ArithmeticHierarchy.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.RandomGrids
+ 
+ namespace OAI
+@@ -288,7 +295,7 @@
+     (hxy : x ≠ y) (hx : x ∈ C) (hy : y ∈ C) :
+     d.mass C ≤ d.overlapLength x y hxy := by
+   have hC : 2 ≤ C.card := Finset.one_lt_card.mpr ⟨x,hx,y,hy,hxy⟩
+-  rw [mass, ite_eq_left hC, overlapLength]
++  rw [mass, if_pos hC, overlapLength]
+   exact integral_mono (d.integrable_count hn C hC) (d.integrable_pairOverlap hn x y hxy)
+     (fun r => d.count_le_overlap r C x y hx hy)
+ 
+--- openai-original/OAI/Geometry/PinnedDistances/CutApproximation.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/CutApproximation.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.GlobalPotentials
+ 
+ namespace OAI
+@@ -128,7 +135,7 @@
+     change familyCutError w B δ C≤_ at he
+     simp only [mul_add,Finset.sum_add_distrib,← Finset.sum_mul,← mul_div_assoc,← Finset.sum_div] at he
+     have hvf : varianceCell w B T C=∑ i, w i*(cellProb (B i) C-cellProb Finset.univ C)^2 := by
+-      simp only [varianceCell,ite_eq_left (hlarge ha)]
++      simp only [varianceCell,if_pos (hlarge ha)]
+     rw [← hvf] at he
+     have he2 : (∑ i, w i)*ε≤ε := by nlinarith
+     have he3 : ε≤(8*ε/δ^2)*pairCell Finset.univ C := by
+@@ -155,11 +162,11 @@
+         apply Finset.sum_le_sum
+         intro i _
+         by_cases hpk : 2/((B i).card:ℝ)≤cellProb (B i) C
+-        · rw [ite_eq_left hpk]
++        · rw [if_pos hpk]
+           have hh := (cutError_tiny hδ hat (cellProb_le_one (B i) C)).2
+           have hm := mul_le_mul_of_nonneg_left hh (hw i)
+           convert hm using 1; ring
+-        · rw [ite_eq_right hpk]
++        · rw [if_neg hpk]
+           have hp : cellProb (B i) C≤δ := (le_of_lt (lt_of_not_ge hpk)).trans (hk i)
+           simp only [cutError,tent_zero_left hp,tent_zero_left (show cellProb Finset.univ C≤δ by linarith),
+             sub_self,abs_zero,zero_mul,add_zero,mul_zero]
+--- openai-original/OAI/Geometry/PinnedDistances/CutGeometry.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/CutGeometry.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.TreeTransport
+ 
+ namespace OAI
+@@ -241,8 +248,8 @@
+   · have he := d.differenceTail_neg_compl x y hxy u hu hne
+     have hm := mass_compl p hp (d.differenceTail x y u)
+     rw [he] at hm
+-    rw [ite_eq_right (by linarith),ite_eq_left (by linarith),zero_add,hm,hw]
+-  · rw [d.differenceTail_pos x y hxy u hu,ite_eq_left (by linarith),ite_eq_right (by linarith),add_zero]
++    rw [if_neg (by linarith),if_pos (by linarith),zero_add,hm,hw]
++  · rw [d.differenceTail_pos x y hxy u hu,if_pos (by linarith),if_neg (by linarith),add_zero]
+ 
+ end WeakPinned.Hierarchy.Depth
+ 
+@@ -303,11 +310,11 @@
+         exact (hns hh).elim
+       · have hc := (hmem x C hC).mp hx
+         have hn : C ≠ d.cell r y := fun h => hy ((hmem y C hC).mpr h)
+-        simp only [Cuts.ind,ite_eq_left hx,ite_eq_right hy,sub_zero,abs_one,mul_one,ite_eq_left hc,ite_eq_right hn,add_zero]
++        simp only [Cuts.ind,if_pos hx,if_neg hy,sub_zero,abs_one,mul_one,if_pos hc,if_neg hn,add_zero]
+         rw [hc]
+       · have hc := (hmem y C hC).mp hy
+         have hn : C ≠ d.cell r x := fun h => hx ((hmem x C hC).mpr h)
+-        simp only [Cuts.ind,ite_eq_right hx,ite_eq_left hy,zero_sub,abs_neg,abs_one,mul_one,ite_eq_left hc,ite_eq_right hn,zero_add]
++        simp only [Cuts.ind,if_neg hx,if_pos hy,zero_sub,abs_neg,abs_one,mul_one,if_pos hc,if_neg hn,zero_add]
+         rw [hc]
+       · have hn1 : C ≠ d.cell r x := fun h => hx ((hmem x C hC).mpr h)
+         have hn2 : C ≠ d.cell r y := fun h => hy ((hmem y C hC).mpr h)
+--- openai-original/OAI/Geometry/PinnedDistances/EnergyLaw.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/EnergyLaw.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.MobiusObstruction
+ 
+ namespace OAI
+@@ -20,7 +27,8 @@
+     (hsupp : ∀ᵐ q ∂ Q,q.2.2.1∈μ.support)
+     (he : ∀ᵐ q ∂ Q,crossEnergy μ q.1 q.2.2.1=targetEnergy ν q.2.2.2) : False := by
+   let τ : Measure (ℂ × ℂ) := Q.map (fun q => q.2.2)
+-  have : IsProbabilityMeasure τ := inferInstance
++  have : IsProbabilityMeasure τ :=
++    Q.isProbabilityMeasure_map (measurable_snd.comp measurable_snd).aemeasurable
+   have hp := measurableSet_energy_eq μ ν
+   have he' : ∀ᵐ v ∂ μ.prod τ,crossEnergy μ v.1 v.2.1=targetEnergy ν v.2.2 := by
+     rw [← hind]
+--- openai-original/OAI/Geometry/PinnedDistances/ExtremalCore.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/ExtremalCore.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.ExtremalFractions
+ 
+ namespace OAI
+@@ -95,9 +102,9 @@
+     G.contribution K C e ≤ G.contribution K D e := by
+   unfold contribution
+   by_cases hs : G.source e ∈ C
+-  · simp only [ite_eq_left hs,ite_eq_left (h hs)]
++  · simp only [if_pos hs,if_pos (h hs)]
+     exact max_le_max (sub_le_sub_right (by exact_mod_cast G.size_mono h e) K) le_rfl
+-  · simp only [ite_eq_right hs]
++  · simp only [if_neg hs]
+     split_ifs <;> positivity
+ 
+ omit [Fintype V] [Fintype I] in
+@@ -105,7 +112,7 @@
+     G.contribution K C e-G.contribution K (C.erase v) e ≤ G.fiberDegree K C v e := by
+   by_cases ha : G.active K C e
+   · obtain ⟨hs,hk⟩ := ha
+-    rw [fiberDegree,ite_eq_left ⟨hs,hk⟩]
++    rw [fiberDegree,if_pos ⟨hs,hk⟩]
+     by_cases hv : G.source e=v
+     · have hno : v ∉ G.targets e ∩ C := by
+         intro hh
+@@ -113,27 +120,27 @@
+       have he1 : G.contribution K C e=(G.size C e : ℝ)-K := by
+         simp [contribution,hs,max_eq_left (le_of_lt (sub_pos.mpr hk))]
+       have he0 : G.contribution K (C.erase v) e=0 := by simp [contribution,hv]
+-      rw [he1,he0,ite_eq_left hv,ite_eq_right hno]
++      rw [he1,he0,if_pos hv,if_neg hno]
+       linarith
+     · have hse : G.source e ∈ C.erase v := Finset.mem_erase.mpr ⟨hv,hs⟩
+-      simp only [contribution,ite_eq_left hs,ite_eq_left hse,ite_eq_right hv,zero_add,
++      simp only [contribution,if_pos hs,if_pos hse,if_neg hv,zero_add,
+         max_eq_left (le_of_lt (sub_pos.mpr hk))]
+       by_cases hm : v ∈ G.targets e ∩ C
+-      · rw [ite_eq_left hm,G.size_erase,ite_eq_left hm]
++      · rw [if_pos hm,G.size_erase,if_pos hm]
+         have hpos : 1 ≤ G.size C e := Finset.one_le_card.mpr ⟨v,hm⟩
+         rw [Nat.cast_sub hpos]
+         have hh := le_max_left ((G.size C e : ℝ)-1-K) 0
+         norm_num only [Nat.cast_one]
+         linarith
+-      · rw [ite_eq_right hm,G.size_erase,ite_eq_right hm,Nat.sub_zero,max_eq_left (le_of_lt (sub_pos.mpr hk))]
++      · rw [if_neg hm,G.size_erase,if_neg hm,Nat.sub_zero,max_eq_left (le_of_lt (sub_pos.mpr hk))]
+         simp
+   · have hz : G.contribution K C e=0 := by
+       unfold contribution
+       by_cases hs : G.source e ∈ C
+-      · rw [ite_eq_left hs,max_eq_right]
++      · rw [if_pos hs,max_eq_right]
+         exact sub_nonpos.mpr (le_of_not_gt (fun hk => ha ⟨hs,hk⟩))
+-      · rw [ite_eq_right hs]
+-    rw [hz,fiberDegree,ite_eq_right ha,zero_sub]
++      · rw [if_neg hs]
++    rw [hz,fiberDegree,if_neg ha,zero_sub]
+     exact neg_nonpos.mpr (G.contribution_nonneg K _ e)
+ 
+ omit [Fintype V] [Fintype I] in
+@@ -164,17 +171,17 @@
+       if G.edge K C x y then 1 else 0 := by
+     by_cases hh : G.edge K C x y
+     · obtain ⟨e,he,hs,hy⟩ := hh
+-      rw [ite_eq_left ⟨e,he,hs,hy⟩]
++      rw [if_pos ⟨e,he,hs,hy⟩]
+       rw [Finset.sum_eq_single e]
+       · simp [he,hs,hy]
+       · intro f _ hfe
+-        rw [ite_eq_right]
++        rw [if_neg]
+         rintro ⟨_,hfs,hfy⟩
+         exact hfe (G.edge_unique K C x y hfs hs (Finset.mem_inter.mp hfy).1 (Finset.mem_inter.mp hy).1)
+       · simp
+     · have hn : ∀ e, ¬(G.active K C e ∧ G.source e=x ∧ y ∈ G.targets e ∩ C) :=
+         fun e he => hh ⟨e,he⟩
+-      simp only [ite_eq_right (hn _),Finset.sum_const_zero,ite_eq_right hh]
++      simp only [if_neg (hn _),Finset.sum_const_zero,if_neg hh]
+   have hs (e : I) : G.fiberDegree K C v e =
+       (if G.active K C e then (if G.source e=v then (G.size C e : ℝ) else 0) else 0)+
+       (if G.active K C e then (if v ∈ G.targets e ∩ C then (1:ℝ) else 0) else 0) := by
+@@ -244,16 +251,16 @@
+   classical
+   by_cases hh : G.edge K C x y
+   · obtain ⟨e,he,hs,hy⟩ := hh
+-    rw [ite_eq_left ⟨e,he,hs,hy⟩,Finset.sum_eq_single e]
++    rw [if_pos ⟨e,he,hs,hy⟩,Finset.sum_eq_single e]
+     · simp [he,hs,hy]
+     · intro f _ hfe
+-      rw [ite_eq_right]
++      rw [if_neg]
+       rintro ⟨_,hfs,hfy⟩
+       exact hfe (G.edge_unique K C x y hfs hs (Finset.mem_inter.mp hfy).1 (Finset.mem_inter.mp hy).1)
+     · simp
+   · have hn : ∀ e, ¬(G.active K C e ∧ G.source e=x ∧ y ∈ G.targets e ∩ C) :=
+       fun e he => hh ⟨e,he⟩
+-    simp only [ite_eq_right (hn _),Finset.sum_const_zero,ite_eq_right hh]
++    simp only [if_neg (hn _),Finset.sum_const_zero,if_neg hh]
+ 
+ lemma edgeSet_card (K : ℝ) (C : Finset V) :
+     ((G.edgeSet K C).card : ℝ)=∑ e, if G.active K C e then (G.size C e : ℝ) else 0 := by
+--- openai-original/OAI/Geometry/PinnedDistances/ExtremalFractions.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/ExtremalFractions.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.GlobalOverlap
+ 
+ namespace OAI
+@@ -66,7 +73,7 @@
+   exact pairFraction_le_one P s
+ 
+ lemma fraction_le_F (P : Finset Plane) (s : ℝ) (hn : 2 ≤ P.card) : pairFraction P s ≤ F P.card s := by
+-  rw [F,ite_eq_left hn]
++  rw [F,if_pos hn]
+   exact le_csSup (fraction_values_bddAbove _ _) ⟨P,rfl,rfl⟩
+ 
+ lemma F_nonneg (n : ℕ) (s : ℝ) : 0 ≤ F n s := by
+@@ -96,7 +103,7 @@
+   obtain ⟨k,hk,hmax⟩ := Finset.exists_max_image A id ⟨_,hA⟩
+   obtain ⟨Q,hQ,hkQ⟩ := (Finset.mem_filter.mp hk).2
+   refine ⟨Q,hQ,le_antisymm ?_ ?_⟩
+-  · rw [F,ite_eq_left hn]
++  · rw [F,if_pos hn]
+     apply csSup_le (fraction_values_nonempty _ _)
+     rintro a ⟨R,hR,rfl⟩
+     have hm : (richPairs R s).card ∈ A := by
+--- openai-original/OAI/Geometry/PinnedDistances/FiberOverlap.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/FiberOverlap.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.SmallCells
+ 
+ namespace OAI
+@@ -90,7 +97,7 @@
+   apply Finset.sum_eq_zero
+   intro i _
+   by_cases h : x i = a
+-  · rw [ite_eq_left h,← h,hx i,mul_zero]
++  · rw [if_pos h,← h,hx i,mul_zero]
+   · simp [h]
+ 
+ lemma edgeCell_dom (w : I → ℝ) (p : I → P → ℝ) (x : I → P)
+--- openai-original/OAI/Geometry/PinnedDistances/FiberTransport.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/FiberTransport.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.CutGeometry
+ 
+ namespace OAI
+@@ -283,7 +290,7 @@
+       -Real.log (v (Z₁ x-Z₁ z)) - Real.log (v t) - -Real.log (v (Z₁ x-Z₁ y)) at he
+     suffices (finite Z₁ h₁ v).value y z-(finite Z₁ h₁ v).value x z-
+       ((finite Z₂ h₂ v).value y z+c)=0 by rw [this,abs_zero,mul_zero]
+-    simp only [finite,ite_eq_right hyz,ite_eq_right hxz,c]
++    simp only [finite,if_neg hyz,if_neg hxz,c]
+     linarith
+ 
+ omit [NumberField K] in
+--- openai-original/OAI/Geometry/PinnedDistances/FiniteLaw.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/FiniteLaw.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.Model
+ 
+ namespace OAI
+@@ -45,7 +52,7 @@
+ lemma finiteLaw_map {Y : Type u3} [MeasurableSpace Y] (w : I → ℝ) (U : I → X)
+     (f : X → Y) (hf : Measurable f) : (finiteLaw w U).map f=finiteLaw w (f ∘ U) := by
+   simp only [finiteLaw, Measure.map_finset_sum' hf.aemeasurable,
+-    Measure.map_smul _ hf.aemeasurable, Measure.map_dirac' hf, Function.comp_def]
++    Measure.map_smul, Measure.map_dirac' hf, Function.comp_def]
+ 
+ def finiteProbability (w : I → ℝ) (U : I → X) (hw : ∀ i,0≤ w i) (hW : ∑ i,w i=1) :
+     ProbabilityMeasure X := ⟨finiteLaw w U,finiteLaw_probability w U hw hW⟩
+--- openai-original/OAI/Geometry/PinnedDistances/GlobalPotentials.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/GlobalPotentials.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.MinPotentials
+ 
+ namespace OAI
+@@ -327,7 +334,7 @@
+           (sub_ne_zero.mpr (h₁.ne hxy)) (sub_ne_zero.mpr (h₂.ne hxy))
+         rw [ht' i y hy] at hh
+         change -Real.log (v (Z₁ (src i)-Z₁ y)) + -Real.log (v (Z₂ (src i)-Z₂ y)) = -Real.log (v (t i)) at hh
+-        simp only [finite,ite_eq_right hxy,hh,sub_self,abs_zero,mul_zero]
++        simp only [finite,if_neg hxy,hh,sub_self,abs_zero,mul_zero]
+     simpa only [he,Finset.sum_const_zero,mul_zero] using
+       hb (finite Z₁ h₁ v) (finite Z₂ h₂ v) (fun i => -Real.log (v (t i)))
+   have hg : average Z₁ Z₂ h₁ h₂ f≤16 := by
+--- openai-original/OAI/Geometry/PinnedDistances/GridBounds.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/GridBounds.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.ChartLimits
+ 
+ namespace OAI
+@@ -118,7 +125,7 @@
+   · subst y; simp [Depth.share]
+   · rw [Depth.share,or_iff_right hxy]
+     change (r ≤ if good Z v ω ∧ x≠y then Grid.depth ω (v.embedding (Z x)) (v.embedding (Z y)) else 0) ↔ _
+-    rw [ite_eq_left ⟨hg,hxy⟩]
++    rw [if_pos ⟨hg,hxy⟩]
+     exact (Grid.label_eq_iff (embedding_ne Z hZ v hxy) (hr x y).1 (hr x y).2 r).symm
+ 
+ end WeakPinned.Global
+--- openai-original/OAI/Geometry/PinnedDistances/IncomingFibers.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/IncomingFibers.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.UniformCore
+ 
+ namespace OAI
+@@ -81,7 +88,7 @@
+   by_cases hy : y ∈ G.targets e
+   · have hk : ((G.targets e).card : ℝ) ≠ 0 := by
+       exact_mod_cast (Finset.card_ne_zero.mpr ⟨y,hy⟩)
+-    simp only [fiberWeight,prob,ite_eq_left hy]
++    simp only [fiberWeight,prob,if_pos hy]
+     field_simp
+   · simp [prob,hy]
+ 
+@@ -118,7 +125,7 @@
+   by_cases he : (x,y) ∈ G.edges
+   · have hm : x ∈ G.incoming y := by simp [incoming,he]
+     have hk : ((G.incoming y).card : ℝ) ≠ 0 := by exact_mod_cast (Finset.card_ne_zero.mpr ⟨x,hm⟩)
+-    simp only [incomingWeight,prob,ite_eq_left hm,edgeLaw,ite_eq_left he]
++    simp only [incomingWeight,prob,if_pos hm,edgeLaw,if_pos he]
+     field_simp
+   · have hm : x ∉ G.incoming y := by simp [incoming,he]
+     simp [prob,hm,edgeLaw,he]
+--- openai-original/OAI/Geometry/PinnedDistances/LogBounds.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/LogBounds.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.WeightedSelection
+ 
+ namespace OAI
+@@ -52,7 +59,7 @@
+ lemma log_cost_large (u : P → ℂ) (R : ℝ) (hR : 1 < R) (x y : P) (hxy : R < ‖u x-u y‖) :
+     Real.log R ≤ logCost u x y := by
+   have hne : x ≠ y := by intro he; subst y; simp at hxy; linarith
+-  rw [logCost,ite_eq_right hne]
++  rw [logCost,if_neg hne]
+   have hl := Real.log_le_log (by linarith : 0<R) hxy.le
+   exact hl.trans (le_abs_self _)
+ 
+@@ -88,7 +95,7 @@
+     rw [norm_sub_rev z] at hh
+     linarith
+   have hh := Real.log_le_log hp hd.le
+-  rw [logCost,ite_eq_right hxy]
++  rw [logCost,if_neg hxy]
+   have habs := neg_le_abs (Real.log ‖u x-u y‖)
+   linarith
+ 
+@@ -121,7 +128,7 @@
+     have hrw (x : P) : (∑ y : P, if x∈A ∧ y∈A ∧ x≠y then T else 0) =
+         if x∈A then ((A.card : ℝ)-1)*T else 0 := by
+       by_cases hx : x∈A
+-      · simp only [hx,true_and,ite_eq_left]
++      · simp only [hx,true_and,if_pos]
+         have hf : Finset.univ.filter (fun y => y∈A ∧ x≠y)=A.erase x := by
+           ext y; simp [ne_comm, and_comm]
+         rw [← Finset.sum_filter,hf,Finset.sum_const,Finset.card_erase_of_mem hx,nsmul_eq_mul]
+@@ -279,7 +286,7 @@
+     rw [← pairMean_add]
+     apply pairMean_mono hn
+     intro x y hxy
+-    simp only [pairGridError,ite_eq_right hxy]
++    simp only [pairGridError,if_neg hxy]
+     have he : rawDepth u x y-d.M=(d.value x y-d.M)-Grid.error ω (u x) (u y) := by
+       rw [hd x y hxy]; simp only [rawDepth,Grid.error]; ring
+     rw [he]
+@@ -298,7 +305,7 @@
+   intro y _
+   by_cases hxy : x=y
+   · simp only [pairGridError,hxy,ite_true,mul_zero]; exact integrable_zero _ _ _
+-  · simpa only [pairGridError,ite_eq_right hxy] using
++  · simpa only [pairGridError,if_neg hxy] using
+       ((Grid.error_integrable_full (hu.ne hxy)).abs.const_mul (pairProb Finset.univ x y))
+ 
+ lemma mean_pairGridError (u : P → ℂ) (hu : Function.Injective u) (hn : 2≤ Fintype.card P) :
+@@ -306,7 +313,7 @@
+   have hi (x y : P) : Integrable (fun ω => pairProb Finset.univ x y*pairGridError u ω x y) Grid.fullLaw := by
+     by_cases hxy : x=y
+     · simp only [pairGridError,hxy,ite_true,mul_zero]; exact integrable_zero _ _ _
+-    · simpa only [pairGridError,ite_eq_right hxy] using
++    · simpa only [pairGridError,if_neg hxy] using
+         ((Grid.error_integrable_full (hu.ne hxy)).abs.const_mul (pairProb Finset.univ x y))
+   simp only [pairMean]
+   rw [integral_finsetSum _ (fun x _ => integrable_finsetSum _ (fun y _ => hi x y))]
+@@ -318,7 +325,7 @@
+       apply mul_le_mul_of_nonneg_left _ (pairWeight_nonneg hn x y)
+       by_cases hxy : x=y
+       · simp only [pairGridError,hxy,ite_true,integral_zero]; norm_num
+-      · simpa only [pairGridError,ite_eq_right hxy] using Grid.mean_abs_error_full (hu.ne hxy)
++      · simpa only [pairGridError,if_neg hxy] using Grid.mean_abs_error_full (hu.ne hxy)
+     _ = 4 := by
+       have h := pairMean_one (P:=P) hn
+       simp only [pairMean,mul_one] at h
+--- openai-original/OAI/Geometry/PinnedDistances/MeasureLimits.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/MeasureLimits.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.ProductLimits
+ 
+ namespace OAI
+@@ -45,10 +52,10 @@
+   let Qn := fun n => edgeProbability (G n) (U₁ n) (U₂ n) (hG n) (hB n)
+   have hc : Continuous (fun q : Quad Sphere => (q.1,q.2.2)) := by fun_prop
+   have ht : Continuous (fun q : Quad Sphere => q.2.2) := by fun_prop
+-  apply weak_pair_product_limit (fun n => (Qn n).map (fun q => (q.1,q.2.2)))
+-    (Q.map (fun q => (q.1,q.2.2)))
++  apply weak_pair_product_limit (fun n => (Qn n).map hc.measurable.aemeasurable)
++    (Q.map hc.measurable.aemeasurable)
+     (fun n => uniformProbability (U₁ n) (by have:=hn n;omega)) β
+-    (fun n => (Qn n).map (fun q => q.2.2)) (Q.map (fun q => q.2.2))
++    (fun n => (Qn n).map ht.measurable.aemeasurable) (Q.map ht.measurable.aemeasurable)
+     (ProbabilityMeasure.tendsto_map_of_tendsto_of_continuous Qn Q hQ hc) hα
+     (ProbabilityMeasure.tendsto_map_of_tendsto_of_continuous Qn Q hQ ht)
+   intro f g
+--- openai-original/OAI/Geometry/PinnedDistances/MobiusObstruction.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/MobiusObstruction.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.ConditionalIntegral
+ 
+ namespace OAI
+@@ -216,7 +223,8 @@
+     (hbd : ∀ᵐ q ∂ Q, q.2.1 ≠ q.2.2.2)
+     (hmap : ∀ᵐ q ∂ Q, μ.map (mobius q.1 q.2.1 q.2.2.1 q.2.2.2) = ν) : False := by
+   let τ : Measure (ℂ × ℂ) := Q.map (fun q => q.2.2)
+-  have : IsProbabilityMeasure τ := inferInstance
++  have : IsProbabilityMeasure τ :=
++    Q.isProbabilityMeasure_map (measurable_snd.comp measurable_snd).aemeasurable
+   have hp : MeasurableSet {v : ℂ × (ℂ × ℂ) |
+       crossEnergy μ v.1 v.2.1 = targetEnergy ν v.2.2} :=
+     measurableSet_energy_eq μ ν
+--- openai-original/OAI/Geometry/PinnedDistances/OverlapRates.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/OverlapRates.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.ArithmeticGraphs
+ 
+ namespace OAI
+@@ -77,7 +84,9 @@
+         simpa using (hlamT.const_mul 2).div_const (τ^2)
+       have ha2 : Tendsto (fun j => 2*(1/Real.log (n j))/(θ-η j)) atTop (𝓝 0) := by
+         convert (hlamT.const_mul 2).div hθm hθ.ne' using 1
+-        simp
++        · ext j
++          rfl
++        · simp
+       have ha3 : Tendsto (fun j => (θ+η j)/(θ-η j)-1) atTop (𝓝 0) := by
+         simpa [hθ.ne',Pi.div_apply] using (hθp.div hθm hθ.ne').sub (tendsto_const_nhds (x:=1))
+       simpa [a] using (ha1.add ha2).add ha3
+--- openai-original/OAI/Geometry/PinnedDistances/PartitionIntegrals.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/PartitionIntegrals.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.GridBounds
+ 
+ namespace OAI
+@@ -18,7 +25,7 @@
+     rw [Finset.sum_eq_single (d.cell r x)]
+     · simp [d.share_refl]
+     · intro C hC hne
+-      rw [ite_eq_right]
++      rw [if_neg]
+       exact fun hx => hne (d.cell_of_mem hC hx)
+     · simp
+   calc
+@@ -131,7 +138,7 @@
+         _ ≤ (t^2+δ*δ)/δ := div_le_div_of_nonneg_right hh hδ.le
+         _ = _ := by field_simp
+     have hh : meanCellDiscrep w B C ≤ varianceCell w B T C/δ+δ := by
+-      rw [varianceCell,ite_eq_left hC]
++      rw [varianceCell,if_pos hC]
+       calc
+         _  ≤  ∑ i,w i*((cellProb (B i) C-cellProb Finset.univ C)^2/δ+δ) :=
+           Finset.sum_le_sum (fun i _ => mul_le_mul_of_nonneg_left (hy _) (hw i))
+@@ -287,7 +294,7 @@
+   let A := D.image (d.cell r)
+   let rep (C : Finset P) : P := if h : C∈A then (Finset.mem_image.mp h).choose else Classical.arbitrary P
+   have hr (C : Finset P) (hC : C∈A) : rep C∈D ∧ d.cell r (rep C)=C := by
+-    simpa only [rep,dite_eq_left hC] using (Finset.mem_image.mp hC).choose_spec
++    simpa only [rep,dif_pos hC] using (Finset.mem_image.mp hC).choose_spec
+   have hAc : A⊆d.cells r := Finset.image_subset_image (Finset.filter_subset _ _)
+   have hcount : A.card≤(2*M+1)^2 := by
+     apply le_trans (Finset.card_le_card_of_injOn (fun C => Grid.label ω r (u (rep C)))
+@@ -304,7 +311,7 @@
+   refine ⟨A,v,hAc,hcount,?_,?_⟩
+   · intro x
+     by_cases hx : d.cell r x∈A
+-    · simp only [v,ite_eq_left hx]
++    · simp only [v,if_pos hx]
+       apply hcont
+       have he : d.share r x (rep (d.cell r x)) := by
+         rw [← d.mem_cell]
+@@ -315,15 +322,15 @@
+           (Real.exp m:ℂ)*u x-(Real.exp m:ℂ)*u (rep (d.cell r x)) := by ring
+       rw [heq]
+       exact hd.trans_le (by linarith)
+-    · simp only [v,ite_eq_right hx,sub_zero]
++    · simp only [v,if_neg hx,sub_zero]
+       apply hout
+       by_contra hh
+       have hxD : x∈D := Finset.mem_filter.mpr ⟨Finset.mem_univ x,le_of_not_gt hh⟩
+       exact hx (Finset.mem_image.mpr ⟨x,hxD,rfl⟩)
+   · intro C _
+     by_cases hC : C∈A
+-    · simpa only [v,ite_eq_left hC] using hbound ((Real.exp m:ℂ)*u (rep C)+b)
+-    · simp only [v,ite_eq_right hC,abs_zero,le_refl]
++    · simpa only [v,if_pos hC] using hbound ((Real.exp m:ℂ)*u (rep C)+b)
++    · simp only [v,if_neg hC,abs_zero,le_refl]
+ 
+ end WeakPinned.Bounded
+ 
+--- openai-original/OAI/Geometry/PinnedDistances/ProductLimits.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/ProductLimits.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.VarianceRates
+ 
+ namespace OAI
+@@ -80,7 +87,7 @@
+     R.map (fun r => (e r,(z r,w r)))=Q.prod (μ.prod μ) := by
+   have hp : Measurable (fun r => (e r,![z r,w r])) := by
+     apply he.prodMk
+-    apply Measurable.of_eval
++    apply measurable_pi_iff.mpr
+     intro j
+     fin_cases j
+     · exact hz
+@@ -127,14 +134,15 @@
+     · exact hz
+     · exact hw
+   have hRm := ProbabilityMeasure.tendsto_map_of_tendsto_of_continuous Rn R hR hk
+-  have hh := weak_product_limit (fun n => (Rn n).map k)
+-    (R.map k) Qn Q (fun n _ => αn n) (fun _ : Fin 2 => β) hRm hQ (fun _ => hα) ?_
++  have hh := weak_product_limit (fun n => (Rn n).map hk.measurable.aemeasurable)
++    (R.map hk.measurable.aemeasurable) Qn Q (fun n _ => αn n) (fun _ : Fin 2 => β) hRm hQ (fun _ => hα) ?_
+   · exact pair_of_pi_map (R:Measure T) (Q:Measure E) (β:Measure X) e z w he.measurable hz.measurable hw.measurable hh
+   · intro f g
+     have hl := herr f (g 0) (g 1)
+     convert hl using 1
+     funext n
+-    rw [show ((Rn n).map k : Measure (E × (Fin 2 → X)))=(Rn n:Measure T).map k from rfl]
++    rw [show ((Rn n).map hk.measurable.aemeasurable : Measure (E × (Fin 2 → X)))=
++      (Rn n:Measure T).map k from rfl]
+     rw [integral_map_of_stronglyMeasurable hk.measurable (by fun_prop)]
+     simp only [Fin.prod_univ_two,k,Matrix.cons_val_zero,Matrix.cons_val_one,Matrix.cons_val_fin_one,mul_assoc]
+ 
+@@ -196,7 +204,8 @@
+     (f : X → Y) (hf : Continuous f) (hα : Tendsto αn atTop (𝓝 α))
+     (hβ : Tendsto βn atTop (𝓝 β)) (hm : ∀ n,(αn n:Measure X).map f=(βn n:Measure Y)) :
+     (α:Measure X).map f=(β:Measure Y) := by
+-  have he (n) : (αn n).map f=βn n := ProbabilityMeasure.toMeasure_injective (hm n)
++  have he (n) : (αn n).map hf.measurable.aemeasurable=βn n :=
++    ProbabilityMeasure.toMeasure_injective (hm n)
+   have hl := ProbabilityMeasure.tendsto_map_of_tendsto_of_continuous αn α hα hf
+   simp only [he] at hl
+   exact congrArg ProbabilityMeasure.toMeasure (tendsto_nhds_unique hl hβ)
+@@ -209,8 +218,8 @@
+     (hβ : Tendsto βn atTop (𝓝 β)) (c : ℝ≥0)
+     (hm : ∀ n,(αn n:Measure X).map f≤(c:ℝ≥0∞) • (βn n:Measure Y)) :
+     (α:Measure X).map f≪(β:Measure Y) := by
+-  have hl := weak_domination (fun n => (αn n).map f)
+-    βn (α.map f) β
++  have hl := weak_domination (fun n => (αn n).map hf.measurable.aemeasurable)
++    βn (α.map hf.measurable.aemeasurable) β
+     (ProbabilityMeasure.tendsto_map_of_tendsto_of_continuous αn α hα hf) hβ c hm
+   exact Measure.absolutelyContinuous_of_le_smul hl
+ 
+--- openai-original/OAI/Geometry/PinnedDistances/RandomGrids.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/RandomGrids.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.Hierarchy
+ 
+ namespace OAI
+@@ -208,7 +215,7 @@
+     (uniformInterval l).conv (binaryStep l) = uniformInterval (2*l) := by
+   rw [binaryStep_eq, Measure.conv_add, Measure.conv_smul_right,
+     Measure.conv_smul_right, Measure.conv_dirac_zero, Measure.conv_dirac]
+-  rw [uniformInterval, Measure.map_smul _ (by fun_prop), translate_restrict_Ioc]
++  rw [uniformInterval, Measure.map_smul, translate_restrict_Ioc]
+   have hu : Set.Ioc 0 l ∪ Set.Ioc l (l+l) = Set.Ioc 0 (2*l) := by
+     rw [Set.Ioc_union_Ioc_eq_Ioc hl.le (by linarith)]
+     congr 1; linarith
+@@ -644,7 +651,8 @@
+       intro hh
+       rcases lt_abs.mp hh with hh | hh
+       · exact False.elim (hsmall (hh.le.trans hω))
+-      · linarith
++      · change gridDepth ω x y + Real.log R < -u
++        linarith
+     exact hle.trans (error_lower_tail hxy hR hgap₂ u)
+ 
+ lemma error_abs_lintegral_le {x y : ℝ × ℝ} (hxy : x ≠ y) {R : ℝ} (hR : 0 < R)
+--- openai-original/OAI/Geometry/PinnedDistances/SmallCells.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/SmallCells.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.ArithmeticVariance
+ 
+ namespace OAI
+@@ -323,7 +330,7 @@
+     (hy : y ∈ d.cell r x) : 1 ≤ d.pairOverlap r x y := by
+   classical
+   have hs := (d.mem_cell r x y).mp hy
+-  rw [d.pairOverlap_formula, ite_eq_left hs]
++  rw [d.pairOverlap_formula, if_pos hs]
+   by_cases he : (d.giants r).Nonempty
+   · have hx : x ∉ d.giant r := by
+       intro hx
+--- openai-original/OAI/Geometry/PinnedDistances/TreeContradiction.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/TreeContradiction.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.FiberTransport
+ 
+ namespace OAI
+@@ -192,7 +199,7 @@
+ omit [Fintype I] in
+ lemma sampling_conditional (y x : V) : G.incomingWeight y*G.conditionalSource y x=G.edgeLaw x y := by
+   by_cases h : (G.incoming y).Nonempty
+-  · simpa only [conditionalSource,ite_eq_left h] using G.sampling_incoming x y
++  · simpa only [conditionalSource,if_pos h] using G.sampling_incoming x y
+   · have he : G.incoming y=∅ := Finset.not_nonempty_iff_eq_empty.mp h
+     have hh := G.sampling_incoming x y
+     have hw : G.incomingWeight y=0 := by simp [incomingWeight,he]
+@@ -246,17 +253,17 @@
+   intro y _
+   by_cases hs : T≤((G.incoming y).card:ℝ)
+   · have hy : (G.incoming y).Nonempty := Finset.card_pos.mp (by exact_mod_cast hT.trans_le hs)
+-    have he : G.retainedSet T y=G.incoming y := by simp only [retainedSet,ite_eq_left hs]
++    have he : G.retainedSet T y=G.incoming y := by simp only [retainedSet,if_pos hs]
+     have hh := cost_le_charge d δ hδ (prob (G.retainedSet T y)) (prob Finset.univ)
+       (sum_prob _ (hrn y)) ha (hrs y) has
+     simp only [he] at hh
+-    simpa only [retainedWeight,ite_eq_left hs,conditionalSource,ite_eq_left hy,not_lt_of_ge hs,ite_false,zero_mul,add_zero,he]
++    simpa only [retainedWeight,if_pos hs,conditionalSource,if_pos hy,not_lt_of_ge hs,ite_false,zero_mul,add_zero,he]
+       using mul_le_mul_of_nonneg_left hh (G.incomingWeight_nonneg y)
+   · have hh := cost_bound d.allCuts (d.cutLength (fun B => tent δ (mass (prob Finset.univ) B)))
+       (fun C _ => d.cutLength_nonneg _ (fun B => tent_nonneg _ _) C)
+       (G.conditionalSource y) (prob Finset.univ) (G.conditionalSource_nonneg y) (prob_nn _)
+       (G.conditionalSource_sum hn y) ha
+-    simpa only [retainedWeight,ite_eq_right hs,lt_of_not_ge hs,ite_true,zero_mul,zero_add] using
++    simpa only [retainedWeight,if_neg hs,lt_of_not_ge hs,ite_true,zero_mul,zero_add] using
+       mul_le_mul_of_nonneg_left hh (G.incomingWeight_nonneg y)
+ 
+ lemma graph_length_upper (d d' : Depth V) (δ T : ℝ) (hδ : 0≤δ) (hT : 0<T)
+--- openai-original/OAI/Geometry/PinnedDistances/TreeTransport.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/TreeTransport.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.CutApproximation
+ 
+ namespace OAI
+@@ -99,7 +106,7 @@
+           g (value (s.erase C) d a x)+(if x ∈ C then Δ else 0) := by
+         rw [value_erase C hC]
+         by_cases hx : x ∈ C
+-        · rw [ite_eq_left hx,ite_eq_left hx,minimal_constant hs C hC hmin d a x hx]
++        · rw [if_pos hx,if_pos hx,minimal_constant hs C hC hmin d a x hx]
+           dsimp only [Δ,q]
+           ring
+         · simp [hx]
+@@ -227,11 +234,11 @@
+       by_cases hx : x ∈ C <;> simp [ind,hx,hy]
+     simp_rw [he]
+     simp only [Finset.sum_sub_distrib,hp,← Finset.sum_filter,
+-      Finset.filter_mem_eq_inter,Finset.univ_inter,ite_eq_left hy,mass]
++      Finset.filter_mem_eq_inter,Finset.univ_inter,if_pos hy,mass]
+   · have he (x : P) : p x*|ind C x-ind C y|=if x ∈ C then p x else 0 := by
+       by_cases hx : x ∈ C <;> simp [ind,hx,hy]
+     simp_rw [he]
+-    simp only [← Finset.sum_filter,Finset.filter_mem_eq_inter,Finset.univ_inter,ite_eq_right hy,mass]
++    simp only [← Finset.sum_filter,Finset.filter_mem_eq_inter,Finset.univ_inter,if_neg hy,mass]
+ 
+ lemma expected_distance_ge (s : Finset (Finset P)) (l : Finset P → ℝ)
+     (hl : ∀ C ∈ s, 0 ≤ l C) (p : P → ℝ) (hp : ∑ x, p x=1) (η : ℝ)
+--- openai-original/OAI/Geometry/PinnedDistances/UnboundedContradiction.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/UnboundedContradiction.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.TreeContradiction
+ 
+ namespace OAI
+@@ -77,7 +84,7 @@
+   apply Finset.sum_le_sum
+   intro i _
+   by_cases hi : src i ∈ C
+-  · simp only [ite_eq_left hi,SmallFiber.mass,sum_prob_cell]
++  · simp only [if_pos hi,SmallFiber.mass,sum_prob_cell]
+     nlinarith [mul_le_mul_of_nonneg_left (cellProb_le_one (B i) C) (hw i)]
+   · simp [hi,hw i]
+ 
+@@ -248,7 +255,9 @@
+       (((tendsto_const_nhds (x:=θ)).sub hη).div (tendsto_const_nhds.add (hη.div_const 8))
+       (show θ+(0:ℝ)/8≠0 by simpa using hθ.ne')))
+     convert hh using 1
+-    simp [hθ.ne']
++    · ext j
++      rfl
++    · simp [hθ.ne']
+   have hcomp := arithmetic_scale_comparison G θ γ c η Z₁ Z₂ h₁ h₂ hθ hγ hγ1 hcγ hn hη hη0 hηb hG t ht
+   apply balanced_extraction_rate W A (fiberVariance G c Z₁ Z₂ h₁ h₂) _ Q S a C δ b hC hδ hb hbC
+     (fun j => overlapScale_nonneg _ _ _ _) (fun j => potentialScale_nonneg _ _ _ _)
+--- openai-original/OAI/Geometry/PinnedDistances/UniformCore.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/UniformCore.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.ExtremalCore
+ 
+ namespace OAI
+@@ -44,7 +51,7 @@
+     apply Finset.disjoint_left.mpr
+     intro y hy hf
+     by_cases he : Q e <;> by_cases hh : Q f
+-    · simp only [he,hh,ite_eq_left] at hy hf
++    · simp only [he,hh,if_pos] at hy hf
+       exact (Finset.disjoint_left.mp (G.disjoint e f hef hs))
+         (Finset.mem_inter.mp hy).1 (Finset.mem_inter.mp hf).1
+     all_goals simp [he,hh] at hy hf
+@@ -386,7 +393,7 @@
+       then ((planarFibers P s).size D e : ℝ) else 0) = 0 := by
+   apply Finset.sum_eq_zero
+   intro e _
+-  rw [ite_eq_right]
++  rw [if_neg]
+   rintro ⟨⟨ha,hh⟩,hs⟩
+   have hk := mul_le_mul_of_nonneg_left (le_of_lt ha.2) hlam
+   have hm : ((planarFibers P s).size D e : ℝ) < D.card := by
+--- openai-original/OAI/Geometry/PinnedDistances/VarianceRates.lean
++++ lean-4.33.1-port/OAI/Geometry/PinnedDistances/VarianceRates.lean
+@@ -1,3 +1,10 @@
++/-
++Modified from OpenAI math revision
++1581d4cbdd69a0faf34b2089614fe2a814316a6a.
++Compatibility port to Lean 4.33.1 and Mathlib
++0df444a360eaa60ab8c11dca51a86af692955474.
++See PROVENANCE.md and provenance/compatibility.patch for the changes.
++-/
+ import OAI.Geometry.PinnedDistances.PartitionIntegrals
+ 
+ namespace OAI
+@@ -178,12 +185,12 @@
+   by_cases hy : T≤((G.incoming y).card:ℝ)
+   · have hne : (G.incoming y).Nonempty := Finset.card_pos.mp (by exact_mod_cast hT.trans_le hy)
+     simp only [Core.Fibers.retainedWeight,Core.Fibers.retainedSet,Core.Fibers.conditionalSource,
+-      ite_eq_left hy,ite_eq_left hne,not_lt_of_ge hy,ite_false,mul_zero,add_zero]
++      if_pos hy,if_pos hne,not_lt_of_ge hy,ite_false,mul_zero,add_zero]
+     exact le_rfl
+   · have hbound : |(∑ x,G.conditionalSource y x*f x)-∑ x,prob Finset.univ x*f x|≤2*H := by
+       have hh := avg_abs_bound _ _ _ (G.conditionalSource_nonneg y) (G.conditionalSource_sum hn y) hf
+       exact (abs_sub _ _).trans (by linarith)
+-    simp only [Core.Fibers.retainedWeight,ite_eq_right hy,lt_of_not_ge hy,ite_true,zero_mul,zero_add]
++    simp only [Core.Fibers.retainedWeight,if_neg hy,lt_of_not_ge hy,ite_true,zero_mul,zero_add]
+     nlinarith [mul_le_mul_of_nonneg_left hbound (G.incomingWeight_nonneg y)]
+ 
+ lemma incoming_test_bound (T H C : ℝ) (hT : 0<T) (hn : 2≤Fintype.card V)

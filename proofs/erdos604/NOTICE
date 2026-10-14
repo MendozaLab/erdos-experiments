@@ -1,0 +1,28 @@
+Weak pinned-distance proof integration for Erdős 604
+
+This package includes source derived from OpenAI's math repository:
+https://github.com/openai/math
+Revision: 1581d4cbdd69a0faf34b2089614fe2a814316a6a
+Source path: lean/OAI/Geometry/PinnedDistances
+License: Apache License, Version 2.0
+
+The included OpenAI proof closure has compatibility modifications for Lean 4.33.1
+and Mathlib 0df444a360eaa60ab8c11dca51a86af692955474. The modified files are identified
+in provenance/source-manifest.json, with the full diff in
+provenance/compatibility.patch. OpenAI's mathematical result and proof are
+attributed to OpenAI; the compatibility work is not represented as an upstream
+OpenAI release.
+
+This package also includes definitions from Google DeepMind's formal-conjectures:
+https://github.com/google-deepmind/formal-conjectures
+Revision: 57f2e0cf2b374563dcb42bdd9adec97aa7e27517
+Source paths: FormalConjectures/ErdosProblems/604.lean
+              FormalConjecturesForMathlib/Geometry/Metric.lean
+Copyright 2025-2026 The Formal Conjectures Authors.
+License: Apache License, Version 2.0
+
+The copied definitions have been placed in Erdos604Proof.Target to avoid namespace
+conflicts. Their source attribution is preserved in TargetDefinitions.lean.
+
+The compatibility port, independent counting adapter, and packaging were prepared
+under Ken Bengoetxea's direction with Codex assistance. See PROVENANCE.md for scope.

@@ -1,0 +1,29 @@
+import Erdos604Proof
+
+#print axioms OAI.WeakPinned.main
+#print axioms OAI.WeakPinned.mainStatement
+#print axioms OAI.WeakPinned.sequence_arithmetic_model
+#print axioms OAI.WeakPinned.Transfer.numberField_pattern
+#print axioms OAI.WeakPinned.Transfer.planar_factor_model
+#print axioms OAI.WeakPinned.Arithmetic.log_product_formula
+#print axioms OAI.WeakPinned.Arithmetic.normalized_log_product_formula
+#print axioms OAI.WeakPinned.Bounded.no_finite_law
+#print axioms OAI.WeakPinned.Bounded.bounded_mobius
+#print axioms OAI.WeakPinned.Bounded.weak_limit_nonatomic
+#print axioms OAI.WeakPinned.Bounded.no_energy_law
+#print axioms OAI.WeakPinned.Bounded.graph_limit_impossible
+#print axioms PinnedDistanceAdapter.card_le_image_mul_threshold_add_rich
+#print axioms PinnedDistanceAdapter.richPairs_card_eq_sum
+#print axioms PinnedDistanceAdapter.badPins_mul_le_richPairs
+#print axioms PinnedDistanceAdapter.badPins_fraction_le_two_pairFraction
+#print axioms PinnedDistanceAdapter.pairFraction_le_two
+#print axioms PinnedDistanceAdapter.pairFraction_le_F
+#print axioms PinnedDistanceAdapter.uniform_pairFraction
+#print axioms PinnedDistanceAdapter.eventually_small_fiber_loss
+#print axioms PinnedDistanceAdapter.almost_all_pins
+#print axioms PinnedDistanceAdapter.almost_all_pins_good
+#print axioms PinnedDistanceAdapter.pinnedDistances_card_eq
+#print axioms PinnedDistanceAdapter.pinnedDistinctDistances_attained
+#print axioms PinnedDistanceAdapter.erdos604_of_main
+#print axioms almost_all_pins_from_openai
+#print axioms erdos604_from_openai

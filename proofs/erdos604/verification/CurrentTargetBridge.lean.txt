@@ -1,0 +1,26 @@
+import FormalConjectures.ErdosProblems.«604»
+import Erdos604Proof
+
+/-! Exact definition matching and application to the current weak Erdős 604 statement. -/
+
+open Filter
+open scoped Topology EuclideanGeometry
+
+/-- The copied finite distance count is definitionally the current upstream count. -/
+theorem external_distance_count_matches {X : Type*} [MetricSpace X]
+    (A : Finset X) (x : X) :
+    Erdos604Proof.Target.distinctDistancesFrom A x = distinctDistancesFrom A x := rfl
+
+/-- The copied infimum is definitionally the current upstream pinned-distance function. -/
+theorem external_pinned_count_matches (n : ℕ) :
+    Erdos604Proof.Target.pinnedDistinctDistances n = Erdos604.pinnedDistinctDistances n := rfl
+
+/-- Exact current upstream proposition, without using its placeholder proof. -/
+theorem current_erdos604_from_openai :
+    ∀ ε : ℝ, 0 < ε → ∀ᶠ n : ℕ in atTop,
+      (n : ℝ) ^ (1 - ε) ≤ (Erdos604.pinnedDistinctDistances n : ℝ) := by
+  exact erdos604_from_openai
+
+#print axioms external_distance_count_matches
+#print axioms external_pinned_count_matches
+#print axioms current_erdos604_from_openai

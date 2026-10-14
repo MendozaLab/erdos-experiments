@@ -1,0 +1,524 @@
+{
+  "openai_repository": "https://github.com/openai/math",
+  "openai_revision": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+  "original_lean": "leanprover/lean4:v4.34.1",
+  "original_mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "local_port_record_revision": "31cfe229796310c109785a29ba6174e6b39c51a7",
+  "copied_target_repository": "https://github.com/google-deepmind/formal-conjectures",
+  "copied_target_revision": "57f2e0cf2b374563dcb42bdd9adec97aa7e27517",
+  "checked_lean": "leanprover/lean4:v4.33.1",
+  "checked_mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "openai_module_count": 47,
+  "openai_compatibility_modified_count": 26,
+  "adapter_module_count": 8,
+  "audit_declarations": [
+    "OAI.WeakPinned.main",
+    "OAI.WeakPinned.mainStatement",
+    "OAI.WeakPinned.sequence_arithmetic_model",
+    "OAI.WeakPinned.Transfer.numberField_pattern",
+    "OAI.WeakPinned.Transfer.planar_factor_model",
+    "OAI.WeakPinned.Arithmetic.log_product_formula",
+    "OAI.WeakPinned.Arithmetic.normalized_log_product_formula",
+    "OAI.WeakPinned.Bounded.no_finite_law",
+    "OAI.WeakPinned.Bounded.bounded_mobius",
+    "OAI.WeakPinned.Bounded.weak_limit_nonatomic",
+    "OAI.WeakPinned.Bounded.no_energy_law",
+    "OAI.WeakPinned.Bounded.graph_limit_impossible",
+    "PinnedDistanceAdapter.card_le_image_mul_threshold_add_rich",
+    "PinnedDistanceAdapter.richPairs_card_eq_sum",
+    "PinnedDistanceAdapter.badPins_mul_le_richPairs",
+    "PinnedDistanceAdapter.badPins_fraction_le_two_pairFraction",
+    "PinnedDistanceAdapter.pairFraction_le_two",
+    "PinnedDistanceAdapter.pairFraction_le_F",
+    "PinnedDistanceAdapter.uniform_pairFraction",
+    "PinnedDistanceAdapter.eventually_small_fiber_loss",
+    "PinnedDistanceAdapter.almost_all_pins",
+    "PinnedDistanceAdapter.almost_all_pins_good",
+    "PinnedDistanceAdapter.pinnedDistances_card_eq",
+    "PinnedDistanceAdapter.pinnedDistinctDistances_attained",
+    "PinnedDistanceAdapter.erdos604_of_main",
+    "almost_all_pins_from_openai",
+    "erdos604_from_openai"
+  ],
+  "files": [
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ArithmeticContradiction.lean",
+      "upstream_sha256": "96c9a1b4c9ae38fa1beb9fb3e6dc8da0fcc4884e98837e3141b3cce88ea372a8",
+      "checked_port_sha256": "96c9a1b4c9ae38fa1beb9fb3e6dc8da0fcc4884e98837e3141b3cce88ea372a8",
+      "publication_sha256": "96c9a1b4c9ae38fa1beb9fb3e6dc8da0fcc4884e98837e3141b3cce88ea372a8",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ArithmeticGraphs.lean",
+      "upstream_sha256": "7f3dcc9c9e6b1bde8ea2134185122bbf99fb0e2a5de9c4912b39a47b8bfd9e37",
+      "checked_port_sha256": "13efe767e2ec3bb3107fee984a88e5b9c8af98b56042a3a7149a474bbab6eb7f",
+      "publication_sha256": "b417e6648d621dd4f4ddd598a564a06e83d1588d872219164158b2c857752160",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ArithmeticHierarchy.lean",
+      "upstream_sha256": "dab5a556adc8bd6fe45afea9d46a3e66ac7b405e7264bcd7d8a88e714aef8d61",
+      "checked_port_sha256": "2d0816ff3fddfa006b72add5756a534f6b89e6859bdf1261329c79f211fbfb1d",
+      "publication_sha256": "5f3d85efe852ead2a47efcd17ac565ba69534953d14e22ed2f5cbfc2ad2cdf2c",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ArithmeticSequence.lean",
+      "upstream_sha256": "7522ae3f255e4351a332b6cfb68fb59e8c3a1a47e244de003d2fb5b6002571a1",
+      "checked_port_sha256": "7522ae3f255e4351a332b6cfb68fb59e8c3a1a47e244de003d2fb5b6002571a1",
+      "publication_sha256": "7522ae3f255e4351a332b6cfb68fb59e8c3a1a47e244de003d2fb5b6002571a1",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ArithmeticVariance.lean",
+      "upstream_sha256": "b6662eb9974399af7a32ec9d41e70c00bd2af53d838629056e9d7161bc0a46df",
+      "checked_port_sha256": "b6662eb9974399af7a32ec9d41e70c00bd2af53d838629056e9d7161bc0a46df",
+      "publication_sha256": "b6662eb9974399af7a32ec9d41e70c00bd2af53d838629056e9d7161bc0a46df",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/BoundedContradiction.lean",
+      "upstream_sha256": "d2b9c8259b8d2d9058d9e47feac1bfa3d0e80a6f99185c5990e9bdf3e6728898",
+      "checked_port_sha256": "d2b9c8259b8d2d9058d9e47feac1bfa3d0e80a6f99185c5990e9bdf3e6728898",
+      "publication_sha256": "d2b9c8259b8d2d9058d9e47feac1bfa3d0e80a6f99185c5990e9bdf3e6728898",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/BoundedRates.lean",
+      "upstream_sha256": "a22fc250b668124bea1eb30c2f97779e470e7e93ecca5f0651305e502878ae94",
+      "checked_port_sha256": "a22fc250b668124bea1eb30c2f97779e470e7e93ecca5f0651305e502878ae94",
+      "publication_sha256": "a22fc250b668124bea1eb30c2f97779e470e7e93ecca5f0651305e502878ae94",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ChartLimits.lean",
+      "upstream_sha256": "60d7ab5438873bb0d9490f7c767c83c639e13d329be6ee77a1d58cd0233c4150",
+      "checked_port_sha256": "60d7ab5438873bb0d9490f7c767c83c639e13d329be6ee77a1d58cd0233c4150",
+      "publication_sha256": "60d7ab5438873bb0d9490f7c767c83c639e13d329be6ee77a1d58cd0233c4150",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ConditionalIntegral.lean",
+      "upstream_sha256": "b3b9faa68fed895e12c363c1d2742486e08be88582dfd6ff6490599d22a8df74",
+      "checked_port_sha256": "b3b9faa68fed895e12c363c1d2742486e08be88582dfd6ff6490599d22a8df74",
+      "publication_sha256": "b3b9faa68fed895e12c363c1d2742486e08be88582dfd6ff6490599d22a8df74",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/CutApproximation.lean",
+      "upstream_sha256": "1dda1380558509a3ffb9bd4abc6b1cea8fc6ce9d855a3e9cd063b2d2ca80c726",
+      "checked_port_sha256": "c0522d73515d4a993ca8ea94b979eac792fe5d5d4471722a889b3d3f6ea64ad4",
+      "publication_sha256": "59452ebb250ede0f6b907e44a5a7afb401b9acfa5cc463afc64c5b8855646864",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/CutGeometry.lean",
+      "upstream_sha256": "f19516c803162178cbf0b17c79acf350422e1eddba6cc00d9182aeffd1a72676",
+      "checked_port_sha256": "74000df655ed19058d267466e171eb7f67f7575617af62e054cc7475fa3a09dd",
+      "publication_sha256": "1152879251d1849cd0e9911d96fe384c81f450cfb18bb5b2619196965641da99",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/EmpiricalCompactness.lean",
+      "upstream_sha256": "b5e19b0f2eed0e533d669228d7bbcba377664cbe0773bee117dd34eb62e8f3db",
+      "checked_port_sha256": "b5e19b0f2eed0e533d669228d7bbcba377664cbe0773bee117dd34eb62e8f3db",
+      "publication_sha256": "b5e19b0f2eed0e533d669228d7bbcba377664cbe0773bee117dd34eb62e8f3db",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/EnergyLaw.lean",
+      "upstream_sha256": "88a8a69dac9e79961345ed94cf7b5475c8cdbd3cd854121ed70b155e2f5d201c",
+      "checked_port_sha256": "8df772fd526516b5814b3ef602e790f070a83b3a4d2bb6e58f09decdc9e8c50d",
+      "publication_sha256": "673756c533c69332c272c7e9fc2e041d6fc30cb50dae201719be21e3826b2a3e",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ExtremalCore.lean",
+      "upstream_sha256": "9101af897670d157f981de96a242372ef71da5ae96d58939a56d7d8158d92e7f",
+      "checked_port_sha256": "9a484047e83096b20eda9377ded3b88dbc7299f1f32f5a3696ae464add818012",
+      "publication_sha256": "5bd9c3177d9f0d47305fcb67254e2190e861e7cdfb06b2a775e30cf9eefe0145",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ExtremalFractions.lean",
+      "upstream_sha256": "b7280aa59764c8d24dd0f07f06ca69913b97698c3edfbca07d550b2e4e08b651",
+      "checked_port_sha256": "5b686f94123a898420d8f9c7283c4663b388496d8f46a3991e06a93dcc353765",
+      "publication_sha256": "a43c9848d2994dcd585f046cd65140e4fc50e4bbfeb45c8d3126ab5998a6b3d4",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/FiberOverlap.lean",
+      "upstream_sha256": "b315bba1fece05f4b83e15d180b8191ac6aae898d1c8f7a32deedb0f9173ae47",
+      "checked_port_sha256": "d931bb2031bd060e839936689d74c9caf52b7dd87d4a53c31a30d9c49d49a2d3",
+      "publication_sha256": "476454794a66d659e6e244e05419e5c1e7f8bf11238cae53b08e59946097963d",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/FiberTransport.lean",
+      "upstream_sha256": "1cd5038aa04932805f5371aa50928b6100e8a2b56dda3391f982fd8658214df9",
+      "checked_port_sha256": "27454d2534e7dae059804f8d8f0aba1111397d44d8a88daaa3cf501ce1fd5bbb",
+      "publication_sha256": "37dd5c80ecd0dc509ebbf1e9e5b894a6e1f159377fc9f6fd1b9ff6c747a10f81",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/FiniteLaw.lean",
+      "upstream_sha256": "3affbfda951ed7282d0223e83b31ebadda2fa57f3373f402f8f3004fd21cb81c",
+      "checked_port_sha256": "08a4b721d55cd5c28b2aaba3b09ae9901b0b35133e186c8d277ce7ad2ec4695c",
+      "publication_sha256": "0910e7f1502c4ab5b08a1c4fe62161ba6e8c96c3719fb109e7b84f53b7742353",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/FiniteMixtures.lean",
+      "upstream_sha256": "aef332e9ff7b57a8af00a4d77e8157b43ff59ab7065bdc16d996bf7494a849e7",
+      "checked_port_sha256": "aef332e9ff7b57a8af00a4d77e8157b43ff59ab7065bdc16d996bf7494a849e7",
+      "publication_sha256": "aef332e9ff7b57a8af00a4d77e8157b43ff59ab7065bdc16d996bf7494a849e7",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/FiniteObstruction.lean",
+      "upstream_sha256": "365eb91ec52f6bc78a6391507694fcba1f055e7428567e46d4bce33a19a4fc30",
+      "checked_port_sha256": "365eb91ec52f6bc78a6391507694fcba1f055e7428567e46d4bce33a19a4fc30",
+      "publication_sha256": "365eb91ec52f6bc78a6391507694fcba1f055e7428567e46d4bce33a19a4fc30",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/GlobalOverlap.lean",
+      "upstream_sha256": "78dec397c63a9c1b573a5bed0a74f048fff2c6185c061f3cc60f1a2c8d403982",
+      "checked_port_sha256": "78dec397c63a9c1b573a5bed0a74f048fff2c6185c061f3cc60f1a2c8d403982",
+      "publication_sha256": "78dec397c63a9c1b573a5bed0a74f048fff2c6185c061f3cc60f1a2c8d403982",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/GlobalPotentials.lean",
+      "upstream_sha256": "aa9d693acc324f6275ee59af0c5f770cd0e41a6f1c2e9046642bc2a28d22b69b",
+      "checked_port_sha256": "b9b070195fbc24e7181f8d4eaf8c53301fe04384262eb7b0f8248d8174d5d2a9",
+      "publication_sha256": "9d6cbacb0df8bac930aa6e840722e21095c4c393e5c26cc3ea70467be9aaeaff",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/GridBounds.lean",
+      "upstream_sha256": "136073241396064c4fc4d39b070b4e73d2b94c90ab72507a30d2deb6e57036bb",
+      "checked_port_sha256": "3893c4b0a8dbc843990ab784c4d6b79f2f80691fd960fdf1f043c14632d228dc",
+      "publication_sha256": "aa8107efad7124e5688ae1ca32e015111301d5feb3307a801866f1e67f6ac536",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/Hierarchy.lean",
+      "upstream_sha256": "b7b4218923a1c1cad4972a19c88bd2b6a3ad470f23711f4335d770552dccb8c1",
+      "checked_port_sha256": "b7b4218923a1c1cad4972a19c88bd2b6a3ad470f23711f4335d770552dccb8c1",
+      "publication_sha256": "b7b4218923a1c1cad4972a19c88bd2b6a3ad470f23711f4335d770552dccb8c1",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/IncomingFibers.lean",
+      "upstream_sha256": "c6562c5dea7b2f2c66853fabe30a687893c24960a7cfbf56deabc35d3f49302b",
+      "checked_port_sha256": "09aa4bf9595c71fec0c9ff0cec8328e592abf027004c5f4d4c729de294c26dbd",
+      "publication_sha256": "a04bfbda6fe82d60226b070ff67bcc661b8b0b13697ae58e9f634597de5e66c0",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/LimitObstruction.lean",
+      "upstream_sha256": "f0e63d39829df7c16055109541182cc5613591609cbd16bffd758b865a6e50d5",
+      "checked_port_sha256": "f0e63d39829df7c16055109541182cc5613591609cbd16bffd758b865a6e50d5",
+      "publication_sha256": "f0e63d39829df7c16055109541182cc5613591609cbd16bffd758b865a6e50d5",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/LogBounds.lean",
+      "upstream_sha256": "e23bb7d6fac1c13bd513f860e50bb596f921de2583cd3d870b5dd38fa14a2d4d",
+      "checked_port_sha256": "6f05b7a0d81628aaf8423e12d5a5c78ac0dde094f85a2112b0bb23d17c4a17a8",
+      "publication_sha256": "8fe9f43c012987633cd8ecdb6cc2b8ea11313677df34ca43d7729826e7c0b5b2",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/Main.lean",
+      "upstream_sha256": "8c2795061a55fb0841f758a05f46832b5e943a038f57d423f8bd0840b99f3e6b",
+      "checked_port_sha256": "8c2795061a55fb0841f758a05f46832b5e943a038f57d423f8bd0840b99f3e6b",
+      "publication_sha256": "8c2795061a55fb0841f758a05f46832b5e943a038f57d423f8bd0840b99f3e6b",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/MeasureLimits.lean",
+      "upstream_sha256": "5281ecc7867670899499faf49baf41d879925218cb0d9e09a0fef83828bc7828",
+      "checked_port_sha256": "69967c3f72d52c7606bbdea407c030724c11511b314d1052ec7d15233d2494b6",
+      "publication_sha256": "74e982b40ca062a2ac175b6b25695ff8937bc74c9e681020e09748a61867433c",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/MinPotentials.lean",
+      "upstream_sha256": "a928258117d4bde5fd50aec80c0bf95ae2366776671ffbaa55ebf80eb050fb55",
+      "checked_port_sha256": "a928258117d4bde5fd50aec80c0bf95ae2366776671ffbaa55ebf80eb050fb55",
+      "publication_sha256": "a928258117d4bde5fd50aec80c0bf95ae2366776671ffbaa55ebf80eb050fb55",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/MixtureLaw.lean",
+      "upstream_sha256": "569e11adb491ce728eca252a4cd3d6b33adc9b6e8b8ad28a92520358450803c0",
+      "checked_port_sha256": "569e11adb491ce728eca252a4cd3d6b33adc9b6e8b8ad28a92520358450803c0",
+      "publication_sha256": "569e11adb491ce728eca252a4cd3d6b33adc9b6e8b8ad28a92520358450803c0",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/MobiusObstruction.lean",
+      "upstream_sha256": "f84b61f91581fb413170ce2ff7abe12dcb12e4e61a6ba11bd12ecf57a8d38722",
+      "checked_port_sha256": "35fea608207ff8ee8279a101a778d6923ae723bb30c3c528ed7ee66a63aa313b",
+      "publication_sha256": "99ab909e4e1f4e613a7c722f9fcaa8677457a4d3e2facb21b33a14fdcbc38837",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/Model.lean",
+      "upstream_sha256": "f85d0ffa803c0c96835a504b126a820e5522b03da1c4400dfa21d730f6c5a812",
+      "checked_port_sha256": "f85d0ffa803c0c96835a504b126a820e5522b03da1c4400dfa21d730f6c5a812",
+      "publication_sha256": "f85d0ffa803c0c96835a504b126a820e5522b03da1c4400dfa21d730f6c5a812",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/NormalizedGraphs.lean",
+      "upstream_sha256": "b4b235f307b181f4ddd364be560bfcf005d873b7b09315e6b08197a92511beb4",
+      "checked_port_sha256": "b4b235f307b181f4ddd364be560bfcf005d873b7b09315e6b08197a92511beb4",
+      "publication_sha256": "b4b235f307b181f4ddd364be560bfcf005d873b7b09315e6b08197a92511beb4",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/OverlapRates.lean",
+      "upstream_sha256": "82aa33fd8286f1f1763c6b3568f0c5722e19af3c8453fc71fee6e623864cfe46",
+      "checked_port_sha256": "0576ba0c3d77493e4dd4a16ce8998f0af4b38c09cf626c19ca0f3dfb72eabf30",
+      "publication_sha256": "573eb82d7591583d4805ffb3f537b37b50d446c7c5185a5179d047a0265fffcc",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/PartitionIntegrals.lean",
+      "upstream_sha256": "b7f6e02081c7e984d6bb8423133bb43222c8d13d82186e4e88ad38df4a677639",
+      "checked_port_sha256": "3518cf9bb3537244bb6d2a02338e1df21c1749a6e6f9ebdf2d4922d5ca9e0dd6",
+      "publication_sha256": "5f9a32c7ccb059bf0de42b6f1e8a99f4e1f179809541efc8fdd880c95d0dcd5c",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ProductFormula.lean",
+      "upstream_sha256": "bec2d6dba59527ff233f6d8116a498d0f2604f914da831334519abc9060ca051",
+      "checked_port_sha256": "bec2d6dba59527ff233f6d8116a498d0f2604f914da831334519abc9060ca051",
+      "publication_sha256": "bec2d6dba59527ff233f6d8116a498d0f2604f914da831334519abc9060ca051",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/ProductLimits.lean",
+      "upstream_sha256": "150faf8c956b118f582aebccd05e7c56c019a27da83731ce7393f26d4eb1b324",
+      "checked_port_sha256": "6ec9c1e8978bc2681dc2ad931bd13d21ca4d60f0a4c6c74d42627e41a71774bc",
+      "publication_sha256": "3b5e9b07ad201b5fdbb1f9e88f367cd174162c289b1658edb5f58cf3dd6ee6b1",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/RandomGrids.lean",
+      "upstream_sha256": "50f7cceec2de950545d3f4b675e34785008956ef304f817599bd8d12c4fb47bf",
+      "checked_port_sha256": "668b4183dbbccb055f4a81e3c73f1287497c7bee099cb5d16ef3d52e5e0e3449",
+      "publication_sha256": "d612f6c10a660c21c08699c991632382f96c68ad5b8b5467578b4c431b4c93f6",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/SmallCells.lean",
+      "upstream_sha256": "03aae7d43c9828eb42a9e4553f6c52775be991cebbde317e37ac8dd0ab506ae1",
+      "checked_port_sha256": "b11cb6b4eb31dce524392de982701260dd08627b7a9acb1ee32a1c9f89fc9b34",
+      "publication_sha256": "18e17b254466df482bfa7e11b853949ae15d98297d371fee547a5db1618c9275",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/TreeContradiction.lean",
+      "upstream_sha256": "51bfe15aacd90d9b0d61bde674101c5654649a8c6710847d172acb0db246310d",
+      "checked_port_sha256": "cfc20e76b2b85acbec1939abd6bbdb516c28da019057ba752af204ed4a85452e",
+      "publication_sha256": "327f3b70fd483eaaf75300e7e7c707f7423dff4ec1911af39fddfd62b2cf5178",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/TreeTransport.lean",
+      "upstream_sha256": "6ea11e598426f0c9d69ad8c2c1d7e3e458e36130bb7d0880ddf5bceb3adef6c4",
+      "checked_port_sha256": "effe74f7d4c798adb7eb952b8a59e796b797db516a1930cecf55cd1a095f0fc9",
+      "publication_sha256": "7a303c0c8c4b2b10ac7615074aabbc352108a398b9fe436aa6408beef5f438b8",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/UnboundedContradiction.lean",
+      "upstream_sha256": "8e5fbb54c0525061df03944892828d1bb88502c7f4b0b5e001139d1efd446ff3",
+      "checked_port_sha256": "5da9af0b94006e2a4fd8699f4a7562b518a142ddb952c999c31a4291803731ad",
+      "publication_sha256": "004808de1a2011348b1058fe8cc5bced9a8c447605e9f8fb70ccc901747007aa",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/UniformCore.lean",
+      "upstream_sha256": "bb3cc302d881ffb3d33cf9683b4de9d2baa1141fd69042c65bdcfcc1fb3a3f09",
+      "checked_port_sha256": "07f80e11787f3f3351b227cd7fbbc44bf5edfd06ad1ae55a2af095cc2733a40a",
+      "publication_sha256": "d9c2037eeb62776fce3fa37b79d45fec245c50bd4c7ad40752b1ebfcef62c142",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/Variance.lean",
+      "upstream_sha256": "d768d8988fc5b43e4415a16e76b238bac627330c8319e693305515e021ee86cb",
+      "checked_port_sha256": "d768d8988fc5b43e4415a16e76b238bac627330c8319e693305515e021ee86cb",
+      "publication_sha256": "d768d8988fc5b43e4415a16e76b238bac627330c8319e693305515e021ee86cb",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/VarianceRates.lean",
+      "upstream_sha256": "fc0abb057bf5e36911761e83ac1847c97df8ae5cc64d1cf0831fcfe8edd15323",
+      "checked_port_sha256": "c6c342f09c128cdf68d446cd4b94e3a0c4ef8b878c4a841ea4958c8a85058427",
+      "publication_sha256": "baf6290a7d82a18454aa0dd66cead801110ba5291570b488183897d40c889c3b",
+      "compatibility_modified": true,
+      "packaging_notice": "/-\nModified from OpenAI math revision\n1581d4cbdd69a0faf34b2089614fe2a814316a6a.\nCompatibility port to Lean 4.33.1 and Mathlib\n0df444a360eaa60ab8c11dca51a86af692955474.\nSee PROVENANCE.md and provenance/compatibility.patch for the changes.\n-/\n"
+    },
+    {
+      "kind": "openai",
+      "file": "OAI/Geometry/PinnedDistances/WeightedSelection.lean",
+      "upstream_sha256": "2fb9077d98034c665657d53201fa69b28c03d90df3178e71e8de59d6d0687ad0",
+      "checked_port_sha256": "2fb9077d98034c665657d53201fa69b28c03d90df3178e71e8de59d6d0687ad0",
+      "publication_sha256": "2fb9077d98034c665657d53201fa69b28c03d90df3178e71e8de59d6d0687ad0",
+      "compatibility_modified": false,
+      "packaging_notice": ""
+    },
+    {
+      "kind": "adapter",
+      "file": "Erdos604Proof/Definitions.lean",
+      "checked_source": "local-port/adapter-src/Definitions.lean",
+      "checked_source_sha256": "9f2e429b386f478c38c2ea9e4553b64a63ac1c34cb72b365a173c2382bc309ea",
+      "publication_sha256": "9f2e429b386f478c38c2ea9e4553b64a63ac1c34cb72b365a173c2382bc309ea"
+    },
+    {
+      "kind": "adapter",
+      "file": "Erdos604Proof/Counting.lean",
+      "checked_source": "local-port/adapter-src/Counting.lean",
+      "checked_source_sha256": "81345a1c2d9bd6162221b88c7a3235e86d213730c4234fcd7a3cf428bba70df2",
+      "publication_sha256": "efe1ef76c74f1a2b0fcae225d6a3a742519ab7b5950c08ca6cec11dadc8cac36"
+    },
+    {
+      "kind": "adapter",
+      "file": "Erdos604Proof/Uniform.lean",
+      "checked_source": "local-port/adapter-src/Uniform.lean",
+      "checked_source_sha256": "f04c798122a56eb26c7a5d9564330ed8180afcaac28161269dab19ebc855fd9d",
+      "publication_sha256": "84fbba491f420773fb22afcfa8a47ed1715907d1a32363e57e656fa50ea4c78f"
+    },
+    {
+      "kind": "adapter",
+      "file": "Erdos604Proof/AlmostAll.lean",
+      "checked_source": "local-port/adapter-src/AlmostAll.lean",
+      "checked_source_sha256": "0c00842a1cba16aa4c86fc449a6230c2d40ec482973ba9839d305250f5519855",
+      "publication_sha256": "2a5422647926e03759027fe87bc40a94c4cefb546d83806da42850f9ce83bb67"
+    },
+    {
+      "kind": "adapter",
+      "file": "Erdos604Proof/TargetDefinitions.lean",
+      "checked_source": "local-port/adapter-src/TargetDefinitions.lean",
+      "checked_source_sha256": "eeaea606abe79610814e0a4f4cf71f842ca411336bd8062e717f6ffe03a9b7bf",
+      "publication_sha256": "bcea0629f7972675996af147f3225df74420522d1558e8d3a847bb0cb033777e"
+    },
+    {
+      "kind": "adapter",
+      "file": "Erdos604Proof/Target.lean",
+      "checked_source": "local-port/adapter-src/Target.lean",
+      "checked_source_sha256": "ae4cca2239bf18361ee114d0eefb32dc562f7e3b6205a356f94ca6b646b1e351",
+      "publication_sha256": "be2feda67c1205d4042febdb96d9247b42c48d6146e613ea7e503543cbf4cdac"
+    },
+    {
+      "kind": "adapter",
+      "file": "Erdos604Proof/All.lean",
+      "checked_source": "local-port/adapter-src/All.lean",
+      "checked_source_sha256": "030584a6f3f39a38e45f745e3b05b46f7d943164b1914e7dd395a71a4ffb2f9b",
+      "publication_sha256": "8c42259083e2b929ce7e2472cbea66d33942faf870b8c5ae51cc3b9e3c0d138f"
+    },
+    {
+      "kind": "adapter",
+      "file": "Erdos604Proof/ExternalApplication.lean",
+      "checked_source": "local-port/adapter-src/ExternalApplication.lean",
+      "checked_source_sha256": "0684d7ddad06e1a3074b3e586c1658a6e39876f50e7f931e6bd81db8fa188abd",
+      "publication_sha256": "50792ee4f31f743419e988f8e3ecb3d067568b744b5130e56341a2bc377bf68e"
+    }
+  ]
+}
